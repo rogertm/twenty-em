@@ -9,7 +9,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Twenty_Ten_Five
+ * @subpackage Twenty_Em_Five
  * @since Twenty Ten Five 1.0
  */
 

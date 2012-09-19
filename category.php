@@ -3,7 +3,7 @@
  * The template for displaying Category Archive pages.
  *
  * @package WordPress
- * @subpackage Twenty_Ten
+ * @subpackage Twenty_Em
  * @since Twenty Ten 1.0
  */
 
@@ -13,7 +13,7 @@ get_header(); ?>
 			<div id="content" role="main">
 				<header>
 					<h1 class="page-title"><?php
-						printf( __( 'Category Archives: %s', 'twentyten' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+						printf( __( 'Category Archives: %s', 't_em' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 					?></h1>
 				</header>
 				<?php

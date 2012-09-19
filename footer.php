@@ -6,7 +6,7 @@
  * after.  Calls sidebar-footer.php for bottom widgets.
  *
  * @package WordPress
- * @subpackage Twenty_Ten_Five 
+ * @subpackage Twenty_Em_Five 
  * @since Twenty Ten Five 1.0
  */
 ?>
@@ -29,10 +29,10 @@
 			</div><!-- #site-info -->
 
 			<div id="site-generator">
-				<?php do_action( 'twentyten_credits' ); ?>
-				<a href="<?php echo esc_url( __('http://wordpress.org/', 'twentyten') ); ?>"
-						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 'twentyten'); ?>" rel="generator">
-					<?php printf( __('Proudly powered by %s.', 'twentyten'), 'WordPress' ); ?>
+				<?php do_action( 't_em_credits' ); ?>
+				<a href="<?php echo esc_url( __('http://wordpress.org/', 't_em') ); ?>"
+						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
+					<?php printf( __('Proudly powered by %s.', 't_em'), 'WordPress' ); ?>
 				</a>
 			</div><!-- #site-generator -->
 

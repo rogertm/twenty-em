@@ -3,7 +3,7 @@
  * The template for displaying Search Results pages.
  *
  * @package WordPress
- * @subpackage Twenty_Ten_Five
+ * @subpackage Twenty_Em_Five
  * @since Twenty Ten Five 1.0
  */
 
@@ -14,7 +14,7 @@ get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
 				<header>
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyten' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header>
 				<?php
 				/* Run the loop for the search to output the results.
@@ -25,9 +25,9 @@ get_header(); ?>
 				?>
 <?php else : ?>
 				<article id="post-0" class="post no-results not-found">
-					<h2 class="entry-title"><?php _e( 'Nothing Found', 'twentyten' ); ?></h2>
+					<h2 class="entry-title"><?php _e( 'Nothing Found', 't_em' ); ?></h2>
 					<div class="entry-content">
-						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentyten' ); ?></p>
+						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 't_em' ); ?></p>
 						<?php get_search_form(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->

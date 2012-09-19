@@ -3,7 +3,7 @@
  * The Footer widget areas.
  *
  * @package WordPress
- * @subpackage Twenty_Ten_Five
+ * @subpackage Twenty_Em_Five
  * @since Twenty Ten Five 1.0
  */
 ?>

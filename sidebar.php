@@ -3,7 +3,7 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage Twenty_Ten
+ * @subpackage Twenty_Em
  * @since Twenty Ten 1.0
  */
 ?>
@@ -24,14 +24,14 @@
 			</li>
 
 			<li id="archives" class="widget-container">
-				<h3 class="widget-title"><?php _e( 'Archives', 'twentyten' ); ?></h3>
+				<h3 class="widget-title"><?php _e( 'Archives', 't_em' ); ?></h3>
 				<ul>
 					<?php wp_get_archives( 'type=monthly' ); ?>
 				</ul>
 			</li>
 
 			<li id="meta" class="widget-container">
-				<h3 class="widget-title"><?php _e( 'Meta', 'twentyten' ); ?></h3>
+				<h3 class="widget-title"><?php _e( 'Meta', 't_em' ); ?></h3>
 				<ul>
 					<?php wp_register(); ?>
 					<li><?php wp_loginout(); ?></li>

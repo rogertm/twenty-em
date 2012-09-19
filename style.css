@@ -1,15 +1,16 @@
 /*
-Theme Name: TwentyTen Five
-Theme URI: http://richardshepherd.com
-Description: A HTML5 version of the TwentyTen default theme for WordPress.
-Author: Richard Shepherd
+Theme Name: Twenty'em
+Theme URI: http://twenty-em.com/
+Description: A HTML5 WordPress framework for themes developers.
+Author: RogerTM
+Author URI: http://blog.rogertm.com/
 Version: 1.0
 Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
 */
 
-/* Grab the original TwentyTen styles */
+/* Grab the original Twenty'em styles */
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
-@import url(css/twentyten-style.css); 
+@import url(css/twentyten-style.css);
 
 /* A message for users with JavaScript turned off */
 noscript strong {display: block; font-size: 18px; line-height:1.5em; padding: 5px 0; background-color: #ccc; color: #a00; text-align: center; }
