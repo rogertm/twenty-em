@@ -343,6 +343,28 @@ if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
 endif; // function t_em_comment_pingback_trackback()
 
 /**
+ * Removes the default styles that are packaged with the Recent Comments widget.
+ * @since Twenty'em 1.0
+ */
+function t_em_remove_recent_comments_style(){
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
+}
+add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
+
+/**
+ * Removes the default styles that are packaged with the Gallery shortcode.
+ * @since Twenty'em 1.0
+ */
+function t_em_remove_gallery_css( $css ) {
+	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
+}
+// Backwards compatibility with WordPress 3.0.
+if ( version_compare( $GLOBALS['wp_version'], '3.1', '<' ) ) :
+	add_filter( 'gallery_style', 't_em_remove_gallery_css' );
+endif;
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+/**
  * Customise the Twenty'em theme comments fields with HTML5 form elements
  * Adds support for placeholder, required, type="email" and type="url"
  * @since Twenty'em 1.0
@@ -389,6 +411,6 @@ function t_em_img_caption_shortcode($attr, $content = null) {
 	return '<figure ' . $idtag . $align . 'aria-describedby="figcaption_' . $id . '" style="width: ' . (10 + (int) $width) . 'px">' 
 	. do_shortcode( $content ) . '<figcaption id="figcaption_' . $id . '">' . $caption . '</figcaption></figure>';
 }
-add_shortcode('wp_caption', 't_em_img_caption_shortcode');
-add_shortcode('caption', 't_em_img_caption_shortcode');
+//~ add_shortcode('wp_caption', 't_em_img_caption_shortcode');
+//~ add_shortcode('caption', 't_em_img_caption_shortcode');
 ?>
