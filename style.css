@@ -1,7 +1,7 @@
 /*
 Theme Name: Twenty'em
 Theme URI: http://twenty-em.com/
-Description: A HTML5 WordPress framework for themes developers.
+Description: A HTML5 & CSS3 WordPress framework for themes developers, based on Twenty Ten.
 Author: RogerTM
 Author URI: http://blog.rogertm.com/
 Version: 1.0
@@ -10,7 +10,6 @@ Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom
 
 /* Grab the original Twenty'em styles */
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
-@import url(css/twentyten-style.css);
 
 /* A message for users with JavaScript turned off */
 noscript strong {display: block; font-size: 18px; line-height:1.5em; padding: 5px 0; background-color: #ccc; color: #a00; text-align: center; }
