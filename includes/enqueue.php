@@ -22,8 +22,8 @@ add_action( 'wp_enqueue_scripts', 't_em_javascript_scripts' );
 
 function t_em_css_style_stylesheet(){
 	// Check the theme version right from the style sheet
-	$style_data = get_theme_data( TEMPLATEPATH . '/style.css' );
-	$style_version = $style_data['Version'];
+	$style_data = wp_get_theme();
+	$style_version = $style_data->display('Version');
 
 	wp_register_style( 'style-t-em', get_template_directory_uri().'/css/style-t-em.css', array(), $style_version, 'all' );
 	wp_enqueue_style( 'style-t-em' );
