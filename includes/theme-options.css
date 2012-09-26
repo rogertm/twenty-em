@@ -1,0 +1,17 @@
+/**
+ * Twenty'em theme options style.
+ *
+ * @file			theme-options.css
+ * @package			WordPress
+ * @subpackage		Twenty'em
+ * @author			RogerTM
+ * @copyright		2012
+ * @license			license.txt
+ * @version			1.0
+ * @filesource		wp-content/themes/twenty-em/includes/theme-options.css
+ * @link			N/A Just another css style sheet ;)
+ * @since			Version 1.0
+ */
+#icon-theme-options{
+	background: url('../images/t-em-options-icon.jpg') no-repeat;
+}
