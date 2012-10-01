@@ -15,3 +15,31 @@
 #icon-theme-options{
 	background: url('../images/t-em-options-icon.jpg') no-repeat;
 }
+.dashboard-options-wrap{
+	margin: 15px 0;
+}
+.option-wrapper{
+	margin: 0 0 15px;
+}
+.option-name{
+	background: #f1f1f1;
+	background: -moz-linear-gradient(center top , #f9f9f9, #ececec);
+	background: -o-linear-gradient(top , #f9f9f9, #ececec);
+	background: -webkit-linear-gradient(top , #f9f9f9, #ececec);
+	border: solid 1px #dfdfdf;
+	color: #464646;
+	box-shadow: 0 1px 0 #fff inset;
+	border-radius: 3px 3px 0 0;
+}
+.option-name h3{
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+	padding: 8px 10px;
+}
+.option-holder{
+	background: #fcfcfc;
+	border: solid 1px #dfdfdf;
+	padding: 10px;
+	border-radius: 0 0 3px 3px;
+}

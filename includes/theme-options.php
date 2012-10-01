@@ -10,26 +10,16 @@
  * @license			license.txt
  * @version			1.0
  * @filesource		wp-content/themes/twenty-em/includes/theme-options.php
- * @link			http://themeshaper.com/2010/06/03/sample-theme-options/
+ * @link			http://codex.wordpress.org/Settings_API
  * @since			Version 1.0
  */
 ?>
 <?php
-function t_em_admin_css_style_stylesheet(){
-	// Check the theme version right from the style sheet
-	$style_data = wp_get_theme();
-	$style_version = $style_data->display('Version');
-
-	wp_register_style( 'style-admin-t-em', get_template_directory_uri() . '/includes/theme-options.css', false, $style_version, 'all' );
-	wp_enqueue_style( 'style-admin-t-em' );
-}
-add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
-
 add_action( 'admin_menu', 't_em_theme_options' );
 function t_em_theme_options(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
-	
+
 	add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), __( 'Theme Options', 't_em' ), 'edit_theme_options', 'theme-options', 't_em_theme_options_page', get_template_directory_uri() . '/images/t-em-favicon.jpg', 61 );
 }
 /**
@@ -44,6 +34,51 @@ function t_em_theme_options_page(){
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Theme Options', 't_em' ) ?></h2>
+
+		<div class="dashboard-options-wrap">
+
+			<div id="header-option" class="option-wrapper">
+				<div class="option-name">
+					<h3><?php _e( 'Header Options', 't_em' ); ?></h3>
+				</div><!-- .option-name -->
+				<div class="option-holder">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+				</div><!-- .option-holder -->
+			</div><!-- #header-option -->
+
+			<div id="archive-option" class="option-wrapper">
+				<div class="option-name">
+					<h3><?php _e( 'Archive Options', 't_em' ); ?></h3>
+				</div><!-- .option-name -->
+				<div class="option-holder">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+				</div><!-- .option-holder -->
+			</div><!-- #archive-option -->
+
+			<div id="layout-option" class="option-wrapper">
+				<div class="option-name">
+					<h3><?php _e( 'Layout Options', 't_em' ); ?></h3>
+				</div><!-- .option-name -->
+				<div class="option-holder">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+				</div><!-- .option-holder -->
+			</div><!-- #layout-option -->
+
+			<div id="socialnetwork-option" class="option-wrapper">
+				<div class="option-name">
+					<h3><?php _e( 'Social Network Options', 't_em' ); ?></h3>
+				</div><!-- .option-name -->
+				<div class="option-holder">
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris. Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.</p>
+				</div><!-- .option-holder -->
+			</div><!-- #socialnetwork-option -->
+
+		</div><!-- .dashboard-options-wrap -->
+
 	</div><!-- .wrap -->
 <?php
 }

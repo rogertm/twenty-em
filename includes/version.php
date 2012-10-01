@@ -13,7 +13,8 @@
  * @link			N/A
  * @since			Version 1.0
  */
-
+?>
+<?php
 function t_em_theme_version(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
