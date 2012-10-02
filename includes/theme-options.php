@@ -68,7 +68,10 @@ function t_em_theme_options_page(){
 		endif;
 
 		if ( true == $_REQUEST['settings-updated'] ) : ?>
-			<div class="updated fade"><p><strong><?php _e( 'Options saved', 't_em' ); ?></strong></p></div>
+			<div class="updated fade">
+				<p><strong><?php _e( 'Options saved', 't_em' ); ?></strong>.
+				<a href="<?php echo home_url() ?>"><?php _e( 'Visit site', 't_em' ); ?></a></p>
+			</div>
 		<?php endif; ?>
 
 		<form method="post" action="options.php">
