@@ -20,11 +20,19 @@
  */
 add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_register_setting_options_init(){
+	// Based on Twentyeleven WordPress Theme
 	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
+
+	// Register our settings field group
+	add_settings_section( 'general', '', '__return_false', 'theme-options' );
+
+	// Register our individual settings fields
+	add_settings_field( 't_em_header_stuff', __( 'Header Options', 't_em' ), 't_em_settings_field_header_stuff', 'theme-options', 'general' );
+	//~ add_settings_field( 'archive-stuff', __( 'Archive Stuff', 't_em' ), 't_em_settings_field_archive_stuff', 'theme-options', 'general' );
 }
 
-add_action( 'admin_menu', 't_em_theme_options' );
-function t_em_theme_options(){
+add_action( 'admin_menu', 't_em_theme_options_add_page' );
+function t_em_theme_options_add_page(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 
@@ -39,128 +47,80 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 endif;
 
 /**
- * Arrays containig the options values
+ * Return an array of header options for Twenty'em
  */
-$header_radio_options = array (
-	'slideshow'		=> array (
-		'value'	=> 'slideshow',
-		'label'	=> __( 'Slideshow', 't_em' )
-	),
-	'header-image'	=> array (
-		'value'	=> 'header-image',
-		'label'	=> __( 'Header image', 't_em' )
-	),
-	'no-header-image'	=> array (
-		'value'	=> 'no-header-image',
-		'label'	=> __( 'No header image', 't_em' )
-	)
-);
-$archive_radio_options = array (
-	'content'		=> array (
-		'value'	=> 'the-content',
-		'label'	=> __( 'Show the content' )
-	),
-	'excerpt'	=> array (
-		'value'	=> 'the-excerpt',
-		'label'	=> __( 'Show the excerpt', 't_em' )
-	)
-);
+function t_em_header_options(){
+	$header_options = array (
+		'no-header-image' => array (
+			'value' => 'no-header-image',
+			'label' => __( 'No header image', 't_em' )
+		),
+		'header-image' => array (
+			'value' => 'header-image',
+			'label' => __( 'Header image', 't_em' )
+		),
+		'slideshow' => array (
+			'value' => 'slideshow',
+			'label' => __( 'Slideshow', 't_em' )
+		),
+	);
 
+	return apply_filters( 't_em_header_options', $header_options );
+}
+
+/** las otras funciones con opcions y valores aqui */
+
+/**
+ * Return the default options for Twenty'em
+ */
+function t_em_get_default_theme_options(){
+	$default_theme_options = array (
+		'header-stuff' => 'no-header-image',
+	);
+
+	return apply_filters( 't_em_get_default_theme_options', $default_theme_options );
+}
+
+/**
+ * Return the options array for Twenty'em
+ */
+function t_em_get_theme_options(){
+	return get_option( 't_em_theme_options', t_em_get_default_theme_options() );
+}
+
+/**
+ * Render the Header setting field
+ */
+function t_em_settings_field_header_stuff(){
+	$options = t_em_get_theme_options();
+	foreach ( t_em_header_options() as $header ) :
+?>
+	<div class="some-class">
+		<label class="description">
+			<input type="radio" name="t_em_theme_options[header-stuff]" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-stuff'], $header['value'] ); ?> />
+			<span><?php echo $header['label'] ?></span>
+		</label>
+	</div>
+<?php
+	endforeach;
+}
+
+/**
+ * Finally a Options Page is displayed
+ */
 function t_em_theme_options_page(){
-	global 	$header_radio_options,
-			$archive_radio_options;
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Theme Options', 't_em' ) ?></h2>
-		<?php
-		if ( ! isset( $_REQUEST['settings-updated'] ) ) :
-			$_REQUEST['settings-updated'] = false;
-		endif;
-
-		if ( true == $_REQUEST['settings-updated'] ) : ?>
-			<div class="updated fade">
-				<p><strong><?php _e( 'Options saved', 't_em' ); ?></strong>.
-				<a href="<?php echo home_url() ?>"><?php _e( 'Visit site', 't_em' ); ?></a></p>
-			</div>
-		<?php endif; ?>
+		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
-			<?php settings_fields( 't_em_options' ); ?>
-			<?php $options = get_option( 't_em_theme_options' ); ?>
-			<div class="dashboard-options-wrap">
-
-				<div id="header-option" class="option-wrapper">
-					<div class="option-name">
-						<h3><?php _e( 'Header Options', 't_em' ); ?></h3>
-					</div><!-- .option-name -->
-					<div class="option-holder">
-						<div class="option-group">
-							<div class="option-header">
-								<h4><?php _e( 'Header Options', 't_em' ); ?></h4>
-							</div><!-- .option-header -->
-							<div class="option-content">
-						<?php
-						if ( !isset( $checked ) )
-							$checked = '';
-						foreach ( $header_radio_options as $header_option ) :
-							$header_option_value = $options['header-stuff'];
-							if ( '' != $header_option_value ) :
-								if ( $options['header-stuff'] == $header_option['value'] ) :
-									$checked = 'checked="checked"';
-								else :
-									$checked = '';
-								endif;
-							endif;
-						?>
-								<label class="description">
-									<input type="radio" value="<?php esc_attr_e( $header_option['value'] ); ?>" <?php echo $checked; ?> name="t_em_theme_options[header-stuff]">
-									<span><?php esc_attr_e( $header_option['label'] ); ?></span>
-								</label>
-						<?php endforeach; ?>
-							</div><!-- .option-content -->
-						</div><!-- .option-group -->
-					</div><!-- .option-holder -->
-				</div><!-- #header-option -->
-
-				<div id="archive-option" class="option-wrapper">
-					<div class="option-name">
-						<h3><?php _e( 'Archive Options', 't_em' ); ?></h3>
-					</div><!-- .option-name -->
-					<div class="option-holder">
-						<div class="option-group">
-							<div class="option-header">
-								<h4><?php _e( 'Archive Options', 't_em' ); ?></h4>
-							</div><!-- .option-header -->
-							<div class="option-content">
-						<?php
-						if ( !isset( $checked ) )
-							$checked = '';
-						foreach ( $archive_radio_options as $archive_option ) :
-							$archive_option_value = $options['archive-stuff'];
-							if ( '' != $archive_option_value ) :
-								if ( $options['archive-stuff'] == $archive_option['value'] ) :
-									$checked = 'checked="checked"';
-								else :
-									$checked = '';
-								endif;
-							endif;
-						?>
-								<label class="description">
-									<input type="radio" value="<?php esc_attr_e( $archive_option['value'] ); ?>" <?php echo $checked; ?> name="t_em_theme_options[archive-stuff]">
-									<span><?php esc_attr_e( $archive_option['label'] ); ?></span>
-								</label>
-						<?php endforeach; ?>
-							</div><!-- .option-content -->
-						</div><!-- .option-group -->
-					</div><!-- .option-holder -->
-				</div><!-- #archive-option -->
-
-				<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 't_em' ); ?>">
-				</p>
-			</div><!-- .dashboard-options-wrap -->
-
+			<?php
+				settings_fields( 't_em_options' );
+				do_settings_sections( 'theme-options' );
+				submit_button();
+			?>
 		</form>
 
 	</div><!-- .wrap -->
@@ -171,19 +131,12 @@ function t_em_theme_options_page(){
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function t_em_theme_options_validate( $input ){
-	global 	$header_radio_options,
-			$archive_radio_options;
+	$output = $defaults = t_em_get_default_theme_options();
 
-	if ( !isset($input['header-stuff']) )
-		$input['header-stuff'] = null;
-	if ( !array_key_exists( $input['header-stuff'], $header_radio_options ) )
-		$input['header-stuff'] = null;
+	// Header stuff must be in our array of header stuff options
+	if ( isset( $input['header-stuff'] ) && array_key_exists( $input['header-stuff'], t_em_header_options() ) )
+		$output['header-stuff'] = $input['header-stuff'];
 
-	if ( !isset($input['archive-stuff']) )
-		$input['archive-stuff'] = null;
-	if ( !array_key_exists( $input['archive-stuff'], $archive_radio_options ) )
-		$input['archive-stuff'] = null;
-
-	return $input;
+	return apply_filters( 't_em_theme_options_validate', $output, $input, $defaults );
 }
 ?>
