@@ -55,9 +55,20 @@ $header_radio_options = array (
 		'label'	=> __( 'No header image', 't_em' )
 	)
 );
+$archive_radio_options = array (
+	'content'		=> array (
+		'value'	=> 'the-content',
+		'label'	=> __( 'Show the content' )
+	),
+	'excerpt'	=> array (
+		'value'	=> 'the-excerpt',
+		'label'	=> __( 'Show the excerpt', 't_em' )
+	)
+);
 
 function t_em_theme_options_page(){
-	global $header_radio_options;
+	global 	$header_radio_options,
+			$archive_radio_options;
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -96,7 +107,7 @@ function t_em_theme_options_page(){
 							$header_option_value = $options['header-stuff'];
 							if ( '' != $header_option_value ) :
 								if ( $options['header-stuff'] == $header_option['value'] ) :
-									$checked = "checked=\"checked\"";
+									$checked = 'checked="checked"';
 								else :
 									$checked = '';
 								endif;
@@ -111,6 +122,39 @@ function t_em_theme_options_page(){
 						</div><!-- .option-group -->
 					</div><!-- .option-holder -->
 				</div><!-- #header-option -->
+
+				<div id="archive-option" class="option-wrapper">
+					<div class="option-name">
+						<h3><?php _e( 'Archive Options', 't_em' ); ?></h3>
+					</div><!-- .option-name -->
+					<div class="option-holder">
+						<div class="option-group">
+							<div class="option-header">
+								<h4><?php _e( 'Archive Options', 't_em' ); ?></h4>
+							</div><!-- .option-header -->
+							<div class="option-content">
+						<?php
+						if ( !isset( $checked ) )
+							$checked = '';
+						foreach ( $archive_radio_options as $archive_option ) :
+							$archive_option_value = $options['archive-stuff'];
+							if ( '' != $archive_option_value ) :
+								if ( $options['archive-stuff'] == $archive_option['value'] ) :
+									$checked = 'checked="checked"';
+								else :
+									$checked = '';
+								endif;
+							endif;
+						?>
+								<label class="description">
+									<input type="radio" value="<?php esc_attr_e( $archive_option['value'] ); ?>" <?php echo $checked; ?> name="t_em_theme_options[archive-stuff]">
+									<span><?php esc_attr_e( $archive_option['label'] ); ?></span>
+								</label>
+						<?php endforeach; ?>
+							</div><!-- .option-content -->
+						</div><!-- .option-group -->
+					</div><!-- .option-holder -->
+				</div><!-- #archive-option -->
 
 				<p class="submit">
 					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 't_em' ); ?>">
@@ -127,12 +171,18 @@ function t_em_theme_options_page(){
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function t_em_theme_options_validate( $input ){
-	global $header_radio_options;
+	global 	$header_radio_options,
+			$archive_radio_options;
 
 	if ( !isset($input['header-stuff']) )
 		$input['header-stuff'] = null;
 	if ( !array_key_exists( $input['header-stuff'], $header_radio_options ) )
 		$input['header-stuff'] = null;
+
+	if ( !isset($input['archive-stuff']) )
+		$input['archive-stuff'] = null;
+	if ( !array_key_exists( $input['archive-stuff'], $archive_radio_options ) )
+		$input['archive-stuff'] = null;
 
 	return $input;
 }
