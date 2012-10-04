@@ -41,18 +41,19 @@ function t_em_admin_javascript_script(){
  * Register Style Sheet and Javascript to beautify the Twenty'em theme
  */
 function t_em_javascript_scripts(){
+	/*
+	 * Adds JavaScript to pages with the comment form to support
+	 * sites with threaded comments (when in use).
+	 */
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
 	wp_register_script( 'modernizr', get_template_directory_uri().'/js/modernizr.min.2.5.3.js', array(), '2.5.3', false );
 	wp_enqueue_script( 'modernizr' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_javascript_scripts' );
 
 function t_em_css_style_stylesheet(){
-	// Check the theme version right from the style sheet
-	$style_data = wp_get_theme();
-	$style_version = $style_data->display('Version');
-
-	wp_register_style( 'style-t-em', get_template_directory_uri().'/css/style-t-em.css', array(), $style_version, 'all' );
-	wp_enqueue_style( 'style-t-em' );
+	wp_enqueue_style( 'style-t-em', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 't_em_css_style_stylesheet' );
 ?>
