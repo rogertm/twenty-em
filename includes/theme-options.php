@@ -28,7 +28,7 @@ function t_em_register_setting_options_init(){
 
 	// Register our individual settings fields
 	add_settings_field( 't_em_header_stuff', __( 'Header Options', 't_em' ), 't_em_settings_field_header_stuff', 'theme-options', 'general' );
-	//~ add_settings_field( 'archive-stuff', __( 'Archive Stuff', 't_em' ), 't_em_settings_field_archive_stuff', 'theme-options', 'general' );
+	add_settings_field( 't_em_archive_stuff', __( 'Archive Stuff', 't_em' ), 't_em_settings_field_archive_stuff', 'theme-options', 'general' );
 }
 
 add_action( 'admin_menu', 't_em_theme_options_add_page' );
@@ -68,7 +68,23 @@ function t_em_header_options(){
 	return apply_filters( 't_em_header_options', $header_options );
 }
 
-/** las otras funciones con opcions y valores aqui */
+/**
+ * Return an array of archive options for Twenty'em
+ */
+function t_em_archive_options(){
+	$archive_options = array (
+		'content' => array(
+			'value' => 'the-content',
+			'label' => __( 'Display the content', 't_em' )
+		),
+		'excerpt' => array(
+			'value' => 'the-excerpt',
+			'label' => __( 'Display the excerpt', 't_em' )
+		),
+	);
+
+	return apply_filters( 't_em_archive_options', $archive_options );
+}
 
 /**
  * Return the default options for Twenty'em
@@ -76,6 +92,7 @@ function t_em_header_options(){
 function t_em_get_default_theme_options(){
 	$default_theme_options = array (
 		'header-stuff' => 'no-header-image',
+		'archive-stuff' => 'the-content',
 	);
 
 	return apply_filters( 't_em_get_default_theme_options', $default_theme_options );
@@ -98,7 +115,24 @@ function t_em_settings_field_header_stuff(){
 	<div class="some-class">
 		<label class="description">
 			<input type="radio" name="t_em_theme_options[header-stuff]" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-stuff'], $header['value'] ); ?> />
-			<span><?php echo $header['label'] ?></span>
+			<span><?php echo $header['label']; ?></span>
+		</label>
+	</div>
+<?php
+	endforeach;
+}
+
+/**
+ * Render the Archive setting field
+ */
+function t_em_settings_field_archive_stuff(){
+	$options = t_em_get_theme_options();
+	foreach ( t_em_archive_options() as $archive ) :
+?>
+	<div class="some-class">
+		<label class="description">
+			<input type="radio" name="t_em_theme_options[archive-stuff]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-stuff'], $archive['value'] ); ?> />
+			<span><?php echo $archive['label']; ?></span>
 		</label>
 	</div>
 <?php
@@ -136,6 +170,10 @@ function t_em_theme_options_validate( $input ){
 	// Header stuff must be in our array of header stuff options
 	if ( isset( $input['header-stuff'] ) && array_key_exists( $input['header-stuff'], t_em_header_options() ) )
 		$output['header-stuff'] = $input['header-stuff'];
+
+	// Archive stuff must be in our array of archive stuff options
+	if ( isset( $input['archive-stuff'] ) && array_key_exists( $input['archive-stuff'], t_em_archive_options() ) )
+		$output['archive-stuff'] = $input['archive-stuff'];
 
 	return apply_filters( 't_em_theme_options_validate', $output, $input, $defaults );
 }
