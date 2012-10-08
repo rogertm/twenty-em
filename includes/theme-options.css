@@ -64,3 +64,10 @@ label.description{
 	float: left;
 	margin: 0 30px 20px 2px;
 }
+.image-radio-option span{
+	display: block;
+	width: 136px;
+}
+.text-option span{
+	display: block;
+}
