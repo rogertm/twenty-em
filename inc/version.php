@@ -9,7 +9,7 @@
  * @copyright		2012
  * @license			license.txt
  * @version			1.0
- * @filesource		wp-content/themes/twenty-em/includes/version.php
+ * @filesource		wp-content/themes/twenty-em/inc/version.php
  * @link			N/A
  * @since			Version 1.0
  */

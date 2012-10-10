@@ -1,0 +1,36 @@
+/**
+ * Twenty'em theme options style.
+ *
+ * @file			theme-options.css
+ * @package			WordPress
+ * @subpackage		Twenty'em
+ * @author			RogerTM
+ * @copyright		2012
+ * @license			license.txt
+ * @version			1.0
+ * @filesource		wp-content/themes/twenty-em/inc/theme-options.css
+ * @link			N/A Just another css style sheet ;)
+ * @since			Version 1.0
+ */
+#icon-theme-options{
+	background: url('../images/t-em-options-icon.jpg') no-repeat;
+}
+label.description{
+	display: block;
+	float: left;
+	margin: 0 30px 20px 2px;
+}
+.image-radio-option span{
+	display: block;
+	width: 136px;
+}
+.text-option span{
+	display: block;
+}
+.sub-layout{
+	float: left;
+	width: 100%;
+}
+.selected-option{
+	display: block !important;
+}

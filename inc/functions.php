@@ -9,7 +9,7 @@
  * @copyright		2012
  * @license			license.txt
  * @version			1.0
- * @filesource		wp-content/themes/twenty-em/includes/functions.php
+ * @filesource		wp-content/themes/twenty-em/inc/functions.php
  * @link			http://codex.wordpress.org/Theme_Development#Functions_File
  * @since			Version 1.0
  */
