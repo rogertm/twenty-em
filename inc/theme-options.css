@@ -31,6 +31,13 @@ label.description{
 	float: left;
 	width: 100%;
 }
+.sub-extend{
+	clear: both;
+}
+.text-option.thumbnail{
+	display: inline-block;
+	margin-right: 15px;
+}
 .selected-option{
 	display: block !important;
 }

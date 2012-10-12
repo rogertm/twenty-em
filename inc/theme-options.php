@@ -38,7 +38,7 @@ function t_em_theme_options_add_page(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 
-	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), __( 'Theme Options', 't_em' ), 'edit_theme_options', 'theme-options', 't_em_theme_options_page', get_template_directory_uri() . '/images/t-em-favicon.jpg', 61 );
+	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), __( 'Twenty\'em', 't_em' ), 'edit_theme_options', 'theme-options', 't_em_theme_options_page', get_template_directory_uri() . '/images/t-em-favicon.jpg', 61 );
 	//~ require( get_template_directory() . '/inc/theme-options-dev.php' );
 	//~ require( get_template_directory() . '/inc/theme-update.php' );
 	if ( ! $theme_page ) return;
@@ -119,11 +119,11 @@ function t_em_header_options(){
  */
 function t_em_header_image_extend(){
 	$extend_header = '';
-	$extend_header .= "<p>". sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) ."</p>";
+	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
 		$extend_header .= '<img src="'.get_header_image().'" width="450">';
 	else :
-		$extend_header .= "<p>". __( 'Oops! No image choosen yet', 't_em' ) ."</p>";
+		$extend_header .= '<p>'. __( 'Oops! No image choosen yet', 't_em' ) .'</p>';
 	endif;
 
 	return $extend_header;
@@ -179,6 +179,19 @@ function t_em_excerpt_extend(){
 		),
 	);
 
+	$thumbnail_sizes = array (
+		'thumbnail-width' => array(
+			'value' => '',
+			'name' => 'thumbnail-width',
+			'label' => __( 'Width', 't_em' ),
+		),
+		'thumbnail-height' => array(
+			'value' => '',
+			'name' => 'thumbnail-height',
+			'label' => __( 'Height', 't_em' ),
+		),
+	);
+
 	$extend_excerpt = '';
 	$options = t_em_get_theme_options();
 	foreach ( $excerpt_options as $excerpt ) :
@@ -190,6 +203,18 @@ function t_em_excerpt_extend(){
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;
+
+	$extend_excerpt .= '<div class="sub-extend">';
+	$extend_excerpt .= '<p>'. sprintf( __( 'Set thumbnail <strong>width</strong> and <strong>height</strong>. If empty, will be used the sizes set at your <a href="%s" target="_blank">Media Settings</a> options.', 't_em' ), admin_url( 'options-media.php' ) ) .'</p>';
+	foreach ( $thumbnail_sizes as $thumbnail ) :
+		$extend_excerpt .= 		'<div class="layout text-option thumbnail">';
+		$extend_excerpt .=			'<label><span>'. $thumbnail['label'] .'</span>';
+		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" />';
+		$extend_excerpt .=			'</label>';
+		$extend_excerpt .=		'</div>';
+	endforeach;
+	$extend_excerpt .= '</div><!-- .sub-extend -->';
+
 	return $extend_excerpt;
 }
 
@@ -257,6 +282,8 @@ function t_em_get_default_theme_options(){
 		'archive-stuff'		=> 'the-content',
 		'layout-stuff'		=> 'sidebar-right',
 		'excerpt-stuff'		=> 'thumbnail-left',
+		'thumbnail-height'	=> '',
+		'thumbnail-width'	=> '',
 		'twitter-stuff'		=> '',
 		'facebook-stuff'	=> '',
 		'googlepluss-stuff'	=> '',
