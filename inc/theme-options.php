@@ -21,7 +21,7 @@
 add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_register_setting_options_init(){
 	// Based on Twentyeleven WordPress Theme
-	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
+	register_setting( 't_em_options', 't_em_theme_options'/*, 't_em_theme_options_validate'*/ );
 
 	// Register our settings field group
 	add_settings_section( 'general', '', '__return_false', 'theme-options' );
@@ -395,7 +395,7 @@ function t_em_settings_field_socialnetwork_stuff(){
 	<div class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="text" name="t_em_theme_options['<?php echo $social['name']; ?>']" value="<?php echo esc_attr( $options[$social['name']] ) ?>" />
+			<input type="text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo $options[$social["name"]] ?>" />
 		</label>
 	</div>
 <?php
@@ -440,14 +440,22 @@ function t_em_theme_options_validate( $input ){
 		$output['archive-stuff'] = $input['archive-stuff'];
 	endif;
 
-	// Layout stuff must be in our array of layout stuff options
-	if ( isset( $input['layout-stuff'] ) && array_key_exists( $input['layout-stuff'], t_em_layout_options() ) ) :
-		$output['layout-stuff'] = $input['layout-stuff'];
-	endif;
-
 	// Excerpt thumbnail stuff must be in our array of excerpt thumbnail stuff
 	if ( isset( $input['excerpt-stuff'] ) && array_key_exists( $input['excerpt-stuff'], t_em_excerpt_extend() ) ) :
 		$output['excerpt-stuff'] = $input['excerpt-stuff'];
+	endif;
+
+	// Thumbnail height and width must be in our array of thumbnail stuff
+	if ( isset( $input['thumbnail-height'] ) && array_key_exists( $input['thumbnail-height'], t_em_excerpt_extend() ) ) :
+		$output['thumbnail-height'] = $input['thumbnail-height'];
+	endif;
+	if ( isset( $input['thumbnail-width'] ) && array_key_exists( $input['thumbnail-width'], t_em_excerpt_extend() ) ) :
+		$output['thumbnail-width'] = $input['thumbnail-width'];
+	endif;
+
+	// Layout stuff must be in our array of layout stuff options
+	if ( isset( $input['layout-stuff'] ) && array_key_exists( $input['layout-stuff'], t_em_layout_options() ) ) :
+		$output['layout-stuff'] = $input['layout-stuff'];
 	endif;
 
 	// Socialnetwork stuff
