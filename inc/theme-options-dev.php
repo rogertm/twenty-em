@@ -15,7 +15,6 @@
  */
 ?>
 <?php
-add_submenu_page( 'theme-options', __( 'Developers Zone', 't_em' ), __( 'Developers Zone', 't_em' ), 'edit_theme_options', 'theme-options-dev', 't_em_theme_options_dev' );
 function t_em_theme_options_dev(){
 ?>
 	<div class="wrap">

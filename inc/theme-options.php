@@ -39,6 +39,8 @@ function t_em_theme_options_add_page(){
 	$theme_name = $theme_data->display('Name');
 
 	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), __( 'Twenty\'em', 't_em' ), 'edit_theme_options', 'theme-options', 't_em_theme_options_page', get_template_directory_uri() . '/images/t-em-favicon.jpg', 61 );
+	add_submenu_page( 'theme-options', __( 'Developers Zone', 't_em' ), __( 'Developers Zone', 't_em' ), 'edit_theme_options', 'theme-options-dev', 't_em_theme_options_dev' );
+	add_submenu_page( 'theme-options', __( 'Update', 't_em' ), __( 'Update', 't_em' ), 'edit_theme_options', 'theme-update', 't_em_theme_update' );
 	//~ require( get_template_directory() . '/inc/theme-options-dev.php' );
 	//~ require( get_template_directory() . '/inc/theme-update.php' );
 	if ( ! $theme_page ) return;
@@ -102,12 +104,12 @@ function t_em_header_options(){
 		'header-image' => array (
 			'value' => 'header-image',
 			'label' => __( 'Header image', 't_em' ),
-			'extend' => t_em_header_image_extend(),
+			'extend' => t_em_header_image_callback(),
 		),
 		'slideshow' => array (
 			'value' => 'slideshow',
 			'label' => __( 'Slideshow', 't_em' ),
-			'extend' => t_em_slider_extend(),
+			'extend' => t_em_slider_callback(),
 		),
 	);
 
@@ -117,7 +119,7 @@ function t_em_header_options(){
 /**
  * Extend setting for header image option
  */
-function t_em_header_image_extend(){
+function t_em_header_image_callback(){
 	$extend_header = '';
 	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
@@ -132,9 +134,49 @@ function t_em_header_image_extend(){
 /**
  * Extend setting for slideshow option
  */
-function t_em_slider_extend(){
-	$extend_content = 'a por ellos con slider...';
-	return $extend_content;
+function t_em_slider_callback(){
+	$slider_layout = array (
+		'slider-thumbnail-left' => array (
+			'value' => 'slider-thumbnail-left',
+			'label' => __( 'Slider thumbnail on left', 't_em' ),
+			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-left.png',
+		),
+		'slider-thumbnail-right' => array (
+			'value' => 'slider-thumbnail-right',
+			'label' => __( 'Slider thumbnail on right', 't_em' ),
+			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-right.png',
+		),
+		'slider-thumbnail-full' => array (
+			'value' => 'slider-thumbnail-full',
+			'label' => __( 'Slider thumbnail on full', 't_em' ),
+			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-full.png',
+		),
+	);
+
+	$options = t_em_get_theme_options();
+	$extend_slider = '';
+	foreach ( $slider_layout as $slider ) :
+		$selected_option = ( $options['slider-thumbnail'] == $slider['value'] ) ? 'checked="checked"' : '';
+		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" value="'.esc_attr($slider['value']).'" '. $selected_option .' />';
+		$extend_slider .=			'<span><img src="'.$slider['thumbnail'].'" width="136" />'.$slider['label'].'</span>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div>';
+	endforeach;
+
+	$categories = get_categories();
+	$extend_slider .= '<div class="sub-extend">';
+	$extend_slider .= 	'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
+	$extend_slider .= 	'<select name="t_em_theme_options[slider-category]">';
+	foreach ( $categories as $category ) :
+		$selected_option = ( $options['slider-category'] == $category->cat_ID ) ? 'selected="selected"' : '';
+		$extend_slider .= 	'<option value="'.$category->cat_ID.'" '.$selected_option.'>'.$category->name.'</option>';
+	endforeach;
+	$extend_slider .= 	'</select>';
+	$extend_slider .= '</div>';
+
+	return $extend_slider;
 }
 
 /**
@@ -142,15 +184,15 @@ function t_em_slider_extend(){
  */
 function t_em_archive_options(){
 	$archive_options = array (
-		'the-content' => array(
+		'the-content' => array (
 			'value' => 'the-content',
 			'label' => __( 'Display the content', 't_em' ),
 			'extend' => '',
 		),
-		'the-excerpt' => array(
+		'the-excerpt' => array (
 			'value' => 'the-excerpt',
 			'label' => __( 'Display the excerpt', 't_em' ),
-			'extend' => t_em_excerpt_extend(),
+			'extend' => t_em_excerpt_callback(),
 		),
 	);
 
@@ -160,7 +202,7 @@ function t_em_archive_options(){
 /**
  * Extend setting for archive option
  */
-function t_em_excerpt_extend(){
+function t_em_excerpt_callback(){
 	$excerpt_options = array (
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -195,10 +237,10 @@ function t_em_excerpt_extend(){
 	$extend_excerpt = '';
 	$options = t_em_get_theme_options();
 	foreach ( $excerpt_options as $excerpt ) :
-		$checked_option = ( $options['excerpt-stuff'] == $excerpt['value'] ) ? 'checked="checked"' : '';
+		$selected_option = ( $options['excerpt-stuff'] == $excerpt['value'] ) ? 'checked="checked"' : '';
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" class="radio-option" name="t_em_theme_options[excerpt-stuff]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-stuff]" value="'.esc_attr( $excerpt['value'] ).'" '.$selected_option.' />';
 		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" width="136" height="122" alt="" />'.$excerpt['label'].'</span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
@@ -279,6 +321,8 @@ function t_em_socialnetwork_options(){
 function t_em_get_default_theme_options(){
 	$default_theme_options = array (
 		'header-stuff'		=> 'no-header-image',
+		'slider-category'	=> '',
+		'slider-thumbnail'	=> 'slider-thumbnail-left',
 		'archive-stuff'		=> 'the-content',
 		'layout-stuff'		=> 'sidebar-right',
 		'excerpt-stuff'		=> 'thumbnail-left',
@@ -312,7 +356,7 @@ function t_em_settings_field_header_stuff(){
 ?>
 		<div class="layout radio-option header">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[header-stuff]" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-stuff'], $header['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[header-stuff]" class="radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-stuff'], $header['value'] ); ?> />
 				<span><?php echo $header['label']; ?></span>
 			</label>
 		</div>
@@ -441,15 +485,15 @@ function t_em_theme_options_validate( $input ){
 	endif;
 
 	// Excerpt thumbnail stuff must be in our array of excerpt thumbnail stuff
-	if ( isset( $input['excerpt-stuff'] ) && array_key_exists( $input['excerpt-stuff'], t_em_excerpt_extend() ) ) :
+	if ( isset( $input['excerpt-stuff'] ) && array_key_exists( $input['excerpt-stuff'], t_em_excerpt_callback() ) ) :
 		$output['excerpt-stuff'] = $input['excerpt-stuff'];
 	endif;
 
 	// Thumbnail height and width must be in our array of thumbnail stuff
-	if ( isset( $input['thumbnail-height'] ) && array_key_exists( $input['thumbnail-height'], t_em_excerpt_extend() ) ) :
+	if ( isset( $input['thumbnail-height'] ) && array_key_exists( $input['thumbnail-height'], t_em_excerpt_callback() ) ) :
 		$output['thumbnail-height'] = $input['thumbnail-height'];
 	endif;
-	if ( isset( $input['thumbnail-width'] ) && array_key_exists( $input['thumbnail-width'], t_em_excerpt_extend() ) ) :
+	if ( isset( $input['thumbnail-width'] ) && array_key_exists( $input['thumbnail-width'], t_em_excerpt_callback() ) ) :
 		$output['thumbnail-width'] = $input['thumbnail-width'];
 	endif;
 
@@ -467,4 +511,6 @@ function t_em_theme_options_validate( $input ){
 
 	return apply_filters( 't_em_theme_options_validate', $output, $input, $defaults );
 }
+require( get_template_directory() . '/inc/theme-options-dev.php' );
+require( get_template_directory() . '/inc/theme-update.php' );
 ?>

@@ -15,7 +15,6 @@
  */
 ?>
 <?php
-add_submenu_page( 'theme-options', __( 'Update', 't_em' ), __( 'Update', 't_em' ), 'edit_theme_options', 'theme-update', 't_em_theme_update' );
 function t_em_theme_update(){
 ?>
 	<div class="wrap">

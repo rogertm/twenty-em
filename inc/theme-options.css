@@ -15,6 +15,11 @@
 #icon-theme-options{
 	background: url('../images/t-em-options-icon.jpg') no-repeat;
 }
+#t-em-setting tr{
+	border-bottom: solid 1px #ddd;
+	margin-bottom: 55px;
+	overflow: hidden;
+}
 label.description{
 	display: block;
 	float: left;
