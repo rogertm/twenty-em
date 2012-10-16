@@ -16,6 +16,25 @@
 ?>
 <?php
 /**
+ * Register Style Sheet and Javascript to beautify the admin option page
+ */
+add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
+add_action( 'admin_init', 't_em_admin_javascript_script' );
+function t_em_admin_css_style_stylesheet(){
+	// Check the theme version right from the style sheet
+	$style_data = wp_get_theme();
+	$style_version = $style_data->display('Version');
+
+	wp_register_style( 'style-admin-t-em', T_EM_FUNCTIONS_DIR_CSS . 'theme-options.css', false, $style_version, 'all' );
+	wp_enqueue_style( 'style-admin-t-em' );
+}
+
+function t_em_admin_javascript_script(){
+	wp_register_script( 'script-admin-t-em', T_EM_FUNCTIONS_DIR_JS . 'theme-options.js', array( 'jquery' ), '1.0', false );
+	wp_enqueue_script( 'script-admin-t-em' );
+}
+
+/**
  * Register setting options
  */
 add_action( 'admin_init', 't_em_register_setting_options_init' );
@@ -38,15 +57,31 @@ function t_em_theme_options_add_page(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 
-	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), __( 'Twenty\'em', 't_em' ), 'edit_theme_options', 'theme-options', 't_em_theme_options_page', get_template_directory_uri() . '/images/t-em-favicon.jpg', 61 );
-	add_submenu_page( 'theme-options', __( 'Developers Zone', 't_em' ), __( 'Developers Zone', 't_em' ), 'edit_theme_options', 'theme-options-dev', 't_em_theme_options_dev' );
-	add_submenu_page( 'theme-options', __( 'Update', 't_em' ), __( 'Update', 't_em' ), 'edit_theme_options', 'theme-update', 't_em_theme_update' );
-	//~ require( get_template_directory() . '/inc/theme-options-dev.php' );
-	//~ require( get_template_directory() . '/inc/theme-update.php' );
+	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . 't-em-favicon.jpg', 61 );
+
+	add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',	't_em_theme_options_dev' );
+	add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options', 'theme-update',			't_em_theme_update' );
+
 	if ( ! $theme_page ) return;
 
 	add_action( "load-$theme_page", 't_em_theme_contextual_help' );
 }
+
+require( get_template_directory() . '/inc/theme-options-dev.php' );
+require( get_template_directory() . '/inc/theme-update.php' );
+
+/**
+ * Redirect users to Twenty'em options page after activation
+ */
+if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
+	wp_redirect( 'admin.php?page=theme-options' );
+
+	/**
+	 * Register the default options at first theme load
+	 */
+	add_option( 't_em_theme_options', t_em_get_default_theme_options() );
+	add_option( 't_em_dev_options', t_em_dev_default_options() );
+endif;
 
 /**
  * Add contextual help to theme options screen
@@ -54,7 +89,7 @@ function t_em_theme_options_add_page(){
 function t_em_theme_contextual_help(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
-	$help = '<p>' . sprintf( __( '<strong>Twenty\'em Framework</strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%s</strong>, provides the following Theme Options:', 't_em' ), $theme_data ) . '</p>'.
+	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/framework" title="Twenty\'em Framework" target="_blank">Twenty\'em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%s</strong>, provides the following Theme Options:', 't_em' ), $theme_data ) . '</p>'.
 			'<ol>' .
 				'<li>' . __( '<strong>Header Options</strong>: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Archive Options</strong>: Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
@@ -83,13 +118,6 @@ function t_em_theme_contextual_help(){
 		add_contextual_help( $screen, $help . $sidebar );
 	endif;
 }
-
-/**
- * Redirect users to Twenty'em options page after activation
- */
-if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
-	wp_redirect( 'admin.php?page=theme-options' );
-endif;
 
 /**
  * Return an array of header options for Twenty'em
@@ -139,17 +167,17 @@ function t_em_slider_callback(){
 		'slider-thumbnail-left' => array (
 			'value' => 'slider-thumbnail-left',
 			'label' => __( 'Slider thumbnail on left', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-left.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'slider-thumbnail-left.png',
 		),
 		'slider-thumbnail-right' => array (
 			'value' => 'slider-thumbnail-right',
 			'label' => __( 'Slider thumbnail on right', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-right.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'slider-thumbnail-right.png',
 		),
 		'slider-thumbnail-full' => array (
 			'value' => 'slider-thumbnail-full',
 			'label' => __( 'Slider thumbnail on full', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/slider-thumbnail-full.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'slider-thumbnail-full.png',
 		),
 	);
 
@@ -207,17 +235,17 @@ function t_em_excerpt_callback(){
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
 			'label' => __( 'Thumbnail on left', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/thumbnail-left.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'thumbnail-left.png',
 		),
 		'thumbnail-right' => array(
 			'value' => 'thumbnail-right',
 			'label' => __( 'Thumbnail on right', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/thumbnail-right.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'thumbnail-right.png',
 		),
 		'thumbnail-center' => array(
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
-			'thumbnail' => get_template_directory_uri().'/inc/images/thumbnail-center.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG.'thumbnail-center.png',
 		),
 	);
 
@@ -321,7 +349,7 @@ function t_em_socialnetwork_options(){
 function t_em_get_default_theme_options(){
 	$default_theme_options = array (
 		'header-stuff'		=> 'no-header-image',
-		'slider-category'	=> '',
+		'slider-category'	=> get_option( 'default_category' ),
 		'slider-thumbnail'	=> 'slider-thumbnail-left',
 		'archive-stuff'		=> 'the-content',
 		'layout-stuff'		=> 'sidebar-right',
@@ -439,7 +467,7 @@ function t_em_settings_field_socialnetwork_stuff(){
 	<div class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo $options[$social["name"]] ?>" />
+			<input type="text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
 		</label>
 	</div>
 <?php
@@ -511,6 +539,4 @@ function t_em_theme_options_validate( $input ){
 
 	return apply_filters( 't_em_theme_options_validate', $output, $input, $defaults );
 }
-require( get_template_directory() . '/inc/theme-options-dev.php' );
-require( get_template_directory() . '/inc/theme-update.php' );
 ?>

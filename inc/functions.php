@@ -49,6 +49,14 @@
 ?>
 <?php
 /**
+ * Register functions directory and sub-directories through constants
+ */
+define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc/' );
+define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images/' );
+define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js/' );
+define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css/' );
+
+/**
  * Start up the theme engine
  */
 add_action( 'after_setup_theme', 't_em_setup' );

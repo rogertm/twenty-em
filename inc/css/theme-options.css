@@ -20,6 +20,10 @@
 	margin-bottom: 55px;
 	overflow: hidden;
 }
+#framework-options .framework{
+	clear: both;
+	display: block;
+}
 label.description{
 	display: block;
 	float: left;

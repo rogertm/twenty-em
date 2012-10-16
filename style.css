@@ -11,7 +11,7 @@ Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom
 /* Grab the original Twenty'em styles */
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
 
-/* A message for users with JavaScript turned off */
+/* A message for users with JavaScript turned off **/
 noscript strong {display: block; font-size: 18px; line-height:1.5em; padding: 5px 0; background-color: #ccc; color: #a00; text-align: center; }
 
 /* HTML5 elements need display: block */
@@ -1233,7 +1233,7 @@ h3#reply-title {
 	position: relative;
 }
 #site-generator a {
-	background: url(../images/wordpress.png) center left no-repeat;
+	background: url(images/wordpress.png) center left no-repeat;
 	color: #666;
 	display: inline-block;
 	line-height: 16px;
@@ -1271,7 +1271,7 @@ code {
 
 
 /* =Print Style
--------------------------------------------------------------- */
+-------------------------------------------------------------- ******/
 
 @media print {
 	body {
