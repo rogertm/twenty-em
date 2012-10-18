@@ -796,7 +796,7 @@ body.page .edit-link {
 #content img {
 	margin: 0;
 	height: auto;
-	max-width: 640px;
+	max-width: 98%;
 	width: auto;
 }
 #content .attachment img {
@@ -834,6 +834,7 @@ body.page .edit-link {
 	margin-bottom: 20px;
 	padding: 4px;
 	text-align: center;
+	max-width: 96%;
 }
 #content .wp-caption img {
 	margin: 5px 5px 0;
