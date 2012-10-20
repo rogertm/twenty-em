@@ -90,9 +90,9 @@ function t_em_settings_dev_frameworks(){
 	foreach ( t_em_dev_frameworks_options() as $framework ) :
 ?>
 		<div class="layout checbox-option framework">
+			<p><strong><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></strong></p>
+			<p><?php echo $framework['sublabel']; ?></p>
 			<label class="description">
-				<p><strong><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></strong></p>
-				<p><?php echo $framework['sublabel']; ?></p>
 				<span><?php printf( __( 'Eneble %s?', 't_em' ), $framework['label'] ); ?></span>
 				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="yes" <?php checked( 'yes', $options_dev[$framework['name']] ); ?> />
 			</label>

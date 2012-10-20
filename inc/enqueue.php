@@ -36,6 +36,9 @@ function t_em_javascript_scripts(){
 		wp_register_script( 'ggs', T_EM_FUNCTIONS_DIR_JS.'ggs.js', array(), '1.01', false );
 		wp_enqueue_script( 'ggs' );
 	endif;
+
+	wp_register_script( 'scripts', get_template_directory_uri().'/js/scripts.js', array( 'jquery' ), '1.0', false );
+	wp_enqueue_script( 'scripts' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_javascript_scripts' );
 

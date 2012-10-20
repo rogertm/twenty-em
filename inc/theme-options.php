@@ -46,10 +46,10 @@ function t_em_register_setting_options_init(){
 	add_settings_section( 'general', '', '__return_false', 'theme-options' );
 
 	// Register our individual settings fields
-	add_settings_field( 't_em_header_stuff',	__( 'Header Options', 't_em' ),			't_em_settings_field_header_stuff',			'theme-options',	'general' );
-	add_settings_field( 't_em_archive_stuff',	__( 'Archive Options', 't_em' ),		't_em_settings_field_archive_stuff',		'theme-options',	'general' );
-	add_settings_field( 't_em_layout_stuff',	__( 'Layout Options', 't_em' ),			't_em_settings_field_layout_stuff',			'theme-options',	'general' );
-	add_settings_field( 't_em_social_stuff',	__( 'Social Network Options', 't_em' ),	't_em_settings_field_socialnetwork_stuff',	'theme-options',	'general' );
+	add_settings_field( 't_em_header_set',	__( 'Header Options', 't_em' ),			't_em_settings_field_header_set',			'theme-options',	'general' );
+	add_settings_field( 't_em_archive_set',	__( 'Archive Options', 't_em' ),		't_em_settings_field_archive_set',		'theme-options',	'general' );
+	add_settings_field( 't_em_layout_set',	__( 'Layout Options', 't_em' ),			't_em_settings_field_layout_set',			'theme-options',	'general' );
+	add_settings_field( 't_em_social_set',	__( 'Social Network Options', 't_em' ),	't_em_settings_field_socialnetwork_set',	'theme-options',	'general' );
 }
 
 add_action( 'admin_menu', 't_em_theme_options_add_page' );
@@ -103,20 +103,14 @@ function t_em_theme_contextual_help(){
 
 	$screen = get_current_screen();
 
-	if ( method_exists( $screen, 'add_help_tab' ) ) :
-		// WordPress 3.3
-		$screen->add_help_tab( array(
-			'title' => __( 'Overview', 't_em' ),
-			'id' => 'theme-options-help',
-			'content' => $help,
-			)
-		);
+	$screen->add_help_tab( array(
+		'title' => __( 'Overview', 't_em' ),
+		'id' => 'theme-options-help',
+		'content' => $help,
+		)
+	);
 
-		$screen->set_help_sidebar( $sidebar );
-	else :
-		// WordPress 3.2
-		add_contextual_help( $screen, $help . $sidebar );
-	endif;
+	$screen->set_help_sidebar( $sidebar );
 }
 
 /**
@@ -134,8 +128,8 @@ function t_em_header_options(){
 			'label' => __( 'Header image', 't_em' ),
 			'extend' => t_em_header_image_callback(),
 		),
-		'slideshow' => array (
-			'value' => 'slideshow',
+		'slider' => array (
+			'value' => 'slider',
 			'label' => __( 'Slideshow', 't_em' ),
 			'extend' => t_em_slider_callback(),
 		),
@@ -148,10 +142,16 @@ function t_em_header_options(){
  * Extend setting for header image option
  */
 function t_em_header_image_callback(){
+	$options = t_em_get_theme_options();
 	$extend_header = '';
 	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
-		$extend_header .= '<img src="'.get_header_image().'" width="450">';
+		$checked = ( $options['header-featured-image'] == 'yes' ) ? 'checked="checked"' : '';
+		$extend_header .= '<figure><img src="'.get_header_image().'" width="500"></figure>';
+		$extend_header .= '<label class="description">';
+		$extend_header .=	 __( 'Display featured image in single posts and pages? ', 't_em' );
+		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header-featured-image]" value="yes" '.$checked.' />';
+		$extend_header .= '</label>';
 	else :
 		$extend_header .= '<p>'. __( 'Oops! No image choosen yet', 't_em' ) .'</p>';
 	endif;
@@ -160,7 +160,7 @@ function t_em_header_image_callback(){
 }
 
 /**
- * Extend setting for slideshow option
+ * Extend setting for slider option
  */
 function t_em_slider_callback(){
 	$slider_layout = array (
@@ -265,10 +265,10 @@ function t_em_excerpt_callback(){
 	$extend_excerpt = '';
 	$options = t_em_get_theme_options();
 	foreach ( $excerpt_options as $excerpt ) :
-		$selected_option = ( $options['excerpt-stuff'] == $excerpt['value'] ) ? 'checked="checked"' : '';
+		$selected_option = ( $options['excerpt-set'] == $excerpt['value'] ) ? 'checked="checked"' : '';
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-stuff]" value="'.esc_attr( $excerpt['value'] ).'" '.$selected_option.' />';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$selected_option.' />';
 		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" width="136" height="122" alt="" />'.$excerpt['label'].'</span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
@@ -318,24 +318,24 @@ function t_em_layout_options(){
  */
 function t_em_socialnetwork_options(){
 	$socialnetwork_options = array (
-		'twitter-stuff' => array (
+		'twitter-set' => array (
 			'value' => '',
-			'name' => 'twitter-stuff',
+			'name' => 'twitter-set',
 			'label' => __( 'Twitter URL', 't_em' ),
 		),
-		'facebook-stuff' => array (
+		'facebook-set' => array (
 			'value' => '',
-			'name' => 'facebook-stuff',
+			'name' => 'facebook-set',
 			'label' => __( 'Facebook URL', 't_em' ),
 		),
-		'googlepluss-stuff' => array (
+		'googlepluss-set' => array (
 			'value' => '',
-			'name' => 'googlepluss-stuff',
+			'name' => 'googlepluss-set',
 			'label' => __( 'Google Pluss URL', 't_em' ),
 		),
-		'rss-stuff' => array (
+		'rss-set' => array (
 			'value' => '',
-			'name' => 'rss-stuff',
+			'name' => 'rss-set',
 			'label' => __( 'Feed or RSS URL', 't_em' ),
 		),
 	);
@@ -348,18 +348,19 @@ function t_em_socialnetwork_options(){
  */
 function t_em_get_default_theme_options(){
 	$default_theme_options = array (
-		'header-stuff'		=> 'no-header-image',
-		'slider-category'	=> get_option( 'default_category' ),
-		'slider-thumbnail'	=> 'slider-thumbnail-left',
-		'archive-stuff'		=> 'the-content',
-		'layout-stuff'		=> 'sidebar-right',
-		'excerpt-stuff'		=> 'thumbnail-left',
-		'thumbnail-height'	=> '',
-		'thumbnail-width'	=> '',
-		'twitter-stuff'		=> '',
-		'facebook-stuff'	=> '',
-		'googlepluss-stuff'	=> '',
-		'rss-stuff'			=> '',
+		'header-set'			=> 'no-header-image',
+		'header-featured-image'	=> 'yes',
+		'slider-category'		=> get_option( 'default_category' ),
+		'slider-thumbnail'		=> 'slider-thumbnail-left',
+		'archive-set'			=> 'the-content',
+		'layout-set'			=> 'sidebar-right',
+		'excerpt-set'			=> 'thumbnail-left',
+		'thumbnail-height'		=> '',
+		'thumbnail-width'		=> '',
+		'twitter-set'			=> '',
+		'facebook-set'			=> '',
+		'googlepluss-set'		=> '',
+		'rss-set'				=> '',
 	);
 
 	return apply_filters( 't_em_get_default_theme_options', $default_theme_options );
@@ -375,7 +376,7 @@ function t_em_get_theme_options(){
 /**
  * Render the Header setting field
  */
-function t_em_settings_field_header_stuff(){
+function t_em_settings_field_header_set(){
 	$options = t_em_get_theme_options();
 ?>
 	<div id="header-options">
@@ -384,7 +385,7 @@ function t_em_settings_field_header_stuff(){
 ?>
 		<div class="layout radio-option header">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[header-stuff]" class="radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-stuff'], $header['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[header-set]" class="radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-set'], $header['value'] ); ?> />
 				<span><?php echo $header['label']; ?></span>
 			</label>
 		</div>
@@ -393,7 +394,7 @@ function t_em_settings_field_header_stuff(){
 
 	foreach ( t_em_header_options() as $sub_header ) :
 		if ( $sub_header['extend'] != '' ) :
-			$selected_option = ( $options['header-stuff'] == $sub_header['value'] ) ? 'selected-option' : '';
+			$selected_option = ( $options['header-set'] == $sub_header['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_header['extend']; ?>
@@ -409,7 +410,7 @@ endif;
 /**
  * Render the Archive setting field
  */
-function t_em_settings_field_archive_stuff(){
+function t_em_settings_field_archive_set(){
 	$options = t_em_get_theme_options();
 ?>
 	<div id="archive-options">
@@ -418,7 +419,7 @@ function t_em_settings_field_archive_stuff(){
 ?>
 		<div class="layout radio-option archive">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[archive-stuff]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-stuff'], $archive['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-set'], $archive['value'] ); ?> />
 				<span><?php echo $archive['label']; ?></span>
 			</label>
 		</div>
@@ -427,7 +428,7 @@ function t_em_settings_field_archive_stuff(){
 
 	foreach ( t_em_archive_options() as $sub_archive ) :
 		if ( $sub_archive['extend'] != '' ) :
-		$selected_option = ( $options['archive-stuff'] == $sub_archive['value'] ) ? 'selected-option' : '';
+		$selected_option = ( $options['archive-set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_archive['extend']; ?>
@@ -443,13 +444,13 @@ function t_em_settings_field_archive_stuff(){
 /**
  * Render the Layout setting field
  */
-function t_em_settings_field_layout_stuff(){
+function t_em_settings_field_layout_set(){
 	$options = t_em_get_theme_options();
 	foreach ( t_em_layout_options() as $layout ) :
 ?>
 	<div class="layout image-radio-option theme-layout">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[layout-stuff]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $options['layout-stuff'], $layout['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $options['layout-set'], $layout['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" width="136" height="122" alt="" /><?php echo $layout['label']; ?></span>
 		</label>
 	</div>
@@ -460,7 +461,7 @@ function t_em_settings_field_layout_stuff(){
 /**
  * Render the Socialnetwork setting field
  */
-function t_em_settings_field_socialnetwork_stuff(){
+function t_em_settings_field_socialnetwork_set(){
 	$options = t_em_get_theme_options();
 	foreach ( t_em_socialnetwork_options() as $social ) :
 ?>
@@ -502,22 +503,22 @@ function t_em_theme_options_page(){
 function t_em_theme_options_validate( $input ){
 	$output = $defaults = t_em_get_default_theme_options();
 
-	// Header stuff must be in our array of header stuff options
-	if ( isset( $input['header-stuff'] ) && array_key_exists( $input['header-stuff'], t_em_header_options() ) ) :
-		$output['header-stuff'] = $input['header-stuff'];
+	// Header set must be in our array of header set options
+	if ( isset( $input['header-set'] ) && array_key_exists( $input['header-set'], t_em_header_options() ) ) :
+		$output['header-set'] = $input['header-set'];
 	endif;
 
-	// Archive stuff must be in our array of archive stuff options
-	if ( isset( $input['archive-stuff'] ) && array_key_exists( $input['archive-stuff'], t_em_archive_options() ) ) :
-		$output['archive-stuff'] = $input['archive-stuff'];
+	// Archive set must be in our array of archive set options
+	if ( isset( $input['archive-set'] ) && array_key_exists( $input['archive-set'], t_em_archive_options() ) ) :
+		$output['archive-set'] = $input['archive-set'];
 	endif;
 
-	// Excerpt thumbnail stuff must be in our array of excerpt thumbnail stuff
-	if ( isset( $input['excerpt-stuff'] ) && array_key_exists( $input['excerpt-stuff'], t_em_excerpt_callback() ) ) :
-		$output['excerpt-stuff'] = $input['excerpt-stuff'];
+	// Excerpt thumbnail set must be in our array of excerpt thumbnail set
+	if ( isset( $input['excerpt-set'] ) && array_key_exists( $input['excerpt-set'], t_em_excerpt_callback() ) ) :
+		$output['excerpt-set'] = $input['excerpt-set'];
 	endif;
 
-	// Thumbnail height and width must be in our array of thumbnail stuff
+	// Thumbnail height and width must be in our array of thumbnail set
 	if ( isset( $input['thumbnail-height'] ) && array_key_exists( $input['thumbnail-height'], t_em_excerpt_callback() ) ) :
 		$output['thumbnail-height'] = $input['thumbnail-height'];
 	endif;
@@ -525,12 +526,12 @@ function t_em_theme_options_validate( $input ){
 		$output['thumbnail-width'] = $input['thumbnail-width'];
 	endif;
 
-	// Layout stuff must be in our array of layout stuff options
-	if ( isset( $input['layout-stuff'] ) && array_key_exists( $input['layout-stuff'], t_em_layout_options() ) ) :
-		$output['layout-stuff'] = $input['layout-stuff'];
+	// Layout set must be in our array of layout set options
+	if ( isset( $input['layout-set'] ) && array_key_exists( $input['layout-set'], t_em_layout_options() ) ) :
+		$output['layout-set'] = $input['layout-set'];
 	endif;
 
-	// Socialnetwork stuff
+	// Socialnetwork set
 	foreach ( t_em_socialnetwork_options() as $social ) :
 		if ( isset( $input[$social['name']] ) && array_key_exists( $input[$social['name']], t_em_socialnetwork_options() ) ) :
 			$output[$social['name']] = wp_filter_nohtml_kses( $input[$social['name']] );

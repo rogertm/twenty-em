@@ -28,7 +28,7 @@ h2#site-description { font-size: 12px;}
 #content figure img { margin:5px 5px 0; }
 #content figure figcaption { color:#888; font-size:12px; margin:5px; font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif; }
 
-nav#access { font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif; margin:0 auto; width:940px; background:#000; display:block; float:left; margin:0 auto; width:940px; -webkit-text-size-adjust:120%; }
+nav#access { font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif; margin:0 auto; width:1000px; background:#000; display:block; float:left; margin:0 auto; width:1000px; -webkit-text-size-adjust:120%; }
 nav .menu-header { font-size:13px; margin-left:12px; width:928px; }
 nav .menu-header ul { list-style:none; margin:0; }
 nav .menu-header li { float:left; position:relative; }
@@ -204,7 +204,7 @@ div.menu,
 #main,
 #wrapper {
 	margin: 0 auto;
-	width: 940px;
+	width: 1000px;
 }
 #wrapper {
 	background: #fff;
@@ -395,6 +395,11 @@ a:hover {
 	margin: 14px 0 18px 0;
 	width: 220px;
 }
+#branding img{
+	width: 100%;
+	height: auto;
+	margin-bottom: -5px;
+}
 
 
 /* =Menu
@@ -405,7 +410,7 @@ a:hover {
 	display: block;
 	float: left;
 	margin: 0 auto;
-	width: 940px;
+	width: 1000px;
 }
 #access .menu-header,
 div.menu {

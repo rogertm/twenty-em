@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 		filters.slideUp('fast').removeClass('selected-option');
 		switch ( $(this).val() ) {
 			case 'header-image': $('#header-image').slideDown(); break;
-			case 'slideshow': $('#slideshow').slideDown(); break;
+			case 'slider': $('#slider').slideDown(); break;
 		}
 	});
 });

@@ -44,6 +44,7 @@
 					</<?php echo $heading_tag; ?>>
 					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</hgroup>
+				<?php t_em_header_options_set(); ?>
 			</div><!-- #branding -->
 
 			<nav id="access" role="navigation">

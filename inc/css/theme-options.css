@@ -50,3 +50,6 @@ label.description{
 .selected-option{
 	display: block !important;
 }
+figure{
+	margin: 0;
+}

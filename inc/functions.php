@@ -74,9 +74,89 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-background' );
-		add_theme_support( 'custom-header' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
+
+		$custom_header_support = array (
+			'default-text-color'		=> '000',
+			'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
+			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
+			'flex-height'				=> true,
+			'random-default'			=> true,
+			'wp-head-callback'			=> '',
+			'admin-head-callback'		=> 't_em_admin_header_style',
+			'admin-preview-callback'	=> 't_em_admin_header_image',
+		);
+		add_theme_support( 'custom-header', $custom_header_support );
+
+		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
+		register_default_headers( array(
+			'canyon'	=> array(
+				'url'			=> '%s/images/headers/canyon.jpg',
+				'thumbnail_url'	=> '%s/images/headers/canyon-thumbnail.jpg',
+				'description'	=> __( 'Canyon', 't_em' ),
+			),
+			'fire'		=> array(
+				'url'			=> '%s/images/headers/fire.jpg',
+				'thumbnail_url'	=> '%s/images/headers/fire-thumbnail.jpg',
+				'description'	=> __( 'Fire', 't_em' ),
+			),
+			'friends'	=> array(
+				'url'			=> '%s/images/headers/friends.jpg',
+				'thumbnail_url'	=> '%s/images/headers/friends-thumbnail.jpg',
+				'description'	=> __( 'Friends', 't_em' ),
+			),
+			'halloween'	=> array(
+				'url'			=> '%s/images/headers/halloween.jpg',
+				'thumbnail_url'	=> '%s/images/headers/halloween-thumbnail.jpg',
+				'description'	=> __( 'Halloween', 't_em' ),
+			),
+			'cityscapes'		=> array(
+				'url'			=> '%s/images/headers/cityscapes.jpg',
+				'thumbnail_url'	=> '%s/images/headers/cityscapes-thumbnail.jpg',
+				'description'	=> __( 'Cityscapes', 't_em' ),
+			),
+			'lamps'				=> array(
+				'url'			=> '%s/images/headers/lamps.jpg',
+				'thumbnail_url'	=> '%s/images/headers/lamps-thumbnail.jpg',
+				'description'	=> __( 'Lamps', 't_em' ),
+			),
+			'leaf'				=> array(
+				'url'			=> '%s/images/headers/leaf.jpg',
+				'thumbnail_url'	=> '%s/images/headers/leaf-thumbnail.jpg',
+				'description'	=> __( 'Leaf', 't_em' ),
+			),
+			'road'				=> array(
+				'url'			=> '%s/images/headers/road.jpg',
+				'thumbnail_url'	=> '%s/images/headers/road-thumbnail.jpg',
+				'description'	=> __( 'Road', 't_em' ),
+			),
+			'sepia'				=> array(
+				'url'			=> '%s/images/headers/sepia.jpg',
+				'thumbnail_url'	=> '%s/images/headers/sepia-thumbnail.jpg',
+				'description'	=> __( 'Sepia', 't_em' ),
+			),
+			'streets'			=> array(
+				'url'			=> '%s/images/headers/streets.jpg',
+				'thumbnail_url'	=> '%s/images/headers/streets-thumbnail.jpg',
+				'description'	=> __( 'Streets', 't_em' ),
+			),
+			'wait'				=> array(
+				'url'			=> '%s/images/headers/wait.jpg',
+				'thumbnail_url'	=> '%s/images/headers/wait-thumbnail.jpg',
+				'description'	=> __( 'Wait', 't_em' ),
+			),
+			'watch'				=> array(
+				'url'			=> '%s/images/headers/watch.jpg',
+				'thumbnail_url'	=> '%s/images/headers/watch-thumbnail.jpg',
+				'description'	=> __( 'Watch', 't_em' ),
+			),
+			'wood'				=> array(
+				'url'			=> '%s/images/headers/wood.jpg',
+				'thumbnail_url'	=> '%s/images/headers/wood-thumbnail.jpg',
+				'description'	=> __( 'Wood', 't_em' ),
+			),
+		) );
 
 		/**
 		 * Twenty'em is ready for translation
@@ -107,6 +187,118 @@ if ( !function_exists( 't_em_setup' ) ) :
 
 	}
 endif; // function t_em_setup()
+
+if ( function_exists( 't_em_header_style' ) ) :
+/**
+ * Style the header image and text displayed on the site
+ */
+function t_em_header_style(){
+	//~ global $custom_header_support;
+	$text_color = get_header_textcolor();
+
+	// If no custom options for text are set, let's bail
+	if ( $text_color == $custom_header_support['default-text-color'] ) return;
+
+	// If we get this far, we have custom styles. Let's do this.
+?>
+	<style type="text/css">
+<?php
+	// If the text is hidden
+	if ( 'blank' == $text_color ) :
+?>
+		#site-title,
+		#site-description{
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+<?php
+	// If the user has set a custom color for the text use that
+	else :
+?>
+		#site-title a,
+		#site-description {
+			color: #<?php echo $text_color; ?> !important;
+		}
+<?php
+	endif;
+?>
+	</style>
+<?php
+}
+endif; // function t_em_header_style
+
+if ( ! function_exists( 't_em_admin_header_style' ) ) :
+/**
+ * Styles the header image displayed on the Appearance > Header admin panel.
+ * Referenced via add_theme_support('custom-header') in t_em_setup().
+ */
+function t_em_admin_header_style() {
+	//~ global $custom_header_support;
+?>
+	<style type="text/css">
+	.appearance_page_custom-header #headimg {
+		border: none;
+	}
+	#headimg h1,
+	#desc {
+		font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	}
+	#headimg h1 {
+		margin: 0;
+	}
+	#headimg h1 a {
+		font-size: 32px;
+		line-height: 36px;
+		text-decoration: none;
+	}
+	#desc {
+		font-size: 14px;
+		line-height: 23px;
+		padding: 0 0 3em;
+	}
+	<?php
+		// If the user has set a custom color for the text use that
+		if ( get_header_textcolor() != $custom_header_support['default-text-color'] ) :
+	?>
+		#site-title a,
+		#site-description {
+			color: #<?php echo get_header_textcolor(); ?>;
+		}
+	<?php endif; ?>
+	#headimg img {
+		max-width: 1000px;
+		height: auto;
+		width: 100%;
+	}
+	</style>
+<?php
+}
+endif; // t_em_admin_header_style
+
+if ( ! function_exists( 't_em_admin_header_image' ) ) :
+/**
+ * Custom header image markup displayed on the Appearance > Header admin panel.
+ * Referenced via add_theme_support('custom-header') in t_em_setup().
+ */
+function t_em_admin_header_image() { ?>
+	<div id="headimg">
+		<?php
+		$color = get_header_textcolor();
+		$image = get_header_image();
+		if ( $color && $color != 'blank' )
+			$style = ' style="color:#' . $color . '"';
+		else
+			$style = ' style="display:none"';
+		?>
+		<h1><a id="name"<?php echo $style; ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+		<div id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
+		<?php if ( $image ) : ?>
+			<img src="<?php echo esc_url( $image ); ?>" alt="" />
+		<?php endif; ?>
+	</div>
+<?php }
+endif; // t_em_admin_header_image
 
 /**
  * Creates a nicely formatted and more specific title element text
@@ -424,7 +616,7 @@ function t_em_comments() {
 add_filter('comment_form_default_fields', 't_em_comments');
 
 function t_em_commentfield() {
-	$commentArea = '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="What\'s on your mind?"	></textarea></p>';
+	$commentArea = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="What\'s on your mind?"	></textarea></p>';
 	return $commentArea;
 }
 add_filter('comment_form_field_comment', 't_em_commentfield');
@@ -453,4 +645,49 @@ function t_em_img_caption_shortcode($attr, $content = null) {
 }
 //~ add_shortcode('wp_caption', 't_em_img_caption_shortcode');
 //~ add_shortcode('caption', 't_em_img_caption_shortcode');
+
+/** Here start functions from theme options setting **/
+/**
+ * Display header set depending of the Header Options
+ */
+function t_em_header_options_set(){
+	global $post;
+	$options = t_em_get_theme_options();
+	$header_options = $options['header-set'];
+
+	if ( 'no-header-image' == $header_options ) :
+		return false;
+	elseif ( 'header-image' == $header_options ) :
+		// Display Image Header
+		$header_image = get_header_image();
+		if ( $header_image ) :
+			$header_image_width = get_theme_support( 'custom-header', 'width' );
+			$header_image_height = get_theme_support( 'custom-header', 'height' );
+?>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+<?php
+			// Check if this is a post or page and there is a thumbnail to show
+			if ( is_singular() && has_post_thumbnail( $post->ID ) &&
+					( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
+					$image[1] >= $header_image_width ) :
+				// Havana, we have a new header image :P
+				// If the user set to true to display featured image in posts and page, then display it
+				if ( 'yes' == $options['header-featured-image'] ) :
+					echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+				endif;
+			else :
+				//$header_image_width = get_custom_header()->width;
+				$header_image_height = get_custom_header()->height;
+?>
+				<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
+<?php
+			endif;
+?>
+			</a>
+<?php
+		endif;
+	elseif ( 'slider' == $header_options ) :
+		echo "Slider";
+	endif;
+}
 ?>
