@@ -51,10 +51,18 @@
 /**
  * Register functions directory and sub-directories through constants
  */
-define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc/' );
-define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images/' );
-define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js/' );
-define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css/' );
+// Theme directory
+define ( 'T_EM_THEME_DIR',			get_template_directory_uri() );
+define ( 'T_EM_THEME_DIR_CSS',		get_template_directory_uri().'/css' );
+define ( 'T_EM_THEME_DIR_IMG',		get_template_directory_uri().'/images' );
+define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
+define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
+
+// Theme Options Directory
+define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc' );
+define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js' );
 
 /**
  * Start up the theme engine
@@ -83,7 +91,7 @@ if ( !function_exists( 't_em_setup' ) ) :
 			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
 			'flex-height'				=> true,
 			'random-default'			=> true,
-			'wp-head-callback'			=> '',
+			'wp-head-callback'			=> 't_em_header_style',
 			'admin-head-callback'		=> 't_em_admin_header_style',
 			'admin-preview-callback'	=> 't_em_admin_header_image',
 		);
@@ -161,9 +169,9 @@ if ( !function_exists( 't_em_setup' ) ) :
 		/**
 		 * Twenty'em is ready for translation
 		 */
-		load_theme_textdomain( 't_em', TEMPLATEPATH . '/languages' );
+		load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
 		$locale = get_locale();
-		$locale_file = TEMPLATEPATH . "/languages/$locale.php";
+		$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
 		if ( is_readable( $locale_file ) ) :
 			require_once( $locale_file );
 		endif;
@@ -188,12 +196,12 @@ if ( !function_exists( 't_em_setup' ) ) :
 	}
 endif; // function t_em_setup()
 
-if ( function_exists( 't_em_header_style' ) ) :
+if ( !function_exists( 't_em_header_style' ) ) :
 /**
  * Style the header image and text displayed on the site
  */
 function t_em_header_style(){
-	//~ global $custom_header_support;
+	global $custom_header_support;
 	$text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -297,7 +305,8 @@ function t_em_admin_header_image() { ?>
 			<img src="<?php echo esc_url( $image ); ?>" alt="" />
 		<?php endif; ?>
 	</div>
-<?php }
+<?php
+}
 endif; // t_em_admin_header_image
 
 /**
@@ -646,7 +655,47 @@ function t_em_img_caption_shortcode($attr, $content = null) {
 //~ add_shortcode('wp_caption', 't_em_img_caption_shortcode');
 //~ add_shortcode('caption', 't_em_img_caption_shortcode');
 
-/** Here start functions from theme options setting **/
+/***************************************************
+ * Here starts functions from theme options setting *
+ ***************************************************/
+
+/**
+ * Display featured image post thumbnail
+ */
+function t_em_featured_post_thumbnail( $height = 250, $width = 250, $class = 'featured-image', $link = true ){
+	global $post;
+	if ( has_post_thumbnail( $post->ID ) ) :
+		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$image_src = $image_url[0];
+	else :
+		$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+		$total_images = count( $images );
+		$image = array_shift( $images );
+		$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
+		if ( $total_images >= 1 ) :
+			$image_src = $image_url[0];
+		else:
+			$image_src = T_EM_THEME_DIR_IMG . '/default-image.png';
+		endif;
+	endif;
+if ( $link ) :
+?>
+	<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+<?php
+endif;
+?>
+	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>">
+		<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
+		<figcaption><?php the_title(); ?></figcaption>
+	</figure>
+<?php
+if ( $link ) :
+?>
+	</a>
+<?php
+endif;
+}
+
 /**
  * Display header set depending of the Header Options
  */
@@ -658,36 +707,9 @@ function t_em_header_options_set(){
 	if ( 'no-header-image' == $header_options ) :
 		return false;
 	elseif ( 'header-image' == $header_options ) :
-		// Display Image Header
-		$header_image = get_header_image();
-		if ( $header_image ) :
-			$header_image_width = get_theme_support( 'custom-header', 'width' );
-			$header_image_height = get_theme_support( 'custom-header', 'height' );
-?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-<?php
-			// Check if this is a post or page and there is a thumbnail to show
-			if ( is_singular() && has_post_thumbnail( $post->ID ) &&
-					( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
-					$image[1] >= $header_image_width ) :
-				// Havana, we have a new header image :P
-				// If the user set to true to display featured image in posts and page, then display it
-				if ( 'yes' == $options['header-featured-image'] ) :
-					echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-				endif;
-			else :
-				//$header_image_width = get_custom_header()->width;
-				$header_image_height = get_custom_header()->height;
-?>
-				<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
-<?php
-			endif;
-?>
-			</a>
-<?php
-		endif;
+		get_template_part( 'header', 'image' );
 	elseif ( 'slider' == $header_options ) :
-		echo "Slider";
+		get_template_part( 'header', 'slider' );
 	endif;
 }
 ?>

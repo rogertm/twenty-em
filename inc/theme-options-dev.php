@@ -35,12 +35,19 @@ function t_em_register_dev_options_init(){
  */
 function t_em_dev_frameworks_options(){
 	$frameworks_options = array (
-		'framework-ggs' => array (
-			'name' => 'framework-ggs',
-			'load' => 'yes',
-			'url' => 'http://goldengridsystem.com/',
-			'label' => __( 'Golden Grid System', 't_em' ),
-			'sublabel' => __( 'A folding grid for responsive design.', 't_em' ),
+		'golden-grid-system' => array (
+			'name'			=> 'golden-grid-system',
+			'url'			=> 'http://goldengridsystem.com/',
+			'label'			=> __( 'Golden Grid System', 't_em' ),
+			'sublabel'		=> __( 'A folding grid for responsive design.', 't_em' ),
+			'description'	=> __( 'If active, a folding grid will be displayed (right top of your home page), whish helps you to organize your desing and make it responsive.', 't_em' ),
+		),
+		'jquery-cycle-lite' => array (
+			'name'			=> 'jquery-cycle-lite',
+			'url'			=> 'http://malsup.com/jquery/cycle/lite/',
+			'label'			=> __( 'jQuery Cycle Lite Plugin', 't_em' ),
+			'sublabel'		=> __( 'The <strong>jQuery Cycle Lite Plugin</strong> is a lighter version of the <a href="http://jquery.malsup.com/" target="_blank">Cycle Plugin</a>. The Lite version is optimized for file size and includes only a fade transition.', 't_em' ),
+			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <strong>jQuery Cycle Full Version</strong> for the slider section. If you enable jQuery Cycle Lite, full version will be disable.', 't_em' ), wp_get_theme() ),
 		),
 	);
 
@@ -52,7 +59,8 @@ function t_em_dev_frameworks_options(){
  */
 function t_em_dev_default_options(){
 	$default_dev_options = array (
-		'framework-ggs'	=> 'yes',
+		'golden-grid-system'	=> '',
+		'jquery-cycle-lite'		=> '',
 	);
 
 	return apply_filters( 't_em_dev_default_options', $default_dev_options );
@@ -73,7 +81,6 @@ function t_em_settings_dev_frameworks(){
 ?>
 	<div id="framework-options">
 <?php
-	global $frameworks_options;
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 	$count_frameworks = count( t_em_dev_frameworks_options() );
@@ -92,9 +99,18 @@ function t_em_settings_dev_frameworks(){
 		<div class="layout checbox-option framework">
 			<p><strong><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></strong></p>
 			<p><?php echo $framework['sublabel']; ?></p>
+			<p><?php echo $framework['description']; ?></p>
 			<label class="description">
-				<span><?php printf( __( 'Eneble %s?', 't_em' ), $framework['label'] ); ?></span>
-				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="yes" <?php checked( 'yes', $options_dev[$framework['name']] ); ?> />
+				<span><?php printf( __( 'Enable %s?', 't_em' ), $framework['label'] ); ?></span>
+				<?php
+				if ( $options_dev != '' ) :
+					$checked = ( array_key_exists( $framework['name'], $options_dev ) && $options_dev[$framework['name']] == 'yes' ) ? 'checked="checked"' : '';
+				else :
+					$checked = '';
+				endif;
+				?>
+				<?php ?>
+				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="yes" <?php echo $checked; ?> />
 			</label>
 		</div>
 <?php
