@@ -201,7 +201,7 @@ function t_em_slider_callback(){
 		$selected_option = ( $options['slider-thumbnail'] == $slider['value'] ) ? 'checked="checked"' : '';
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" value="'.esc_attr($slider['value']).'" '. $selected_option .' />';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $selected_option .' />';
 		$extend_slider .=			'<span><img src="'.$slider['thumbnail'].'" width="136" />'.$slider['label'].'</span>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
@@ -328,21 +328,39 @@ function t_em_layout_options(){
 		'sidebar-right' => array(
 			'value' => 'sidebar-right',
 			'label' => __( 'Content on right', 't_em' ),
-			'thumbnail' => get_template_directory_uri() . '/inc/images/sidebar-right.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/sidebar-right.png',
 		),
 		'sidebar-left' => array(
 			'value' => 'sidebar-left',
 			'label' => __( 'Content on left', 't_em' ),
-			'thumbnail' => get_template_directory_uri() . '/inc/images/sidebar-left.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/sidebar-left.png',
 		),
 		'one-column' => array(
 			'value' => 'one-column',
 			'label' => __( 'One-column, no sidebar', 't_em' ),
-			'thumbnail' => get_template_directory_uri() . '/inc/images/one-column.png',
+			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/one-column.png',
 		),
 	);
 
 	return apply_filters( 't_em_layout_options', $layout_options );
+}
+
+/**
+ * Set the default theme width
+ */
+function t_em_layout_width(){
+	$options = t_em_get_theme_options();
+	$layout_width = '';
+	$layout_width .= '<div class="sub-extend">';
+	$layout_width .= 	'<div class="layout text-option layout-width">';
+	$layout_width .= 		'<p>'. __( 'Enter the value (should be <strong>px</strong> or <strong>%</strong>) you wish to be your theme width. If empty, the value will be <strong>100%</strong>', 't_em' ) .'</p>';
+	$layout_width .= 		'<label>';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$options['layout-width'].'" />';
+	$layout_width .= 		'</label>';
+	$layout_width .= 	'</div>';
+	$layout_width .= '</div>';
+
+	return $layout_width;
 }
 
 /**
@@ -407,6 +425,7 @@ function t_em_get_default_theme_options(){
 		'slider-thumbnail'			=> 'slider-thumbnail-left',
 		'archive-set'				=> 'the-content',
 		'layout-set'				=> 'sidebar-right',
+		'layout-width'				=> '960px',
 		'excerpt-set'				=> 'thumbnail-left',
 		'slider-thumbnail-height'	=> '',
 		'slider-thumbnail-width'	=> '',
@@ -440,7 +459,7 @@ function t_em_settings_field_header_set(){
 ?>
 		<div class="layout radio-option header">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[header-set]" class="radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-set'], $header['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[header-set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-set'], $header['value'] ); ?> />
 				<span><?php echo $header['label']; ?></span>
 			</label>
 		</div>
@@ -511,6 +530,7 @@ function t_em_settings_field_layout_set(){
 	</div>
 <?php
 	endforeach;
+	echo t_em_layout_width();
 }
 
 /**

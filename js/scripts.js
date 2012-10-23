@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
 	$('.ggs-guide').wrapAll('<div class="ggs" />');
-	$('#ggs-baseline-container').wrapAll('<div class="ggs" />');
+	$('.ggs').wrapAll('<div class="ggs-wrapper" />');
+
 	$('#slider-wrapper').cycle({
-		fx:		'scrollLeft',
-		pause:	1,
+		fx:		'scrollLeft'
 	});
 });
