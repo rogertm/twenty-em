@@ -5,4 +5,5 @@ jQuery(document).ready(function($){
 	$('#slider-wrapper').cycle({
 		fx:		'scrollLeft'
 	});
+	$('#slider-wrapper').slideUp( 1000, 'easeOutCirc' );
 });

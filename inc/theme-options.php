@@ -40,14 +40,14 @@ function t_em_admin_javascript_script(){
 add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_register_setting_options_init(){
 	// Based on Twentyeleven WordPress Theme
-	register_setting( 't_em_options', 't_em_theme_options'/*, 't_em_theme_options_validate'*/ );
+	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
 
 	// Register our settings field group
 	add_settings_section( 'general', '', '__return_false', 'theme-options' );
 
 	// Register our individual settings fields
 	add_settings_field( 't_em_header_set',	__( 'Header Options', 't_em' ),			't_em_settings_field_header_set',			'theme-options',	'general' );
-	add_settings_field( 't_em_archive_set',	__( 'Archive Options', 't_em' ),		't_em_settings_field_archive_set',		'theme-options',	'general' );
+	add_settings_field( 't_em_archive_set',	__( 'Archive Options', 't_em' ),		't_em_settings_field_archive_set',			'theme-options',	'general' );
 	add_settings_field( 't_em_layout_set',	__( 'Layout Options', 't_em' ),			't_em_settings_field_layout_set',			'theme-options',	'general' );
 	add_settings_field( 't_em_social_set',	__( 'Social Network Options', 't_em' ),	't_em_settings_field_socialnetwork_set',	'theme-options',	'general' );
 }
@@ -59,8 +59,9 @@ function t_em_theme_options_add_page(){
 
 	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.jpg', 61 );
 
-	add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',	't_em_theme_options_dev' );
-	add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options', 'theme-update',			't_em_theme_update' );
+	add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',		't_em_theme_options_dev' );
+	add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
+	add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options',	'theme-update',				't_em_theme_update' );
 
 	if ( ! $theme_page ) return;
 
@@ -68,6 +69,7 @@ function t_em_theme_options_add_page(){
 }
 
 require( get_template_directory() . '/inc/theme-options-dev.php' );
+require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
 require( get_template_directory() . '/inc/theme-update.php' );
 
 /**
@@ -158,23 +160,24 @@ function t_em_header_image_callback(){
 	$extend_header = '';
 	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
-		$checked = ( array_key_exists( 'header-featured-image', $options ) && $options['header-featured-image'] == 'yes' ) ? 'checked="checked"' : '';
+		$checked = ( array_key_exists( 'header-featured-image', $options ) && $options['header-featured-image'] == '1' ) ? 'checked="checked"' : '';
 		$extend_header .= '<figure><img src="'.get_header_image().'" width="500"></figure>';
 		$extend_header .= '<label class="description">';
 		$extend_header .=	 __( 'Display featured image in single posts and pages? ', 't_em' );
-		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header-featured-image]" value="yes" '.$checked.' />';
+		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header-featured-image]" value="1" '. $checked .' />';
 		$extend_header .= '</label>';
 	else :
 		$extend_header .= '<p>'. __( 'Oops! No image choosen yet', 't_em' ) .'</p>';
 	endif;
 
-	return $extend_header;
+	return apply_filters( 't_em_header_image_callback', $extend_header );
 }
 
 /**
  * Extend setting for slider option
  */
 function t_em_slider_callback(){
+	global $slider_layout, $list_categories;
 	$slider_layout = array (
 		'slider-thumbnail-left' => array (
 			'value' => 'slider-thumbnail-left',
@@ -210,28 +213,28 @@ function t_em_slider_callback(){
 	// Define Width and Height of thumbnails
 	$extend_slider .= '<div class="sub-extend">';
 	$thumb = t_em_thumbnail_sizes( 'slider' );
-	$extend_slider .= '<p>'. sprintf( __( 'For thubnail on right or left, set <strong>width</strong> and <strong>height</strong>. If empty, will be used the default thumbnail size (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
+	$extend_slider .= '<p>'. sprintf( __( 'For thubnail on right or left, set <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default medium size (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
 		admin_url( 'options-media.php' ),
-		get_option( 'thumbnail_size_w' ),
-		get_option( 'thumbnail_size_h' ) ) .'</p>';
+		get_option( 'medium_size_w' ),
+		get_option( 'medium_size_h' ) ) .'</p>';
 	foreach ( $thumb as $thumbnail ) :
 		$extend_slider .= 		'<div class="layout text-option thumbnail">';
 		$extend_slider .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_slider .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" />';
+		$extend_slider .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_slider .=			'</label>';
 		$extend_slider .=		'</div>';
 	endforeach;
 	$extend_slider .= '</div><!-- .sub-extend -->';
 
 	// Display a select list of categories
-	$categories = get_categories();
+	$list_categories = get_categories( array ( 'pad_count' => 1 ) );
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider-category]">';
-	foreach ( $categories as $category ) :
-		$selected_option = ( $options['slider-category'] == $category->cat_ID ) ? 'selected="selected"' : '';
-		$extend_slider .= 	'<option value="'.$category->cat_ID.'" '.$selected_option.'>'.$category->name.'</option>';
+	foreach ( $list_categories as $slider_category ) :
+		$selected_option = ( $options['slider-category'] == $slider_category->term_id ) ? 'selected="selected"' : '';
+		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
 	$extend_slider .= 		'</select>';
 	$extend_slider .=	'</label>';
@@ -272,6 +275,7 @@ function t_em_archive_options(){
  * Extend setting for archive option
  */
 function t_em_excerpt_callback(){
+	global $excerpt_options;
 	$excerpt_options = array (
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -304,14 +308,14 @@ function t_em_excerpt_callback(){
 
 	$extend_excerpt .= '<div class="sub-extend">';
 	$thumb = t_em_thumbnail_sizes( 'excerpt' );
-	$extend_excerpt .= '<p>'. sprintf( __( 'Set thumbnail <strong>width</strong> and <strong>height</strong>. If empty, will be used the default thumbnail sizes (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
+	$extend_excerpt .= '<p>'. sprintf( __( 'For thubnail on right or left, set <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default thumbnail sizes (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
 		admin_url( 'options-media.php' ),
 		get_option( 'thumbnail_size_w' ),
 		get_option( 'thumbnail_size_h' ) ) .'</p>';
 	foreach ( $thumb as $thumbnail ) :
 		$extend_excerpt .= 		'<div class="layout text-option thumbnail">';
 		$extend_excerpt .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" />';
+		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_excerpt .=			'</label>';
 		$extend_excerpt .=		'</div>';
 	endforeach;
@@ -353,9 +357,9 @@ function t_em_layout_width(){
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
-	$layout_width .= 		'<p>'. __( 'Enter the value (should be <strong>px</strong> or <strong>%</strong>) you wish to be your theme width. If empty, the value will be <strong>100%</strong>', 't_em' ) .'</p>';
+	$layout_width .= 		'<p>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>100%</strong>', 't_em' ) .'</p>';
 	$layout_width .= 		'<label>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$options['layout-width'].'" />';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$options['layout-width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
@@ -419,18 +423,18 @@ function t_em_thumbnail_sizes( $contex ){
 function t_em_get_default_theme_options(){
 	$default_theme_options = array (
 		'header-set'				=> 'no-header-image',
-		'header-featured-image'		=> 'yes',
+		'header-featured-image'		=> '1',
 		'slider-category'			=> get_option( 'default_category' ),
 		'slider-number'				=> '5',
 		'slider-thumbnail'			=> 'slider-thumbnail-left',
 		'archive-set'				=> 'the-content',
 		'layout-set'				=> 'sidebar-right',
-		'layout-width'				=> '960px',
+		'layout-width'				=> '960',
 		'excerpt-set'				=> 'thumbnail-left',
-		'slider-thumbnail-height'	=> '',
-		'slider-thumbnail-width'	=> '',
-		'excerpt-thumbnail-height'	=> '',
-		'excerpt-thumbnail-width'	=> '',
+		'slider-thumbnail-height'	=> get_option( 'medium_size_h' ),
+		'slider-thumbnail-width'	=> get_option( 'medium_size_w' ),
+		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
+		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
 		'twitter-set'				=> '',
 		'facebook-set'				=> '',
 		'googlepluss-set'			=> '',
@@ -493,7 +497,7 @@ function t_em_settings_field_archive_set(){
 ?>
 		<div class="layout radio-option archive">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-set'], $archive['value'] ); ?> />
+				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-set'], $archive['value'] ); ?> />
 				<span><?php echo $archive['label']; ?></span>
 			</label>
 		</div>
@@ -543,7 +547,7 @@ function t_em_settings_field_socialnetwork_set(){
 	<div class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
+			<input type="url" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
 		</label>
 	</div>
 <?php
@@ -576,43 +580,80 @@ function t_em_theme_options_page(){
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function t_em_theme_options_validate( $input ){
-	$output = $defaults = t_em_get_default_theme_options();
-
-	// Header set must be in our array of header set options
-	if ( isset( $input['header-set'] ) && array_key_exists( $input['header-set'], t_em_header_options() ) ) :
-		$output['header-set'] = $input['header-set'];
-	endif;
-
-	// Archive set must be in our array of archive set options
-	if ( isset( $input['archive-set'] ) && array_key_exists( $input['archive-set'], t_em_archive_options() ) ) :
-		$output['archive-set'] = $input['archive-set'];
-	endif;
-
-	// Excerpt thumbnail set must be in our array of excerpt thumbnail set
-	if ( isset( $input['excerpt-set'] ) && array_key_exists( $input['excerpt-set'], t_em_excerpt_callback() ) ) :
-		$output['excerpt-set'] = $input['excerpt-set'];
-	endif;
-
-	// Thumbnail height and width must be in our array of thumbnail set
-	if ( isset( $input['thumbnail-height'] ) && array_key_exists( $input['thumbnail-height'], t_em_excerpt_callback() ) ) :
-		$output['thumbnail-height'] = $input['thumbnail-height'];
-	endif;
-	if ( isset( $input['thumbnail-width'] ) && array_key_exists( $input['thumbnail-width'], t_em_excerpt_callback() ) ) :
-		$output['thumbnail-width'] = $input['thumbnail-width'];
-	endif;
-
-	// Layout set must be in our array of layout set options
-	if ( isset( $input['layout-set'] ) && array_key_exists( $input['layout-set'], t_em_layout_options() ) ) :
-		$output['layout-set'] = $input['layout-set'];
-	endif;
-
-	// Socialnetwork set
-	foreach ( t_em_socialnetwork_options() as $social ) :
-		if ( isset( $input[$social['name']] ) && array_key_exists( $input[$social['name']], t_em_socialnetwork_options() ) ) :
-			$output[$social['name']] = wp_filter_nohtml_kses( $input[$social['name']] );
-		endif;
+	global $excerpt_options, $slider_layout, $list_categories;
+	// All the checkbox are either 0 or 1
+	foreach ( array(
+		'header-featured-image',
+	) as $checkbox ) :
+		if ( !isset( $input[$checkbox] ) )
+			$input[$checkbox] = null;
+		$input[$checkbox] = ( $input[$checkbox] == 1 ? 1 : 0 );
 	endforeach;
 
-	return apply_filters( 't_em_theme_options_validate', $output, $input, $defaults );
+	// Validate all radio options
+	$radio_options = array(
+		'header-options'	=> array (
+			'set'		=> 'header-set',
+			'callback'	=> t_em_header_options(),
+		),
+		'slider-options'	=> array (
+			'set'		=> 'slider-thumbnail',
+			'callback'	=> $slider_layout,
+		),
+		'archive-options'	=> array (
+			'set'		=> 'archive-set',
+			'callback'	=> t_em_archive_options(),
+		),
+		'excerpt-options'	=> array (
+			'set'		=> 'excerpt-set',
+			'callback'	=> $excerpt_options,
+		),
+		'layout-options'	=> array (
+			'set'		=> 'layout-set',
+			'callback'	=> t_em_layout_options(),
+		),
+	);
+	foreach ( $radio_options as $radio ) :
+		if ( ! isset( $input[$radio['set']] ) )
+			$input[$radio['set']] = null;
+		if ( ! array_key_exists( $input[$radio['set']], $radio['callback'] ) )
+			$input[$radio['set']] = null;
+	endforeach;
+
+	// Validate all int (input[type="number"]) options
+	foreach( array (
+		'slider-thumbnail-width',
+		'slider-thumbnail-height',
+		'slider-number',
+		'excerpt-thumbnail-width',
+		'excerpt-thumbnail-height',
+		'layout-width',
+	) as $int ) :
+		$input[$int] = wp_filter_nohtml_kses( $input[$int] );
+	endforeach;
+
+	// Validate all url (input[type="url"]) options
+	foreach ( array (
+		'twitter-set',
+		'facebook-set',
+		'googlepluss-set',
+		'rss-set',
+	) as $url ) :
+		$input[$url] = esc_url_raw( $input[$url] );
+	endforeach;
+
+	// Validate all select list options
+	$select_options = array ( // No pincha
+		'slider-cat'		=> array (
+			'set'		=> 'slider-category',
+			'callback'	=> $list_categories,
+		),
+	);
+	foreach ( $select_options as $select ) :
+		if ( ! array_key_exists( $input[$select['set']], $select['callback'] ) )
+			$input[$select['set']] = null;
+	endforeach;
+
+	return $input;
 }
 ?>

@@ -49,6 +49,13 @@ function t_em_dev_frameworks_options(){
 			'sublabel'		=> __( 'The <strong>jQuery Cycle Lite Plugin</strong> is a lighter version of the <a href="http://jquery.malsup.com/" target="_blank">Cycle Plugin</a>. The Lite version is optimized for file size and includes only a fade transition.', 't_em' ),
 			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <strong>jQuery Cycle Full Version</strong> for the slider section. If you enable jQuery Cycle Lite, full version will be disable.', 't_em' ), wp_get_theme() ),
 		),
+		'jquery-easing'		=> array (
+			'name'			=> 'jquery-easing',
+			'url'			=> 'http://gsgd.co.uk/sandbox/jquery/easing/',
+			'label'			=> __( 'jQuery Easing Plugin', 't_em' ),
+			'sublabel'			=> sprintf( __( 'A jQuery plugin from <a href="%s" target="_blank">GSGD</a> to give advanced easing options.', 't_em' ), 'http://gsgd.co.uk/' ),
+			'description'	=> __( 'Some description', 't_em' ),
+		),
 	);
 
 	return apply_filters( 't_em_dev_frameworks_options', $frameworks_options );
@@ -61,6 +68,7 @@ function t_em_dev_default_options(){
 	$default_dev_options = array (
 		'golden-grid-system'	=> '',
 		'jquery-cycle-lite'		=> '',
+		'jquery-easing'			=> '',
 	);
 
 	return apply_filters( 't_em_dev_default_options', $default_dev_options );
@@ -104,13 +112,13 @@ function t_em_settings_dev_frameworks(){
 				<span><?php printf( __( 'Enable %s?', 't_em' ), $framework['label'] ); ?></span>
 				<?php
 				if ( $options_dev != '' ) :
-					$checked = ( array_key_exists( $framework['name'], $options_dev ) && $options_dev[$framework['name']] == 'yes' ) ? 'checked="checked"' : '';
+					$checked = ( array_key_exists( $framework['name'], $options_dev ) && $options_dev[$framework['name']] == '1' ) ? 'checked="checked"' : '';
 				else :
 					$checked = '';
 				endif;
 				?>
 				<?php ?>
-				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="yes" <?php echo $checked; ?> />
+				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="1" <?php echo $checked; ?> />
 			</label>
 		</div>
 <?php

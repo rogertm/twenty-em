@@ -14,7 +14,7 @@ if ( $header_image ) :
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
 	// Check if the user choose to display featured image in single posts and pages
-	if ( array_key_exists( 'header-featured-image', $options ) && 'yes' == $options['header-featured-image'] &&
+	if ( array_key_exists( 'header-featured-image', $options ) && '1' == $options['header-featured-image'] &&
 		// Check if this is a post or page and there is a thumbnail to show
 		is_singular() && has_post_thumbnail( $post->ID ) &&
 			( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&

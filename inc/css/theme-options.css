@@ -29,6 +29,14 @@ label.description{
 	float: left;
 	margin: 0 30px 20px 2px;
 }
+span.unit{
+	background: #eee;
+	border: 1px solid #dfdfdf;
+	display: inline !important;
+	margin-left: -3px;
+	padding: 3px;
+	border-radius: 3px;
+}
 .image-radio-option span{
 	display: block;
 	width: 136px;

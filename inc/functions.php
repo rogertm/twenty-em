@@ -660,66 +660,9 @@ function t_em_img_caption_shortcode($attr, $content = null) {
  ****************************************************/
 
 /**
- * Get the theme width set in theme options
- */
-function t_em_theme_layout_width(){
-	$options = t_em_get_theme_options();
-	if ( !array_key_exists( 'layout-width', $options ) || $options['layout-width'] == '' ) :
-		$layout_width = '100%';
-	else :
-		$layout_width = $options['layout-width'];
-	endif;
-	echo '
-	<style type="text/css">
-	#access .menu-header, div.menu, #colophon, #branding, #main, #wrapper{ max-width: '.$layout_width.' !important;}
-	</style>';
-}
-
-/**
- * Styles the Golden Grid System to take the site width from theme options
- */
-function t_em_ggs_style(){
-	$options = t_em_get_theme_options();
-	if ( !array_key_exists( 'layout-width', $options ) || $options['layout-width'] == '' ) :
-		$layout_width = '100%';
-	else :
-		$layout_width = $options['layout-width'];
-	endif;
-	echo '
-<style type="text/css">
-	.ggs-hidden .ggs-wrapper,
-	.ggs-hidden .ggs{
-		display: none;
-	}
-	.ggs-wrapper{
-		top: 0pt;
-		bottom: 0pt;
-		height: 100%;
-		position: fixed;
-		right: 0pt;
-		left: 0pt;
-		margin: 0pt auto;
-		max-width: '.$layout_width.';
-		overflow: hidden;
-	}
-	.ggs{
-		height: 100%;
-		top: 0pt;
-		bottom: 0pt;
-		margin: 0pt auto;
-		left: -5.55556%;
-		right: -5.55556%;
-		position: absolute;
-		max-width: 110%;
-		overflow: hidden;
-	}
-</style>'."\n";
-}
-
-/**
  * Display featured image post thumbnail
  */
-function t_em_featured_post_thumbnail( $height = 250, $width = 250, $class = 'featured-image', $link = true ){
+function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
 	global $post;
 	if ( has_post_thumbnail( $post->ID ) ) :
 		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
