@@ -6,6 +6,11 @@
  * @subpackage Twenty_Em
  * @since Twenty Ten 1.0
  */
+
+$options = t_em_get_theme_options();
+$layout_set = $options['layout-set'];
+
+if ( 'content' != $layout_set ) :
 ?>
 
 		<div id="primary" class="widget-area" role="complementary">
@@ -54,3 +59,5 @@
 		</div><!-- #secondary .widget-area -->
 
 <?php endif; ?>
+
+<?php endif; // If there is sidebar or not! ?>

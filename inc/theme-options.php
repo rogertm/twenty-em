@@ -339,8 +339,8 @@ function t_em_layout_options(){
 			'label' => __( 'Content on left', 't_em' ),
 			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/sidebar-left.png',
 		),
-		'one-column' => array(
-			'value' => 'one-column',
+		'content' => array(
+			'value' => 'content',
 			'label' => __( 'One-column, no sidebar', 't_em' ),
 			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/one-column.png',
 		),
@@ -643,7 +643,7 @@ function t_em_theme_options_validate( $input ){
 	endforeach;
 
 	// Validate all select list options
-	$select_options = array ( // No pincha
+	$select_options = array ( // Pincha pero parcialmente, no agrega algunas categorias :8
 		'slider-cat'		=> array (
 			'set'		=> 'slider-category',
 			'callback'	=> $list_categories,
@@ -655,5 +655,61 @@ function t_em_theme_options_validate( $input ){
 	endforeach;
 
 	return $input;
+}
+
+/**
+ * Add Twenty'em layout clases to the array of boddy clases
+ *
+ * @since Twenty'em 1.0
+ */
+add_filter( 'body_class', 't_em_layout_classes' );
+function t_em_layout_classes( $existing_classes ){
+	$options = t_em_get_theme_options();
+	$layout_set = $options['layout-set'];
+
+	if ( in_array( $layout_set, array( 'sidebar-right', 'sidebar-left' ) ) )
+		$classes = array ( 'two-column' );
+	else
+		$classes = array ( 'one-column' );
+
+	if ( 'sidebar-right' == $layout_set )
+		$classes[] = 'sidebar-right';
+	elseif ( 'sidebar-left' == $layout_set )
+		$classes[] = 'sidebar-left';
+	else
+		$classes[] = $layout_set;
+
+	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
+
+	return array_merge( $existing_classes, $classes );
+}
+
+/**
+ * Add Twenty'em archive classes to the array of posts classes
+ *
+ * @since Twenty'em 1.0
+ */
+add_filter( 'post_class', 't_em_archive_classes' );
+function t_em_archive_classes( $existing_classes ){
+	$options = t_em_get_theme_options();
+	$archive_set = $options['archive-set'];
+	$excerpt_set = $options['excerpt-set'];
+
+	if ( 'the-excerpt' == $archive_set ) :
+		if ( 'thumbnail-left' == $excerpt_set ) :
+			$classes[] = 'thumbnail-left';
+		elseif ( 'thumbnail-right' == $excerpt_set ) :
+			$classes[] = 'thumbnail-right';
+		else :
+			$classes[] = 'thumbnail-center';
+		endif;
+		$classes[] = 'excerpt-post';
+	else :
+		$classes[] = 'full-post';
+	endif;
+
+	$classes = apply_filters( 't_em_archive_classes', $classes, $archive_set );
+
+	return array_merge( $existing_classes, $classes );
 }
 ?>

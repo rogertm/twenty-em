@@ -66,11 +66,31 @@
 					<?php t_em_posted_on(); ?>
 				</p><!-- .entry-meta -->
 			</header>
+<?php
+	$options = t_em_get_theme_options();
+	$archive_set = $options['archive-set'];
 
+	// How big are our thumbnails?
+	$thumb_heigth = ( ( array_key_exists( 'excerpt-thumbnail-height', $options ) && $options['excerpt-thumbnail-height'] != '' ) ? $options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
+	$thumb_width = ( ( array_key_exists( 'excerpt-thumbnail-width', $options ) && $options['excerpt-thumbnail-width'] != '' ) ? $options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
+
+	if ( 'the-excerpt' == $archive_set ) :
+?>
+			<div class="entry-summary">
+				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
+				<?php the_excerpt(); ?>
+			</div><!-- .entry-summary -->
+<?php
+	else :
+?>
 			<div class="entry-content">
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
+<?php
+	endif;
+?>
+
 
 			<footer class="entry-utility">
 				<?php if ( count( get_the_category() ) ) : ?>
