@@ -387,6 +387,31 @@ function t_em_socialnetwork_options(){
 			'name' => 'googlepluss-set',
 			'label' => __( 'Google Pluss URL', 't_em' ),
 		),
+		'delicious-set' => array (
+			'value' => '',
+			'name' => 'delicious-set',
+			'label' => __( 'Delicious URL', 't_em' ),
+		),
+		'linkedin-set' => array (
+			'value' => '',
+			'name' => 'linkedin-set',
+			'label' => __( 'Linked In URL', 't_em' ),
+		),
+		'youtube-set' => array (
+			'value' => '',
+			'name' => 'youtube-set',
+			'label' => __( 'YouTube URL', 't_em' ),
+		),
+		'flickr-set' => array (
+			'value' => '',
+			'name' => 'flickr-set',
+			'label' => __( 'Flickr URL', 't_em' ),
+		),
+		'feedburner-set' => array (
+			'value' => '',
+			'name' => 'feedburner-set',
+			'label' => __( 'Feedburner URL', 't_em' ),
+		),
 		'rss-set' => array (
 			'value' => '',
 			'name' => 'rss-set',
@@ -438,6 +463,11 @@ function t_em_get_default_theme_options(){
 		'twitter-set'				=> '',
 		'facebook-set'				=> '',
 		'googlepluss-set'			=> '',
+		'delicious-set'				=> '',
+		'linkedin-set'				=> '',
+		'youtube-set'				=> '',
+		'flickr-set'				=> '',
+		'feedburner-set'			=> '',
 		'rss-set'					=> '',
 	);
 

@@ -10,7 +10,7 @@
  * @license			license.txt
  * @version			1.0
  * @filesource		wp-content/themes/twenty-em/inc/theme-options-dev.php
- * @link			http://codex.wordpress.org/Administration_Menus
+ * @link			http://codex.wordpress.org/Settings_API
  * @since			Version 1.0
  */
 ?>
@@ -21,7 +21,7 @@
 add_action( 'admin_init', 't_em_register_dev_options_init' );
 function t_em_register_dev_options_init(){
 	// Register setting
-	register_setting( 't_em_dev', 't_em_dev_options'/*, 't_em_dev_options_validate'*/ );
+	register_setting( 't_em_dev', 't_em_dev_options', 't_em_dev_options_validate' );
 
 	// Register setting file group
 	add_settings_section( 'general', '', '__return_false', 'theme-options-dev' );
@@ -147,5 +147,23 @@ function t_em_theme_options_dev(){
 		</form>
 	</div><!-- .wrap -->
 <?php
+}
+
+/**
+ * Sanitize and validate input. Accepts an array, return a sanitized array.
+ */
+function t_em_dev_options_validate( $input ){
+	// All the checkbox are either 0 or 1
+	foreach ( array(
+		'golden-grid-system',
+		'jquery-cycle-lite',
+		'jquery-easing',
+	) as $checkbox ) :
+		if ( !isset( $input[$checkbox] ) )
+			$input[$checkbox] = null;
+		$input[$checkbox] = ( $input[$checkbox] == 1 ? 1 : 0 );
+	endforeach;
+
+	return $input;
 }
 ?>
