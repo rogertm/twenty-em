@@ -138,7 +138,7 @@ function t_em_theme_options_dev(){
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Developers Zone', 't_em' ) ?></h2>
 		<?php settings_errors(); ?>
 
-		<form id="t-em-dev" method="post" action="options.php">
+		<form id="t-em-setting" method="post" action="options.php">
 			<?php
 				settings_fields( 't_em_dev' );
 				do_settings_sections( 'theme-options-dev' );

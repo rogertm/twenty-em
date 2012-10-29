@@ -57,7 +57,7 @@ function t_em_theme_options_add_page(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 
-	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.jpg', 61 );
+	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
 
 	add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',		't_em_theme_options_dev' );
 	add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );

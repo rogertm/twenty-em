@@ -13,12 +13,23 @@
  * @since			Version 1.0
  */
 #icon-theme-options{
-	background: url('../images/t-em-options-icon.jpg') no-repeat;
+	background: url('../images/t-em-options-icon.png') no-repeat;
 }
-#t-em-setting tr{
-	border-bottom: solid 1px #ddd;
-	margin-bottom: 55px;
-	overflow: hidden;
+#t-em-setting th,
+#t-em-setting td{
+	display: block;
+	width: 99%;
+}
+#t-em-setting th{
+	font-size: 1.3em;
+	cursor: pointer;
+}
+tr.full-option{
+	border: solid 1px #ddd;
+}
+tr.empty-option{
+	border: 0 !important;
+	height: 15px;
 }
 #framework-options .framework{
 	clear: both;
