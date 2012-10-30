@@ -15,21 +15,39 @@
 #icon-theme-options{
 	background: url('../images/t-em-options-icon.png') no-repeat;
 }
-#t-em-setting th,
-#t-em-setting td{
+.form-table{
+	margin-top: 1.5em;
+	max-width: 1000px;
+	border-collapse: separate;
+}
+.form-table tr{}
+.form-table th,
+.form-table td{
 	display: block;
 	width: 99%;
+	overflow: hidden;
 }
-#t-em-setting th{
-	font-size: 1.3em;
+.form-table td{
+	border-right: solid 1px;
+	border-bottom: solid 1px;
+	border-left: solid 1px;
+	border-color: #ddd;
+	border-radius: 0 0 3px 3px;
+}
+.form-table th{
+	background: #f9f9f9; /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(center top, #f9f9f9, #ececec);
+	background: -o-linear-gradient(top, #f9f9f9, #ececec);
+	background: -webkit-gradient(linear, center top, from(#f9f9f9), to(#ececec)); /* older webkit syntax */
+	background: -webkit-linear-gradient(top, #f9f9f9, #ececec);
+	border:solid 1px #ddd;
+	font-size: 1em;
+	padding: 7px 10px;
 	cursor: pointer;
+	border-radius: 3px;
 }
-tr.full-option{
-	border: solid 1px #ddd;
-}
-tr.empty-option{
-	border: 0 !important;
-	height: 15px;
+.form-table .empty-option{
+	height: .5em;
 }
 #framework-options .framework{
 	clear: both;

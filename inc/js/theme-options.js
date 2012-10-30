@@ -52,11 +52,3 @@ jQuery(document).ready(function($){
 	var full_option = $('.full-option');
 		$(full_option).after('<tr class="empty-option">&nbsp;</tr>');
 });
-
-jQuery(document).ready(function($){
-	setTimeout(function(){
-		$(".updated").fadeOut("slow", function () {
-			$(".updated").remove();
-		});
-	}, 3000);
-});;

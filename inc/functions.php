@@ -631,40 +631,33 @@ function t_em_commentfield() {
 add_filter('comment_form_field_comment', 't_em_commentfield');
 
 /**
- * Customise the Twenty'em theme caption and wp_caption shortcode with HTML5 elements
- * Adds support for figure and figcaptions
- * @since Twenty'em 1.0
- */
-function t_em_img_caption_shortcode($attr, $content = null) {
-	// New-style shortcode with the caption inside the shortcode with the link and image tags.
-	if ( ! isset( $attr['caption'] ) ) {
-		if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-			$content = $matches[1];
-			$attr['caption'] = trim( $matches[2] );
-		}
-	}
-
-	// Allow plugins/themes to override the default caption template.
-	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
-	if ( $output != '' )
-		return $output;
+ * Filter to replace the [caption] shortcode text with HTML5 compliant code
+ *
+ * @return text HTML content describing embedded figure
+ **/
+add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
+function t_em_img_caption_shortcode($val, $attr, $content = null) {
 	extract(shortcode_atts(array(
 		'id'	=> '',
-		'align'	=> 'alignnone',
+		'align'	=> '',
 		'width'	=> '',
 		'caption' => ''
 	), $attr));
-
+	
 	if ( 1 > (int) $width || empty($caption) )
-		return $content;
+		return $val;
 
-	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+	$capid = '';
+	if ( $id ) {
+		$id = esc_attr($id);
+		$capid = 'id="figcaption_'. $id . '" ';
+		$id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
+	}
 
-	return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . (10 + (int) $width) . 'px">'
-	. do_shortcode( $content ) . '<figcaption class="wp-caption-text">' . $caption . '</figcaption></figure>';
+	return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: '
+	. (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption ' . $capid 
+	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
-add_shortcode('wp_caption', 't_em_img_caption_shortcode');
-add_shortcode('caption', 't_em_img_caption_shortcode');
 
 /**
  * Add favicon to our site, admin dashboard included
