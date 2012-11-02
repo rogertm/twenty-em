@@ -17,9 +17,15 @@
 <?php
 /**
  * Register Style Sheet and Javascript to beautify the admin option page
+ * but it is loaded just if we are in the right place.
  */
-add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
-add_action( 'admin_init', 't_em_admin_javascript_script' );
+if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
+									'page=theme-options-dev' ||
+									'page=theme-webmaster-tools' ||
+									'page=theme-update' ) ) :
+	add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
+	add_action( 'admin_init', 't_em_admin_javascript_script' );
+endif;
 function t_em_admin_css_style_stylesheet(){
 	// Check the theme version right from the style sheet
 	$style_data = wp_get_theme();

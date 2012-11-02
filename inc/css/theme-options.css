@@ -15,26 +15,26 @@
 #icon-theme-options{
 	background: url('../images/t-em-options-icon.png') no-repeat;
 }
-.form-table{
+#t-em-setting .form-table{
 	margin-top: 1.5em;
 	max-width: 1000px;
 	border-collapse: separate;
 }
-.form-table tr{}
-.form-table th,
-.form-table td{
+#t-em-setting tr{}
+#t-em-setting th,
+#t-em-setting td{
 	display: block;
 	width: 99%;
 	overflow: hidden;
 }
-.form-table td{
+#t-em-setting td{
 	border-right: solid 1px;
 	border-bottom: solid 1px;
 	border-left: solid 1px;
 	border-color: #ddd;
 	border-radius: 0 0 3px 3px;
 }
-.form-table th{
+#t-em-setting th{
 	background: #f9f9f9; /* Show a solid color for older browsers */
 	background: -moz-linear-gradient(center top, #f9f9f9, #ececec);
 	background: -o-linear-gradient(top, #f9f9f9, #ececec);
@@ -46,19 +46,19 @@
 	cursor: pointer;
 	border-radius: 3px;
 }
-.form-table .empty-option{
+#t-em-setting .empty-option{
 	height: .5em;
 }
 #framework-options .framework{
 	clear: both;
 	display: block;
 }
-label.description{
+#t-em-setting label.description{
 	display: block;
 	float: left;
 	margin: 0 30px 20px 2px;
 }
-span.unit{
+#t-em-setting span.unit{
 	background: #eee;
 	border: 1px solid #dfdfdf;
 	display: inline !important;
@@ -66,27 +66,27 @@ span.unit{
 	padding: 3px;
 	border-radius: 3px;
 }
-.image-radio-option span{
+#t-em-setting .image-radio-option span{
 	display: block;
 	width: 136px;
 }
-.text-option span{
+#t-em-setting .text-option span{
 	display: block;
 }
-.sub-layout{
+#t-em-setting .sub-layout{
 	float: left;
 	width: 100%;
 }
-.sub-extend{
+#t-em-setting .sub-extend{
 	clear: both;
 }
-.text-option.thumbnail{
+#t-em-setting .text-option.thumbnail{
 	display: inline-block;
 	margin-right: 15px;
 }
-.selected-option{
+#t-em-setting .selected-option{
 	display: block !important;
 }
-figure{
+#t-em-setting figure{
 	margin: 0;
 }
