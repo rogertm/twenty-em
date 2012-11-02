@@ -77,6 +77,7 @@ function t_em_theme_options_add_page(){
 require( get_template_directory() . '/inc/theme-options-dev.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
 require( get_template_directory() . '/inc/theme-update.php' );
+require( get_template_directory() . '/inc/help.php' );
 
 /**
  * Redirect users to Twenty'em options page after activation
@@ -87,8 +88,9 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 	/**
 	 * Register the default options at first time the theme is loaded
 	 */
-	add_option( 't_em_theme_options', t_em_get_default_theme_options() );
+	add_option( 't_em_theme_options', t_em_default_theme_options() );
 	add_option( 't_em_dev_options', t_em_dev_default_options() );
+	add_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 endif;
 
 /**
@@ -96,42 +98,17 @@ endif;
  */
 $options = t_em_get_theme_options();
 $options_dev = t_em_get_dev_options();
+$options_web_tools = t_em_get_webmaster_tools_options();
+
 if ( $options == '' ) :
-	update_option( 't_em_theme_options', t_em_get_default_theme_options() );
+	update_option( 't_em_theme_options', t_em_default_theme_options() );
 endif;
 if ( $options_dev == '' ) :
 	update_option( 't_em_dev_options', t_em_dev_default_options() );
 endif;
-
-/**
- * Add contextual help to theme options screen
- */
-function t_em_theme_contextual_help(){
-	$theme_data = wp_get_theme();
-	$theme_name = $theme_data->display('Name');
-	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/framework" title="Twenty\'em Framework" target="_blank">Twenty\'em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%s</strong>, provides the following Theme Options:', 't_em' ), $theme_data ) . '</p>'.
-			'<ol>' .
-				'<li>' . __( '<strong>Header Options</strong>: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Archive Options</strong>: Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Layout Options</strong>: Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Social Network Options</strong>: Mauris a diam in eros pretium elementum. Vivamus lacinia nisl non orci. Duis ut dolor. Sed sollicitudin cursus libero.', 't_em' ) . '</li>' .
-			'</ol>' .
-			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
-
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://twenty-em.com/framework" target="_blank">Visit Twenty\'em home page</a>', 't_em' ) . '</p>';
-
-	$screen = get_current_screen();
-
-	$screen->add_help_tab( array(
-		'title' => __( 'Overview', 't_em' ),
-		'id' => 'theme-options-help',
-		'content' => $help,
-		)
-	);
-
-	$screen->set_help_sidebar( $sidebar );
-}
+if ( $options_web_tools == '' ) :
+	update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
+endif;
 
 /**
  * Return an array of header options for Twenty'em
@@ -451,7 +428,7 @@ function t_em_thumbnail_sizes( $contex ){
 /**
  * Return the default options for Twenty'em
  */
-function t_em_get_default_theme_options(){
+function t_em_default_theme_options(){
 	$default_theme_options = array (
 		'header-set'				=> 'no-header-image',
 		'header-featured-image'		=> '1',
@@ -477,14 +454,14 @@ function t_em_get_default_theme_options(){
 		'rss-set'					=> '',
 	);
 
-	return apply_filters( 't_em_get_default_theme_options', $default_theme_options );
+	return apply_filters( 't_em_default_theme_options', $default_theme_options );
 }
 
 /**
  * Return the options array for Twenty'em
  */
 function t_em_get_theme_options(){
-	return get_option( 't_em_theme_options', t_em_get_default_theme_options() );
+	return get_option( 't_em_theme_options', t_em_default_theme_options() );
 }
 
 /**
