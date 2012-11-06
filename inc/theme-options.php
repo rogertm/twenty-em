@@ -560,7 +560,7 @@ function t_em_settings_field_socialnetwork_set(){
 	<div class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="url" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
+			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
 		</label>
 	</div>
 <?php
