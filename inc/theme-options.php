@@ -291,7 +291,7 @@ function t_em_excerpt_callback(){
 
 	$extend_excerpt .= '<div class="sub-extend">';
 	$thumb = t_em_thumbnail_sizes( 'excerpt' );
-	$extend_excerpt .= '<p>'. sprintf( __( 'For thubnail on right or left, set <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default thumbnail sizes (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
+	$extend_excerpt .= '<p>'. sprintf( __( 'Set thumbnail <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default thumbnail sizes (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
 		admin_url( 'options-media.php' ),
 		get_option( 'thumbnail_size_w' ),
 		get_option( 'thumbnail_size_h' ) ) .'</p>';
