@@ -10,3 +10,28 @@
 	margin: 0;
 	width: 100% !important;
 }
+#slider-wrapper li{
+	width: 100% !important;
+}
+.slider-post figcaption{
+	display: none;
+}
+.slider-thumbnail-left .slider-thumbnail{
+	float: left;
+}
+.slider-thumbnail-left .entry-title{
+	float: right;
+}
+.slider-thumbnail-right .slider-thumbnail{
+	float: right;
+}
+.slider-thumbnail-right .entry-title{
+	float: left;
+}
+.slider-thumbnail-full .slider-thumbnail img{
+	display: block;
+	margin: 0 auto;
+}
+.slider-thumbnail-full .entry-title{
+	text-align: center;
+}

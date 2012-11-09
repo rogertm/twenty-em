@@ -24,9 +24,9 @@ query_posts ( $args );
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 			<li>
-				<article id="slider-post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, $options['slider-thumbnail'] . ' slider-thumbnail' ); ?>
-					<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h2>
+				<article id="slider-post-<?php the_ID(); ?>" <?php post_class( $options['slider-thumbnail'] . ' slider-post' ); ?>>
+					<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'slider-thumbnail' ); ?>
+					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title() ?></a></h2>
 				</article>
 			</li>
 	<?php endwhile; ?>
