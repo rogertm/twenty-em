@@ -583,6 +583,37 @@ if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
 	}
 endif; // function t_em_comment_pingback_trackback()
 
+if ( ! function_exists( 't_em_page_navi' ) ) :
+	/**
+	 * Display navigation to next/previous pages when applicable.
+	 *
+	 * NOTE: If the user uses WP-PageNavi plugin, it is loaded, else
+	 * we have the default WordPress pagination links.
+	 *
+	 * WP-PageNavi	http://www.wordpress.org/extend/plugins/wp-pagenavi/
+	 */
+	function t_em_page_navi( $nav_id ){
+		global $wp_query;
+?>
+	<nav id="<?php echo $nav_id ?>" class="navigation">
+<?php
+		if ( ! function_exists( 'wp_pagenavi' ) ) :
+			if ( $wp_query->max_num_pages > 1 ) :
+?>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 't_em' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?></div>
+<?php
+			endif;
+		else :
+			// We load our favorite pagination plugin
+			wp_pagenavi();
+		endif;
+?>
+	</nav>
+<?php
+	}
+endif; // function t_em_page_navi()
+
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
  * @since Twenty'em 1.0
@@ -667,6 +698,7 @@ add_action( 'admin_head', 't_em_favicon' );
 function t_em_favicon(){
 	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />';
 }
+
 
 /****************************************************
  * Here starts functions from theme options setting *

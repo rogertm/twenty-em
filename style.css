@@ -110,13 +110,26 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 	margin: 0 -240px 0 0;
 	width: 100%;
 }
+.sidebar-left #container{
+	float: right;
+	margin: 0 0 0 -240px;
+	width: 100%;
+}
 #content {
-	margin: 0 280px 0 20px;
+	margin: 0 280px 40px 20px;
+}
+.sidebar-left #content{
+	margin: 0 20px 0 280px;
 }
 #primary,
 #secondary {
 	float: right;
 	overflow: hidden;
+	width: 220px;
+}
+.sidebar-left #primary,
+.sidebar-left #secondary{
+	float: left;
 	width: 220px;
 }
 #secondary {
@@ -134,7 +147,7 @@ DESCRIPTION: One centered column with no sidebar
 
 .one-column #content {
 	margin: 0 auto;
-	width: 640px;
+	width: 100%;
 }
 
 /*
@@ -144,7 +157,7 @@ DESCRIPTION: Full width content with no sidebar; used for attachment pages
 
 .single-attachment #content {
 	margin: 0 auto;
-	width: 900px;
+	width: 100%;
 }
 
 
@@ -489,9 +502,6 @@ div.menu li {
 	clear: both;
 	overflow: hidden;
 	padding: 40px 0 0 0;
-}
-#content {
-	margin-bottom: 36px;
 }
 #content,
 #content input,
