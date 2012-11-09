@@ -709,13 +709,13 @@ function t_em_archive_classes( $existing_classes ){
 	$excerpt_set = $options['excerpt-set'];
 
 	if ( 'the-excerpt' == $archive_set ) :
-		if ( 'thumbnail-left' == $excerpt_set ) :
-			$classes[] = 'thumbnail-left';
-		elseif ( 'thumbnail-right' == $excerpt_set ) :
-			$classes[] = 'thumbnail-right';
-		else :
-			$classes[] = 'thumbnail-center';
-		endif;
+		//~ if ( 'thumbnail-left' == $excerpt_set ) :
+			//~ $classes[] = 'thumbnail-left';
+		//~ elseif ( 'thumbnail-right' == $excerpt_set ) :
+			//~ $classes[] = 'thumbnail-right';
+		//~ else :
+			//~ $classes[] = 'thumbnail-center';
+		//~ endif;
 		$classes[] = 'excerpt-post';
 	else :
 		$classes[] = 'full-post';
