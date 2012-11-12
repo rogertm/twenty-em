@@ -57,6 +57,10 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS . '/style-slider.css' );
 		wp_enqueue_style( 'style-slider' );
 
+		/*****************************************/
+		wp_register_style( 'slider-content-width', t_em_slider_content_width() );
+		wp_enqueue_style( 'slider-content-width' );
+
 		// Display JQuery Cycle Lite if is set by the user, otherwise use JQuery Cycle
 		$jquery_cycle_lite = ! empty( $options_dev['jquery-cycle-lite'] );
 		if ( '1' == $jquery_cycle_lite ) :
@@ -147,4 +151,35 @@ function t_em_ggs_style(){
 </style>'."\n";
 }
 
+/**
+ * Set in porcentage (%) the width of the elements
+ * .slider-image and .slider-sumary in to the slider
+ */
+function t_em_slider_content_width(){
+	$options = t_em_get_theme_options();
+	//~ $total_width = $options['layout-width'];
+	$total_width = ( ( array_key_exists( 'layout-width', $options ) && $options['layout-width'] != '' ) ? $options['layout-width'] : '100' );
+	$thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $options ) && $options['slider-thumbnail-width'] != '' ) ? $options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
+
+	$slider_img_w = $total_width / $thumb_width;
+	// Get .slider-image width %
+	$slider_img_p = 100 / $slider_img_w;
+	// Get .slider-sumary width %
+	$slider_sum_p = 100 - $slider_img_p;
+
+	//~ echo $slider_img_p."\n";
+	//~ echo $slider_sum_p."\n";
+	//~ echo $slider_img_p + $slider_sum_p;
+
+
+	echo '
+	<style type="text/css" media="all">
+		#slider-wrapper .slider-image{
+			width: '.$slider_img_p.'% !important;
+		}
+		#slider-wrapper .slider-sumary{
+			width: '.$slider_sum_p.'% !important;
+		}
+	</style>'."\n";
+}
 ?>
