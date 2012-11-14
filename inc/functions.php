@@ -696,7 +696,7 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
 function t_em_favicon(){
-	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />';
+	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />'."\n";
 }
 
 

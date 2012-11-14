@@ -35,6 +35,13 @@ function t_em_register_dev_options_init(){
  */
 function t_em_dev_frameworks_options(){
 	$frameworks_options = array (
+		'less-css'	=> array (
+			'name'			=> 'less-css',
+			'url'			=> 'http://lesscss.org/',
+			'label'			=> __( 'LESS', 't_em' ),
+			'sublabel'		=> __( 'The dynamic stylesheet language.', 't_em' ),
+			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <a href="http://lesscss.org/">LESS dynamic stylesheet language</a>. LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.', 't_em' ), wp_get_theme() ),
+		),
 		'golden-grid-system' => array (
 			'name'			=> 'golden-grid-system',
 			'url'			=> 'http://goldengridsystem.com/',
@@ -66,6 +73,7 @@ function t_em_dev_frameworks_options(){
  */
 function t_em_dev_default_options(){
 	$default_dev_options = array (
+		'less-css'				=> '1',
 		'golden-grid-system'	=> '',
 		'jquery-cycle-lite'		=> '',
 		'jquery-easing'			=> '',
@@ -105,7 +113,7 @@ function t_em_settings_dev_frameworks(){
 	foreach ( t_em_dev_frameworks_options() as $framework ) :
 ?>
 		<div class="layout checbox-option framework">
-			<p><strong><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></strong></p>
+			<h3><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></h3>
 			<p><?php echo $framework['sublabel']; ?></p>
 			<p><?php echo $framework['description']; ?></p>
 			<label class="description">
@@ -155,6 +163,7 @@ function t_em_theme_options_dev(){
 function t_em_dev_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
+		'less-css',
 		'golden-grid-system',
 		'jquery-cycle-lite',
 		'jquery-easing',

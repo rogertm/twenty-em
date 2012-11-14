@@ -36,28 +36,28 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'comment-reply' );
 	endif;
 
+	// Load modernizr javascript library
 	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
 	wp_enqueue_script( 'modernizr' );
 
-
 	// Display Golden Grid Systen if is set by the user
-	$golden_grid_system = ! empty( $options_dev['golden-grid-system'] );
+	$golden_grid_system = $options_dev['golden-grid-system'];
 	if ( '1' == $golden_grid_system ) :
 		wp_register_script( 'golden-grid-system', T_EM_THEME_DIR_JS.'/ggs.js', array(), '1.01', false );
 		wp_enqueue_script( 'golden-grid-system' );
-		wp_register_script( 'scripts', T_EM_THEME_DIR_JS . '/scripts.js', array( 'jquery' ), '1.0', false );
+		wp_register_script( 'script-ggs', T_EM_THEME_DIR_JS . '/script.ggs.js', array( 'jquery' ), '1.0', false );
 		wp_register_style( 'ggs', t_em_ggs_style() );
 		wp_enqueue_style( 'ggs' );
+		wp_enqueue_script( 'script-ggs' );
 	endif;
 
 	// Load JQuery Cycle just if is needed
 	$header_options = $options['header-set'];
-	//~ $jquery_cycle = '';
+
 	if ( 'slider' == $header_options ) :
 		wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS . '/style-slider.css' );
 		wp_enqueue_style( 'style-slider' );
 
-		/*****************************************/
 		wp_register_style( 'slider-content-width', t_em_slider_content_width() );
 		wp_enqueue_style( 'slider-content-width' );
 
@@ -80,10 +80,10 @@ function t_em_enqueue_styles_and_scripts(){
 			wp_enqueue_script( 'jquery-easing' );
 		endif;
 
-		wp_register_script( 'scripts', T_EM_THEME_DIR_JS.'/scripts.js', array( 'jquery', $jquery_cycle, 'jquery-easing' ), '1.0', false );
+		wp_register_script( 'script-jquery-cycle', T_EM_THEME_DIR_JS.'/script.jquery.cycle.js', array( 'jquery', $jquery_cycle ), '1.0', false );
+		wp_enqueue_script( 'script-jquery-cycle' );
 	endif;
 
-	wp_enqueue_script( 'scripts' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 
@@ -93,7 +93,7 @@ add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 function t_em_theme_layout_width(){
 	$options = t_em_get_theme_options();
 	if ( !array_key_exists( 'layout-width', $options ) || $options['layout-width'] == '' || !is_numeric( $options['layout-width'] ) ) :
-		$layout_width = '100%';
+		$layout_width = '960px';
 	else :
 		$layout_width = $options['layout-width'].'px';
 	endif;
@@ -116,7 +116,7 @@ function t_em_theme_layout_width(){
 function t_em_ggs_style(){
 	$options = t_em_get_theme_options();
 	if ( !array_key_exists( 'layout-width', $options ) || $options['layout-width'] == '' || !is_numeric( $options['layout-width'] ) ) :
-		$layout_width = '100%';
+		$layout_width = '960px';
 	else :
 		$layout_width = $options['layout-width'].'px';
 	endif;
@@ -157,8 +157,8 @@ function t_em_ggs_style(){
  */
 function t_em_slider_content_width(){
 	$options = t_em_get_theme_options();
-	//~ $total_width = $options['layout-width'];
-	$total_width = ( ( array_key_exists( 'layout-width', $options ) && $options['layout-width'] != '' ) ? $options['layout-width'] : '100' );
+
+	$total_width = ( ( array_key_exists( 'layout-width', $options ) && $options['layout-width'] != '' ) ? $options['layout-width'] : '960' );
 	$thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $options ) && $options['slider-thumbnail-width'] != '' ) ? $options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
 
 	$slider_img_w = $total_width / $thumb_width;
@@ -167,19 +167,29 @@ function t_em_slider_content_width(){
 	// Get .slider-sumary width %
 	$slider_sum_p = 100 - $slider_img_p;
 
-	//~ echo $slider_img_p."\n";
-	//~ echo $slider_sum_p."\n";
-	//~ echo $slider_img_p + $slider_sum_p;
-
-
 	echo '
-	<style type="text/css" media="all">
-		#slider-wrapper .slider-image{
-			width: '.$slider_img_p.'% !important;
-		}
-		#slider-wrapper .slider-sumary{
-			width: '.$slider_sum_p.'% !important;
-		}
-	</style>'."\n";
+<style type="text/css" media="all">
+	#slider-wrapper .slider-image{
+		width: '.$slider_img_p.'% !important;
+	}
+	#slider-wrapper .slider-sumary{
+		width: '.$slider_sum_p.'% !important;
+	}
+</style>'."\n";
+}
+
+/**
+ * The "rel" element in the string returned by the function wp_enqueue_style()
+ * is just like rel="stylesheet". LESS needs something else like
+ * rel="stylesheet/less", so, we need do it this way. Meanwhile we are searching
+ * how to do it in the right way.
+ */
+add_action( 'wp_head', 't_em_enqueue_less_css' );
+function t_em_enqueue_less_css(){
+	$options_dev = t_em_get_dev_options();
+	if ( '1' == $options_dev['less-css'] ) :
+		echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
+		echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
+	endif;
 }
 ?>

@@ -340,7 +340,7 @@ function t_em_layout_width(){
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
-	$layout_width .= 		'<p>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>100%</strong>', 't_em' ) .'</p>';
+	$layout_width .= 		'<p>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>960px</strong>.', 't_em' ) .'</p>';
 	$layout_width .= 		'<label>';
 	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$options['layout-width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
