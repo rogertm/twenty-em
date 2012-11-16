@@ -19,7 +19,7 @@
  */
 ?>
 
-<?php t_em_page_nav( 'nav-above' ); ?>
+<?php t_em_page_navi( 'nav-above' ); ?>
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>

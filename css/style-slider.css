@@ -55,10 +55,16 @@
 /**
  * Slider lay output thumbnail full
  */
+.slider-thumbnail-full{
+	position: relative;
+}
 .slider-thumbnail-full .slider-image img{
 	display: block;
 	margin: 0 auto;
 }
 .slider-thumbnail-full .slider-sumary{
-	text-align: center;
+	background: #000;
+	bottom: 0;
+	position: absolute;
+	opacity: .5;
 }

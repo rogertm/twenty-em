@@ -61,27 +61,27 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_style( 'slider-content-width', t_em_slider_content_width() );
 		wp_enqueue_style( 'slider-content-width' );
 
-		// Display JQuery Cycle Lite if is set by the user, otherwise use JQuery Cycle
+		// Load JQuery Cycle Lite if is set by the user, otherwise use JQuery Cycle
 		$jquery_cycle_lite = ! empty( $options_dev['jquery-cycle-lite'] );
 		if ( '1' == $jquery_cycle_lite ) :
 			wp_register_script( 'jquery-cycle-lite', T_EM_THEME_DIR_JS.'/jquery.cycle.lite.js', array( 'jquery' ), '1.6', false );
 			wp_enqueue_script( 'jquery-cycle-lite' );
-			$jquery_cycle = 'jquery-cycle-lite';
+			wp_register_script( 'script-jquery-cycle-lite', T_EM_THEME_DIR_JS.'/script.jquery.cycle.lite.js', array( 'jquery', 'jquery-cycle-lite' ), '1.0', false );
+			wp_enqueue_script( 'script-jquery-cycle-lite' );
 		else :
 			wp_register_script( 'jquery-cycle-all', T_EM_THEME_DIR_JS.'/jquery.cycle.all.js', array( 'jquery' ), '2.9999.6', false );
 			wp_enqueue_script( 'jquery-cycle-all' );
-			$jquery_cycle = 'jquery-cycle-all';
+			wp_register_script( 'script-jquery-cycle-all', T_EM_THEME_DIR_JS.'/script.jquery.cycle.all.js', array( 'jquery', 'jquery-cycle-all' ), '1.0', false );
+			wp_enqueue_script( 'script-jquery-cycle-all' );
 		endif;
 
-		// Display JQuery Easing if is set by the user
-		$jquery_easing = ! empty( $options_dev['jquery-easing'] );
-		if ( '1' == $jquery_easing ) :
-			wp_register_script( 'jquery-easing', T_EM_THEME_DIR_JS.'/jquery.easing.1.3.js', array( 'jquery' ), '1.3', false );
-			wp_enqueue_script( 'jquery-easing' );
-		endif;
+	endif;
 
-		wp_register_script( 'script-jquery-cycle', T_EM_THEME_DIR_JS.'/script.jquery.cycle.js', array( 'jquery', $jquery_cycle ), '1.0', false );
-		wp_enqueue_script( 'script-jquery-cycle' );
+	// Load JQuery Easing if is set by the user
+	$jquery_easing = ! empty( $options_dev['jquery-easing'] );
+	if ( '1' == $jquery_easing ) :
+		wp_register_script( 'jquery-easing', T_EM_THEME_DIR_JS.'/jquery.easing.1.3.js', array( 'jquery' ), '1.3', false );
+		wp_enqueue_script( 'jquery-easing' );
 	endif;
 
 }
@@ -162,24 +162,29 @@ function t_em_slider_content_width(){
 	$thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $options ) && $options['slider-thumbnail-width'] != '' ) ? $options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
 
 	$slider_img_w = $total_width / $thumb_width;
-	// Get .slider-image width %
-	$slider_img_p = 100 / $slider_img_w;
-	// Get .slider-sumary width %
-	$slider_sum_p = 100 - $slider_img_p;
+	if ( 'slider-thumbnail-full' != $options['slider-thumbnail'] ) :
+		// Get .slider-image width %
+		$slider_img_p = 100 / $slider_img_w;
+		// Get .slider-sumary width %
+		$slider_sum_p = 100 - $slider_img_p;
+	else :
+		$slider_img_p = 100;
+		$slider_sum_p = 100;
+	endif;
 
 	echo '
 <style type="text/css" media="all">
 	#slider-wrapper .slider-image{
-		width: '.$slider_img_p.'% !important;
+		width: '.$slider_img_p.'%;
 	}
 	#slider-wrapper .slider-sumary{
-		width: '.$slider_sum_p.'% !important;
+		width: '.$slider_sum_p.'%;
 	}
 </style>'."\n";
 }
 
 /**
- * The "rel" element in the string returned by the function wp_enqueue_style()
+ * The "rel" element in the html returned by the function wp_enqueue_style()
  * is just like rel="stylesheet". LESS needs something else like
  * rel="stylesheet/less", so, we need do it this way. Meanwhile we are searching
  * how to do it in the right way.
