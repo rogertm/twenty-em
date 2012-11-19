@@ -66,6 +66,9 @@
 	padding: 3px;
 	border-radius: 3px;
 }
+#t-em-setting .image-radio-option-group{
+	clear: both;
+}
 #t-em-setting .image-radio-option span{
 	display: block;
 	width: 136px;

@@ -182,16 +182,25 @@ function t_em_slider_callback(){
 	$options = t_em_get_theme_options();
 	$extend_slider = '';
 
+	// Show Slider only at home page?
+	$checked = ( array_key_exists( 'slider-home-only', $options ) && $options['slider-home-only'] == '1' ) ? 'checked="checked"' : '';
+	$extend_slider .= '<label class="description">';
+	$extend_slider .= 	__( 'Show Slider only at home page?', 't_em' );
+	$extend_slider .= 	'<input type="checkbox" name="t_em_theme_options[slider-home-only]" value="1" '. $checked .' />';
+	$extend_slider .= '</label>';
+
 	// Display images options
+	$extend_slider .= '<div class="image-radio-option-group">';
 	foreach ( $slider_layout as $slider ) :
-		$selected_option = ( $options['slider-thumbnail'] == $slider['value'] ) ? 'checked="checked"' : '';
+		$checked_option = checked( $options['slider-thumbnail'], $slider['value'], false );
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $selected_option .' />';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
 		$extend_slider .=			'<span><img src="'.$slider['thumbnail'].'" width="136" />'.$slider['label'].'</span>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
 	endforeach;
+	$extend_slider .= '</div>';
 
 	// Define Width and Height of thumbnails
 	$extend_slider .= '<div class="sub-extend">';
@@ -216,7 +225,7 @@ function t_em_slider_callback(){
 	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider-category]">';
 	foreach ( $list_categories as $slider_category ) :
-		$selected_option = ( $options['slider-category'] == $slider_category->term_id ) ? 'selected="selected"' : '';
+		$selected_option = selected( $options['slider-category'], $slider_category->term_id, false );
 		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
 	$extend_slider .= 		'</select>';
@@ -279,15 +288,17 @@ function t_em_excerpt_callback(){
 
 	$extend_excerpt = '';
 	$options = t_em_get_theme_options();
+	$extend_excerpt .= '<div class="image-radio-option-group">';
 	foreach ( $excerpt_options as $excerpt ) :
-		$selected_option = ( $options['excerpt-set'] == $excerpt['value'] ) ? 'checked="checked"' : '';
+		$checked_option = checked( $options['excerpt-set'], $excerpt['value'], false );
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$selected_option.' />';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
 		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" width="136" height="122" alt="" />'.$excerpt['label'].'</span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;
+	$extend_excerpt .= '</div>';
 
 	$extend_excerpt .= '<div class="sub-extend">';
 	$thumb = t_em_thumbnail_sizes( 'excerpt' );
@@ -432,6 +443,7 @@ function t_em_default_theme_options(){
 	$default_theme_options = array (
 		'header-set'				=> 'no-header-image',
 		'header-featured-image'		=> '1',
+		'slider-home-only'			=> '0',
 		'slider-category'			=> get_option( 'default_category' ),
 		'slider-number'				=> '5',
 		'slider-thumbnail'			=> 'slider-thumbnail-left',
@@ -491,7 +503,7 @@ function t_em_settings_field_header_set(){
 			<?php echo $sub_header['extend']; ?>
 		</div>
 <?php
-endif;
+		endif;
 	endforeach;
 ?>
 	</div><!-- #header-options -->
@@ -537,6 +549,9 @@ function t_em_settings_field_archive_set(){
  */
 function t_em_settings_field_layout_set(){
 	$options = t_em_get_theme_options();
+?>
+<div class="image-radio-option-group">
+<?php
 	foreach ( t_em_layout_options() as $layout ) :
 ?>
 	<div class="layout image-radio-option theme-layout">
@@ -547,6 +562,9 @@ function t_em_settings_field_layout_set(){
 	</div>
 <?php
 	endforeach;
+?>
+</div>
+<?php
 	echo t_em_layout_width();
 }
 
@@ -597,6 +615,7 @@ function t_em_theme_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
 		'header-featured-image',
+		'slider-home-only',
 	) as $checkbox ) :
 		if ( !isset( $input[$checkbox] ) )
 			$input[$checkbox] = null;

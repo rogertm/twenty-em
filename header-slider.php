@@ -4,6 +4,8 @@
  */
 $options = t_em_get_theme_options();
 
+if ( ( '1' == $options['slider-home-only'] && is_home() ) || '0' == $options['slider-home-only'] ) :
+
 // How big are our thumbnails?
 $thumb_heigth = ( ( array_key_exists( 'slider-thumbnail-height', $options ) && $options['slider-thumbnail-height'] != '' ) ? $options['slider-thumbnail-height'] : get_option( 'medium_size_h' ) );
 $thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $options ) && $options['slider-thumbnail-width'] != '' ) ? $options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
@@ -52,3 +54,6 @@ query_posts ( $args );
 		</ul><!-- #slider-wrapper -->
 	</div><!-- #slider-content -->
 </section><!-- #slider -->
+<?php
+endif;
+?>
