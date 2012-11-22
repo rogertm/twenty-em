@@ -94,13 +94,24 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 endif;
 
 /**
+ * Return an array of variables we need
+ * to access to the database
+ */
+function t_em_set_globals(){
+	global $theme_options, $dev_options, $web_tools_options;
+	$theme_options		= t_em_get_theme_options();
+	$dev_options		= t_em_get_dev_options();
+	$web_tools_options	= t_em_get_webmaster_tools_options();
+}
+
+/**
  * If options are empties, we load default settings
  */
 $options = t_em_get_theme_options();
 $options_dev = t_em_get_dev_options();
 $options_web_tools = t_em_get_webmaster_tools_options();
 
-if ( $options == '' ) :
+if ( empty( $options ) ) :
 	update_option( 't_em_theme_options', t_em_default_theme_options() );
 endif;
 if ( $options_dev == '' ) :
@@ -143,11 +154,11 @@ function t_em_header_image_callback(){
 	$extend_header = '';
 	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
-		$checked = ( array_key_exists( 'header-featured-image', $options ) && $options['header-featured-image'] == '1' ) ? 'checked="checked"' : '';
+		$checked_option = checked( $options['header-featured-image'], '1', false );
 		$extend_header .= '<figure><img src="'.get_header_image().'" width="500"></figure>';
 		$extend_header .= '<label class="description">';
 		$extend_header .=	 __( 'Display featured image in single posts and pages? ', 't_em' );
-		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header-featured-image]" value="1" '. $checked .' />';
+		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header-featured-image]" value="1" '. $checked_option .' />';
 		$extend_header .= '</label>';
 	else :
 		$extend_header .= '<p>'. __( 'Oops! No image choosen yet', 't_em' ) .'</p>';
@@ -183,10 +194,10 @@ function t_em_slider_callback(){
 	$extend_slider = '';
 
 	// Show Slider only at home page?
-	$checked = ( array_key_exists( 'slider-home-only', $options ) && $options['slider-home-only'] == '1' ) ? 'checked="checked"' : '';
+	$checked_option = checked( $options['slider-home-only'], '1', false );
 	$extend_slider .= '<label class="description">';
 	$extend_slider .= 	__( 'Show Slider only at home page?', 't_em' );
-	$extend_slider .= 	'<input type="checkbox" name="t_em_theme_options[slider-home-only]" value="1" '. $checked .' />';
+	$extend_slider .= 	'<input type="checkbox" name="t_em_theme_options[slider-home-only]" value="1" '. $checked_option .' />';
 	$extend_slider .= '</label>';
 
 	// Display images options

@@ -118,15 +118,8 @@ function t_em_settings_dev_frameworks(){
 			<p><?php echo $framework['description']; ?></p>
 			<label class="description">
 				<span><?php printf( __( 'Enable %s?', 't_em' ), $framework['label'] ); ?></span>
-				<?php
-				if ( $options_dev != '' ) :
-					$checked = ( array_key_exists( $framework['name'], $options_dev ) && $options_dev[$framework['name']] == '1' ) ? 'checked="checked"' : '';
-				else :
-					$checked = '';
-				endif;
-				?>
-				<?php ?>
-				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="1" <?php echo $checked; ?> />
+				<?php $checked_option = checked( $options_dev[$framework['name']], '1', false ); ?>
+				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="1" <?php echo $checked_option; ?> />
 			</label>
 		</div>
 <?php

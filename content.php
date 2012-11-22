@@ -25,8 +25,8 @@
 
 	if ( 'the-excerpt' == $archive_set ) :
 ?>
-			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, $options['excerpt-set'] . ' featured-post-thumbnail', true ); ?>
+			<div class="entry-summary <?php echo $options['excerpt-set']; ?>">
+				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php

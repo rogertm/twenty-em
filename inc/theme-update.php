@@ -20,6 +20,11 @@ function t_em_theme_update(){
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Update', 't_em' ) ?></h2>
+		<pre><?php t_em_set_globals(); ?></pre>
+		<?php
+			global $theme_options;
+			echo $theme_options['slider-thumbnail'];
+		?>
 	</div><!-- .wrap -->
 <?php
 }

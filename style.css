@@ -752,6 +752,19 @@ body.page .edit-link {
 	padding: 0;
 }
 
+/* =Content Layout
+-------------------------------------------------------------- */
+#content .thumbnail-left figure{
+	float: left;
+}
+#content .thumbnail-right figure{
+	float: right;
+}
+#content .thumbnail-center figure{
+	display: table;
+	margin: 0 auto;
+}
+
 
 /* =Asides
 -------------------------------------------------------------- */
