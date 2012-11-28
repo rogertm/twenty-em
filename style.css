@@ -1,12 +1,12 @@
-/*
-Theme Name: Twenty'em
-Theme URI: http://twenty-em.com/
-Description: A HTML5 & CSS3 WordPress framework for themes developers, based on Twenty Ten.
-Author: RogerTM
-Author URI: http://blog.rogertm.com/
-Version: 1.0
-Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
-*/
+/**
+ * Theme Name: Twenty'em
+ * Theme URI: http://twenty-em.com/
+ * Description: A HTML5 & CSS3 WordPress framework for themes developers, based on Twenty Ten.
+ * Author: RogerTM
+ * Author URI: http://blog.rogertm.com/
+ * Version: 1.0
+ * Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+ */
 
 /* Grab the original Twenty'em styles */
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
@@ -241,9 +241,12 @@ div.menu,
 	font-weight: bold;
 	width: 700px;
 }
-#site-generator {
-	float: right;
-	width: 220px;
+#twenty-em-credit{
+	clear: both;
+	text-align: center;
+	padding: 10px 0 0;
+	max-width: 100%;
+	font-style: italic;
 }
 
 
@@ -1243,9 +1246,8 @@ h3#reply-title {
 }
 #colophon {
 	border-top: 4px solid #000;
-	margin-top: -4px;
 	overflow: hidden;
-	padding: 18px 0;
+	padding: 20px 0 10px;
 }
 #site-info {
 	font-weight: bold;
@@ -1253,21 +1255,6 @@ h3#reply-title {
 #site-info a {
 	color: #000;
 	text-decoration: none;
-}
-#site-generator {
-	font-style: italic;
-	position: relative;
-}
-#site-generator a {
-	background: url(images/wordpress.png) center left no-repeat;
-	color: #666;
-	display: inline-block;
-	line-height: 16px;
-	padding-left: 20px;
-	text-decoration: none;
-}
-#site-generator a:hover {
-	text-decoration: underline;
 }
 img#wpstats {
 	display: block;

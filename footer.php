@@ -21,20 +21,13 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-
 			<div id="site-info">
 				<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<?php bloginfo( 'name' ); ?>
 				</a>
 			</div><!-- #site-info -->
 
-			<div id="site-generator">
-				<?php do_action( 't_em_credits' ); ?>
-				<a href="<?php echo esc_url( __('http://wordpress.org/', 't_em') ); ?>"
-						title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
-					<?php printf( __('Proudly powered by %s.', 't_em'), 'WordPress' ); ?>
-				</a>
-			</div><!-- #site-generator -->
+			<?php get_template_part( 'footer', 't-em-link' ); ?>
 
 		</div><!-- #colophon -->
 	</footer><!-- #footer -->

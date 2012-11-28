@@ -27,11 +27,16 @@ jQuery(document).ready(function($){
 	var form_table = $('#t-em-setting'),
 		filters = form_table.find('td');
 		filters.addClass('table-content');
-		$('#t-em-setting tr:eq(0)').addClass('header-option full-option');
-		$('#t-em-setting tr:eq(1)').addClass('archive-option full-option');
-		$('#t-em-setting tr:eq(2)').addClass('layout-option full-option');
-		$('#t-em-setting tr:eq(3)').addClass('slocial-network-option full-option');
+		$('#t-em-setting tr:eq(0)').addClass('general-option full-option');
+		$('#t-em-setting tr:eq(1)').addClass('header-option full-option');
+		$('#t-em-setting tr:eq(2)').addClass('archive-option full-option');
+		$('#t-em-setting tr:eq(3)').addClass('layout-option full-option');
+		$('#t-em-setting tr:eq(4)').addClass('slocial-network-option full-option');
 	filters.hide();
+	$('#t-em-setting .general-option th').click(function(){
+		$(this).toggleClass('selected').next().slideToggle('fast');
+		return false;
+	});
 	$('#t-em-setting .header-option th').click(function(){
 		$(this).toggleClass('selected').next().slideToggle('fast');
 		return false;

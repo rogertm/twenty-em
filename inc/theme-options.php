@@ -52,6 +52,7 @@ function t_em_register_setting_options_init(){
 	add_settings_section( 'general', '', '__return_false', 'theme-options' );
 
 	// Register our individual settings fields
+	add_settings_field( 't_em_general_set',	__( 'General Options', 't_em' ),		't_em_settings_field_general_options_set',	'theme-options',	'general' );
 	add_settings_field( 't_em_header_set',	__( 'Header Options', 't_em' ),			't_em_settings_field_header_set',			'theme-options',	'general' );
 	add_settings_field( 't_em_archive_set',	__( 'Archive Options', 't_em' ),		't_em_settings_field_archive_set',			'theme-options',	'general' );
 	add_settings_field( 't_em_layout_set',	__( 'Layout Options', 't_em' ),			't_em_settings_field_layout_set',			'theme-options',	'general' );
@@ -96,7 +97,7 @@ endif;
 /**
  * Return an array of variables we need
  * to access to the database
- */
+ **********************************************************************************/
 function t_em_set_globals(){
 	global $theme_options, $dev_options, $web_tools_options;
 	$theme_options		= t_em_get_theme_options();
@@ -120,6 +121,24 @@ endif;
 if ( $options_web_tools == '' ) :
 	update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 endif;
+
+/**
+ * Return an array of general options for Twenty'en
+ */
+function t_em_general_options(){
+	$general_options = array (
+		't-em-link'				=> array (
+			'name'			=> 't-em-link',
+			'label'			=> __( 'Show <strong><a href="http://twenty-em.com" target="_blank">Twenty\'em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ),
+		),
+		'single-featured-img'	=> array (
+			'name'			=> 'single-featured-img',
+			'label'			=> __( 'When a single post is displayed, show featured image on top of the post?', 't_em' ),
+		),
+	);
+
+	return apply_filters( 't_em_general_options', $general_options );
+}
 
 /**
  * Return an array of header options for Twenty'em
@@ -452,6 +471,8 @@ function t_em_thumbnail_sizes( $contex ){
  */
 function t_em_default_theme_options(){
 	$default_theme_options = array (
+		't-em-link'					=> '1',
+		'single-featured-img'		=> '1',
 		'header-set'				=> 'no-header-image',
 		'header-featured-image'		=> '1',
 		'slider-home-only'			=> '0',
@@ -485,6 +506,30 @@ function t_em_default_theme_options(){
  */
 function t_em_get_theme_options(){
 	return get_option( 't_em_theme_options', t_em_default_theme_options() );
+}
+
+/**
+ * Render the General Options setting field
+ */
+function t_em_settings_field_general_options_set(){
+	$options = t_em_get_theme_options();
+?>
+	<div id="general-options">
+<?php
+	foreach( t_em_general_options() as $general ) :
+?>
+		<div class="layout checkbox-option general">
+			<label class="description single-option">
+				<span><?php echo $general['label']; ?></span>
+				<?php $checked_option = checked( $options[$general['name']], '1', false ); ?>
+				<input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
+			</label>
+		</div>
+<?php
+	endforeach;
+?>
+	</div><!-- #general-options -->
+<?php
 }
 
 /**
@@ -625,6 +670,8 @@ function t_em_theme_options_validate( $input ){
 	global $excerpt_options, $slider_layout, $list_categories;
 	// All the checkbox are either 0 or 1
 	foreach ( array(
+		't-em-link',
+		'single-featured-img',
 		'header-featured-image',
 		'slider-home-only',
 	) as $checkbox ) :

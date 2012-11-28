@@ -58,6 +58,9 @@
 	float: left;
 	margin: 0 30px 20px 2px;
 }
+#t-em-setting label.single-option{
+	clear: both;
+}
 #t-em-setting span.unit{
 	background: #eee;
 	border: 1px solid #dfdfdf;

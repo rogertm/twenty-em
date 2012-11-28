@@ -20,6 +20,7 @@ get_header(); ?>
 				</nav><!-- #nav-above -->
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<?php t_em_single_post_thumbnail(); ?>
 					<header>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 

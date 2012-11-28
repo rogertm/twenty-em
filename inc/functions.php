@@ -196,6 +196,30 @@ if ( !function_exists( 't_em_setup' ) ) :
 	}
 endif; // function t_em_setup()
 
+/**
+ * Returns theme data
+ */
+function t_em_theme_data(){
+	global $t_em_theme_data;
+	$theme_data = wp_get_theme();
+	$t_em_theme_data = array (
+		'Name'			=> $theme_data->display( 'Name' ),
+		'ThemeURI'		=> esc_url( $theme_data->display( 'ThemeURI' ) ),
+		'Description'	=> $theme_data->display( 'Description' ),
+		'Author'		=> $theme_data->display( 'Author' ),
+		'AuthorURI'		=> esc_url( $theme_data->display( 'AuthorURI' ) ),
+		'Version'		=> $theme_data->display( 'Version' ),
+		'Template'		=> $theme_data->display( 'Template' ),
+		'Status'		=> $theme_data->display( 'Status' ),
+		'Tags'			=> $theme_data->display( 'Tags' ),
+		'TextDomain'	=> $theme_data->display( 'TextDomain' ),
+		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
+	);
+	return $t_em_theme_data;
+
+	//~ return apply_filters( 't_em_theme_data', $t_em_theme_data );
+}
+
 if ( !function_exists( 't_em_header_style' ) ) :
 /**
  * Style the header image and text displayed on the site
@@ -755,6 +779,23 @@ function t_em_header_options_set(){
 		get_template_part( 'header', 'image' );
 	elseif ( 'slider' == $header_options ) :
 		get_template_part( 'header', 'slider' );
+	endif;
+}
+
+/**
+ * Display featured post thumbnail if it is set by the user at theme options
+ */
+function t_em_single_post_thumbnail(){
+	$options = t_em_get_theme_options();
+	$single_featured_img = $options['single-featured-img'];
+	if ( '1' == $single_featured_img && has_post_thumbnail() ) :
+?>
+<figure id="featured-image-<?php the_ID() ?>">
+<?php
+		the_post_thumbnail();
+?>
+</figure>
+<?php
 	endif;
 }
 ?>
