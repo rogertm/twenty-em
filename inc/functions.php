@@ -81,12 +81,14 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support
 		 */
 		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'custom-background' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
 
+		$custom_background = array ( 'default-color' => 'f1f1f1' );
+		add_theme_support( 'custom-background', $custom_background );
+
 		$custom_header_support = array (
-			'default-text-color'		=> '000',
+			'default-text-color'		=> '757575',
 			'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
 			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
 			'flex-height'				=> true,
@@ -220,7 +222,6 @@ function t_em_theme_data(){
 		'TextDomain'	=> $theme_data->display( 'TextDomain' ),
 		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
 	);
-	return $t_em_theme_data;
 }
 
 if ( !function_exists( 't_em_header_style' ) ) :
@@ -253,7 +254,7 @@ function t_em_header_style(){
 ?>
 		#site-title a,
 		#site-description {
-			color: #<?php echo $text_color; ?> !important;
+			color: #<?php echo $text_color; ?>;
 		}
 <?php
 	endif;

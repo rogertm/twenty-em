@@ -1,19 +1,51 @@
-@base: #f00;
+/**
+ * Twenty'em LESS CSS
+ */
 
-#site-title a{
-	color: @base !important;
-}
+/* Define theme colors */
+@light-blue:	#21759b;
+@light-red:		#d54e21;
+@light-gray:	#757575;
+@dark-gray:		#515151;
 
-.box-shadow(@style, @c) when (iscolor(@c)) {
-  box-shadow:         @style @c;
-  -webkit-box-shadow: @style @c;
-  -moz-box-shadow:    @style @c;
+@a_link:	@light-blue;
+@a_visited:	@light-blue;
+@a_hover:	@light-red;
+@a_active:	@light-red;
+
+a{
+	color: @a_link;
 }
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+a:hover{
+	color: @a_hover;
 }
-.box { 
-  color: saturate(@base, 5%);
-  border-color: lighten(@base, 30%);
-  div { .box-shadow(0 0 5px, 30%) }
+#site-title a:hover{
+	color: @dark-gray;
+}
+#nav-menu ul li.current_page_item > a,
+#nav-menu ul li.current-menu-ancestor > a,
+#nav-menu ul li.current-menu-item > a,
+#nav-menu ul li.current-menu-parent > a {
+	color: @a_hover;
+}
+* html #nav-menu ul li.current_page_item a,
+* html #nav-menu ul li.current-menu-ancestor a,
+* html #nav-menu ul li.current-menu-item a,
+* html #nav-menu ul li.current-menu-parent a,
+* html #nav-menu ul li a:hover {
+	color: @a_hover;
+}
+.ie6 nav ul li.current_page_item a,
+.ie6 nav ul li.current-menu-ancestor a,
+.ie6 nav ul li.current-menu-item a,
+.ie6 nav ul li.current-menu-parent a,
+.ie6 nav ul li a:hover {
+	color: @a_hover;
+}
+.entry-meta,
+.entry-utility{
+	color: @light-gray;
+}
+.widget-title{
+	color: @dark-gray;
 }
