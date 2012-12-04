@@ -12,42 +12,138 @@
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
 
 /* A message for users with JavaScript turned off **/
-noscript strong {display: block; font-size: 18px; line-height:1.5em; padding: 5px 0; background-color: #ccc; color: #a00; text-align: center; }
+noscript strong {
+	display: block;
+	font-size: 18px;
+	line-height:1.5em;
+	padding: 5px 0;
+	background-color: #ccc;
+	color: #a00;
+	text-align: center;
+}
 
 /* HTML5 elements need display: block */
-header,nav,section,article,aside,figure,footer { display:block; }
+header,nav,section,article,aside,figure,footer {
+	display:block;
+}
 
 /* Where we're reassigning div's to HTML5 elements we */
 /* need to copy across their CSS styles like so... */
-.header { padding:30px 0 0; }
-footer { margin-bottom:20px; clear:both; width:100%; }
+.header {
+	padding:30px 0 0;
+}
+footer {
+	margin-bottom:20px;
+	clear:both;
+	width:100%;
+}
 
-h2#site-description { font-size: 12px;}
+h2#site-description {
+	font-size: 12px;
+}
 
-#content figure { background:#f1f1f1; line-height:18px; margin-bottom:20px; padding:4px; text-align:center; display: inline-block; max-width: 100%; }
-#content figure img { margin:5px 5px 0; }
-#content figure figcaption { color:#888; font-size:12px; margin:5px; font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif; }
+#content figure {
+	background:#f1f1f1;
+	line-height:18px;
+	margin-bottom:20px;
+	padding:4px;
+	text-align:center;
+	display: inline-block;
+	max-width: 100%;
+}
+#content figure img {
+	margin:5px 5px 0;
+}
+#content figure figcaption {
+	color:#888;
+	font-size:12px;
+	margin:5px;
+	font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
 
-nav .menu-header { font-size:13px; margin-left:12px; width:928px; }
-nav .menu-header ul { list-style:none; margin:0; }
-nav .menu-header li { float:left; position:relative; }
-nav a:visited,nav a:link { color:#aaa; display:block; line-height:38px; padding:0 10px; text-decoration:none; }
-nav ul ul { box-shadow:0 3px 3px rgba(0,0,0,0.2); -moz-box-shadow:0 3px 3px rgba(0,0,0,0.2); -webkit-box-shadow:0 3px 3px rgba(0,0,0,0.2); display:none; position:absolute; top:38px; left:0; float:left; width:180px; z-index:99999; }
-nav ul ul li { min-width:180px; }
-nav ul ul ul { left:100%; top:0; }
-nav ul ul a { background:#333; line-height:1em; padding:10px; width:160px; height:auto; }
-nav li:hover > a,nav ul ul :hover > a { background:#333; color:#fff; }
-nav ul li:hover > ul { display:block; }
-nav ul li.current_page_item > a,nav ul li.current-menu-ancestor > a,nav ul li.current-menu-item > a,nav ul li.current-menu-parent > a { color:#fff; }
+nav .menu-header {
+	font-size:13px;
+	margin-left:12px;
+	width:928px;
+}
+nav .menu-header ul {
+	list-style:none;
+	margin:0;
+}
+nav .menu-header li {
+	float:left;
+	position:relative;
+}
+nav a:visited,
+nav a:link {
+	color:#aaa;
+	display:block;
+	line-height:38px;
+	padding:0 10px;
+	text-decoration:none;
+}
+nav ul ul {
+	box-shadow:0 3px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 3px 3px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0 3px 3px rgba(0,0,0,0.2);
+	display:none;
+	position:absolute;
+	top:38px;
+	left:0;
+	float:left;
+	width:180px;
+	z-index:99999;
+}
+nav ul ul li {
+	min-width:180px;
+}
+nav ul ul ul {
+	left:100%;
+	top:0;
+}
+nav ul ul a {
+	background:#333;
+	line-height:1em;
+	padding:10px;
+	width:160px;
+	height:auto;
+}
+nav li:hover > a,
+nav ul ul :hover > a {
+	background:#333;
+	color:#fff;
+}
+nav ul li:hover > ul {
+	display:block;
+}
+nav ul li.current_page_item > a,
+nav ul li.current-menu-ancestor > a,
+nav ul li.current-menu-item > a,
+nav ul li.current-menu-parent > a {
+	color:#fff;
+}
 
-#content header p.entry-meta { margin-bottom: 0px; }
+#content header p.entry-meta {
+	margin-bottom: 0px;
+}
 
 input[type="email"], 
-input[type="url"] { background: #f9f9f9; border: 1px solid #ccc; box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); padding: 2px; }
+input[type="url"] {
+	background: #f9f9f9;
+	border: 1px solid #ccc;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+	padding: 2px;
+}
 
-
-.ie6 nav ul li.current_page_item a,.ie6 nav ul li.current-menu-ancestor a,.ie6 nav ul li.current-menu-item a,.ie6 nav ul li.current-menu-parent a,.ie6 nav ul li a:hover { color:#fff; }
-
+.ie6 nav ul li.current_page_item a,
+.ie6 nav ul li.current-menu-ancestor a,
+.ie6 nav ul li.current-menu-item a,
+.ie6 nav ul li.current-menu-parent a,
+.ie6 nav ul li a:hover {
+	color:#fff;
+}
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
@@ -152,7 +248,8 @@ DESCRIPTION: One centered column with no sidebar
 
 /*
 LAYOUT: Full width, no sidebar
-DESCRIPTION: Full width content with no sidebar; used for attachment pages
+DESCRIPTION: Full width content with no sidebar;
+	used for attachment pages
 */
 
 .single-attachment #content {
@@ -172,8 +269,8 @@ textarea,
 }
 h3#comments-title,
 h3#reply-title,
-#access .menu,
-#access div.menu ul,
+#nav-menu .menu,
+#nav-menu div.menu ul,
 #cancel-comment-reply-link,
 .form-allowed-tags,
 #site-info,
@@ -210,7 +307,7 @@ code {
 -------------------------------------------------------------- */
 
 /* The main theme structure */
-#access .menu-header,
+#nav-menu .menu-header,
 div.menu,
 #colophon,
 #branding,
@@ -236,10 +333,7 @@ div.menu,
 	margin-right: 0;
 }
 #site-info {
-	float: left;
 	font-size: 14px;
-	font-weight: bold;
-	width: 700px;
 }
 #twenty-em-credit{
 	clear: both;
@@ -391,23 +485,15 @@ a:hover {
 	padding: 30px 0 0 0;
 }
 #site-title {
-	float: left;
 	font-size: 30px;
 	line-height: 36px;
-	margin: 0 0 18px 0;
-	width: 700px;
 }
 #site-title a {
 	color: #000;
-	font-weight: bold;
 	text-decoration: none;
 }
 #site-description {
-	clear: right;
-	float: right;
 	font-style: italic;
-	margin: 14px 0 18px 0;
-	width: 220px;
 }
 #header-image img{
 	width: 100%;
@@ -418,37 +504,37 @@ a:hover {
 /* =Menu
 -------------------------------------------------------------- */
 
-#access {
+/** Navigation Menu */
+#nav-menu {
 	background: #000;
 	display: block;
 	float: left;
 	margin: 0 auto;
 	width: 100%;
 }
-#access .menu-header,
+#nav-menu .menu-header,
 div.menu {
 	font-size: 13px;
 	margin-left: 12px;
-	width: 928px;
 }
-#access .menu-header ul,
+#nav-menu .menu-header ul,
 div.menu ul {
 	list-style: none;
 	margin: 0;
 }
-#access .menu-header li,
+#nav-menu .menu-header li,
 div.menu li {
 	float: left;
 	position: relative;
 }
-#access a {
+#nav-menu a {
 	color: #aaa;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
 	text-decoration: none;
 }
-#access ul ul {
+#nav-menu ul ul {
 	box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
@@ -460,41 +546,56 @@ div.menu li {
 	width: 180px;
 	z-index: 99999;
 }
-#access ul ul li {
+#nav-menu ul ul li {
 	min-width: 180px;
 }
-#access ul ul ul {
+#nav-menu ul ul ul {
 	left: 100%;
 	top: 0;
 }
-#access ul ul a {
+#nav-menu ul ul a {
 	background: #333;
 	line-height: 1em;
 	padding: 10px;
 	width: 160px;
 	height: auto;
 }
-#access li:hover > a,
-#access ul ul :hover > a {
+#nav-menu li:hover > a,
+#nav-menu ul ul :hover > a {
 	background: #333;
 	color: #fff;
 }
-#access ul li:hover > ul {
+#nav-menu ul li:hover > ul {
 	display: block;
 }
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
-#access ul li.current-menu-parent > a {
+#nav-menu ul li.current_page_item > a,
+#nav-menu ul li.current-menu-ancestor > a,
+#nav-menu ul li.current-menu-item > a,
+#nav-menu ul li.current-menu-parent > a {
 	color: #fff;
 }
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
-* html #access ul li a:hover {
+* html #nav-menu ul li.current_page_item a,
+* html #nav-menu ul li.current-menu-ancestor a,
+* html #nav-menu ul li.current-menu-item a,
+* html #nav-menu ul li.current-menu-parent a,
+* html #nav-menu ul li a:hover {
 	color: #fff;
 }
+
+/** Top and Footer Menu */
+#top-menu,
+#footer-menu{
+	float: right;
+}
+#top-menu ul,
+#footer-menu ul{
+	list-style: none;
+}
+#top-menu ul li,
+#footer-menu ul li{
+	display: inline-block;
+}
+
 
 
 /* =Content
@@ -1250,7 +1351,6 @@ h3#reply-title {
 	padding: 20px 0 10px;
 }
 #site-info {
-	font-weight: bold;
 }
 #site-info a {
 	color: #000;
@@ -1271,7 +1371,7 @@ pre {
 code {
 	-webkit-text-size-adjust: 160%;
 }
-#access,
+#nav-menu,
 .entry-meta,
 .entry-utility,
 .navigation,
@@ -1320,7 +1420,7 @@ code {
 	.entry-title {
 		font-size: 21pt;
 	}
-	#access,
+	#nav-menu,
 	#branding img,
 	#respond,
 	.comment-edit-link,

@@ -181,9 +181,9 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 * @link http://codex.wordpress.org/Navigation_Menus
 		 */
 		register_nav_menus(array(
-			'top-menu'		=> __('Top Menu', 't_em'),
-			'header-menu'	=> __('Header Menu', 't_em'),
-			'footer-menu'	=> __('Footer Menu', 't_em')
+			'top-menu'			=> __('Top Menu', 't_em'),
+			'navigation-menu'	=> __('Navigation Menu', 't_em'),
+			'footer-menu'		=> __('Footer Menu', 't_em')
 			)
 		);
 
@@ -192,6 +192,11 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 * @link http://codex.wordpress.org/Function_Reference/add_editor_style
 		 */
 		add_editor_style();
+
+		/**
+		 * Call t_em_theme_data() function from here
+		 */
+		t_em_theme_data();
 
 	}
 endif; // function t_em_setup()
@@ -216,8 +221,6 @@ function t_em_theme_data(){
 		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
 	);
 	return $t_em_theme_data;
-
-	//~ return apply_filters( 't_em_theme_data', $t_em_theme_data );
 }
 
 if ( !function_exists( 't_em_header_style' ) ) :

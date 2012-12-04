@@ -6,7 +6,6 @@ $options = t_em_get_theme_options();
 $t_em_link = $options['t-em-link'];
 
 if ( '1' == $t_em_link ) :
-	t_em_theme_data();
 	global $t_em_theme_data;
 ?>
 	<div id="twenty-em-credit">

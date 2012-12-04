@@ -21,6 +21,13 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
+			<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
+			<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+			<nav id="footer-menu">
+				<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
+			</nav>
+			<?php endif; ?>
+
 			<div id="site-info">
 				<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<?php bloginfo( 'name' ); ?>
