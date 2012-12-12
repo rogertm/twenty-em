@@ -62,6 +62,8 @@ get_header(); ?>
 					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
 				</nav><!-- #nav-below -->
 
+				<?php echo t_em_single_related_posts() ?>
+
 				<?php comments_template( '', true ); ?>
 
 <?php endwhile; // end of the loop. ?>

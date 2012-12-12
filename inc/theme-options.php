@@ -135,6 +135,10 @@ function t_em_general_options(){
 			'name'			=> 'single-featured-img',
 			'label'			=> __( 'When a single post is displayed, show featured image on top of the post?', 't_em' ),
 		),
+		'single-related-posts'	=> array (
+			'name'			=> 'single-related-posts',
+			'label'			=> __( 'When a single post is displayed, show related posts?', 't_em' ),
+		),
 	);
 
 	return apply_filters( 't_em_general_options', $general_options );
@@ -473,6 +477,7 @@ function t_em_default_theme_options(){
 	$default_theme_options = array (
 		't-em-link'					=> '1',
 		'single-featured-img'		=> '1',
+		'single-related-posts'		=> '1',
 		'header-set'				=> 'no-header-image',
 		'header-featured-image'		=> '1',
 		'slider-home-only'			=> '0',
@@ -672,6 +677,7 @@ function t_em_theme_options_validate( $input ){
 	foreach ( array(
 		't-em-link',
 		'single-featured-img',
+		'single-related-posts',
 		'header-featured-image',
 		'slider-home-only',
 	) as $checkbox ) :

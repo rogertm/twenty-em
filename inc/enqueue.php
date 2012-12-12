@@ -37,8 +37,11 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Load modernizr javascript library
-	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
-	wp_enqueue_script( 'modernizr' );
+	$modernizr = $options_dev['modernizr'];
+	if ( '1' == $modernizr ) :
+		wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
+		wp_enqueue_script( 'modernizr' );
+	endif;
 
 	// Display Golden Grid Systen if is set by the user
 	$golden_grid_system = $options_dev['golden-grid-system'];

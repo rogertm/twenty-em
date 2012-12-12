@@ -27,7 +27,7 @@ function t_em_register_dev_options_init(){
 	add_settings_section( 'general', '', '__return_false', 'theme-options-dev' );
 
 	// Register individual settings fields
-	add_settings_field( 't_em_dev_frameworks',	__( 'Javascript and CSS Frameworks', 't_em' ),	't_em_settings_dev_frameworks',	'theme-options-dev',	'general' );
+	add_settings_field( 't_em_dev_frameworks',	__( 'Javascript and CSS Frameworks or Tools', 't_em' ),	't_em_settings_dev_frameworks',	'theme-options-dev',	'general' );
 }
 
 /**
@@ -35,12 +35,19 @@ function t_em_register_dev_options_init(){
  */
 function t_em_dev_frameworks_options(){
 	$frameworks_options = array (
-		'less-css'	=> array (
+		'less-css'			=> array (
 			'name'			=> 'less-css',
 			'url'			=> 'http://lesscss.org/',
 			'label'			=> __( 'LESS', 't_em' ),
 			'sublabel'		=> __( 'The dynamic stylesheet language.', 't_em' ),
 			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <a href="http://lesscss.org/">LESS dynamic stylesheet language</a>. LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.', 't_em' ), wp_get_theme() ),
+		),
+		'modernizr'			=> array (
+			'name'			=> 'modernizr',
+			'url'			=> 'http://www.modernizr.com/',
+			'label'			=> __( 'Modernizr', 't_em' ),
+			'sublabel'		=> __( '', 't_em' ),
+			'description'	=> __( 'Modernizr is a small JavaScript library that detects the availability of native implementations for next-generation web technologies, i.e. features that stem from the HTML5 and CSS3 specifications', 't_em' ),
 		),
 		'golden-grid-system' => array (
 			'name'			=> 'golden-grid-system',
@@ -74,6 +81,7 @@ function t_em_dev_frameworks_options(){
 function t_em_dev_default_options(){
 	$default_dev_options = array (
 		'less-css'				=> '1',
+		'modernizr'				=> '1',
 		'golden-grid-system'	=> '',
 		'jquery-cycle-lite'		=> '',
 		'jquery-easing'			=> '',
@@ -108,7 +116,7 @@ function t_em_settings_dev_frameworks(){
 		$all_frameworks = __( 'a few', 't_em' );
 	endif;
 ?>
-		<p><?php printf( __( '<strong>%1$s</strong> provides %2$s Javascript and CSS Framework to make your work easier.', 't_em' ), $theme_name, $all_frameworks ) ?></p>
+		<p><?php printf( __( '<strong>%1$s</strong> provides %2$s Javascript and CSS Frameworks or Tools to make your work easier.', 't_em' ), $theme_name, $all_frameworks ) ?></p>
 <?php
 	foreach ( t_em_dev_frameworks_options() as $framework ) :
 ?>
@@ -157,6 +165,7 @@ function t_em_dev_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
 		'less-css',
+		'modernizr',
 		'golden-grid-system',
 		'jquery-cycle-lite',
 		'jquery-easing',
