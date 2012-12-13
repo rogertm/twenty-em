@@ -2,8 +2,8 @@
 /**
  * Display Twenty'em.com link at bottom of the page
  */
-$options = t_em_get_theme_options();
-$t_em_link = $options['t-em-link'];
+global $t_em_theme_options;
+$t_em_link = $t_em_theme_options['t-em-link'];
 
 if ( '1' == $t_em_link ) :
 	global $t_em_theme_data;

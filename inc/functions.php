@@ -200,6 +200,8 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 */
 		t_em_theme_data();
 
+		t_em_set_globals();
+
 	}
 endif; // function t_em_setup()
 
@@ -757,7 +759,7 @@ if ( $link ) :
 <?php
 endif;
 ?>
-	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>">
+	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width: <?php echo $width; ?>px">
 		<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
 		<figcaption><?php the_title(); ?></figcaption>
 	</figure>
@@ -790,8 +792,8 @@ function t_em_header_options_set(){
  * Display featured post thumbnail if it is set by the user at theme options
  */
 function t_em_single_post_thumbnail(){
-	$options = t_em_get_theme_options();
-	$single_featured_img = $options['single-featured-img'];
+	global $t_em_theme_options;
+	$single_featured_img = $t_em_theme_options['single-featured-img'];
 	if ( '1' == $single_featured_img && has_post_thumbnail() ) :
 ?>
 <figure id="featured-image-<?php the_ID() ?>">

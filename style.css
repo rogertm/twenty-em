@@ -217,30 +217,22 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 
 #container {
 	float: left;
-	margin: 0 -240px 0 0;
-	width: 100%;
+	width: 75%;
 }
 .sidebar-left #container{
 	float: right;
-	margin: 0 0 0 -240px;
-	width: 100%;
-}
-#content {
-	margin: 0 280px 40px 0;
-}
-.sidebar-left #content{
-	margin: 0 20px 0 280px;
+	width: 75%;
 }
 #primary,
 #secondary {
 	float: right;
 	overflow: hidden;
-	width: 220px;
+	width: 25%;
 }
 .sidebar-left #primary,
 .sidebar-left #secondary{
 	float: left;
-	width: 220px;
+	width: 25%;
 }
 #secondary {
 	clear: right;
@@ -255,7 +247,7 @@ LAYOUT: One column, no sidebar
 DESCRIPTION: One centered column with no sidebar
 */
 
-.one-column #content {
+.one-column #container {
 	margin: 0 auto;
 	width: 100%;
 }
@@ -933,7 +925,7 @@ body.page .edit-link {
 	float: right;
 }
 #content .thumbnail-center figure{
-	display: table;
+	display: block;
 	margin: 0 auto;
 }
 

@@ -34,13 +34,14 @@ function t_em_register_dev_options_init(){
  * Return an array of frameworks options for Twenty'em
  */
 function t_em_dev_frameworks_options(){
+	global $t_em_theme_data;
 	$frameworks_options = array (
 		'less-css'			=> array (
 			'name'			=> 'less-css',
 			'url'			=> 'http://lesscss.org/',
 			'label'			=> __( 'LESS', 't_em' ),
 			'sublabel'		=> __( 'The dynamic stylesheet language.', 't_em' ),
-			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <a href="http://lesscss.org/">LESS dynamic stylesheet language</a>. LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.', 't_em' ), wp_get_theme() ),
+			'description'	=> sprintf( __( 'By default <strong>%s</strong> uses <a href="http://lesscss.org/">LESS dynamic stylesheet language</a>. LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.', 't_em' ), $t_em_theme_data['Name'] ),
 		),
 		'modernizr'			=> array (
 			'name'			=> 'modernizr',
@@ -48,6 +49,13 @@ function t_em_dev_frameworks_options(){
 			'label'			=> __( 'Modernizr', 't_em' ),
 			'sublabel'		=> __( '', 't_em' ),
 			'description'	=> __( 'Modernizr is a small JavaScript library that detects the availability of native implementations for next-generation web technologies, i.e. features that stem from the HTML5 and CSS3 specifications', 't_em' ),
+		),
+		'html5shiv'			=> array (
+			'name'			=> 'html5shiv',
+			'url'			=> 'http://github.com/aFarkas/html5shiv',
+			'label'			=> __( 'HTML5 Shiv', 't_em' ),
+			'sublabel'		=> __( '', 't_em' ),
+			'description'	=> sprintf( __( 'By default <strong>%s</strong> loads <a href="http://github.com/aFarkas/html5shiv">HTML5 Shiv</a> script to add support for HTML5 elements in older IE versions', 't_em' ), $t_em_theme_data['Name'] ),
 		),
 		'golden-grid-system' => array (
 			'name'			=> 'golden-grid-system',
@@ -82,6 +90,7 @@ function t_em_dev_default_options(){
 	$default_dev_options = array (
 		'less-css'				=> '1',
 		'modernizr'				=> '1',
+		'html5shiv'				=> '1',
 		'golden-grid-system'	=> '',
 		'jquery-cycle-lite'		=> '',
 		'jquery-easing'			=> '',
@@ -166,6 +175,7 @@ function t_em_dev_options_validate( $input ){
 	foreach ( array(
 		'less-css',
 		'modernizr',
+		'html5shiv',
 		'golden-grid-system',
 		'jquery-cycle-lite',
 		'jquery-easing',

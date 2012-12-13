@@ -64,15 +64,17 @@ function t_em_theme_options_add_page(){
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
 
-	$theme_page = add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
+	$theme_page			= add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
 
-	add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',		't_em_theme_options_dev' );
+	$theme_dev_page		= add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',		't_em_theme_options_dev' );
 	add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
 	add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options',	'theme-update',				't_em_theme_update' );
 
 	if ( ! $theme_page ) return;
+	if ( ! $theme_dev_page ) return;
 
-	add_action( "load-$theme_page", 't_em_theme_contextual_help' );
+	add_action( "load-$theme_page", 't_em_theme_options_help' );
+	add_action( "load-$theme_dev_page", 't_em_dev_options_help' );
 }
 
 require( get_template_directory() . '/inc/theme-options-dev.php' );
@@ -99,28 +101,22 @@ endif;
  * to access to the database
  **********************************************************************************/
 function t_em_set_globals(){
-	global $theme_options, $dev_options, $web_tools_options;
-	$theme_options		= t_em_get_theme_options();
-	$dev_options		= t_em_get_dev_options();
-	$web_tools_options	= t_em_get_webmaster_tools_options();
+	global	$t_em_theme_options,
+			$t_em_dev_options,
+			$t_em_webmaster_tools_options;
+
+	$t_em_theme_options				= t_em_get_theme_options();
+	$t_em_dev_options				= t_em_get_dev_options();
+	$t_em_webmaster_tools_options	= t_em_get_webmaster_tools_options();
+
+	// If options are empties, we load default settings.
+	if ( empty( $t_em_theme_options ) )
+		update_option( 't_em_theme_options', t_em_default_theme_options() );
+	if ( empty( $t_em_dev_options ) )
+		update_option( 't_em_dev_options', t_em_dev_default_options() );
+	if ( empty( $t_em_webmaster_tools_options ) )
+		update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 }
-
-/**
- * If options are empties, we load default settings
- */
-$options = t_em_get_theme_options();
-$options_dev = t_em_get_dev_options();
-$options_web_tools = t_em_get_webmaster_tools_options();
-
-if ( empty( $options ) ) :
-	update_option( 't_em_theme_options', t_em_default_theme_options() );
-endif;
-if ( $options_dev == '' ) :
-	update_option( 't_em_dev_options', t_em_dev_default_options() );
-endif;
-if ( $options_web_tools == '' ) :
-	update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
-endif;
 
 /**
  * Return an array of general options for Twenty'en
@@ -173,11 +169,11 @@ function t_em_header_options(){
  * Extend setting for header image option
  */
 function t_em_header_image_callback(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 	$extend_header = '';
 	$extend_header .= '<p>'. sprintf( __( 'To manage your header image options <a href="%1$s" target="_blank">Click here</a>.', 't_em' ), admin_url( 'themes.php?page=custom-header' ) ) .'</p>';
 	if ( get_header_image() ) :
-		$checked_option = checked( $options['header-featured-image'], '1', false );
+		$checked_option = checked( $t_em_theme_options['header-featured-image'], '1', false );
 		$extend_header .= '<figure><img src="'.get_header_image().'" width="500"></figure>';
 		$extend_header .= '<label class="description">';
 		$extend_header .=	 __( 'Display featured image in single posts and pages? ', 't_em' );
@@ -213,11 +209,11 @@ function t_em_slider_callback(){
 		),
 	);
 
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 	$extend_slider = '';
 
 	// Show Slider only at home page?
-	$checked_option = checked( $options['slider-home-only'], '1', false );
+	$checked_option = checked( $t_em_theme_options['slider-home-only'], '1', false );
 	$extend_slider .= '<label class="description">';
 	$extend_slider .= 	__( 'Show Slider only at home page?', 't_em' );
 	$extend_slider .= 	'<input type="checkbox" name="t_em_theme_options[slider-home-only]" value="1" '. $checked_option .' />';
@@ -226,7 +222,7 @@ function t_em_slider_callback(){
 	// Display images options
 	$extend_slider .= '<div class="image-radio-option-group">';
 	foreach ( $slider_layout as $slider ) :
-		$checked_option = checked( $options['slider-thumbnail'], $slider['value'], false );
+		$checked_option = checked( $t_em_theme_options['slider-thumbnail'], $slider['value'], false );
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
 		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
@@ -246,7 +242,7 @@ function t_em_slider_callback(){
 	foreach ( $thumb as $thumbnail ) :
 		$extend_slider .= 		'<div class="layout text-option thumbnail">';
 		$extend_slider .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_slider .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
+		$extend_slider .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em_theme_options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_slider .=			'</label>';
 		$extend_slider .=		'</div>';
 	endforeach;
@@ -259,7 +255,7 @@ function t_em_slider_callback(){
 	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider-category]">';
 	foreach ( $list_categories as $slider_category ) :
-		$selected_option = selected( $options['slider-category'], $slider_category->term_id, false );
+		$selected_option = selected( $t_em_theme_options['slider-category'], $slider_category->term_id, false );
 		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
 	$extend_slider .= 		'</select>';
@@ -270,7 +266,7 @@ function t_em_slider_callback(){
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<p>'. __( 'Introduce the number of slides you want to show', 't_em' ) .'</p>';
-	$extend_slider .= 		'<input type="number"  name="t_em_theme_options[slider-number]" value="'. esc_attr( $options['slider-number'] ) .'" />';
+	$extend_slider .= 		'<input type="number"  name="t_em_theme_options[slider-number]" value="'. esc_attr( $t_em_theme_options['slider-number'] ) .'" />';
 	$extend_slider .=	'</label>';
 	$extend_slider .= '</div>';
 
@@ -301,7 +297,7 @@ function t_em_archive_options(){
  * Extend setting for archive option
  */
 function t_em_excerpt_callback(){
-	global $excerpt_options;
+	global $t_em_theme_options, $excerpt_options;
 	$excerpt_options = array (
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -321,10 +317,9 @@ function t_em_excerpt_callback(){
 	);
 
 	$extend_excerpt = '';
-	$options = t_em_get_theme_options();
 	$extend_excerpt .= '<div class="image-radio-option-group">';
 	foreach ( $excerpt_options as $excerpt ) :
-		$checked_option = checked( $options['excerpt-set'], $excerpt['value'], false );
+		$checked_option = checked( $t_em_theme_options['excerpt-set'], $excerpt['value'], false );
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
@@ -343,7 +338,7 @@ function t_em_excerpt_callback(){
 	foreach ( $thumb as $thumbnail ) :
 		$extend_excerpt .= 		'<div class="layout text-option thumbnail">';
 		$extend_excerpt .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
+		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em_theme_options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_excerpt .=			'</label>';
 		$extend_excerpt .=		'</div>';
 	endforeach;
@@ -381,13 +376,13 @@ function t_em_layout_options(){
  * Set the default theme width
  */
 function t_em_layout_width(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<p>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>960px</strong>.', 't_em' ) .'</p>';
 	$layout_width .= 		'<label>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$options['layout-width'].'" /><span class="unit">px</span>';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$t_em_theme_options['layout-width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
@@ -517,7 +512,7 @@ function t_em_get_theme_options(){
  * Render the General Options setting field
  */
 function t_em_settings_field_general_options_set(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 ?>
 	<div id="general-options">
 <?php
@@ -526,7 +521,7 @@ function t_em_settings_field_general_options_set(){
 		<div class="layout checkbox-option general">
 			<label class="description single-option">
 				<span><?php echo $general['label']; ?></span>
-				<?php $checked_option = checked( $options[$general['name']], '1', false ); ?>
+				<?php $checked_option = checked( $t_em_theme_options[$general['name']], '1', false ); ?>
 				<input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
 			</label>
 		</div>
@@ -541,7 +536,7 @@ function t_em_settings_field_general_options_set(){
  * Render the Header setting field
  */
 function t_em_settings_field_header_set(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 ?>
 	<div id="header-options">
 <?php
@@ -549,7 +544,7 @@ function t_em_settings_field_header_set(){
 ?>
 		<div class="layout radio-option header">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[header-set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $options['header-set'], $header['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[header-set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $t_em_theme_options['header-set'], $header['value'] ); ?> />
 				<span><?php echo $header['label']; ?></span>
 			</label>
 		</div>
@@ -558,7 +553,7 @@ function t_em_settings_field_header_set(){
 
 	foreach ( t_em_header_options() as $sub_header ) :
 		if ( $sub_header['extend'] != '' ) :
-			$selected_option = ( $options['header-set'] == $sub_header['value'] ) ? 'selected-option' : '';
+			$selected_option = ( $t_em_theme_options['header-set'] == $sub_header['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_header['extend']; ?>
@@ -575,7 +570,7 @@ function t_em_settings_field_header_set(){
  * Render the Archive setting field
  */
 function t_em_settings_field_archive_set(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 ?>
 	<div id="archive-options">
 <?php
@@ -583,7 +578,7 @@ function t_em_settings_field_archive_set(){
 ?>
 		<div class="layout radio-option archive">
 			<label class="description">
-				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $options['archive-set'], $archive['value'] ); ?> />
+				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em_theme_options['archive-set'], $archive['value'] ); ?> />
 				<span><?php echo $archive['label']; ?></span>
 			</label>
 		</div>
@@ -592,7 +587,7 @@ function t_em_settings_field_archive_set(){
 
 	foreach ( t_em_archive_options() as $sub_archive ) :
 		if ( $sub_archive['extend'] != '' ) :
-		$selected_option = ( $options['archive-set'] == $sub_archive['value'] ) ? 'selected-option' : '';
+		$selected_option = ( $t_em_theme_options['archive-set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_archive['extend']; ?>
@@ -609,7 +604,7 @@ function t_em_settings_field_archive_set(){
  * Render the Layout setting field
  */
 function t_em_settings_field_layout_set(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 ?>
 <div class="image-radio-option-group">
 <?php
@@ -617,7 +612,7 @@ function t_em_settings_field_layout_set(){
 ?>
 	<div class="layout image-radio-option theme-layout">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $options['layout-set'], $layout['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout-set'], $layout['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" width="136" height="122" alt="" /><?php echo $layout['label']; ?></span>
 		</label>
 	</div>
@@ -633,13 +628,13 @@ function t_em_settings_field_layout_set(){
  * Render the Socialnetwork setting field
  */
 function t_em_settings_field_socialnetwork_set(){
-	$options = t_em_get_theme_options();
+	global $t_em_theme_options;
 	foreach ( t_em_socialnetwork_options() as $social ) :
 ?>
 	<div class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $options[$social['name']] ); ?>" />
+			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em_theme_options[$social['name']] ); ?>" />
 		</label>
 	</div>
 <?php
@@ -760,8 +755,8 @@ function t_em_theme_options_validate( $input ){
  */
 add_filter( 'body_class', 't_em_layout_classes' );
 function t_em_layout_classes( $existing_classes ){
-	$options = t_em_get_theme_options();
-	$layout_set = $options['layout-set'];
+	global $t_em_theme_options;
+	$layout_set = $t_em_theme_options['layout-set'];
 
 	if ( in_array( $layout_set, array( 'sidebar-right', 'sidebar-left' ) ) )
 		$classes = array ( 'two-column' );
@@ -787,9 +782,9 @@ function t_em_layout_classes( $existing_classes ){
  */
 add_filter( 'post_class', 't_em_archive_classes' );
 function t_em_archive_classes( $existing_classes ){
-	$options = t_em_get_theme_options();
-	$archive_set = $options['archive-set'];
-	$excerpt_set = $options['excerpt-set'];
+	global $t_em_theme_options;
+	$archive_set = $t_em_theme_options['archive-set'];
+	$excerpt_set = $t_em_theme_options['excerpt-set'];
 
 	if ( 'the-excerpt' == $archive_set ) :
 		//~ if ( 'thumbnail-left' == $excerpt_set ) :
