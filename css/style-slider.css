@@ -35,7 +35,7 @@
 }
 .slider-thumbnail-left .slider-sumary .entry-title,
 .slider-thumbnail-left .slider-sumary p{
-	margin: 0 0 0 20px;
+	margin: 0 0 0 40px;
 }
 
 /**
@@ -43,13 +43,15 @@
  */
 .slider-thumbnail-right .slider-image{
 	float: right;
+	margin-right: 20px;
 }
 .slider-thumbnail-right .slider-sumary{
 	float: left;
+	margin-right: -20px;
 }
 .slider-thumbnail-right .slider-sumary .entry-title,
 .slider-thumbnail-right .slider-sumary p{
-	margin: 0 20px 0 0;
+	margin: 0 40px 0 0;
 }
 
 /**

@@ -29,9 +29,6 @@ header,nav,section,article,aside,figure,footer {
 
 /* Where we're reassigning div's to HTML5 elements we */
 /* need to copy across their CSS styles like so... */
-.header {
-	padding:30px 0 0;
-}
 footer {
 	margin-bottom:20px;
 	clear:both;
@@ -318,12 +315,13 @@ div.menu,
 #colophon,
 #branding,
 #main,
-#wrapper {
+#wrap {
 	margin: 0 auto;
 }
-#wrapper {
+#wrap {
 	background: #fff;
-	margin-top: 20px;
+}
+.wrapper{
 	padding: 0 20px;
 }
 
@@ -341,6 +339,7 @@ div.menu,
 }
 #site-info {
 	font-size: 14px;
+	float: left;
 }
 #twenty-em-credit{
 	clear: both;
@@ -492,7 +491,7 @@ a:hover {
 -------------------------------------------------------------- */
 
 #header {
-	padding: 30px 0 0 0;
+	padding: 15px 0 0 0;
 }
 #site-title {
 	font-size: 30px;
@@ -618,6 +617,7 @@ div.menu li {
 #top-menu ul,
 #footer-menu ul{
 	list-style: none;
+	margin: 0;
 }
 #top-menu ul li,
 #footer-menu ul li{
@@ -632,7 +632,7 @@ div.menu li {
 #main {
 	clear: both;
 	overflow: hidden;
-	padding: 40px 0 0 0;
+	padding-top: 20px;
 }
 #content,
 #content input,
@@ -1436,7 +1436,8 @@ h3#reply-title {
 #colophon {
 	border-top: 4px solid #000;
 	overflow: hidden;
-	padding: 20px 0 10px;
+	padding-top: 20px;
+	padding-bottom: 10px;
 }
 #site-info {
 }
@@ -1452,35 +1453,14 @@ img#wpstats {
 }
 
 
-/* =Mobile Safari ( iPad, iPhone and iPod Touch )
--------------------------------------------------------------- */
-
-pre {
-	-webkit-text-size-adjust: 140%;
-}
-code {
-	-webkit-text-size-adjust: 160%;
-}
-#nav-menu,
-.entry-meta,
-.entry-utility,
-.navigation,
-.widget-area {
-	-webkit-text-size-adjust: 120%;
-}
-#site-description {
-	-webkit-text-size-adjust: none;
-}
-
-
 /* =Print Style
--------------------------------------------------------------- ******/
+-------------------------------------------------------------- */
 
 @media print {
 	body {
 		background: none !important;
 	}
-	#wrapper {
+	#wrap {
 		clear: both !important;
 		display: block !important;
 		float: none !important;
@@ -1558,4 +1538,58 @@ code {
 	.home .sticky {
 		border: none;
 	}
+}
+
+/* =Media queries
+-------------------------------------------------------------- */
+
+/* Maximum width of 600 pixels. */
+@media screen and (max-width: 600px){
+	#container,
+	#primary,
+	#secondary,
+	.sidebar-left #container,
+	.sidebar-left #primary,
+	.sidebar-left #secondary{
+		clear: both;
+		width: 100%
+	}
+	#content figure{
+		padding: 5px 0;
+		max-width: 100%;
+	}
+	#content figure img{
+		margin: 0;
+		max-width: 98%;
+	}
+	#content figure figcaption{
+		margin: 0;
+	}
+	#masthead #top-menu,
+	#masthead hgroup,
+	#colophon{
+		text-align: center;
+	}
+	#top-menu,
+	#site-info,
+	#footer-menu{
+		clear: both;
+		float: none;
+		padding: 10px 0;
+	}
+	#slider-wrapper{
+		overflow: hidden;
+	}
+	#slider-wrapper .slider-image,
+	#slider-wrapper .slider-sumary{
+		width: 50%;
+	}
+	#slider-wrapper .slider-image figure,
+	#slider-wrapper .slider-image img{
+		width: 100% !important;
+	}
+}
+/* Maximum width of 480 pixels. */
+@media screen and (max-width: 480px){
+
 }

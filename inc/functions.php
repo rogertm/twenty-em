@@ -738,7 +738,8 @@ function t_em_favicon(){
  * Display featured image post thumbnail
  */
 function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
-	global $post;
+	global	$post,
+			$t_em_theme_options;
 	if ( has_post_thumbnail( $post->ID ) ) :
 		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 		$image_src = $image_url[0];
@@ -758,8 +759,12 @@ if ( $link ) :
 	<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 <?php
 endif;
+
+if ( 'thumbnail-center' == $t_em_theme_options['excerpt-set'] ) :
+	$style_width = 'style="width:'. $width .'px"';
+endif;
 ?>
-	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width: <?php echo $width; ?>px">
+	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" <?php echo $style_width; ?>>
 		<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
 		<figcaption><?php the_title(); ?></figcaption>
 	</figure>

@@ -14,6 +14,10 @@ if ( 'slider-thumbnail-full' == $options['slider-thumbnail'] ) :
 	$thumb_width = $options['layout-width'];
 endif;
 
+if ( 'slider-thumbnail-full' != $options['slider-thumbnail'] ) :
+	$wrapper = 'class="wrapper"';
+endif;
+
 // Take category and number of slides to show from theme options
 $args = array (
 	'post_type'			=> 'post',
@@ -25,7 +29,7 @@ $args = array (
 query_posts ( $args );
 ?>
 <section id="slider">
-	<div id="slider-content">
+	<div id="slider-content" <?php echo $wrapper ?>>
 		<?php
 		/**
 		 * NOTE: This is a bug fixed.

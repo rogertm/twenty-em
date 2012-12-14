@@ -27,17 +27,17 @@
 <noscript><strong>JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...</strong></noscript>
 <![endif]-->
 
-<div id="wrapper" class="hfeed">
-	<header class="header">
+<div id="wrap" class="hfeed">
+	<header id="header">
 		<section id="masthead">
-			<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-			<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-			<nav id="top-menu" role="navigation">
-				<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
-			</nav>
-			<?php endif; ?>
 			
-			<div id="branding" role="banner">
+			<div id="branding" role="banner" class="wrapper">
+				<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
+				<nav id="top-menu" role="navigation">
+					<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
+				</nav>
+				<?php endif; ?>
 				<hgroup>
 					<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 					<<?php echo $heading_tag; ?> id="site-title">
@@ -47,8 +47,8 @@
 					</<?php echo $heading_tag; ?>>
 					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</hgroup>
-				<?php t_em_header_options_set(); ?>
 			</div><!-- #branding -->
+				<?php t_em_header_options_set(); ?>
 
 			<nav id="nav-menu" role="navigation">
 			  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
@@ -59,4 +59,4 @@
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
-	<div id="main">
+	<div id="main" class="wrapper">

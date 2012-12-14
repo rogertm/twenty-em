@@ -102,13 +102,14 @@ function t_em_theme_layout_width(){
 	endif;
 	echo '
 <style type="text/css" media="all">
-	#access .menu-header,
-	div.menu,
+	.menu-header,
+	#wrap,
+	#masthead,
 	#colophon,
 	#branding,
-	#main,
-	#wrapper{
+	#main{
 		max-width: '.$layout_width.' !important;
+		margin: 0 auto;
 	}
 </style>'."\n";
 }
