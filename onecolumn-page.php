@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-		<div id="container" class="one-column">
+		<div id="primary" class="one-column">
 			<div id="content" role="main">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -33,6 +33,6 @@ get_header(); ?>
 <?php endwhile; ?>
 
 			</div><!-- #content -->
-		</div><!-- #container -->
+		</div><!-- #primary -->
 
 <?php get_footer(); ?>

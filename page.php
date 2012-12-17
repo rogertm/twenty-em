@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-		<div id="container">
+		<div id="primary">
 			<div id="content" role="main">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -40,7 +40,7 @@ get_header(); ?>
 <?php endwhile; ?>
 
 			</div><!-- #content -->
-		</div><!-- #container -->
+		</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

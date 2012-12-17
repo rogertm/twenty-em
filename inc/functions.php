@@ -431,22 +431,11 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 function t_em_widgets_init() {
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
-		'name' => __( 'Primary Widget Area', 't_em' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'The primary widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Secondary Widget Area', 't_em' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
+		'name' => __( 'Sidebar Widget Area', 't_em' ),
+		'id' => 'sidebar',
+		'description' => __( 'The sidebar widget area', 't_em' ),
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -456,8 +445,8 @@ function t_em_widgets_init() {
 		'name' => __( 'First Footer Widget Area', 't_em' ),
 		'id' => 'first-footer-widget-area',
 		'description' => __( 'The first footer widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -467,8 +456,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Second Footer Widget Area', 't_em' ),
 		'id' => 'second-footer-widget-area',
 		'description' => __( 'The second footer widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -478,8 +467,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Third Footer Widget Area', 't_em' ),
 		'id' => 'third-footer-widget-area',
 		'description' => __( 'The third footer widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -489,8 +478,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Fourth Footer Widget Area', 't_em' ),
 		'id' => 'fourth-footer-widget-area',
 		'description' => __( 'The fourth footer widget area', 't_em' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );

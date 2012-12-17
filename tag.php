@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<div id="container">
+		<div id="primary">
 			<div id="content" role="main">
                 <header>
     				<h1 class="page-title"><?php
@@ -25,7 +25,7 @@ get_header(); ?>
  get_template_part( 'loop', 'tag' );
 ?>
 			</div><!-- #content -->
-		</div><!-- #container -->
+		</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

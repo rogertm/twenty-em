@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<div id="container">
+		<div id="primary">
 			<div id="content" role="main">
 
 <?php if ( have_posts() ) : ?>
@@ -33,7 +33,7 @@ get_header(); ?>
 				</article><!-- #post-0 -->
 <?php endif; ?>
 			</div><!-- #content -->
-		</div><!-- #container -->
+		</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
