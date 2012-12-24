@@ -393,56 +393,65 @@ function t_em_layout_width(){
 /**
  * Return an array of social network options for Twenty'em
  */
-function t_em_socialnetwork_options(){
+function t_em_social_network_options(){
 	$socialnetwork_options = array (
 		'twitter-set' => array (
 			'value' => '',
 			'name' => 'twitter-set',
 			'label' => __( 'Twitter URL', 't_em' ),
+			'item' => __( 'Twitter', 't_em' ),
 		),
 		'facebook-set' => array (
 			'value' => '',
 			'name' => 'facebook-set',
 			'label' => __( 'Facebook URL', 't_em' ),
+			'item' => __( 'Facebook', 't_em' ),
 		),
 		'googlepluss-set' => array (
 			'value' => '',
 			'name' => 'googlepluss-set',
-			'label' => __( 'Google Pluss URL', 't_em' ),
+			'label' => __( 'Google + URL', 't_em' ),
+			'item' => __( 'Google +', 't_em' ),
 		),
 		'delicious-set' => array (
 			'value' => '',
 			'name' => 'delicious-set',
 			'label' => __( 'Delicious URL', 't_em' ),
+			'item' => __( 'Delicious', 't_em' ),
 		),
 		'linkedin-set' => array (
 			'value' => '',
 			'name' => 'linkedin-set',
 			'label' => __( 'Linked In URL', 't_em' ),
+			'item' => __( 'Linked In', 't_em' ),
 		),
 		'youtube-set' => array (
 			'value' => '',
 			'name' => 'youtube-set',
 			'label' => __( 'YouTube URL', 't_em' ),
+			'item' => __( 'YouTube', 't_em' ),
 		),
 		'flickr-set' => array (
 			'value' => '',
 			'name' => 'flickr-set',
 			'label' => __( 'Flickr URL', 't_em' ),
+			'item' => __( 'Flickr', 't_em' ),
 		),
 		'feedburner-set' => array (
 			'value' => '',
 			'name' => 'feedburner-set',
 			'label' => __( 'Feedburner URL', 't_em' ),
+			'item' => __( 'Feedburner', 't_em' ),
 		),
 		'rss-set' => array (
 			'value' => '',
 			'name' => 'rss-set',
 			'label' => __( 'Feed or RSS URL', 't_em' ),
+			'item' => __( 'Feed / RSS', 't_em' ),
 		),
 	);
 
-	return apply_filters( 't_em_socialnetwork_options', $socialnetwork_options );
+	return apply_filters( 't_em_social_network_options', $socialnetwork_options );
 }
 
 /**
@@ -629,7 +638,7 @@ function t_em_settings_field_layout_set(){
  */
 function t_em_settings_field_socialnetwork_set(){
 	global $t_em_theme_options;
-	foreach ( t_em_socialnetwork_options() as $social ) :
+	foreach ( t_em_social_network_options() as $social ) :
 ?>
 	<div class="layout text-option social">
 		<label>

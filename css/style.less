@@ -3,16 +3,27 @@
  */
 
 /* Define theme colors */
-@light-blue:	#21759b;
-@light-red:		#d54e21;
-@light-gray:	#757575;
-@dark-gray:		#515151;
+@light-blue:		#21759b;
+@light-red:			#d54e21;
+@base-gray:			#f7f7f7; /* Default background theme color */
+@light-gray:		#757575;
+@dark-gray:			#515151;
 
 @a_link:	@light-blue;
 @a_visited:	@light-blue;
 @a_hover:	@light-red;
 @a_active:	@light-red;
 
+/* Define borders radius */
+.border-radius ( @radius: 5px ){
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+
+/* =Links
+-------------------------------------------------------------- */
 a{
 	color: @a_link;
 }
@@ -22,6 +33,10 @@ a:hover{
 #site-title a:hover{
 	color: @dark-gray;
 }
+
+
+/* =Menus
+-------------------------------------------------------------- */
 #nav-menu ul li.current_page_item > a,
 #nav-menu ul li.current-menu-ancestor > a,
 #nav-menu ul li.current-menu-item > a,
@@ -42,10 +57,69 @@ a:hover{
 .ie6 nav ul li a:hover {
 	color: @a_hover;
 }
+#site-navigation ul li.current_page_item > a,
+#site-navigation ul li.current-menu-ancestor > a,
+#site-navigation ul li.current-menu-item > a,
+#site-navigation ul li.current-menu-parent > a {
+	color: @a_hover;
+}
+* html #site-navigation ul li.current_page_item a,
+* html #site-navigation ul li.current-menu-ancestor a,
+* html #site-navigation ul li.current-menu-item a,
+* html #site-navigation ul li.current-menu-parent a,
+* html #site-navigation ul li a:hover {
+	color: @a_hover;
+}
+
+#site-navigation{
+	border-top: solid 1px @base-gray;
+	border-bottom: solid 1px @base-gray;
+}
+
+
+/* =Headers Tags
+-------------------------------------------------------------- */
 .entry-meta,
 .entry-utility{
 	color: @light-gray;
 }
+.page-title,
+.entry-title,
 .widget-title{
 	color: @dark-gray;
+}
+.widget-title{
+	border-bottom: solid 1px darken( @base-gray, 10% );
+	padding: 0 0 15px;
+	font-size: 1.3em;
+}
+
+
+/* =Forms
+-------------------------------------------------------------- */
+#searchform{
+	border: solid 1px lighten( @dark-gray, 50% );
+	.border-radius ( 3px );
+	width: 99%;
+	position: relative;
+}
+#searchform #s{
+	width: 85%;
+	margin: 0;
+	padding: 8px;
+}
+#searchform input.submit{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 10px;
+	top: 6px;
+}
+
+
+/* =Footer
+-------------------------------------------------------------- */
+#footer-widget-area{
+	border-top: solid 1px darken( @base-gray, 10% );
+	border-bottom: solid 1px darken( @base-gray, 10% );
 }

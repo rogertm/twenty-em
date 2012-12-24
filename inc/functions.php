@@ -84,7 +84,7 @@ if ( !function_exists( 't_em_setup' ) ) :
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
 
-		$custom_background = array ( 'default-color' => 'f1f1f1' );
+		$custom_background = array ( 'default-color' => 'f7f7f7' );
 		add_theme_support( 'custom-background', $custom_background );
 
 		$custom_header_support = array (
@@ -445,8 +445,8 @@ function t_em_widgets_init() {
 		'name' => __( 'First Footer Widget Area', 't_em' ),
 		'id' => 'first-footer-widget-area',
 		'description' => __( 'The first footer widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -456,8 +456,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Second Footer Widget Area', 't_em' ),
 		'id' => 'second-footer-widget-area',
 		'description' => __( 'The second footer widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -467,8 +467,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Third Footer Widget Area', 't_em' ),
 		'id' => 'third-footer-widget-area',
 		'description' => __( 'The third footer widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -478,8 +478,8 @@ function t_em_widgets_init() {
 		'name' => __( 'Fourth Footer Widget Area', 't_em' ),
 		'id' => 'fourth-footer-widget-area',
 		'description' => __( 'The fourth footer widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
@@ -748,12 +748,8 @@ if ( $link ) :
 	<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 <?php
 endif;
-
-if ( 'thumbnail-center' == $t_em_theme_options['excerpt-set'] ) :
-	$style_width = 'style="width:'. $width .'px"';
-endif;
 ?>
-	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" <?php echo $style_width; ?>>
+	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
 		<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
 		<figcaption><?php the_title(); ?></figcaption>
 	</figure>
@@ -798,6 +794,30 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
+
+/**
+ * Display user social network
+ */
+function t_em_user_social_network(){
+	global $t_em_theme_options;
+	$user_social_network = t_em_social_network_options();
+?>
+<nav id="social-network-menu">
+	<ul class="menu">
+<?php
+	foreach ( $user_social_network as $social_network ) :
+		if ( $t_em_theme_options[$social_network['name']] != '' ) :
+?>
+		<li id="<?php echo $social_network['name'] ?>" class="menu-item"><a href="<?php echo $t_em_theme_options[$social_network['name']] ?>"><?php echo $social_network['item'] ?></a></li>
+<?php
+		endif;
+	endforeach;
+?>
+	</ul>
+</nav>
+<?php
+}
+
 
 /**
  * Show related posts to the current post at single

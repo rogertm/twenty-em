@@ -36,6 +36,9 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'comment-reply' );
 	endif;
 
+	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array(), '1.0', true );
+	wp_enqueue_script( 'navigation' );
+
 	// Load modernizr javascript library
 	$modernizr = $t_em_dev_options['modernizr'];
 	if ( '1' == $modernizr ) :

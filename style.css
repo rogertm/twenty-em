@@ -47,10 +47,10 @@ h2#site-description {
 	padding:4px;
 	text-align:center;
 	display: inline-block;
-	max-width: 100%;
+	max-width: 98%;
 }
 #content figure img {
-	margin:5px 5px 0;
+	margin: 3px auto;
 }
 #content figure figcaption {
 /*
@@ -317,17 +317,23 @@ div.menu,
 
 /* Structure the footer area */
 #footer-widget-area {
+	padding-top: 20px;
+	padding-bottom: 20px;
 	overflow: hidden;
 }
 #footer-widget-area .widget-area {
 	float: left;
-	margin-right: 20px;
-	width: 220px;
+	width: 22.05%;
+	margin-right: 3.8%;
 }
 #footer-widget-area #fourth {
 	margin-right: 0;
 }
-#site-info {
+#site-info{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#copyright {
 	font-size: 14px;
 	float: left;
 }
@@ -446,12 +452,16 @@ sub {
 }
 input[type="text"],
 textarea {
+/*
 	background: #f9f9f9;
-	border: 1px solid #ccc;
+*/
+	border: none;
+/*
 	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
 	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
 	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
 	padding: 2px;
+*/
 }
 a:link {
 /*
@@ -523,12 +533,13 @@ a:hover {
 
 /** Navigation Menu */
 #site-navigation {
-	border-top: solid 1px #f2f2f2;
-	border-bottom: solid 1px #f2f2f2;
 	display: block;
 	float: left;
 	margin: 0 auto;
 	width: 100%;
+}
+#site-navigation .toggled-on{
+	display: inline-block;
 }
 #site-navigation .menu-header,
 div.menu {
@@ -600,19 +611,25 @@ div.menu li {
 
 /** Top and Footer Menu */
 #top-menu,
-#footer-menu{
+#footer-menu,
+#social-network-menu{
+	clear: right;
 	float: right;
 }
 #top-menu ul,
-#footer-menu ul{
+#footer-menu ul,
+#social-network-menu ul{
 	list-style: none;
 	margin: 0;
 }
 #top-menu ul li,
-#footer-menu ul li{
+#footer-menu ul li,
+#social-network-menu ul li{
 	display: inline-block;
 }
-
+#social-network-menu ul li{
+	padding-bottom: 10px;
+}
 
 
 /* =Content
@@ -622,6 +639,7 @@ div.menu li {
 	clear: both;
 	overflow: hidden;
 	padding-top: 20px;
+	padding-bottom: 20px;
 }
 #content,
 #content input,
@@ -1015,7 +1033,7 @@ body.page .edit-link {
 	max-width: 96%;
 }
 #content .wp-caption img {
-	margin: 5px 5px 0;
+	margin: 3px auto;
 }
 #content .wp-caption p.wp-caption-text {
 /*
@@ -1316,12 +1334,8 @@ h3#reply-title {
 	list-style: none;
 	margin-left: 0;
 }
-.widget-area ul ul {
-	list-style: square;
-	margin-left: 1.3em;
-}
 .widget_search #s {/* This keeps the search inputs in line */
-	width: 60%;
+	width: 85%;
 }
 .widget_search label {
 	display: none;
@@ -1330,10 +1344,11 @@ h3#reply-title {
 	margin: 0 0 18px 0;
 }
 .widget-title {
-/*
-	color: #222;
-*/
 	font-weight: bold;
+}
+.widget-area ul li a{
+	line-height: 22px;
+	padding: 0 0 0 5px;
 }
 .widget-area a:link,
 .widget-area a:visited {
@@ -1399,7 +1414,7 @@ h3#reply-title {
 /* Main sidebars */
 #main .widget-area ul {
 	margin-left: 0;
-	padding: 0 20px 0 0;
+	padding: 0;
 }
 #main .widget-area ul ul {
 	border: none;
@@ -1409,9 +1424,6 @@ h3#reply-title {
 #secondary {
 }
 
-/* Footer widget areas */
-#footer-widget-area {
-}
 
 
 /* =Footer
@@ -1421,17 +1433,9 @@ h3#reply-title {
 	margin-bottom: 20px;
 }
 #colophon {
-	border-top: 4px solid #000;
 	overflow: hidden;
-	padding-top: 20px;
-	padding-bottom: 10px;
 }
-#site-info {
-}
-#site-info a {
-/*
-	color: #000;
-*/
+#copyright a {
 	text-decoration: none;
 }
 img#wpstats {
@@ -1535,9 +1539,10 @@ img#wpstats {
 	#primary,
 	#secondary,
 	.sidebar-left #primary,
-	.sidebar-left #secondary{
+	.sidebar-left #secondary,
+	#colophon aside{
 		clear: both;
-		width: 100%
+		width: 100% !important;
 	}
 	#content figure{
 		padding: 5px 0;
@@ -1550,14 +1555,21 @@ img#wpstats {
 	#content figure figcaption{
 		margin: 0;
 	}
+	#colophon #footer-widget-area{
+		text-align: left;
+	}
+	#footer-widget-area .widget-container{
+		margin: 0 0 18px;
+	}
 	#masthead #top-menu,
 	#masthead hgroup,
 	#colophon{
 		text-align: center;
 	}
 	#top-menu,
-	#site-info,
-	#footer-menu{
+	#copyright,
+	#footer-menu,
+	#social-network-menu{
 		clear: both;
 		float: none;
 		padding: 10px 0;
@@ -1576,6 +1588,12 @@ img#wpstats {
 }
 /* Maximum width of 480 pixels. */
 @media screen and (max-width: 480px){
+	#header{
+		padding: 0;
+	}
+	#content{
+		font-size: 1em;
+	}
 	.screen-menu{
 		background: #f1f1f1;
 		background-repeat: repeat-x;
@@ -1589,13 +1607,28 @@ img#wpstats {
 		line-height: 38px;
 		text-align: center;
 	}
-	#site-navigation .menu-header li{
+	#site-navigation .menu-header,
+	#site-navigation .menu,
+	#top-menu .menu,
+	#footer-menu .menu{
+		margin: 0;
+	}
+	#site-navigation .menu,
+	#top-menu .menu,
+	#footer-menu .menu{
+		display: none;
+	}
+	#site-navigation .menu li,
+	#top-menu .menu li,
+	#footer-menu .menu li{
 		display: block;
 		float: none;
 		text-align: center;
 		position: inherit;
 	}
-	#site-navigation ul ul{
+	#site-navigation ul ul,
+	#top-menu ul,
+	#footer-menu ul{
 		clear: both;
 		display: block;
 		float: none;
@@ -1603,7 +1636,26 @@ img#wpstats {
 		position: inherit;
 		box-shadow: none;
 	}
-	#site-navigation ul ul a{
+	#site-navigation ul ul a,
+	#top-menu ul a,
+	#footer-menu ul a{
 		width: auto;
+	}
+	#top-menu,
+	#footer-menu{
+		margin: 0 -2%;
+		padding: 0;
+	}
+	#top-menu a,
+	#footer-menu a{
+		line-height: 38px;
+	}
+}
+/* Minimun width of ~ 480 pixels. */
+@media screen and (min-width: 481px){
+	#site-navigation .menu,
+	#top-menu .menu,
+	#footer-menu .menu{
+		display: block !important;
 	}
 }

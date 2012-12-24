@@ -273,6 +273,7 @@ img.aligncenter {
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 4px;
+	max-width: 100%;
 	-moz-border-radius: 0;
 	-khtml-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -280,6 +281,8 @@ img.aligncenter {
 }
 .wp-caption img {
 	margin: 5px;
+	height: auto;
+	max-width: 98%;
 }
 .wp-caption p.wp-caption-text {
 	margin: 0 0 4px;
