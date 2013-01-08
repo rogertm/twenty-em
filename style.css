@@ -39,26 +39,20 @@ h2#site-description {
 	font-size: 12px;
 	line-height: 36px;
 }
-
-#content figure {
-	background:#f1f1f1;
-	line-height:18px;
-	margin-bottom:20px;
-	padding:4px;
-	text-align:center;
-	display: inline-block;
+#content figure{
+	margin: 0 auto;
+	line-height: 18px;
+	text-align: center;
 	max-width: 98%;
 }
 #content figure img {
 	margin: 3px auto;
 }
 #content figure figcaption {
-/*
-	color:#888;
-*/
 	font-size:12px;
 	margin:5px;
 	font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-style: italic;
 }
 
 nav .menu-header {
@@ -260,15 +254,21 @@ textarea,
 .pingback a.url {
 	font-family: Georgia, "Bitstream Charter", serif;
 }
+#content,
 h3#comments-title,
 h3#reply-title,
 #site-navigation .menu,
 #site-navigation div.menu ul,
+#secondary .widget-container,
+#top-menu .menu,
+#footer-menu .menu,
+#social-network-menu .menu,
 #cancel-comment-reply-link,
 .form-allowed-tags,
 #site-info,
 #site-title,
 #wp-calendar,
+#footer-widget-area,
 .comment-meta,
 .comment-body tr th,
 .comment-body thead th,
@@ -279,14 +279,18 @@ h3#reply-title,
 .entry-title,
 .entry-utility,
 #respond label,
+#searchform #s,
 .navigation,
 .page-title,
 .pingback p,
 .reply,
 .widget-title,
 .wp-caption-text,
+.screen-menu,
+.assistive-text,
+.skip-link a,
 input[type=submit] {
-	font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+	font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
 pre {
 	font-family: "Courier 10 Pitch", Courier, monospace;
@@ -343,6 +347,52 @@ div.menu,
 	padding: 10px 0 0;
 	max-width: 100%;
 	font-style: italic;
+}
+.entry-content h1,
+.comment-body h1,
+.entry-content h2,
+.comment-body h2,
+.entry-content h3,
+.comment-body h3,
+.entry-content h4,
+.comment-body h4,
+.entry-content h5,
+.comment-body h5,
+.entry-content h6,
+.comment-body h6 {
+	margin: 24px 0;
+	margin: 1.714285714rem 0;
+	line-height: 1.714285714;
+}
+.entry-content h1 {
+	font-size: 21px;
+	font-size: 1.5rem;
+	line-height: 1.5;
+}
+.entry-content h2 {
+	font-size: 18px;
+	font-size: 1.285714286rem;
+	line-height: 1.6;
+}
+.entry-content h3 {
+	font-size: 16px;
+	font-size: 1.142857143rem;
+	line-height: 1.846153846;
+}
+.entry-content h4 {
+	font-size: 14px;
+	font-size: 1rem;
+	line-height: 1.846153846;
+}
+.entry-content h5 {
+	font-size: 13px;
+	font-size: 0.928571429rem;
+	line-height: 1.846153846;
+}
+.entry-content h6 {
+	font-size: 12px;
+	font-size: 0.857142857rem;
+	line-height: 1.846153846;
 }
 
 
@@ -644,7 +694,7 @@ div.menu li {
 #content,
 #content input,
 #content textarea {
-	color: #333;
+	color: #444;
 	font-size: 16px;
 	line-height: 24px;
 }
@@ -675,18 +725,6 @@ div.menu li {
 #content dt,
 #content th {
 	color: #000;
-}
-#content h1,
-#content h2,
-#content h3,
-#content h4,
-#content h5,
-#content h6 {
-/*
-	color: #000;
-*/
-	line-height: 1.5em;
-	margin: 0 0 20px 0;
 }
 #content table {
 	border: 1px solid #e7e7e7;
@@ -752,12 +790,9 @@ div.menu li {
 */
 }
 #content .entry-title {
-/*
-	color: #000;
-*/
 	font-size: 21px;
-	font-weight: bold;
-	line-height: 1.3em;
+	font-weight: normal;
+	line-height: 1.7em;
 	margin-bottom: 0;
 }
 .entry-title a:link,
@@ -1025,20 +1060,16 @@ body.page .edit-link {
 	margin-bottom: 12px;
 }
 #content .wp-caption {
-	background: #f1f1f1;
 	line-height: 18px;
 	margin-bottom: 20px;
 	padding: 4px;
 	text-align: center;
-	max-width: 96%;
+	max-width: 98%;
 }
 #content .wp-caption img {
 	margin: 3px auto;
 }
 #content .wp-caption p.wp-caption-text {
-/*
-	color: #888;
-*/
 	font-size: 12px;
 	margin: 5px;
 }
@@ -1050,12 +1081,21 @@ body.page .edit-link {
 }
 #content .gallery .gallery-item {
 	float: left;
-	margin-top: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	text-align: center;
 	width: 33%;
 }
+#content .gallery-item a{
+	display: block;
+}
+#content .gallery-item a,
+#content .gallery-caption{
+	width: 90%;
+}
 #content .gallery img {
 	border: 2px solid #cfcfcf;
+	padding: 5px;
 }
 #content .gallery .gallery-caption {
 /*
@@ -1066,9 +1106,6 @@ body.page .edit-link {
 }
 #content .gallery dl {
 	margin: 0;
-}
-#content .gallery img {
-	border: 10px solid #f1f1f1;
 }
 #content .gallery br+br {
 	display: none;
@@ -1137,11 +1174,7 @@ body.page .edit-link {
 }
 h3#comments-title,
 h3#reply-title {
-/*
-	color: #000;
-*/
 	font-size: 20px;
-	font-weight: bold;
 	margin-bottom: 0;
 }
 h3#comments-title {
@@ -1364,16 +1397,17 @@ h3#reply-title {
 #wp_tag_cloud div {
 	line-height: 1.6em;
 }
+.tagcloud a{
+	line-height: 22px;
+}
 #wp-calendar {
 	width: 100%;
 }
 #wp-calendar caption {
-/*
-	color: #222;
-*/
 	font-size: 14px;
 	font-weight: bold;
 	padding-bottom: 4px;
+	padding-top: 4px;
 	text-align: left;
 }
 #wp-calendar thead {
@@ -1429,9 +1463,6 @@ h3#reply-title {
 /* =Footer
 -------------------------------------------------------------- */
 
-#footer {
-	margin-bottom: 20px;
-}
 #colophon {
 	overflow: hidden;
 }

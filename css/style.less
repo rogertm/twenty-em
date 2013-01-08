@@ -21,6 +21,13 @@
 	-webkit-border-radius: @radius;
 }
 
+/* Define box shadows */
+.box-shadow ( @x: 0, @y: 0, @blur: 1px, @color: #000 ){
+	box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+}
+
 
 /* =Links
 -------------------------------------------------------------- */
@@ -116,6 +123,17 @@ a:hover{
 	top: 6px;
 }
 
+
+/* =Images
+-------------------------------------------------------------- */
+#content figure img,
+.entry-content img,
+.comment-body img,
+.widget img,
+.author-avatar img{
+	.border-radius ( 3px );
+	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
+}
 
 /* =Footer
 -------------------------------------------------------------- */
