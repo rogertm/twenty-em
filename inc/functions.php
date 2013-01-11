@@ -397,7 +397,7 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) . '</a>';
+	return ' <span class="more-link"><a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) . '</a></span>';
 }
 
 /**
@@ -549,7 +549,7 @@ if ( ! function_exists( 't_em_comment' ) ) :
 			<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
 				<header class="comment-header">
 					<div class="comment-author vcard">
-						<?php echo get_avatar( $comment, 40 ); ?>
+						<?php echo get_avatar( $comment, 60 ); ?>
 						<?php printf( __( '%s <span class="says">says:</span>', 'dostrece' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 					</div><!-- .comment-author .vcard -->
 					<?php if ( $comment->comment_approved == '0' ) : ?>
@@ -643,19 +643,6 @@ function t_em_remove_recent_comments_style(){
 add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
 
 /**
- * Removes the default styles that are packaged with the Gallery shortcode.
- * @since Twenty'em 1.0
- */
-function t_em_remove_gallery_css( $css ) {
-	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
-}
-// Backwards compatibility with WordPress 3.0.
-if ( version_compare( $GLOBALS['wp_version'], '3.1', '<' ) ) :
-	add_filter( 'gallery_style', 't_em_remove_gallery_css' );
-endif;
-add_filter( 'use_default_gallery_style', '__return_false' );
-
-/**
  * Customise the Twenty'em theme comments fields with HTML5 form elements
  * Adds support for placeholder, required, type="email" and type="url"
  * @since Twenty'em 1.0
@@ -664,18 +651,18 @@ function t_em_comments() {
 	$req = get_option('require_name_email');
 	$fields =  array(
 		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-					'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "What can we call you?"' . ( $req ? ' required' : '' ) . '/></p>',
+					'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
 		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-					'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="How can we reach you?"' . ( $req ? ' required' : '' ) . ' /></p>',
+					'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
 		'url'	 => '<p class="comment-form-url"><label for="url">' . __( 'Website', 't_em' ) . '</label>' .
-					'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="Have you got a website?" /></p>'
+					'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /></p>'
 	);
 	return $fields;
 }
 add_filter('comment_form_default_fields', 't_em_comments');
 
 function t_em_commentfield() {
-	$commentArea = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="What\'s on your mind?"	></textarea></p>';
+	$commentArea = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What\'s on your mind?', 't_em' ) .'"></textarea></p>';
 	return $commentArea;
 }
 add_filter('comment_form_field_comment', 't_em_commentfield');
@@ -890,7 +877,7 @@ function t_em_single_related_posts() {
 			$output .= '</li>';
 		endforeach;
 		$output = '<ul class="related-posts-list">'.$output.'</ul>';
-		$output = '<h3 class="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
+		$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
 		$output = '<section id="related-posts">'.$output.'</section>';
 
 		return $output;

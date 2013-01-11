@@ -101,6 +101,18 @@ a:hover{
 	font-size: 1.3em;
 }
 
+/* =Content
+-------------------------------------------------------------- */
+#entry-author-info{
+	background: @base-gray;
+	border: solid 1px lighten( @dark-gray, 50% );
+	.border-radius;
+}
+#author-avatar img{
+	border: solid 1px lighten( @dark-gray, 50% );
+	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
+	.border-radius;
+}
 
 /* =Forms
 -------------------------------------------------------------- */
@@ -111,16 +123,30 @@ a:hover{
 	position: relative;
 }
 #searchform #s{
+	color: @dark-gray;
 	width: 85%;
 	margin: 0;
 	padding: 8px;
+	border: none;
 }
 #searchform input.submit{
 	margin: 0;
 	padding: 0;
 	position: absolute;
 	right: 10px;
-	top: 6px;
+	top: 8px;
+}
+#respond input[type="text"],
+#respond input[type="email"], 
+#respond input[type="url"],
+#respond textarea {
+	background: @base-gray;
+	color: @light-gray;
+	border: 1px solid lighten( @dark-gray, 50% );
+	.border-radius;
+}
+#respond .required{
+	color: @light-red;
 }
 
 
@@ -128,7 +154,7 @@ a:hover{
 -------------------------------------------------------------- */
 #content figure img,
 .entry-content img,
-.comment-body img,
+.comment-author img,
 .widget img,
 .author-avatar img{
 	.border-radius ( 3px );

@@ -12,10 +12,9 @@
  * @since Twenty Ten Five 1.0
  */
 ?>
-
-			<div id="comments">
+<section id="comments">
 <?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 't_em' ); ?></p>
+				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'dostrece' ); ?></p>
 			</div><!-- #comments -->
 <?php
 		/* Stop the rest of comments.php from being processed,
@@ -25,55 +24,60 @@
 		return;
 	endif;
 ?>
+<?php
+if ( have_comments() ) :
+	global $wp_query;
+?>
+	<h3 id="comments-title"><?php
+	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'dostrece' ),
+	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
+	?></h3>
+<?php
+	if ( !empty($comments_by_type['comment']) ) :
+?>
+		<h3 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments'); ?></h3>
+		<ol class="commentlist">
+			<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
+		</ol>
+<?php
+	else : // If there are no responds type comments
+?>
+		<h3 id="comment"><?php _e('No Comments'); ?></h3>
+<?php
+	endif; // !empty($comments_by_type['comment'])
+?>
+<?php
+	if ( !empty($comments_by_type['pings']) ) :
+?>
+		<h3 id="pingback">
+			<?php echo count( $wp_query->comments_by_type['pingback'] ); ?> Pingbacks
+			<span> | </span>
+			<?php echo count( $wp_query->comments_by_type['trackback'] ); ?> Trackbacks
+			</h3>
+		<ol class="commentlist">
+			<?php wp_list_comments( array( 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
+		</ol>
+<?php
+	else : // If there are no responds type pingback
+?>
+		<h3 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks'); ?></h3>
+<?php
+	endif; // !empty($comments_by_type['pings'])
+?>
 
 <?php
-	// You can start editing here -- including this comment!
+	if ( !comments_open() ) :
 ?>
-
-<?php if ( have_comments() ) : ?>
-			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 't_em' ),
-			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-			?></h3>
-
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-			<nav class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 't_em' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?></div>
-			</nav> <!-- .navigation -->
-<?php endif; // check for comment navigation ?>
-
-			<ol class="commentlist">
-				<?php
-					/* Loop through and list the comments. Tell wp_list_comments()
-					 * to use t_em_comment() to format the comments.
-					 * If you want to overload this in a child theme then you can
-					 * define t_em_comment() and that will be used instead.
-					 * See t_em_comment() in t_em/functions.php for more.
-					 */
-					wp_list_comments( array( 'callback' => 't_em_comment' ) );
-				?>
-			</ol>
-
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 't_em' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?></div>
-			</div><!-- .navigation -->
-<?php endif; // check for comment navigation ?>
-
-<?php else : // or, if we don't have comments:
-
-	/* If there are no comments and comments are closed,
-	 * let's leave a little note, shall we?
-	 */
-	if ( ! comments_open() ) :
+		<h3 id="comments-closed"><?php _e('Comments are closed'); ?></h3>
+<?php
+	endif;
 ?>
-	<p class="nocomments"><?php _e( 'Comments are closed.', 't_em' ); ?></p>
-<?php endif; // end ! comments_open() ?>
-
-<?php endif; // end have_comments() ?>
-
+<?php
+else : // If there are no responds
+?>
+	<h3 id="comments-title"><?php _e('No responds to '); ?><em><?php the_title(); ?></em></h3>
+<?php
+endif; // have_comments()
+?>
 <?php comment_form($new_defaults); ?>
-
-</div><!-- #comments -->
+</section><!-- #comments -->

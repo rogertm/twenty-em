@@ -35,9 +35,9 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-					<footer id="entry-author-info">
+					<div id="entry-author-info">
 						<div id="author-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 't_em_author_bio_avatar_size', 60 ) ); ?>
+							<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 't_em_author_bio_avatar_size', 80 ) ); ?>
 						</div><!-- #author-avatar -->
 						<div id="author-description">
 							<h2><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h2>
@@ -48,7 +48,7 @@ get_header(); ?>
 								</a>
 							</div><!-- #author-link	-->
 						</div><!-- #author-description -->
-					</footer><!-- #entry-author-info -->
+					</div><!-- #entry-author-info -->
 <?php endif; ?>
 
 					<footer class="entry-utility">
