@@ -65,7 +65,6 @@ nav .menu-header ul {
 }
 nav a:visited,
 nav a:link {
-	display:block;
 	padding:0 10px;
 	text-decoration:none;
 }
@@ -95,39 +94,12 @@ nav ul ul a {
 	width:160px;
 	height:auto;
 }
-nav li:hover > a,
-nav ul ul :hover > a {
-/*
-	background:#333;
-*/
-/*
-	color:#fff;
-*/
-}
 nav ul li:hover > ul {
 	display:block;
-}
-nav ul li.current_page_item > a,
-nav ul li.current-menu-ancestor > a,
-nav ul li.current-menu-item > a,
-nav ul li.current-menu-parent > a {
-/*
-	color:#fff;
-*/
 }
 
 #content header p.entry-meta {
 	margin-bottom: 0px;
-}
-
-.ie6 nav ul li.current_page_item a,
-.ie6 nav ul li.current-menu-ancestor a,
-.ie6 nav ul li.current-menu-item a,
-.ie6 nav ul li.current-menu-parent a,
-.ie6 nav ul li a:hover {
-/*
-	color:#fff;
-*/
 }
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
@@ -658,6 +630,18 @@ div.menu li {
 }
 #social-network-menu ul li{
 	padding-bottom: 10px;
+}
+/** Style for WP-PageNavi plugin */
+.wp-pagenavi {
+	clear: both;
+	padding: 10px 0;
+}
+.wp-pagenavi a, .wp-pagenavi span {
+	padding: 3px 5px !important;
+	margin: 3px;
+}
+.wp-pagenavi span.current {
+	font-weight: bold;
 }
 
 
