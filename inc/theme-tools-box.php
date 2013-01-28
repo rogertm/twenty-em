@@ -2,14 +2,14 @@
 /**
  * Twenty'em theme options.
  *
- * @file			theme-options-dev.php
+ * @file			theme-tools-box.php
  * @package			WordPress
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
  * @version			1.0
- * @filesource		wp-content/themes/twenty-em/inc/theme-options-dev.php
+ * @filesource		wp-content/themes/twenty-em/inc/theme-tools-box.php
  * @link			http://codex.wordpress.org/Settings_API
  * @since			Version 1.0
  */
@@ -18,22 +18,22 @@
 /**
  * Register Dev Options Setting
  */
-add_action( 'admin_init', 't_em_register_dev_options_init' );
-function t_em_register_dev_options_init(){
+add_action( 'admin_init', 't_em_register_tools_box_options_init' );
+function t_em_register_tools_box_options_init(){
 	// Register setting
-	register_setting( 't_em_dev', 't_em_dev_options', 't_em_dev_options_validate' );
+	register_setting( 't_em_tools_box', 't_em_tools_box_options', 't_em_tools_box_options_validate' );
 
 	// Register setting file group
-	add_settings_section( 'general', '', '__return_false', 'theme-options-dev' );
+	add_settings_section( 'general', '', '__return_false', 'theme-tools-box' );
 
 	// Register individual settings fields
-	add_settings_field( 't_em_dev_frameworks',	__( 'Javascript and CSS Frameworks or Tools', 't_em' ),	't_em_settings_dev_frameworks',	'theme-options-dev',	'general' );
+	add_settings_field( 't_em_tools_box_frameworks',	__( 'Javascript and CSS Frameworks or Tools', 't_em' ),	't_em_settings_tools_box_frameworks',	'theme-tools-box',	'general' );
 }
 
 /**
  * Return an array of frameworks options for Twenty'em
  */
-function t_em_dev_frameworks_options(){
+function t_em_tools_box_frameworks_options(){
 	global $t_em_theme_data;
 	$frameworks_options = array (
 		'less-css'			=> array (
@@ -80,14 +80,14 @@ function t_em_dev_frameworks_options(){
 		),
 	);
 
-	return apply_filters( 't_em_dev_frameworks_options', $frameworks_options );
+	return apply_filters( 't_em_tools_box_frameworks_options', $frameworks_options );
 }
 
 /**
  * Return the default dev options for Twenty'em
  */
-function t_em_dev_default_options(){
-	$default_dev_options = array (
+function t_em_tools_box_default_options(){
+	$default_tools_box_options = array (
 		'less-css'				=> '1',
 		'modernizr'				=> '1',
 		'html5shiv'				=> '1',
@@ -96,27 +96,27 @@ function t_em_dev_default_options(){
 		'jquery-easing'			=> '',
 	);
 
-	return apply_filters( 't_em_dev_default_options', $default_dev_options );
+	return apply_filters( 't_em_tools_box_default_options', $default_tools_box_options );
 }
 
 /**
  * Return the dev options array for Twenty'em
  */
-function t_em_get_dev_options(){
-	return get_option( 't_em_dev_options', t_em_dev_default_options() );
+function t_em_get_tools_box_options(){
+	return get_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
 }
 
 /**
  * Render the frameworks setting fields
  */
-function t_em_settings_dev_frameworks(){
-	$options_dev = t_em_get_dev_options();
+function t_em_settings_tools_box_frameworks(){
+	global $t_em_tools_box_options;
 ?>
 	<div id="framework-options">
 <?php
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
-	$count_frameworks = count( t_em_dev_frameworks_options() );
+	$count_frameworks = count( t_em_tools_box_frameworks_options() );
 	if ( $count_frameworks == '1' ) :
 		$all_frameworks = __( 'a', 't_em' );
 	elseif ( $count_frameworks == '2' ) :
@@ -127,7 +127,7 @@ function t_em_settings_dev_frameworks(){
 ?>
 		<p><?php printf( __( '<strong>%1$s</strong> provides %2$s Javascript and CSS Frameworks or Tools to make your work easier.', 't_em' ), $theme_name, $all_frameworks ) ?></p>
 <?php
-	foreach ( t_em_dev_frameworks_options() as $framework ) :
+	foreach ( t_em_tools_box_frameworks_options() as $framework ) :
 ?>
 		<div class="layout checbox-option framework">
 			<h3><a href="<?php echo $framework['url'] ?>" target="_blank"><?php echo $framework['label']; ?></a></h3>
@@ -135,8 +135,8 @@ function t_em_settings_dev_frameworks(){
 			<p><?php echo $framework['description']; ?></p>
 			<label class="description">
 				<span><?php printf( __( 'Enable %s?', 't_em' ), $framework['label'] ); ?></span>
-				<?php $checked_option = checked( $options_dev[$framework['name']], '1', false ); ?>
-				<input type="checkbox" name="t_em_dev_options[<?php echo $framework['name']; ?>]" value="1" <?php echo $checked_option; ?> />
+				<?php $checked_option = checked( $t_em_tools_box_options[$framework['name']], '1', false ); ?>
+				<input type="checkbox" name="t_em_tools_box_options[<?php echo $framework['name']; ?>]" value="1" <?php echo $checked_option; ?> />
 			</label>
 		</div>
 <?php
@@ -149,17 +149,17 @@ function t_em_settings_dev_frameworks(){
 /**
  * Display Dev Options Page
  */
-function t_em_theme_options_dev(){
+function t_em_theme_tools_box_options(){
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php echo wp_get_theme() . ' ' . __( 'Developers Zone', 't_em' ) ?></h2>
+		<h2><?php echo wp_get_theme() . ' ' . __( 'Tools Box', 't_em' ) ?></h2>
 		<?php settings_errors(); ?>
 
 		<form id="t-em-setting" method="post" action="options.php">
 			<?php
-				settings_fields( 't_em_dev' );
-				do_settings_sections( 'theme-options-dev' );
+				settings_fields( 't_em_tools_box' );
+				do_settings_sections( 'theme-tools-box' );
 				submit_button();
 			?>
 		</form>
@@ -170,7 +170,7 @@ function t_em_theme_options_dev(){
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
-function t_em_dev_options_validate( $input ){
+function t_em_tools_box_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
 		'less-css',

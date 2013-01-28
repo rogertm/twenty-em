@@ -752,9 +752,10 @@ endif;
  * Display header set depending of the Header Options
  */
 function t_em_header_options_set(){
-	global $post;
-	$options = t_em_get_theme_options();
-	$header_options = $options['header-set'];
+	global	$post,
+			$t_em_theme_options;
+
+	$header_options = $t_em_theme_options['header-set'];
 
 	if ( 'no-header-image' == $header_options ) :
 		return false;
@@ -773,7 +774,7 @@ function t_em_single_post_thumbnail(){
 	$single_featured_img = $t_em_theme_options['single-featured-img'];
 	if ( '1' == $single_featured_img && has_post_thumbnail() ) :
 ?>
-<figure id="featured-image-<?php the_ID() ?>">
+<figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
 <?php
 		the_post_thumbnail();
 ?>
@@ -781,6 +782,34 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
+
+/**
+ * Display archive set
+ */
+function t_em_post_archive_set(){
+	global $t_em_theme_options;
+
+	// How big are our thumbnails?
+	$thumb_heigth = ( ( array_key_exists( 'excerpt-thumbnail-height', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-height'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
+	$thumb_width = ( ( array_key_exists( 'excerpt-thumbnail-width', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-width'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
+
+	if ( 'the-excerpt' == $t_em_theme_options['archive-set'] ) :
+?>
+			<div class="entry-summary <?php echo $t_em_theme_options['excerpt-set']; ?>">
+				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
+				<?php the_excerpt(); ?>
+			</div><!-- .entry-summary -->
+<?php
+	else :
+?>
+			<div class="entry-content">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
+			</div><!-- .entry-content -->
+<?php
+	endif;
+}
+
 
 /**
  * Display user social network
@@ -805,13 +834,12 @@ function t_em_user_social_network(){
 <?php
 }
 
-
 /**
  * Show related posts to the current post at single
  */
 function t_em_single_related_posts() {
-	$options = t_em_get_theme_options();
-	if ( '1' == $options['single-related-posts'] ) :
+	global $t_em_theme_options;
+	if ( '1' == $t_em_theme_options['single-related-posts'] ) :
 		global $wpdb, $post, $table_prefix;
 
 		if ( $exclude != '' ) :

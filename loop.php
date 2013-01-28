@@ -54,6 +54,9 @@
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
+				<?php if ( is_sticky() ) : ?>
+					<h3 class="entry-format"><?php _e( 'Featured', 't_em' ); ?></h3>
+				<?php endif; ?>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 				<p class="entry-meta">
@@ -61,12 +64,12 @@
 				</p><!-- .entry-meta -->
 			</header>
 <?php
-	$options = t_em_get_theme_options();
-	$archive_set = $options['archive-set'];
+	$t_em_theme_options = t_em_get_theme_options();
+	$archive_set = $t_em_theme_options['archive-set'];
 
 	// How big are our thumbnails?
-	$thumb_heigth = ( ( array_key_exists( 'excerpt-thumbnail-height', $options ) && $options['excerpt-thumbnail-height'] != '' ) ? $options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
-	$thumb_width = ( ( array_key_exists( 'excerpt-thumbnail-width', $options ) && $options['excerpt-thumbnail-width'] != '' ) ? $options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
+	$thumb_heigth = ( ( array_key_exists( 'excerpt-thumbnail-height', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-height'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
+	$thumb_width = ( ( array_key_exists( 'excerpt-thumbnail-width', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-width'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
 
 	if ( 'the-excerpt' == $archive_set ) :
 ?>

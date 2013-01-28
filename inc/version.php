@@ -16,14 +16,11 @@
 ?>
 <?php
 function t_em_theme_version(){
-	$theme_data = wp_get_theme();
-	$theme_name = $theme_data->display('Name');
-	$theme_version = $theme_data->display('Version');
-	$theme_author = $theme_data->display('Author');
+	global $t_em_theme_data;
 
-	echo '<meta name="theme-name" content="' . $theme_name . '">' . "\n";
-	echo '<meta name="theme-version" content="' . $theme_version . '">' . "\n";
-	echo '<meta name="theme-author" content="' . strip_tags( $theme_author ) . '">' . "\n";
+	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
+	echo '<meta name="theme-version" content="' . $t_em_theme_data['Version'] . '">' . "\n";
+	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
 }
 add_action( 'wp_head', 't_em_theme_version' );
 ?>

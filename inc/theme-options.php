@@ -20,7 +20,7 @@
  * but it is loaded just if we are in the right place.
  */
 if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
-									'page=theme-options-dev' ||
+									'page=theme-tools-box' ||
 									'page=theme-webmaster-tools' ||
 									'page=theme-update' ) ) :
 	add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
@@ -61,23 +61,22 @@ function t_em_register_setting_options_init(){
 
 add_action( 'admin_menu', 't_em_theme_options_add_page' );
 function t_em_theme_options_add_page(){
-	$theme_data = wp_get_theme();
-	$theme_name = $theme_data->display('Name');
+	global $t_em_theme_data;
 
-	$theme_page			= add_menu_page( $theme_name . ' ' . __( 'Theme Options', 't_em' ), $theme_name, 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
+	$theme_page		=	add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
 
-	$theme_dev_page		= add_submenu_page( 'theme-options',	__( 'Developers Zone', 't_em' ),	__( 'Developers Zone', 't_em' ),	'edit_theme_options',	'theme-options-dev',		't_em_theme_options_dev' );
-	add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
-	add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options',	'theme-update',				't_em_theme_update' );
+	$theme_tools_box_page	=	add_submenu_page( 'theme-options',	__( 'Tools Box', 't_em' ),	__( 'Tools Box', 't_em' ),	'edit_theme_options',	'theme-tools-box',		't_em_theme_tools_box_options' );
+						add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
+						add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options',	'theme-update',				't_em_theme_update' );
 
 	if ( ! $theme_page ) return;
-	if ( ! $theme_dev_page ) return;
+	if ( ! $theme_tools_box_page ) return;
 
 	add_action( "load-$theme_page", 't_em_theme_options_help' );
-	add_action( "load-$theme_dev_page", 't_em_dev_options_help' );
+	add_action( "load-$theme_tools_box_page", 't_em_tools_box_options_help' );
 }
 
-require( get_template_directory() . '/inc/theme-options-dev.php' );
+require( get_template_directory() . '/inc/theme-tools-box.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
 require( get_template_directory() . '/inc/theme-update.php' );
 require( get_template_directory() . '/inc/help.php' );
@@ -92,9 +91,45 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 	 * Register the default options at first time the theme is loaded
 	 */
 	add_option( 't_em_theme_options', t_em_default_theme_options() );
-	add_option( 't_em_dev_options', t_em_dev_default_options() );
+	add_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
 	add_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 endif;
+
+/**
+ * Return the default options for Twenty'em
+ */
+function t_em_default_theme_options(){
+	$default_theme_options = array (
+		't-em-link'					=> '1',
+		'single-featured-img'		=> '1',
+		'single-related-posts'		=> '1',
+		'header-set'				=> 'no-header-image',
+		'header-featured-image'		=> '1',
+		'slider-home-only'			=> '0',
+		'slider-category'			=> get_option( 'default_category' ),
+		'slider-number'				=> '5',
+		'slider-thumbnail'			=> 'slider-thumbnail-left',
+		'archive-set'				=> 'the-content',
+		'layout-set'				=> 'sidebar-right',
+		'layout-width'				=> '960',
+		'excerpt-set'				=> 'thumbnail-left',
+		'slider-thumbnail-height'	=> get_option( 'medium_size_h' ),
+		'slider-thumbnail-width'	=> get_option( 'medium_size_w' ),
+		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
+		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
+		'twitter-set'				=> '',
+		'facebook-set'				=> '',
+		'googlepluss-set'			=> '',
+		'delicious-set'				=> '',
+		'linkedin-set'				=> '',
+		'youtube-set'				=> '',
+		'flickr-set'				=> '',
+		'feedburner-set'			=> '',
+		'rss-set'					=> '',
+	);
+
+	return apply_filters( 't_em_default_theme_options', $default_theme_options );
+}
 
 /**
  * Return an array of variables we need
@@ -102,18 +137,18 @@ endif;
  **********************************************************************************/
 function t_em_set_globals(){
 	global	$t_em_theme_options,
-			$t_em_dev_options,
+			$t_em_tools_box_options,
 			$t_em_webmaster_tools_options;
 
 	$t_em_theme_options				= t_em_get_theme_options();
-	$t_em_dev_options				= t_em_get_dev_options();
+	$t_em_tools_box_options				= t_em_get_tools_box_options();
 	$t_em_webmaster_tools_options	= t_em_get_webmaster_tools_options();
 
 	// If options are empties, we load default settings.
 	if ( empty( $t_em_theme_options ) )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
-	if ( empty( $t_em_dev_options ) )
-		update_option( 't_em_dev_options', t_em_dev_default_options() );
+	if ( empty( $t_em_tools_box_options ) )
+		update_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
 	if ( empty( $t_em_webmaster_tools_options ) )
 		update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 }
@@ -190,7 +225,10 @@ function t_em_header_image_callback(){
  * Extend setting for slider option
  */
 function t_em_slider_callback(){
-	global $slider_layout, $list_categories;
+	global	$t_em_theme_options,
+			$slider_layout,
+			$list_categories;
+
 	$slider_layout = array (
 		'slider-thumbnail-left' => array (
 			'value' => 'slider-thumbnail-left',
@@ -209,7 +247,6 @@ function t_em_slider_callback(){
 		),
 	);
 
-	global $t_em_theme_options;
 	$extend_slider = '';
 
 	// Show Slider only at home page?
@@ -297,7 +334,9 @@ function t_em_archive_options(){
  * Extend setting for archive option
  */
 function t_em_excerpt_callback(){
-	global $t_em_theme_options, $excerpt_options;
+	global	$t_em_theme_options,
+			$excerpt_options;
+
 	$excerpt_options = array (
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -377,6 +416,7 @@ function t_em_layout_options(){
  */
 function t_em_layout_width(){
 	global $t_em_theme_options;
+
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
@@ -394,6 +434,7 @@ function t_em_layout_width(){
  * Return an array of social network options for Twenty'em
  */
 function t_em_social_network_options(){
+	global $socialnetwork_options;
 	$socialnetwork_options = array (
 		'twitter-set' => array (
 			'value' => '',
@@ -472,42 +513,6 @@ function t_em_thumbnail_sizes( $contex ){
 	);
 
 	return $thumbnail_sizes;
-}
-
-/**
- * Return the default options for Twenty'em
- */
-function t_em_default_theme_options(){
-	$default_theme_options = array (
-		't-em-link'					=> '1',
-		'single-featured-img'		=> '1',
-		'single-related-posts'		=> '1',
-		'header-set'				=> 'no-header-image',
-		'header-featured-image'		=> '1',
-		'slider-home-only'			=> '0',
-		'slider-category'			=> get_option( 'default_category' ),
-		'slider-number'				=> '5',
-		'slider-thumbnail'			=> 'slider-thumbnail-left',
-		'archive-set'				=> 'the-content',
-		'layout-set'				=> 'sidebar-right',
-		'layout-width'				=> '960',
-		'excerpt-set'				=> 'thumbnail-left',
-		'slider-thumbnail-height'	=> get_option( 'medium_size_h' ),
-		'slider-thumbnail-width'	=> get_option( 'medium_size_w' ),
-		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
-		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
-		'twitter-set'				=> '',
-		'facebook-set'				=> '',
-		'googlepluss-set'			=> '',
-		'delicious-set'				=> '',
-		'linkedin-set'				=> '',
-		'youtube-set'				=> '',
-		'flickr-set'				=> '',
-		'feedburner-set'			=> '',
-		'rss-set'					=> '',
-	);
-
-	return apply_filters( 't_em_default_theme_options', $default_theme_options );
 }
 
 /**
@@ -737,6 +742,11 @@ function t_em_theme_options_validate( $input ){
 		'twitter-set',
 		'facebook-set',
 		'googlepluss-set',
+		'delicious-set',
+		'linkedin-set',
+		'youtube-set',
+		'flickr-set',
+		'feedburner-set',
 		'rss-set',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );

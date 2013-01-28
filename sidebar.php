@@ -7,10 +7,9 @@
  * @since Twenty Ten 1.0
  */
 
-$options = t_em_get_theme_options();
-$layout_set = $options['layout-set'];
+global $t_em_theme_options;
 
-if ( 'content' != $layout_set ) :
+if ( 'content' != $t_em_theme_options['layout-set'] ) :
 ?>
 
 		<div id="secondary" class="widget-area" role="complementary">

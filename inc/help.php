@@ -48,7 +48,7 @@ function t_em_theme_options_help(){
 /**
  * Add contextual help to developers options screen
  */
-function t_em_dev_options_help(){
+function t_em_tools_box_options_help(){
 	global $t_em_theme_data;
 	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/framework" title="Twenty\'em Framework" target="_blank">Twenty\'em Framework</a></strong> provides somes Javascript and CSS Frameworks or Tools to make your work easier. Some of them are <strong>loaded by default</strong>, so, it is recommended to leave them as they are. Your current theme, <strong>%s</strong>, provides the following tools:', 't_em' ), $t_em_theme_data['Name'] ) . '</p>'.
 			'<ol>' .

@@ -119,6 +119,12 @@ nav ul li.current-menu-parent > a {
 	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
 	.border-radius;
 }
+.home .sticky {
+	background: @base-gray;
+	border-top: 4px solid @dark-gray;
+	padding: 2% 3%;
+	.border-radius ( 3px );
+}
 
 /* =Forms
 -------------------------------------------------------------- */
@@ -153,6 +159,30 @@ nav ul li.current-menu-parent > a {
 }
 #respond .required{
 	color: @light-red;
+}
+#respond input[type="text"]:focus,
+#respond input[type="email"]:focus, 
+#respond input[type="url"]:focus,
+#respond textarea:focus{
+	border: 1px solid @light-blue;
+	.box-shadow ( 0, 0, 2px, @light-blue );
+}
+#respond .form-submit input{
+	background: @light-blue;
+	background-image: linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+	background-image: -moz-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+	background-image: -ms-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+	background-image: -webkit-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+	background-image: -o-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+	.box-shadow ( 0, 0, 1px, @light-blue );
+	.border-radius ( 3px );
+}
+#respond .form-submit input:active{
+	background-image: linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+	background-image: -moz-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+	background-image: -ms-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+	background-image: -webkit-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+	background-image: -o-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
 }
 
 

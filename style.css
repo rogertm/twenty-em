@@ -4,7 +4,7 @@
  * Description: A HTML5 & CSS3 WordPress framework for themes developers, based on Twenty Ten.
  * Author: RogerTM
  * Author URI: http://blog.rogertm.com/
- * Version: 1.0
+ * Version: 1.0 Beta
  * Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
  */
 
@@ -53,6 +53,7 @@ h2#site-description {
 	margin:5px;
 	font-family:"Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
 	font-style: italic;
+	text-align: left;
 }
 
 nav .menu-header {
@@ -160,7 +161,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 
 #primary {
 	float: left;
-	width: 73%;
+	width: 74.5%;
 }
 .sidebar-left #primary{
 	float: right;
@@ -168,11 +169,13 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #secondary {
 	float: right;
 	overflow: hidden;
-	width: 23%;
+	width: 23.7%;
 }
 .sidebar-left #secondary{
 	float: left;
-	width: 25%;
+/*
+	width: 23.7%;
+*/
 }
 #footer {
 	clear: both;
@@ -247,7 +250,11 @@ h3#reply-title,
 .screen-menu,
 .assistive-text,
 .skip-link a,
-input[type=submit] {
+input[type="submit"],
+input[type="text"],
+input[type="email"], 
+input[type="url"],
+textarea {
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
 pre {
@@ -285,8 +292,8 @@ div.menu,
 }
 #footer-widget-area .widget-area {
 	float: left;
-	width: 22.05%;
-	margin-right: 3.8%;
+	width: 23.5%;
+	margin-right: 2%;
 }
 #footer-widget-area #fourth {
 	margin-right: 0;
@@ -294,6 +301,7 @@ div.menu,
 #site-info{
 	padding-top: 20px;
 	padding-bottom: 20px;
+	overflow: hidden;
 }
 #copyright {
 	font-size: 14px;
@@ -713,13 +721,6 @@ div.menu li {
 .hentry {
 	margin: 0 0 40px 0;
 }
-.home .sticky {
-	background: #f2f7fc;
-	border-top: 4px solid #000;
-	margin-left: -20px;
-	margin-right: -20px;
-	padding: 18px 20px;
-}
 .single .hentry {
 	margin: 0 0 36px 0;
 }
@@ -902,9 +903,11 @@ body.page .edit-link {
 -------------------------------------------------------------- */
 #content .thumbnail-left figure{
 	float: left;
+	margin-right: 2%;
 }
 #content .thumbnail-right figure{
 	float: right;
+	margin-left: 2%;
 }
 #content .thumbnail-center figure{
 	display: block;
@@ -1003,7 +1006,6 @@ body.page .edit-link {
 	line-height: 18px;
 	margin-bottom: 20px;
 	padding: 4px;
-	text-align: center;
 	max-width: 98%;
 }
 #content .wp-caption img {
@@ -1051,6 +1053,9 @@ body.page .edit-link {
 #content .attachment img { /* single attachment images should be centered */
 	display: block;
 	margin: 0 auto;
+}
+.single .featured-post-thumbnail{
+	margin-bottom: 18px !important;
 }
 
 
@@ -1297,13 +1302,22 @@ h3#reply-title {
 	margin: 12px 0;
 }
 #respond .form-submit input {
+	color: #fff;
+	border: none;
 	font-size: 14px;
 	width: auto;
+	height: 35px;
+	line-height: 28px;
+	padding: 0 12px 2px;
+	cursor: pointer;
 }
 
 
 /* =Forms
 -------------------------------------------------------------- */
+#commentform{
+	padding: 0 5px;
+}
 #respond input[type="text"],
 #respond input[type="email"], 
 #respond input[type="url"],
@@ -1327,6 +1341,9 @@ h3#reply-title {
 .widget-area ul {
 	list-style: none;
 	margin-left: 0;
+}
+.widget-area ul li{
+	margin: 3px 0 3px;
 }
 .widget-container {
 	margin: 0 0 18px 0;
@@ -1385,6 +1402,7 @@ h3#reply-title {
 #wp-calendar tfoot #next {
 	text-align: right;
 }
+
 .widget_rss a.rsswidget {
 /*
 	color: #000;
@@ -1398,6 +1416,12 @@ h3#reply-title {
 .widget_rss .widget-title img {
 	width: 11px;
 	height: 11px;
+}
+.recentcomments{
+	padding-left: 5px;
+}
+.recentcomments a{
+	padding: 0 !important;
 }
 
 /* Main sidebars */

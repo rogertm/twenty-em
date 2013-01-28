@@ -20,7 +20,7 @@
  */
 function t_em_enqueue_styles_and_scripts(){
 	global	$t_em_theme_options,
-			$t_em_dev_options;
+			$t_em_tools_box_options;
 
 	// Load default style sheet style.css
 	wp_enqueue_style( 'style-t-em', get_stylesheet_uri() );
@@ -40,14 +40,14 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_enqueue_script( 'navigation' );
 
 	// Load modernizr javascript library
-	$modernizr = $t_em_dev_options['modernizr'];
+	$modernizr = $t_em_tools_box_options['modernizr'];
 	if ( '1' == $modernizr ) :
 		wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
 		wp_enqueue_script( 'modernizr' );
 	endif;
 
 	// Display Golden Grid Systen if is set by the user
-	$golden_grid_system = $t_em_dev_options['golden-grid-system'];
+	$golden_grid_system = $t_em_tools_box_options['golden-grid-system'];
 	if ( '1' == $golden_grid_system ) :
 		wp_register_script( 'golden-grid-system', T_EM_THEME_DIR_JS.'/ggs.js', array(), '1.01', false );
 		wp_enqueue_script( 'golden-grid-system' );
@@ -68,7 +68,7 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_style( 'slider-content-width' );
 
 		// Load JQuery Cycle Lite if is set by the user, otherwise use JQuery Cycle
-		$jquery_cycle_lite = ! empty( $t_em_dev_options['jquery-cycle-lite'] );
+		$jquery_cycle_lite = ! empty( $t_em_tools_box_options['jquery-cycle-lite'] );
 		if ( '1' == $jquery_cycle_lite ) :
 			wp_register_script( 'jquery-cycle-lite', T_EM_THEME_DIR_JS.'/jquery.cycle.lite.js', array( 'jquery' ), '1.6', false );
 			wp_enqueue_script( 'jquery-cycle-lite' );
@@ -84,7 +84,7 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Load JQuery Easing if is set by the user
-	$jquery_easing = ! empty( $t_em_dev_options['jquery-easing'] );
+	$jquery_easing = ! empty( $t_em_tools_box_options['jquery-easing'] );
 	if ( '1' == $jquery_easing ) :
 		wp_register_script( 'jquery-easing', T_EM_THEME_DIR_JS.'/jquery.easing.1.3.js', array( 'jquery' ), '1.3', false );
 		wp_enqueue_script( 'jquery-easing' );
@@ -129,21 +129,21 @@ function t_em_ggs_style(){
 		display: none;
 	}
 	.ggs-wrapper{
-		top: 0pt;
-		bottom: 0pt;
+		top: 0;
+		bottom: 0;
 		height: 100%;
 		position: fixed;
-		right: 0pt;
-		left: 0pt;
-		margin: 0pt auto;
+		right: 0;
+		left: 0;
+		margin: 0 auto;
 		max-width: '.$layout_width.';
 		overflow: hidden;
 	}
 	.ggs{
 		height: 100%;
-		top: 0pt;
-		bottom: 0pt;
-		margin: 0pt auto;
+		top: 0;
+		bottom: 0;
+		margin: 0 auto;
 		left: -5.55556%;
 		right: -5.55556%;
 		position: absolute;
@@ -193,8 +193,8 @@ function t_em_slider_content_width(){
  */
 add_action( 'wp_head', 't_em_enqueue_less_css' );
 function t_em_enqueue_less_css(){
-	global $t_em_dev_options;
-	if ( '1' == $t_em_dev_options['less-css'] ) :
+	global $t_em_tools_box_options;
+	if ( '1' == $t_em_tools_box_options['less-css'] ) :
 		echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
 		echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
 	endif;
@@ -208,8 +208,8 @@ function t_em_enqueue_less_css(){
  */
 add_action( 'wp_head', 't_em_enqueue_html5shiv' );
 function t_em_enqueue_html5shiv(){
-	global $t_em_dev_options;
-	$html5shiv = $t_em_dev_options['html5shiv'];
+	global $t_em_tools_box_options;
+	$html5shiv = $t_em_tools_box_options['html5shiv'];
 	if ( '1' == $html5shiv ) :
 ?>
 		<!--[if lt IE 9]>

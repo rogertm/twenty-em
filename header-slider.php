@@ -2,27 +2,27 @@
 /**
  * Display Slider of posts under featured category
  */
-$options = t_em_get_theme_options();
+global $t_em_theme_options;
 
-if ( ( '1' == $options['slider-home-only'] && is_home() ) || '0' == $options['slider-home-only'] ) :
+if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $t_em_theme_options['slider-home-only'] ) :
 
 // How big are our thumbnails?
-$thumb_heigth = ( ( array_key_exists( 'slider-thumbnail-height', $options ) && $options['slider-thumbnail-height'] != '' ) ? $options['slider-thumbnail-height'] : get_option( 'medium_size_h' ) );
-$thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $options ) && $options['slider-thumbnail-width'] != '' ) ? $options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
+$thumb_heigth = ( ( array_key_exists( 'slider-thumbnail-height', $t_em_theme_options ) && $t_em_theme_options['slider-thumbnail-height'] != '' ) ? $t_em_theme_options['slider-thumbnail-height'] : get_option( 'medium_size_h' ) );
+$thumb_width = ( ( array_key_exists( 'slider-thumbnail-width', $t_em_theme_options ) && $t_em_theme_options['slider-thumbnail-width'] != '' ) ? $t_em_theme_options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
 
-if ( 'slider-thumbnail-full' == $options['slider-thumbnail'] ) :
-	$thumb_width = $options['layout-width'];
+if ( 'slider-thumbnail-full' == $t_em_theme_options['slider-thumbnail'] ) :
+	$thumb_width = $t_em_theme_options['layout-width'];
 endif;
 
-if ( 'slider-thumbnail-full' != $options['slider-thumbnail'] ) :
+if ( 'slider-thumbnail-full' != $t_em_theme_options['slider-thumbnail'] ) :
 	$wrapper = 'class="wrapper"';
 endif;
 
 // Take category and number of slides to show from theme options
 $args = array (
 	'post_type'			=> 'post',
-	'cat'				=> $options['slider-category'],
-	'posts_per_page'	=> $options['slider-number'],
+	'cat'				=> $t_em_theme_options['slider-category'],
+	'posts_per_page'	=> $t_em_theme_options['slider-number'],
 	'orderby'			=> 'date',
 	'order'				=> 'DESC',
 );
@@ -42,7 +42,7 @@ query_posts ( $args );
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 			<li>
-				<article id="slider-post-<?php the_ID(); ?>" <?php post_class( $options['slider-thumbnail'] . ' slider-post' ); ?>>
+				<article id="slider-post-<?php the_ID(); ?>" <?php post_class( $t_em_theme_options['slider-thumbnail'] . ' slider-post' ); ?>>
 					<div class="slider-image">
 						<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'slider-thumbnail' ); ?>
 					</div>
