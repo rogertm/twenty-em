@@ -28,10 +28,11 @@ if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
 endif;
 function t_em_admin_css_style_stylesheet(){
 	// Check the theme version right from the style sheet
+	global $t_em_theme_data;
 	$style_data = wp_get_theme();
 	$style_version = $style_data->display('Version');
 
-	wp_register_style( 'style-admin-t-em', T_EM_FUNCTIONS_DIR_CSS . '/theme-options.css', false, $style_version, 'all' );
+	wp_register_style( 'style-admin-t-em', T_EM_FUNCTIONS_DIR_CSS . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'style-admin-t-em' );
 }
 

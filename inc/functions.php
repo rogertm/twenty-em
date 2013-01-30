@@ -71,10 +71,11 @@ add_action( 'after_setup_theme', 't_em_setup' );
 if ( !function_exists( 't_em_setup' ) ) :
 	function t_em_setup(){
 
-		global $content_width;
-		if ( ! isset( $content_width ) ) :
-			$content_width = 640;
-		endif;
+		t_em_content_width();
+		//~ global $content_width;
+		//~ if ( ! isset( $content_width ) ) :
+			//~ $content_width = 640;
+		//~ endif;
 
 		/**
 		 * Twenty'em theme supports
@@ -82,11 +83,58 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
+		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video' ) );
 
+		t_em_support_custom_background();
+		t_em_support_custom_header();
+		t_em_support_custom_header_image();
+
+		/**
+		 * Twenty'em is ready for translation
+		 */
+		load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
+		$locale = get_locale();
+		$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
+		if ( is_readable( $locale_file ) ) :
+			require_once( $locale_file );
+		endif;
+
+		t_em_register_nav_menus();
+
+		/**
+		 * Twenty'em adds callback for custom TinyMCE editor stylesheets. (editor-style.css)
+		 * @link http://codex.wordpress.org/Function_Reference/add_editor_style
+		 */
+		add_editor_style();
+
+		/**
+		 * Call t_em_theme_data() function from here
+		 */
+		t_em_theme_data();
+
+		t_em_set_globals();
+
+	}
+endif; // function t_em_setup()
+
+if ( !function_exists( 't_em_content_width' ) ) :
+	function t_em_content_width(){
+		global $content_width;
+		if ( ! isset( $content_width ) ) :
+			$content_width = 640;
+		endif;
+	}
+endif;
+
+if ( !function_exists( 't_em_support_custom_background' ) ) :
+	function t_em_support_custom_background(){
 		$custom_background = array ( 'default-color' => 'f7f7f7' );
 		add_theme_support( 'custom-background', $custom_background );
+	}
+endif;
 
+if ( !function_exists( 't_em_support_custom_header' ) ) :
+	function t_em_support_custom_header(){
 		$custom_header_support = array (
 			'default-text-color'		=> '757575',
 			'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
@@ -98,8 +146,13 @@ if ( !function_exists( 't_em_setup' ) ) :
 			'admin-preview-callback'	=> 't_em_admin_header_image',
 		);
 		add_theme_support( 'custom-header', $custom_header_support );
+	}
+endif;
 
-		// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
+if ( !function_exists( 't_em_support_custom_header_image' ) ) :
+	function t_em_support_custom_header_image(){
+		// Default custom headers packaged with the theme.
+		// %s is a placeholder for the theme template directory URI.
 		register_default_headers( array(
 			'canyon'	=> array(
 				'url'			=> '%s/images/headers/canyon.jpg',
@@ -167,43 +220,23 @@ if ( !function_exists( 't_em_setup' ) ) :
 				'description'	=> __( 'Wood', 't_em' ),
 			),
 		) );
+	}
+endif;
 
-		/**
-		 * Twenty'em is ready for translation
-		 */
-		load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
-		$locale = get_locale();
-		$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
-		if ( is_readable( $locale_file ) ) :
-			require_once( $locale_file );
-		endif;
-
+if ( !function_exists( 't_em_register_nav_menus' ) ) :
+	function t_em_register_nav_menus(){
 		/**
 		 * Twenty'em theme uses wp_nav_menu() in three location... Weow!
 		 * @link http://codex.wordpress.org/Navigation_Menus
 		 */
-		register_nav_menus(array(
+		register_nav_menus ( array (
 			'top-menu'			=> __('Top Menu', 't_em'),
 			'navigation-menu'	=> __('Navigation Menu', 't_em'),
 			'footer-menu'		=> __('Footer Menu', 't_em')
 			)
 		);
-
-		/**
-		 * Twenty'em adds callback for custom TinyMCE editor stylesheets. (editor-style.css)
-		 * @link http://codex.wordpress.org/Function_Reference/add_editor_style
-		 */
-		add_editor_style();
-
-		/**
-		 * Call t_em_theme_data() function from here
-		 */
-		t_em_theme_data();
-
-		t_em_set_globals();
-
 	}
-endif; // function t_em_setup()
+endif;
 
 /**
  * Returns theme data
@@ -647,7 +680,7 @@ add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
  * Adds support for placeholder, required, type="email" and type="url"
  * @since Twenty'em 1.0
  */
-function t_em_comments() {
+function t_em_comment_form_fields() {
 	$req = get_option('require_name_email');
 	$fields =  array(
 		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
@@ -659,13 +692,13 @@ function t_em_comments() {
 	);
 	return $fields;
 }
-add_filter('comment_form_default_fields', 't_em_comments');
+add_filter('comment_form_default_fields', 't_em_comment_form_fields');
 
-function t_em_commentfield() {
+function t_em_comment_form_textarea() {
 	$commentArea = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What\'s on your mind?', 't_em' ) .'"></textarea></p>';
 	return $commentArea;
 }
-add_filter('comment_form_field_comment', 't_em_commentfield');
+add_filter('comment_form_field_comment', 't_em_comment_form_textarea');
 
 /**
  * Filter to replace the [caption] shortcode text with HTML5 compliant code

@@ -17,7 +17,6 @@
 <?php
 function t_em_theme_version(){
 	global $t_em_theme_data;
-
 	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
 	echo '<meta name="theme-version" content="' . $t_em_theme_data['Version'] . '">' . "\n";
 	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
