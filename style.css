@@ -1544,8 +1544,8 @@ img#wpstats {
 /* =Media queries
 -------------------------------------------------------------- */
 
-/* Maximum width of 600 pixels. */
-@media screen and (max-width: 600px){
+/* Maximum width of 800 pixels. */
+@media screen and (max-width: 800px){
 	#primary,
 	#secondary,
 	.sidebar-left #primary,
