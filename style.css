@@ -1544,8 +1544,8 @@ img#wpstats {
 /* =Media queries
 -------------------------------------------------------------- */
 
-/* Maximum width of 800 pixels. */
-@media screen and (max-width: 800px){
+/* Maximum width of 768 pixels. */
+@media screen and (max-width: 768px){
 	#primary,
 	#secondary,
 	.sidebar-left #primary,
@@ -1585,6 +1585,11 @@ img#wpstats {
 		clear: both;
 		float: none;
 		padding: 10px 0;
+	}
+	#site-navigation .menu li{
+		float: none;
+		display: inline-block;
+		text-align: left;
 	}
 	#slider-wrapper{
 		overflow: hidden;
