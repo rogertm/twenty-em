@@ -828,7 +828,7 @@ function t_em_post_archive_set(){
 
 	if ( 'the-excerpt' == $t_em_theme_options['archive-set'] ) :
 ?>
-			<div class="entry-summary <?php echo $t_em_theme_options['excerpt-set']; ?>">
+			<div class="entry-summary">
 				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
