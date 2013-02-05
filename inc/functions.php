@@ -72,10 +72,6 @@ if ( !function_exists( 't_em_setup' ) ) :
 	function t_em_setup(){
 
 		t_em_content_width();
-		//~ global $content_width;
-		//~ if ( ! isset( $content_width ) ) :
-			//~ $content_width = 640;
-		//~ endif;
 
 		/**
 		 * Twenty'em theme supports
@@ -124,14 +120,14 @@ if ( !function_exists( 't_em_content_width' ) ) :
 			$content_width = 640;
 		endif;
 	}
-endif;
+endif; // function t_em_content_width()
 
 if ( !function_exists( 't_em_support_custom_background' ) ) :
 	function t_em_support_custom_background(){
 		$custom_background = array ( 'default-color' => 'f7f7f7' );
 		add_theme_support( 'custom-background', $custom_background );
 	}
-endif;
+endif; // function t_em_support_custom_background()
 
 if ( !function_exists( 't_em_support_custom_header' ) ) :
 	function t_em_support_custom_header(){
@@ -147,7 +143,7 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
 		);
 		add_theme_support( 'custom-header', $custom_header_support );
 	}
-endif;
+endif; // function t_em_support_custom_header()
 
 if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 	function t_em_support_custom_header_image(){
@@ -221,7 +217,7 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 			),
 		) );
 	}
-endif;
+endif; // function t_em_support_custom_header_image()
 
 if ( !function_exists( 't_em_register_nav_menus' ) ) :
 	function t_em_register_nav_menus(){
@@ -236,7 +232,7 @@ if ( !function_exists( 't_em_register_nav_menus' ) ) :
 			)
 		);
 	}
-endif;
+endif; // function t_em_register_nav_menus()
 
 /**
  * Returns theme data
@@ -297,7 +293,7 @@ function t_em_header_style(){
 	</style>
 <?php
 }
-endif; // function t_em_header_style
+endif; // function t_em_header_style()
 
 if ( ! function_exists( 't_em_admin_header_style' ) ) :
 /**
@@ -345,7 +341,7 @@ function t_em_admin_header_style() {
 	</style>
 <?php
 }
-endif; // t_em_admin_header_style
+endif; // t_em_admin_header_style()
 
 if ( ! function_exists( 't_em_admin_header_image' ) ) :
 /**
@@ -370,7 +366,7 @@ function t_em_admin_header_image() { ?>
 	</div>
 <?php
 }
-endif; // t_em_admin_header_image
+endif; // t_em_admin_header_image()
 
 /**
  * Creates a nicely formatted and more specific title element text
@@ -473,7 +469,7 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 
-	// Area 3, located in the footer. Empty by default.
+	// Area 2, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'First Footer Widget Area', 't_em' ),
 		'id' => 'first-footer-widget-area',
@@ -484,7 +480,7 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 
-	// Area 4, located in the footer. Empty by default.
+	// Area 3, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Second Footer Widget Area', 't_em' ),
 		'id' => 'second-footer-widget-area',
@@ -495,7 +491,7 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 
-	// Area 5, located in the footer. Empty by default.
+	// Area 4, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Third Footer Widget Area', 't_em' ),
 		'id' => 'third-footer-widget-area',
@@ -506,7 +502,7 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 
-	// Area 6, located in the footer. Empty by default.
+	// Area 5, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Fourth Footer Widget Area', 't_em' ),
 		'id' => 'fourth-footer-widget-area',
@@ -695,8 +691,8 @@ function t_em_comment_form_fields() {
 add_filter('comment_form_default_fields', 't_em_comment_form_fields');
 
 function t_em_comment_form_textarea() {
-	$commentArea = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What\'s on your mind?', 't_em' ) .'"></textarea></p>';
-	return $commentArea;
+	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What\'s on your mind?', 't_em' ) .'"></textarea></p>';
+	return $comment_area;
 }
 add_filter('comment_form_field_comment', 't_em_comment_form_textarea');
 
@@ -749,9 +745,26 @@ function t_em_favicon(){
 function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
 	global	$post,
 			$t_em_theme_options;
+
 	if ( has_post_thumbnail( $post->ID ) ) :
 		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 		$image_src = $image_url[0];
+		if ( $link ) :
+		?>
+			<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+		<?php
+		endif;
+		?>
+			<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
+				<figcaption><?php the_title(); ?></figcaption>
+			</figure>
+		<?php
+		if ( $link ) :
+		?>
+			</a>
+		<?php
+		endif;
 	else :
 		$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
 		$total_images = count( $images );
@@ -759,26 +772,24 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
 		if ( $total_images >= 1 ) :
 			$image_src = $image_url[0];
-		else:
-			$image_src = T_EM_THEME_DIR_IMG . '/default-image.png';
+			if ( $link ) :
+			?>
+				<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+			<?php
+			endif;
+			?>
+				<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
+					<figcaption><?php the_title(); ?></figcaption>
+				</figure>
+			<?php
+			if ( $link ) :
+			?>
+				</a>
+			<?php
+			endif;
 		endif;
 	endif;
-if ( $link ) :
-?>
-	<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-<?php
-endif;
-?>
-	<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-		<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
-		<figcaption><?php the_title(); ?></figcaption>
-	</figure>
-<?php
-if ( $link ) :
-?>
-	</a>
-<?php
-endif;
 }
 
 /**

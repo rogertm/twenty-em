@@ -18,7 +18,9 @@
 					<?php t_em_posted_on(); ?>
 				</p><!-- .entry-meta -->
 			</header>
+
 			<?php t_em_post_archive_set(); ?>
+
 			<footer class="entry-utility">
 				<?php if ( count( get_the_category() ) ) : ?>
 					<span class="cat-links">

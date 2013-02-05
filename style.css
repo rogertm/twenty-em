@@ -448,11 +448,10 @@ blockquote i {
 	font-style: normal;
 }
 pre {
-	background: #f7f7f7;
-	color: #222;
 	line-height: 18px;
 	margin-bottom: 18px;
 	padding: 1.5em;
+	overflow: auto;
 }
 abbr,
 acronym {
@@ -1697,6 +1696,12 @@ img#wpstats {
 	#top-menu ul a,
 	#footer-menu ul a{
 		width: auto;
+	}
+	#site-navigation .menu li{
+		font-weight: bold;
+	}
+	#site-navigation .sub-menu li{
+		font-weight: normal;
 	}
 	#top-menu,
 	#footer-menu{
