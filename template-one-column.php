@@ -28,8 +28,6 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-## -->
 
-				<?php comments_template( '', true ); ?>
-
 <?php endwhile; ?>
 
 			</div><!-- #content -->
