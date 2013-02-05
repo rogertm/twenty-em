@@ -440,7 +440,10 @@ ins {
 }
 blockquote {
 	font-style: italic;
-	padding: 0 3em;
+	margin: 0 2em;
+	padding: 0 2em;
+	border-left: solid 5px;
+	font-size: 1.15em;
 }
 blockquote cite,
 blockquote em,
@@ -901,15 +904,15 @@ body.page .edit-link {
 
 /* =Content Layout
 -------------------------------------------------------------- */
-#content .thumbnail-left figure{
+#content .thumbnail-left .featured-post-thumbnail{
 	float: left;
 	margin-right: 2%;
 }
-#content .thumbnail-right figure{
+#content .thumbnail-right .featured-post-thumbnail{
 	float: right;
 	margin-left: 2%;
 }
-#content .thumbnail-center figure{
+#content .thumbnail-center .featured-post-thumbnail{
 	display: block;
 	margin: 0 auto;
 }
@@ -1288,6 +1291,7 @@ h3#reply-title {
 	width: 60%;
 }
 #respond textarea {
+	display: block;
 	width: 98%;
 }
 #respond .form-allowed-tags {
@@ -1639,6 +1643,10 @@ img#wpstats {
 	.slider-thumbnail-right .slider-image{
 		float: none;
 		margin: 0 !important;
+	}
+	#respond input,
+	#respond textarea{
+		width: 98%;
 	}
 }
 /* Maximum width of 480 pixels. */

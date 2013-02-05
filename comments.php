@@ -79,5 +79,9 @@ else : // If there are no responds
 <?php
 endif; // have_comments()
 ?>
-<?php comment_form($new_defaults); ?>
+<?php
+/** @see http://codex.wordpress.org/Function_Reference/comment_form */
+$new_defaults = array ();
+comment_form($new_defaults);
+?>
 </section><!-- #comments -->
