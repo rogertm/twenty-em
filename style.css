@@ -98,7 +98,6 @@ nav ul ul a {
 nav ul li:hover > ul {
 	display:block;
 }
-
 #content header p.entry-meta {
 	margin-bottom: 0px;
 }
@@ -567,7 +566,9 @@ div.menu li {
 	float: left;
 	position: relative;
 }
-#site-navigation a {
+#site-navigation a,
+#top-menu a,
+#footer-menu a {
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
@@ -1560,6 +1561,10 @@ img#wpstats {
 	#slider-wrapper .slider-image img{
 		width: 100% !important;
 	}
+	.slider-thumbnail-full .slider-image,
+	.slider-thumbnail-full .slider-sumary{
+		width: 100% !important;
+	}
 	.slider-thumbnail-left .slider-sumary .entry-title{
 		margin: 0 0 0 4% !important;
 	}
@@ -1630,19 +1635,17 @@ img#wpstats {
 }
 /* Maximum width of 600 pixels. */
 @media screen and (max-width: 600px){
-	#slider-wrapper .slider-image,
+	#slider-wrapper{
+		height: 150px !important;
+	}
+	#slider-wrapper .entry-title{
+		font-size: 1.5em;
+	}
+	#slider-wrapper .slider-image{
+		width: 35%;
+	}
 	#slider-wrapper .slider-sumary{
-		width: 100%;
-		display: block;
-	}
-	#slider-wrapper .slider-image figure,
-	#slider-wrapper .slider-image img{
-		width: 100% !important;
-		margin: 0;
-	}
-	.slider-thumbnail-right .slider-image{
-		float: none;
-		margin: 0 !important;
+		width: 65%;
 	}
 	#respond input,
 	#respond textarea{
@@ -1654,18 +1657,21 @@ img#wpstats {
 	#header{
 		padding: 0;
 	}
+	#slider-wrapper{
+		height: 150px !important;
+	}
+	#slider-wrapper .slider-image,
+	#slider-wrapper .slider-sumary{
+		width: 50%;
+	}
+	#slider-wrapper .slider-sumary p{
+		display: none;
+	}
 	#content{
 		font-size: 1em;
 		line-height: 18px;
 	}
 	.screen-menu{
-		background: #f1f1f1;
-		background-repeat: repeat-x;
-		background-image: -moz-linear-gradient(top, #f4f4f4, #f1f1f1);
-		background-image: -ms-linear-gradient(top, #f4f4f4, #f1f1f1);
-		background-image: -webkit-linear-gradient(top, #f4f4f4, #f1f1f1);
-		background-image: -o-linear-gradient(top, #f4f4f4, #f1f1f1);
-		background-image: linear-gradient(top, #f4f4f4, #f1f1f1);
 		display: block;
 		cursor: pointer;
 		line-height: 38px;

@@ -27,6 +27,14 @@
 .slider-post p{
 	margin-top: 20px !important;
 }
+.slider-thumbnail-full *{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.slider-thumbnail-full .slider-sumary p{
+	color: #f1f1f1;
+}
 
 /**
  * Slider layout thumbnail left
@@ -47,11 +55,9 @@
  */
 .slider-thumbnail-right .slider-image{
 	float: right;
-	margin-right: 20px;
 }
 .slider-thumbnail-right .slider-sumary{
 	float: left;
-	margin-right: -20px;
 }
 .slider-thumbnail-right .slider-sumary .entry-title,
 .slider-thumbnail-right .slider-sumary p{
@@ -70,7 +76,8 @@
 }
 .slider-thumbnail-full .slider-sumary{
 	background: #000;
+	padding: 2%;
 	bottom: 0;
 	position: absolute;
-	opacity: .5;
+	opacity: .8;
 }

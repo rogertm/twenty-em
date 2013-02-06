@@ -16,6 +16,8 @@ endif;
 
 if ( 'slider-thumbnail-full' != $t_em_theme_options['slider-thumbnail'] ) :
 	$wrapper = 'class="wrapper"';
+else :
+	$wrapper = '';
 endif;
 
 // Take category and number of slides to show from theme options

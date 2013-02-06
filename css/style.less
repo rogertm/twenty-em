@@ -94,7 +94,15 @@ nav ul li.current-menu-parent > a {
 	border-top: solid 1px @base-gray;
 	border-bottom: solid 1px @base-gray;
 }
-
+.screen-menu{
+	background: @base-gray;
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+	background-image: -ms-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+	background-image: -webkit-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+	background-image: -o-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+	background-image: linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+}
 
 /* =Headers Tags
 -------------------------------------------------------------- */
@@ -209,4 +217,11 @@ nav ul li.current-menu-parent > a {
 #footer-widget-area{
 	border-top: solid 1px darken( @base-gray, 10% );
 	border-bottom: solid 1px darken( @base-gray, 10% );
+}
+
+
+/* Maximum width of 480 pixels. */
+@media screen and (max-width: 480px){
+
+
 }
