@@ -3,7 +3,6 @@
  * Display Image Header
  */
 ?>
-<section id="header-image">
 <?php
 global $t_em_theme_options;
 $header_image = get_header_image();
@@ -11,6 +10,7 @@ if ( $header_image ) :
 	$header_image_width = get_theme_support( 'custom-header', 'width' );
 	$header_image_height = get_theme_support( 'custom-header', 'height' );
 ?>
+	<section id="header-image">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
 	// Check if the user choose to display featured image in single posts and pages
@@ -29,7 +29,9 @@ if ( $header_image ) :
 			<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
 <?php
 	endif;
-endif;
 ?>
 		</a>
-</section><!-- #header-image -->
+	</section><!-- #header-image -->
+<?php
+endif;
+?>
