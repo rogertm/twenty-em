@@ -133,6 +133,7 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
 	function t_em_support_custom_header(){
 		$custom_header_support = array (
 			'default-text-color'		=> '757575',
+			'default-image'				=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
 			'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
 			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
 			'flex-height'				=> true,
@@ -150,70 +151,45 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 		// Default custom headers packaged with the theme.
 		// %s is a placeholder for the theme template directory URI.
 		register_default_headers( array(
+			'twenty-em'	=> array(
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header-thumbnail.jpg',
+				'description'	=> __( 'Twenty\'em... Theming is prose', 't_em' ),
+			),
 			'canyon'	=> array(
-				'url'			=> '%s/images/headers/canyon.jpg',
-				'thumbnail_url'	=> '%s/images/headers/canyon-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/canyon.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/canyon-thumbnail.jpg',
 				'description'	=> __( 'Canyon', 't_em' ),
 			),
 			'fire'		=> array(
-				'url'			=> '%s/images/headers/fire.jpg',
-				'thumbnail_url'	=> '%s/images/headers/fire-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/fire.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/fire-thumbnail.jpg',
 				'description'	=> __( 'Fire', 't_em' ),
 			),
 			'friends'	=> array(
-				'url'			=> '%s/images/headers/friends.jpg',
-				'thumbnail_url'	=> '%s/images/headers/friends-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/friends.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/friends-thumbnail.jpg',
 				'description'	=> __( 'Friends', 't_em' ),
 			),
-			'halloween'	=> array(
-				'url'			=> '%s/images/headers/halloween.jpg',
-				'thumbnail_url'	=> '%s/images/headers/halloween-thumbnail.jpg',
-				'description'	=> __( 'Halloween', 't_em' ),
-			),
 			'cityscapes'		=> array(
-				'url'			=> '%s/images/headers/cityscapes.jpg',
-				'thumbnail_url'	=> '%s/images/headers/cityscapes-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/cityscapes.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/cityscapes-thumbnail.jpg',
 				'description'	=> __( 'Cityscapes', 't_em' ),
 			),
-			'lamps'				=> array(
-				'url'			=> '%s/images/headers/lamps.jpg',
-				'thumbnail_url'	=> '%s/images/headers/lamps-thumbnail.jpg',
-				'description'	=> __( 'Lamps', 't_em' ),
-			),
 			'leaf'				=> array(
-				'url'			=> '%s/images/headers/leaf.jpg',
-				'thumbnail_url'	=> '%s/images/headers/leaf-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/leaf.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/leaf-thumbnail.jpg',
 				'description'	=> __( 'Leaf', 't_em' ),
 			),
 			'road'				=> array(
-				'url'			=> '%s/images/headers/road.jpg',
-				'thumbnail_url'	=> '%s/images/headers/road-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/road.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/road-thumbnail.jpg',
 				'description'	=> __( 'Road', 't_em' ),
 			),
-			'sepia'				=> array(
-				'url'			=> '%s/images/headers/sepia.jpg',
-				'thumbnail_url'	=> '%s/images/headers/sepia-thumbnail.jpg',
-				'description'	=> __( 'Sepia', 't_em' ),
-			),
 			'streets'			=> array(
-				'url'			=> '%s/images/headers/streets.jpg',
-				'thumbnail_url'	=> '%s/images/headers/streets-thumbnail.jpg',
+				'url'			=> T_EM_THEME_DIR_IMG . '/headers/streets.jpg',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/streets-thumbnail.jpg',
 				'description'	=> __( 'Streets', 't_em' ),
-			),
-			'wait'				=> array(
-				'url'			=> '%s/images/headers/wait.jpg',
-				'thumbnail_url'	=> '%s/images/headers/wait-thumbnail.jpg',
-				'description'	=> __( 'Wait', 't_em' ),
-			),
-			'watch'				=> array(
-				'url'			=> '%s/images/headers/watch.jpg',
-				'thumbnail_url'	=> '%s/images/headers/watch-thumbnail.jpg',
-				'description'	=> __( 'Watch', 't_em' ),
-			),
-			'wood'				=> array(
-				'url'			=> '%s/images/headers/wood.jpg',
-				'thumbnail_url'	=> '%s/images/headers/wood-thumbnail.jpg',
-				'description'	=> __( 'Wood', 't_em' ),
 			),
 		) );
 	}
@@ -301,7 +277,6 @@ if ( ! function_exists( 't_em_admin_header_style' ) ) :
  * Referenced via add_theme_support('custom-header') in t_em_setup().
  */
 function t_em_admin_header_style() {
-	//~ global $custom_header_support;
 ?>
 	<style type="text/css">
 	.appearance_page_custom-header #headimg {
