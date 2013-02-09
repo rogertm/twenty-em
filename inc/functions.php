@@ -863,26 +863,6 @@ function t_em_single_related_posts() {
 	if ( '1' == $t_em_theme_options['single-related-posts'] ) :
 		global $wpdb, $post, $table_prefix;
 
-		if ( $exclude != '' ) :
-			$query = "SELECT tt.term_id
-					  FROM ". $table_prefix ."term_taxonomy tt, " . $table_prefix . "term_relationships tr
-					  WHERE tt.taxonomy = 'category'
-					  AND tt.term_taxonomy_id = tr.term_taxonomy_id
-					  AND tr.object_id = $post->ID";
-
-			$cats = $wpdb->get_results($q);
-
-			foreach(($cats) as $cat) :
-				if (in_array($cat->term_id, $exclude) != false) :
-					return;
-				endif;
-			endforeach;
-		endif;
-
-		if(!$post->ID) :
-			return;
-		endif;
-
 		$now = current_time('mysql', 1);
 		$tags = wp_get_post_tags($post->ID);
 
@@ -895,29 +875,22 @@ function t_em_single_related_posts() {
 			endfor;
 		endif;
 
-		if ($limit) :
-			$limitclause = "LIMIT $limit";
-		else :
-			$limitclause = "LIMIT 8";
-		endif;
-
-		$query = "SELECT p.ID, p.post_title, p.post_date, p.comment_count, count(t_r.object_id) as cnt
-				  FROM $wpdb->term_taxonomy t_t, $wpdb->term_relationships t_r, $wpdb->posts p
-				  WHERE t_t.taxonomy ='post_tag'
-				  AND t_t.term_taxonomy_id = t_r.term_taxonomy_id
-				  AND t_r.object_id  = p.ID AND (t_t.term_id IN ($taglist))
-				  AND p.ID != $post->ID AND p.post_status = 'publish'
-				  AND p.post_date_gmt < '$now'
-				  GROUP BY t_r.object_id
-				  ORDER BY cnt DESC, p.post_date_gmt DESC $limitclause;";
+		$query = "SELECT ID, post_title, post_date, comment_count, count(object_id) as cnt
+				  FROM $wpdb->term_taxonomy, $wpdb->term_relationships, $wpdb->posts
+				  WHERE taxonomy ='post_tag'
+				  AND $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->term_relationships.term_taxonomy_id
+				  AND object_id = ID
+				  AND (term_id IN ($taglist))
+				  AND ID != $post->ID
+				  AND post_status = 'publish'
+				  AND post_date_gmt < '$now'
+				  GROUP BY object_id
+				  ORDER BY cnt DESC, post_date_gmt DESC
+				  LIMIT 9;";
 
 		$related_posts = $wpdb->get_results($query);
+
 		$output = "";
-
-		if (!$related_posts) :
-			return;
-		endif;
-
 		foreach ($related_posts as $related_post ) :
 			$output .= '<li>';
 			$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
