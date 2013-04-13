@@ -3,3 +3,5 @@ cache
 cache/*.html
 cache/*.touch
 cache/*.txt
+t-em.sublime-project
+t-em.sublime-workspace

@@ -686,7 +686,7 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 		'width'	=> '',
 		'caption' => ''
 	), $attr));
-	
+
 	if ( 1 > (int) $width || empty($caption) )
 		return $val;
 
@@ -698,7 +698,7 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 	}
 
 	return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: '
-	. (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption ' . $capid 
+	. (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption ' . $capid
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
@@ -861,7 +861,7 @@ function t_em_user_social_network(){
 function t_em_single_related_posts() {
 	global $t_em_theme_options;
 	if ( '1' == $t_em_theme_options['single-related-posts'] ) :
-		global $wpdb, $post, $table_prefix;
+		global $wpdb, $post;
 
 		$now = current_time('mysql', 1);
 		$tags = wp_get_post_tags($post->ID);

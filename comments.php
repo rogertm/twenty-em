@@ -8,7 +8,7 @@
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage Twenty_Em_Five 
+ * @subpackage Twenty_Em_Five
  * @since Twenty Ten Five 1.0
  */
 ?>
@@ -35,14 +35,14 @@ if ( have_comments() ) :
 <?php
 	if ( !empty($comments_by_type['comment']) ) :
 ?>
-		<h3 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments'); ?></h3>
+		<h3 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h3>
 		<ol class="commentlist">
 			<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
 		</ol>
 <?php
 	else : // If there are no responds type comments
 ?>
-		<h3 id="comment"><?php _e('No Comments'); ?></h3>
+		<h3 id="comment"><?php _e('No Comments', 't_em'); ?></h3>
 <?php
 	endif; // !empty($comments_by_type['comment'])
 ?>
@@ -68,14 +68,14 @@ if ( have_comments() ) :
 <?php
 	if ( !comments_open() ) :
 ?>
-		<h3 id="comments-closed"><?php _e('Comments are closed'); ?></h3>
+		<h3 id="comments-closed"><?php _e('Comments are closed', 't_em'); ?></h3>
 <?php
 	endif;
 ?>
 <?php
 else : // If there are no responds
 ?>
-	<h3 id="comments-title"><?php _e('No responds to '); ?><em><?php the_title(); ?></em></h3>
+	<h3 id="comments-title"><?php _e('No responds to ', 't_em'); ?><em><?php the_title(); ?></em></h3>
 <?php
 endif; // have_comments()
 ?>

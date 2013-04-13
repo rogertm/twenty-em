@@ -20,7 +20,7 @@ function t_em_theme_update(){
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Update', 't_em' ) ?></h2>
-		<h3><?php _e( 'Oops! Stay holding F5 key...', 't_em' ); ?></h3>
+		<h3><?php _e( 'Oops! Stay pressing F5 key...', 't_em' ); ?></h3>
 	</div><!-- .wrap -->
 <?php
 }
