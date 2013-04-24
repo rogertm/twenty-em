@@ -715,7 +715,6 @@ function t_em_favicon(){
 /****************************************************
  * Here starts functions from theme options setting *
  ****************************************************/
-
 /**
  * Display featured image post thumbnail
  */
@@ -733,7 +732,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		endif;
 		?>
 			<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
+				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 				<figcaption><?php the_title(); ?></figcaption>
 			</figure>
 		<?php
@@ -756,7 +755,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 			endif;
 			?>
 				<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>"/>
+					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 					<figcaption><?php the_title(); ?></figcaption>
 				</figure>
 			<?php
@@ -783,7 +782,7 @@ function t_em_header_options_set(){
 	elseif ( 'header-image' == $header_options ) :
 		get_template_part( 'header', 'image' );
 	elseif ( 'slider' == $header_options ) :
-		get_template_part( 'header', 'slider' );
+		get_template_part( 'header', 'nivo-slider' );
 	endif;
 }
 

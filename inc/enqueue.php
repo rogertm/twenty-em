@@ -37,8 +37,12 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'comment-reply' );
 	endif;
 
-	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array(), '1.0', true );
+	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array( 'jquery' ), '1.0', false );
 	wp_enqueue_script( 'navigation' );
+
+	// Load Font Simbols Style and Script
+	wp_enqueue_style( 'style-font-simbol', T_EM_THEME_DIR_CSS.'/font-simbols-style.css', array(), $t_em_theme_data['Version'], 'all' );
+	//wp_enqueue_script( 'script-font-simbol', $src = false, $deps = array, $ver = false, $in_footer = false );
 
 	t_em_enqueue_modernizr();
 
@@ -67,7 +71,7 @@ function t_em_enqueue_ggs(){
 		wp_register_script( 'golden-grid-system', T_EM_THEME_DIR_JS.'/ggs.js', array(), '1.01', false );
 		wp_enqueue_script( 'golden-grid-system' );
 		wp_register_script( 'script-ggs', T_EM_THEME_DIR_JS . '/script.ggs.js', array( 'jquery' ), '1.0', false );
-		wp_register_style( 'ggs', t_em_ggs_style() );
+		wp_register_style( 'ggs', t_em_ggs_style(), array(), '1.01', 'all' );
 		wp_enqueue_style( 'ggs' );
 		wp_enqueue_script( 'script-ggs' );
 	endif;
@@ -78,24 +82,25 @@ function t_em_enqueue_slider(){
 			$t_em_tools_box_options;
 	// Load JQuery Cycle just if is needed
 	if ( 'slider' == $t_em_theme_options['header-set'] ) :
-		wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS . '/style-slider.css' );
-		wp_enqueue_style( 'style-slider' );
+		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS . '/nivo-slider/nivo-slider.css', array(), '3.2', 'all' );
+		wp_enqueue_style( 'style-nivo-slider' );
+		wp_register_style( 'stile-nivo-slider-t-em-theme', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/t-em/t-em.css', array(), '3.2', $media = 'all' );
+		wp_enqueue_style( 'stile-nivo-slider-t-em-theme' );
+		/** Nivo Slider Styles **/
+		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['slider-style'].'', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/'.$t_em_theme_options['slider-style'].'/'.$t_em_theme_options['slider-style'].'.css', array(), '3.2', $media = 'all' );
+		wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['slider-style'].'' );
+		/*wp_register_style( 'stile-nivo-slider-bar-theme', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/bar/bar.css', array(), '3.2', $media = 'all' );
+		wp_enqueue_style( 'stile-nivo-slider-bar-theme' );
+		wp_register_style( 'stile-nivo-slider-dark-theme', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/dark/dark.css', array(), '3.2', $media = 'all' );
+		wp_enqueue_style( 'stile-nivo-slider-dark-theme' );
+		wp_register_style( 'stile-nivo-slider-light-theme', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/light/light.css', array(), '3.2', $media = 'all' );
+		wp_enqueue_style( 'stile-nivo-slider-light-theme' );*/
 
-		wp_register_style( 'slider-content-width', t_em_slider_content_width() );
-		wp_enqueue_style( 'slider-content-width' );
 
-		// Load JQuery Cycle Lite if is set by the user, otherwise use JQuery Cycle
-		if ( '1' == $t_em_tools_box_options['jquery-cycle-lite'] ) :
-			wp_register_script( 'jquery-cycle-lite', T_EM_THEME_DIR_JS.'/jquery.cycle.lite.js', array( 'jquery' ), '1.6', false );
-			wp_enqueue_script( 'jquery-cycle-lite' );
-			wp_register_script( 'script-jquery-cycle-lite', T_EM_THEME_DIR_JS.'/script.jquery.cycle.lite.js', array( 'jquery', 'jquery-cycle-lite' ), '1.0', false );
-			wp_enqueue_script( 'script-jquery-cycle-lite' );
-		else :
-			wp_register_script( 'jquery-cycle-all', T_EM_THEME_DIR_JS.'/jquery.cycle.all.js', array( 'jquery' ), '2.9999.6', false );
-			wp_enqueue_script( 'jquery-cycle-all' );
-			wp_register_script( 'script-jquery-cycle-all', T_EM_THEME_DIR_JS.'/script.jquery.cycle.all.js', array( 'jquery', 'jquery-cycle-all' ), '1.0', false );
-			wp_enqueue_script( 'script-jquery-cycle-all' );
-		endif;
+		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS.'/jquery.nivo.slider.pack.js', array( 'jquery' ), '3.2', false );
+		wp_enqueue_script( 'nivo-slider' );
+		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), '1.0', false );
+		wp_enqueue_script( 'script-jquery-nivo-slider' );
 	endif;
 }
 
@@ -169,38 +174,6 @@ function t_em_ggs_style(){
 }
 
 /**
- * Set in porcentage (%) the width of the elements
- * .slider-image and .slider-sumary in to the slider
- */
-function t_em_slider_content_width(){
-	global $t_em_theme_options;
-
-	$total_width = ( ( $t_em_theme_options['layout-width'] != '' ) ? $t_em_theme_options['layout-width'] : '960' );
-	$thumb_width = ( ( $t_em_theme_options['slider-thumbnail-width'] != '' ) ? $t_em_theme_options['slider-thumbnail-width'] : get_option( 'medium_size_w' ) );
-
-	$slider_img_w = $total_width / $thumb_width;
-	if ( 'slider-thumbnail-full' != $t_em_theme_options['slider-thumbnail'] ) :
-		// Get .slider-image width %
-		$slider_img_p = 100 / $slider_img_w;
-		// Get .slider-sumary width %
-		$slider_sum_p = 100 - $slider_img_p;
-	else :
-		$slider_img_p = 100;
-		$slider_sum_p = 100;
-	endif;
-
-	echo '
-<style type="text/css" media="all">
-	#slider-wrapper .slider-image{
-		width: '.$slider_img_p.'%;
-	}
-	#slider-wrapper .slider-sumary{
-		width: '.$slider_sum_p.'%;
-	}
-</style>'."\n";
-}
-
-/**
  * The "rel" element in the html returned by the function wp_enqueue_style()
  * is just like rel="stylesheet". LESS needs something else like
  * rel="stylesheet/less", so, we need do it this way. Meanwhile we are searching
@@ -217,7 +190,7 @@ function t_em_enqueue_less_css(){
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
- * 
+ *
  * As we need the conditional comment for older
  * IE version we load html5 shiv script this way.
  */

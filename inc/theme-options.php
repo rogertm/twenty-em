@@ -109,13 +109,14 @@ function t_em_default_theme_options(){
 		'slider-home-only'			=> '0',
 		'slider-category'			=> get_option( 'default_category' ),
 		'slider-number'				=> '5',
-		'slider-thumbnail'			=> 'slider-thumbnail-left',
+		'slider-text'				=> 'slider-text-center',
 		'archive-set'				=> 'the-content',
 		'layout-set'				=> 'sidebar-right',
 		'layout-width'				=> '960',
 		'excerpt-set'				=> 'thumbnail-left',
-		'slider-thumbnail-height'	=> get_option( 'medium_size_h' ),
-		'slider-thumbnail-width'	=> get_option( 'medium_size_w' ),
+		'slider-height'				=> '350',
+		'slider-width'				=> '960',
+		'slider-style'				=> 't-em',
 		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
 		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
 		'twitter-set'				=> '',
@@ -127,6 +128,7 @@ function t_em_default_theme_options(){
 		'flickr-set'				=> '',
 		'feedburner-set'			=> '',
 		'rss-set'					=> '',
+		'dropbox-set'				=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -231,20 +233,43 @@ function t_em_slider_callback(){
 			$list_categories;
 
 	$slider_layout = array (
-		'slider-thumbnail-left' => array (
-			'value' => 'slider-thumbnail-left',
-			'label' => __( 'Slider thumbnail on left', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/slider-thumbnail-left.png',
+		'slider-text-center' => array (
+			'value' => 'slider-text-center',
+			'label' => __( 'Slider text on center', 't_em' ),
+			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-center.png',
 		),
-		'slider-thumbnail-right' => array (
-			'value' => 'slider-thumbnail-right',
-			'label' => __( 'Slider thumbnail on right', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/slider-thumbnail-right.png',
+		'slider-text-left' => array (
+			'value' => 'slider-text-left',
+			'label' => __( 'Slider text on left', 't_em' ),
+			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-left.png',
 		),
-		'slider-thumbnail-full' => array (
-			'value' => 'slider-thumbnail-full',
-			'label' => __( 'Slider thumbnail on full', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/slider-thumbnail-full.png',
+		'slider-text-right' => array (
+			'value' => 'slider-text-right',
+			'label' => __( 'Slider text on right', 't_em' ),
+			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-right.png',
+		),
+	);
+
+	$slider_style = array (
+		'style-t-em'	=> array (
+			'value'	=> 't-em',
+			'label'	=> __( 'Twenty&#8217;em', 't_em' ),
+		),
+		'style-default'	=> array (
+			'value'	=> 'default',
+			'label'	=> __( 'Nivo Default', 't_em' ),
+		),
+		'style-dark'	=> array (
+			'value'	=> 'dark',
+			'label'	=> __( 'Nivo Dark', 't_em' ),
+		),
+		'style-light'	=> array (
+			'value'	=> 'light',
+			'label'	=> __( 'Nivo Light', 't_em' ),
+		),
+		'style-bar'	=> array (
+			'value'	=> 'bar',
+			'label'	=> __( 'Nivo Bar', 't_em' ),
 		),
 	);
 
@@ -260,30 +285,40 @@ function t_em_slider_callback(){
 	// Display images options
 	$extend_slider .= '<div class="image-radio-option-group">';
 	foreach ( $slider_layout as $slider ) :
-		$checked_option = checked( $t_em_theme_options['slider-thumbnail'], $slider['value'], false );
+		$checked_option = checked( $t_em_theme_options['slider-text'], $slider['value'], false );
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-thumbnail]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
-		$extend_slider .=			'<span><img src="'.$slider['thumbnail'].'" width="136" />'.$slider['label'].'</span>';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-text]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
+		$extend_slider .=			'<span><img src="'.$slider['title'].'" width="136" />'.$slider['label'].'</span>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
 	endforeach;
 	$extend_slider .= '</div>';
 
-	// Define Width and Height of thumbnails
+	// Slider Style
 	$extend_slider .= '<div class="sub-extend">';
-	$thumb = t_em_thumbnail_sizes( 'slider' );
-	$extend_slider .= '<p>'. sprintf( __( 'For thubnail on right or left, set <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default medium size (<strong>%2$s</strong> x <strong>%3$s</strong>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
-		admin_url( 'options-media.php' ),
-		get_option( 'medium_size_w' ),
-		get_option( 'medium_size_h' ) ) .'</p>';
-	foreach ( $thumb as $thumbnail ) :
-		$extend_slider .= 		'<div class="layout text-option thumbnail">';
-		$extend_slider .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_slider .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em_theme_options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
-		$extend_slider .=			'</label>';
-		$extend_slider .=		'</div>';
+	$extend_slider .= '<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
+	$extend_slider .= '<p>' . __( '<strong>Important:</strong> The options above only works with Twenty&#8217;em Style.', 't_em' ) . '</p>';
+	foreach ($slider_style as $style) :
+		$checked_option = checked( $t_em_theme_options['slider-style'], $style['value'], false );
+		$extend_slider .=	'<div class="layout radio-option">';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=		'<input type="radio" name="t_em_theme_options[slider-style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
+		$extend_slider .=		'<span>'. $style['label'] .'</span>';
+		$extend_slider .=		'</label>';
+
+		$extend_slider .=	'</div>';
 	endforeach;
+	$extend_slider .= '</div><!-- .sub-extend -->';
+
+	// Define Height of Nivo Slider
+	$extend_slider .= '<div class="sub-extend">';
+	$extend_slider .= '<p>'. __( 'By default slider width is the same than layout width. Here you may enter the value you wish to be your slider height. If empty the value will be <strong>350px</strong>', 't_em' ) .'</p>';
+	$extend_slider .= 		'<div class="layout text-option thumbnail">';
+	$extend_slider .=			'<label><span>'. __( 'Slider Height', 't_em' ) .'</span>';
+	$extend_slider .=				'<input type="number" name="t_em_theme_options[slider-height]" value="'.esc_attr( $t_em_theme_options['slider-height'] ).'" /><span class="unit">px</span>';
+	$extend_slider .=			'</label>';
+	$extend_slider .=		'</div>';
 	$extend_slider .= '</div><!-- .sub-extend -->';
 
 	// Display a select list of categories
@@ -478,6 +513,12 @@ function t_em_social_network_options(){
 			'name' => 'flickr-set',
 			'label' => __( 'Flickr URL', 't_em' ),
 			'item' => __( 'Flickr', 't_em' ),
+		),
+		'dropbox-set'	=> array(
+			'value'	=> '',
+			'name' => 'dropbox-set',
+			'label' => __( 'Dropbox URL', 't_em' ),
+			'item' => __( 'Dropbox', 't_em' ),
 		),
 		'feedburner-set' => array (
 			'value' => '',
@@ -703,7 +744,7 @@ function t_em_theme_options_validate( $input ){
 			'callback'	=> t_em_header_options(),
 		),
 		'slider-options'	=> array (
-			'set'		=> 'slider-thumbnail',
+			'set'		=> 'slider-text',
 			'callback'	=> $slider_layout,
 		),
 		'archive-options'	=> array (
@@ -728,8 +769,8 @@ function t_em_theme_options_validate( $input ){
 
 	// Validate all int (input[type="number"]) options
 	foreach( array (
-		'slider-thumbnail-width',
-		'slider-thumbnail-height',
+		'slider-width',
+		'slider-height',
 		'slider-number',
 		'excerpt-thumbnail-width',
 		'excerpt-thumbnail-height',
@@ -749,6 +790,7 @@ function t_em_theme_options_validate( $input ){
 		'flickr-set',
 		'feedburner-set',
 		'rss-set',
+		'dropbox-set',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
 	endforeach;

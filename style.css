@@ -5,7 +5,9 @@
  * Author: RogerTM
  * Author URI: http://blog.rogertm.com/
  * Version: 1.0
- * Tags: html5, black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+ * License: GNU General Public License v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Tags: black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
  */
 
 /* Grab the original Twenty'em styles */
@@ -114,8 +116,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -126,7 +128,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -251,7 +253,7 @@ h3#reply-title,
 .skip-link a,
 input[type="submit"],
 input[type="text"],
-input[type="email"], 
+input[type="email"],
 input[type="url"],
 textarea {
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
@@ -1324,7 +1326,7 @@ h3#reply-title {
 	padding: 0 5px;
 }
 #respond input[type="text"],
-#respond input[type="email"], 
+#respond input[type="email"],
 #respond input[type="url"],
 #respond textarea {
 	padding: 7px 5px;
