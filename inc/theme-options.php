@@ -116,7 +116,7 @@ function t_em_default_theme_options(){
 		'excerpt-set'				=> 'thumbnail-left',
 		'slider-height'				=> '350',
 		'slider-width'				=> '960',
-		'slider-style'				=> 't-em',
+		'nivo-style'				=> 't-em',
 		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
 		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
 		'twitter-set'				=> '',
@@ -144,7 +144,7 @@ function t_em_set_globals(){
 			$t_em_webmaster_tools_options;
 
 	$t_em_theme_options				= t_em_get_theme_options();
-	$t_em_tools_box_options				= t_em_get_tools_box_options();
+	$t_em_tools_box_options			= t_em_get_tools_box_options();
 	$t_em_webmaster_tools_options	= t_em_get_webmaster_tools_options();
 
 	// If options are empties, we load default settings.
@@ -300,10 +300,10 @@ function t_em_slider_callback(){
 	$extend_slider .= '<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
 	$extend_slider .= '<p>' . __( '<strong>Important:</strong> The options above only works with Twenty&#8217;em Style.', 't_em' ) . '</p>';
 	foreach ($slider_style as $style) :
-		$checked_option = checked( $t_em_theme_options['slider-style'], $style['value'], false );
+		$checked_option = checked( $t_em_theme_options['nivo-style'], $style['value'], false );
 		$extend_slider .=	'<div class="layout radio-option">';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=		'<input type="radio" name="t_em_theme_options[slider-style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
+		$extend_slider .=		'<input type="radio" name="t_em_theme_options[nivo-style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
 		$extend_slider .=		'<span>'. $style['label'] .'</span>';
 		$extend_slider .=		'</label>';
 

@@ -24,7 +24,7 @@
 
 <body <?php body_class(); ?>>
 <!--[if lte IE 8 ]>
-<noscript><strong>JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...</strong></noscript>
+<noscript><strong><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 
 <div id="wrap" class="hfeed">

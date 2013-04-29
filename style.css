@@ -4,7 +4,7 @@
  * Description: A HTML5 & CSS3 WordPress framework for themes developers, based on Twenty Ten.
  * Author: RogerTM
  * Author URI: http://blog.rogertm.com/
- * Version: 1.0
+ * Version: 0.1-beta1
  * License: GNU General Public License v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Tags: black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
@@ -208,13 +208,13 @@ DESCRIPTION: Full width content with no sidebar;
 
 /* =Fonts
 -------------------------------------------------------------- */
-body
 .page-title span,
 .pingback a.url,
 h2#site-description,
 #content blockquote {
 	font-family: Georgia, "Bitstream Charter", serif;
 }
+body,
 #content,
 h3#comments-title,
 h3#reply-title,
@@ -1069,25 +1069,16 @@ body.page .edit-link {
 -------------------------------------------------------------- */
 
 .navigation {
-/*
-	color: #888;
-*/
 	font-size: 12px;
 	line-height: 18px;
 	overflow: hidden;
 }
 .navigation a:link,
 .navigation a:visited {
-/*
-	color: #888;
-*/
 	text-decoration: none;
 }
 .navigation a:active,
 .navigation a:hover {
-/*
-	color: #ff4b33;
-*/
 }
 .nav-previous {
 	float: left;
@@ -1110,6 +1101,10 @@ body.page .edit-link {
 }
 #nav-below {
 	margin: 24px 0;
+}
+/* If JetPack module Infinite Scroll is active */
+.infinite-scroll .navigation{
+	display: none !important;
 }
 
 

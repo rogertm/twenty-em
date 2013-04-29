@@ -79,11 +79,12 @@ if ( !function_exists( 't_em_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video' ) );
+		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
 
 		t_em_support_custom_background();
 		t_em_support_custom_header();
 		t_em_support_custom_header_image();
+		t_em_support_jp_infinite_scroll();
 
 		/**
 		 * Twenty'em is ready for translation
@@ -194,6 +195,18 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 		) );
 	}
 endif; // function t_em_support_custom_header_image()
+
+if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
+	function t_em_support_jp_infinite_scroll(){
+		$jp_infinite_scroll = array(
+			'container'			=> 'content',
+			'footer'			=> 'footer',
+			'type'				=> 'click',
+			'footer_widgets'	=> true,
+		);
+		add_theme_support( 'infinite-scroll', $jp_infinite_scroll );
+	}
+endif;
 
 if ( !function_exists( 't_em_register_nav_menus' ) ) :
 	function t_em_register_nav_menus(){

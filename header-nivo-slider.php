@@ -31,7 +31,7 @@ if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $
 	);
 	query_posts ( $args );
 		?>
-		<section id="nivo-slider" class="slider-wrapper theme-<?php echo $t_em_theme_options['slider-style']; ?> <?php echo $t_em_theme_options['slider-text'] ?>">
+		<section id="nivo-slider" class="slider-wrapper theme-<?php echo $t_em_theme_options['nivo-style']; ?> <?php echo $t_em_theme_options['slider-text'] ?>">
 			<div class="ribbon"></div>
 			<div id="slider" class="nivoSlider">
 		<?php
