@@ -1,6 +1,6 @@
 <?php
 /**
- * Twenty'em theme options.
+ * Twenty'em Tools Box theme options.
  *
  * @file			theme-tools-box.php
  * @package			WordPress
@@ -27,7 +27,7 @@ function t_em_register_tools_box_options_init(){
 	add_settings_section( 'general', '', '__return_false', 'theme-tools-box' );
 
 	// Register individual settings fields
-	add_settings_field( 't_em_tools_box_frameworks',	__( 'Javascript and CSS Frameworks or Tools', 't_em' ),	't_em_settings_tools_box_frameworks',	'theme-tools-box',	'general' );
+	add_settings_field( 't_em_tools_box_frameworks',	__( 'Tools Box', 't_em' ),	't_em_settings_tools_box_frameworks',	'theme-tools-box',	'general' );
 }
 
 /**
@@ -36,47 +36,12 @@ function t_em_register_tools_box_options_init(){
 function t_em_tools_box_frameworks_options(){
 	global $t_em_theme_data;
 	$frameworks_options = array (
-		'less-css'			=> array (
-			'name'			=> 'less-css',
-			'url'			=> 'http://lesscss.org/',
-			'label'			=> __( 'LESS', 't_em' ),
-			'sublabel'		=> __( 'The dynamic stylesheet language.', 't_em' ),
-			'description'	=> sprintf( __( 'By default <strong>%s</strong> uses <a href="http://lesscss.org/">LESS dynamic stylesheet language</a>. LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the client-side (Chrome, Safari, Firefox) and server-side, with Node.js and Rhino.', 't_em' ), $t_em_theme_data['Name'] ),
-		),
-		'modernizr'			=> array (
-			'name'			=> 'modernizr',
-			'url'			=> 'http://www.modernizr.com/',
-			'label'			=> __( 'Modernizr', 't_em' ),
-			'sublabel'		=> __( '', 't_em' ),
-			'description'	=> __( 'Modernizr is a small JavaScript library that detects the availability of native implementations for next-generation web technologies, i.e. features that stem from the HTML5 and CSS3 specifications', 't_em' ),
-		),
-		'html5shiv'			=> array (
-			'name'			=> 'html5shiv',
-			'url'			=> 'http://github.com/aFarkas/html5shiv',
-			'label'			=> __( 'HTML5 Shiv', 't_em' ),
-			'sublabel'		=> __( '', 't_em' ),
-			'description'	=> sprintf( __( 'By default <strong>%s</strong> loads <a href="http://github.com/aFarkas/html5shiv">HTML5 Shiv</a> script to add support for HTML5 elements in older IE versions', 't_em' ), $t_em_theme_data['Name'] ),
-		),
 		'golden-grid-system' => array (
 			'name'			=> 'golden-grid-system',
 			'url'			=> 'http://goldengridsystem.com/',
 			'label'			=> __( 'Golden Grid System', 't_em' ),
 			'sublabel'		=> __( 'A folding grid for responsive design.', 't_em' ),
 			'description'	=> __( 'If active, a folding grid will be displayed (right top of your home page), whish helps you to organize your desing and make it responsive.', 't_em' ),
-		),
-		'jquery-cycle-lite' => array (
-			'name'			=> 'jquery-cycle-lite',
-			'url'			=> 'http://malsup.com/jquery/cycle/lite/',
-			'label'			=> __( 'jQuery Cycle Lite Plugin', 't_em' ),
-			'sublabel'		=> __( 'The <strong>jQuery Cycle Lite Plugin</strong> is a lighter version of the <a href="http://jquery.malsup.com/" target="_blank">Cycle Plugin</a>. The Lite version is optimized for file size and includes only a fade transition.', 't_em' ),
-			'description'	=> sprintf( __( 'By default <strong>%s</strong> use <strong>jQuery Cycle Full Version</strong> for the slider section. If you enable jQuery Cycle Lite, full version will be disable.', 't_em' ), wp_get_theme() ),
-		),
-		'jquery-easing'		=> array (
-			'name'			=> 'jquery-easing',
-			'url'			=> 'http://gsgd.co.uk/sandbox/jquery/easing/',
-			'label'			=> __( 'jQuery Easing Plugin', 't_em' ),
-			'sublabel'			=> sprintf( __( 'A jQuery plugin from <a href="%s" target="_blank">GSGD</a> to give advanced easing options.', 't_em' ), 'http://gsgd.co.uk/' ),
-			'description'	=> __( 'Some description', 't_em' ),
 		),
 	);
 
@@ -88,12 +53,7 @@ function t_em_tools_box_frameworks_options(){
  */
 function t_em_tools_box_default_options(){
 	$default_tools_box_options = array (
-		'less-css'				=> '1',
-		'modernizr'				=> '1',
-		'html5shiv'				=> '1',
 		'golden-grid-system'	=> '',
-		'jquery-cycle-lite'		=> '',
-		'jquery-easing'			=> '',
 	);
 
 	return apply_filters( 't_em_tools_box_default_options', $default_tools_box_options );
@@ -116,16 +76,8 @@ function t_em_settings_tools_box_frameworks(){
 <?php
 	$theme_data = wp_get_theme();
 	$theme_name = $theme_data->display('Name');
-	$count_frameworks = count( t_em_tools_box_frameworks_options() );
-	if ( $count_frameworks == '1' ) :
-		$all_frameworks = __( 'a', 't_em' );
-	elseif ( $count_frameworks == '2' ) :
-		$all_frameworks = __( 'two', 't_em' );
-	else :
-		$all_frameworks = __( 'a few', 't_em' );
-	endif;
 ?>
-		<p><?php printf( __( '<strong>%1$s</strong> provides %2$s Javascript and CSS Frameworks or Tools to make your work easier.', 't_em' ), $theme_name, $all_frameworks ) ?></p>
+		<p><?php printf( __( '<strong>%1$s</strong> provides some Tools to make your work easier.', 't_em' ), $theme_name ) ?></p>
 <?php
 	foreach ( t_em_tools_box_frameworks_options() as $framework ) :
 ?>
@@ -173,12 +125,7 @@ function t_em_theme_tools_box_options(){
 function t_em_tools_box_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
-		'less-css',
-		'modernizr',
-		'html5shiv',
 		'golden-grid-system',
-		'jquery-cycle-lite',
-		'jquery-easing',
 	) as $checkbox ) :
 		if ( !isset( $input[$checkbox] ) )
 			$input[$checkbox] = null;

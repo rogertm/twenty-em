@@ -37,9 +37,6 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'comment-reply' );
 	endif;
 
-	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-	wp_enqueue_script( 'navigation' );
-
 	// Register and enqueue Modernizr JS
 	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
 	wp_enqueue_script( 'modernizr' );
@@ -49,9 +46,9 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_script( 'golden-grid-system', T_EM_THEME_DIR_JS.'/ggs.js', array(), '1.01', false );
 		wp_enqueue_script( 'golden-grid-system' );
 		wp_register_script( 'script-ggs', T_EM_THEME_DIR_JS . '/script.ggs.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-		wp_register_style( 'ggs', t_em_ggs_style(), array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'ggs' );
 		wp_enqueue_script( 'script-ggs' );
+		wp_register_style( 'ggs', t_em_ggs_style() );
+		wp_enqueue_style( 'ggs' );
 	endif;
 
 	// Load JQuery Nivo Slider just if is needed
@@ -65,6 +62,9 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-jquery-nivo-slider' );
 	endif;
+
+	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_enqueue_script( 'navigation' );
 
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
@@ -133,16 +133,13 @@ function t_em_ggs_style(){
 /**
  * The "rel" element in the html returned by the function wp_enqueue_style()
  * is just like rel="stylesheet". LESS needs something else like
- * rel="stylesheet/less", so, we need do it this way. Meanwhile we are searching
- * how to do it in the right way.
+ * rel="stylesheet/less", so, we need do it this way.
  */
 add_action( 'wp_head', 't_em_enqueue_less_css' );
 function t_em_enqueue_less_css(){
-	global $t_em_tools_box_options;
-	if ( '1' == $t_em_tools_box_options['less-css'] ) :
-		echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
-		echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
-	endif;
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
+	echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
+
 }
 
 /**

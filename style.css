@@ -163,6 +163,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #primary {
 	float: left;
 	width: 74.5%;
+	margin-bottom: 25px;
 }
 .sidebar-left #primary{
 	float: right;
