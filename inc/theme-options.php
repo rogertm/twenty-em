@@ -115,7 +115,6 @@ function t_em_default_theme_options(){
 		'layout-width'				=> '960',
 		'excerpt-set'				=> 'thumbnail-left',
 		'slider-height'				=> '350',
-		'slider-width'				=> '960',
 		'nivo-style'				=> 't-em',
 		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
 		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
@@ -322,7 +321,7 @@ function t_em_slider_callback(){
 	$extend_slider .= '</div><!-- .sub-extend -->';
 
 	// Display a select list of categories
-	$list_categories = get_categories( array ( 'pad_count' => 1 ) );
+	$list_categories = get_categories( array () );
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
@@ -769,7 +768,6 @@ function t_em_theme_options_validate( $input ){
 
 	// Validate all int (input[type="number"]) options
 	foreach( array (
-		'slider-width',
 		'slider-height',
 		'slider-number',
 		'excerpt-thumbnail-width',
