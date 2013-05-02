@@ -794,15 +794,15 @@ function t_em_theme_options_validate( $input ){
 	endforeach;
 
 	// Validate all select list options
-	$select_options = array ( // Pincha pero parcialmente, no agrega algunas categorias :8
+	$select_options = array (
 		'slider-cat'		=> array (
 			'set'		=> 'slider-category',
 			'callback'	=> $list_categories,
 		),
 	);
 	foreach ( $select_options as $select ) :
-		if ( ! array_key_exists( $input[$select['set']], $select['callback'] ) )
-			$input[$select['set']] = null;
+		if ( array_key_exists( $input[$select['set']], $select['callback'] ) )
+			$input[$select] = $input[$select['set']];
 	endforeach;
 
 	return $input;
