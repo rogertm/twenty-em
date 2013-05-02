@@ -8,8 +8,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Twenty_Em
- * @since Twenty Ten 1.0
+ * @subpackage Twenty'em
+ * @since Twenty'em 0.1
  */
 
 get_header(); ?>

@@ -3,8 +3,8 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage Twenty_Em
- * @since Twenty Ten 1.0
+ * @subpackage Twenty'em
+ * @since Twenty'em 0.1
  */
 
 global $t_em_theme_options;

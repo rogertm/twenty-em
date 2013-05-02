@@ -5,8 +5,8 @@
  * Displays all of the <head> section and everything up till <div id="main">
  *
  * @package WordPress
- * @subpackage Twenty_Em_Five
- * @since Twenty Ten Five 1.0
+ * @subpackage Twenty'em
+ * @since Twenty'em 0.1
  */
 ?><!DOCTYPE html>
 <!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="no-js ie6"> <![endif]-->

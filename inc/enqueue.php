@@ -8,10 +8,10 @@
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
- * @version			1.0
+ * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/enqueue.php
  * @link			http://codex.wordpress.org/Plugin_API/Action_Reference/wp_register_script
- * @since			Version 1.0
+ * @since			Version 0.1
  */
 ?>
 <?php
@@ -65,7 +65,6 @@ function t_em_enqueue_styles_and_scripts(){
 
 	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'navigation' );
-
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 

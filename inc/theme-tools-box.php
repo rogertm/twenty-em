@@ -8,10 +8,10 @@
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
- * @version			1.0
+ * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/theme-tools-box.php
  * @link			http://codex.wordpress.org/Settings_API
- * @since			Version 1.0
+ * @since			Version 0.1
  */
 ?>
 <?php

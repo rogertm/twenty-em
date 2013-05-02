@@ -125,15 +125,15 @@ Supports Thumbs: true
 -------------------------------------------------------------- */
 /* Text on Left */
 .theme-t-em.slider-text-left .nivo-caption{
-	width: 35%;
+	width: 37%;
 	left: 0;
 	top: 0;
 }
 /* Text on Right */
 .theme-t-em.slider-text-right .nivo-caption{
-	width: 35%;
+	width: 37%;
 	right: 0;
-	left: 65%;
+	left: 63%;
 	top: 0;
 }
 /* =Media Queries

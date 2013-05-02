@@ -8,10 +8,10 @@
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
- * @version			1.0
+ * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/functions.php
  * @link			N/A
- * @since			Version 1.0
+ * @since			Version 0.1
  */
 
 /**

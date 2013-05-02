@@ -8,10 +8,10 @@
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
- * @version			1.0
+ * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/functions.php
  * @link			http://codex.wordpress.org/Theme_Development#Functions_File
- * @since			Version 1.0
+ * @since			Version 0.1
  */
 
 /**
@@ -155,7 +155,7 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 			'twenty-em'	=> array(
 				'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
 				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header-thumbnail.jpg',
-				'description'	=> __( 'Twenty\'em... Theming is prose', 't_em' ),
+				'description'	=> __( 'Twenty&#8217;em... Theming is prose', 't_em' ),
 			),
 			'canyon'	=> array(
 				'url'			=> T_EM_THEME_DIR_IMG . '/headers/canyon.jpg',
@@ -360,7 +360,7 @@ endif; // t_em_admin_header_image()
  * Creates a nicely formatted and more specific title element text
  * for output in head of document, based on current view.
  *
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  *
  * @param string $title Default title text for current view.
  * @param string $sep Optional separator.
@@ -390,7 +390,7 @@ add_filter( 'wp_title', 't_em_site_title', 10, 2 );
 
 /**
  * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  */
 function t_em_page_menu_args( $args ) {
 	$args['show_home'] = true;
@@ -400,7 +400,7 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 
 /**
  * Twenty'em sets the post excerpt length to 40 characters.
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  * @return int
  */
 function t_em_excerpt_length( $length ) {
@@ -410,7 +410,7 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
@@ -419,7 +419,7 @@ function t_em_continue_reading_link() {
 
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and t_em_continue_reading_link().
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  * @return string An ellipsis
  */
 function t_em_auto_excerpt_more( $more ) {
@@ -429,7 +429,7 @@ add_filter( 'excerpt_more', 't_em_auto_excerpt_more' );
 
 /**
  * Adds a pretty "Continue Reading" link to custom post excerpts.
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  * @return string Excerpt with a pretty "Continue Reading" link
  */
 function t_em_custom_excerpt_more( $output ) {
@@ -442,7 +442,7 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  * @uses register_sidebar
  */
 function t_em_widgets_init() {
@@ -507,7 +507,7 @@ add_action( 'widgets_init', 't_em_widgets_init' );
 if ( ! function_exists( 't_em_posted_in' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post (category, tags and permalink).
-	 * @since Twenty'em 1.0
+	 * @since Twenty'em 0.1
 	 */
 	function t_em_posted_in() {
 		// Retrieves tag list of current post, separated by commas.
@@ -533,7 +533,7 @@ endif; // function t_em_posted_in()
 if ( ! function_exists( 't_em_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post—date/time and author.
-	 * @since Twenty'em 1.0
+	 * @since Twenty'em 0.1
 	 */
 	function t_em_posted_on() {
 			printf( __( 'Posted on %2$s by %3$s', 't_em' ),
@@ -555,7 +555,7 @@ endif; // function t_em_posted_on()
 if ( ! function_exists( 't_em_comment' ) ) :
 	/**
 	 * Template for comments.
-	 * @since Twenty'em 1.0
+	 * @since Twenty'em 0.1
 	 */
 	function t_em_comment( $comment, $args, $depth ) {
 		$GLOBALS['comment'] = $comment;
@@ -597,7 +597,7 @@ endif; // function t_em_comment()
 if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
 	/**
 	 * Template for pingbacks and trackbacks.
-	 * @since Twenty'em 1.0
+	 * @since Twenty'em 0.1
 	 */
 	function t_em_comment_pingback_trackback( $comment ) {
 		$GLOBALS['comment'] = $comment;
@@ -652,7 +652,7 @@ endif; // function t_em_page_navi()
 
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  */
 function t_em_remove_recent_comments_style(){
 	add_filter( 'show_recent_comments_widget_style', '__return_false' );
@@ -662,7 +662,7 @@ add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
 /**
  * Customise the Twenty'em theme comments fields with HTML5 form elements
  * Adds support for placeholder, required, type="email" and type="url"
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  */
 function t_em_comment_form_fields() {
 	$commenter = wp_get_current_commenter();

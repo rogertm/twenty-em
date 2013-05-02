@@ -8,10 +8,10 @@
  * @author			RogerTM
  * @copyright		2012
  * @license			license.txt
- * @version			1.0
+ * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/theme-options.php
  * @link			http://codex.wordpress.org/Settings_API
- * @since			Version 1.0
+ * @since			Version 0.1
  */
 ?>
 <?php
@@ -162,7 +162,7 @@ function t_em_general_options(){
 	$general_options = array (
 		't-em-link'				=> array (
 			'name'			=> 't-em-link',
-			'label'			=> __( 'Show <strong><a href="http://twenty-em.com" target="_blank">Twenty\'em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ),
+			'label'			=> __( 'Show <strong><a href="http://twenty-em.com" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ),
 		),
 		'single-featured-img'	=> array (
 			'name'			=> 'single-featured-img',
@@ -811,7 +811,7 @@ function t_em_theme_options_validate( $input ){
 /**
  * Add Twenty'em layout clases to the array of boddy clases
  *
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  */
 add_filter( 'body_class', 't_em_layout_classes' );
 function t_em_layout_classes( $existing_classes ){
@@ -838,7 +838,7 @@ function t_em_layout_classes( $existing_classes ){
 /**
  * Add Twenty'em archive classes to the array of posts classes
  *
- * @since Twenty'em 1.0
+ * @since Twenty'em 0.1
  */
 add_filter( 'post_class', 't_em_archive_classes' );
 function t_em_archive_classes( $existing_classes ){
