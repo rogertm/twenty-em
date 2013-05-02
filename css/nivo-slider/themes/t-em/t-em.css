@@ -9,9 +9,9 @@ Supports Thumbs: true
 */
 
 .theme-t-em .nivoSlider {
-	position:relative;
 	background:#fff url(loading.gif) no-repeat 50% 50%;
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
+	overflow: visible;
 }
 .theme-t-em .nivoSlider img {
 	position:absolute;
@@ -33,7 +33,7 @@ Supports Thumbs: true
 	text-align: left;
 	padding: 5px 0 5px 3px;
 	z-index: 10;
-	position: absolute;
+	/*position: absolute;*/
 	bottom: 0;
 	width: 100%;
 }
@@ -51,17 +51,18 @@ Supports Thumbs: true
 }
 .theme-t-em .nivo-directionNav{
 	font-size: 2.5em;
-	line-height: 30px;
+	line-height: 25px;
+	margin-right: 1.7%;
 	position: relative;
+	bottom: -25px;
 	z-index: 15;
 }
 .theme-t-em .nivo-directionNav a {
 	display:block;
-	width:30px;
-	height:30px;
+	width:auto;
+	height:auto;
 	border:0;
 }
-.theme-t-em:hover .nivo-directionNav a { opacity: 1; }
 .theme-t-em a.nivo-nextNav {
 	right:0;
 	bottom: 0;
@@ -75,12 +76,9 @@ Supports Thumbs: true
 }
 
 .theme-t-em .nivo-caption {
-	bottom: 25px;
+	bottom: 0;
 	padding: 15px;
 	opacity: .7;
-	-webkit-box-shadow: 0px 0px 5px 1px #000;
-	-moz-box-shadow: 0px 0px 5px 1px #000;
-	box-shadow: 0px 0px 5px 1px #000;
 }
 .theme-t-em .nivo-caption a {
 	color:#fff;
@@ -151,7 +149,6 @@ Supports Thumbs: true
 	}
 	.theme-t-em.slider-text-left .nivo-caption,
 	.theme-t-em.slider-text-right .nivo-caption{
-		bottom: 25px;
 		top: auto;
 		width: 100%;
 		left: 0;
