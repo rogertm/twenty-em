@@ -17,7 +17,7 @@ get_header(); ?>
 				<?php if ( ! empty( $post->post_parent ) ) : ?>
 					<p class="page-title"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 't_em' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
 						/* translators: %s - title of parent post */
-						printf( __( '<span class="meta-nav">&larr;</span> %s', 't_em' ), get_the_title( $post->post_parent ) );
+						printf( __( '<span class="meta-nav">&laquo;</span> %s', 't_em' ), get_the_title( $post->post_parent ) );
 					?></a></p>
 				<?php endif; ?>
 
@@ -106,7 +106,7 @@ get_header(); ?>
 						</div><!-- .entry-attachment -->
 						<div class="entry-caption"><?php if ( !empty( $post->post_excerpt ) ) the_excerpt(); ?></div>
 
-<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?>
+<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
 <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 
 					</div><!-- .entry-content -->

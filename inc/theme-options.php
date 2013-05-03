@@ -16,8 +16,8 @@
 ?>
 <?php
 /**
- * Register Style Sheet and Javascript to beautify the admin option page
- * but it is loaded just if we are in the right place.
+ * Register Style Sheet and Javascript to beautify the admin option page.
+ * But just if we are in the right place.
  */
 if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
 									'page=theme-tools-box' ||
@@ -97,6 +97,49 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 endif;
 
 /**
+ * Returns theme data
+ */
+function t_em_theme_data(){
+	global $t_em_theme_data;
+	$theme_data = wp_get_theme();
+	$t_em_theme_data = array (
+		'Name'			=> $theme_data->display( 'Name' ),
+		'ThemeURI'		=> esc_url( $theme_data->display( 'ThemeURI' ) ),
+		'Description'	=> $theme_data->display( 'Description' ),
+		'Author'		=> $theme_data->display( 'Author' ),
+		'AuthorURI'		=> esc_url( $theme_data->display( 'AuthorURI' ) ),
+		'Version'		=> $theme_data->display( 'Version' ),
+		'Template'		=> $theme_data->display( 'Template' ),
+		'Status'		=> $theme_data->display( 'Status' ),
+		'Tags'			=> $theme_data->display( 'Tags' ),
+		'TextDomain'	=> $theme_data->display( 'TextDomain' ),
+		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
+	);
+}
+
+/**
+ * Return an array of variables we need
+ * to access to the database
+ */
+function t_em_set_globals(){
+	global	$t_em_theme_options,
+			$t_em_tools_box_options,
+			$t_em_webmaster_tools_options;
+
+	$t_em_theme_options				= t_em_get_theme_options();
+	$t_em_tools_box_options			= t_em_get_tools_box_options();
+	$t_em_webmaster_tools_options	= t_em_get_webmaster_tools_options();
+
+	// If options are empties, we load default settings.
+	if ( empty( $t_em_theme_options ) )
+		update_option( 't_em_theme_options', t_em_default_theme_options() );
+	if ( empty( $t_em_tools_box_options ) )
+		update_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
+	if ( empty( $t_em_webmaster_tools_options ) )
+		update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
+}
+
+/**
  * Return the default options for Twenty'em
  */
 function t_em_default_theme_options(){
@@ -131,28 +174,6 @@ function t_em_default_theme_options(){
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
-}
-
-/**
- * Return an array of variables we need
- * to access to the database
- **********************************************************************************/
-function t_em_set_globals(){
-	global	$t_em_theme_options,
-			$t_em_tools_box_options,
-			$t_em_webmaster_tools_options;
-
-	$t_em_theme_options				= t_em_get_theme_options();
-	$t_em_tools_box_options			= t_em_get_tools_box_options();
-	$t_em_webmaster_tools_options	= t_em_get_webmaster_tools_options();
-
-	// If options are empties, we load default settings.
-	if ( empty( $t_em_theme_options ) )
-		update_option( 't_em_theme_options', t_em_default_theme_options() );
-	if ( empty( $t_em_tools_box_options ) )
-		update_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
-	if ( empty( $t_em_webmaster_tools_options ) )
-		update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 }
 
 /**

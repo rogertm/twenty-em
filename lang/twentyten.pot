@@ -54,7 +54,7 @@ msgstr ""
 #. translators: %s - title of parent post
 #: attachment.php:20
 #, php-format
-msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgid "<span class=\"meta-nav\">&laquo;</span> %s"
 msgstr ""
 
 #: attachment.php:29
@@ -87,7 +87,7 @@ msgid "Edit"
 msgstr ""
 
 #: attachment.php:100 functions.php:241 loop.php:110 loop.php:138
-msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
 #: attachment.php:101 loop.php:139 onecolumn-page.php:26 page.php:31
@@ -123,11 +123,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: comments.php:41 comments.php:60
-msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgid "<span class=\"meta-nav\">&laquo;</span> Older Comments"
 msgstr ""
 
 #: comments.php:42 comments.php:61
-msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgid "Newer Comments <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
 #: comments.php:72
@@ -302,11 +302,11 @@ msgid "Skip to content"
 msgstr ""
 
 #: loop.php:25 loop.php:173
-msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
 msgstr ""
 
 #: loop.php:26 loop.php:174
-msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
 #: loop.php:35
@@ -390,17 +390,17 @@ msgstr ""
 
 #: single.php:18 single.php:58
 msgctxt "Previous post link"
-msgid "&larr;"
+msgid "&laquo;"
 msgstr ""
 
 #: single.php:19 single.php:59
 msgctxt "Next post link"
-msgid "&rarr;"
+msgid "&raquo;"
 msgstr ""
 
 #: single.php:44
 #, php-format
-msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
 #: tag.php:16

@@ -65,65 +65,92 @@ define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images' );
 define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js' );
 
 /**
- * Start up the theme engine
+ * Sets up the content width value based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) :
+	$content_width = 750;
+endif;
+
+/**
+ * Sets up theme defaults and registers the various WordPress features that Twenty'em supports.
+ *
+ * @uses add_theme_support() to add support for thumbnails, automatic feed links, post formats,
+ * custom background, custom header and JetPack Infinite Scroll. Custom background, header text,
+ * header image and JP Infinite Scroll are treat as pluggable functions, so they can be override
+ * from Child Themes.
+ * @uses register_nav_menus() To add support for navigation menus.
+ * @uses add_editor_style() To style the visual editor.
+ * @uses load_theme_textdomain() For translation/localization support.
+ * @uses t_em_theme_data() to access the theme data provided in style.css file
+ * @uses t_em_set_globals() to access the data stored in the WordPress data base (theme options)
+ *
+ * @link http://codex.wordpress.org/Theme_Features Visit for full documentation about Theme Features
+ *
+ * @since Twenty'em 0.1
+ *
+ * @return void
  */
 add_action( 'after_setup_theme', 't_em_setup' );
-if ( !function_exists( 't_em_setup' ) ) :
-	function t_em_setup(){
+function t_em_setup(){
 
-		t_em_content_width();
+	// Adds support featured image (post thumbnails).
+	add_theme_support( 'post-thumbnails' );
 
-		/**
-		 * Twenty'em theme supports
-		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support
-		 */
-		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
+	// Adds RSS feed links to <head> for posts and comments.
+	add_theme_support( 'automatic-feed-links' );
 
-		t_em_support_custom_background();
-		t_em_support_custom_header();
-		t_em_support_custom_header_image();
-		t_em_support_jp_infinite_scroll();
+	// Adds support for variety of post formats.
+	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
 
-		/**
-		 * Twenty'em is ready for translation
-		 */
-		load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
-		$locale = get_locale();
-		$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
-		if ( is_readable( $locale_file ) ) :
-			require_once( $locale_file );
-		endif;
+	// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style( 'css/editor-style.css' );
 
-		t_em_register_nav_menus();
+	// Adds support for custom background (pluggable function).
+	t_em_support_custom_background();
 
-		/**
-		 * Twenty'em adds callback for custom TinyMCE editor stylesheets. (editor-style.css)
-		 * @link http://codex.wordpress.org/Function_Reference/add_editor_style
-		 */
-		add_editor_style();
+	// Adds support for custom header text (pluggable function).
+	t_em_support_custom_header();
 
-		/**
-		 * Call t_em_theme_data() function from here
-		 */
-		t_em_theme_data();
+	// Adds support for custom header image (pluggable function).
+	t_em_support_custom_header_image();
 
-		t_em_set_globals();
+	// This theme also support JetPack Infinite Scroll (pluggable function).
+	t_em_support_jp_infinite_scroll();
 
-	}
-endif; // function t_em_setup()
+	// This theme uses navigation menus in three locations.
+	register_nav_menus ( array (
+		'top-menu'			=> __('Top Menu', 't_em'),
+		'navigation-menu'	=> __('Navigation Menu', 't_em'),
+		'footer-menu'		=> __('Footer Menu', 't_em')
+		)
+	);
 
-if ( !function_exists( 't_em_content_width' ) ) :
-	function t_em_content_width(){
-		global $content_width;
-		if ( ! isset( $content_width ) ) :
-			$content_width = 640;
-		endif;
-	}
-endif; // function t_em_content_width()
+	/* Make Twenty'em available for translation.
+	 * Translations can be added to the /languages/ directory.
+	 * If you're building a theme based on Twenty'em, use a find and replace to change 't_em'
+	 * to the name of your theme in all the template files.
+	 */
+	load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
+	$locale = get_locale();
+	$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
+	if ( is_readable( $locale_file ) ) :
+		require_once( $locale_file );
+	endif;
+
+	// Call t_em_theme_data() to access the theme data provided in style.css file.
+	t_em_theme_data();
+
+	// Return an array of variables we need to access to the data base.
+	t_em_set_globals();
+} // t_em_setup()
 
 if ( !function_exists( 't_em_support_custom_background' ) ) :
+/**
+ * Pluggable Function: Adds theme support for custom background.
+ * Referenced via in t_em_setup().
+ *
+ * @since Twenty'em 0.1
+ */
 	function t_em_support_custom_background(){
 		$custom_background = array ( 'default-color' => 'f7f7f7' );
 		add_theme_support( 'custom-background', $custom_background );
@@ -131,6 +158,12 @@ if ( !function_exists( 't_em_support_custom_background' ) ) :
 endif; // function t_em_support_custom_background()
 
 if ( !function_exists( 't_em_support_custom_header' ) ) :
+/**
+ * Pluggable Function: Adds theme support for custom header image
+ * Referenced via in t_em_setup().
+ *
+ * @since Twenty'em 0.1
+ */
 	function t_em_support_custom_header(){
 		$custom_header_support = array (
 			'default-text-color'		=> '757575',
@@ -139,6 +172,7 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
 			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
 			'flex-height'				=> true,
 			'random-default'			=> true,
+			'uploads'					=> true,
 			'wp-head-callback'			=> 't_em_header_style',
 			'admin-head-callback'		=> 't_em_admin_header_style',
 			'admin-preview-callback'	=> 't_em_admin_header_image',
@@ -148,9 +182,13 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
 endif; // function t_em_support_custom_header()
 
 if ( !function_exists( 't_em_support_custom_header_image' ) ) :
+/**
+ * Pluggable Function:  Default custom headers packaged with the theme.
+ * Referenced via in t_em_setup().
+ *
+ * @since Twenty'em 0.1
+ */
 	function t_em_support_custom_header_image(){
-		// Default custom headers packaged with the theme.
-		// %s is a placeholder for the theme template directory URI.
 		register_default_headers( array(
 			'twenty-em'	=> array(
 				'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
@@ -197,6 +235,13 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 endif; // function t_em_support_custom_header_image()
 
 if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
+/**
+ * Pluggable Function: Adds theme support for JetPack Infinite Scroll
+ *
+ * @link http://jetpack.me/support/infinite-scroll/
+ *
+ * @since Twenty'em 0.1
+ */
 	function t_em_support_jp_infinite_scroll(){
 		$jp_infinite_scroll = array(
 			'container'			=> 'content',
@@ -208,45 +253,12 @@ if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
 	}
 endif;
 
-if ( !function_exists( 't_em_register_nav_menus' ) ) :
-	function t_em_register_nav_menus(){
-		/**
-		 * Twenty'em theme uses wp_nav_menu() in three location... Weow!
-		 * @link http://codex.wordpress.org/Navigation_Menus
-		 */
-		register_nav_menus ( array (
-			'top-menu'			=> __('Top Menu', 't_em'),
-			'navigation-menu'	=> __('Navigation Menu', 't_em'),
-			'footer-menu'		=> __('Footer Menu', 't_em')
-			)
-		);
-	}
-endif; // function t_em_register_nav_menus()
-
-/**
- * Returns theme data
- */
-function t_em_theme_data(){
-	global $t_em_theme_data;
-	$theme_data = wp_get_theme();
-	$t_em_theme_data = array (
-		'Name'			=> $theme_data->display( 'Name' ),
-		'ThemeURI'		=> esc_url( $theme_data->display( 'ThemeURI' ) ),
-		'Description'	=> $theme_data->display( 'Description' ),
-		'Author'		=> $theme_data->display( 'Author' ),
-		'AuthorURI'		=> esc_url( $theme_data->display( 'AuthorURI' ) ),
-		'Version'		=> $theme_data->display( 'Version' ),
-		'Template'		=> $theme_data->display( 'Template' ),
-		'Status'		=> $theme_data->display( 'Status' ),
-		'Tags'			=> $theme_data->display( 'Tags' ),
-		'TextDomain'	=> $theme_data->display( 'TextDomain' ),
-		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
-	);
-}
-
 if ( !function_exists( 't_em_header_style' ) ) :
 /**
- * Style the header image and text displayed on the site
+ * Style the header image and text displayed on the site.
+ * Referenced via add_theme_support( 'custom-header' ) in t_em_support_custom_header().
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_header_style(){
 	global $custom_header_support;
@@ -287,7 +299,9 @@ endif; // function t_em_header_style()
 if ( ! function_exists( 't_em_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
- * Referenced via add_theme_support('custom-header') in t_em_setup().
+ * Referenced via add_theme_support( 'custom-header' ) in t_em_support_custom_header().
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_admin_header_style() {
 ?>
@@ -335,6 +349,8 @@ if ( ! function_exists( 't_em_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  * Referenced via add_theme_support('custom-header') in t_em_setup().
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_admin_header_image() { ?>
 	<div id="headimg">
@@ -389,7 +405,8 @@ function t_em_site_title( $title, $sep ) {
 add_filter( 'wp_title', 't_em_site_title', 10, 2 );
 
 /**
- * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback
+ * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback.
+ *
  * @since Twenty'em 0.1
  */
 function t_em_page_menu_args( $args ) {
@@ -400,7 +417,9 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 
 /**
  * Twenty'em sets the post excerpt length to 40 characters.
+ *
  * @since Twenty'em 0.1
+ *
  * @return int
  */
 function t_em_excerpt_length( $length ) {
@@ -410,16 +429,20 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
+ *
  * @since Twenty'em 0.1
+ *
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return ' <span class="more-link"><a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) . '</a></span>';
+	return ' <span class="more-link"><a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a></span>';
 }
 
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and t_em_continue_reading_link().
+ *
  * @since Twenty'em 0.1
+ *
  * @return string An ellipsis
  */
 function t_em_auto_excerpt_more( $more ) {
@@ -636,8 +659,8 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
 		if ( ! function_exists( 'wp_pagenavi' ) ) :
 			if ( $wp_query->max_num_pages > 1 ) :
 ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 't_em' ) ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?></div>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 't_em' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
 <?php
 			endif;
 		else :
@@ -836,7 +859,7 @@ function t_em_post_archive_set(){
 	else :
 ?>
 			<div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 't_em' ) ); ?>
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
 <?php
