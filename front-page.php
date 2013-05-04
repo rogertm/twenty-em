@@ -1,15 +1,14 @@
 <?php
 /**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * Is the query for the front page of the site?
+ * This is for what is displayed at your site's main URL.
+ * Depends on the site's "Front page displays" Reading Settings 'show_on_front' and 'page_on_front'.
+ * If you set a static page for the front page of your site, this file will be returned when viewing
+ * that page.
  *
  * @package WordPress
  * @subpackage Twenty'em
+ * @link http://codex.wordpress.org/Template_Hierarchy
  * @since Twenty'em 0.1
  */
 

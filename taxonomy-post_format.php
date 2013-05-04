@@ -1,10 +1,10 @@
 <?php
 /**
- * Is the query for the blog homepage?
- * This is the page which shows the time based blog content of your site.
- * Depends on the site's "Front page displays" Reading Settings 'show_on_front' and 'page_for_posts'.
- * If you set a static page for the front page of your site, this file will be returned only on the
- * page you set as the "Posts page".
+ * The template for displaying Post Format pages.
+ *
+ * Used to display archive-type pages for posts with a post format.
+ * If you'd like to further customize these Post Format views, you may create a
+ * new template file for each specific one.
  *
  * @package WordPress
  * @subpackage Twenty'em
