@@ -20,7 +20,7 @@ if ( 'content' != $t_em_theme_options['layout-set'] ) :
 	 * then the sidebar simply doesn't exist, so we'll hard-code in
 	 * some default sidebar stuff just in case.
 	 */
-	if ( ! dynamic_sidebar( 'sidebar' ) ) : ?>
+	if ( ! dynamic_sidebar( 'first-sidebar' ) ) : ?>
 
 			<aside id="search" class="widget-container widget_search">
 				<?php get_search_form(); ?>

@@ -16,6 +16,22 @@
 ?>
 <?php
 /**
+ * Register directory and sub-directories through constants
+ */
+// Theme directory
+define ( 'T_EM_THEME_DIR',			get_template_directory_uri() );
+define ( 'T_EM_THEME_DIR_CSS',		get_template_directory_uri().'/css' );
+define ( 'T_EM_THEME_DIR_IMG',		get_template_directory_uri().'/images' );
+define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
+define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
+
+// Theme Options Directory
+define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc' );
+define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js' );
+
+/**
  * Register Style Sheet and Javascript to beautify the admin option page.
  * But just if we are in the right place.
  */
@@ -99,6 +115,7 @@ endif;
 /**
  * Returns theme data
  */
+add_action( 'after_setup_theme', 't_em_theme_data' );
 function t_em_theme_data(){
 	global $t_em_theme_data;
 	$theme_data = wp_get_theme();
@@ -121,6 +138,7 @@ function t_em_theme_data(){
  * Return an array of variables we need
  * to access to the database
  */
+add_action( 'after_setup_theme', 't_em_set_globals' );
 function t_em_set_globals(){
 	global	$t_em_theme_options,
 			$t_em_tools_box_options,

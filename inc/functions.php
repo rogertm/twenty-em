@@ -48,21 +48,6 @@
  */
 ?>
 <?php
-/**
- * Register functions directory and sub-directories through constants
- */
-// Theme directory
-define ( 'T_EM_THEME_DIR',			get_template_directory_uri() );
-define ( 'T_EM_THEME_DIR_CSS',		get_template_directory_uri().'/css' );
-define ( 'T_EM_THEME_DIR_IMG',		get_template_directory_uri().'/images' );
-define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
-define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
-
-// Theme Options Directory
-define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc' );
-define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js' );
 
 /**
  * Sets up the content width value based on the theme's design and stylesheet.
@@ -74,10 +59,10 @@ endif;
 /**
  * Sets up theme defaults and registers the various WordPress features that Twenty'em supports.
  *
- * @uses add_theme_support() to add support for thumbnails, automatic feed links, post formats,
+ * @uses add_theme_support() To add support for thumbnails, automatic feed links, post formats,
  * custom background, custom header and JetPack Infinite Scroll. Custom background, header text,
  * header image and JP Infinite Scroll are treat as pluggable functions, so they can be override
- * from Child Themes.
+ * in Child Themes.
  * @uses register_nav_menus() To add support for navigation menus.
  * @uses add_editor_style() To style the visual editor.
  * @uses load_theme_textdomain() For translation/localization support.
@@ -86,9 +71,9 @@ endif;
  *
  * @link http://codex.wordpress.org/Theme_Features Visit for full documentation about Theme Features
  *
- * @since Twenty'em 0.1
- *
  * @return void
+ *
+ * @since Twenty'em 0.1
  */
 add_action( 'after_setup_theme', 't_em_setup' );
 function t_em_setup(){
@@ -126,7 +111,7 @@ function t_em_setup(){
 	);
 
 	/* Make Twenty'em available for translation.
-	 * Translations can be added to the /languages/ directory.
+	 * Translations can be added to the lang/ directory.
 	 * If you're building a theme based on Twenty'em, use a find and replace to change 't_em'
 	 * to the name of your theme in all the template files.
 	 */
@@ -137,11 +122,6 @@ function t_em_setup(){
 		require_once( $locale_file );
 	endif;
 
-	// Call t_em_theme_data() to access the theme data provided in style.css file.
-	t_em_theme_data();
-
-	// Return an array of variables we need to access to the data base.
-	t_em_set_globals();
 } // t_em_setup()
 
 if ( !function_exists( 't_em_support_custom_background' ) ) :
@@ -151,10 +131,10 @@ if ( !function_exists( 't_em_support_custom_background' ) ) :
  *
  * @since Twenty'em 0.1
  */
-	function t_em_support_custom_background(){
-		$custom_background = array ( 'default-color' => 'f7f7f7' );
-		add_theme_support( 'custom-background', $custom_background );
-	}
+function t_em_support_custom_background(){
+	$custom_background = array ( 'default-color' => 'f7f7f7' );
+	add_theme_support( 'custom-background', $custom_background );
+}
 endif; // function t_em_support_custom_background()
 
 if ( !function_exists( 't_em_support_custom_header' ) ) :
@@ -164,21 +144,21 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
  *
  * @since Twenty'em 0.1
  */
-	function t_em_support_custom_header(){
-		$custom_header_support = array (
-			'default-text-color'		=> '757575',
-			'default-image'				=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
-			'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
-			'height'					=> apply_filters( 't_em_header_image_height', 350 ),
-			'flex-height'				=> true,
-			'random-default'			=> true,
-			'uploads'					=> true,
-			'wp-head-callback'			=> 't_em_header_style',
-			'admin-head-callback'		=> 't_em_admin_header_style',
-			'admin-preview-callback'	=> 't_em_admin_header_image',
-		);
-		add_theme_support( 'custom-header', $custom_header_support );
-	}
+function t_em_support_custom_header(){
+	$custom_header_support = array (
+		'default-text-color'		=> '757575',
+		'default-image'				=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
+		'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
+		'height'					=> apply_filters( 't_em_header_image_height', 350 ),
+		'flex-height'				=> true,
+		'random-default'			=> true,
+		'uploads'					=> true,
+		'wp-head-callback'			=> 't_em_header_style',
+		'admin-head-callback'		=> 't_em_admin_header_style',
+		'admin-preview-callback'	=> 't_em_admin_header_image',
+	);
+	add_theme_support( 'custom-header', $custom_header_support );
+}
 endif; // function t_em_support_custom_header()
 
 if ( !function_exists( 't_em_support_custom_header_image' ) ) :
@@ -188,50 +168,50 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
  *
  * @since Twenty'em 0.1
  */
-	function t_em_support_custom_header_image(){
-		register_default_headers( array(
-			'twenty-em'	=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header-thumbnail.jpg',
-				'description'	=> __( 'Twenty&#8217;em... Theming is prose', 't_em' ),
-			),
-			'canyon'	=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/canyon.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/canyon-thumbnail.jpg',
-				'description'	=> __( 'Canyon', 't_em' ),
-			),
-			'fire'		=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/fire.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/fire-thumbnail.jpg',
-				'description'	=> __( 'Fire', 't_em' ),
-			),
-			'friends'	=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/friends.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/friends-thumbnail.jpg',
-				'description'	=> __( 'Friends', 't_em' ),
-			),
-			'cityscapes'		=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/cityscapes.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/cityscapes-thumbnail.jpg',
-				'description'	=> __( 'Cityscapes', 't_em' ),
-			),
-			'leaf'				=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/leaf.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/leaf-thumbnail.jpg',
-				'description'	=> __( 'Leaf', 't_em' ),
-			),
-			'road'				=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/road.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/road-thumbnail.jpg',
-				'description'	=> __( 'Road', 't_em' ),
-			),
-			'streets'			=> array(
-				'url'			=> T_EM_THEME_DIR_IMG . '/headers/streets.jpg',
-				'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/streets-thumbnail.jpg',
-				'description'	=> __( 'Streets', 't_em' ),
-			),
-		) );
-	}
+function t_em_support_custom_header_image(){
+	register_default_headers( array(
+		'twenty-em'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header-thumbnail.jpg',
+			'description'	=> __( 'Twenty&#8217;em... Theming is prose', 't_em' ),
+		),
+		'canyon'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/canyon.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/canyon-thumbnail.jpg',
+			'description'	=> __( 'Canyon', 't_em' ),
+		),
+		'fire'		=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/fire.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/fire-thumbnail.jpg',
+			'description'	=> __( 'Fire', 't_em' ),
+		),
+		'friends'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/friends.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/friends-thumbnail.jpg',
+			'description'	=> __( 'Friends', 't_em' ),
+		),
+		'cityscapes'		=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/cityscapes.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/cityscapes-thumbnail.jpg',
+			'description'	=> __( 'Cityscapes', 't_em' ),
+		),
+		'leaf'				=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/leaf.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/leaf-thumbnail.jpg',
+			'description'	=> __( 'Leaf', 't_em' ),
+		),
+		'road'				=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/road.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/road-thumbnail.jpg',
+			'description'	=> __( 'Road', 't_em' ),
+		),
+		'streets'			=> array(
+			'url'			=> T_EM_THEME_DIR_IMG . '/headers/streets.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/streets-thumbnail.jpg',
+			'description'	=> __( 'Streets', 't_em' ),
+		),
+	) );
+}
 endif; // function t_em_support_custom_header_image()
 
 if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
@@ -242,15 +222,15 @@ if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
  *
  * @since Twenty'em 0.1
  */
-	function t_em_support_jp_infinite_scroll(){
-		$jp_infinite_scroll = array(
-			'container'			=> 'content',
-			'footer'			=> 'footer',
-			'type'				=> 'click',
-			'footer_widgets'	=> true,
-		);
-		add_theme_support( 'infinite-scroll', $jp_infinite_scroll );
-	}
+function t_em_support_jp_infinite_scroll(){
+	$jp_infinite_scroll = array(
+		'container'			=> 'content',
+		'footer'			=> 'footer',
+		'type'				=> 'click',
+		'footer_widgets'	=> true,
+	);
+	add_theme_support( 'infinite-scroll', $jp_infinite_scroll );
+}
 endif;
 
 if ( !function_exists( 't_em_header_style' ) ) :
@@ -373,14 +353,26 @@ function t_em_admin_header_image() { ?>
 endif; // t_em_admin_header_image()
 
 /**
+ * Add favicon to our site, admin dashboard included
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_favicon(){
+	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />'."\n";
+}
+add_action( 'wp_head', 't_em_favicon' );
+add_action( 'admin_head', 't_em_favicon' );
+
+/**
  * Creates a nicely formatted and more specific title element text
  * for output in head of document, based on current view.
  *
- * @since Twenty'em 0.1
- *
  * @param string $title Default title text for current view.
  * @param string $sep Optional separator.
+ *
  * @return string Filtered title.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_site_title( $title, $sep ) {
 	global $paged, $page;
@@ -439,7 +431,8 @@ function t_em_continue_reading_link() {
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and t_em_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis
+ * and t_em_continue_reading_link().
  *
  * @since Twenty'em 0.1
  *
@@ -452,7 +445,9 @@ add_filter( 'excerpt_more', 't_em_auto_excerpt_more' );
 
 /**
  * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *
  * @since Twenty'em 0.1
+ *
  * @return string Excerpt with a pretty "Continue Reading" link
  */
 function t_em_custom_excerpt_more( $output ) {
@@ -471,8 +466,8 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 function t_em_widgets_init() {
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
-		'name' => __( 'Sidebar Widget Area', 't_em' ),
-		'id' => 'sidebar',
+		'name' => __( 'First Sidebar Widget Area', 't_em' ),
+		'id' => 'first-sidebar',
 		'description' => __( 'The sidebar widget area', 't_em' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
@@ -524,157 +519,177 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 }
-/** Register sidebars by running t_em_widgets_init() on the widgets_init hook. */
+// Register sidebars by running t_em_widgets_init() on the widgets_init hook.
 add_action( 'widgets_init', 't_em_widgets_init' );
 
 if ( ! function_exists( 't_em_posted_in' ) ) :
-	/**
-	 * Prints HTML with meta information for the current post (category, tags and permalink).
-	 * @since Twenty'em 0.1
-	 */
-	function t_em_posted_in() {
-		// Retrieves tag list of current post, separated by commas.
-		$tag_list = get_the_tag_list( '', ', ' );
-		if ( $tag_list ) {
-			$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
-		} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-			$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
-		} else {
-			$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
-		}
-		// Prints the string, replacing the placeholders.
-		printf(
-			$posted_in,
-			get_the_category_list( ', ' ),
-			$tag_list,
-			get_permalink(),
-			the_title_attribute( 'echo=0' )
-		);
+/**
+ * Prints HTML with meta information for the current post (category, tags and permalink).
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_posted_in() {
+	// Retrieves tag list of current post, separated by commas.
+	$tag_list = get_the_tag_list( '', ', ' );
+	if ( $tag_list ) {
+		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
+	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
+	} else {
+		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
 	}
+	// Prints the string, replacing the placeholders.
+	printf(
+		$posted_in,
+		get_the_category_list( ', ' ),
+		$tag_list,
+		get_permalink(),
+		the_title_attribute( 'echo=0' )
+	);
+}
 endif; // function t_em_posted_in()
 
 if ( ! function_exists( 't_em_posted_on' ) ) :
-	/**
-	 * Prints HTML with meta information for the current post—date/time and author.
-	 * @since Twenty'em 0.1
-	 */
-	function t_em_posted_on() {
-			printf( __( 'Posted on %2$s by %3$s', 't_em' ),
-				'meta-prep meta-prep-author',
-				sprintf( '<a href="%1$s" rel="bookmark"><time datetime="%2$s" pubdate>%3$s</time></a>',
-				get_permalink(),
-				get_the_date('c'),
-				get_the_date()
-			),
-			sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-				get_author_posts_url( get_the_author_meta( 'ID' ) ),
-				sprintf( esc_attr__( 'View all posts by %s', 't_em' ), get_the_author() ),
-				get_the_author()
-			)
-		);
-	}
+/**
+ * Prints HTML with meta information for the current post—date/time and author.
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_posted_on() {
+		printf( __( 'Posted on %2$s by %3$s', 't_em' ),
+			'meta-prep meta-prep-author',
+			sprintf( '<a href="%1$s" rel="bookmark"><time datetime="%2$s" pubdate>%3$s</time></a>',
+			get_permalink(),
+			get_the_date('c'),
+			get_the_date()
+		),
+		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+			get_author_posts_url( get_the_author_meta( 'ID' ) ),
+			sprintf( esc_attr__( 'View all posts by %s', 't_em' ), get_the_author() ),
+			get_the_author()
+		)
+	);
+}
 endif; // function t_em_posted_on()
 
 if ( ! function_exists( 't_em_comment' ) ) :
-	/**
-	 * Template for comments.
-	 * @since Twenty'em 0.1
-	 */
-	function t_em_comment( $comment, $args, $depth ) {
-		$GLOBALS['comment'] = $comment;
-		switch ( $comment->comment_type ) :
-			case '' :
-		?>
-		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-			<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-				<header class="comment-header">
-					<div class="comment-author vcard">
-						<?php echo get_avatar( $comment, 60 ); ?>
-						<?php printf( __( '%s <span class="says">says:</span>', 'dostrece' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-					</div><!-- .comment-author .vcard -->
-					<?php if ( $comment->comment_approved == '0' ) : ?>
-						<em><?php _e( 'Your comment is awaiting moderation.', 'dostrece' ); ?></em>
-						<br />
-					<?php endif; ?>
+/**
+ * Template for comments.
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own t_em_comment(), and that function will be used instead.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case '' :
+	?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
+			<header class="comment-header">
+				<div class="comment-author vcard">
+					<?php echo get_avatar( $comment, 60 ); ?>
+					<?php printf( __( '%s <span class="says">says:</span>', 'dostrece' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+				</div><!-- .comment-author .vcard -->
+				<?php if ( $comment->comment_approved == '0' ) : ?>
+					<em><?php _e( 'Your comment is awaiting moderation.', 'dostrece' ); ?></em>
+					<br />
+				<?php endif; ?>
 
-					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-						<?php
-							/* translators: 1: date, 2: time */
-							printf( __( '%1$s at %2$s', 'dostrece' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'dostrece' ), ' ' );
-						?>
-					</div><!-- .comment-meta .commentmetadata -->
-				</header><!-- comment-header -->
-				<div class="comment-body"><?php comment_text(); ?></div>
+				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<?php
+						/* translators: 1: date, 2: time */
+						printf( __( '%1$s at %2$s', 'dostrece' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'dostrece' ), ' ' );
+					?>
+				</div><!-- .comment-meta .commentmetadata -->
+			</header><!-- comment-header -->
+			<div class="comment-body"><?php comment_text(); ?></div>
 
-				<div class="reply">
-					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-				</div><!-- .reply -->
-			</div><!-- #comment-## .comment-wrap -->
+			<div class="reply">
+				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div><!-- .reply -->
+		</div><!-- #comment-## .comment-wrap -->
 
-		<?php
-				break;
-		endswitch;
-	}
+	<?php
+			break;
+	endswitch;
+}
 endif; // function t_em_comment()
 
 if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
-	/**
-	 * Template for pingbacks and trackbacks.
-	 * @since Twenty'em 0.1
-	 */
-	function t_em_comment_pingback_trackback( $comment ) {
-		$GLOBALS['comment'] = $comment;
-		switch ( $comment->comment_type ) :
-			case 'pingback' :
-		?>
-		<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-			<p><?php _e( 'Pingback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
-			<div class="comment-body"><?php comment_text(); ?></div>
-		<?php
-				break;
-			case 'trackback' :
-		?>
-		<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-			<p><?php _e( 'Trackback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
-			<div class="comment-body"><?php comment_text(); ?></div>
-		<?php
-		endswitch;
-	}
+/**
+ * Template for pingbacks and trackbacks.
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own t_em_comment_pingback_trackback(), and that function will be used instead.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_comment_pingback_trackback( $comment ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' :
+	?>
+	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
+		<p><?php _e( 'Pingback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
+		<div class="comment-body"><?php comment_text(); ?></div>
+	<?php
+			break;
+		case 'trackback' :
+	?>
+	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
+		<p><?php _e( 'Trackback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
+		<div class="comment-body"><?php comment_text(); ?></div>
+	<?php
+	endswitch;
+}
 endif; // function t_em_comment_pingback_trackback()
 
 if ( ! function_exists( 't_em_page_navi' ) ) :
-	/**
-	 * Display navigation to next/previous pages when applicable.
-	 *
-	 * NOTE: If the user uses WP-PageNavi plugin, it is loaded, else
-	 * we have the default WordPress pagination links.
-	 *
-	 * WP-PageNavi	http://www.wordpress.org/extend/plugins/wp-pagenavi/
-	 */
-	function t_em_page_navi( $nav_id ){
-		global $wp_query;
+/**
+ * Display navigation to next/previous pages when applicable.
+ * If the user uses WP-PageNavi plugin, it is loaded, else we have the default WordPress pagination
+ * links.
+ *
+ * @param string $nav_id Element ID, possible values: 'nav-above' or 'nav-below'. See #nav-above and
+ * #nav-below in style.css
+ *
+ * @link http://www.wordpress.org/extend/plugins/wp-pagenavi/ WP-PageNavi
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_page_navi( $nav_id ){
+	global $wp_query;
 ?>
-	<nav id="<?php echo $nav_id ?>" class="navigation">
+<nav id="<?php echo $nav_id ?>" class="navigation">
 <?php
-		if ( ! function_exists( 'wp_pagenavi' ) ) :
-			if ( $wp_query->max_num_pages > 1 ) :
+	if ( ! function_exists( 'wp_pagenavi' ) ) :
+		if ( $wp_query->max_num_pages > 1 ) :
 ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 't_em' ) ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
+	<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 't_em' ) ); ?></div>
+	<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
 <?php
-			endif;
-		else :
-			// We load our favorite pagination plugin
-			wp_pagenavi();
 		endif;
+	else :
+		// We load our favorite pagination plugin
+		wp_pagenavi();
+	endif;
 ?>
-	</nav>
+</nav>
 <?php
-	}
+}
 endif; // function t_em_page_navi()
 
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
+ *
  * @since Twenty'em 0.1
  */
 function t_em_remove_recent_comments_style(){
@@ -683,8 +698,9 @@ function t_em_remove_recent_comments_style(){
 add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
 
 /**
- * Customise the Twenty'em theme comments fields with HTML5 form elements
- * Adds support for placeholder, required, type="email" and type="url"
+ * Customize theme comments fields with HTML5 form elements. Adds support for
+ * placeholder, required, type="email" and type="url".
+ *
  * @since Twenty'em 0.1
  */
 function t_em_comment_form_fields() {
@@ -703,8 +719,14 @@ function t_em_comment_form_fields() {
 }
 add_filter('comment_form_default_fields', 't_em_comment_form_fields');
 
+/**
+ * Customize theme comments textarea with HTML5 form elements. Adds support for placeholder
+ * and aria required.
+ *
+ * @since Twenty'em 0.1
+ */
 function t_em_comment_form_textarea() {
-	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What\'s on your mind?', 't_em' ) .'"></textarea></p>';
+	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What&#8217;s on your mind?', 't_em' ) .'"></textarea></p>';
 	return $comment_area;
 }
 add_filter('comment_form_field_comment', 't_em_comment_form_textarea');
@@ -712,9 +734,10 @@ add_filter('comment_form_field_comment', 't_em_comment_form_textarea');
 /**
  * Filter to replace the [caption] shortcode text with HTML5 compliant code
  *
- * @return text HTML content describing embedded figure
+ * @return string HTML content describing embedded figure
+ *
+ * @since Twenty'em 0.1
  **/
-add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 function t_em_img_caption_shortcode($val, $attr, $content = null) {
 	extract(shortcode_atts(array(
 		'id'	=> '',
@@ -737,22 +760,23 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 	. (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption ' . $capid
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
+add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
 /**
- * Add favicon to our site, admin dashboard included
- */
-add_action( 'wp_head', 't_em_favicon' );
-add_action( 'admin_head', 't_em_favicon' );
-function t_em_favicon(){
-	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />'."\n";
-}
-
-
-/****************************************************
- * Here starts functions from theme options setting *
- ****************************************************/
-/**
- * Display featured image post thumbnail
+ * Display featured image in posts archives when "Display the Excerpt" option is activated in admin
+ * theme option page.
+ *
+ * @param int $height Require Thumbnail height.
+ * @param int $width Require Thumbnail width.
+ * @param string $class Optional CSS class.
+ * @param boolean $link Optional The image will be linkable or not. Default: true.
+ *
+ * @global $post
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @return text HTML content describing embedded figure
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
 	global	$post,
@@ -805,7 +829,12 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 }
 
 /**
- * Display header set depending of the Header Options
+ * Display header set depending of the activated "Header Options" in admin theme option page
+ *
+ * @global $post
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_header_options_set(){
 	global	$post,
@@ -823,7 +852,18 @@ function t_em_header_options_set(){
 }
 
 /**
- * Display featured post thumbnail if it is set by the user at theme options
+ * Display featured post thumbnail on top of a single post if it is set by the user in
+ * "General Options" in the admin options page.
+ *
+ * @uses has_post_thumbnail() Returns a boolean if a post has a Featured Image
+ * @uses the_post_thumbnail() Display the Featured Image for the current post, as set in that
+ * post's edit screen.
+ *
+ * @link http://codex.wordpress.org/Post_Thumbnails
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_single_post_thumbnail(){
 	global $t_em_theme_options;
@@ -840,16 +880,30 @@ function t_em_single_post_thumbnail(){
 }
 
 /**
- * Display archive set
+ * Display posts archive in excerpt or content form. Set in "Archive Options" in admin
+ * theme option page.
+ *
+ * @uses t_em_featured_post_thumbnail() Display featured image in posts archives.
+ * @uses the_excerpt() Displays the excerpt of the current post with the "..." text at the end.
+ * @uses the_content() Displays the contents of the current post.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/the_excerpt
+ * @link http://codex.wordpress.org/Function_Reference/the_content
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_post_archive_set(){
 	global $t_em_theme_options;
 
-	// How big are our thumbnails?
-	$thumb_heigth = ( ( array_key_exists( 'excerpt-thumbnail-height', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-height'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
-	$thumb_width = ( ( array_key_exists( 'excerpt-thumbnail-width', $t_em_theme_options ) && $t_em_theme_options['excerpt-thumbnail-width'] != '' ) ? $t_em_theme_options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
-
 	if ( 'the-excerpt' == $t_em_theme_options['archive-set'] ) :
+
+	// Set thumbnail height and width, if the key value is empty the size is equal to
+	// thumbnail_size_h and thumbnail_size_h options respectively
+	$thumb_heigth = ( ( '' != $t_em_theme_options['excerpt-thumbnail-height'] ) ? $t_em_theme_options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
+	$thumb_width = ( ( '' != $t_em_theme_options['excerpt-thumbnail-width'] ) ? $t_em_theme_options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
+
 ?>
 			<div class="entry-summary">
 				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
@@ -868,30 +922,46 @@ function t_em_post_archive_set(){
 
 
 /**
- * Display user social network
+ * Display user social network set in "Social Network Options" in the admin theme options.
+ *
+ * @uses t_em_social_network_options() See t_em_social_network_options() function
+ * in /inc/theme-options.php file.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @return string HTML list of items
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_user_social_network(){
 	global $t_em_theme_options;
 	$user_social_network = t_em_social_network_options();
-?>
-<nav id="social-network-menu">
-	<ul class="menu">
-<?php
+
+	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em_theme_options[$social_network['name']] != '' ) :
-?>
-		<li id="<?php echo $social_network['name'] ?>" class="menu-item"><a href="<?php echo $t_em_theme_options[$social_network['name']] ?>"><?php echo $social_network['item'] ?></a></li>
-<?php
+		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'">'.$social_network['item'].'</a></li>';
 		endif;
 	endforeach;
-?>
-	</ul>
-</nav>
-<?php
+	if ( !empty( $output_items ) ) :
+		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
+		$output = '<ul class="menu">' . $output_items . '</ul>';
+		$output = '<nav id="social-network-menu">' . $output . '</nav>';
+	else :
+		$output = '';
+	endif;
+	return $output;
 }
 
 /**
- * Show related posts to the current post at single
+ * Show related posts to the current single post if it's set by the user in "General Options" in
+ * admin theme options page.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @return string HTML list of items
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_single_related_posts() {
 	global $t_em_theme_options;
@@ -925,18 +995,22 @@ function t_em_single_related_posts() {
 
 		$related_posts = $wpdb->get_results($query);
 
-		$output = "";
-		foreach ($related_posts as $related_post ) :
-			$output .= '<li>';
-			$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
-			$output .= wptexturize($related_post->post_title);
-			$output .= '</a>';
-			$output .= '</li>';
-		endforeach;
-		$output = '<ul class="related-posts-list">'.$output.'</ul>';
-		$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
-		$output = '<section id="related-posts">'.$output.'</section>';
+		if ( empty( $related_posts ) ) :
+			$output = '<h3 id="related-posts-title">'. __( 'No Related Posts', 't_em' ) .'</h3>';
+		else :
+			$output = '';
+			foreach ($related_posts as $related_post ) :
+				$output .= '<li>';
+				$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
+				$output .= wptexturize($related_post->post_title);
+				$output .= '</a>';
+				$output .= '</li>';
+			endforeach;
 
+			$output = '<ul class="related-posts-list">'.$output.'</ul>';
+			$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
+			$output = '<section id="related-posts">'.$output.'</section>';
+		endif;
 		return $output;
 	endif;
 }

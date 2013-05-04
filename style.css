@@ -920,6 +920,10 @@ body.page .edit-link {
 	display: block;
 	margin: 0 auto;
 }
+.single .featured-post-thumbnail{
+	float: none !important;
+	margin: 0 auto !important;
+}
 
 
 /* =Asides
