@@ -18,43 +18,44 @@ get_header(); ?>
 			<div id="content" role="main">
 
 <?php
-	/* Queue the first post, that way we know
-	 * what date we're dealing with (if that is the case).
+	/* Queue the first post, that way we know what date we're dealing with (if that is the case).
 	 *
-	 * We reset this later so we can run the loop
-	 * properly with a call to rewind_posts().
+	 * We reset this later so we can run the loop properly with a call to rewind_posts().
 	 */
-	if ( have_posts() )
+	if ( have_posts() ) :
 		the_post();
 ?>
 		<header>
 			<h1 class="page-title">
-<?php if ( is_day() ) : ?>
-				<?php printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() ); ?>
-<?php elseif ( is_month() ) : ?>
-				<?php printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') ); ?>
-<?php elseif ( is_year() ) : ?>
-				<?php printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') ); ?>
-<?php else : ?>
-				<?php _e( 'Blog Archives', 't_em' ); ?>
-<?php endif; ?>
+			<?php
+			if ( is_day() ) :
+				printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
+			elseif ( is_month() ) :
+				printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
+			elseif ( is_year() ) :
+				printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
+			else :
+				_e( 'Blog Archives', 't_em' );
+			endif;
+			?>
 			</h1>
 		</header>
-
 <?php
-	/* Since we called the_post() above, we need to
-	 * rewind the loop back to the beginning that way
+	/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 	 * we can run the loop properly, in full.
 	 */
 	rewind_posts();
 
-	/* Run the loop for the archives page to output the posts.
-	 * If you want to overload this in a child theme then include a file
-	 * called loop-archives.php and that will be used instead.
-	 */
-	 get_template_part( 'loop', 'archive' );
+	// Run the loop for the archives page to output the posts.
+	t_em_page_navi( 'nav-above' );
+	while ( have_posts() ) : the_post();
+		get_template_part( 'content', get_post_format() );
+	endwhile;
+	t_em_page_navi( 'nav-below' );
+	else :
+		get_template_part( 'content', 'none' );
+	endif;
 ?>
-
 			</div><!-- #content -->
 		</div><!-- #primary -->
 

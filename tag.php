@@ -11,18 +11,23 @@ get_header(); ?>
 
 		<div id="primary">
 			<div id="content" role="main">
-                <header>
-    				<h1 class="page-title"><?php
-    					printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' );
-    				?></h1>
-                </header>
+				<header>
+					<h1 class="page-title"><?php
+						printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+					?></h1>
+				</header>
 
 <?php
-/* Run the loop for the tag archive to output the posts
- * If you want to overload this in a child theme then include a file
- * called loop-tag.php and that will be used instead.
- */
- get_template_part( 'loop', 'tag' );
+// Run the loop for the tag archive to output the posts
+				t_em_page_navi( 'nav-above' );
+				if ( have_posts() ) :
+					while ( have_posts() ) : the_post();
+						get_template_part( 'content', get_post_format() );
+					endwhile;
+				t_em_page_navi( 'nav-below' );
+				else :
+					get_template_part( 'content', 'none' );
+				endif;
 ?>
 			</div><!-- #content -->
 		</div><!-- #primary -->

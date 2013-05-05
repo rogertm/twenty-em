@@ -16,22 +16,16 @@ get_header(); ?>
 				<header>
 					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header>
-				<?php
-				/* Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called loop-search.php and that will be used instead.
-				 */
-				 get_template_part( 'loop', 'search' );
-				?>
-<?php else : ?>
-				<article id="post-0" class="post no-results not-found">
-					<h2 class="entry-title"><?php _e( 'Nothing Found', 't_em' ); ?></h2>
-					<div class="entry-content">
-						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 't_em' ); ?></p>
-						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-0 -->
-<?php endif; ?>
+<?php
+// Run the loop for the search to output the results.
+	while ( have_posts() ) : the_post();
+		get_template_part( 'content', get_post_format() );
+	endwhile;
+	t_em_page_navi( 'nav-below' );
+	else :
+		get_template_part( 'content', 'none' );
+	endif;
+?>
 			</div><!-- #content -->
 		</div><!-- #primary -->
 

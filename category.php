@@ -18,14 +18,20 @@ get_header(); ?>
 				</header>
 				<?php
 					$category_description = category_description();
-					if ( ! empty( $category_description ) )
+					if ( ! empty( $category_description ) ) :
 						echo '<div class="archive-meta">' . $category_description . '</div>';
+					endif;
 
-				/* Run the loop for the category page to output the posts.
-				 * If you want to overload this in a child theme then include a file
-				 * called loop-category.php and that will be used instead.
-				 */
-				get_template_part( 'loop', 'category' );
+				// Run the loop for the category page to output the posts.
+				t_em_page_navi( 'nav-above' );
+				if ( have_posts() ) :
+					while ( have_posts() ) : the_post();
+						get_template_part( 'content', get_post_format() );
+					endwhile;
+				t_em_page_navi( 'nav-below' );
+				else :
+					get_template_part( 'content', 'none' );
+				endif;
 				?>
 
 			</div><!-- #content -->
