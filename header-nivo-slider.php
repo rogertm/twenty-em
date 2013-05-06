@@ -50,7 +50,7 @@ if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $
 				endif;
 					?>
 					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$slider_width.'&amp;h='.$slider_height.'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$slider_width.'&amp;h='.$slider_height.'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
 					</a>
 					<?php
 			endwhile;

@@ -26,43 +26,48 @@ define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
 define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
 
 // Theme Options Directory
-define ( 'T_EM_FUNCTIONS_DIR',		get_template_directory_uri().'/inc' );
-define ( 'T_EM_FUNCTIONS_DIR_CSS',	get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_FUNCTIONS_DIR_IMG',	get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_FUNCTIONS_DIR_JS',	get_template_directory_uri().'/inc/js' );
+define ( 'T_EM_INC_DIR',		get_template_directory_uri().'/inc' );
+define ( 'T_EM_INC_DIR_CSS',	get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_INC_DIR_IMG',	get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_INC_DIR_JS',	get_template_directory_uri().'/inc/js' );
 
 /**
  * Register Style Sheet and Javascript to beautify the admin option page.
- * But just if we are in the right place.
+ * This function is attached ti the admin_init() action hook, but just if we are in the right place.
+ *
+ * @global $t_em_theme_data See t_em_theme_data()
+ *
+ * @since Twenty'em 0.1
  */
+function t_em_admin_styles_and_scripts(){
+	// Check the theme version right from the style sheet
+	global $t_em_theme_data;
+	wp_register_style( 'style-admin-t-em', T_EM_INC_DIR_CSS . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+	wp_enqueue_style( 'style-admin-t-em' );
+	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_enqueue_script( 'script-admin-t-em' );
+}
 if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
 									'page=theme-tools-box' ||
 									'page=theme-webmaster-tools' ||
 									'page=theme-update' ) ) :
-	add_action( 'admin_init', 't_em_admin_css_style_stylesheet' );
-	add_action( 'admin_init', 't_em_admin_javascript_script' );
+	add_action( 'admin_init', 't_em_admin_styles_and_scripts' );
 endif;
-function t_em_admin_css_style_stylesheet(){
-	// Check the theme version right from the style sheet
-	global $t_em_theme_data;
-	$style_data = wp_get_theme();
-	$style_version = $style_data->display('Version');
-
-	wp_register_style( 'style-admin-t-em', T_EM_FUNCTIONS_DIR_CSS . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
-	wp_enqueue_style( 'style-admin-t-em' );
-}
-
-function t_em_admin_javascript_script(){
-	wp_register_script( 'script-admin-t-em', T_EM_FUNCTIONS_DIR_JS . '/theme-options.js', array( 'jquery' ), '1.0', false );
-	wp_enqueue_script( 'script-admin-t-em' );
-}
 
 /**
- * Register setting options
+ * Register the form setting for our t_em_theme_options array.
+ * This function is attached to the admin_menu() action hook.
+ *
+ * @uses register_setting() Register a setting and its sanitization callback.
+ * @uses add_settings_section() This are groups of settings you see on Twenty'em settings pages with
+ * a shared heading.
+ * @uses add_settings_field() Register a settings field to a settings page and section.
+ *
+ * @link http://codex.wordpress.org/Settings_API
+ *
+ * @since Twenty'em 0.1
  */
-add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_register_setting_options_init(){
-	// Based on Twentyeleven WordPress Theme
 	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
 
 	// Register our settings field group
@@ -75,47 +80,75 @@ function t_em_register_setting_options_init(){
 	add_settings_field( 't_em_layout_set',	__( 'Layout Options', 't_em' ),			't_em_settings_field_layout_set',			'theme-options',	'general' );
 	add_settings_field( 't_em_social_set',	__( 'Social Network Options', 't_em' ),	't_em_settings_field_socialnetwork_set',	'theme-options',	'general' );
 }
+add_action( 'admin_init', 't_em_register_setting_options_init' );
 
-add_action( 'admin_menu', 't_em_theme_options_add_page' );
-function t_em_theme_options_add_page(){
+/**
+ * Add our theme options page to the admin menu, including some help documentation.
+ * This function is attached to the admin_menu() action hook.
+ *
+ * @uses add_menu_page() Add a top level menu page.
+ * @uses add_submenu_page() Add a sub menu page.
+ * @uses $t_em_theme_data See t_em_theme_data().
+ *
+ * @link http://codex.wordpress.org/Administration_Menus
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page		=	add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_FUNCTIONS_DIR_IMG . '/t-em-favicon.png', 61 );
+	$theme_page 				= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', 61 );
+	$theme_tools_box_page 		= add_submenu_page( 'theme-options',	__( 'Tools Box', 't_em' ),			__( 'Tools Box', 't_em' ),			'edit_theme_options',	'theme-tools-box',			't_em_theme_tools_box_options' );
+	$theme_webmaster_tools_page	= add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
 
-	$theme_tools_box_page	=	add_submenu_page( 'theme-options',	__( 'Tools Box', 't_em' ),	__( 'Tools Box', 't_em' ),	'edit_theme_options',	'theme-tools-box',		't_em_theme_tools_box_options' );
-						add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
-						add_submenu_page( 'theme-options',	__( 'Update', 't_em' ),				__( 'Update', 't_em' ),				'edit_theme_options',	'theme-update',				't_em_theme_update' );
-
+	// We call our help screens
 	if ( ! $theme_page ) return;
 	if ( ! $theme_tools_box_page ) return;
+	if ( ! $theme_webmaster_tools_page ) return;
 
 	add_action( "load-$theme_page", 't_em_theme_options_help' );
 	add_action( "load-$theme_tools_box_page", 't_em_tools_box_options_help' );
+	add_action( "load-$theme_webmaster_tools_page", 't_em_webmaster_tools_help' );
 }
+add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 
+// Now we call this files we need to complete the Twenty'em engine.
 require( get_template_directory() . '/inc/theme-tools-box.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
-require( get_template_directory() . '/inc/theme-update.php' );
 require( get_template_directory() . '/inc/help.php' );
+require( get_template_directory() . '/inc/deprecated.php' );
 
 /**
- * Redirect users to Twenty'em options page after activation
+ * Redirect users to Twenty'em options page after theme activation and register the default options
+ * at first time the theme is loaded.
  */
 if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 	wp_redirect( 'admin.php?page=theme-options' );
-
-	/**
-	 * Register the default options at first time the theme is loaded
-	 */
 	add_option( 't_em_theme_options', t_em_default_theme_options() );
 	add_option( 't_em_tools_box_options', t_em_tools_box_default_options() );
 	add_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 endif;
 
 /**
- * Returns theme data
+ * This function returns an array of theme's information stored in style.css file.
+ * This function is attached to the after_setup_theme() action hook.
+ *
+ * @uses wp_get_theme() Gets a WP_Theme object for a theme.
+ *
+ * @global $t_em_theme_data When you set to global this var, you can access to this function for the
+ * theme information stored in style.css file.
+ * For example, if you want to know or display the theme name and version into a function:
+ * <?php
+ * function my_function(){
+ * 	global $t_em_theme_data;
+ * 	echo "My theme is:" . $t_em_theme_data['Name'] . "Version:" . $t_em_theme_data['Version'];
+ * }
+ * ?>
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
-add_action( 'after_setup_theme', 't_em_theme_data' );
 function t_em_theme_data(){
 	global $t_em_theme_data;
 	$theme_data = wp_get_theme();
@@ -133,12 +166,26 @@ function t_em_theme_data(){
 		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
 	);
 }
+add_action( 'after_setup_theme', 't_em_theme_data' );
 
 /**
- * Return an array of variables we need
- * to access to the database
+ * Return three variables we need to access to the database. Also check if something goes wrong
+ * with the data base, in case of scratch, default set up will be loaded.
+ * This function is attached to the after_setup_theme() action hook.
+ *
+ * @global $t_em_theme_options This var provide the main structure of our theme.
+ * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of
+ * "key => option" array.
+ * @global $t_em_tools_box_options This var provide a set of options to help you when you are
+ * developing a Child Theme (Example: Active Golden Grid System).
+ * See t_em_tools_box_default_options() in /inc/theme-tools-box.php file for a full list of
+ * "key => option" array.
+ * @global $t_em_webmaster_tools_option This var give you access to your webmaster tools code.
+ * See t_em_webmaster_tools_default_options() in /inc/theme-webmaster-tools.php file for a full
+ * list of "key => option" array.
+ *
+ * @since Twenty'em 0.1
  */
-add_action( 'after_setup_theme', 't_em_set_globals' );
 function t_em_set_globals(){
 	global	$t_em_theme_options,
 			$t_em_tools_box_options,
@@ -156,9 +203,16 @@ function t_em_set_globals(){
 	if ( empty( $t_em_webmaster_tools_options ) )
 		update_option( 't_em_webmaster_tools_options', t_em_webmaster_tools_default_options() );
 }
+add_action( 'after_setup_theme', 't_em_set_globals' );
 
 /**
- * Return the default options for Twenty'em
+ * Return the default options values for Twenty'em after the theme is loaded for first time. This
+ * function manage the main option sections like General, Header, Archive, Layout and Social Network
+ * Options in the Twenty'em admin panel.
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_default_theme_options(){
 	$default_theme_options = array (
@@ -169,7 +223,7 @@ function t_em_default_theme_options(){
 		'header-featured-image'		=> '1',
 		'slider-home-only'			=> '0',
 		'slider-category'			=> get_option( 'default_category' ),
-		'slider-number'				=> '5',
+		'slider-number'				=> get_option( 'posts_per_page' ),
 		'slider-text'				=> 'slider-text-center',
 		'archive-set'				=> 'the-content',
 		'layout-set'				=> 'sidebar-right',
@@ -274,17 +328,17 @@ function t_em_slider_callback(){
 		'slider-text-center' => array (
 			'value' => 'slider-text-center',
 			'label' => __( 'Slider text on center', 't_em' ),
-			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-center.png',
+			'title' => T_EM_INC_DIR_IMG . '/slider-text-center.png',
 		),
 		'slider-text-left' => array (
 			'value' => 'slider-text-left',
 			'label' => __( 'Slider text on left', 't_em' ),
-			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-left.png',
+			'title' => T_EM_INC_DIR_IMG . '/slider-text-left.png',
 		),
 		'slider-text-right' => array (
 			'value' => 'slider-text-right',
 			'label' => __( 'Slider text on right', 't_em' ),
-			'title' => T_EM_FUNCTIONS_DIR_IMG . '/slider-text-right.png',
+			'title' => T_EM_INC_DIR_IMG . '/slider-text-right.png',
 		),
 	);
 
@@ -415,17 +469,17 @@ function t_em_excerpt_callback(){
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
 			'label' => __( 'Thumbnail on left', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/thumbnail-left.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/thumbnail-left.png',
 		),
 		'thumbnail-right' => array(
 			'value' => 'thumbnail-right',
 			'label' => __( 'Thumbnail on right', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/thumbnail-right.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/thumbnail-right.png',
 		),
 		'thumbnail-center' => array(
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/thumbnail-center.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/thumbnail-center.png',
 		),
 	);
 
@@ -468,17 +522,17 @@ function t_em_layout_options(){
 		'sidebar-right' => array(
 			'value' => 'sidebar-right',
 			'label' => __( 'Content on right', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/sidebar-right.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-right.png',
 		),
 		'sidebar-left' => array(
 			'value' => 'sidebar-left',
 			'label' => __( 'Content on left', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/sidebar-left.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-left.png',
 		),
 		'content' => array(
 			'value' => 'content',
 			'label' => __( 'One-column, no sidebar', 't_em' ),
-			'thumbnail' => T_EM_FUNCTIONS_DIR_IMG . '/one-column.png',
+			'thumbnail' => T_EM_INC_DIR_IMG . '/one-column.png',
 		),
 	);
 

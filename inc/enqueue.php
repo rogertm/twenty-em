@@ -74,7 +74,7 @@ add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
  */
 function t_em_theme_layout_width(){
 	global $t_em_theme_options;
-	if ( !array_key_exists( 'layout-width', $t_em_theme_options ) || $t_em_theme_options['layout-width'] == '' || !is_numeric( $t_em_theme_options['layout-width'] ) ) :
+	if ( $t_em_theme_options['layout-width'] <= '0' || !is_numeric( $t_em_theme_options['layout-width'] ) ) :
 		$layout_width = '960px';
 	else :
 		$layout_width = $t_em_theme_options['layout-width'].'px';

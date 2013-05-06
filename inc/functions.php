@@ -792,7 +792,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		endif;
 		?>
 			<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
+				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 				<figcaption><?php the_title(); ?></figcaption>
 			</figure>
 		<?php
@@ -815,7 +815,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 			endif;
 			?>
 				<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_FUNCTIONS_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
+					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 					<figcaption><?php the_title(); ?></figcaption>
 				</figure>
 			<?php

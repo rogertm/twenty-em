@@ -46,7 +46,7 @@ function t_em_theme_options_help(){
 }
 
 /**
- * Add contextual help to developers options screen
+ * Add contextual help to tools box options screen
  */
 function t_em_tools_box_options_help(){
 	global $t_em_theme_data;
@@ -58,6 +58,33 @@ function t_em_tools_box_options_help(){
 				'<li>' . __( '<strong>Golden Grid System</strong>: Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>jQuery Cycle Lite Plugin</strong>: Mauris a diam in eros pretium elementum. Vivamus lacinia nisl non orci. Duis ut dolor. Sed sollicitudin cursus libero.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>jQuery Easing Plugin</strong>: Mauris a diam in eros pretium elementum. Vivamus lacinia nisl non orci. Duis ut dolor. Sed sollicitudin cursus libero.', 't_em' ) . '</li>' .
+			'</ol>' .
+			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
+
+	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
+		'<p>' . __( '<a href="http://twenty-em.com/framework" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>';
+
+	$screen = get_current_screen();
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Overview', 't_em' ),
+		'id' => 'theme-options-help',
+		'content' => $help,
+		)
+	);
+
+	$screen->set_help_sidebar( $sidebar );
+}
+
+/**
+ * Add contextual help webmaster tools options screen
+ */
+function t_em_webmaster_tools_help(){
+	global $t_em_theme_data;
+	$help = '<p>' . __( '<strong><a href="http://twenty-em.com/framework" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly', 't_em' ) . '</p>'.
+			'<ol>' .
+				'<li>' . __( '<strong>Search Engines ID</strong>: One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Site Statistics Tracker</strong>: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris.', 't_em' ) . '</li>' .
 			'</ol>' .
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
