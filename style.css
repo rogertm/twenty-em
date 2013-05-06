@@ -736,7 +736,7 @@ div.menu li {
 */
 	font-size: 14px;
 	font-weight: bold;
-	margin: 0 0 36px 0;
+	margin-bottom: 25px;
 }
 .page-title span {
 /*
@@ -849,9 +849,6 @@ div.menu li {
 .page-link a:link,
 .page-link a:visited {
 	background: #f1f1f1;
-/*
-	color: #333;
-*/
 	font-weight: normal;
 	padding: 0.5em 0.75em;
 	text-decoration: none;
@@ -871,7 +868,8 @@ body.page .edit-link {
 	clear: both;
 	display: block;
 }
-#entry-author-info {
+#entry-author-info,
+#category-description {
 	clear: both;
 	font-size: 14px;
 	line-height: 20px;
@@ -890,6 +888,9 @@ body.page .edit-link {
 	font-size: 100%;
 	font-weight: bold;
 	margin-bottom: 0;
+}
+#category-description p{
+	margin: 0;
 }
 .entry-utility {
 	clear: both;

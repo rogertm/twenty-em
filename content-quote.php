@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content
+ * The default template for displaying content quote
  *
  * @package WordPress
  * @subpackage Twenty'em
