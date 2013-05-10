@@ -26,10 +26,10 @@ define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
 define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
 
 // Theme Options Directory
-define ( 'T_EM_INC_DIR',		get_template_directory_uri().'/inc' );
-define ( 'T_EM_INC_DIR_CSS',	get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_INC_DIR_IMG',	get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_INC_DIR_JS',	get_template_directory_uri().'/inc/js' );
+define ( 'T_EM_INC_DIR',			get_template_directory_uri().'/inc' );
+define ( 'T_EM_INC_DIR_CSS',		get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_INC_DIR_IMG',		get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_INC_DIR_JS',			get_template_directory_uri().'/inc/js' );
 
 /**
  * Register Style Sheet and Javascript to beautify the admin option page.
@@ -100,6 +100,7 @@ function t_em_theme_options_admin_page(){
 	$theme_page 				= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', 61 );
 	$theme_tools_box_page 		= add_submenu_page( 'theme-options',	__( 'Tools Box', 't_em' ),			__( 'Tools Box', 't_em' ),			'edit_theme_options',	'theme-tools-box',			't_em_theme_tools_box_options' );
 	$theme_webmaster_tools_page	= add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
+
 
 	// We call our help screens
 	if ( ! $theme_page ) return;
@@ -249,7 +250,11 @@ function t_em_default_theme_options(){
 }
 
 /**
- * Return an array of general options for Twenty'en
+ * Return an array of General Options for Twenty'em admin panel
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_general_options(){
 	$general_options = array (
@@ -271,7 +276,16 @@ function t_em_general_options(){
 }
 
 /**
- * Return an array of header options for Twenty'em
+ * Return an array of Header Options for Twenty'em admin panel.
+ * This function manage what is displayed in our theme header. Possibles options are:
+ * 0. Nothing (no-header-image)
+ * 1. Header image (header-image) defined in t_em_support_custom_header_image() function in
+ * /inc/functions.php
+ * 2. Slider (slider) displaying featured posts of such category
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_header_options(){
 	$header_options = array (
@@ -296,7 +310,12 @@ function t_em_header_options(){
 }
 
 /**
- * Extend setting for header image option
+ * Extend setting for Header Image Option in Twenty'em admin panel.
+ * Referenced via t_em_header_options().
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_header_image_callback(){
 	global $t_em_theme_options;
@@ -317,7 +336,14 @@ function t_em_header_image_callback(){
 }
 
 /**
- * Extend setting for slider option
+ * Extend setting for Header Slider Option in Twenty'em admin panel.
+ * Referenced via t_em_header_options().
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $slider_layout Return an array with our slider's layout options.
+ * @global $list_categories Havana, we have a list of categories... Should I say more?
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_slider_callback(){
 	global	$t_em_theme_options,
@@ -342,6 +368,15 @@ function t_em_slider_callback(){
 		),
 	);
 
+	/**
+	 * Twenty'em uses Nivo SLider jQuery Plugin by default, and we create our own style. If you want
+	 * add your own style, just add a new key like this:
+	 * 'style-your-style'	=> array (
+	 * 		'value'	=> 'your-style',
+	 * 		'label'	=> __( 'My own Style', 't_em' ),
+	 * ),
+	 * Do not forget to save all your stuff in /css/nivo-slider/themes/your-style/your-style.css
+	 */
 	$slider_style = array (
 		'style-t-em'	=> array (
 			'value'	=> 't-em',
@@ -414,7 +449,7 @@ function t_em_slider_callback(){
 	$extend_slider .= '</div><!-- .sub-extend -->';
 
 	// Display a select list of categories
-	$list_categories = get_categories( array () );
+	$list_categories = get_categories();
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
@@ -427,10 +462,12 @@ function t_em_slider_callback(){
 	$extend_slider .=	'</label>';
 	$extend_slider .= '</div>';
 
-	// How meny slides to show?
+	// How many slides to show?
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .=	'<label class="description">';
-	$extend_slider .= 		'<p>'. __( 'Introduce the number of slides you want to show', 't_em' ) .'</p>';
+	$extend_slider .= 		'<p>'. sprintf( __( 'Introduce the number of slides you want to show. Default value will be <strong>%1$s</strong>, set at your <a href="%2$s" target="_blank">Reading Settings</a> posts per page option', 't_em' ),
+		get_option( 'posts_per_page' ),
+		admin_url( 'options-reading.php' ) ) .'</p>';
 	$extend_slider .= 		'<input type="number"  name="t_em_theme_options[slider-number]" value="'. esc_attr( $t_em_theme_options['slider-number'] ) .'" />';
 	$extend_slider .=	'</label>';
 	$extend_slider .= '</div>';
@@ -439,7 +476,15 @@ function t_em_slider_callback(){
 }
 
 /**
- * Return an array of archive options for Twenty'em
+ * Return an array of Archive Options for Twenty'em admin panel.
+ * This function manage what and how is displayed in our theme archive. Possibles options are:
+ * 0. Display the whole posts content (the-content).
+ * 1. Display the posts excerpt (the-excerpt), here we call t_em_excerpt_callback() function which
+ * display several sub-options.
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_archive_options(){
 	$archive_options = array (
@@ -459,7 +504,13 @@ function t_em_archive_options(){
 }
 
 /**
- * Extend setting for archive option
+ * Extend setting for Archive Option in Twenty'em admin panel.
+ * Referenced via t_em_archive_options().
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $excerpt_options Returns an array of our archive excerpt options.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_excerpt_callback(){
 	global	$t_em_theme_options,
@@ -515,18 +566,26 @@ function t_em_excerpt_callback(){
 }
 
 /**
- * Return an array of layout options for Twenty'em
+ * Return an array of Layout Options for Twenty'em admin panel.
+ * This function manage how is displayed our theme layout. Possibles options are:
+ * 0. Sidebar on right (sidebar-right).
+ * 1. Sidebar on left (sidebar-left).
+ * 2. One column, no sidebar (content).
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_layout_options(){
 	$layout_options = array (
 		'sidebar-right' => array(
 			'value' => 'sidebar-right',
-			'label' => __( 'Content on right', 't_em' ),
+			'label' => __( 'Sidebar on right', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-right.png',
 		),
 		'sidebar-left' => array(
 			'value' => 'sidebar-left',
-			'label' => __( 'Content on left', 't_em' ),
+			'label' => __( 'Sidebar on left', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-left.png',
 		),
 		'content' => array(
@@ -540,7 +599,12 @@ function t_em_layout_options(){
 }
 
 /**
- * Set the default theme width
+ * Display a text box into Layout Options panel where you may enter your theme width.
+ * Referenced via t_em_settings_field_layout_set().
+ *
+ * @return string HTML Text box form.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_layout_width(){
 	global $t_em_theme_options;
@@ -548,8 +612,8 @@ function t_em_layout_width(){
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
-	$layout_width .= 		'<p>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>960px</strong>.', 't_em' ) .'</p>';
 	$layout_width .= 		'<label>';
+	$layout_width .= 		'<span>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>960px</strong>.', 't_em' ) .'</span>';
 	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$t_em_theme_options['layout-width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
@@ -559,10 +623,14 @@ function t_em_layout_width(){
 }
 
 /**
- * Return an array of social network options for Twenty'em
+ * Return an array of Social Network Options for Twenty'em admin panel.
+ * This function manage several social network options which you may use to display your profiles
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_social_network_options(){
-	global $socialnetwork_options;
 	$socialnetwork_options = array (
 		'twitter-set' => array (
 			'value' => '',
@@ -630,7 +698,16 @@ function t_em_social_network_options(){
 }
 
 /**
- * Return Width and Height sizes for thumbnails
+ * Return Width and Height text boxes for thumbnails in forms
+ *
+ * @param string $contex Require In which form ($contex) you want to use this function.
+ * Example: You have a new slider plugin, and you want set Width and Height for yours thumbnail in
+ * slideshow. So, you may call this function like this: $thumb = t_em_thumbnail_sizes( 'slideshow' );
+ * See t_em_excerpt_callback() in /inc/theme-options.php file
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_thumbnail_sizes( $contex ){
 	$thumbnail_sizes = array (
@@ -650,14 +727,22 @@ function t_em_thumbnail_sizes( $contex ){
 }
 
 /**
- * Return the options array for Twenty'em
+ * Return the whole configuration for Theme Options stored in the data base.
+ * Referenced via t_em_set_globals() in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_get_theme_options(){
 	return get_option( 't_em_theme_options', t_em_default_theme_options() );
 }
 
 /**
- * Render the General Options setting field
+ * Render the General Options setting field in admin panel.
+ * Referenced via t_em_register_setting_options_init(), add_settings_field() callback.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_settings_field_general_options_set(){
 	global $t_em_theme_options;
@@ -681,7 +766,12 @@ function t_em_settings_field_general_options_set(){
 }
 
 /**
- * Render the Header setting field
+ * Render the Header setting field in admin panel.
+ * Referenced via t_em_register_setting_options_init(), add_settings_field() callback.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_settings_field_header_set(){
 	global $t_em_theme_options;
@@ -699,6 +789,9 @@ function t_em_settings_field_header_set(){
 <?php
 	endforeach;
 
+	/* If our 'extend' key brings something, then we display our callback function.
+	 * Header Image or Slider, that's the question.
+	 */
 	foreach ( t_em_header_options() as $sub_header ) :
 		if ( $sub_header['extend'] != '' ) :
 			$selected_option = ( $t_em_theme_options['header-set'] == $sub_header['value'] ) ? 'selected-option' : '';
@@ -715,7 +808,12 @@ function t_em_settings_field_header_set(){
 }
 
 /**
- * Render the Archive setting field
+ * Render the Archive setting field in admin panel.
+ * Referenced via t_em_register_setting_options_init(), add_settings_field() callback.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_settings_field_archive_set(){
 	global $t_em_theme_options;
@@ -733,6 +831,9 @@ function t_em_settings_field_archive_set(){
 <?php
 	endforeach;
 
+	/* If our 'extend' key brings something, then we display our callback function.
+	 * Let's go for the_excerpt().
+	 */
 	foreach ( t_em_archive_options() as $sub_archive ) :
 		if ( $sub_archive['extend'] != '' ) :
 		$selected_option = ( $t_em_theme_options['archive-set'] == $sub_archive['value'] ) ? 'selected-option' : '';
@@ -749,7 +850,15 @@ function t_em_settings_field_archive_set(){
 }
 
 /**
- * Render the Layout setting field
+ * Render the Layout setting field in admin panel.
+ * Referenced via t_em_register_setting_options_init(), add_settings_field() callback.
+ *
+ * @uses t_em_layout_width() Display a text box into Layout Options panel where you may enter
+ * your theme width.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_settings_field_layout_set(){
 	global $t_em_theme_options;
@@ -773,7 +882,12 @@ function t_em_settings_field_layout_set(){
 }
 
 /**
- * Render the Socialnetwork setting field
+ * Render the Socialnetwork setting field in admin panel.
+ * Referenced via t_em_register_setting_options_init(), add_settings_field() callback.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_settings_field_socialnetwork_set(){
 	global $t_em_theme_options;
@@ -790,7 +904,16 @@ function t_em_settings_field_socialnetwork_set(){
 }
 
 /**
- * Finally a Options Page is displayed
+ * Finally a Options Page is displayed.
+ * Referenced via t_em_theme_options_admin_page(), add_menu_page() callback
+ *
+ * @uses settings_fields() Output nonce, action, and option_page fields for a settings page.
+ * @uses do_settings_sections() Prints out all settings sections added to /inc/theme-options.php.
+ *
+ * @link http://codex.wordpress.org/Settings_API
+ * @link http://codex.wordpress.org/Administration_Menus
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_theme_options_page(){
 ?>
@@ -813,6 +936,9 @@ function t_em_theme_options_page(){
 
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
+ * Referenced via t_em_register_setting_options_init(), register_setting() callback.
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
 	global $excerpt_options, $slider_layout, $list_categories;
@@ -906,7 +1032,6 @@ function t_em_theme_options_validate( $input ){
  *
  * @since Twenty'em 0.1
  */
-add_filter( 'body_class', 't_em_layout_classes' );
 function t_em_layout_classes( $existing_classes ){
 	global $t_em_theme_options;
 	$layout_set = $t_em_theme_options['layout-set'];
@@ -927,13 +1052,13 @@ function t_em_layout_classes( $existing_classes ){
 
 	return array_merge( $existing_classes, $classes );
 }
+add_filter( 'body_class', 't_em_layout_classes' );
 
 /**
  * Add Twenty'em archive classes to the array of posts classes
  *
  * @since Twenty'em 0.1
  */
-add_filter( 'post_class', 't_em_archive_classes' );
 function t_em_archive_classes( $existing_classes ){
 	global $t_em_theme_options;
 	$archive_set = $t_em_theme_options['archive-set'];
@@ -956,4 +1081,5 @@ function t_em_archive_classes( $existing_classes ){
 
 	return array_merge( $existing_classes, $classes );
 }
+add_filter( 'post_class', 't_em_archive_classes' );
 ?>

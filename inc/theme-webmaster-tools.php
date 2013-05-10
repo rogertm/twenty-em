@@ -1,6 +1,6 @@
 <?php
 /**
- * Twenty'em theme options.
+ * Twenty'em Webmaster Tools theme options.
  *
  * @file			theme-update.php
  * @package			WordPress

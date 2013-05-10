@@ -127,7 +127,7 @@ function t_em_setup(){
 if ( !function_exists( 't_em_support_custom_background' ) ) :
 /**
  * Pluggable Function: Adds theme support for custom background.
- * Referenced via in t_em_setup().
+ * Referenced via t_em_setup().
  *
  * @since Twenty'em 0.1
  */
@@ -140,7 +140,7 @@ endif; // function t_em_support_custom_background()
 if ( !function_exists( 't_em_support_custom_header' ) ) :
 /**
  * Pluggable Function: Adds theme support for custom header image
- * Referenced via in t_em_setup().
+ * Referenced via t_em_setup().
  *
  * @since Twenty'em 0.1
  */
@@ -164,7 +164,7 @@ endif; // function t_em_support_custom_header()
 if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 /**
  * Pluggable Function:  Default custom headers packaged with the theme.
- * Referenced via in t_em_setup().
+ * Referenced via t_em_setup().
  *
  * @since Twenty'em 0.1
  */
