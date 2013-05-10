@@ -11,7 +11,7 @@
  * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/enqueue.php
  * @link			http://codex.wordpress.org/Plugin_API/Action_Reference/wp_register_script
- * @since			Version 0.1
+ * @since			Twenty'em 0.1
  */
 ?>
 <?php

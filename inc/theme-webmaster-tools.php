@@ -11,7 +11,7 @@
  * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/theme-webmaster-tools.php
  * @link			N/A
- * @since			Version 0.1
+ * @since			Twenty'em 0.1
  */
 ?>
 <?php

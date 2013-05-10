@@ -11,7 +11,7 @@
  * @version			0.1
  * @filesource		wp-content/themes/twenty-em/inc/theme-options.php
  * @link			http://codex.wordpress.org/Settings_API
- * @since			Version 0.1
+ * @since			Twenty'em 0.1
  */
 ?>
 <?php
