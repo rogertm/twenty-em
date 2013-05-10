@@ -42,7 +42,7 @@ function t_em_theme_options_help(){
 
 	$general_help =	'<p>' . __( '<strong>General Options</strong>: By checking the check boxes below, you may enable or not this options.<br />Note: All of then are check by default.', 't_em' ) . '</p>' .
 					'<ul>' .
-						'<li>' . __( '<strong>Twenty’em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em will be displayed in your site footer area.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em will be displayed in your site footer area.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 					'</ul>';
@@ -86,7 +86,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. With this you may decide where you want your side bar, in case you need one. And also you can enter the value you wish to be your site width. Default value <strong>960px</strong>.' ) . '</p>';
+	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. With this you may decide where you want your side bar, in case you need one. And also you can enter the value you wish to be your site width. Default value <strong>960px</strong>.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Layout Options', 't_em' ),
@@ -95,7 +95,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$socialnetwork_help = '<p>' . __( '<strong>Social Network Options</strong>: We provide a long list of the must used social network sites on the Internet. This option let you introduce your users URL, and they will be show in your site footer area as a menu.' ) . '</p>';
+	$socialnetwork_help = '<p>' . __( '<strong>Social Network Options</strong>: We provide a long list of the must used social network sites on the Internet. This option let you introduce your users URL, and they will be show in your site footer area as a menu.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Social Network Options', 't_em' ),
