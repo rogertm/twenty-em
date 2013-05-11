@@ -1014,4 +1014,12 @@ function t_em_single_related_posts() {
 		return $output;
 	endif;
 }
+
+function t_em_hello($a, $b){
+	echo '<code>';
+		print_r( $a ); // `print_r` the array data inside the 1st argument
+	echo '</code>';
+
+	echo '<br />'.$b; // echo linebreak and value of 2nd argument
+}
 ?>

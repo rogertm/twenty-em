@@ -132,7 +132,8 @@ function t_em_tools_box_options_help(){
 			'</ul>' .
 			'<p><strong>' . __( 'Not required:', 't_em' ) . '</strong></p>' .
 			'<ul>' .
-				'<li>' . __( '<strong>Golden Grid System </strong>', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Golden Grid System</strong>', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>IcoMoon</strong>', 't_em' ) . '</li>' .
 			'</ul>' .
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
@@ -166,8 +167,9 @@ function t_em_tools_box_options_help(){
 				'<ul>' .
 					'<li>' . sprintf( __( '<strong>Golden Grid System</strong>: A folding grid for responsive design. Golden Grid System (GGS) splits the screen into 18 even columns. The leftmost and rightmost columns are used as the outer margins of the grid, which leaves 16 columns for use in design.<br />Visit <a href="%1$s" title="Golden Grid System" target="_blank">Golden Grid System Web Site</a> for more info.', 't_em' ),
 							'http://goldengridsystem.com' ) . '</li>' .
-					'<li>' . sprintf( __( '<strong></strong>:', 't_em' ) ) . '</li>' .
-					'<li>' . sprintf( __( '<strong></strong>:', 't_em' ) ) . '</li>' .
+					'<li>' . sprintf( __( '<strong>IcoMoon</strong>: This great tool provide a big set of font symbols icons to use in your theme, appropriate to display your site correctly when someone access using a Retina Display.<br />Visit <a href="%1$s" title="IcoMoon.io" target="_blank">IcoMoon Web Site</a> for more info, or see <a href="%2$s" title="IcoMoon examples" target="_blank">all available options</a> and how to use them.', 't_em' ),
+							'http://icomoon.io/',
+							T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</li>' .
 				'</ul>';
 
 	$screen->add_help_tab( array(

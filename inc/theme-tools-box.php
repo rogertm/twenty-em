@@ -43,6 +43,13 @@ function t_em_tools_box_frameworks_options(){
 			'sublabel'		=> __( 'A folding grid for responsive design.', 't_em' ),
 			'description'	=> __( 'If active, a folding grid will be displayed (right top of your home page), whish helps you to organize your desing and make it responsive.', 't_em' ),
 		),
+		'icomoon'	=> array (
+			'name'			=> 'icomoon',
+			'url'			=> 'http://icomoon.io',
+			'label'			=> __( 'IcoMoon', 't_em' ),
+			'sublabel'		=> __( 'Font Simbols for Retina Display.', 't_em' ),
+			'description'	=> __( 'If active, you will access to a big set of icons.', 't_em' ),
+		)
 	);
 
 	return apply_filters( 't_em_tools_box_frameworks_options', $frameworks_options );
@@ -54,6 +61,7 @@ function t_em_tools_box_frameworks_options(){
 function t_em_tools_box_default_options(){
 	$default_tools_box_options = array (
 		'golden-grid-system'	=> '',
+		'icomoon'				=> '1',
 	);
 
 	return apply_filters( 't_em_tools_box_default_options', $default_tools_box_options );
@@ -126,6 +134,7 @@ function t_em_tools_box_options_validate( $input ){
 	// All the checkbox are either 0 or 1
 	foreach ( array(
 		'golden-grid-system',
+		'icomoon',
 	) as $checkbox ) :
 		if ( !isset( $input[$checkbox] ) )
 			$input[$checkbox] = null;

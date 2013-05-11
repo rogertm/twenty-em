@@ -51,6 +51,12 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_style( 'ggs' );
 	endif;
 
+	// Load IcoMoon set if is set by the user
+	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
+		wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'icomoon-style' );
+	endif;
+
 	// Load JQuery Nivo Slider just if is needed
 	if ( 'slider' == $t_em_theme_options['header-set'] ) :
 		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS . '/nivo-slider/nivo-slider.css', array(), '3.2', 'all' );
@@ -134,20 +140,16 @@ function t_em_ggs_style(){
  * is just like rel="stylesheet". LESS needs something else like
  * rel="stylesheet/less", so, we need do it this way.
  */
-add_action( 'wp_head', 't_em_enqueue_less_css' );
 function t_em_enqueue_less_css(){
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
 	echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
 
 }
+add_action( 'wp_head', 't_em_enqueue_less_css' );
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
- *
- * As we need the conditional comment for older
- * IE version we load html5 shiv script this way.
  */
-add_action( 'wp_head', 't_em_enqueue_html5shiv' );
 function t_em_enqueue_html5shiv(){
 ?>
 	<!--[if lt IE 9]>
@@ -155,4 +157,20 @@ function t_em_enqueue_html5shiv(){
 	<![endif]-->
 <?php
 }
+add_action( 'wp_head', 't_em_enqueue_html5shiv' );
+
+/**
+ * Loads IcoMoon javascript supports to IE 7 and IE 6... Asco!
+ */
+function t_em_enqueue_icomoon(){
+	global $t_em_tools_box_options;
+	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
+?>
+	<!--[if lt IE 7]>
+	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/icomoon.lte-ie7.js" type="text/javascript"></script>
+	<![endif]-->
+<?php
+	endif;
+}
+add_action( 'wp_head', 't_em_enqueue_icomoon' );
 ?>

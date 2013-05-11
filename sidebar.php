@@ -27,9 +27,9 @@ if ( 'content' != $t_em_theme_options['layout-set'] ) :
 			</aside>
 
 			<aside id="archives" class="widget-container">
-				<h3 class="widget-title"><?php _e( 'Archives', 't_em' ); ?></h3>
+				<h3 class="widget-title"><?php _e( 'Categories', 't_em' ); ?></h3>
 				<ul>
-					<?php wp_get_archives( array ( 'type' => 'monthly' ) ); ?>
+					<?php wp_list_categories( array('title_li' => '') ) ?>
 				</ul>
 			</aside>
 

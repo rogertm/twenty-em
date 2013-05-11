@@ -24,6 +24,7 @@ define ( 'T_EM_THEME_DIR_CSS',		get_template_directory_uri().'/css' );
 define ( 'T_EM_THEME_DIR_IMG',		get_template_directory_uri().'/images' );
 define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
 define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
+define ( 'T_EM_THEME_DIR_DOCS',		get_template_directory_uri().'/docs' );
 
 // Theme Options Directory
 define ( 'T_EM_INC_DIR',			get_template_directory_uri().'/inc' );
