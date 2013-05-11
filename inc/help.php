@@ -16,7 +16,9 @@
 ?>
 <?php
 /**
- * Add contextual help to theme options screen
+ * Add contextual help to Theme Options screen
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_theme_options_help(){
 	global $t_em_theme_data;
@@ -31,7 +33,7 @@ function t_em_theme_options_help(){
 				'<li>' . __( '<strong>Layout Options</strong>: Default Values: Sidebar on right. Site width: 960px.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 			'</ul>' .
-			'<p>' . __( 'Remember to click <strong>"Save Changes"</strong> to save any changes you have made to the theme options.', 't_em' ) . '</p>';
+			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Overview', 't_em' ),
@@ -57,12 +59,10 @@ function t_em_theme_options_help(){
 	$header_help =	'<p>' . __( '<strong>Header Options</strong>: With this options you are able to configure your header site section.', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . __( '<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline.', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to <a href="%1$s">Appearance</a> &gt; <a href="%2$s">Header</a> to customize this section.<br /> In addition you may active the checkbox "<strong>Display featured image in single posts and pages?</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
-								 admin_url( 'themes.php' ),
+						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s">Header Settings</a> to customize this section.<br /> In addition you may active the checkbox "<strong>Display featured image in single posts and pages?</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
 								 admin_url( 'themes.php?page=custom-header' ) ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to <a href="%2$s">Settings</a> &gt; <a href="%3$s">Writing</a> to manage your default category.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
-								 admin_url( 'options-general.php' ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
 					'</ul>';
 
@@ -112,32 +112,73 @@ function t_em_theme_options_help(){
 }
 
 /**
- * Add contextual help to tools box options screen
+ * Add contextual help to Tools Box options screen
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_tools_box_options_help(){
 	global $t_em_theme_data;
-	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/framework" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provides somes Javascript and CSS Frameworks or Tools to make your work easier. Some of them are <strong>loaded by default</strong>, so, it is recommended to leave them as they are. Your current theme, <strong>%s</strong>, provides the following tools:', 't_em' ), $t_em_theme_data['Name'] ) . '</p>'.
-			'<ol>' .
-				'<li>' . __( '<strong>LESS (loaded by default)</strong>: One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Modernizr (loaded by default)</strong>: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. HTML In dapibus. CSS In pretium pede. Donec molestie facilisis ante. Ut a turpis ut ipsum pellentesque tincidunt. Morbi blandit sapien in mauris.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>HTML5 Shiv (loaded by default)</strong>: Nulla lectus lorem, varius aliquet, auctor vitae, bibendum et, nisl. Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Golden Grid System</strong>: Fusce pulvinar, risus non euismod varius, ante tortor facilisis lorem, non condimentum diam nisl vel lectus.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>jQuery Cycle Lite Plugin</strong>: Mauris a diam in eros pretium elementum. Vivamus lacinia nisl non orci. Duis ut dolor. Sed sollicitudin cursus libero.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>jQuery Easing Plugin</strong>: Mauris a diam in eros pretium elementum. Vivamus lacinia nisl non orci. Duis ut dolor. Sed sollicitudin cursus libero.', 't_em' ) . '</li>' .
-			'</ol>' .
-			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
-
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://twenty-em.com/framework" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>';
 
 	$screen = get_current_screen();
 
+	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provides some external tools to make your work easier. Some of them are <strong>required and loaded by default</strong>, but some others you can active them, normally to work as a developer. Your current theme, <strong>%s</strong>, provides the following tools:', 't_em' ),
+					$t_em_theme_data['Name'] ) . '</p>'.
+			'<p><strong>' . __( 'Required:', 't_em' ) . '</strong></p>' .
+			'<ul>' .
+				'<li>' . __( '<strong>LESS</strong>', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Modernizr</strong>', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>HTML5 Shiv</strong>', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Timthumb</strong>', 't_em' ) . '</li>' .
+			'</ul>' .
+			'<p><strong>' . __( 'Not required:', 't_em' ) . '</strong></p>' .
+			'<ul>' .
+				'<li>' . __( '<strong>Golden Grid System </strong>', 't_em' ) . '</li>' .
+			'</ul>' .
+			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
+
 	$screen->add_help_tab( array(
 		'title' => __( 'Overview', 't_em' ),
-		'id' => 'theme-options-help',
+		'id' => 'theme-toolbox-help',
 		'content' => $help,
 		)
 	);
+
+	$required_help = '<p>' . __( 'All this tools are <strong>required and loaded by default</strong>, and they are necessary for the good working of your theme. In addition, We provide a small explanation of how they work, and a link to each tool web site. Enjoy it!', 't_em' ) . '</p>'.
+			'<ul>' .
+				'<li>' . sprintf( __( '<strong>LESS</strong>: A dynamic stylesheet language. Extends CSS with dynamic behavior such as variables, mixins, operations and functions. You may manage your Color Scheme using this useful tool.<br />Visit <a href="%1$s" title="less.js" target="_blank">LESS Web Site</a> for more info.', 't_em' ),
+								'http://lesscss.org' ) . '</li>' .
+				'<li>' . sprintf( __( '<strong>Modernizr</strong>: Modernizr is a small JavaScript library that detects the availability of native implementations for HTML5 and CSS3 specifications and tell you whether the current browser has this feature natively implemented or not. Modernizr also enables you to use more semantic elements from the HTML5 spec, even in Internet Explorer.<br />Visit <a href="%1$s" title="Modernizr.com" target="_blank">Modernizr Web Site</a> for more info.', 't_em' ),
+						'http://modernizr.com/' ) . '</li>' .
+				'<li>' . sprintf( __( '<strong>HTML5 Shiv</strong>: Visit <a href="%1$s" title="HTML5Shiv" target="_blank">HTML5Shiv Web Site</a> for more info', 't_em' ),
+						'https://github.com/aFarkas/html5shiv' ) . '</li>' .
+				'<li>' . sprintf( __( '<strong>Timthumb</strong>: Visit <a href="%1$s" title="Timthumb" target="_blank">Timthumb Web Site</a> for more info.' ),
+						'http://www.binarymoon.co.uk/projects/timthumb/' ) . '</li>' .
+			'</ul>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Required tools', 't_em' ),
+		'id' => 'required-toolbox-help',
+		'content' => $required_help,
+		)
+	);
+
+	$not_required_help = '<p>' . __( 'This tools are useful to develop using Twenty&#8217;em Framework', 't_em' ) . '</p>' .
+				'<ul>' .
+					'<li>' . sprintf( __( '<strong>Golden Grid System</strong>: A folding grid for responsive design. Golden Grid System (GGS) splits the screen into 18 even columns. The leftmost and rightmost columns are used as the outer margins of the grid, which leaves 16 columns for use in design.<br />Visit <a href="%1$s" title="Golden Grid System" target="_blank">Golden Grid System Web Site</a> for more info.', 't_em' ),
+							'http://goldengridsystem.com' ) . '</li>' .
+					'<li>' . sprintf( __( '<strong></strong>:', 't_em' ) ) . '</li>' .
+					'<li>' . sprintf( __( '<strong></strong>:', 't_em' ) ) . '</li>' .
+				'</ul>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Not required tools', 't_em' ),
+		'id' => 'not-required-toolbox-help',
+		'content' => $not_required_help,
+		)
+	);
+
+	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
+		'<p>' . __( '<a href="http://twenty-em.com/" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
