@@ -21,9 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 Thanks for using Twenty'em.
 
 IMPORTANT:
-This is not an official version of Twenty'em. This is a version for
+THIS IS NOT AN OFFICIAL VERSION OF TWENTY'EM. This is a version for
 our friends and people who want to contribute testing the
-functionalities of this software. Use it on your own risk.
+functionalities of this software. USE IT ON YOUR OWN RISK.
+
+If you find any bug or have a suggestion to make a better product,
+please let us know and send us a email to mail@twenty-em.com.
 
 FEATURES:
 
