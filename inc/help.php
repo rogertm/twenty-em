@@ -25,7 +25,9 @@ function t_em_theme_options_help(){
 
 	$screen = get_current_screen();
 
-	$help =	'<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%s</strong>, provides the following options:', 't_em' ), $t_em_theme_data['Name'] ) . '</p>'.
+	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:', 't_em' ),
+					'http://twenty-em.com/',
+					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header image.', 't_em' ) . '</li>' .
@@ -105,8 +107,10 @@ function t_em_theme_options_help(){
 	);
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://twenty-em.com/" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>' .
-		'<p>' . __( 'Documentation not yet available', 't_em' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+						'http://twenty-em.com/' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
@@ -121,7 +125,8 @@ function t_em_tools_box_options_help(){
 
 	$screen = get_current_screen();
 
-	$help = '<p>' . sprintf( __( '<strong><a href="http://twenty-em.com/" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provides some external tools to make your work easier. Some of them are <strong>required and loaded by default</strong>, but some others you can active them, normally to work as a developer. Your current theme, <strong>%s</strong>, provides the following tools:', 't_em' ),
+	$help = '<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provides some external tools to make your work easier. Some of them are <strong>required and loaded by default</strong>, but some others you can active them, normally to work as a developer. Your current theme, <strong>%2$s</strong>, provides the following tools:', 't_em' ),
+					'http://twenty-em.com/',
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<p><strong>' . __( 'Required:', 't_em' ) . '</strong></p>' .
 			'<ul>' .
@@ -180,7 +185,10 @@ function t_em_tools_box_options_help(){
 	);
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://twenty-em.com/" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+						'http://twenty-em.com/' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
@@ -193,9 +201,6 @@ function t_em_webmaster_tools_help(){
 	$help = '<p>' . __( 'In this section you should enter your Search Engines ID&#8217;s and Statistics Tracker codes provided by Google, Yahoo! and/or Bing.', 't_em' ) . '</p>'.
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://twenty-em.com/" target="_blank">Visit Twenty&#8217;em home page</a>', 't_em' ) . '</p>';
-
 	$screen = get_current_screen();
 
 	$screen->add_help_tab( array(
@@ -204,6 +209,12 @@ function t_em_webmaster_tools_help(){
 		'content' => $help,
 		)
 	);
+
+	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
+				'<p>' . sprintf( __( '<a href="" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+						'http://twenty-em.com/' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
