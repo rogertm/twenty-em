@@ -96,3 +96,7 @@
 #t-em-setting figure{
 	margin: 0;
 }
+#t-em-setting .social{
+	display: inline-block;
+	margin: 5px;
+}

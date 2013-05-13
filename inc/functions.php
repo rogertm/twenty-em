@@ -934,13 +934,21 @@ function t_em_post_archive_set(){
  * @since Twenty'em 0.1
  */
 function t_em_user_social_network(){
-	global $t_em_theme_options;
+	global 	$t_em_theme_options,
+			$t_em_tools_box_options;
 	$user_social_network = t_em_social_network_options();
+
+	// If IcoMonn is enable, we hide the text into links.
+	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
+		$hide_link = 'class="hidden"';
+	else :
+		$hide_link = '';
+	endif;
 
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em_theme_options[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'">'.$social_network['item'].'</a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' social-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span '. $hide_link .'>'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :

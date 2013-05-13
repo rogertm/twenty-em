@@ -237,14 +237,23 @@ function t_em_default_theme_options(){
 		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
 		'twitter-set'				=> '',
 		'facebook-set'				=> '',
-		'googlepluss-set'			=> '',
+		'googleplus-set'			=> '',
 		'delicious-set'				=> '',
 		'linkedin-set'				=> '',
+		'github-set'				=> '',
+		'wordpress-set'				=> '',
 		'youtube-set'				=> '',
 		'flickr-set'				=> '',
-		'feedburner-set'			=> '',
-		'rss-set'					=> '',
-		'dropbox-set'				=> '',
+		'instagram-set'				=> '',
+		'vimeo-set'					=> '',
+		'reddit-set'				=> '',
+		'picassa-set'				=> '',
+		'lastfm-set'				=> '',
+		'stumbleupon-set'			=> '',
+		'pinterest-set'				=> '',
+		'deviantart-set'			=> '',
+		'myspace-set'				=> '',
+		'feed-set'					=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -638,60 +647,133 @@ function t_em_social_network_options(){
 			'name' => 'twitter-set',
 			'label' => __( 'Twitter URL', 't_em' ),
 			'item' => __( 'Twitter', 't_em' ),
+			'class' => 'icon-twitter'
 		),
 		'facebook-set' => array (
 			'value' => '',
 			'name' => 'facebook-set',
 			'label' => __( 'Facebook URL', 't_em' ),
 			'item' => __( 'Facebook', 't_em' ),
+			'class' => 'icon-facebook'
 		),
-		'googlepluss-set' => array (
+		'googleplus-set' => array (
 			'value' => '',
-			'name' => 'googlepluss-set',
+			'name' => 'googleplus-set',
 			'label' => __( 'Google + URL', 't_em' ),
 			'item' => __( 'Google +', 't_em' ),
+			'class' => 'icon-googleplus'
 		),
 		'delicious-set' => array (
 			'value' => '',
 			'name' => 'delicious-set',
 			'label' => __( 'Delicious URL', 't_em' ),
 			'item' => __( 'Delicious', 't_em' ),
+			'class' => 'icon-delicious'
 		),
 		'linkedin-set' => array (
 			'value' => '',
 			'name' => 'linkedin-set',
 			'label' => __( 'Linked In URL', 't_em' ),
 			'item' => __( 'Linked In', 't_em' ),
+			'class' => 'icon-linkedin'
+		),
+		'github-set' => array (
+			'value' => '',
+			'name' => 'github-set',
+			'label' => __( 'Github URL', 't_em' ),
+			'item' => __( 'Github', 't_em' ),
+			'class' => 'icon-github'
+		),
+		'wordpress-set' => array (
+			'value' => '',
+			'name' => 'wordpress-set',
+			'label' => __( 'WordPress URL', 't_em' ),
+			'item' => __( 'WordPress', 't_em' ),
+			'class' => 'icon-wordpress'
 		),
 		'youtube-set' => array (
 			'value' => '',
 			'name' => 'youtube-set',
 			'label' => __( 'YouTube URL', 't_em' ),
 			'item' => __( 'YouTube', 't_em' ),
+			'class' => 'icon-youtube'
 		),
 		'flickr-set' => array (
 			'value' => '',
 			'name' => 'flickr-set',
 			'label' => __( 'Flickr URL', 't_em' ),
 			'item' => __( 'Flickr', 't_em' ),
+			'class' => 'icon-flickr'
 		),
-		'dropbox-set'	=> array(
-			'value'	=> '',
-			'name' => 'dropbox-set',
-			'label' => __( 'Dropbox URL', 't_em' ),
-			'item' => __( 'Dropbox', 't_em' ),
-		),
-		'feedburner-set' => array (
+		'instagram-set' => array (
 			'value' => '',
-			'name' => 'feedburner-set',
-			'label' => __( 'Feedburner URL', 't_em' ),
-			'item' => __( 'Feedburner', 't_em' ),
+			'name' => 'instagram-set',
+			'label' => __( 'Instagram URL', 't_em' ),
+			'item' => __( 'Instagram', 't_em' ),
+			'class' => 'icon-instagram'
 		),
-		'rss-set' => array (
+		'vimeo-set' => array (
 			'value' => '',
-			'name' => 'rss-set',
+			'name' => 'vimeo-set',
+			'label' => __( 'Vimeo URL', 't_em' ),
+			'item' => __( 'Vimeo', 't_em' ),
+			'class' => 'icon-vimeo'
+		),
+		'reddit-set' => array (
+			'value' => '',
+			'name' => 'reddit-set',
+			'label' => __( 'Reddit URL', 't_em' ),
+			'item' => __( 'Reddit', 't_em' ),
+			'class' => 'icon-reddit'
+		),
+		'picassa-set' => array (
+			'value' => '',
+			'name' => 'picassa-set',
+			'label' => __( 'Picassa URL', 't_em' ),
+			'item' => __( 'Picassa', 't_em' ),
+			'class' => 'icon-picassa'
+		),
+		'lastfm-set' => array (
+			'value' => '',
+			'name' => 'lastfm-set',
+			'label' => __( 'Lastfm URL', 't_em' ),
+			'item' => __( 'Lastfm', 't_em' ),
+			'class' => 'icon-lastfm'
+		),
+		'stumbleupon-set' => array (
+			'value' => '',
+			'name' => 'stumbleupon-set',
+			'label' => __( 'Stumbleupon URL', 't_em' ),
+			'item' => __( 'Stumbleupon', 't_em' ),
+			'class' => 'icon-stumbleupon'
+		),
+		'pinterest-set' => array (
+			'value' => '',
+			'name' => 'pinterest-set',
+			'label' => __( 'Pinterest URL', 't_em' ),
+			'item' => __( 'Pinterest', 't_em' ),
+			'class' => 'icon-pinterest'
+		),
+		'deviantart-set' => array (
+			'value' => '',
+			'name' => 'deviantart-set',
+			'label' => __( 'Deviantart URL', 't_em' ),
+			'item' => __( 'Deviantart', 't_em' ),
+			'class' => 'icon-deviantart'
+		),
+		'myspace-set' => array (
+			'value' => '',
+			'name' => 'myspace-set',
+			'label' => __( 'My Space URL', 't_em' ),
+			'item' => __( 'My Space', 't_em' ),
+			'class' => 'icon-myspace'
+		),
+		'feed-set' => array (
+			'value' => '',
+			'name' => 'feed-set',
 			'label' => __( 'Feed or RSS URL', 't_em' ),
 			'item' => __( 'Feed / RSS', 't_em' ),
+			'class' => 'icon-feed'
 		),
 	);
 
@@ -1001,14 +1083,23 @@ function t_em_theme_options_validate( $input ){
 	foreach ( array (
 		'twitter-set',
 		'facebook-set',
-		'googlepluss-set',
+		'googleplus-set',
 		'delicious-set',
 		'linkedin-set',
+		'github-set',
+		'wordpress-set',
 		'youtube-set',
 		'flickr-set',
-		'feedburner-set',
-		'rss-set',
-		'dropbox-set',
+		'instagram-set',
+		'vimeo-set',
+		'reddit-set',
+		'picassa-set',
+		'lastfm-set',
+		'stumbleupon-set',
+		'pinterest-set',
+		'deviantart-set',
+		'myspace-set',
+		'feed-set',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
 	endforeach;

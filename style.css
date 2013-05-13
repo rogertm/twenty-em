@@ -4,7 +4,7 @@
  * Description:	A HTML5 & CSS3 WordPress framework for themes developers
  * Author:		RogerTM
  * Author URI:	http://blog.rogertm.com/
- * Version:		0.1-beta1
+ * Version:		0.1-Beta1 Friends Release
  * License:		GNU General Public License v2 or later
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.html
  * Tags:		black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
@@ -642,8 +642,17 @@ div.menu li {
 #social-network-menu ul li{
 	display: inline-block;
 }
-#social-network-menu ul li{
-	padding-bottom: 10px;
+#social-network-menu{
+	line-height: 38px;
+}
+#social-network-menu .social-icon{
+	font-size: 1.5em;
+}
+#social-network-menu span{
+	font-size: .7em;
+}
+#social-network-menu .hidden{
+	display: none;
 }
 /** Style for WP-PageNavi plugin */
 .wp-pagenavi {
@@ -1455,6 +1464,7 @@ h3#reply-title {
 }
 #copyright a {
 	text-decoration: none;
+	line-height: 38px;
 }
 img#wpstats {
 	display: block;
