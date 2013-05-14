@@ -17,10 +17,11 @@ get_header(); ?>
 		<div id="primary">
 			<div id="content" role="main">
 <?php
+	// If our front page is a static page, we load it
 	$front_page = get_option( 'show_on_front' ) ;
 	if ( 'page' == $front_page ) :
 ?>
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header>
@@ -38,8 +39,10 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-## -->
 
-<?php endwhile; ?>
-<?php else : ?>
+	<?php endwhile; ?>
+<?php
+	// Else, we display a list of post
+	else : ?>
 			<?php if ( have_posts() ) : ?>
 				<?php t_em_page_navi( 'nav-above' ); ?>
 				<?php /* Start the Loop */ ?>
@@ -50,8 +53,8 @@ get_header(); ?>
 			<?php else : ?>
 				<?php get_template_part( 'content', 'none' ); ?>
 			<?php endif; ?>
+<?php endif; ?>
 			</div><!-- #content -->
 		</div><!-- #primary -->
-<?php endif; ?>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
