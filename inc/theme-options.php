@@ -118,7 +118,7 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 require( get_template_directory() . '/inc/theme-tools-box.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
 require( get_template_directory() . '/inc/help.php' );
-require( get_template_directory() . '/inc/deprecated.php' );
+// require( get_template_directory() . '/inc/deprecated.php' );
 
 /**
  * Redirect users to Twenty'em options page after theme activation and register the default options
