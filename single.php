@@ -53,7 +53,7 @@ get_header(); ?>
 
 					<footer class="entry-utility">
 						<?php t_em_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="edit-link">', '</span>' ); ?>
+						<?php t_em_edit_post_link(); ?>
 					</footer><!-- .entry-utility -->
 				</article><!-- #post-## -->
 

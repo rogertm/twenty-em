@@ -35,7 +35,7 @@ get_header(); ?>
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-						<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="edit-link">', '</span>' ); ?>
+						<?php t_em_edit_post_link(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-## -->
 

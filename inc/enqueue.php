@@ -52,10 +52,8 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Load IcoMoon set if is set by the user
-	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
-		wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'icomoon-style' );
-	endif;
+	wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_enqueue_style( 'icomoon-style' );
 
 	// Load JQuery Nivo Slider just if is needed
 	if ( 'slider' == $t_em_theme_options['header-set'] ) :
@@ -163,14 +161,11 @@ add_action( 'wp_head', 't_em_enqueue_html5shiv' );
  * Loads IcoMoon javascript supports to IE 7 and IE 6... Asco!
  */
 function t_em_enqueue_icomoon(){
-	global $t_em_tools_box_options;
-	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
 ?>
 	<!--[if lt IE 7]>
 	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/icomoon.lte-ie7.js" type="text/javascript"></script>
 	<![endif]-->
 <?php
-	endif;
 }
 add_action( 'wp_head', 't_em_enqueue_icomoon' );
 ?>

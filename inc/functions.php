@@ -532,12 +532,13 @@ function t_em_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 	if ( $tag_list ) {
-		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
+		$posted_in = __( '<span class="hidden">This entry was posted in</span> <span class="icon-folder font-icon">%1$s</span>. <span class="hidden">Tagged as</span> <span class="icon-tag font-icon">%2$s</span>. <span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
 	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
+		$posted_in = __( '<span class="hidden">This entry was posted in</span> <span class="icon-folder font-icon">%1$s</span>. <span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
 	} else {
-		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 't_em' );
+		$posted_in = __( '<span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
 	}
+
 	// Prints the string, replacing the placeholders.
 	printf(
 		$posted_in,
@@ -556,12 +557,12 @@ if ( ! function_exists( 't_em_posted_on' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_posted_on() {
-		printf( __( 'Posted on %2$s by %3$s', 't_em' ),
-			'meta-prep meta-prep-author',
-			sprintf( '<a href="%1$s" rel="bookmark"><time datetime="%2$s" pubdate>%3$s</time></a>',
-			get_permalink(),
-			get_the_date('c'),
-			get_the_date()
+	printf( __( '<span class="hidden">Posted on</span> <span class="icon-calendar font-icon">%2$s</span> <span class="hidden">by</span> <span class="icon-user font-icon">%3$s<span>', 't_em' ),
+		'meta-prep meta-prep-author',
+		sprintf( '<a href="%1$s" rel="bookmark"><time datetime="%2$s" pubdate>%3$s</time></a>',
+		get_permalink(),
+		get_the_date('c'),
+		get_the_date()
 		),
 		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -571,6 +572,32 @@ function t_em_posted_on() {
 	);
 }
 endif; // function t_em_posted_on()
+
+if ( ! function_exists( 't_em_edit_post_link' ) ) :
+/**
+ * Prints HTML with edit post link
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_edit_post_link(){
+	$span_tags = ( ! is_page() ) ? '<span class="meta-sep">|</span> <span class="icon-tools font-icon"></span>' : '';
+	edit_post_link( __( 'Edit', 't_em' ), $span_tags . '<span class="edit-link">', '</span>' );
+}
+endif; // function t_em_edit_post_link()
+
+if ( ! function_exists( 't_em_comments_link' ) ) :
+/**
+ * Prints HTML with leave comment link
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_comments_link(){
+	echo '<span class="icon-comment font-icon"></span>';
+	echo '<span class="comment-link">';
+	comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) );
+	echo '</span>';
+}
+endif;
 
 if ( ! function_exists( 't_em_comment' ) ) :
 /**
@@ -934,21 +961,14 @@ function t_em_post_archive_set(){
  * @since Twenty'em 0.1
  */
 function t_em_user_social_network(){
-	global 	$t_em_theme_options,
-			$t_em_tools_box_options;
-	$user_social_network = t_em_social_network_options();
+	global 	$t_em_theme_options;
 
-	// If IcoMonn is enable, we hide the text into links.
-	if ( '1' == $t_em_tools_box_options['icomoon'] ) :
-		$hide_link = 'class="hidden"';
-	else :
-		$hide_link = '';
-	endif;
+	$user_social_network = t_em_social_network_options();
 
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em_theme_options[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' social-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span '. $hide_link .'>'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :

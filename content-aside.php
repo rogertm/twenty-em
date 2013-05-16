@@ -18,22 +18,8 @@
 			</header>
 			<?php t_em_post_archive_set(); ?>
 			<footer class="entry-utility">
-				<?php if ( count( get_the_category() ) ) : ?>
-					<span class="cat-links">
-						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 't_em' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
-					</span>
-					<span class="meta-sep">|</span>
-				<?php endif; ?>
-				<?php
-					$tags_list = get_the_tag_list( '', ', ' );
-					if ( $tags_list ):
-				?>
-					<span class="tag-links">
-						<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 't_em' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
-					</span>
-					<span class="meta-sep">|</span>
-				<?php endif; ?>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+				<?php t_em_posted_in() ?>
+				<?php t_em_comments_link(); ?>
+				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
 		</article><!-- #post-## -->

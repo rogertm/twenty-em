@@ -239,8 +239,10 @@ h3#reply-title,
 .entry-content tr th,
 .entry-content thead th,
 .entry-meta,
+.entry-meta a,
 .entry-title,
 .entry-utility,
+.entry-utility a,
 #respond label,
 #searchform #s,
 .navigation,
@@ -369,6 +371,12 @@ div.menu,
 	font-size: 1.142857143rem;
 	line-height: 2;
 }
+.font-icon:before {
+	font-size: 1.2em;
+}
+.hidden {
+	display: none;
+}
 
 
 /* =Global Elements
@@ -476,22 +484,6 @@ sup {
 sub {
 	top: .5ex;
 }
-a:link {
-/*
-	color: #0066cc;
-*/
-}
-a:visited {
-/*
-	color: #743399;
-*/
-}
-a:active,
-a:hover {
-/*
-	color: #ff4b33;
-*/
-}
 
 /* Assistive text */
 .assistive-text {
@@ -527,9 +519,6 @@ a:hover {
 	line-height: 36px;
 }
 #site-title a {
-/*
-	color: #000;
-*/
 	text-decoration: none;
 }
 #site-description {
@@ -645,15 +634,13 @@ div.menu li {
 #social-network-menu{
 	line-height: 38px;
 }
-#social-network-menu .social-icon{
+#social-network-menu .font-icon{
 	font-size: 1.5em;
 }
 #social-network-menu span{
 	font-size: .7em;
 }
-#social-network-menu .hidden{
-	display: none;
-}
+
 /** Style for WP-PageNavi plugin */
 .wp-pagenavi {
 	clear: both;
@@ -1347,7 +1334,8 @@ h3#reply-title {
 #searchform label {
 	display: none;
 }
-.error404 #searchform{
+.error404 #searchform,
+.no-results #searchform{
 	max-width: 300px;
 }
 
