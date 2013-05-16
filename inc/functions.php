@@ -460,8 +460,11 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
- * @since Twenty'em 0.1
+ * This function is attached to the widgets_init hook.
+ *
  * @uses register_sidebar
+ *
+ * @since Twenty'em 0.1
  */
 function t_em_widgets_init() {
 	// Area 1, located at the top of the sidebar.
@@ -519,7 +522,6 @@ function t_em_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 }
-// Register sidebars by running t_em_widgets_init() on the widgets_init hook.
 add_action( 'widgets_init', 't_em_widgets_init' );
 
 if ( ! function_exists( 't_em_posted_in' ) ) :
@@ -529,24 +531,24 @@ if ( ! function_exists( 't_em_posted_in' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_posted_in() {
-	// Retrieves tag list of current post, separated by commas.
-	$tag_list = get_the_tag_list( '', ', ' );
-	if ( $tag_list ) {
-		$posted_in = __( '<span class="hidden">This entry was posted in</span> <span class="icon-folder font-icon">%1$s</span>. <span class="hidden">Tagged as</span> <span class="icon-tag font-icon">%2$s</span>. <span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
-	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-		$posted_in = __( '<span class="hidden">This entry was posted in</span> <span class="icon-folder font-icon">%1$s</span>. <span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
-	} else {
-		$posted_in = __( '<span class="icon-link-3 font-icon"></span> <a href="%3$s" title="Permalink to %4$s" rel="bookmark">Permalink</a>.', 't_em' );
-	}
+	// Translators: used between list items, there is a space after the comma.
+	$categories_list = get_the_category_list( __( ', ' ), 't_em' );
+	if ( $categories_list ) :
+		echo '<span class="categories-links icon-folder font-icon">'. $categories_list .'</span>';
+	endif;
 
-	// Prints the string, replacing the placeholders.
-	printf(
-		$posted_in,
-		get_the_category_list( ', ' ),
-		$tag_list,
-		get_permalink(),
-		the_title_attribute( 'echo=0' )
-	);
+	// Translators: used between list items, there is a space after the comma.
+	$tags_list = get_the_tag_list( '', __( ', ', 't_em' ) );
+	if ( $tags_list ) :
+		echo '<span class="tags-links icon-tag font-icon">'. $tags_list .'</span>';
+	endif;
+
+	$post_url = sprintf( '<span class="post-link icon-link-3 font-icon"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>',
+					get_permalink(),
+					sprintf( __( 'Permalink to %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
+					__( 'Permalink', 't_em' )
+				);
+	echo $post_url;
 }
 endif; // function t_em_posted_in()
 
@@ -557,19 +559,8 @@ if ( ! function_exists( 't_em_posted_on' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_posted_on() {
-	printf( __( '<span class="hidden">Posted on</span> <span class="icon-calendar font-icon">%2$s</span> <span class="hidden">by</span> <span class="icon-user font-icon">%3$s<span>', 't_em' ),
-		'meta-prep meta-prep-author',
-		sprintf( '<a href="%1$s" rel="bookmark"><time datetime="%2$s" pubdate>%3$s</time></a>',
-		get_permalink(),
-		get_the_date('c'),
-		get_the_date()
-		),
-		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-			get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			sprintf( esc_attr__( 'View all posts by %s', 't_em' ), get_the_author() ),
-			get_the_author()
-		)
-	);
+	t_em_post_date();
+	t_em_post_author();
 }
 endif; // function t_em_posted_on()
 
@@ -580,8 +571,7 @@ if ( ! function_exists( 't_em_edit_post_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_edit_post_link(){
-	$span_tags = ( ! is_page() ) ? '<span class="meta-sep">|</span> <span class="icon-tools font-icon"></span>' : '';
-	edit_post_link( __( 'Edit', 't_em' ), $span_tags . '<span class="edit-link">', '</span>' );
+	edit_post_link( __( 'Edit', 't_em' ), '<span class="edit-link icon-tools font-icon">', '</span>' );
 }
 endif; // function t_em_edit_post_link()
 
@@ -592,12 +582,76 @@ if ( ! function_exists( 't_em_comments_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_comments_link(){
-	echo '<span class="icon-comment font-icon"></span>';
-	echo '<span class="comment-link">';
+	echo '<span class="comment-link icon-comment font-icon">';
 	comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) );
 	echo '</span>';
 }
-endif;
+endif; // function t_em_comments_link()
+
+if ( ! function_exists( 't_em_attachment_meta' ) ) :
+/**
+ * Prints author, date and metadata for attached files in attachment.php
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_attachment_meta(){
+	global $post;
+	$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'twentythirteen' );
+	$post_title = get_the_title( $post->post_parent );
+	if ( empty( $post_title ) || 0 == $post->post_parent )
+		$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
+
+	printf( $published_text,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_url( get_permalink( $post->post_parent ) ),
+		esc_attr( strip_tags( $post_title ) ),
+		$post_title
+	);
+
+	$metadata = wp_get_attachment_metadata();
+	printf( '<span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
+		esc_url( wp_get_attachment_url() ),
+		esc_attr__( 'Link to full-size image', 'twentythirteen' ),
+		__( 'Full resolution', 'twentythirteen' ),
+		$metadata['width'],
+		$metadata['height']
+	);
+}
+endif; // function t_em_attachment_meta()
+
+if ( ! function_exists( 't_em_post_author' ) ) :
+/**
+ * Prints HTML with author posts link
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_post_author(){
+	$post_author = sprintf( '<span class="post-author icon-user font-icon"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author() ) ),
+				get_the_author()
+			);
+	echo $post_author;
+}
+endif; // function t_em_post_author()
+
+if ( ! function_exists( 't_em_post_date' ) ) :
+/**
+ * Prints HTML with post date link
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_post_date(){
+	$post_date = sprintf( '<span class="post-date icon-clock font-icon"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+					esc_url( get_permalink() ),
+					esc_attr( sprintf( __( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ) ),
+					esc_attr( get_the_date( 'c' ) ),
+					get_the_date()
+				);
+	echo $post_date;
+}
+endif; // function t_em_post_date()
 
 if ( ! function_exists( 't_em_comment' ) ) :
 /**

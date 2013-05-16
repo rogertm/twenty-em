@@ -371,13 +371,12 @@ div.menu,
 	font-size: 1.142857143rem;
 	line-height: 2;
 }
-.font-icon:before {
-	font-size: 1.2em;
+.font-icon:before{
+	margin-right: 3px;
 }
-.hidden {
+.hidden{
 	display: none;
 }
-
 
 /* =Global Elements
 -------------------------------------------------------------- */
@@ -727,33 +726,21 @@ div.menu li {
 	margin: 0 0 36px 0;
 }
 .page-title {
-/*
-	color: #000;
-*/
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 25px;
 }
 .page-title span {
-/*
-	color: #333;
-*/
 	font-size: 16px;
 	font-style: italic;
 	font-weight: normal;
 }
 .page-title a:link,
 .page-title a:visited {
-/*
-	color: #888;
-*/
 	text-decoration: none;
 }
 .page-title a:active,
 .page-title a:hover {
-/*
-	color: #ff4b33;
-*/
 }
 #content .entry-title {
 	font-size: 21px;
@@ -763,22 +750,20 @@ div.menu li {
 }
 .entry-title a:link,
 .entry-title a:visited {
-/*
-	color: #000;
-*/
 	text-decoration: none;
 }
-.entry-title a:active,
-.entry-title a:hover {
-/*
-	color: #ff4b33;
-*/
+.entry-meta,
+.entry-utility {
+	clear: both;
+	font-size: .8em;
+	line-height: 18px;
 }
-.entry-meta {
-/*
-	color: #888;
-*/
-	font-size: 12px;
+.entry-meta span,
+.entry-utility span{
+	margin-right: 10px;
+}
+.single-attachment .entry-meta span.font-icon{
+	margin-right: 0;
 }
 .entry-meta abbr,
 .entry-utility abbr {
@@ -887,11 +872,6 @@ body.page .edit-link {
 }
 #category-description p{
 	margin: 0;
-}
-.entry-utility {
-	clear: both;
-	font-size: 12px;
-	line-height: 18px;
 }
 .entry-meta a,
 .entry-utility a {

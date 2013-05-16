@@ -14,56 +14,35 @@ get_header(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-				<?php if ( ! empty( $post->post_parent ) ) : ?>
-					<p class="page-title"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 't_em' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
-						/* translators: %s - title of parent post */
-						printf( __( '<span class="meta-nav">&laquo;</span> %s', 't_em' ), get_the_title( $post->post_parent ) );
-					?></a></p>
-				<?php endif; ?>
-
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header>
-						<h2 class="entry-title"><?php the_title(); ?></h2>
-
-						<p class="entry-meta">
+						<h2 class="entry-title"><span class="icon-attachment-2 font-icon"></span><?php the_title(); ?></h2>
+						<span class="entry-meta">
 							<?php
-								printf(__('<span class="%1$s">By</span> %2$s', 't_em'),
-									'meta-prep meta-prep-author',
-									sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-										get_author_posts_url( get_the_author_meta( 'ID' ) ),
-										sprintf( esc_attr__( 'View all posts by %s', 't_em' ), get_the_author() ),
-										get_the_author()
-									)
+								$published_text  = __( '<span class="icon-calendar font-icon"></span><span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'twentythirteen' );
+								$post_title = get_the_title( $post->post_parent );
+								if ( empty( $post_title ) || 0 == $post->post_parent )
+									$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
+
+								printf( $published_text,
+									esc_attr( get_the_date( 'c' ) ),
+									esc_html( get_the_date() ),
+									esc_url( get_permalink( $post->post_parent ) ),
+									esc_attr( strip_tags( $post_title ) ),
+									$post_title
+								);
+
+								$metadata = wp_get_attachment_metadata();
+								printf( '<span class="icon-zoomin font-icon"></span><span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
+									esc_url( wp_get_attachment_url() ),
+									esc_attr__( 'Link to full-size image', 'twentythirteen' ),
+									__( 'Full resolution', 'twentythirteen' ),
+									$metadata['width'],
+									$metadata['height']
 								);
 							?>
-							<span class="meta-sep">|</span>
-							<?php
-								printf( __('<span class="%1$s">Published</span> %2$s', 't_em'),
-									'meta-prep meta-prep-entry-date',
-									sprintf( '<span class="entry-date"><abbr class="published" title="%1$s">%2$s</abbr></span>',
-										esc_attr( get_the_time() ),
-										get_the_date()
-									)
-								);
-								if ( wp_attachment_is_image() ) {
-									echo ' <span class="meta-sep">|</span> ';
-									$metadata = wp_get_attachment_metadata();
-									printf( __( 'Full size is %s pixels', 't_em'),
-										sprintf( '<a href="%1$s" title="%2$s">%3$s &times; %4$s</a>',
-											wp_get_attachment_url(),
-											esc_attr( __('Link to full-size image', 't_em') ),
-											$metadata['width'],
-											$metadata['height']
-										)
-									);
-								}
-							?>
-						</p><!-- .entry-meta -->
-
+						</span><!-- .entry-meta -->
 					</header>
-
-
-
 					<div class="entry-content">
 						<div class="entry-attachment">
 <?php if ( wp_attachment_is_image() ) :
