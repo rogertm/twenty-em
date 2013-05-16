@@ -100,7 +100,7 @@ nav ul ul a {
 nav ul li:hover > ul {
 	display:block;
 }
-#content header p.entry-meta {
+#content header span.entry-meta {
 	margin-bottom: 0px;
 }
 

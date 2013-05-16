@@ -12,9 +12,9 @@
 			<header class="entry-header">
 				<h3 class="entry-format"><?php _e( 'Link', 't_em' ); ?></h3>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-				<p class="entry-meta">
+				<span class="entry-meta">
 					<?php t_em_posted_on(); ?>
-				</p><!-- .entry-meta -->
+				</span><!-- .entry-meta -->
 			</header>
 			<?php t_em_post_archive_set(); ?>
 			<footer class="entry-utility">

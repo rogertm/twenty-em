@@ -24,9 +24,9 @@ get_header(); ?>
 					<header>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 
-						<p class="entry-meta">
+						<span class="entry-meta">
 							<?php t_em_posted_on(); ?>
-						</p><!-- .entry-meta -->
+						</span><!-- .entry-meta -->
 					</header>
 
 					<div class="entry-content">
