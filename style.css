@@ -947,10 +947,10 @@ body.page .edit-link {
 	margin-top: 24px;
 }
 .attachment .entry-content .nav-previous a:before {
-	content: '\2190\00a0';
+	content: '«';
 }
 .attachment .entry-content .nav-next a:after {
-	content: '\00a0\2192';
+	content: '»';
 }
 
 
@@ -1272,6 +1272,9 @@ h3#reply-title {
 	margin: 0 0 9px;
 	width: 60%;
 }
+#content input[type="image"]{
+	width: auto;
+}
 #content input.checkbox,
 #content input.radio{
 	display: inline;
@@ -1317,9 +1320,13 @@ h3#reply-title {
 	padding: 7px 5px;
 }
 #searchform #s {/* This keeps the search inputs in line */
-	width: 85%;
+	width: 100%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
-#searchform label {
+#searchform label,
+#searchform input[type="submit"] {
 	display: none;
 }
 .error404 #searchform,
