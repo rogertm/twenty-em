@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 	$('#slider').nivoSlider({
 		effect: 	'fade',
-		prevText: 	'&laquo;',
-		nextText: 	'&raquo;',
+		prevText: 	'<span class="icon-fastleft"></span>',
+		nextText: 	'<span class="icon-fastright"></span>',
 	});
 });

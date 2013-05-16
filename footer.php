@@ -33,7 +33,7 @@
 				<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
 				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
 					<nav id="footer-menu">
-						<h3 class="screen-menu"><?php _e( 'Footer menu', 't_em' ); ?></h3>
+						<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Footer menu', 't_em' ); ?></span></h3>
 						<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
 					</nav>
 				<?php endif; ?>

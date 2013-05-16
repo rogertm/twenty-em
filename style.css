@@ -611,6 +611,7 @@ div.menu li {
 
 .screen-menu{
 	display: none;
+	padding: 7px 0;
 }
 
 /** Top and Footer Menu */

@@ -35,7 +35,7 @@
 				<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
 				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 				<nav id="top-menu" role="navigation">
-					<h3 class="screen-menu"><?php _e( 'Top menu', 't_em' ); ?></h3>
+					<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Top menu', 't_em' ); ?></span></h3>
 					<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
 				</nav>
 				<?php endif; ?>
@@ -57,7 +57,7 @@
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
 				<div class="skip-link"><a class="assistive-text" href="#primary" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
 				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
-				<h3 class="screen-menu"><?php _e( 'Main menu', 't_em' ); ?></h3>
+				<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Main menu', 't_em' ); ?></span></h3>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'navigation-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
