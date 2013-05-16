@@ -31,8 +31,10 @@ get_header(); ?>
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-						<?php t_em_edit_post_link(); ?>
 					</div><!-- .entry-content -->
+					<footer class="entry-utility">
+						<?php t_em_edit_post_link(); ?>
+					</footer>
 				</article><!-- #post-## -->
 
 <?php endwhile; ?>

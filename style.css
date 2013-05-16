@@ -254,6 +254,7 @@ h3#reply-title,
 .screen-menu,
 .assistive-text,
 .skip-link a,
+span a,
 input[type="submit"],
 input[type="text"],
 input[type="email"],
@@ -1258,34 +1259,39 @@ h3#reply-title {
 	font-weight: normal;
 	line-height: 18px;
 }
-#respond .required {
+#content .required {
 	font-weight: bold;
 }
-#respond label {
+#content label {
 	color: #888;
 	font-size: 12px;
 }
-#respond input {
+#content input {
 	display: block;
 	margin: 0 0 9px;
 	width: 60%;
 }
-#respond textarea {
+#content input.checkbox,
+#content input.radio{
+	display: inline;
+}
+#content textarea {
 	display: block;
 	width: 98%;
 }
-#respond .form-allowed-tags {
+#content .form-allowed-tags {
 	color: #888;
 	font-size: 12px;
 	line-height: 18px;
 }
-#respond .form-allowed-tags code {
+#content .form-allowed-tags code {
 	font-size: 11px;
 }
-#respond .form-submit {
+#content .form-submit {
 	margin: 12px 0;
 }
-#respond .form-submit input {
+#content .form-submit input,
+#content .contact-submit input {
 	color: #fff;
 	border: none;
 	font-size: 14px;
@@ -1302,10 +1308,11 @@ h3#reply-title {
 #commentform{
 	padding: 0 5px;
 }
-#respond input[type="text"],
-#respond input[type="email"],
-#respond input[type="url"],
-#respond textarea {
+#content input[type="text"],
+#content input[type="email"],
+#content input[type="url"],
+#content textarea,
+#content select{
 	padding: 7px 5px;
 }
 #searchform #s {/* This keeps the search inputs in line */

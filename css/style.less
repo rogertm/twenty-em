@@ -163,26 +163,28 @@ nav ul li.current-menu-parent > a {
 	right: 10px;
 	top: 8px;
 }
-#respond input[type="text"],
-#respond input[type="email"],
-#respond input[type="url"],
-#respond textarea {
+#content input[type="text"],
+#content input[type="email"],
+#content input[type="url"],
+#content textarea,
+#content select {
 	background: @base-gray;
 	color: @light-gray;
 	border: 1px solid lighten( @dark-gray, 50% );
 	.border-radius;
 }
-#respond .required{
+#content .required{
 	color: @light-red;
 }
-#respond input[type="text"]:focus,
-#respond input[type="email"]:focus,
-#respond input[type="url"]:focus,
-#respond textarea:focus{
+#content input[type="text"]:focus,
+#content input[type="email"]:focus,
+#content input[type="url"]:focus,
+#content textarea:focus{
 	border: 1px solid @light-blue;
 	.box-shadow ( 0, 0, 2px, @light-blue );
 }
-#respond .form-submit input{
+#content .form-submit input,
+#content .contact-submit input{
 	background: @light-blue;
 	background-image: linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
 	background-image: -moz-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
@@ -192,7 +194,7 @@ nav ul li.current-menu-parent > a {
 	.box-shadow ( 0, 0, 1px, @light-blue );
 	.border-radius ( 3px );
 }
-#respond .form-submit input:active{
+#content .form-submit input:active{
 	background-image: linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
 	background-image: -moz-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
 	background-image: -ms-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
