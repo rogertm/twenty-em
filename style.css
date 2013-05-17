@@ -1162,36 +1162,11 @@ h3#comments-title {
 }
 .comment-meta a:link,
 .comment-meta a:visited {
-/*
-	color: #888;
-*/
 	text-decoration: none;
-}
-.comment-meta a:active,
-.comment-meta a:hover {
-/*
-	color: #ff4b33;
-*/
-}
-.commentlist .even {
-}
-.commentlist .bypostauthor {
 }
 .reply {
 	font-size: 12px;
 	padding: 0 0 24px 0;
-}
-.reply a,
-a.comment-edit-link {
-/*
-	color: #888;
-*/
-}
-.reply a:hover,
-a.comment-edit-link:hover {
-/*
-	color: #ff4b33;
-*/
 }
 .commentlist .children {
 	list-style: none;
@@ -1403,16 +1378,6 @@ h3#reply-title {
 	text-align: right;
 }
 
-.widget_rss a.rsswidget {
-/*
-	color: #000;
-*/
-}
-.widget_rss a.rsswidget:hover {
-/*
-	color: #ff4b33;
-*/
-}
 .widget_rss .widget-title img {
 	width: 11px;
 	height: 11px;
