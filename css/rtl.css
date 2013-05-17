@@ -14,27 +14,6 @@ body {
 }
 
 
-/*
-LAYOUT: Two-Column (Right)
-DESCRIPTION: Two-column fixed layout with one sidebar right of content
-*/
-
-#container {
-	float: right;
-	margin: 0 0 0 -240px;
-}
-#content {
-	margin: 0 20px 36px 280px;
-}
-#primary,
-#secondary {
-	float: left;
-}
-#secondary {
-	clear: left;
-}
-
-
 /* =Fonts
 -------------------------------------------------------------- */
 body,
@@ -44,8 +23,8 @@ textarea,
 .pingback a.url,
 h3#comments-title,
 h3#reply-title,
-#access .menu,
-#access div.menu ul,
+#site-navigation .menu,
+#site-navigation div.menu ul,
 #cancel-comment-reply-link,
 .form-allowed-tags,
 #site-info,
@@ -76,16 +55,13 @@ input[type=submit] {
 /* The main theme structure */
 #footer-widget-area .widget-area {
 	float: right;
-	margin-left: 20px;
+	margin-left: 2%;
 	margin-right: 0;
 }
-#footer-widget-area #fourth {
-	margin-left: 0;
-}
-#site-info {
-	float: right;
-}
-#site-generator {
+
+#top-menu, #footer-menu,
+#social-network-menu{
+	clear: left;
 	float: left;
 }
 
@@ -101,50 +77,50 @@ blockquote {
 	font-style: normal;
 }
 
-/* Text meant only for screen readers */
-.screen-reader-text {
-	left: auto;
-	text-indent:-9000px;
-	overflow:hidden;
-}
 
 
 /* =Header
 -------------------------------------------------------------- */
 
 #site-title {
+	clear: right;
 	float: right;
 }
 #site-description {
-	clear: left;
-	float: left;
+	clear: right;
+	float: right;
 	font-style: normal;
 }
 
 /* =Menu
 -------------------------------------------------------------- */
 
-#access {
+#top-menu{
+	clear: left;
+	float: left;
+}
+
+#site-navigation {
 	float:right;
 }
 
-#access .menu-header,
+#site-navigation .menu-header,
 div.menu {
     margin-right: 12px;
     margin-left: 0;
 }
 
-#access .menu-header li,
+#site-navigation .menu-header li,
 div.menu li{
 	float:right;
 }
 
-#access ul ul {
+#site-navigation ul ul {
 	left:auto;
 	right:0;
 	float:right;
 }
-#access ul ul ul {
+#site-navigation ul ul ul {
 	left:auto;
 	right:100%;
 }
@@ -184,13 +160,11 @@ div.menu li{
 	margin-left: 0;
 	text-align: right;
 }
-#entry-author-info #author-avatar {
+#author-avatar img {
 	float: right;
-	margin: 0 0 0 -104px;
 }
 #entry-author-info #author-description {
 	float: right;
-	margin: 0 104px 0 0;
 }
 
 /* Gallery listing
@@ -227,9 +201,6 @@ div.menu li{
 /* =Comments
 -------------------------------------------------------------- */
 
-.commentlist li.comment {
-	padding: 0 56px 0 0;
-}
 .commentlist .avatar {
 	right: 0;
 	left: auto;
@@ -272,11 +243,10 @@ div.menu li{
 
 /* =Footer
 -------------------------------------------------------------- */
-#site-generator {
-	font-style:normal;
+
+#footer-widget-area #fourth {
+	margin-left: 0;
 }
-#site-generator a {
-	background-position: right center;
-	padding-right: 20px;
-	padding-left: 0;
+#copyright{
+	float: right;
 }

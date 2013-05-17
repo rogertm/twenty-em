@@ -107,7 +107,7 @@ function t_em_theme_options_help(){
 	);
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
@@ -185,7 +185,7 @@ function t_em_tools_box_options_help(){
 	);
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
@@ -211,7 +211,7 @@ function t_em_webmaster_tools_help(){
 	);
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />(Coming Soon!)', 't_em' ),
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';

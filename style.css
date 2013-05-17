@@ -1516,8 +1516,7 @@ img#wpstats {
 	.wp-caption p {
 		font-size: 11pt;
 	}
-	#site-info,
-	#site-generator {
+	#site-info{
 		float: none;
 		width: auto;
 	}
@@ -1526,10 +1525,6 @@ img#wpstats {
 	}
 	img#wpstats {
 		display: none;
-	}
-	#site-generator a {
-		margin: 0;
-		padding: 0;
 	}
 	#entry-author-info {
 		border: 1px solid #e7e7e7;
