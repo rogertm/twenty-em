@@ -864,6 +864,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 			$t_em_theme_options;
 
 	if ( has_post_thumbnail( $post->ID ) ) :
+		// Display featured image assigned to the post
 		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 		$image_src = $image_url[0];
 		if ( $link ) :
@@ -883,10 +884,11 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		<?php
 		endif;
 	else :
+		// Display the first image uploaded/attached to the post
 		$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
 		$total_images = count( $images );
 		$image = array_shift( $images );
-		$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
+		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : '';
 		if ( $total_images >= 1 ) :
 			$image_src = $image_url[0];
 			if ( $link ) :
