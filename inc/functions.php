@@ -390,7 +390,7 @@ function t_em_site_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentytwelve' ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( __( 'Page %s', 't_em' ), max( $paged, $page ) );
 
 	return $title;
 }
@@ -596,7 +596,7 @@ if ( ! function_exists( 't_em_attachment_meta' ) ) :
  */
 function t_em_attachment_meta(){
 	global $post;
-	$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'twentythirteen' );
+	$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
 	$post_title = get_the_title( $post->post_parent );
 	if ( empty( $post_title ) || 0 == $post->post_parent )
 		$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
@@ -612,8 +612,8 @@ function t_em_attachment_meta(){
 	$metadata = wp_get_attachment_metadata();
 	printf( '<span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
 		esc_url( wp_get_attachment_url() ),
-		esc_attr__( 'Link to full-size image', 'twentythirteen' ),
-		__( 'Full resolution', 'twentythirteen' ),
+		esc_attr__( 'Link to full-size image', 't_em' ),
+		__( 'Full resolution', 't_em' ),
 		$metadata['width'],
 		$metadata['height']
 	);
@@ -674,17 +674,17 @@ function t_em_comment( $comment, $args, $depth ) {
 			<header class="comment-header">
 				<div class="comment-author vcard">
 					<?php echo get_avatar( $comment, 60 ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'dostrece' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 				</div><!-- .comment-author .vcard -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 'dostrece' ); ?></em>
+					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
 					<br />
 				<?php endif; ?>
 
 				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 'dostrece' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'dostrece' ), ' ' );
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 't_em' ), ' ' );
 					?>
 				</div><!-- .comment-meta .commentmetadata -->
 			</header><!-- comment-header -->
@@ -719,14 +719,14 @@ function t_em_comment_pingback_trackback( $comment ) {
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Pingback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Trackback:', 'dostrece' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'dostrece'), ' ' ); ?></p>
+		<p><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 	endswitch;

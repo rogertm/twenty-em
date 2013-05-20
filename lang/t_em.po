@@ -1,0 +1,898 @@
+# Copyright (C) 2012 Twenty'em
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Twenty'em 0.1-Beta1 Friends Release\n"
+"MIME-Version: 0.1-Beta1 Friends Release\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "% Comments"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:685
+msgid "%1$s at %2$s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:677
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:687
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:722
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:729
+msgid "(Edit)"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid ", "
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:63
+msgid "0 Pinkbacks <span> | </span> 0 Trackbacks"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "1 Comment"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<a href=\"%1$s\" target=\"_blank\">Visit Twenty&#8217;em home page</a><br />"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<a href=\"%1$s\">License</a>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<a href=\"%1$s\">Reademe</a>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" rel=\"gallery\">%5$s</a></span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/attachment.php:21
+msgid "<span class=\"icon-calendar font-icon\"></span><span class=\"attachment-meta\">Published on <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" rel=\"gallery\">%5$s</a></span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:757
+msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:107
+msgid "<strong>%1$s</strong> provides some Tools to make your work easier."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong><a href=\"%1$s\" title=\"Twenty&#8217;em Framework\" target=\"_blank\">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong><a href=\"%1$s\" title=\"Twenty&#8217;em Framework\" target=\"_blank\">Twenty&#8217;em Framework</a></strong> provides some external tools to make your work easier. Some of them are <strong>required and loaded by default</strong>, but some others you can active them, normally to work as a developer. Your current theme, <strong>%2$s</strong>, provides the following tools:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Archive Options</strong>: Default Values: The content."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Archive Options</strong>: Two simple ways to show your posts archive: The Content or The Excerpt."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>General Options</strong>: By checking the check boxes below, you may enable or not this options.<br />Note: All of then are check by default."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>General Options</strong>: Default Values: All."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Golden Grid System</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Golden Grid System</strong>: A folding grid for responsive design. Golden Grid System (GGS) splits the screen into 18 even columns. The leftmost and rightmost columns are used as the outer margins of the grid, which leaves 16 columns for use in design.<br />Visit <a href=\"%1$s\" title=\"Golden Grid System\" target=\"_blank\">Golden Grid System Web Site</a> for more info."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>HTML5 Shiv</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>HTML5 Shiv</strong>: Visit <a href=\"%1$s\" title=\"HTML5Shiv\" target=\"_blank\">HTML5Shiv Web Site</a> for more info"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Header Options</strong>: Default Values: No header image."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Header Options</strong>: With this options you are able to configure your header site section."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href=\"%1$s\">Header Settings</a> to customize this section.<br /> In addition you may active the checkbox \"<strong>Display featured image in single posts and pages?</strong>\", it will show in single post or page the Featured Image attached to it."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>IcoMoon</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>IcoMoon</strong>: This great tool provide a big set of font symbols icons to use in your theme, appropriate to display your site correctly when someone access using a Retina Display.<br />Visit <a href=\"%1$s\" title=\"IcoMoon.io\" target=\"_blank\">IcoMoon Web Site</a> for more info, or see <a href=\"%2$s\" title=\"IcoMoon examples\" target=\"_blank\">all available options</a> and how to use them."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>LESS</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>LESS</strong>: A dynamic stylesheet language. Extends CSS with dynamic behavior such as variables, mixins, operations and functions. You may manage your Color Scheme using this useful tool.<br />Visit <a href=\"%1$s\" title=\"less.js\" target=\"_blank\">LESS Web Site</a> for more info."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Layout Options</strong>: Default Values: Sidebar on right. Site width: 960px."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Layout Options</strong>: This options do not need to be explained, really. With this you may decide where you want your side bar, in case you need one. And also you can enter the value you wish to be your site width. Default value <strong>960px</strong>."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Modernizr</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Modernizr</strong>: Modernizr is a small JavaScript library that detects the availability of native implementations for HTML5 and CSS3 specifications and tell you whether the current browser has this feature natively implemented or not. Modernizr also enables you to use more semantic elements from the HTML5 spec, even in Internet Explorer.<br />Visit <a href=\"%1$s\" title=\"Modernizr.com\" target=\"_blank\">Modernizr Web Site</a> for more info."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href=\"%2$s\">Writing Settings</a> to manage your default category."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Social Network Options</strong>: Default Values: Empty."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Social Network Options</strong>: We provide a long list of the must used social network sites on the Internet. This option let you introduce your users URL, and they will be show in your site footer area as a menu."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>The Content</strong>: If you are running <em>Just another WordPress Blog</em>, this could be a great option, showing the whole content of your posts when an archive is displayed."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your posts, but let you manage some other options, like thumbnail alignment and thumbnail Width and Height."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Timthumb</strong>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Timthumb</strong>: Visit <a href=\"%1$s\" title=\"Timthumb\" target=\"_blank\">Timthumb Web Site</a> for more info."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em will be displayed in your site footer area."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:155
+msgid "A folding grid for responsive design."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/single.php:43
+#: twenty-em-0.1-beta1-friends-release/author.php:36
+msgid "About %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "All this tools are <strong>required and loaded by default</strong>, and they are necessary for the good working of your theme. In addition, We provide a small explanation of how they work, and a link to each tool web site. Enjoy it!"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/404.php:18
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Archive Options"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-aside.php:13
+msgid "Aside"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-audio.php:13
+msgid "Audio"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/author.php:25
+msgid "Author Archives: %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:203
+msgid "Bing ID number"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/archive.php:30
+msgid "Blog Archives"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Canyon"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/sidebar.php:30
+msgid "Categories"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/category.php:15
+msgid "Category Archives: %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Cityscapes"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Comment"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:38
+msgid "Comments"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:71
+msgid "Comments are closed"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/attachment.php:87
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:997
+msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/archive.php:30
+msgid "Daily Archives: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Edit"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Email"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:116
+msgid "Enable %s?"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/404.php:16
+msgid "Error 404 - Page not found!"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content.php:14
+msgid "Featured"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Fire"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "First Footer Widget Area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "First Sidebar Widget Area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Footer Menu"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer.php:36
+msgid "Footer menu"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "For more information:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Friends"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/attachment.php:21
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Full resolution"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-gallery.php:13
+msgid "Gallery"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "General Options"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:155
+msgid "Golden Grid System"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:203
+msgid "Google ID number"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Have you got a website?"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Header Options"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "How can we reach you?"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:155
+msgid "If active, a folding grid will be displayed (right top of your home page), whish helps you to organize your desing and make it responsive."
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-image.php:13
+msgid "Image"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "In this section you should enter your Search Engines ID&#8217;s and Statistics Tracker codes provided by Google, Yahoo! and/or Bing."
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-none.php:32
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:27
+msgid "JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing..."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Layout Options"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Leaf"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Leave a comment"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-link.php:13
+msgid "Link"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/attachment.php:21
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Link to full-size image"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:60
+msgid "Main menu"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/sidebar.php:37
+msgid "Meta"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Name"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Navigation Menu"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:758
+msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:45
+msgid "No Comments"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "No Related Posts"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:78
+msgid "No responds to "
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Not required tools"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Not required:"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-none.php:12
+msgid "Nothing Found"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Overview"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Page %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/single.php:34
+#: twenty-em-0.1-beta1-friends-release/front-page.php:37
+#: twenty-em-0.1-beta1-friends-release/attachment.php:88
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:998
+#: twenty-em-0.1-beta1-friends-release/template-one-column.php:26
+#: twenty-em-0.1-beta1-friends-release/page.php:33
+msgid "Pages:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Permalink"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Permalink to %1$s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/content-video.php:14
+#: twenty-em-0.1-beta1-friends-release/content-status.php:14
+#: twenty-em-0.1-beta1-friends-release/header-nivo-slider.php:66
+#: twenty-em-0.1-beta1-friends-release/content-aside.php:14
+#: twenty-em-0.1-beta1-friends-release/content-quote.php:14
+#: twenty-em-0.1-beta1-friends-release/content-link.php:14
+#: twenty-em-0.1-beta1-friends-release/content-image.php:14
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:871
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:894
+#: twenty-em-0.1-beta1-friends-release/content-gallery.php:14
+#: twenty-em-0.1-beta1-friends-release/content-audio.php:14
+#: twenty-em-0.1-beta1-friends-release/content.php:16
+msgid "Permalink to %s"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:722
+msgid "Pingback:"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:12
+msgid "Proudly powered by: "
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-quote.php:13
+msgid "Quote"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/content-none.php:19
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Related Posts:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Remember to click \"Save Changes\" to save any changes you have made to the theme options."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Required tools"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Required:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Road"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/searchform.php:5
+msgid "Search"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:203
+msgid "Search Engines ID"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/search.php:17
+msgid "Search Results for: %s"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/searchform.php:3
+msgid "Search in"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/searchform.php:4
+msgid "Search..."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:14
+msgid "Semantic Personal Publishing Platform"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:203
+msgid "Site Statistics Tracker"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:56
+msgid "Skip menu"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:58
+msgid "Skip to primary content"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:59
+msgid "Skip to secondary content"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "Social Network Options"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-none.php:25
+msgid "Sorry, but nothing matched your search terms. Please try again with different keywords."
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-status.php:13
+msgid "Status"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Streets"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/tag.php:15
+msgid "Tag Archives: %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "The first footer widget area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "The fourth footer widget area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "The second footer widget area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "The sidebar widget area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "The third footer widget area"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1044
+msgid "Theme Options"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:20
+msgid "Theme name: "
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:18
+msgid "Theming is Prose"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/comments.php:17
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/help.php:17
+msgid "This tools are useful to develop using Twenty&#8217;em Framework"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:155
+#: twenty-em-0.1-beta1-friends-release/inc/theme-tools-box.php:144
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+msgid "Tools Box"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Top Menu"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/header.php:38
+msgid "Top menu"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:729
+msgid "Trackback:"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:19
+msgid "Twenty&#8217;em"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Twenty&#8217;em... Theming is prose"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:20
+msgid "Version: %s"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/content-video.php:13
+msgid "Video"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "View all post by %s"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/single.php:47
+msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:192
+#: twenty-em-0.1-beta1-friends-release/inc/theme-options.php:1056
+msgid "Webmaster Tools"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "Website"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "What can we call you?"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:1000
+msgid "What&#8217;s on your mind?"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:15
+msgid "WordPress"
+msgstr ""
+
+#. Text in function
+#: twenty-em-0.1-beta1-friends-release/inc/theme-webmaster-tools.php:203
+msgid "Yahoo! ID number"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/inc/functions.php:680
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:16
+msgid "and"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:21
+msgid "by: "
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:17
+msgid "http://twenty-em.com/"
+msgstr ""
+
+#. Text in echo
+#: twenty-em-0.1-beta1-friends-release/footer-t-em-link.php:13
+msgid "http://wordpress.org/"
+msgstr ""

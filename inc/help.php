@@ -157,7 +157,7 @@ function t_em_tools_box_options_help(){
 						'http://modernizr.com/' ) . '</li>' .
 				'<li>' . sprintf( __( '<strong>HTML5 Shiv</strong>: Visit <a href="%1$s" title="HTML5Shiv" target="_blank">HTML5Shiv Web Site</a> for more info', 't_em' ),
 						'https://github.com/aFarkas/html5shiv' ) . '</li>' .
-				'<li>' . sprintf( __( '<strong>Timthumb</strong>: Visit <a href="%1$s" title="Timthumb" target="_blank">Timthumb Web Site</a> for more info.' ),
+				'<li>' . sprintf( __( '<strong>Timthumb</strong>: Visit <a href="%1$s" title="Timthumb" target="_blank">Timthumb Web Site</a> for more info.', 't_em' ),
 						'http://www.binarymoon.co.uk/projects/timthumb/' ) . '</li>' .
 					'<li>' . sprintf( __( '<strong>IcoMoon</strong>: This great tool provide a big set of font symbols icons to use in your theme, appropriate to display your site correctly when someone access using a Retina Display.<br />Visit <a href="%1$s" title="IcoMoon.io" target="_blank">IcoMoon Web Site</a> for more info, or see <a href="%2$s" title="IcoMoon examples" target="_blank">all available options</a> and how to use them.', 't_em' ),
 							'http://icomoon.io/',

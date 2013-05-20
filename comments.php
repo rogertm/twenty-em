@@ -14,7 +14,7 @@
 ?>
 <section id="comments">
 <?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'dostrece' ); ?></p>
+				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 't_em' ); ?></p>
 			</div><!-- #comments -->
 <?php
 		/* Stop the rest of comments.php from being processed,
@@ -29,7 +29,7 @@ if ( have_comments() ) :
 	global $wp_query;
 ?>
 	<h3 id="comments-title"><?php
-	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'dostrece' ),
+	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 't_em' ),
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 	?></h3>
 <?php
@@ -60,7 +60,7 @@ if ( have_comments() ) :
 <?php
 	else : // If there are no responds type pingback
 ?>
-		<h3 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks'); ?></h3>
+		<h3 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks', 't_em'); ?></h3>
 <?php
 	endif; // !empty($comments_by_type['pings'])
 ?>
