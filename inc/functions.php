@@ -1053,47 +1053,53 @@ function t_em_single_related_posts() {
 		$now = current_time('mysql', 1);
 		$tags = wp_get_post_tags($post->ID);
 
-		$taglist = "'" . $tags[0]->term_id. "'";
+		// If there are no tags, nothing happen
+		if ( ! empty($tags) ) :
 
-		$tagcount = count($tags);
-		if ($tagcount > 1) :
-			for ($i = 1; $i <= $tagcount; $i++) :
-				$taglist = $taglist . ", '" . $tags[$i]->term_id . "'";
-			endfor;
+			$taglist = "'" . $tags[0]->term_id. "'";
+
+			$tagcount = count($tags);
+			if ($tagcount > 1) :
+				for ($i = 1; $i < $tagcount; $i++) :
+					$taglist = $taglist . ", '" . $tags[$i]->term_id . "'";
+				endfor;
+			endif;
+
+			$query = "SELECT ID, post_title, post_date, comment_count, count(object_id) as cnt
+					  FROM $wpdb->term_taxonomy, $wpdb->term_relationships, $wpdb->posts
+					  WHERE taxonomy ='post_tag'
+					  AND $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->term_relationships.term_taxonomy_id
+					  AND object_id = ID
+					  AND (term_id IN ($taglist))
+					  AND ID != $post->ID
+					  AND post_status = 'publish'
+					  AND post_date_gmt < '$now'
+					  GROUP BY object_id
+					  ORDER BY cnt DESC, post_date_gmt DESC
+					  LIMIT 9;";
+
+			$related_posts = $wpdb->get_results($query);
+
+			if ( empty( $related_posts ) ) :
+				$output = '<h3 id="related-posts-title">'. __( 'No Related Posts', 't_em' ) .'</h3>';
+			else :
+				$output = '';
+				foreach ($related_posts as $related_post ) :
+					$output .= '<li>';
+					$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
+					$output .= wptexturize($related_post->post_title);
+					$output .= '</a>';
+					$output .= '</li>';
+				endforeach;
+
+				$output = '<ul class="related-posts-list">'.$output.'</ul>';
+				$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
+				$output = '<section id="related-posts">'.$output.'</section>';
+			endif;
+
+			return $output;
+
 		endif;
-
-		$query = "SELECT ID, post_title, post_date, comment_count, count(object_id) as cnt
-				  FROM $wpdb->term_taxonomy, $wpdb->term_relationships, $wpdb->posts
-				  WHERE taxonomy ='post_tag'
-				  AND $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->term_relationships.term_taxonomy_id
-				  AND object_id = ID
-				  AND (term_id IN ($taglist))
-				  AND ID != $post->ID
-				  AND post_status = 'publish'
-				  AND post_date_gmt < '$now'
-				  GROUP BY object_id
-				  ORDER BY cnt DESC, post_date_gmt DESC
-				  LIMIT 9;";
-
-		$related_posts = $wpdb->get_results($query);
-
-		if ( empty( $related_posts ) ) :
-			$output = '<h3 id="related-posts-title">'. __( 'No Related Posts', 't_em' ) .'</h3>';
-		else :
-			$output = '';
-			foreach ($related_posts as $related_post ) :
-				$output .= '<li>';
-				$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
-				$output .= wptexturize($related_post->post_title);
-				$output .= '</a>';
-				$output .= '</li>';
-			endforeach;
-
-			$output = '<ul class="related-posts-list">'.$output.'</ul>';
-			$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
-			$output = '<section id="related-posts">'.$output.'</section>';
-		endif;
-		return $output;
 	endif;
 }
 
