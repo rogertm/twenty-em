@@ -51,7 +51,7 @@ function t_em_admin_styles_and_scripts(){
 if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
 									'page=theme-tools-box' ||
 									'page=theme-webmaster-tools' ||
-									'page=theme-update' ) ) :
+									'page=theme-backup' ) ) :
 	add_action( 'admin_init', 't_em_admin_styles_and_scripts' );
 endif;
 
@@ -101,22 +101,25 @@ function t_em_theme_options_admin_page(){
 	$theme_page 				= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', 61 );
 	$theme_tools_box_page 		= add_submenu_page( 'theme-options',	__( 'Tools Box', 't_em' ),			__( 'Tools Box', 't_em' ),			'edit_theme_options',	'theme-tools-box',			't_em_theme_tools_box_options' );
 	$theme_webmaster_tools_page	= add_submenu_page( 'theme-options',	__( 'Webmaster Tools', 't_em' ),	__( 'Webmaster Tools', 't_em' ),	'edit_theme_options',	'theme-webmaster-tools',	't_em_theme_webmaster_tools' );
-
+	$theme_backup_page			= add_submenu_page( 'theme-options',	__( 'Backup', 't_em' ),				__( 'Backup', 't_em' ),				'edit_theme_options',	'theme-backup',				't_em_theme_backup' );
 
 	// We call our help screens
 	if ( ! $theme_page ) return;
 	if ( ! $theme_tools_box_page ) return;
 	if ( ! $theme_webmaster_tools_page ) return;
+	if ( ! $theme_backup_page ) return;
 
 	add_action( "load-$theme_page", 't_em_theme_options_help' );
 	add_action( "load-$theme_tools_box_page", 't_em_tools_box_options_help' );
 	add_action( "load-$theme_webmaster_tools_page", 't_em_webmaster_tools_help' );
+	// add_action( "load-$theme_backup_page", 't_em_theme_backup' );
 }
 add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 
 // Now we call this files we need to complete the Twenty'em engine.
 require( get_template_directory() . '/inc/theme-tools-box.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
+require( get_template_directory() . '/inc/theme-backup.php' );
 require( get_template_directory() . '/inc/help.php' );
 
 /**
