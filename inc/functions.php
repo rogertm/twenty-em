@@ -532,7 +532,7 @@ if ( ! function_exists( 't_em_posted_in' ) ) :
  */
 function t_em_posted_in() {
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __( ', ' ), 't_em' );
+	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
 		echo '<span class="categories-links icon-folder font-icon">'. $categories_list .'</span>';
 	endif;
