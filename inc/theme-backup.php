@@ -49,14 +49,23 @@ function t_em_backup_export(){
 	$export_option_prefix = array( 'Theme Options: ', 'Tools Box Options: ', 'Webmaster Tools Options: ' );
 
 	$export_theme_options			= $export_option_prefix[0] .
-									  $wpdb->get_var( "SELECT option_value FROM $wpdb->options
-									  WHERE option_name = 't_em_theme_options'" );
+									  $wpdb->get_var( $wpdb->prepare ("SELECT option_value
+									  FROM $wpdb->options
+									  WHERE option_name = %s",
+									  't_em_theme_options' ) );
+
 	$export_toolsbox_options		= $export_option_prefix[1] .
-									  $wpdb->get_var( "SELECT option_value FROM $wpdb->options
-									  WHERE option_name = 't_em_tools_box_options'" );
+									  $wpdb->get_var( $wpdb->prepare ("SELECT option_value
+									  FROM $wpdb->options
+									  WHERE option_name = %s",
+									  't_em_tools_box_options' ) );
+
 	$export_webmastertools_options	= $export_option_prefix[2] .
-									  $wpdb->get_var( "SELECT option_value FROM $wpdb->options
-									  WHERE option_name = 't_em_webmaster_tools_options'" );
+									  $wpdb->get_var( $wpdb->prepare ("SELECT option_value
+									  FROM $wpdb->options
+									  WHERE option_name = %s",
+									  't_em_webmaster_tools_options' ) );
+
 									// We need to brake (\n) the string to explode it at importing time
 	$export_all_setting				= $export_theme_options . "\n" .
 									  $export_toolsbox_options . "\n" .
@@ -79,6 +88,11 @@ function t_em_backup_export(){
 			$exported_data = $export_all_setting;
 			break;
 	endswitch;
+
+	if ( $exported_data == '' ) :
+		wp_redirect( admin_url( 'admin.php?page=theme-backup&export-error=true' ) );
+		exit;
+	endif;
 
 	/* Add our water mark. Only files with this water mark will be imported successfully.
 	 * We encrypt this var in the output just to impress. :)
@@ -120,11 +134,11 @@ function t_em_backup_export(){
 function t_em_backup_import(){
 	global $wpdb;
 
-	$import_data = array ( 'all-setting', 'theme-options', 'toolsbox-options', 'webmastertools-options' );
-	$import_option_prefix = array ( 'Theme Options: ', 'Tools Box Options: ', 'Webmaster Tools Options: ' );
-
 	// Check for security
 	check_admin_referer( 't-em-backup-import' );
+
+	$import_data = array ( 'all-setting', 'theme-options', 'toolsbox-options', 'webmastertools-options' );
+	$import_option_prefix = array ( 'Theme Options: ', 'Tools Box Options: ', 'Webmaster Tools Options: ' );
 
 	// If the import setting has not been sent, we do nothing
 	if ( ! isset( $_FILES['import-theme-data'] ) ) { return; }
@@ -137,8 +151,8 @@ function t_em_backup_import(){
 		// Stop! Who's coming?
 		$whos_coming = explode( "\n", $upload_file );
 
-		// Check for our water mark
-		if ( $whos_coming[0] != md5( 'twenty-em-backup-file' ) ) :
+		// Check for our water mark and so on...
+		if ( $whos_coming[0] != md5( 'twenty-em-backup-file' ) || !in_array( $whos_coming[1], $import_data) ) :
 			wp_redirect( admin_url( 'admin.php?page=theme-backup&error=true' ) );
 			exit;
 		endif;
@@ -248,6 +262,17 @@ function t_em_backup_import(){
 	endif;
 } // t_em_backup_import()
 
+/**
+ * Prints notices massages on the screen, after export or import are performed
+ */
+function t_em_backup_notice(){
+	if ( isset( $_GET['error'] ) && $_GET['error'] == true ) :
+		echo '<div id="error-massage" class="error"><p>'. __( 'There was an error importing your data. Please try again', 't_em' ) .'</p></div>';
+	elseif ( isset( $_GET['export-error'] ) && $_GET['export-error'] == true ) :
+		echo '<div id="error-massage" class="error"><p>'. __( 'There was an error exporting your data. Please try again', 't_em' ) .'</p></div>';
+	endif;
+}
+
 if ( ! isset( $_POST['t-em-backup-import'] ) && isset( $_POST['t-em-backup-export'] ) && $_POST['t-em-backup-export'] == true ) :
 	t_em_backup_export();
 endif;
@@ -262,6 +287,7 @@ function t_em_theme_backup(){
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Backup', 't_em' ); ?></h2>
 		<section id="export-settings">
 			<h3><?php _e( 'Export Settings', 't_em' ); ?></h3>
+			<?php t_em_backup_notice(); ?>
 			<p><?php _e( 'When you click in the button below <strong>Twenty&#8217;em Framework</strong> will create an TXT file for you to save in your computer.', 't_em' ); ?></p>
 			<p><?php _e( 'This file contain all your theme configuration. You can use it to restore your setting in this site or to easily setup another site based on <strong>Twenty&#8217;em Framework</strong>.', 't_em' ); ?></p>
 			<form action="<?php echo admin_url( 'admin.php?page=theme-backup' ); ?>" method="post">
