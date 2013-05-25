@@ -101,6 +101,21 @@ function t_em_backup_export(){
 
 /**
  * Upload file containing the backup settings
+ * Possible options are:
+ * 0. Import all settings. This contain all of the options listed below.
+ * 1. Import Theme options
+ * 2. Import Tools Box options
+ * 3. Import Webmaster Tools options
+ *
+ * @uses check_admin_referer() Tests either if the current request carries a valid nonce, or if the
+ * current request was referred from an administration screen.
+ *
+ * @global $wpdb
+ *
+ * @link http://codex.wordpress.org/Function_Reference/check_admin_referer
+ * @link http://codex.wordpress.org/Class_Reference/wpdb
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_backup_import(){
 	global $wpdb;
@@ -231,7 +246,7 @@ function t_em_backup_import(){
 
 	$wpdb->flush();
 	endif;
-}
+} // t_em_backup_import()
 
 if ( ! isset( $_POST['t-em-backup-import'] ) && isset( $_POST['t-em-backup-export'] ) && $_POST['t-em-backup-export'] == true ) :
 	t_em_backup_export();
