@@ -259,6 +259,7 @@ function t_em_backup_import(){
 		endif;
 
 	$wpdb->flush();
+
 	endif;
 } // t_em_backup_import()
 
