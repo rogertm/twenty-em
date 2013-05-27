@@ -163,7 +163,7 @@ function t_em_settings_stats_tracker(){
 		<div class="layout textarea-option stat-tracker">
 			<label>
 				<span><?php echo $stat_tracker['label']; ?></span>
-				<textarea name="t_em_webmaster_tools_options[<?php echo $stat_tracker['name']; ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em_webmaster_tools_options[$stat_tracker['name']] ) ?></textarea>
+				<textarea name="t_em_webmaster_tools_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em_webmaster_tools_options[$stat_tracker['name']] ) ?></textarea>
 			</label>
 		</div>
 <?php
@@ -216,47 +216,36 @@ function t_em_webmaster_tools_validate( $input ){
 		'yahoo-id',
 		'bing-id',
 	) as $text ) :
-		$input[$text] = wp_filter_post_kses( $input[$text] );
+		$input[$text] = htmlentities( $input[$text] );
 	endforeach;
 
 	// Validate all textarea options
 	foreach ( array (
 		'stats-tracker',
 	) as $textarea ) :
-		$input[$textarea] = wp_kses_stripslashes( $input[$textarea] );
+		$input[$textarea] = htmlentities( $input[$textarea] );
 	endforeach;
 
 	return $input;
 }
 
-/**
- * Enqueue all these codes on the head section
- */
-function t_em_google_engine_id(){
-	$options_web_tools = t_em_get_webmaster_tools_options();
-	if ( $options_web_tools['google-id'] )
-		echo '<meta name="google-site-verification" content="'. $options_web_tools['google-id'] .'" />'."\n";
-}
-add_action( 'wp_head', 't_em_google_engine_id' );
+function t_em_stats_engines_tracker(){
+	global $t_em_webmaster_tools_options;
 
-function t_em_yahoo_engine_id(){
-	$options_web_tools = t_em_get_webmaster_tools_options();
-	if ( $options_web_tools['yahoo-id'] )
-		echo '<meta name="y_key" content="'. $options_web_tools['yahoo-id'] .'" />'."\n";
-}
-add_action( 'wp_head', 't_em_yahoo_engine_id' );
+	// Google Engine ID
+	if ( $t_em_webmaster_tools_options['google-id'] )
+		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em_webmaster_tools_options['google-id'] ) . '">' . "\n";
 
-function t_em_bing_engine_id(){
-	$options_web_tools = t_em_get_webmaster_tools_options();
-	if ( $options_web_tools['bing-id'] )
-		echo '<meta name="msvalidate.01" content="'. $options_web_tools['bing-id'] .'" />'."\n";
-}
-add_action( 'wp_head', 't_em_bing_engine_id' );
+	// Yahoo! Engine ID
+	if ( $t_em_webmaster_tools_options['yahoo-id'] )
+		echo '<meta name="y_key" content="' . htmlspecialchars_decode( $t_em_webmaster_tools_options['yahoo-id'] ) . '">' . "\n";
 
-function t_em_stats_tracker(){
-	$options_web_tools = t_em_get_webmaster_tools_options();
-	if ( $options_web_tools['stats-tracker'] )
-		echo $options_web_tools['stats-tracker']."\n";
+	// Bing Engine ID
+	if ( $t_em_webmaster_tools_options['bing-id'] )
+		echo '<meta name="msvalidate.01" content="' . $t_em_webmaster_tools_options['bing-id'] . '">' . "\n";
+
+	if ( $t_em_webmaster_tools_options['stats-tracker'] )
+		echo html_entity_decode( $t_em_webmaster_tools_options['stats-tracker'] ) . "\n";
 }
-add_action( 'wp_head', 't_em_stats_tracker' );
+add_action( 'wp_head', 't_em_stats_engines_tracker' );
 ?>
