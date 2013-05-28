@@ -120,6 +120,7 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 require( get_template_directory() . '/inc/theme-tools-box.php' );
 require( get_template_directory() . '/inc/theme-webmaster-tools.php' );
 require( get_template_directory() . '/inc/theme-backup.php' );
+require( get_template_directory() . '/inc/shortcodes.php' );
 require( get_template_directory() . '/inc/help.php' );
 
 /**
