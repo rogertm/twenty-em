@@ -100,3 +100,11 @@
 	display: inline-block;
 	margin: 5px;
 }
+#t-em-setting #text-widget-two,
+#t-em-setting #text-widget-three,
+#t-em-setting #text-widget-four{
+	display: table;
+	float: left;
+	margin: 0 2% 0 0;
+	width: 30%;
+}

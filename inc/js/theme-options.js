@@ -31,28 +31,33 @@ jQuery(document).ready(function($){
 		$('#t-em-setting tr:eq(1)').addClass('header-option full-option');
 		$('#t-em-setting tr:eq(2)').addClass('archive-option full-option');
 		$('#t-em-setting tr:eq(3)').addClass('layout-option full-option');
-		$('#t-em-setting tr:eq(4)').addClass('slocial-network-option full-option');
+		$('#t-em-setting tr:eq(4)').addClass('social-network-option full-option');
+		$('#t-em-setting tr:eq(5)').addClass('webmaster-tools-option full-option');
 	filters.hide();
-	$('#t-em-setting .general-option th').click(function(){
+	$('#t-em-setting th').click(function(){
 		$(this).toggleClass('selected').next().slideToggle('fast');
 		return false;
 	});
-	$('#t-em-setting .header-option th').click(function(){
-		$(this).toggleClass('selected').next().slideToggle('fast');
-		return false;
-	});
-	$('#t-em-setting .archive-option th').click(function(){
-		$(this).toggleClass('selected').next().slideToggle('fast');
-		return false;
-	});
-	$('#t-em-setting .layout-option th').click(function(){
-		$(this).toggleClass('selected').next().slideToggle('fast');
-		return false;
-	});
-	$('#t-em-setting .slocial-network-option th').click(function(){
-		$(this).toggleClass('selected').next().slideToggle('fast');
-		return false;
-	});
+	// $('#t-em-setting .header-option th').click(function(){
+	// 	$(this).toggleClass('selected').next().slideToggle('fast');
+	// 	return false;
+	// });
+	// $('#t-em-setting .archive-option th').click(function(){
+	// 	$(this).toggleClass('selected').next().slideToggle('fast');
+	// 	return false;
+	// });
+	// $('#t-em-setting .layout-option th').click(function(){
+	// 	$(this).toggleClass('selected').next().slideToggle('fast');
+	// 	return false;
+	// });
+	// $('#t-em-setting .social-network-option th').click(function(){
+	// 	$(this).toggleClass('selected').next().slideToggle('fast');
+	// 	return false;
+	// });
+	// $('#t-em-setting .webmaster-tools-option th').click(function(){
+	// 	$(this).toggleClass('selected').next().slideToggle('fast');
+	// 	return false;
+	// });
 
 	var full_option = $('.full-option');
 		$(full_option).after('<tr class="empty-option">&nbsp;</tr>');
