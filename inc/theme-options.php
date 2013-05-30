@@ -101,7 +101,7 @@ function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
 	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', 61 );
-	$theme_backup_page	= add_submenu_page( 'theme-options',	__( 'Backup', 't_em' ),				__( 'Backup', 't_em' ),				'edit_theme_options',	'theme-backup',				't_em_theme_backup' );
+	$theme_backup_page	= add_submenu_page( 'theme-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'theme-backup', 't_em_theme_backup' );
 
 	// We call our help screens
 	if ( ! $theme_page ) return;
@@ -204,55 +204,78 @@ add_action( 'after_setup_theme', 't_em_set_globals' );
  */
 function t_em_default_theme_options(){
 	$default_theme_options = array (
-		't-em-link'					=> '1',
-		'single-featured-img'		=> '1',
-		'single-related-posts'		=> '1',
-		'header-set'				=> 'no-header-image',
-		'header-featured-image'		=> '1',
-		'slider-home-only'			=> '0',
-		'slider-category'			=> get_option( 'default_category' ),
-		'slider-number'				=> get_option( 'posts_per_page' ),
-		'slider-text'				=> 'slider-text-center',
-		'nivo-style'				=> 't-em',
-		'text-widget-one'			=> '',
-		'text-widget-two'			=> '',
-		'text-widget-three'			=> '',
-		'text-widget-four'			=> '',
-		'archive-set'				=> 'the-content',
-		'layout-set'				=> 'sidebar-right',
-		'layout-width'				=> '960',
-		'excerpt-set'				=> 'thumbnail-left',
-		'slider-height'				=> '350',
-		'excerpt-thumbnail-height'	=> get_option( 'thumbnail_size_h' ),
-		'excerpt-thumbnail-width'	=> get_option( 'thumbnail_size_w' ),
-		'twitter-set'				=> '',
-		'facebook-set'				=> '',
-		'googleplus-set'			=> '',
-		'delicious-set'				=> '',
-		'linkedin-set'				=> '',
-		'github-set'				=> '',
-		'wordpress-set'				=> '',
-		'youtube-set'				=> '',
-		'flickr-set'				=> '',
-		'instagram-set'				=> '',
-		'vimeo-set'					=> '',
-		'reddit-set'				=> '',
-		'picassa-set'				=> '',
-		'lastfm-set'				=> '',
-		'stumbleupon-set'			=> '',
-		'pinterest-set'				=> '',
-		'deviantart-set'			=> '',
-		'myspace-set'				=> '',
-		'xing-set'					=> '',
-		'soundcloud-set'			=> '',
-		'steam-set'					=> '',
-		'dribbble-set'				=> '',
-		'forrst-set'				=> '',
-		'feed-set'					=> '',
-		'google-id'					=> '',
-		'yahoo-id'					=> '',
-		'bing-id'					=> '',
-		'stats-tracker'				=> '',
+		// Generals Options
+		't-em-link'						=> '1',
+		'single-featured-img'			=> '1',
+		'single-related-posts'			=> '1',
+		// Header Options
+		'header-set'					=> 'no-header-image',
+		'header-featured-image'			=> '1',
+		'slider-home-only'				=> '0',
+		'slider-category'				=> get_option( 'default_category' ),
+		'slider-number'					=> get_option( 'posts_per_page' ),
+		'slider-text'					=> 'slider-text-center',
+		'nivo-style'					=> 't-em',
+		// Front Page Text Witgets Options
+		'front-page-set'				=> 'wp-front-page',
+		'headline-text-widget-one'		=> '',
+		'content-text-widget-one'		=> '',
+		'css-classes-text-widget-one'	=> '',
+		'icon-src-text-widget-one'		=> '',
+		'link-url-text-widget-one'		=> '',
+		'headline-text-widget-two'		=> '',
+		'content-text-widget-two'		=> '',
+		'css-classes-text-widget-two'	=> '',
+		'icon-src-text-widget-two'		=> '',
+		'link-url-text-widget-two'		=> '',
+		'headline-text-widget-three'	=> '',
+		'content-text-widget-three'		=> '',
+		'css-classes-text-widget-three'	=> '',
+		'icon-src-text-widget-three'	=> '',
+		'link-url-text-widget-three'	=> '',
+		'headline-text-widget-four'		=> '',
+		'content-text-widget-four'		=> '',
+		'css-classes-text-widget-four'	=> '',
+		'icon-src-text-widget-four'		=> '',
+		'link-url-text-widget-four'		=> '',
+		// Archive Options
+		'archive-set'					=> 'the-content',
+		'layout-set'					=> 'sidebar-right',
+		'layout-width'					=> '960',
+		'excerpt-set'					=> 'thumbnail-left',
+		'slider-height'					=> '350',
+		'excerpt-thumbnail-height'		=> get_option( 'thumbnail_size_h' ),
+		'excerpt-thumbnail-width'		=> get_option( 'thumbnail_size_w' ),
+		// Social Networks Options
+		'twitter-set'					=> '',
+		'facebook-set'					=> '',
+		'googleplus-set'				=> '',
+		'delicious-set'					=> '',
+		'linkedin-set'					=> '',
+		'github-set'					=> '',
+		'wordpress-set'					=> '',
+		'youtube-set'					=> '',
+		'flickr-set'					=> '',
+		'instagram-set'					=> '',
+		'vimeo-set'						=> '',
+		'reddit-set'					=> '',
+		'picassa-set'					=> '',
+		'lastfm-set'					=> '',
+		'stumbleupon-set'				=> '',
+		'pinterest-set'					=> '',
+		'deviantart-set'				=> '',
+		'myspace-set'					=> '',
+		'xing-set'						=> '',
+		'soundcloud-set'				=> '',
+		'steam-set'						=> '',
+		'dribbble-set'					=> '',
+		'forrst-set'					=> '',
+		'feed-set'						=> '',
+		// Search Engines ID and Tracker Options
+		'google-id'						=> '',
+		'yahoo-id'						=> '',
+		'bing-id'						=> '',
+		'stats-tracker'					=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -411,6 +434,14 @@ function t_em_theme_options_validate( $input ){
 		'deviantart-set',
 		'myspace-set',
 		'feed-set',
+		'icon-src-text-widget-one',
+		'link-url-text-widget-one',
+		'icon-src-text-widget-two',
+		'link-url-text-widget-two',
+		'icon-src-text-widget-three',
+		'link-url-text-widget-three',
+		'icon-src-text-widget-four',
+		'link-url-text-widget-four',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
 	endforeach;
@@ -432,10 +463,14 @@ function t_em_theme_options_validate( $input ){
 		'google-id',
 		'yahoo-id',
 		'bing-id',
-		'text-widget-one',
-		'text-widget-two',
-		'text-widget-three',
-		'text-widget-four',
+		'headline-text-widget-one',
+		'css-classes-text-widget-one',
+		'headline-text-widget-two',
+		'css-classes-text-widget-two',
+		'headline-text-widget-three',
+		'css-classes-text-widget-three',
+		'headline-text-widget-four',
+		'css-classes-text-widget-four',
 	) as $text ) :
 		$input[$text] = htmlentities( $input[$text] );
 	endforeach;
@@ -443,6 +478,10 @@ function t_em_theme_options_validate( $input ){
 	// Validate all textarea options
 	foreach ( array (
 		'stats-tracker',
+		'content-text-widget-one',
+		'content-text-widget-two',
+		'content-text-widget-three',
+		'content-text-widget-four',
 	) as $textarea ) :
 		$input[$textarea] = htmlentities( $input[$textarea] );
 	endforeach;

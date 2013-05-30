@@ -17,6 +17,9 @@
 <?php
 /**
  * Return an array of Front Page Options for Twenty'em admin panel.
+ * This function manage what is displayed in our front page. Possibles options are:
+ * 0. Just another WordPress archive or static page.
+ * 1. Text Widgets areas.
  *
  * @return array
  *
@@ -24,46 +27,102 @@
  */
 function t_em_front_page_options(){
 	$front_page_options = array (
-		'text-widget-one' => array (
-			'name'			=> 'text-widget-one',
-			'label'			=> __( 'First home page text area', 't_em' ),
-			'headline'		=> '',
-			'content'		=> '',
-			'css-classes'	=> '',
-			'icon-src'		=> '',
-			'link-url'		=> '',
+		'wp-front-page' => array (
+			'value'			=> 'wp-front-page',
+			'label'			=> __( 'Just another WordPress front page', 't_em' ),
+			'extend'		=> t_em_front_page_jawpfp_callback(),
 		),
-		'text-widget-two' => array (
-			'name'			=> 'text-widget-two',
-			'label'			=> __( 'Second home page text area', 't_em' ),
-			'headline'		=> '',
-			'content'		=> '',
-			'css-classes'	=> '',
-			'icon-src'		=> '',
-			'link-url'		=> '',
-		),
-		'text-widget-three' => array (
-			'name'			=> 'text-widget-three',
-			'label'			=> __( 'Third home page text area', 't_em' ),
-			'headline'		=> '',
-			'content'		=> '',
-			'css-classes'	=> '',
-			'icon-src'		=> '',
-			'link-url'		=> '',
-		),
-		'text-widget-four' => array (
-			'name'			=> 'text-widget-four',
-			'label'			=> __( 'Fourth home page text area', 't_em' ),
-			'headline'		=> '',
-			'content'		=> '',
-			'css-classes'	=> '',
-			'icon-src'		=> '',
-			'link-url'		=> '',
+		'widgets-front-page' => array (
+			'value'			=> 'widgets-front-page',
+			'label'			=> __( 'Text Widgets', 't_em' ),
+			'extend'		=> t_em_front_page_witgets_callback(),
 		),
 	);
 
 	return apply_filters( 't_em_front_page_options', $front_page_options );
 }
+
+/**
+ * Extend setting for Just another WordPress front page Option in Twenty'em admin panel
+ * Reference via t_em_front_page_options()
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_front_page_jawpfp_callback(){
+	$show_on_front = '';
+	if ( get_option( 'show_on_front' ) == 'posts' ) :
+		$show_on_front .= sprintf( __( 'Displaying: Your latests "<strong>%1$s posts</strong>"', 't_em' ),
+						  get_option( 'posts_per_page' ) );
+	elseif ( get_option( 'show_on_front' ) == 'page' ) :
+		$front_page_data = get_page( get_option( 'page_on_front' ) );
+		$posts_page_data = get_page( get_option( 'page_for_posts' ) );
+		$show_on_front .= sprintf( __( 'Displaying: Static Page "<strong>%1$s</strong>". Page for Posts "<strong>%2$s</strong>"', 't_em' ),
+						  $front_page_data->post_title,
+						  $posts_page_data->post_title );
+	endif;
+
+	$extend_jawpfp = '';
+	$extend_jawpfp .= '<p>'. $show_on_front . '</p>';
+	$extend_jawpfp .= '<p>' . sprintf( __( 'To manage this options you should go to your <a href="%1$s" target="_blank">Reading Settings</a>', 't_em' ),
+							  admin_url( 'options-reading.php' ) );
+	$extend_jawpfp .= '</p>';
+
+	return $extend_jawpfp;
+}
+
+/**
+ * Extend setting for Front Page Text Widgets in Twenty'em admin panel
+ * Reference via t_em_front_page_options()
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_front_page_witgets_callback(){
+	global $t_em_theme_options;
+
+	$front_page_widgets = array (
+		'text-widget-one' => array (
+			'name'			=> 'text-widget-one',
+			'label'			=> __( 'First home page text area', 't_em' ),
+		),
+		'text-widget-two' => array (
+			'name'			=> 'text-widget-two',
+			'label'			=> __( 'Second home page text area', 't_em' ),
+		),
+		'text-widget-three' => array (
+			'name'			=> 'text-widget-three',
+			'label'			=> __( 'Third home page text area', 't_em' ),
+		),
+		'text-widget-four' => array (
+			'name'			=> 'text-widget-four',
+			'label'			=> __( 'Fourth home page text area', 't_em' ),
+		),
+	);
+
+	$extend_front_page = '';
+	foreach ( $front_page_widgets as $widget ) :
+		$extend_front_page .= '<div id="' . $widget['name'] . '" class="layout text-option front-page">';
+		$extend_front_page .= 	'<p>' . $widget['label'] . '</p>';
+		$extend_front_page .= 	'<label><span>' . __( 'Headline', 't_em' ) .'</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text headline" name="t_em_theme_options[headline-' . $widget['name'] . ']" value="' . html_entity_decode( $t_em_theme_options['headline-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= 	'<label><span>' . __( 'Content', 't_em' ) .'</span>';
+		$extend_front_page .= 		'<textarea name="t_em_theme_options[content-' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . html_entity_decode( $t_em_theme_options['content-'.$widget['name']] ) . '</textarea>';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= 	'<label><span>' . __( 'CSS Classes', 't_em' ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[css-classes-' . $widget['name'] . '" value="' . html_entity_decode( $t_em_theme_options['css-classes-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= 	'<label><span>' . __( 'Icon URL', 't_em' ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon-src-' . $widget['name'] . '" value="' . esc_url( $t_em_theme_options['icon-src-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= 	'<label><span>' . __( 'Link URL', 't_em' ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[link-url-' . $widget['name'] . '" value="' . esc_url( $t_em_theme_options['link-url-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= '</div>';
+	endforeach;
+
+	return $extend_front_page;
+}
+
 
 /**
  * Render the Front Page Options setting field in admin panel.
@@ -81,25 +140,24 @@ function t_em_settings_field_front_page_options_set(){
 <?php
 	foreach ( t_em_front_page_options() as $front_page ) :
 ?>
-		<div id="<?php echo $front_page['name'] ?>" class="layout text-option front-page">
-			<p><?php echo $front_page['label']; ?></p>
-			<label><span><?php _e( 'Headline', 't_em' ); ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[headline-<?php echo $front_page['name']; ?>]" value="" />
-			</label>
-			<label><span><?php _e( 'Content', 't_em' ); ?></span>
-				<textarea name="t_em_theme_options[content-<?php echo $front_page['name'] ?>]" class="large-text" cols="50" rows="10"></textarea>
-			</label>
-			<label><span><?php _e( 'CSS Classes', 't_em' ); ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[css-classes-<?php echo $front_page['name']; ?>]" value="" />
-			</label>
-			<label><span><?php _e( 'Icon URL', 't_em' ); ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[icon-src-<?php echo $front_page['name']; ?>]" value="" />
-			</label>
-			<label><span><?php _e( 'Link URL', 't_em' ); ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[link-url-<?php echo $front_page['name']; ?>]" value="" />
+		<div class="layout radio-option front-page">
+			<label class="description">
+				<input type="radio" name="t_em_theme_options[front-page-set]" class="head-radio-option" value="<?php echo esc_attr( $front_page['value'] ); ?>" <?php checked( $t_em_theme_options['front-page-set'], $front_page['value'] ); ?> />
+				<span><?php echo $front_page['label']; ?></span>
 			</label>
 		</div>
 <?php
+	endforeach;
+
+	foreach ( t_em_front_page_options() as $sub_front_page ) :
+		if ( $sub_front_page['extend'] != '' ) :
+		$selected_option = ( $t_em_theme_options['front-page-set'] == $sub_front_page['value'] ) ? 'selected-option' : '';
+?>
+		<div id="<?php echo $sub_front_page['value'] ?>" class="sub-layout front-page-extend <?php echo "$selected_option"; ?>">
+			<?php echo $sub_front_page['extend']; ?>
+		</div>
+<?php
+		endif;
 	endforeach;
 ?>
 	</div>

@@ -44,7 +44,7 @@ function t_em_social_network_options(){
 			'name' => 'googleplus-set',
 			'label' => __( 'Google + URL', 't_em' ),
 			'item' => __( 'Google +', 't_em' ),
-			'class' => 'icon-googleplus',
+			'class' => 'icon-google-plus',
 		),
 		'delicious-set' => array (
 			'value' => '',

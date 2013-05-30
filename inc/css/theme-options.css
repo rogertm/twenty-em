@@ -108,3 +108,7 @@
 	margin: 0 2% 0 0;
 	width: 30%;
 }
+#t-em-setting .headline{
+	max-width: 99% !important;
+	height: 30px;
+}

@@ -173,7 +173,6 @@ function t_em_slider_callback(){
 		$extend_slider .=		'<input type="radio" name="t_em_theme_options[nivo-style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
 		$extend_slider .=		'<span>'. $style['label'] .'</span>';
 		$extend_slider .=		'</label>';
-
 		$extend_slider .=	'</div>';
 	endforeach;
 	$extend_slider .= '</div><!-- .sub-extend -->';

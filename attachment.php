@@ -16,7 +16,7 @@ get_header(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header>
-						<h2 class="entry-title"><span class="icon-attachment-2 font-icon"></span><?php the_title(); ?></h2>
+						<h2 class="entry-title"><span class="icon-paper-clip font-icon"></span><?php the_title(); ?></h2>
 						<span class="entry-meta">
 							<?php
 								$published_text  = __( '<span class="icon-calendar font-icon"></span><span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
@@ -33,7 +33,7 @@ get_header(); ?>
 								);
 
 								$metadata = wp_get_attachment_metadata();
-								printf( '<span class="icon-zoomin font-icon"></span><span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
+								printf( '<span class="icon-zoom-in font-icon"></span><span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
 									esc_url( wp_get_attachment_url() ),
 									esc_attr__( 'Link to full-size image', 't_em' ),
 									__( 'Full resolution', 't_em' ),

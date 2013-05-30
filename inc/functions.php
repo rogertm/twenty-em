@@ -534,16 +534,16 @@ function t_em_posted_in() {
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
-		echo '<span class="categories-links icon-folder font-icon">'. $categories_list .'</span>';
+		echo '<span class="categories-links icon-folder-open font-icon">'. $categories_list .'</span>';
 	endif;
 
 	// Translators: used between list items, there is a space after the comma.
 	$tags_list = get_the_tag_list( '', __( ', ', 't_em' ) );
 	if ( $tags_list ) :
-		echo '<span class="tags-links icon-tag font-icon">'. $tags_list .'</span>';
+		echo '<span class="tags-links icon-tags font-icon">'. $tags_list .'</span>';
 	endif;
 
-	$post_url = sprintf( '<span class="post-link icon-link-3 font-icon"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>',
+	$post_url = sprintf( '<span class="post-link icon-link font-icon"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>',
 					get_permalink(),
 					sprintf( __( 'Permalink to %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
 					__( 'Permalink', 't_em' )
@@ -571,7 +571,7 @@ if ( ! function_exists( 't_em_edit_post_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_edit_post_link(){
-	edit_post_link( __( 'Edit', 't_em' ), '<span class="edit-link icon-tools font-icon">', '</span>' );
+	edit_post_link( __( 'Edit', 't_em' ), '<span class="edit-link icon-edit font-icon">', '</span>' );
 }
 endif; // function t_em_edit_post_link()
 
@@ -582,7 +582,7 @@ if ( ! function_exists( 't_em_comments_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_comments_link(){
-	echo '<span class="comment-link icon-comment font-icon">';
+	echo '<span class="comment-link icon-comments font-icon">';
 	comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) );
 	echo '</span>';
 }
@@ -643,7 +643,8 @@ if ( ! function_exists( 't_em_post_date' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_post_date(){
-	$post_date = sprintf( '<span class="post-date icon-clock font-icon"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+	$post_date = sprintf( '<span class="post-date icon-time font-icon
+"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 					esc_url( get_permalink() ),
 					esc_attr( sprintf( __( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ) ),
 					esc_attr( get_the_date( 'c' ) ),
