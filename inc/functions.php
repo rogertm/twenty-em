@@ -1126,8 +1126,12 @@ function t_em_front_page_widgets( $widget ){
 	global $t_em_theme_options;
 
 	if ( ! empty( $t_em_theme_options['headline-text-widget-'.$widget.''] ) || ! empty( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) :
+
+		$widget_icon_class	= ( $t_em_theme_options['icon-class-text-widget-'.$widget.''] ) ?
+			'<span class="'. $t_em_theme_options['icon-class-text-widget-'.$widget.''] .' font-icon"></span>' : '';
+
 		$widget_headline	= ( $t_em_theme_options['headline-text-widget-'.$widget.''] ) ?
-			'<header><h3>'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'</h3></header>' : '';
+			'<header><h3>'. $widget_icon_class . $t_em_theme_options['headline-text-widget-'.$widget.''] .'</h3></header>' : '';
 
 		$widget_content		= ( $t_em_theme_options['content-text-widget-'.$widget.''] ) ?
 			'<div><p>'. html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) .'</p></div>' : '';
@@ -1135,8 +1139,6 @@ function t_em_front_page_widgets( $widget ){
 		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] ) ?
 			'<figure><img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" /></figure>' : '';
 
-		$widget_icon_class	= ( $t_em_theme_options['icon-class-text-widget-'.$widget.''] ) ?
-			'<span class="'. $t_em_theme_options['icon-class-text-widget-'.$widget.''] .' font-icon"></span>' : '';
 
 		$widget_link		= ( $t_em_theme_options['link-url-text-widget-'.$widget.''] ) ?
 			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
@@ -1144,7 +1146,6 @@ function t_em_front_page_widgets( $widget ){
 ?>
 		<div id="front-page-widget-<?php echo $widget ?>" class="front-page-widget">
 			<?php
-			echo $widget_icon_class;
 			echo $widget_headline;
 			echo $widget_thumbnail_url;
 			echo $widget_content;

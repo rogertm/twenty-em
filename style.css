@@ -281,9 +281,6 @@ div.menu,
 #wrap {
 	margin: 0 auto;
 }
-#wrap {
-	background: #fff;
-}
 .wrapper{
 	padding: 0 2%;
 }
@@ -821,9 +818,6 @@ div.menu li {
 	width: 33%;
 }
 .page-link {
-/*
-	color: #000;
-*/
 	font-weight: bold;
 	margin: 0 0 22px 0;
 	word-spacing: 0.5em;
@@ -901,23 +895,6 @@ body.page .edit-link {
 .single .featured-post-thumbnail{
 	float: none !important;
 	margin: 0 auto !important;
-}
-
-
-/* =Asides
--------------------------------------------------------------- */
-
-.home #content .category-asides p {
-	font-size: 14px;
-	line-height: 20px;
-	margin-bottom: 10px;
-	margin-top: 0;
-}
-.home .hentry.category-asides {
-	padding: 0;
-}
-.home #content .category-asides .entry-content {
-	padding-top: 0;
 }
 
 
@@ -1011,9 +988,7 @@ body.page .edit-link {
 	margin: 0 auto 18px;
 }
 #content .gallery .gallery-item {
-/*
 	margin-bottom: 10px;
-*/
 }
 #content .gallery-item a{
 	display: block;
@@ -1027,9 +1002,6 @@ body.page .edit-link {
 	padding: 5px;
 }
 #content .gallery .gallery-caption {
-/*
-	color: #888;
-*/
 	font-size: 12px;
 	margin: 0 0 12px;
 }
@@ -1311,7 +1283,6 @@ h3#reply-title {
 
 /* =Widget Areas
 -------------------------------------------------------------- */
-
 .widget-area ul {
 	list-style: none;
 	margin-left: 0;
@@ -1401,11 +1372,29 @@ h3#reply-title {
 #secondary {
 }
 
-
+/* =Featured Widget Area
+-------------------------------------------------------------- */
+.front-page-widget{
+	margin-bottom: 25px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+#front-page-widget-one{
+	text-align: center;
+	width: 100%;
+}
+#front-page-widget-two,
+#front-page-widget-three,
+#front-page-widget-four{
+	width: 30%;
+	display: inline;
+	float: left;
+	margin: 0 1%;
+}
 
 /* =Footer
 -------------------------------------------------------------- */
-
 #colophon {
 	overflow: hidden;
 }
