@@ -50,10 +50,10 @@ function t_em_front_page_options(){
  */
 function t_em_front_page_jawpfp_callback(){
 	$show_on_front = '';
-	if ( get_option( 'show_on_front' ) == 'posts' ) :
+	if ( 'posts' == get_option( 'show_on_front' ) ) :
 		$show_on_front .= sprintf( __( 'Displaying: Your latests "<strong>%1$s posts</strong>"', 't_em' ),
 						  get_option( 'posts_per_page' ) );
-	elseif ( get_option( 'show_on_front' ) == 'page' ) :
+	elseif ( 'page' == get_option( 'show_on_front' ) ) :
 		$front_page_data = get_page( get_option( 'page_on_front' ) );
 		$posts_page_data = get_page( get_option( 'page_for_posts' ) );
 		$show_on_front .= sprintf( __( 'Displaying: Static Page "<strong>%1$s</strong>". Page for Posts "<strong>%2$s</strong>"', 't_em' ),
@@ -77,7 +77,7 @@ function t_em_front_page_jawpfp_callback(){
  * @since Twenty'em 1.0
  */
 function t_em_front_page_witgets_callback(){
-	global $t_em_theme_options;
+	global 	$t_em_theme_options;
 
 	$front_page_widgets = array (
 		'text-widget-one' => array (
@@ -103,19 +103,19 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= '<div id="' . $widget['name'] . '" class="layout text-option front-page">';
 		$extend_front_page .= 	'<p>' . $widget['label'] . '</p>';
 		$extend_front_page .= 	'<label><span>' . __( 'Headline', 't_em' ) .'</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text headline" name="t_em_theme_options[headline-' . $widget['name'] . ']" value="' . html_entity_decode( $t_em_theme_options['headline-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 		'<input type="text" class="regular-text headline" name="t_em_theme_options[headline-' . $widget['name'] . ']" value="' . $t_em_theme_options['headline-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Content', 't_em' ) .'</span>';
-		$extend_front_page .= 		'<textarea name="t_em_theme_options[content-' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . html_entity_decode( $t_em_theme_options['content-'.$widget['name']] ) . '</textarea>';
+		$extend_front_page .= 		'<textarea name="t_em_theme_options[content-' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . $t_em_theme_options['content-'.$widget['name']] . '</textarea>';
 		$extend_front_page .= 	'</label>';
-		$extend_front_page .= 	'<label><span>' . __( 'CSS Classes', 't_em' ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[css-classes-' . $widget['name'] . '" value="' . html_entity_decode( $t_em_theme_options['css-classes-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon-class-' . $widget['name'] . ']" value="' . $t_em_theme_options['icon-class-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
-		$extend_front_page .= 	'<label><span>' . __( 'Icon URL', 't_em' ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon-src-' . $widget['name'] . '" value="' . esc_url( $t_em_theme_options['icon-src-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[thumbnail-src-' . $widget['name'] . ']" value="' . $t_em_theme_options['thumbnail-src-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Link URL', 't_em' ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[link-url-' . $widget['name'] . '" value="' . esc_url( $t_em_theme_options['link-url-'.$widget['name']] ) . '" />';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[link-url-' . $widget['name'] . ']" value="' . $t_em_theme_options['link-url-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= '</div>';
 	endforeach;

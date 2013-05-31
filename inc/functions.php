@@ -1106,11 +1106,52 @@ function t_em_single_related_posts() {
 	endif;
 }
 
-function t_em_hello($a, $b){
-	echo '<code>';
-		print_r( $a ); // `print_r` the array data inside the 1st argument
-	echo '</code>';
+/**
+ * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
+ * admin panel.
+ *
+ * @param string $widget Required The text widget we want to show. Possibles options are:
+ * 0. one
+ * 1. two
+ * 2. three
+ * 3. four
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @return string HTML div boxes
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_front_page_widgets( $widget ){
+	global $t_em_theme_options;
 
-	echo '<br />'.$b; // echo linebreak and value of 2nd argument
+	if ( ! empty( $t_em_theme_options['headline-text-widget-'.$widget.''] ) || ! empty( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) :
+		$widget_headline	= ( $t_em_theme_options['headline-text-widget-'.$widget.''] ) ?
+			'<header><h3>'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'</h3></header>' : '';
+
+		$widget_content		= ( $t_em_theme_options['content-text-widget-'.$widget.''] ) ?
+			'<div><p>'. html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) .'</p></div>' : '';
+
+		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] ) ?
+			'<figure><img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" /></figure>' : '';
+
+		$widget_icon_class	= ( $t_em_theme_options['icon-class-text-widget-'.$widget.''] ) ?
+			'<span class="'. $t_em_theme_options['icon-class-text-widget-'.$widget.''] .' font-icon"></span>' : '';
+
+		$widget_link		= ( $t_em_theme_options['link-url-text-widget-'.$widget.''] ) ?
+			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
+			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
+?>
+		<div id="front-page-widget-<?php echo $widget ?>" class="front-page-widget">
+			<?php
+			echo $widget_icon_class;
+			echo $widget_headline;
+			echo $widget_thumbnail_url;
+			echo $widget_content;
+			echo $widget_link;
+			?>
+		</div>
+<?php
+	endif;
 }
 ?>

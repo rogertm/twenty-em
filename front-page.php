@@ -14,47 +14,66 @@
 
 get_header(); ?>
 
-		<div id="primary">
-			<div id="content" role="main">
+<div id="primary">
+	<div id="content" role="main">
+<?php
+if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
+?>
 <?php
 	// If our front page is a static page, we load it
 	$front_page = get_option( 'show_on_front' ) ;
 	if ( 'page' == $front_page ) :
+
+		if ( have_posts() ) :
+			while ( have_posts() ) :
+				the_post();
 ?>
-	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<header>
-						<?php if ( is_front_page() ) { ?>
-							<h2 class="entry-title"><?php the_title(); ?></h2>
-						<?php } else { ?>
-							<h1 class="entry-title"><?php the_title(); ?></h1>
-						<?php } ?>
-					</header>
-
-					<div class="entry-content">
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-						<?php t_em_edit_post_link(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-## -->
-
-	<?php endwhile; ?>
-<?php
-	// Else, we display a list of post
-	else : ?>
-			<?php if ( have_posts() ) : ?>
-				<?php t_em_page_navi( 'nav-above' ); ?>
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'content', get_post_format() ); ?>
-				<?php endwhile; ?>
-				<?php t_em_page_navi( 'nav-below' ); ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<header>
+			<?php if ( is_front_page() ) : ?>
+				<h2 class="entry-title"><?php the_title(); ?></h2>
 			<?php else : ?>
-				<?php get_template_part( 'content', 'none' ); ?>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
 			<?php endif; ?>
+			</header>
+			<div class="entry-content">
+				<?php the_content(); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
+				<?php t_em_edit_post_link(); ?>
+			</div><!-- .entry-content -->
+		</article><!-- #post-## -->
+<?php
+			endwhile;
+		endif; // have_posts()
+	// Else, we display a list of post
+	else :
+		if ( have_posts() ) :
+			t_em_page_navi( 'nav-above' );
+			// Start the Loop
+			while ( have_posts() ) : the_post();
+				get_template_part( 'content', get_post_format() );
+			endwhile;
+			t_em_page_navi( 'nav-below' );
+		else :
+			get_template_part( 'content', 'none' );
+		endif;
+	endif;
+?>
+	</div><!-- #content -->
+</div><!-- #primary -->
+<?php get_sidebar(); // We display the sidebar just in an ordinary WordPress front page ?>
+<?php
+elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
+?>
+		<section id="featured-widget-area">
+<?php
+	t_em_front_page_widgets( 'one' );
+	t_em_front_page_widgets( 'two' );
+	t_em_front_page_widgets( 'three' );
+	t_em_front_page_widgets( 'four' );
+?>
+		</section><!-- #featured-widget-area -->
+	</div><!-- #content -->
+</div><!-- #primary -->
 <?php endif; ?>
-			</div><!-- #content -->
-		</div><!-- #primary -->
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

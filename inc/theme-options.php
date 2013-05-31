@@ -220,23 +220,23 @@ function t_em_default_theme_options(){
 		'front-page-set'				=> 'wp-front-page',
 		'headline-text-widget-one'		=> '',
 		'content-text-widget-one'		=> '',
-		'css-classes-text-widget-one'	=> '',
-		'icon-src-text-widget-one'		=> '',
+		'icon-class-text-widget-one'	=> '',
+		'thumbnail-src-text-widget-one'		=> '',
 		'link-url-text-widget-one'		=> '',
 		'headline-text-widget-two'		=> '',
 		'content-text-widget-two'		=> '',
-		'css-classes-text-widget-two'	=> '',
-		'icon-src-text-widget-two'		=> '',
+		'icon-class-text-widget-two'	=> '',
+		'thumbnail-src-text-widget-two'		=> '',
 		'link-url-text-widget-two'		=> '',
 		'headline-text-widget-three'	=> '',
 		'content-text-widget-three'		=> '',
-		'css-classes-text-widget-three'	=> '',
-		'icon-src-text-widget-three'	=> '',
+		'icon-class-text-widget-three'	=> '',
+		'thumbnail-src-text-widget-three'	=> '',
 		'link-url-text-widget-three'	=> '',
 		'headline-text-widget-four'		=> '',
 		'content-text-widget-four'		=> '',
-		'css-classes-text-widget-four'	=> '',
-		'icon-src-text-widget-four'		=> '',
+		'icon-class-text-widget-four'	=> '',
+		'thumbnail-src-text-widget-four'		=> '',
 		'link-url-text-widget-four'		=> '',
 		// Archive Options
 		'archive-set'					=> 'the-content',
@@ -434,13 +434,13 @@ function t_em_theme_options_validate( $input ){
 		'deviantart-set',
 		'myspace-set',
 		'feed-set',
-		'icon-src-text-widget-one',
+		'thumbnail-src-text-widget-one',
 		'link-url-text-widget-one',
-		'icon-src-text-widget-two',
+		'thumbnail-src-text-widget-two',
 		'link-url-text-widget-two',
-		'icon-src-text-widget-three',
+		'thumbnail-src-text-widget-three',
 		'link-url-text-widget-three',
-		'icon-src-text-widget-four',
+		'thumbnail-src-text-widget-four',
 		'link-url-text-widget-four',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
@@ -458,32 +458,32 @@ function t_em_theme_options_validate( $input ){
 			$input[$select] = $input[$select['set']];
 	endforeach;
 
-	// Validate all text options
+	// Validate all text (code) options
 	foreach ( array (
 		'google-id',
 		'yahoo-id',
 		'bing-id',
-		'headline-text-widget-one',
-		'css-classes-text-widget-one',
-		'headline-text-widget-two',
-		'css-classes-text-widget-two',
-		'headline-text-widget-three',
-		'css-classes-text-widget-three',
-		'headline-text-widget-four',
-		'css-classes-text-widget-four',
+		'stats-tracker',
 	) as $text ) :
 		$input[$text] = htmlentities( $input[$text] );
 	endforeach;
 
 	// Validate all textarea options
 	foreach ( array (
-		'stats-tracker',
 		'content-text-widget-one',
+		'headline-text-widget-one',
+		'icon-class-text-widget-one',
 		'content-text-widget-two',
+		'headline-text-widget-two',
+		'icon-class-text-widget-two',
 		'content-text-widget-three',
+		'headline-text-widget-three',
+		'icon-class-text-widget-three',
 		'content-text-widget-four',
+		'headline-text-widget-four',
+		'icon-class-text-widget-four',
 	) as $textarea ) :
-		$input[$textarea] = htmlentities( $input[$textarea] );
+		$input[$textarea] = esc_textarea( $input[$textarea] );
 	endforeach;
 
 	return $input;
@@ -498,10 +498,14 @@ function t_em_layout_classes( $existing_classes ){
 	global $t_em_theme_options;
 	$layout_set = $t_em_theme_options['layout-set'];
 
-	if ( in_array( $layout_set, array( 'sidebar-right', 'sidebar-left' ) ) )
-		$classes = array ( 'two-column' );
-	else
+	// In front page and 'front-page-set => widgets-front-page' one column is enogh
+	if ( $t_em_theme_options['front-page-set'] == 'widgets-front-page' && is_front_page() ) :
 		$classes = array ( 'one-column' );
+	elseif ( in_array( $layout_set, array( 'sidebar-right', 'sidebar-left' ) ) ) :
+		$classes = array ( 'two-column' );
+	else :
+		$classes = array ( 'one-column' );
+	endif;
 
 	if ( 'sidebar-right' == $layout_set )
 		$classes[] = 'sidebar-right';
