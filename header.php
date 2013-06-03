@@ -31,24 +31,26 @@
 	<header id="header">
 		<section id="masthead">
 
-			<div id="branding" role="banner" class="wrapper">
-				<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-				<nav id="top-menu" role="navigation">
-					<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Top menu', 't_em' ); ?></span></h3>
-					<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
-				</nav>
-				<?php endif; ?>
-				<hgroup>
-					<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
-					<<?php echo $heading_tag; ?> id="site-title">
-					<span>
-						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					</span>
-					</<?php echo $heading_tag; ?>>
-					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</hgroup>
-			</div><!-- #branding -->
+			<div id="branding" role="banner" class="wrapper container-fluid">
+				<div class="row-fluid">
+					<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+					<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
+					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
+					<nav id="top-menu" role="navigation" class="span8 text-right hidden-phone">
+						<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
+					</nav>
+					<?php endif; ?>
+					<hgroup class="span4">
+						<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
+						<<?php echo $heading_tag; ?> id="site-title">
+						<span>
+							<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+						</span>
+						</<?php echo $heading_tag; ?>>
+						<h2 id="site-description" class="hidden-phone"><?php bloginfo( 'description' ); ?></h2>
+					</hgroup>
+				</div><!-- .row-fluid -->
+			</div><!-- #branding .container-fluid -->
 
 			<?php t_em_header_options_set(); ?>
 
@@ -64,4 +66,5 @@
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
-	<div id="main" class="wrapper">
+	<div id="main" class="wrapper container-fluid">
+		<div class="row-fluid">

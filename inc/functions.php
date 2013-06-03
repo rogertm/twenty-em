@@ -233,7 +233,7 @@ function t_em_support_jp_infinite_scroll(){
 }
 endif;
 
-if ( !function_exists( 't_em_header_style' ) ) :
+if ( ! function_exists( 't_em_header_style' ) ) :
 /**
  * Style the header image and text displayed on the site.
  * Referenced via add_theme_support( 'custom-header' ) in t_em_support_custom_header().
@@ -654,6 +654,35 @@ function t_em_post_date(){
 }
 endif; // function t_em_post_date()
 
+if ( ! function_exists( 't_em_author_meta' ) ) :
+/**
+ * If a user has filled out their description, show a bio on their entries.
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_author_meta(){
+	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
+	<div id="entry-author-info" class="well media">
+		<div id="author-avatar" class="pull-left">
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 't_em_author_bio_avatar_size', 80 ), '', get_the_author() ); ?>
+		</div><!-- #author-avatar -->
+		<div id="author-description" class="media-body">
+			<h2 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h2>
+			<?php the_author_meta( 'description' ); ?>
+			<?php if ( is_single() ) : ?>
+			<div id="author-link">
+				<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+					<?php printf( __( 'View all posts by %s <span class="meta-nav">&raquo;</span>', 't_em' ), get_the_author() ); ?>
+				</a>
+			</div><!-- #author-link	-->
+		<?php endif; ?>
+		</div><!-- #author-description -->
+	</div><!-- #entry-author-info -->
+<?php
+	endif;
+}
+endif;
+
 if ( ! function_exists( 't_em_comment' ) ) :
 /**
  * Template for comments.
@@ -670,11 +699,11 @@ function t_em_comment( $comment, $args, $depth ) {
 	switch ( $comment->comment_type ) :
 		case '' :
 	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-			<header class="comment-header">
+	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
+		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
+			<div class="pull-right"><?php echo get_avatar( $comment, 60 ); ?></div>
+			<header class="comment-header media-header">
 				<div class="comment-author vcard">
-					<?php echo get_avatar( $comment, 60 ); ?>
 					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 				</div><!-- .comment-author .vcard -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
@@ -791,11 +820,11 @@ function t_em_comment_form_fields() {
 	$aria_req = ( $req ? " aria-required='true' " : "" );
 	$fields =  array(
 		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-					'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
+					'<input id="author" class="input-xlarge" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
 		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-					'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
+					'<input id="email" class="input-xlarge" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
 		'url'	 => '<p class="comment-form-url"><label for="url">' . __( 'Website', 't_em' ) . '</label>' .
-					'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /></p>'
+					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /></p>'
 	);
 	return $fields;
 }
@@ -1031,7 +1060,7 @@ function t_em_user_social_network(){
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu">' . $output . '</nav>';
+		$output = '<nav id="social-network-menu" class="span10 text-right">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;
@@ -1115,6 +1144,9 @@ function t_em_single_related_posts() {
  * 1. two
  * 2. three
  * 3. four
+ * @param string $btn_class Optional Bootstrap or whichever css class to apply to the <a>...</a> tag
+ * Default: 'empty'.
+ * @param string $h_tag Optional Header tag (h1, h2, h3, ...) for widget title. Default: 'h3'
  *
  * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
  *
@@ -1122,7 +1154,7 @@ function t_em_single_related_posts() {
  *
  * @since Twenty'em 1.0
  */
-function t_em_front_page_widgets( $widget ){
+function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 	global $t_em_theme_options;
 
 	if ( ! empty( $t_em_theme_options['headline-text-widget-'.$widget.''] ) || ! empty( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) :
@@ -1131,18 +1163,22 @@ function t_em_front_page_widgets( $widget ){
 			'<span class="'. $t_em_theme_options['icon-class-text-widget-'.$widget.''] .' font-icon"></span>' : '';
 
 		$widget_headline	= ( $t_em_theme_options['headline-text-widget-'.$widget.''] ) ?
-			'<header><h3>'. $widget_icon_class . $t_em_theme_options['headline-text-widget-'.$widget.''] .'</h3></header>' : '';
+			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em_theme_options['headline-text-widget-'.$widget.''] .'</'. $h_tag .'></header>' : '';
 
 		$widget_content		= ( $t_em_theme_options['content-text-widget-'.$widget.''] ) ?
 			'<div><p>'. html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) .'</p></div>' : '';
 
 		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] ) ?
-			'<figure><img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" /></figure>' : '';
-
+			'<img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" />' : '';
 
 		$widget_link		= ( $t_em_theme_options['link-url-text-widget-'.$widget.''] ) ?
-			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
+			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
+
+		$widget_wrapper = ( 'one' == $widget ) ? '<div class="hero-unit">' : '<div class="span4">';
+		$widget_wrapper_end = '</div>';
+
+		echo $widget_wrapper;
 ?>
 		<div id="front-page-widget-<?php echo $widget ?>" class="front-page-widget">
 			<?php
@@ -1153,6 +1189,7 @@ function t_em_front_page_widgets( $widget ){
 			?>
 		</div>
 <?php
+		echo $widget_wrapper_end;
 	endif;
 }
 ?>

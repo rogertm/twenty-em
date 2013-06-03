@@ -12,7 +12,7 @@ global $t_em_theme_options;
 if ( 'content' != $t_em_theme_options['layout-set'] ) :
 ?>
 
-		<div id="secondary" class="widget-area" role="complementary">
+		<div id="secondary" class="widget-area span4" role="complementary">
 
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out

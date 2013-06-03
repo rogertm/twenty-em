@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-<div id="primary">
+<div id="primary" class="span8">
 	<div id="content" role="main">
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
@@ -66,12 +66,12 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
 		<section id="featured-widget-area">
-<?php
-	t_em_front_page_widgets( 'one' );
-	t_em_front_page_widgets( 'two' );
-	t_em_front_page_widgets( 'three' );
-	t_em_front_page_widgets( 'four' );
-?>
+			<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
+			<div class="row-fluid">
+				<?php t_em_front_page_widgets( 'two', 'btn' ); ?>
+				<?php t_em_front_page_widgets( 'three', 'btn' ); ?>
+				<?php t_em_front_page_widgets( 'four', 'btn' ); ?>
+			</div>
 		</section><!-- #featured-widget-area -->
 	</div><!-- #content -->
 </div><!-- #primary -->

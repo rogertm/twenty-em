@@ -10,7 +10,8 @@
  * @since Twenty'em 0.1
  */
 ?>
-	</div><!-- #main -->
+		</div><!-- .row-fluid -->
+	</div><!-- #main .container-fluid -->
 
 	<footer id="footer" role="contentinfo">
 		<div id="colophon">
@@ -21,26 +22,29 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-			<div id="site-info" class="wrapper">
-				<div id="copyright">
-					<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<?php bloginfo( 'name' ); ?>
-					</a>
-				</div><!-- #copyright -->
+			<div id="site-info" class="wrapper container-fluid">
+				<div class="row-fluid">
 
-				<?php echo t_em_user_social_network() ?>
+					<div id="copyright" class="span2">
+						<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<?php bloginfo( 'name' ); ?>
+						</a>
+					</div><!-- #copyright -->
 
-				<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
-				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
-					<nav id="footer-menu">
-						<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Footer menu', 't_em' ); ?></span></h3>
-						<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
-					</nav>
-				<?php endif; ?>
+					<?php echo t_em_user_social_network() ?>
 
-				<?php get_template_part( 'footer', 't-em-link' ); ?>
+					<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
+					<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
+						<nav id="footer-menu" class="span10 text-right hidden-phone">
+							<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
+						</nav>
+					<?php endif; ?>
 
-			</div><!-- #site-info -->
+					<?php get_template_part( 'footer', 't-em-link' ); ?>
+
+				</div><!-- .row-fluid -->
+			</div><!-- #site-info .container-fluid -->
 
 		</div><!-- #colophon -->
 	</footer><!-- #footer -->

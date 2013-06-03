@@ -23,30 +23,31 @@
 	// If we get this far, we have widgets. Let do this.
 ?>
 
-			<section id="footer-widget-area" class="wrapper" role="complementary">
+			<section id="footer-widget-area" class="wrapper container-fluid" role="complementary">
+				<div class="row-fluid">
 
 <?php if ( is_active_sidebar( 'first-footer-widget-area' ) ) : ?>
-				<aside id="first" class="widget-area">
-					<?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
-				</aside><!-- #first .widget-area -->
+					<aside id="first" class="widget-area span3">
+						<?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
+					</aside><!-- #first .widget-area -->
 <?php endif; ?>
 
 <?php if ( is_active_sidebar( 'second-footer-widget-area' ) ) : ?>
-				<aside id="second" class="widget-area">
-					<?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
-				</aside><!-- #second .widget-area -->
+					<aside id="second" class="widget-area span3">
+						<?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
+					</aside><!-- #second .widget-area -->
 <?php endif; ?>
 
 <?php if ( is_active_sidebar( 'third-footer-widget-area' ) ) : ?>
-				<aside id="third" class="widget-area">
-					<?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
-				</aside><!-- #third .widget-area -->
+					<aside id="third" class="widget-area span3">
+						<?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
+					</aside><!-- #third .widget-area -->
 <?php endif; ?>
 
 <?php if ( is_active_sidebar( 'fourth-footer-widget-area' ) ) : ?>
-				<aside id="fourth" class="widget-area">
-					<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
-				</aside><!-- #fourth .widget-area -->
+					<aside id="fourth" class="widget-area span3">
+						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
+					</aside><!-- #fourth .widget-area -->
 <?php endif; ?>
-
-			</section><!-- #footer-widget-area -->
+				</div><!-- .row-fluid -->
+			</section><!-- #footer-widget-area .container-fluid -->

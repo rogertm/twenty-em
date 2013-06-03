@@ -123,18 +123,11 @@ nav ul li.current-menu-parent > a {
 }
 .widget-title{
 	border-bottom: solid 1px darken( @base-gray, 10% );
-	padding: 0 0 15px;
-	font-size: 1.3em;
+	font-size: 1em;
 }
 
 /* =Content
 -------------------------------------------------------------- */
-#entry-author-info,
-#category-description{
-	background: @base-gray;
-	border: solid 1px lighten( @dark-gray, 50% );
-	.border-radius;
-}
 #author-avatar img{
 	border: solid 1px lighten( @dark-gray, 50% );
 	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
@@ -149,63 +142,44 @@ nav ul li.current-menu-parent > a {
 
 /* =Forms
 -------------------------------------------------------------- */
-#searchform{
-	border: solid 1px lighten( @dark-gray, 50% );
-	.border-radius ( 3px );
-	width: 99%;
-	position: relative;
-}
-#searchform #s{
-	color: @dark-gray;
-	margin: 0;
-	padding: 8px;
-	border: none;
-}
-#searchform input.submit{
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	right: 10px;
-	top: 8px;
-}
-#content input[type="text"],
-#content input[type="email"],
-#content input[type="url"],
-#content textarea,
-#content select {
-	background: @base-gray;
-	color: @light-gray;
-	border: 1px solid lighten( @dark-gray, 50% );
-	.border-radius;
-}
+// #content input[type="text"],
+// #content input[type="email"],
+// #content input[type="url"],
+// #content textarea,
+// #content select {
+// 	background: @base-gray;
+// 	color: @light-gray;
+// 	border: 1px solid lighten( @dark-gray, 50% );
+// 	.border-radius;
+// }
 #content .required{
 	color: @light-red;
 }
-#content input[type="text"]:focus,
-#content input[type="email"]:focus,
-#content input[type="url"]:focus,
-#content textarea:focus{
-	border: 1px solid @light-blue;
-	.box-shadow ( 0, 0, 2px, @light-blue );
-}
-#content .form-submit input,
-#content .contact-submit input{
-	background: @light-blue;
-	background-image: linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-	background-image: -moz-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-	background-image: -ms-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-	background-image: -webkit-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-	background-image: -o-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-	.box-shadow ( 0, 0, 1px, @light-blue );
-	.border-radius ( 3px );
-}
-#content .form-submit input:active{
-	background-image: linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-	background-image: -moz-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-	background-image: -ms-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-	background-image: -webkit-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-	background-image: -o-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-}
+// #content input[type="text"]:focus,
+// #content input[type="email"]:focus,
+// #content input[type="url"]:focus,
+// #content textarea:focus{
+// 	border: 1px solid @light-blue;
+// 	.box-shadow ( 0, 0, 2px, @light-blue );
+// }
+// #content .form-submit input,
+// #content .contact-submit input{
+// 	background: @light-blue;
+// 	background-image: linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+// 	background-image: -moz-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+// 	background-image: -ms-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+// 	background-image: -webkit-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+// 	background-image: -o-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
+// 	.box-shadow ( 0, 0, 1px, @light-blue );
+// 	.border-radius ( 3px );
+// }
+// #content .form-submit input:active{
+// 	background-image: linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+// 	background-image: -moz-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+// 	background-image: -ms-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+// 	background-image: -webkit-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+// 	background-image: -o-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
+// }
 
 
 /* =Images
@@ -215,7 +189,7 @@ nav ul li.current-menu-parent > a {
 .comment-author img,
 .slider-thumbnail img,
 .widget img,
-.author-avatar img{
+.avatar{
 	.border-radius ( 3px );
 	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
 }

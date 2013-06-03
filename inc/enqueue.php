@@ -38,18 +38,14 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Register and enqueue Modernizr JS
-	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), '2.5.3', false );
+	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'modernizr' );
 
-	// Display Golden Grid Systen if is set by the user
-	if ( '1' == $t_em_tools_box_options['golden-grid-system'] ) :
-		wp_register_script( 'golden-grid-system', T_EM_THEME_DIR_JS.'/ggs.js', array(), '1.01', false );
-		wp_enqueue_script( 'golden-grid-system' );
-		wp_register_script( 'script-ggs', T_EM_THEME_DIR_JS . '/script.ggs.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'script-ggs' );
-		wp_register_style( 'ggs', t_em_ggs_style() );
-		wp_enqueue_style( 'ggs' );
-	endif;
+	// Register and enqueue Twitter Bootstrap Framework
+	wp_register_style( 'bootstrap', T_EM_THEME_DIR_CSS.'/bootstrap.css', '', $t_em_theme_data['Version'], 'all' );
+	wp_enqueue_style( 'bootstrap' );
+	wp_register_script( 'bootstrap', T_EM_THEME_DIR_JS.'/bootstrap.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'bootstrap' );
 
 	// Load IcoMoon set if is set by the user
 	wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
@@ -57,11 +53,11 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Load JQuery Nivo Slider just if is needed
 	if ( 'slider' == $t_em_theme_options['header-set'] ) :
-		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS . '/nivo-slider/nivo-slider.css', array(), '3.2', 'all' );
+		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 		wp_enqueue_style( 'style-nivo-slider' );
-		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/'.$t_em_theme_options['nivo-style'].'/'.$t_em_theme_options['nivo-style'].'.css', array(), '3.2', $media = 'all' );
+		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/'.$t_em_theme_options['nivo-style'].'/'.$t_em_theme_options['nivo-style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
 		wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'' );
-		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS.'/jquery.nivo.slider.pack.js', array( 'jquery' ), '3.2', false );
+		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'nivo-slider' );
 		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-jquery-nivo-slider' );
@@ -132,6 +128,14 @@ function t_em_ggs_style(){
 	}
 </style>'."\n";
 }
+
+/**
+ * Add Twitter Bootstrap meta on the <head> tag
+ */
+function t_em_bootstrap_meta(){
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
+}
+add_action( 'wp_head', 't_em_bootstrap_meta' );
 
 /**
  * The "rel" element in the html returned by the function wp_enqueue_style()

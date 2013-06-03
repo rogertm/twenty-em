@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<div id="primary">
+		<div id="primary" class="span8">
 			<div id="content" role="main">
 				<header>
 					<h1 class="page-title"><?php
@@ -19,7 +19,7 @@ get_header(); ?>
 				<?php
 					$category_description = category_description();
 					if ( ! empty( $category_description ) ) :
-						echo '<div id="category-description" class="archive-meta">' . $category_description . '</div>';
+						echo '<div id="category-description" class="archive-meta well">' . $category_description . '</div>';
 					endif;
 
 				// Run the loop for the category page to output the posts.

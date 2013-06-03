@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<div id="primary">
+		<div id="primary" class="span8">
 			<div id="content" role="main">
 				<header>
 					<h1 class="page-title"><?php

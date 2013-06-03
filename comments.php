@@ -35,14 +35,14 @@ if ( have_comments() ) :
 <?php
 	if ( !empty($comments_by_type['comment']) ) :
 ?>
-		<h3 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h3>
-		<ol class="commentlist">
+		<h4 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h4>
+		<ul class="commentlist media-list">
 			<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
-		</ol>
+		</ul>
 <?php
 	else : // If there are no responds type comments
 ?>
-		<h3 id="comment"><?php _e('No Comments', 't_em'); ?></h3>
+		<h4 id="comment"><?php _e('No Comments', 't_em'); ?></h4>
 <?php
 	endif; // !empty($comments_by_type['comment'])
 ?>
@@ -53,14 +53,14 @@ if ( have_comments() ) :
 			<?php echo count( $wp_query->comments_by_type['pingback'] ); ?> Pingbacks
 			<span> | </span>
 			<?php echo count( $wp_query->comments_by_type['trackback'] ); ?> Trackbacks
-			</h3>
-		<ol class="commentlist">
+			</h4>
+		<ul class="commentlist">
 			<?php wp_list_comments( array( 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
-		</ol>
+		</ul>
 <?php
 	else : // If there are no responds type pingback
 ?>
-		<h3 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks', 't_em'); ?></h3>
+		<h4 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks', 't_em'); ?></h4>
 <?php
 	endif; // !empty($comments_by_type['pings'])
 ?>
@@ -68,7 +68,7 @@ if ( have_comments() ) :
 <?php
 	if ( !comments_open() ) :
 ?>
-		<h3 id="comments-closed"><?php _e('Comments are closed', 't_em'); ?></h3>
+		<h4 id="comments-closed"><?php _e('Comments are closed', 't_em'); ?></h4>
 <?php
 	endif;
 ?>
@@ -84,4 +84,4 @@ endif; // have_comments()
 $new_defaults = array ();
 comment_form($new_defaults);
 ?>
-</section><!-- #comments -->
+</section><!-- #comments .media -->
