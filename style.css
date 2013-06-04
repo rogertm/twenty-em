@@ -1561,3 +1561,9 @@ img#wpstats {
 		padding: 0 0 0 20px;
 	}
 }
+/* Minimun width of ~ 769 pixels. */
+@media screen and (min-width: 769px){
+	#site-navigation .menu{
+		display: block !important;
+	}
+}
