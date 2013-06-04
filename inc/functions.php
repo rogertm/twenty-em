@@ -819,12 +819,12 @@ function t_em_comment_form_fields() {
 	$req = get_option('require_name_email');
 	$aria_req = ( $req ? " aria-required='true' " : "" );
 	$fields =  array(
-		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+		'author' => '<p class="comment-form-author"><label for="author">' . __( 'Name', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
 					'<input id="author" class="input-xlarge" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
-		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
 					'<input id="email" class="input-xlarge" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
 		'url'	 => '<p class="comment-form-url"><label for="url">' . __( 'Website', 't_em' ) . '</label>' .
-					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /></p>'
+					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /><p>'
 	);
 	return $fields;
 }
@@ -837,7 +837,8 @@ add_filter('comment_form_default_fields', 't_em_comment_form_fields');
  * @since Twenty'em 0.1
  */
 function t_em_comment_form_textarea() {
-	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What&#8217;s on your mind?', 't_em' ) .'"></textarea></p>';
+	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label>' .
+					'<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What&#8217;s on your mind?', 't_em' ) .'"></textarea>';
 	return $comment_area;
 }
 add_filter('comment_form_field_comment', 't_em_comment_form_textarea');

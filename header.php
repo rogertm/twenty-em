@@ -24,7 +24,7 @@
 
 <body <?php body_class(); ?>>
 <!--[if lte IE 8 ]>
-<noscript><strong><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript class="alert alert-error lead"><strong><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 
 <div id="wrap" class="hfeed">
@@ -33,13 +33,6 @@
 
 			<div id="branding" role="banner" class="wrapper container-fluid">
 				<div class="row-fluid">
-					<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-					<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
-					<nav id="top-menu" role="navigation" class="span8 text-right hidden-phone">
-						<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
-					</nav>
-					<?php endif; ?>
 					<hgroup class="span4">
 						<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 						<<?php echo $heading_tag; ?> id="site-title">
@@ -49,6 +42,13 @@
 						</<?php echo $heading_tag; ?>>
 						<h2 id="site-description" class="hidden-phone"><?php bloginfo( 'description' ); ?></h2>
 					</hgroup>
+					<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+					<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
+					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
+					<nav id="top-menu" role="navigation" class="span8 text-right hidden-phone">
+						<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
+					</nav>
+					<?php endif; ?>
 				</div><!-- .row-fluid -->
 			</div><!-- #branding .container-fluid -->
 
@@ -57,7 +57,7 @@
 			<nav id="site-navigation" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#primary" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#main" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
 				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
 				<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Main menu', 't_em' ); ?></span></h3>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>

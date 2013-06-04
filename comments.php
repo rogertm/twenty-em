@@ -80,8 +80,6 @@ else : // If there are no responds
 endif; // have_comments()
 ?>
 <?php
-/** @see http://codex.wordpress.org/Function_Reference/comment_form */
-$new_defaults = array ();
-comment_form($new_defaults);
+comment_form();
 ?>
 </section><!-- #comments .media -->

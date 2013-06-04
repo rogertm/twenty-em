@@ -14,13 +14,8 @@
 /* This stylesheet merely overrides a few and brings HTML5 to the masses! */
 
 /* A message for users with JavaScript turned off **/
-noscript strong {
+noscript {
 	display: block;
-	font-size: 18px;
-	line-height:1.5em;
-	padding: 5px 0;
-	background-color: #ccc;
-	color: #a00;
 	text-align: center;
 }
 
@@ -230,12 +225,6 @@ input[type="url"],
 textarea {
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
-pre {
-	font-family: "Courier 10 Pitch", Courier, monospace;
-}
-code {
-	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-}
 
 
 /* =Structure
@@ -363,10 +352,8 @@ blockquote i {
 	font-style: normal;
 }
 pre {
-	line-height: 18px;
-	margin-bottom: 18px;
-	padding: 1.5em;
 	overflow: auto;
+	white-space: pre !important;
 }
 abbr,
 acronym {
@@ -419,7 +406,7 @@ sub {
 #site-title {
 	font-size: 38.5px;
 	line-height: 40px;
-	margin: 10px 0 10px -20px;
+	margin: 0;
 	font-weight: bold;
 }
 #site-title a {
@@ -427,7 +414,6 @@ sub {
 }
 #site-description {
 	font-style: italic;
-	margin-left: -20px;
 }
 #header-image img{
 	width: 100%;
@@ -570,13 +556,6 @@ div.menu li {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-#content,
-#content input,
-#content textarea {
-	color: #444;
-	font-size: 16px;
-	line-height: 24px;
-}
 #content p,
 #content ul,
 #content ol,
@@ -590,29 +569,6 @@ div.menu li {
 #content ul ol,
 #content ol ul {
 	margin-bottom: 0;
-}
-#content pre,
-#content kbd,
-#content tt,
-#content var {
-	font-size: 15px;
-	line-height: 21px;
-}
-#content code {
-	font-size: 13px;
-}
-#content table{
-	margin-bottom: 25px;
-}
-#content tr th,
-#content thead th {
-	font-weight: bold;
-	line-height: 18px;
-	padding: 9px 24px;
-}
-#content tr td {
-	border-top: 1px solid #e7e7e7;
-	padding: 6px 24px;
 }
 .hentry {
 	margin: 0 0 40px 0;
@@ -1093,7 +1049,6 @@ input[type=submit] {
 #content label {
 	color: #888;
 	font-size: 12px;
-	display: inline;
 }
 #content #commentform input {
 	display: block;
@@ -1139,7 +1094,9 @@ input[type=submit] {
 #commentform{
 	padding: 0 5px;
 }
-#commentform #submit {
+/* Bootstrap style for submit buttons (Also JetPack Plugin) */
+#commentform #submit,
+.contact-form.commentsblock input[type="submit"] {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   -webkit-border-radius: 4px;
@@ -1164,6 +1121,10 @@ input[type=submit] {
 }
 #searchform label {
 	display: none;
+}
+#commentform .form-allowed-tags code{
+	white-space: pre-wrap;
+	color: #333;
 }
 
 
@@ -1375,8 +1336,8 @@ img#wpstats {
 /* =Media queries
 -------------------------------------------------------------- */
 /* Portrait tablet */
-@media (max-width: 769px) {
-	#primary,
+/*@media (max-width: 769px) {
+	#content,
 	#secondary,
 	.sidebar-left #primary,
 	.sidebar-left #secondary,
@@ -1384,16 +1345,17 @@ img#wpstats {
 		clear: both;
 		width: 100% !important;
 	}
-}
+}*/
 
 /* Portrait tablet */
-@media (min-width: 768px){
+/*@media (min-width: 768px){
 	#site-navigation .menu{
 		display: block !important;
 	}
-}
+}*/
+
 /* Portrait tablet to landscape and desktop */
-@media (max-width: 979px){
+/*@media (max-width: 979px){
 	#header hgroup,
 	#site-title,
 	#site-description,
@@ -1419,10 +1381,15 @@ img#wpstats {
 		float: none !important;
 		padding: 10px 0;
 	}
-}
-
+}*/
+/* Portrait tablet */
+/*@media (max-width: 769px) {
+	#footer-widget-area aside{
+		margin-left: 0;
+	}
+}*/
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px){
+/*@media (max-width: 767px){
 	#site-navigation .menu-header{
 		margin: 0;
 	}
@@ -1505,9 +1472,9 @@ img#wpstats {
 	#footer-menu a{
 		line-height: 38px;
 	}
-}
+}*/
 /* Landscape phones and down */
-@media (max-width: 480px){*/
+/*@media (max-width: 480px){
 	#content{
 		font-size: 1em;
 		line-height: 18px;
@@ -1515,4 +1482,4 @@ img#wpstats {
 	#comments .children{
 		padding: 0 0 0 20px;
 	}
-}
+}*/
