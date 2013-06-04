@@ -65,7 +65,7 @@ if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $
 				<h2 class="entry-title">
 					<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 				</h2>
-				<?php the_excerpt(); ?>
+				<div class="visible-desktop"><?php the_excerpt(); ?></div>
 			</div>
 			<?php
 			endwhile;

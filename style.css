@@ -1374,35 +1374,26 @@ img#wpstats {
 
 /* =Media queries
 -------------------------------------------------------------- */
-/* Maximum width of 800 pixels. */
-@media screen and (max-width: 800px){
-	#slider-wrapper{
-		overflow: hidden;
-	}
-	#slider-wrapper .slider-image,
-	#slider-wrapper .slider-sumary{
-		width: 50%;
-	}
-	#slider-wrapper .slider-image figure,
-	#slider-wrapper .slider-image img{
+/* Portrait tablet */
+@media (max-width: 769px) {
+	#primary,
+	#secondary,
+	.sidebar-left #primary,
+	.sidebar-left #secondary,
+	#colophon aside{
+		clear: both;
 		width: 100% !important;
 	}
-	.slider-thumbnail-full .slider-image,
-	.slider-thumbnail-full .slider-sumary{
-		width: 100% !important;
+}
+
+/* Portrait tablet */
+@media (min-width: 768px){
+	#site-navigation .menu{
+		display: block !important;
 	}
-	.slider-thumbnail-left .slider-sumary .entry-title{
-		margin: 0 0 0 4% !important;
-	}
-	.slider-thumbnail-left .slider-sumary p{
-		margin: 10px 0 0 4% !important;
-	}
-	.slider-thumbnail-right .slider-sumary .entry-title{
-		margin: 0 4% 0 0;
-	}
-	.slider-thumbnail-right .slider-sumary p{
-		margin: 10px 8% 0 0 !important;
-	}
+}
+/* Portrait tablet to landscape and desktop */
+@media (max-width: 979px){
 	#header hgroup,
 	#site-title,
 	#site-description,
@@ -1416,6 +1407,10 @@ img#wpstats {
 		width: 100%;
 		margin: 0;
 	}
+	#site-navigation .menu li{
+		display: inline-block;
+		float: none;
+	}
 	#top-menu,
 	#copyright,
 	#footer-menu,
@@ -1424,6 +1419,10 @@ img#wpstats {
 		float: none !important;
 		padding: 10px 0;
 	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px){
 	#site-navigation .menu-header{
 		margin: 0;
 	}
@@ -1431,18 +1430,6 @@ img#wpstats {
 		float: none;
 		display: inline-block;
 		text-align: left;
-	}
-}
-
-/* Maximum width of 768 pixels. */
-@media screen and (max-width: 768px){
-	#primary,
-	#secondary,
-	.sidebar-left #primary,
-	.sidebar-left #secondary,
-	#colophon aside{
-		clear: both;
-		width: 100% !important;
 	}
 	#content figure{
 		padding: 5px 0;
@@ -1519,51 +1506,13 @@ img#wpstats {
 		line-height: 38px;
 	}
 }
-/* Maximum width of 600 pixels. */
-@media screen and (max-width: 600px){
-	#slider-wrapper{
-		height: 150px !important;
-	}
-	#slider-wrapper .entry-title{
-		font-size: 1.5em;
-	}
-	#slider-wrapper .slider-image{
-		width: 35%;
-	}
-	#slider-wrapper .slider-sumary{
-		width: 65%;
-	}
-	#respond input,
-	#respond textarea{
-		width: 98%;
-	}
-}
-/* Maximum width of 480 pixels. */
-@media screen and (max-width: 480px){
-	#header{
-		padding: 0;
-	}
-	#slider-wrapper{
-		height: 150px !important;
-	}
-	#slider-wrapper .slider-image,
-	#slider-wrapper .slider-sumary{
-		width: 50%;
-	}
-	#slider-wrapper .slider-sumary p{
-		display: none;
-	}
+/* Landscape phones and down */
+@media (max-width: 480px){*/
 	#content{
 		font-size: 1em;
 		line-height: 18px;
 	}
 	#comments .children{
 		padding: 0 0 0 20px;
-	}
-}
-/* Minimun width of ~ 769 pixels. */
-@media screen and (min-width: 769px){
-	#site-navigation .menu{
-		display: block !important;
 	}
 }
