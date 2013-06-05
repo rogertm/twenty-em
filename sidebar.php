@@ -12,7 +12,7 @@ global $t_em_theme_options;
 if ( 'content' != $t_em_theme_options['layout-set'] ) :
 ?>
 
-		<div id="secondary" class="widget-area span4" role="complementary">
+		<div id="sidebar" class="widget-area span4" role="complementary">
 
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out
@@ -43,6 +43,6 @@ if ( 'content' != $t_em_theme_options['layout-set'] ) :
 			</aside>
 
 		<?php endif; // end primary widget area ?>
-		</div><!-- #secondary .widget-area -->
+		</div><!-- #sidebar .widget-area -->
 
 <?php endif; // If there is sidebar or not! ?>

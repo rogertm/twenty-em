@@ -9,8 +9,7 @@
 
 get_header(); ?>
 
-		<div id="primary" class="span8">
-			<div id="content" role="main">
+	<div id="content" role="main" class="span8">
 
 <?php
 	/* Queue the first post, that way we know who the author is when we try to get their name,
@@ -21,9 +20,9 @@ get_header(); ?>
 	if ( have_posts() ) :
 		the_post();
 ?>
-			<header>
-				<h1 class="page-title author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
-			</header>
+		<header>
+			<h1 class="page-title author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
+		</header>
 		<?php t_em_author_meta(); ?>
 
 <?php
@@ -42,8 +41,7 @@ get_header(); ?>
 		get_template_part( 'content', 'none' );
 	endif;
 ?>
-			</div><!-- #content -->
-		</div><!-- #primary -->
+	</div><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

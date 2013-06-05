@@ -14,11 +14,10 @@
 
 get_header(); ?>
 
-<div id="primary" class="span8">
-	<div id="content" role="main">
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
+	<div id="content" role="main" class="span8">
 <?php
 	// If our front page is a static page, we load it
 	$front_page = get_option( 'show_on_front' ) ;
@@ -60,11 +59,11 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 	endif;
 ?>
 	</div><!-- #content -->
-</div><!-- #primary -->
 <?php get_sidebar(); // We display the sidebar just in an ordinary WordPress front page ?>
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
+	<div id="content" role="main" class="span12">
 		<section id="featured-widget-area">
 			<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
 			<div class="row-fluid">
@@ -74,6 +73,5 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 			</div>
 		</section><!-- #featured-widget-area -->
 	</div><!-- #content -->
-</div><!-- #primary -->
 <?php endif; ?>
 <?php get_footer(); ?>

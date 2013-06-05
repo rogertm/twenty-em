@@ -127,45 +127,39 @@ LAYOUT: Two columns
 DESCRIPTION: Two-column fixed layout with one sidebar right of content
 */
 
-#primary {
+#content {
 	float: left;
 	margin-bottom: 25px;
 }
-.sidebar-left #primary{
+#sidebar {
+	float: right;
+}
+
+/*
+LAYOUT: Two columns
+DESCRIPTION: Two-column fixed layout with one sidebar left of content
+*/
+.sidebar-left #content{
 	float: right;
 	margin-left: 2.5641%;
 }
-#secondary {
-	float: right;
-}
-.sidebar-left #secondary{
+.sidebar-left #sidebar{
 	float: left;
 	margin-left: 0;
 }
+
+/*
+LAYOUT: Two columns
+DESCRIPTION: Two-column fixed layout with one sidebar left of content
+*/
+.one-column #content{
+	width: 100%;
+}
+/*
+LAYOUT: Footer
+*/
 #footer {
 	clear: both;
-	width: 100%;
-}
-
-/*
-LAYOUT: One column, no sidebar
-DESCRIPTION: One centered column with no sidebar
-*/
-
-.one-column #primary,
-#primary.full-width {
-	margin: 0 auto;
-	width: 100%;
-}
-
-/*
-LAYOUT: Full width, no sidebar
-DESCRIPTION: Full width content with no sidebar;
-	used for attachment pages
-*/
-
-#primary.single-attachment {
-	margin: 0 auto;
 	width: 100%;
 }
 
@@ -184,7 +178,7 @@ h3#comments-title,
 h3#reply-title,
 #site-navigation .menu,
 #site-navigation div.menu ul,
-#secondary .widget-container,
+#sidebar .widget-container,
 #top-menu .menu,
 #footer-menu .menu,
 #social-network-menu .menu,
@@ -1216,8 +1210,6 @@ input[type=submit] {
 	margin-left: 1.3em;
 	padding: 0;
 }
-#secondary {
-}
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
@@ -1298,7 +1290,7 @@ img#wpstats {
 	.widget-area {
 		display: none !important;
 	}
-	#primary,
+	#content,
 	#header,
 	#footer {
 		margin: 0;
@@ -1338,9 +1330,9 @@ img#wpstats {
 /* Portrait tablet */
 /*@media (max-width: 769px) {
 	#content,
-	#secondary,
-	.sidebar-left #primary,
-	.sidebar-left #secondary,
+	#sidebar,
+	.sidebar-left #content,
+	.sidebar-left #sidebar,
 	#colophon aside{
 		clear: both;
 		width: 100% !important;

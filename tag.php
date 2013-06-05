@@ -9,28 +9,26 @@
 
 get_header(); ?>
 
-		<div id="primary" class="span8">
-			<div id="content" role="main">
-				<header>
-					<h1 class="page-title"><?php
-						printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' );
-					?></h1>
-				</header>
+	<div id="content" role="main" class="span8">
+		<header>
+			<h1 class="page-title"><?php
+				printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+			?></h1>
+		</header>
 
 <?php
 // Run the loop for the tag archive to output the posts
-				t_em_page_navi( 'nav-above' );
-				if ( have_posts() ) :
-					while ( have_posts() ) : the_post();
-						get_template_part( 'content', get_post_format() );
-					endwhile;
-				t_em_page_navi( 'nav-below' );
-				else :
-					get_template_part( 'content', 'none' );
-				endif;
+		t_em_page_navi( 'nav-above' );
+		if ( have_posts() ) :
+			while ( have_posts() ) : the_post();
+				get_template_part( 'content', get_post_format() );
+			endwhile;
+		t_em_page_navi( 'nav-below' );
+		else :
+			get_template_part( 'content', 'none' );
+		endif;
 ?>
-			</div><!-- #content -->
-		</div><!-- #primary -->
+	</div><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
