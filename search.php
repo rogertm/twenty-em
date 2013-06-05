@@ -9,7 +9,9 @@
 
 get_header(); ?>
 
-	<section id="content" role="main" class="span8">
+<div id="main" class="wrapper container-fluid">
+	<section id="main-content" class="row-fluid">
+		<section id="content" role="main" class="span8">
 
 <?php if ( have_posts() ) : ?>
 		<header>
@@ -25,7 +27,10 @@ get_header(); ?>
 		get_template_part( 'content', 'none' );
 	endif;
 ?>
-	</section><!-- #content -->
+		</section><!-- #content -->
+		<?php get_sidebar(); ?>
+	</section><!-- #main-content .rwo-fluid -->
+	<?php get_sidebar( 'alt' ); ?>
+</div><!-- #main -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

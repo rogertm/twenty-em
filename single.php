@@ -9,7 +9,9 @@
 
 get_header(); ?>
 
-	<section id="content" role="main" class="span8">
+<div id="main" class="wrapper container-fluid">
+	<section id="main-content" class="row-fluid">
+		<section id="content" role="main" class="span8">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -51,8 +53,10 @@ get_header(); ?>
 		<?php comments_template( '', true ); ?>
 
 <?php endwhile; // end of the loop. ?>
+		</section><!-- #content -->
+		<?php get_sidebar(); ?>
+	</section><!-- #main-content .rwo-fluid -->
+	<?php get_sidebar( 'alt' ); ?>
+</div><!-- #main -->
 
-	</section><!-- #content -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

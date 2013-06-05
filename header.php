@@ -65,6 +65,3 @@
 			</nav><!-- #site-navigation -->
 		</section><!-- #masthead -->
 	</header><!-- #header -->
-
-<!-- 	<div id="main" class="wrapper container-fluid">
-		<div id="main-content" class="row-fluid"> -->

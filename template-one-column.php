@@ -14,7 +14,9 @@
 
 get_header(); ?>
 
-	<section id="content" role="main" class="span12">
+<div id="main" class="wrapper container-fluid">
+	<section id="main-content" class="row-fluid">
+		<section id="content" role="main" class="span12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -28,7 +30,8 @@ get_header(); ?>
 		</article><!-- #post-## -->
 
 <?php endwhile; ?>
-
-	</section><!-- #content -->
+		</section><!-- #content -->
+	</section><!-- #main-content .rwo-fluid -->
+</div><!-- #main -->
 
 <?php get_footer(); ?>
