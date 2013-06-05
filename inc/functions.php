@@ -462,16 +462,27 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  * This function is attached to the widgets_init hook.
  *
- * @uses register_sidebar
+ * @uses register_sidebar()
  *
  * @since Twenty'em 0.1
  */
 function t_em_widgets_init() {
+	// Area 0, located at the top of the sidebar.
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar Widget Area', 't_em' ),
+		'id' => 'sidebar',
+		'description' => __( 'The main sidebar widget area', 't_em' ),
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
-		'name' => __( 'First Sidebar Widget Area', 't_em' ),
-		'id' => 'first-sidebar',
-		'description' => __( 'The sidebar widget area', 't_em' ),
+		'name' => __( 'Alternative Sidebar Widget Area', 't_em' ),
+		'id' => 'sidebar-alt',
+		'description' => __( 'Alternative sidebar widget area', 't_em' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',

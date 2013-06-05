@@ -240,7 +240,7 @@ function t_em_default_theme_options(){
 		'link-url-text-widget-four'			=> '',
 		// Archive Options
 		'archive-set'						=> 'the-content',
-		'layout-set'						=> 'sidebar-right',
+		'layout-set'						=> 'two-column-content-left',
 		'layout-width'						=> '960',
 		'excerpt-set'						=> 'thumbnail-left',
 		'slider-height'						=> '350',
@@ -501,16 +501,24 @@ function t_em_layout_classes( $existing_classes ){
 	// In front page and 'front-page-set => widgets-front-page' one column is enogh
 	if ( $t_em_theme_options['front-page-set'] == 'widgets-front-page' && is_front_page() ) :
 		$classes = array ( 'one-column' );
-	elseif ( in_array( $layout_set, array( 'sidebar-right', 'sidebar-left' ) ) ) :
+	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
 		$classes = array ( 'two-column' );
+	elseif ( in_array( $layout_set, array( 'three-column-content-left', 'three-column-content-right', 'three-column-content-middle' ) ) ) :
+		$classes = array ( 'three-column' );
 	else :
 		$classes = array ( 'one-column' );
 	endif;
 
-	if ( 'sidebar-right' == $layout_set )
-		$classes[] = 'sidebar-right';
-	elseif ( 'sidebar-left' == $layout_set )
-		$classes[] = 'sidebar-left';
+	if ( 'two-column-content-left' == $layout_set )
+		$classes[] = 'two-column-content-left';
+	elseif ( 'two-column-content-right' == $layout_set )
+		$classes[] = 'two-column-content-right';
+	elseif ( 'three-column-content-left' == $layout_set )
+		$classes[] = 'three-column-content-left';
+	elseif ( 'three-column-content-right' == $layout_set )
+		$classes[] = 'three-column-content-right';
+	elseif ( 'three-column-content-middle' == $layout_set )
+		$classes[] = 'three-column-content-middle';
 	else
 		$classes[] = $layout_set;
 

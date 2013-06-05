@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span12">
+	<section id="content" role="main" class="span12">
 
 		<article id="post-0" class="post error404 not-found hentry">
 			<h1 class="entry-title"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
@@ -19,7 +19,7 @@ get_header(); ?>
 			</div><!-- .entry-content -->
 		</article><!-- #post-0 -->
 
-	</div><!-- #content -->
+	</section><!-- #content -->
 	<script type="text/javascript">
 		// focus on search field after it has loaded
 		document.getElementById('s') && document.getElementById('s').focus();

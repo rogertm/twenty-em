@@ -24,7 +24,7 @@
 
 <body <?php body_class(); ?>>
 <!--[if lte IE 8 ]>
-<noscript class="alert alert-error lead"><strong><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript class="alert alert-error lead"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 
 <div id="wrap" class="hfeed">
@@ -66,5 +66,5 @@
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
-	<div id="main" class="wrapper container-fluid">
-		<div class="row-fluid">
+<!-- 	<div id="main" class="wrapper container-fluid">
+		<div id="main-content" class="row-fluid"> -->

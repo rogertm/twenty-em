@@ -124,7 +124,7 @@ ol, ul {
 
 /*
 LAYOUT: Two columns
-DESCRIPTION: Two-column fixed layout with one sidebar right of content
+DESCRIPTION: Two column fixed layout with content on the left
 */
 
 #content {
@@ -137,24 +137,25 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 
 /*
 LAYOUT: Two columns
-DESCRIPTION: Two-column fixed layout with one sidebar left of content
+DESCRIPTION: Two column fixed layout with content on the right
 */
-.sidebar-left #content{
+.two-column-content-right #content{
 	float: right;
 	margin-left: 2.5641%;
 }
-.sidebar-left #sidebar{
+.two-column-content-right #sidebar{
 	float: left;
 	margin-left: 0;
 }
 
 /*
-LAYOUT: Two columns
-DESCRIPTION: Two-column fixed layout with one sidebar left of content
+LAYOUT: One columns
+DESCRIPTION: One column fixed layout
 */
 .one-column #content{
 	width: 100%;
 }
+
 /*
 LAYOUT: Footer
 */
@@ -1331,8 +1332,8 @@ img#wpstats {
 /*@media (max-width: 769px) {
 	#content,
 	#sidebar,
-	.sidebar-left #content,
-	.sidebar-left #sidebar,
+	.two-column-content-right #content,
+	.two-column-content-right #sidebar,
 	#colophon aside{
 		clear: both;
 		width: 100% !important;

@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span12">
+	<section id="content" role="main" class="span12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -29,6 +29,6 @@ get_header(); ?>
 
 <?php endwhile; ?>
 
-	</div><!-- #content -->
+	</section><!-- #content -->
 
 <?php get_footer(); ?>

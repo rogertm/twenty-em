@@ -13,11 +13,13 @@
  */
 
 get_header(); ?>
-
+	<div id="main" class="wrapper container-fluid">
+		<div class="row-fluid">
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-	<div id="content" role="main" class="span8">
+			<div id="main-content" class="row-fluid">
+				<section id="content" role="main" class="span8">
 <?php
 	// If our front page is a static page, we load it
 	$front_page = get_option( 'show_on_front' ) ;
@@ -27,20 +29,20 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 			while ( have_posts() ) :
 				the_post();
 ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-			<?php if ( is_front_page() ) : ?>
-				<h2 class="entry-title"><?php the_title(); ?></h2>
-			<?php else : ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			<?php endif; ?>
-			</header>
-			<div class="entry-content">
-				<?php the_content(); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-				<?php t_em_edit_post_link(); ?>
-			</div><!-- .entry-content -->
-		</article><!-- #post-## -->
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<header>
+						<?php if ( is_front_page() ) : ?>
+							<h2 class="entry-title"><?php the_title(); ?></h2>
+						<?php else : ?>
+							<h1 class="entry-title"><?php the_title(); ?></h1>
+						<?php endif; ?>
+						</header>
+						<div class="entry-content">
+							<?php the_content(); ?>
+							<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
+							<?php t_em_edit_post_link(); ?>
+						</div><!-- .entry-content -->
+					</article><!-- #post-## -->
 <?php
 			endwhile;
 		endif; // have_posts()
@@ -58,20 +60,24 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 		endif;
 	endif;
 ?>
-	</div><!-- #content -->
+				</section><!-- #content -->
 <?php get_sidebar(); // We display the sidebar just in an ordinary WordPress front page ?>
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-	<div id="content" role="main" class="span12">
-		<section id="featured-widget-area">
-			<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
-			<div class="row-fluid">
-				<?php t_em_front_page_widgets( 'two', 'btn' ); ?>
-				<?php t_em_front_page_widgets( 'three', 'btn' ); ?>
-				<?php t_em_front_page_widgets( 'four', 'btn' ); ?>
-			</div>
-		</section><!-- #featured-widget-area -->
-	</div><!-- #content -->
+			<div id="main-content" class="row-fluid">
+				<section id="content" role="main" class="span12">
+					<section id="featured-widget-area">
+						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
+						<div class="row-fluid">
+							<?php t_em_front_page_widgets( 'two', 'btn' ); ?>
+							<?php t_em_front_page_widgets( 'three', 'btn' ); ?>
+							<?php t_em_front_page_widgets( 'four', 'btn' ); ?>
+						</div>
+					</section><!-- #featured-widget-area -->
+				</section><!-- #content -->
+			</div><!-- #main-content .row-fluid -->
 <?php endif; ?>
+		</div><!-- .row-fluid -->
+	</div><!-- #main .container-fluid -->
 <?php get_footer(); ?>

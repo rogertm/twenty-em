@@ -1,6 +1,6 @@
 <?php
 /**
- * The Sidebar containing the primary and secondary widget areas.
+ * The Sidebar containing the primary widget areas.
  *
  * @package WordPress
  * @subpackage Twenty'em
@@ -9,10 +9,10 @@
 
 global $t_em_theme_options;
 
-if ( 'content' != $t_em_theme_options['layout-set'] ) :
+if ( 'one-column' != $t_em_theme_options['layout-set'] ) :
 ?>
 
-		<div id="sidebar" class="widget-area span4" role="complementary">
+		<section id="sidebar" class="widget-area span4" role="complementary">
 
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out
@@ -20,7 +20,7 @@ if ( 'content' != $t_em_theme_options['layout-set'] ) :
 	 * then the sidebar simply doesn't exist, so we'll hard-code in
 	 * some default sidebar stuff just in case.
 	 */
-	if ( ! dynamic_sidebar( 'first-sidebar' ) ) : ?>
+	if ( ! dynamic_sidebar( 'sidebar' ) ) : ?>
 
 			<aside id="search" class="widget-container widget_search">
 				<?php get_search_form(); ?>
@@ -43,6 +43,6 @@ if ( 'content' != $t_em_theme_options['layout-set'] ) :
 			</aside>
 
 		<?php endif; // end primary widget area ?>
-		</div><!-- #sidebar .widget-area -->
+		</section><!-- #sidebar .widget-area -->
 
 <?php endif; // If there is sidebar or not! ?>

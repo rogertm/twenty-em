@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span8">
+	<section id="content" role="main" class="span8">
 		<header>
 			<h1 class="page-title"><?php
 				printf( __( 'Category Archives: %s', 't_em' ), '<span>' . single_cat_title( '', false ) . '</span>' );
@@ -33,7 +33,7 @@ get_header(); ?>
 		endif;
 		?>
 
-	</div><!-- #content -->
+	</section><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

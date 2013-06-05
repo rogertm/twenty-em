@@ -10,8 +10,7 @@
  * @since Twenty'em 0.1
  */
 ?>
-		</div><!-- .row-fluid -->
-	</div><!-- #main .container-fluid -->
+
 
 	<footer id="footer" role="contentinfo">
 		<div id="colophon">

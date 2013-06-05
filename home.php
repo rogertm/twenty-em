@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span8">
+	<section id="content" role="main" class="span8">
 
 	<?php if ( have_posts() ) : ?>
 		<?php t_em_page_navi( 'nav-above' ); ?>
@@ -26,7 +26,7 @@ get_header(); ?>
 	<?php else : ?>
 		<?php get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
-	</div><!-- #content -->
+	</section><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

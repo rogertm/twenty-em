@@ -18,8 +18,8 @@
 /**
  * Return an array of Layout Options for Twenty'em admin panel.
  * This function manage how is displayed our theme layout. Possibles options are:
- * 0. Sidebar on right (sidebar-right).
- * 1. Sidebar on left (sidebar-left).
+ * 0. Sidebar on right (two-column-content-left).
+ * 1. Sidebar on left (two-column-content-right).
  * 2. One column, no sidebar (content).
  *
  * @return array
@@ -28,19 +28,34 @@
  */
 function t_em_layout_options(){
 	$layout_options = array (
-		'sidebar-right' => array(
-			'value' => 'sidebar-right',
-			'label' => __( 'Sidebar on right', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-right.png',
+		'two-column-content-left' => array(
+			'value' => 'two-column-content-left',
+			'label' => __( 'One column. Content on right', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/two-column-content-left.png',
 		),
-		'sidebar-left' => array(
-			'value' => 'sidebar-left',
-			'label' => __( 'Sidebar on left', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG . '/sidebar-left.png',
+		'two-column-content-right' => array(
+			'value' => 'two-column-content-right',
+			'label' => __( 'One column. Content on left', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/two-column-content-right.png',
 		),
-		'content' => array(
-			'value' => 'content',
-			'label' => __( 'One-column, no sidebar', 't_em' ),
+		'three-column-content-left' => array(
+			'value' => 'three-column-content-left',
+			'label' => __( 'Three columns. Content on left', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/three-column-content-left.png',
+		),
+		'three-column-content-right' => array(
+			'value' => 'three-column-content-right',
+			'label' => __( 'Three columns. Content on right', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/three-column-content-right.png',
+		),
+		'three-column-content-middle' => array(
+			'value' => 'three-column-content-middle',
+			'label' => __( 'Three columns. Content in the middle', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/three-column-content-middle.png',
+		),
+		'one-column' => array(
+			'value' => 'one-column',
+			'label' => __( 'One column, no sidebar', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG . '/one-column.png',
 		),
 	);
@@ -94,7 +109,7 @@ function t_em_settings_field_layout_set(){
 	<div class="layout image-radio-option theme-layout">
 		<label class="description">
 			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout-set'], $layout['value'] ); ?> />
-			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" width="136" height="122" alt="" /><?php echo $layout['label']; ?></span>
+			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
 		</label>
 	</div>
 <?php

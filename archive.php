@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span8">
+	<section id="content" role="main" class="span8">
 
 <?php
 	/* Queue the first post, that way we know what date we're dealing with (if that is the case).
@@ -55,7 +55,7 @@ get_header(); ?>
 		get_template_part( 'content', 'none' );
 	endif;
 ?>
-	</div><!-- #content -->
+	</section><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

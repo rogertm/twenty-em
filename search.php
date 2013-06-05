@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="content" role="main" class="span8">
+	<section id="content" role="main" class="span8">
 
 <?php if ( have_posts() ) : ?>
 		<header>
@@ -25,7 +25,7 @@ get_header(); ?>
 		get_template_part( 'content', 'none' );
 	endif;
 ?>
-	</div><!-- #content -->
+	</section><!-- #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
