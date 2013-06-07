@@ -9,7 +9,10 @@
 
 get_header(); ?>
 
-		<section id="content" role="main" class="span12">
+<div id="main" class="wrapper container-fluid">
+	<div class="row-fluid">
+		<section id="main-content">
+			<section id="content" role="main" class="span12">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -97,7 +100,9 @@ if ( count( $attachments ) > 1 ) {
 <?php comments_template(); ?>
 
 <?php endwhile; ?>
-
-		</section><!-- #content -->
+			</section><!-- #content -->
+		</section><!-- #main-content -->
+	</div><!-- .row-fluid -->
+</div><!-- #main -->
 
 <?php get_footer(); ?>

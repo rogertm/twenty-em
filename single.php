@@ -10,8 +10,9 @@
 get_header(); ?>
 
 <div id="main" class="wrapper container-fluid">
-	<section id="main-content" class="row-fluid">
-		<section id="content" role="main" class="span8">
+	<div class="row-fluid">
+		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -53,10 +54,11 @@ get_header(); ?>
 		<?php comments_template( '', true ); ?>
 
 <?php endwhile; // end of the loop. ?>
-		</section><!-- #content -->
-		<?php get_sidebar(); ?>
-	</section><!-- #main-content .rwo-fluid -->
-	<?php get_sidebar( 'alt' ); ?>
+			</section><!-- #content -->
+			<?php get_sidebar(); ?>
+		</section><!-- #main-content -->
+		<?php get_sidebar( 'alt' ); ?>
+	</div><!-- .row-fluid -->
 </div><!-- #main -->
 
 <?php get_footer(); ?>

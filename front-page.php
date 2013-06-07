@@ -19,8 +19,8 @@ get_header(); ?>
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-			<section id="main-content" class="row-fluid">
-				<section id="content" role="main" class="span8">
+			<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 <?php
 	// If our front page is a static page, we load it
 	$front_page = get_option( 'show_on_front' ) ;
@@ -63,12 +63,12 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
 				</section><!-- #content -->
 				<?php get_sidebar(); // We display the sidebar just in an ordinary WordPress front page ?>
-			</section><!-- #main-content .row-fluid -->
+			</section><!-- #main-content -->
 			<?php get_sidebar( 'alt' ); ?>
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-			<section id="main-content" class="row-fluid">
+			<section id="main-content">
 				<section id="content" role="main" class="span12">
 					<section id="featured-widget-area">
 						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
@@ -79,7 +79,7 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 						</div>
 					</section><!-- #featured-widget-area -->
 				</section><!-- #content -->
-			</section><!-- #main-content .row-fluid -->
+			</section><!-- #main-content-->
 <?php endif; ?>
 		</div><!-- .row-fluid -->
 	</div><!-- #main .container-fluid -->

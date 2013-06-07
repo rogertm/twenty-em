@@ -12,7 +12,7 @@ global $t_em_theme_options;
 if ( 'one-column' != $t_em_theme_options['layout-set'] ) :
 ?>
 
-		<section id="sidebar" class="widget-area span4" role="complementary">
+		<section id="sidebar" class="widget-area <?php echo t_em_add_bootstrap_class( 'sidebar' ); ?>" role="complementary">
 
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out

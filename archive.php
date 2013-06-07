@@ -15,8 +15,9 @@
 get_header(); ?>
 
 <div id="main" class="wrapper container-fluid">
-	<section id="main-content" class="row-fluid">
-		<section id="content" role="main" class="span8">
+	<div class="row-fluid">
+		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 
 <?php
 	/* Queue the first post, that way we know what date we're dealing with (if that is the case).
@@ -26,21 +27,21 @@ get_header(); ?>
 	if ( have_posts() ) :
 		the_post();
 ?>
-		<header>
-			<h1 class="page-title">
-			<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
-			else :
-				_e( 'Blog Archives', 't_em' );
-			endif;
-			?>
-			</h1>
-		</header>
+			<header>
+				<h1 class="page-title">
+				<?php
+				if ( is_day() ) :
+					printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
+				elseif ( is_month() ) :
+					printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
+				elseif ( is_year() ) :
+					printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
+				else :
+					_e( 'Blog Archives', 't_em' );
+				endif;
+				?>
+				</h1>
+			</header>
 <?php
 	/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 	 * we can run the loop properly, in full.
@@ -57,10 +58,11 @@ get_header(); ?>
 		get_template_part( 'content', 'none' );
 	endif;
 ?>
-		</section><!-- #content -->
-		<?php get_sidebar(); ?>
-	</section><!-- #main-content .rwo-fluid -->
-	<?php get_sidebar( 'alt' ); ?>
+			</section><!-- #content -->
+			<?php get_sidebar(); ?>
+		</section><!-- #main-content -->
+		<?php get_sidebar( 'alt' ); ?>
+	</div><!-- .row-fluid -->
 </div><!-- #main -->
 
 <?php get_footer(); ?>

@@ -152,9 +152,9 @@ DESCRIPTION: Two column fixed layout with content on the right
 LAYOUT: One columns
 DESCRIPTION: One column fixed layout
 */
-.one-column #content{
+/*.one-column #content{
 	width: 100%;
-}
+}*/
 
 /*
 LAYOUT: Footer

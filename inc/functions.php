@@ -1187,7 +1187,7 @@ function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
 
-		$widget_wrapper = ( 'one' == $widget ) ? '<div class="hero-unit">' : '<div class="span4">';
+		$widget_wrapper = ( 'one' == $widget ) ? '<div class="hero-unit">' : '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
 		$widget_wrapper_end = '</div>';
 
 		echo $widget_wrapper;
@@ -1203,5 +1203,73 @@ function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 <?php
 		echo $widget_wrapper_end;
 	endif;
+}
+
+/**
+ * Add Bootstrap CSS Classes
+ */
+function t_em_add_bootstrap_class( $section ){
+	global $t_em_theme_options;
+
+	$bootstrap_classes = '';
+
+	/** Main Content, Content, Sidebar and Sidebar Alt */
+	$layout_set = $t_em_theme_options['layout-set'];
+	$one_column = $layout_set['one-column'];
+	$two_column = in_array( $layout_set,
+						array( 'two-column-content-right',
+							   'two-column-content-left' ) );
+	$three_column = in_array( $layout_set,
+						array( 'three-column-content-left',
+							   'three-column-content-right',
+							   'three-column-content-middle' ) );
+
+	// #main-content and three-column or ( two-column or one-column )
+	if ( 'main-content' == $section && $three_column ) :
+		$bootstrap_classes = 'span9';
+	elseif ( 'main-content' == $section && ( $two_column || $one_column ) ) :
+		$bootstrap_classes = 'span12';
+	endif;
+	// #content and three-column or one-column
+	if ( 'content' == $section && $three_column ) :
+		$bootstrap_classes = 'span8';
+	elseif ( 'content' == $section && $one_column ) :
+		$bootstrap_classes = 'span12';
+	endif;
+	// #sidebar and three-column
+	if ( 'sidebar' == $section && $three_column ) :
+		$bootstrap_classes = 'span4';
+	endif;
+	// #sidebar-alt and three-column
+	if ( 'sidebar-alt' == $section && $three_column ) :
+		$bootstrap_classes = 'span3';
+	endif;
+	// #content and two-column
+	if ( 'content' == $section && $two_column ) :
+		$bootstrap_classes = 'span8';
+	endif;
+	// #sidebar and two-column
+	if ( 'sidebar' == $section && $two_column ) :
+		$bootstrap_classes = 'span4';
+	endif;
+
+	/** Front Page Widgets Area */
+	// Classes are needed for secondaries widgets only (two, three and four).
+	if ( 'featured-widget-area' == $section ) :
+		$widget_two		= ( ! empty ( $t_em_theme_options['headline-text-widget-two'] ) || ! empty ( $t_em_theme_options['content-text-widget-two'] ) ) ? '1' : '0' ;
+		$widget_three	= ( ! empty ( $t_em_theme_options['headline-text-widget-three'] ) || ! empty ( $t_em_theme_options['content-text-widget-three'] ) ) ? '1' : '0' ;
+		$widget_four	= ( ! empty ( $t_em_theme_options['headline-text-widget-four'] ) || ! empty ( $t_em_theme_options['content-text-widget-four'] ) ) ? '1' : '0' ;
+		$total_widgets = array_sum( array ($widget_two, $widget_three, $widget_four) );
+		// $bootstrap_classes =
+		if ( '1' == $total_widgets ) :
+			$bootstrap_classes = 'span12';
+		elseif ( '2' == $total_widgets ) :
+			$bootstrap_classes = 'span6';
+		elseif ( '3' == $total_widgets ) :
+			$bootstrap_classes = 'span4';
+		endif;
+	endif;
+
+	return $bootstrap_classes;
 }
 ?>
