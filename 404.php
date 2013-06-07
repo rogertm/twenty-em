@@ -11,7 +11,7 @@ get_header(); ?>
 
 <div id="main" class="wrapper container-fluid">
 	<div class="row-fluid">
-		<section id="main-content">
+		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
 
 				<article id="post-0" class="post error404 not-found hentry">

@@ -121,23 +121,8 @@ ol, ul {
 
 /* =Layout
 -------------------------------------------------------------- */
-
 /*
-LAYOUT: Two columns
-DESCRIPTION: Two column fixed layout with content on the left
-*/
-
-#content {
-	float: left;
-	margin-bottom: 25px;
-}
-#sidebar {
-	float: right;
-}
-
-/*
-LAYOUT: Two columns
-DESCRIPTION: Two column fixed layout with content on the right
+LAYOUT: Two column fixed layout with content on the right
 */
 .two-column-content-right #content{
 	float: right;
@@ -149,12 +134,30 @@ DESCRIPTION: Two column fixed layout with content on the right
 }
 
 /*
-LAYOUT: One columns
-DESCRIPTION: One column fixed layout
+LAYOUT: Three column fixed layout with content on the right
 */
-/*.one-column #content{
-	width: 100%;
-}*/
+.three-column-content-right #main-content,
+.three-column-content-right #content{
+	float: right;
+	margin-left: 2.5641%;
+}
+.three-column-content-right #sidebar-alt,
+.three-column-content-right #sidebar{
+	float: left;
+	margin-left: 0;
+}
+
+/*
+LAYOUT: Three column fixed layout with content on the right
+*/
+.three-column-content-middle #main-content{
+	float: right;
+	margin-left: 2.5641%;
+}
+.three-column-content-middle #sidebar-alt{
+	float: left;
+	margin-left: 0;
+}
 
 /*
 LAYOUT: Footer

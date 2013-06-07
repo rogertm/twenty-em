@@ -241,6 +241,7 @@ function t_em_default_theme_options(){
 		// Archive Options
 		'archive-set'						=> 'the-content',
 		'layout-set'						=> 'two-column-content-left',
+		'footer-set'						=> 'four-footer-widget',
 		'layout-width'						=> '960',
 		'excerpt-set'						=> 'thumbnail-left',
 		'slider-height'						=> '350',
@@ -393,6 +394,10 @@ function t_em_theme_options_validate( $input ){
 		'layout-options'	=> array (
 			'set'		=> 'layout-set',
 			'callback'	=> t_em_layout_options(),
+		),
+		'footer-options'	=> array (
+			'set'		=> 'footer-set',
+			'callback'	=> t_em_footer_options(),
 		),
 	);
 	foreach ( $radio_options as $radio ) :

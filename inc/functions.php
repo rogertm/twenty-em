@@ -461,77 +461,102 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  * This function is attached to the widgets_init hook.
+ * Note: Sidebars are enables just if they are needed
  *
  * @uses register_sidebar()
  *
  * @since Twenty'em 0.1
  */
 function t_em_widgets_init() {
-	// Area 0, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Main Sidebar Widget Area', 't_em' ),
-		'id' => 'sidebar',
-		'description' => __( 'The main sidebar widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	global $t_em_theme_options;
 
-	// Area 1, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Alternative Sidebar Widget Area', 't_em' ),
-		'id' => 'sidebar-alt',
-		'description' => __( 'Alternative sidebar widget area', 't_em' ),
-		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	// Sidebars Widgets Area
+	if ( 'one-column' != $t_em_theme_options['layout-set'] ) :
+		// Area 0, located at the top of the sidebar.
+		register_sidebar( array(
+			'name' => __( 'Main Sidebar Widget Area', 't_em' ),
+			'id' => 'sidebar',
+			'description' => __( 'The main sidebar widget area', 't_em' ),
+			'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		) );
+	endif;
 
-	// Area 2, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 't_em' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 't_em' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	if ( in_array( $t_em_theme_options['layout-set'],
+			array ('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
+		) ) :
+		// Area 1, located at the top of the sidebar.
+		register_sidebar( array(
+			'name' => __( 'Alternative Sidebar Widget Area', 't_em' ),
+			'id' => 'sidebar-alt',
+			'description' => __( 'Alternative sidebar widget area', 't_em' ),
+			'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		) );
+	endif;
 
-	// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 't_em' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 't_em' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+	// Footer Widgets Area
+	if ( $t_em_theme_options['footer-set'] != 'no-footer-widget' ) :
+			// Area 2, located in the footer. Empty by default.
+			register_sidebar( array(
+				'name' => __( 'First Footer Widget Area', 't_em' ),
+				'id' => 'first-footer-widget-area',
+				'description' => __( 'The first footer widget area', 't_em' ),
+				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			) );
 
-	// Area 4, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 't_em' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 't_em' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+		if ( in_array( $t_em_theme_options['footer-set'],
+			array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+		 ) ) :
+			// Area 3, located in the footer. Empty by default.
+			register_sidebar( array(
+				'name' => __( 'Second Footer Widget Area', 't_em' ),
+				'id' => 'second-footer-widget-area',
+				'description' => __( 'The second footer widget area', 't_em' ),
+				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			) );
+		endif;
 
-	// Area 5, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 't_em' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 't_em' ),
-		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+		if ( in_array( $t_em_theme_options['footer-set'],
+			array ( 'three-footer-widget', 'four-footer-widget' )
+		 ) ) :
+			// Area 4, located in the footer. Empty by default.
+			register_sidebar( array(
+				'name' => __( 'Third Footer Widget Area', 't_em' ),
+				'id' => 'third-footer-widget-area',
+				'description' => __( 'The third footer widget area', 't_em' ),
+				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			) );
+		endif;
+
+		if ( in_array( $t_em_theme_options['footer-set'],
+			array ( 'four-footer-widget' )
+		 ) ) :
+			// Area 5, located in the footer. Empty by default.
+			register_sidebar( array(
+				'name' => __( 'Fourth Footer Widget Area', 't_em' ),
+				'id' => 'fourth-footer-widget-area',
+				'description' => __( 'The fourth footer widget area', 't_em' ),
+				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			) );
+		endif;
+	endif;
 }
 add_action( 'widgets_init', 't_em_widgets_init' );
 
@@ -1206,7 +1231,15 @@ function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 }
 
 /**
- * Add Bootstrap CSS Classes
+ * Add Bootstrap CSS Classes dynamically.
+ *
+ * @param string $section Required. The name of the section that Bootstrap CSS Classes are needed.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ *
+ * @return string CSS Class name
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_add_bootstrap_class( $section ){
 	global $t_em_theme_options;
@@ -1259,15 +1292,26 @@ function t_em_add_bootstrap_class( $section ){
 		$widget_two		= ( ! empty ( $t_em_theme_options['headline-text-widget-two'] ) || ! empty ( $t_em_theme_options['content-text-widget-two'] ) ) ? '1' : '0' ;
 		$widget_three	= ( ! empty ( $t_em_theme_options['headline-text-widget-three'] ) || ! empty ( $t_em_theme_options['content-text-widget-three'] ) ) ? '1' : '0' ;
 		$widget_four	= ( ! empty ( $t_em_theme_options['headline-text-widget-four'] ) || ! empty ( $t_em_theme_options['content-text-widget-four'] ) ) ? '1' : '0' ;
-		$total_widgets = array_sum( array ($widget_two, $widget_three, $widget_four) );
-		// $bootstrap_classes =
-		if ( '1' == $total_widgets ) :
-			$bootstrap_classes = 'span12';
-		elseif ( '2' == $total_widgets ) :
-			$bootstrap_classes = 'span6';
-		elseif ( '3' == $total_widgets ) :
-			$bootstrap_classes = 'span4';
-		endif;
+		$total_widgets = array_sum( array ( $widget_two, $widget_three, $widget_four ) );
+		$span = 12 / $total_widgets;
+		$bootstrap_classes = 'span' . $span;
+	endif;
+
+	/** Footer Widgets Area */
+	if ( 'footer-widget-area' == $section ) :
+		$one_widget_footer = ( 'no-footer-widget' != $t_em_theme_options['footer-set'] ) ? '1' : '0';
+		$two_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+								array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+							 ) ) ? '1' : '0';
+		$three_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+									array ( 'three-footer-widget', 'four-footer-widget' )
+								 ) ) ? '1' : '0';
+		$four_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+									array ( 'four-footer-widget' )
+								 ) ) ? '1' : '0';
+		$total_widgets = array_sum( array ( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
+		$span = 12 / $total_widgets;
+		$bootstrap_classes = 'span' . $span;
 	endif;
 
 	return $bootstrap_classes;

@@ -64,6 +64,41 @@ function t_em_layout_options(){
 }
 
 /**
+ * Footer Widgets Options
+ */
+function t_em_footer_options(){
+	$footer_options = array (
+		'four-footer-widget' => array(
+			'value' => 'four-footer-widget',
+			'label' => __( 'Four footer widget', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/footer-widgets-four.png',
+		),
+		'three-footer-widget' => array(
+			'value' => 'three-footer-widget',
+			'label' => __( 'Three footer widget', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/footer-widgets-three.png',
+		),
+		'two-footer-widget' => array(
+			'value' => 'two-footer-widget',
+			'label' => __( 'Two footer widget', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/footer-widgets-two.png',
+		),
+		'one-footer-widget' => array(
+			'value' => 'one-footer-widget',
+			'label' => __( 'One footer widget', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/footer-widgets-one.png',
+		),
+		'no-footer-widget' => array(
+			'value' => 'no-footer-widget',
+			'label' => __( 'No footer widgets', 't_em' ),
+			'thumbnail' => T_EM_INC_DIR_IMG . '/footer-widgets-none.png',
+		),
+	);
+
+	return apply_filters( 't_em_footer_options', $footer_options );
+}
+
+/**
  * Display a text box into Layout Options panel where you may enter your theme width.
  * Referenced via t_em_settings_field_layout_set().
  *
@@ -103,6 +138,7 @@ function t_em_settings_field_layout_set(){
 	global $t_em_theme_options;
 ?>
 <div class="image-radio-option-group">
+<p><strong><?php _e( 'Main Layout Setting', 't_em' ); ?></strong></p>
 <?php
 	foreach ( t_em_layout_options() as $layout ) :
 ?>
@@ -110,6 +146,21 @@ function t_em_settings_field_layout_set(){
 		<label class="description">
 			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout-set'], $layout['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
+		</label>
+	</div>
+<?php
+	endforeach;
+?>
+</div>
+<div class="image-radio-option-group">
+<p><strong><?php _e( 'Footer Widgets Area Setting', 't_em' ); ?></strong></p>
+<?php
+	foreach ( t_em_footer_options() as $footer ) :
+?>
+	<div class="footer image-radio-option theme-footer">
+		<label class="description">
+			<input type="radio" name="t_em_theme_options[footer-set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em_theme_options['footer-set'], $footer['value'] ); ?> />
+			<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
 		</label>
 	</div>
 <?php

@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div id="main" class="wrapper container-fluid">
 	<div class="row-fluid">
-		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>

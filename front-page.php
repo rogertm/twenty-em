@@ -19,7 +19,7 @@ get_header(); ?>
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-			<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+			<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 <?php
 	// If our front page is a static page, we load it
@@ -68,7 +68,7 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
-			<section id="main-content">
+			<section id="main-content" class="row-fluid">
 				<section id="content" role="main" class="span12">
 					<section id="featured-widget-area">
 						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
