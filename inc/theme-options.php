@@ -205,78 +205,89 @@ add_action( 'after_setup_theme', 't_em_set_globals' );
 function t_em_default_theme_options(){
 	$default_theme_options = array (
 		// Generals Options
-		't-em-link'							=> '1',
-		'single-featured-img'				=> '1',
-		'single-related-posts'				=> '1',
+		't-em-link'										=> '1',
+		'single-featured-img'							=> '1',
+		'single-related-posts'							=> '1',
 		// Header Options
-		'header-set'						=> 'no-header-image',
-		'header-featured-image'				=> '1',
-		'slider-home-only'					=> '0',
-		'slider-category'					=> get_option( 'default_category' ),
-		'slider-number'						=> get_option( 'posts_per_page' ),
-		'slider-text'						=> 'slider-text-center',
-		'nivo-style'						=> 't-em',
+		'header-set'									=> 'no-header-image',
+		'header-featured-image'							=> '1',
+		'slider-home-only'								=> '0',
+		'slider-category'								=> get_option( 'default_category' ),
+		'slider-number'									=> get_option( 'posts_per_page' ),
+		'slider-text'									=> 'slider-text-center',
+		'nivo-style'									=> 't-em',
+		'static-header-home-only'						=> '0',
+		'static-header-text'							=> 'static-header-text-right',
+		'static-header-headline'						=> '',
+		'static-header-img-url'							=> '',
+		'static-header-content'							=> '',
+		'static-header-primary-button-text'				=> '',
+		'static-header-primary-button-icon-class'		=> '',
+		'static-header-primary-button-link'				=> '',
+		'static-header-secondary-button-text'			=> '',
+		'static-header-secondary-button-icon-class'		=> '',
+		'static-header-secondary-button-link'			=> '',
 		// Front Page Text Witgets Options
-		'front-page-set'					=> 'wp-front-page',
-		'headline-text-widget-one'			=> '',
-		'content-text-widget-one'			=> '',
-		'icon-class-text-widget-one'		=> '',
-		'thumbnail-src-text-widget-one'		=> '',
-		'link-url-text-widget-one'			=> '',
-		'headline-text-widget-two'			=> '',
-		'content-text-widget-two'			=> '',
-		'icon-class-text-widget-two'		=> '',
-		'thumbnail-src-text-widget-two'		=> '',
-		'link-url-text-widget-two'			=> '',
-		'headline-text-widget-three'		=> '',
-		'content-text-widget-three'			=> '',
-		'icon-class-text-widget-three'		=> '',
-		'thumbnail-src-text-widget-three'	=> '',
-		'link-url-text-widget-three'		=> '',
-		'headline-text-widget-four'			=> '',
-		'content-text-widget-four'			=> '',
-		'icon-class-text-widget-four'		=> '',
-		'thumbnail-src-text-widget-four'	=> '',
-		'link-url-text-widget-four'			=> '',
+		'front-page-set'								=> 'wp-front-page',
+		'headline-text-widget-one'						=> '',
+		'content-text-widget-one'						=> '',
+		'icon-class-text-widget-one'					=> '',
+		'thumbnail-src-text-widget-one'					=> '',
+		'link-url-text-widget-one'						=> '',
+		'headline-text-widget-two'						=> '',
+		'content-text-widget-two'						=> '',
+		'icon-class-text-widget-two'					=> '',
+		'thumbnail-src-text-widget-two'					=> '',
+		'link-url-text-widget-two'						=> '',
+		'headline-text-widget-three'					=> '',
+		'content-text-widget-three'						=> '',
+		'icon-class-text-widget-three'					=> '',
+		'thumbnail-src-text-widget-three'				=> '',
+		'link-url-text-widget-three'					=> '',
+		'headline-text-widget-four'						=> '',
+		'content-text-widget-four'						=> '',
+		'icon-class-text-widget-four'					=> '',
+		'thumbnail-src-text-widget-four'				=> '',
+		'link-url-text-widget-four'						=> '',
 		// Archive Options
-		'archive-set'						=> 'the-content',
-		'layout-set'						=> 'two-column-content-left',
-		'footer-set'						=> 'four-footer-widget',
-		'layout-width'						=> '960',
-		'excerpt-set'						=> 'thumbnail-left',
-		'slider-height'						=> '350',
-		'excerpt-thumbnail-height'			=> get_option( 'thumbnail_size_h' ),
-		'excerpt-thumbnail-width'			=> get_option( 'thumbnail_size_w' ),
+		'archive-set'									=> 'the-content',
+		'layout-set'									=> 'two-column-content-left',
+		'footer-set'									=> 'four-footer-widget',
+		'layout-width'									=> '960',
+		'excerpt-set'									=> 'thumbnail-left',
+		'slider-height'									=> '350',
+		'excerpt-thumbnail-height'						=> get_option( 'thumbnail_size_h' ),
+		'excerpt-thumbnail-width'						=> get_option( 'thumbnail_size_w' ),
 		// Social Networks Options
-		'twitter-set'						=> '',
-		'facebook-set'						=> '',
-		'googleplus-set'					=> '',
-		'delicious-set'						=> '',
-		'linkedin-set'						=> '',
-		'github-set'						=> '',
-		'wordpress-set'						=> '',
-		'youtube-set'						=> '',
-		'flickr-set'						=> '',
-		'instagram-set'						=> '',
-		'vimeo-set'							=> '',
-		'reddit-set'						=> '',
-		'picassa-set'						=> '',
-		'lastfm-set'						=> '',
-		'stumbleupon-set'					=> '',
-		'pinterest-set'						=> '',
-		'deviantart-set'					=> '',
-		'myspace-set'						=> '',
-		'xing-set'							=> '',
-		'soundcloud-set'					=> '',
-		'steam-set'							=> '',
-		'dribbble-set'						=> '',
-		'forrst-set'						=> '',
-		'feed-set'							=> '',
+		'twitter-set'									=> '',
+		'facebook-set'									=> '',
+		'googleplus-set'								=> '',
+		'delicious-set'									=> '',
+		'linkedin-set'									=> '',
+		'github-set'									=> '',
+		'wordpress-set'									=> '',
+		'youtube-set'									=> '',
+		'flickr-set'									=> '',
+		'instagram-set'									=> '',
+		'vimeo-set'										=> '',
+		'reddit-set'									=> '',
+		'picassa-set'									=> '',
+		'lastfm-set'									=> '',
+		'stumbleupon-set'								=> '',
+		'pinterest-set'									=> '',
+		'deviantart-set'								=> '',
+		'myspace-set'									=> '',
+		'xing-set'										=> '',
+		'soundcloud-set'								=> '',
+		'steam-set'										=> '',
+		'dribbble-set'									=> '',
+		'forrst-set'									=> '',
+		'feed-set'										=> '',
 		// Search Engines ID and Tracker Options
-		'google-id'							=> '',
-		'yahoo-id'							=> '',
-		'bing-id'							=> '',
-		'stats-tracker'						=> '',
+		'google-id'										=> '',
+		'yahoo-id'										=> '',
+		'bing-id'										=> '',
+		'stats-tracker'									=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -359,7 +370,7 @@ function t_em_theme_options_page(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
-	global $excerpt_options, $slider_layout, $list_categories;
+	global $excerpt_options, $slider_layout, $list_categories, $static_header_layout;
 	// All the checkbox are either 0 or 1
 	foreach ( array(
 		't-em-link',
@@ -367,6 +378,7 @@ function t_em_theme_options_validate( $input ){
 		'single-related-posts',
 		'header-featured-image',
 		'slider-home-only',
+		'static-header-home-only',
 	) as $checkbox ) :
 		if ( !isset( $input[$checkbox] ) )
 			$input[$checkbox] = null;
@@ -382,6 +394,10 @@ function t_em_theme_options_validate( $input ){
 		'slider-options'	=> array (
 			'set'		=> 'slider-text',
 			'callback'	=> $slider_layout,
+		),
+		'static-header-options'	=> array (
+			'set'		=> 'static-header-text',
+			'callback'	=> $static_header_layout,
 		),
 		'archive-options'	=> array (
 			'set'		=> 'archive-set',
@@ -447,6 +463,9 @@ function t_em_theme_options_validate( $input ){
 		'link-url-text-widget-three',
 		'thumbnail-src-text-widget-four',
 		'link-url-text-widget-four',
+		'static-header-img-url',
+		'static-header-primary-button-link',
+		'static-header-secondary-button-link',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
 	endforeach;
@@ -487,6 +506,12 @@ function t_em_theme_options_validate( $input ){
 		'content-text-widget-four',
 		'headline-text-widget-four',
 		'icon-class-text-widget-four',
+		'static-header-headline',
+		'static-header-content',
+		'static-header-primary-button-text',
+		'static-header-primary-button-icon-class',
+		'static-header-secondary-button-text',
+		'static-header-secondary-button-icon-class',
 	) as $textarea ) :
 		$input[$textarea] = esc_textarea( $input[$textarea] );
 	endforeach;
@@ -502,6 +527,7 @@ function t_em_theme_options_validate( $input ){
 function t_em_layout_classes( $existing_classes ){
 	global $t_em_theme_options;
 	$layout_set = $t_em_theme_options['layout-set'];
+	$static_header_set = $t_em_theme_options['static-header-text'];
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enogh
 	if ( $t_em_theme_options['front-page-set'] == 'widgets-front-page' && is_front_page() ) :
@@ -513,6 +539,14 @@ function t_em_layout_classes( $existing_classes ){
 	else :
 		$classes = array ( 'one-column' );
 	endif;
+
+	if ( 'static-header-text-right' == $static_header_set )
+		$static_header_classes = 'static-header-text-right';
+	elseif ( 'static-header-text-left' == $static_header_set )
+		$static_header_classes = 'static-header-text-left';
+	else
+		$static_header_classes = '';
+		$classes[] = $static_header_classes;
 
 	if ( 'two-column-content-left' == $layout_set )
 		$classes[] = 'two-column-content-left';
@@ -526,6 +560,8 @@ function t_em_layout_classes( $existing_classes ){
 		$classes[] = 'three-column-content-middle';
 	else
 		$classes[] = $layout_set;
+
+
 
 	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
 

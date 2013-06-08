@@ -990,14 +990,14 @@ function t_em_header_options_set(){
 	global	$post,
 			$t_em_theme_options;
 
-	$header_options = $t_em_theme_options['header-set'];
-
-	if ( 'no-header-image' == $header_options ) :
-		return false;
-	elseif ( 'header-image' == $header_options ) :
+	if ( 'no-header-image' == $t_em_theme_options['header-set'] ) :
+		return;
+	elseif ( 'header-image' == $t_em_theme_options['header-set'] ) :
 		get_template_part( 'header', 'image' );
-	elseif ( 'slider' == $header_options ) :
+	elseif ( 'slider' == $t_em_theme_options['header-set'] ) :
 		get_template_part( 'header', 'nivo-slider' );
+	elseif ( 'static-header' == $t_em_theme_options['header-set'] ) :
+		get_template_part( 'header', 'static-header' );
 	endif;
 }
 

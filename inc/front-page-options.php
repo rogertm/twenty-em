@@ -112,10 +112,10 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon-class-' . $widget['name'] . ']" value="' . $t_em_theme_options['icon-class-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[thumbnail-src-' . $widget['name'] . ']" value="' . $t_em_theme_options['thumbnail-src-'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail-src-' . $widget['name'] . ']" value="' . $t_em_theme_options['thumbnail-src-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Link URL', 't_em' ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[link-url-' . $widget['name'] . ']" value="' . $t_em_theme_options['link-url-'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[link-url-' . $widget['name'] . ']" value="' . $t_em_theme_options['link-url-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= '</div>';
 	endforeach;

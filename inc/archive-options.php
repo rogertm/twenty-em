@@ -81,7 +81,7 @@ function t_em_excerpt_callback(){
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
-		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" alt="" />'.$excerpt['label'].'</span>';
+		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" alt="" /><p>'.$excerpt['label'].'</p></span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;

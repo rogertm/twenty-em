@@ -7,6 +7,7 @@ jQuery(document).ready(function($){
 		switch ( $(this).val() ) {
 			case 'header-image': $('#header-image').slideDown(); break;
 			case 'slider': $('#slider').slideDown(); break;
+			case 'static-header': $('#static-header').slideDown(); break;
 		}
 	});
 });

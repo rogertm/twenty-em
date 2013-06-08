@@ -44,6 +44,11 @@ function t_em_header_options(){
 			'label' => __( 'Slider', 't_em' ),
 			'extend' => t_em_slider_callback(),
 		),
+		'static-header' => array (
+			'value' => 'static-header',
+			'label' => __( 'Static Header', 't_em' ),
+			'extend' => t_em_static_header_callback(),
+		),
 	);
 
 	return apply_filters( 't_em_header_options', $header_options );
@@ -156,7 +161,7 @@ function t_em_slider_callback(){
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
 		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider-text]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
-		$extend_slider .=			'<span><img src="'.$slider['title'].'" width="136" />'.$slider['label'].'</span>';
+		$extend_slider .=			'<span><img src="'.$slider['title'].'" /><p>'.$slider['label'].'</p></span>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
 	endforeach;
@@ -212,6 +217,82 @@ function t_em_slider_callback(){
 	$extend_slider .= '</div>';
 
 	return $extend_slider;
+}
+
+/**
+ * Extend setting for Header Slider Option in Twenty'em admin panel.
+ * Referenced via t_em_header_options().
+ *
+ */
+function t_em_static_header_callback(){
+	global $t_em_theme_options,
+			$static_header_layout;
+
+	$static_header_layout = array (
+		'static-header-text-right' => array (
+			'value' => 'static-header-text-right',
+			'label' => __( 'Static header text on right', 't_em' ),
+			'title' => T_EM_INC_DIR_IMG . '/slider-text-right.png',
+		),
+		'static-header-text-left' => array (
+			'value' => 'static-header-text-left',
+			'label' => __( 'Static header text on left', 't_em' ),
+			'title' => T_EM_INC_DIR_IMG . '/slider-text-left.png',
+		),
+	);
+
+	$extend_static_header = '';
+
+	// Show Static Header only at home page?
+	$checked_option = checked( $t_em_theme_options['static-header-home-only'], '1', false );
+	$extend_static_header .= '<label class="description">';
+	$extend_static_header .= 	__( 'Show Static Header only at home page?', 't_em' );
+	$extend_static_header .= 	'<input type="checkbox" name="t_em_theme_options[static-header-home-only]" value="1" '. $checked_option .' />';
+	$extend_static_header .= '</label>';
+
+	$extend_static_header .= '<div class="image-radio-option-group">';
+	foreach ( $static_header_layout as $static_header ) :
+		$checked_option = checked( $t_em_theme_options['static-header-text'], $static_header['value'], false );
+		$extend_static_header .=	'<div class="layout image-radio-option static-header-layout">';
+		$extend_static_header .=		'<label class="description">';
+		$extend_static_header .=			'<input type="radio" name="t_em_theme_options[static-header-text]" class="sub-radio-option" value="'.esc_attr($static_header['value']).'" '. $checked_option .' />';
+		$extend_static_header .=			'<span><img src="'.$static_header['title'].'" /><p>'.$static_header['label'].'</p></span>';
+		$extend_static_header .=		'</label>';
+		$extend_static_header .=	'</div>';
+	endforeach;
+	$extend_static_header .= '</div>';
+
+	$extend_static_header .= '<div class="sub-layout text-option static-header">';
+	$extend_static_header .=	'<label><span>'. __( 'Headline', 't_em' ) .'</span>';
+	$extend_static_header .=		'<input type="text" class="regular-text headline" name="t_em_theme_options[static-header-headline]" value="' . $t_em_theme_options['static-header-headline'] . '" placeholder="' . __( 'Static Header Title', 't_em' ) . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
+	$extend_static_header .= 		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-img-url]" value="' . $t_em_theme_options['static-header-img-url'] . '" />';
+	$extend_static_header .= 	'</label>';
+	$extend_static_header .=	'<label><span>' . __( 'Content', 't_em' ) . '</span>';
+	$extend_static_header .=		'<textarea name="t_em_theme_options[static-header-content]" cols="50" rows="5">' . $t_em_theme_options['static-header-content'] . '</textarea>';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
+	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-primary-button-text]" value="' . $t_em_theme_options['static-header-primary-button-text'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-primary-button-icon-class]" value="' . $t_em_theme_options['static-header-primary-button-icon-class'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
+	$extend_static_header .=		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-primary-button-link]" value="' . $t_em_theme_options['static-header-primary-button-link'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
+	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-secondary-button-text]" value="' . $t_em_theme_options['static-header-secondary-button-text'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-secondary-button-icon-class]" value="' . $t_em_theme_options['static-header-secondary-button-icon-class'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .=	'<label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';
+	$extend_static_header .=		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-secondary-button-link]" value="' . $t_em_theme_options['static-header-secondary-button-link'] . '">';
+	$extend_static_header .=	'</label>';
+	$extend_static_header .= '</div>';
+
+	return $extend_static_header;
 }
 
 /**
