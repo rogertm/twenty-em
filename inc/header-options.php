@@ -267,7 +267,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=		'<input type="text" class="regular-text headline" name="t_em_theme_options[static-header-headline]" value="' . $t_em_theme_options['static-header-headline'] . '" placeholder="' . __( 'Static Header Title', 't_em' ) . '">';
 	$extend_static_header .=	'</label>';
 	$extend_static_header .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
-	$extend_static_header .= 		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-img-url]" value="' . $t_em_theme_options['static-header-img-url'] . '" />';
+	$extend_static_header .= 		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-img-src]" value="' . $t_em_theme_options['static-header-img-src'] . '" />';
 	$extend_static_header .= 	'</label>';
 	$extend_static_header .=	'<label><span>' . __( 'Content', 't_em' ) . '</span>';
 	$extend_static_header .=		'<textarea name="t_em_theme_options[static-header-content]" cols="50" rows="5">' . $t_em_theme_options['static-header-content'] . '</textarea>';

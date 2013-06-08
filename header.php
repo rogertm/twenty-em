@@ -45,7 +45,7 @@
 					<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
 					<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
-					<nav id="top-menu" role="navigation" class="span8 text-right hidden-phone">
+					<nav id="top-menu" role="navigation" class="span8 text-right">
 						<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
 					</nav>
 					<?php endif; ?>
@@ -54,6 +54,7 @@
 
 			<?php t_em_header_options_set(); ?>
 
+		<?php if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 			<nav id="site-navigation" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
@@ -63,5 +64,6 @@
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'navigation-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
+		<?php endif; ?>
 		</section><!-- #masthead -->
 	</header><!-- #header -->

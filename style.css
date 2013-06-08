@@ -794,11 +794,11 @@ body.page .edit-link {
 #content img {
 	margin: 0;
 	height: auto;
-	max-width: 98%;
+	max-width: 100%;
 	width: auto;
 }
 #content .attachment img {
-	max-width: 98%;
+	max-width: 100%;
 }
 #content .alignleft,
 #content img.alignleft {

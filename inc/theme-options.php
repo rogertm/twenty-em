@@ -219,7 +219,7 @@ function t_em_default_theme_options(){
 		'static-header-home-only'						=> '0',
 		'static-header-text'							=> 'static-header-text-right',
 		'static-header-headline'						=> '',
-		'static-header-img-url'							=> '',
+		'static-header-img-src'							=> '',
 		'static-header-content'							=> '',
 		'static-header-primary-button-text'				=> '',
 		'static-header-primary-button-icon-class'		=> '',
@@ -463,7 +463,7 @@ function t_em_theme_options_validate( $input ){
 		'link-url-text-widget-three',
 		'thumbnail-src-text-widget-four',
 		'link-url-text-widget-four',
-		'static-header-img-url',
+		'static-header-img-src',
 		'static-header-primary-button-link',
 		'static-header-secondary-button-link',
 	) as $url ) :

@@ -1286,6 +1286,28 @@ function t_em_add_bootstrap_class( $section ){
 		$bootstrap_classes = 'span4';
 	endif;
 
+	/** Static Header Content and Image */
+	if ( 'static-header' == $section ) :
+		$static_header_img = ( ! empty ( $t_em_theme_options['static-header-img-src'] ) ) ? '1' : '0';
+		$static_header_content = ( ! empty ( $t_em_theme_options['static-header-headline'] )
+								|| ! empty ( $t_em_theme_options['static-header-content'] )
+								|| ! empty ( $t_em_theme_options['static-header-primary-button-text'] )
+								|| ! empty ( $t_em_theme_options['static-header-secondary-button-text'] )
+								) ? '1' : '0';
+		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
+		$span = 12 / $total_static_header;
+		$bootstrap_classes = 'span' . $span;
+	endif;
+
+	/** Static Header Buttons */
+	if ( 'static-header-button' == $section ) :
+		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static-header-primary-button-text'] ) ) ? '1' : '0';
+		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static-header-secondary-button-text'] ) ) ? '1' : '0';
+		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
+		$span = 12 / $total_static_header_button;
+		$bootstrap_classes = 'span' . $span;
+	endif;
+
 	/** Front Page Widgets Area */
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'featured-widget-area' == $section ) :
