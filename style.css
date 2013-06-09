@@ -703,10 +703,6 @@ div.menu li {
 	margin: 8px 0;
 	font-size: 14px;
 }
-body.page .edit-link {
-	clear: both;
-	display: block;
-}
 #entry-author-info,
 #category-description {
 	clear: both;
