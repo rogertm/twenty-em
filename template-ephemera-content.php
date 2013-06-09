@@ -25,40 +25,38 @@ get_header(); ?>
 	<div class="row-fluid">
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-				<article id="post-<?php the_ID(); ?>">
-<?php
-if ( have_posts() ) :
-	t_em_custom_template_content();
-?>
-				</article>
+
+			<?php t_em_custom_template_content(); ?>
+
 <?php
 // Query for the Custom Loop
-	$args = array (
-			'tax_query' => array (
-				array (
-					'operator'	=> 'IN',
-					'taxonomy'	=> 'post_format',
-					'field'		=> 'slug',
-					'terms'		=> array (	'post-format-aside',
-											'post-format-audio',
-											'post-format-chat',
-											'post-format-gallery',
-											'post-format-image',
-											'post-format-link',
-											'post-format-quote',
-											'post-format-status',
-											'post-format-video')
-				)
-			),
-			'posts_per_page' => get_option( 'posts_per_page' ),
-			'paged' => get_query_var( 'paged' )
-		);
-
-	$wp_query = new WP_Query( $args );
-
-	t_em_page_navi( 'nav-above' );
+$args = array (
+		'tax_query' => array (
+			array (
+				'operator'	=> 'IN',
+				'taxonomy'	=> 'post_format',
+				'field'		=> 'slug',
+				'terms'		=> array (	'post-format-aside',
+										'post-format-audio',
+										'post-format-chat',
+										'post-format-gallery',
+										'post-format-image',
+										'post-format-link',
+										'post-format-quote',
+										'post-format-status',
+										'post-format-video')
+			)
+		),
+		'posts_per_page' => get_option( 'posts_per_page' ),
+		'paged' => get_query_var( 'paged' )
+	);
 
 // Start the Custom Loop
+$wp_query = new WP_Query( $args );
+
+if ( have_posts() ) :
+
+	t_em_page_navi( 'nav-above' );
 
 	while ( have_posts() ) : the_post();
 

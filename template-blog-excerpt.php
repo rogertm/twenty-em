@@ -26,19 +26,17 @@ get_header(); ?>
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 
-				<article id="post-<?php the_ID(); ?>">
-<?php
-if ( have_posts() ) :
-	t_em_custom_template_content();
-?>
-				</article>
+				<?php t_em_custom_template_content(); ?>
+
 <?php
 // Query for Custom Loop
-	$args = array ( 'post_type' => 'post',
-					'posts_per_page' => get_option( 'posts_per_page' ),
-					'paged' => get_query_var( 'paged' )
-			);
-	$wp_query = new WP_Query ( $args );
+$args = array ( 'post_type' => 'post',
+				'posts_per_page' => get_option( 'posts_per_page' ),
+				'paged' => get_query_var( 'paged' )
+		);
+$wp_query = new WP_Query ( $args );
+
+if ( have_posts() ) :
 
 	t_em_page_navi( 'nav-above' );
 

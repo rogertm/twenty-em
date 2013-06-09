@@ -679,8 +679,8 @@ if ( ! function_exists( 't_em_post_date' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_post_date(){
-	$post_date = sprintf( '<span class="post-date icon-time font-icon
-"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+	$post_date = sprintf( '<span class="post-date icon-time font-icon">
+		<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 					esc_url( get_permalink() ),
 					esc_attr( sprintf( __( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ) ),
 					esc_attr( get_the_date( 'c' ) ),
@@ -912,18 +912,32 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
 /**
  * Display Page title and content for custom pages templates
+ * This function must be called before your custom Loop. E.g:
+ *	t_em_custom_template_content();
+ * 	if ( have_posts() ) :
+ * 		$args = array ( 'key' => 'value' );
+ * 		$wp_query = new WP_Query( $args );
+ * 		while ( have_posts() ) : the_post();
+ * 			// Rest of your Custom Loop
+ * 			...
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_custom_template_content(){
 	$template_data = get_page( get_the_ID() );
 ?>
-	<header>
-		<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
-	</header>
+	<article id="post-<?php the_ID(); ?>">
+		<header>
+			<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
+		</header>
 <?php
-	while ( have_posts() ) : the_post(); ?>
-		<div class="entry-content"><?php the_content(); ?></div>
+		while ( have_posts() ) : the_post(); ?>
+			<div class="entry-content"><?php the_content(); ?></div>
 <?php
-	endwhile;
+		endwhile;
+?>
+	</article>
+<?php
 }
 
 /**
