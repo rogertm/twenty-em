@@ -911,6 +911,22 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
 /**
+ * Display Page title and content for custom pages templates
+ */
+function t_em_custom_template_content(){
+	$template_data = get_page( get_the_ID() );
+?>
+	<header>
+		<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
+	</header>
+<?php
+	while ( have_posts() ) : the_post(); ?>
+		<div class="entry-content"><?php the_content(); ?></div>
+<?php
+	endwhile;
+}
+
+/**
  * Display featured image in posts archives when "Display the Excerpt" option is activated in admin
  * theme option page.
  *

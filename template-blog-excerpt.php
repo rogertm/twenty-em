@@ -15,7 +15,7 @@
  * @license			license.txt
  * @version			1.0
  * @filesource		wp-content/themes/twenty-em/template-blog-excerpt.php
- * @link			http://codex.wordpress.org/Templates
+ * @link			http://codex.wordpress.org/Pages#Page_Templates
  * @since			Twenty'em 1.0
  */
 
@@ -29,16 +29,7 @@ get_header(); ?>
 				<article id="post-<?php the_ID(); ?>">
 <?php
 if ( have_posts() ) :
-	$template_data = get_page( get_the_ID() );
-?>
-					<header>
-						<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
-					</header>
-<?php
-	while ( have_posts() ) : the_post(); ?>
-					<div class="entry-content"><?php the_content(); ?></div>
-<?php
-	endwhile;
+	t_em_custom_template_content();
 ?>
 				</article>
 <?php
