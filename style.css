@@ -271,6 +271,9 @@ div.menu,
 .hidden{
 	display: none;
 }
+.alert{
+	clear: both;
+}
 
 /* =Global Elements
 -------------------------------------------------------------- */
@@ -343,6 +346,7 @@ ins {
 }
 blockquote {
 	font-style: italic;
+	margin: 0 2.5641% !important;
 }
 blockquote cite,
 blockquote em,

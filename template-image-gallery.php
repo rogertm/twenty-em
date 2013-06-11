@@ -56,7 +56,7 @@ if ( have_posts() ) :
 			if ( ! empty( $ancestor_id[0] ) ) :
 ?>
 					<a href="<?php echo get_permalink( $image_link ); ?>" title="<?php echo get_the_title( $image_alt ); ?>">
-						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail img-rounded img-polaroid">
+						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail img-rounded img-polaroid" >
 					</a>
 <?php
 			endif;
