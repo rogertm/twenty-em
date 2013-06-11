@@ -872,6 +872,10 @@ div.menu li {
 .single .featured-post-thumbnail{
 	margin-bottom: 18px !important;
 }
+#gallery .gallery-thumbnail{
+	margin: 15px 15px 5px 0;
+	width: 100px;
+}
 
 
 /* =Navigation

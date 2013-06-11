@@ -28,7 +28,7 @@ get_header(); ?>
 
 				<?php t_em_custom_template_content(); ?>
 
-				<article>
+				<article id="archive">
 <?php
 /**
  * Start the archive page. Displays the latest $limit posts, list of categories, monthly
@@ -72,7 +72,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h3 id="archive-monthly-archive"><?php _e( 'Monthly Archives', 't_em' ) ?></h3>
-					<ul><?php wp_get_archives(); ?></ul>
+					<ul><?php wp_get_archives( array ( 'show_post_count' => true ) ); ?></ul>
 
 					<?php
 					/** And now, the Tag Cloud!
@@ -82,7 +82,7 @@ if ( have_posts() ) :
 					<h3 id="archive-tag-cloud"><?php _e( 'Tag Cloud', 't_em' ); ?></h3>
 					<div><?php wp_tag_cloud( array ( 'number' => '0' ) ); ?></div>
 
-				</article>
+				</article><!-- #archive -->
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

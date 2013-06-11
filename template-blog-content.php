@@ -70,10 +70,10 @@ if ( have_posts() ) :
 
 	t_em_page_navi( 'nav-below' );
 
-	else :
-		get_template_part( 'content', 'none' );
-	endif;
-	wp_reset_query();
+else :
+	get_template_part( 'content', 'none' );
+endif;
+wp_reset_query();
 ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

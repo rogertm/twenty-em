@@ -921,19 +921,26 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
  * 			// Rest of your Custom Loop
  * 			...
  *
+ * @param string $icon_class IcoMoon icon class
+ *
+ * @link docs/icomoon.html For a full list of icons
+ *
  * @since Twenty'em 1.0
  */
-function t_em_custom_template_content(){
+function t_em_custom_template_content( $icon_class = '' ){
 	$template_data = get_page( get_the_ID() );
+	$span_icon_class = ( $icon_class ) ? '<span class="'. $icon_class .' font-icon"></span>' : '';
 ?>
-	<article id="post-<?php the_ID(); ?>">
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
 		<header>
-			<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
+			<h1 class="entry-title"><?php echo $span_icon_class ?><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php
-		while ( have_posts() ) : the_post(); ?>
+		while ( have_posts() ) : the_post();
+			if ( get_the_content() ) : ?>
 			<div class="entry-content"><?php the_content(); ?></div>
 <?php
+			endif;
 		endwhile;
 ?>
 	</article>
