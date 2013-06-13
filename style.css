@@ -266,7 +266,31 @@ div.menu,
 	line-height: 2;
 }
 .font-icon:before{
-	margin-right: 3px;
+	margin: 0 3px;
+}
+.font-icon.icon-default{
+	font-size: 14px;
+	margin: 0 3px 3px;
+}
+.font-icon.icon-medium{
+	font-size: 28px;
+	margin: 0 5px 5px;
+}
+.font-icon.icon-large{
+	font-size: 56px;
+	margin: 0 8px 8px;
+}
+.font-icon.icon-xlarge{
+	font-size: 112px;
+	margin: 0 10px 10px;
+}
+.font-icon.icon-xxlarge{
+	font-size: 168px;
+	margin: 0 15px 15px;
+}
+.font-icon.icon-xxxlarge{
+	font-size: 252px;
+	margin: 0 20px 20px;
 }
 .hidden{
 	display: none;
@@ -278,7 +302,11 @@ div.menu,
 /* =Global Elements
 -------------------------------------------------------------- */
 /* Main global 'theme' and typographic styles */
-body,
+body {
+	color: #333;
+	font-size: 14px;
+	line-height: 20px;
+}
 input,
 textarea {
 	color: #666;
@@ -669,20 +697,6 @@ div.menu li {
 .entry-content sup,
 .entry-content sub {
 	font-size: 10px;
-}
-.entry-content blockquote.left {
-	float: left;
-	margin-left: 0;
-	margin-right: 24px;
-	text-align: right;
-	width: 33%;
-}
-.entry-content blockquote.right {
-	float: right;
-	margin-left: 24px;
-	margin-right: 0;
-	text-align: left;
-	width: 33%;
 }
 .page-link {
 	font-weight: bold;
