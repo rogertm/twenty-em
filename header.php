@@ -28,27 +28,29 @@
 <![endif]-->
 
 <div id="wrap" class="hfeed">
+	<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
+	<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+	<div id="top" class="wrapper container-fluid">
+		<div class="row-fluid">
+			<nav id="top-menu" role="navigation" class="span12">
+				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '0' ) ); ?>
+			</nav>
+		</div><!-- .row-fluid -->
+	</div>
+	<?php endif; ?>
 	<header id="header">
 		<section id="masthead">
-
 			<div id="branding" role="banner" class="wrapper container-fluid">
 				<div class="row-fluid">
-					<hgroup class="span4">
+					<hgroup class="span12">
 						<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 						<<?php echo $heading_tag; ?> id="site-title">
 						<span>
 							<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 						</span>
 						</<?php echo $heading_tag; ?>>
-						<h2 id="site-description" class="hidden-phone"><?php bloginfo( 'description' ); ?></h2>
+						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 					</hgroup>
-					<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-					<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
-					<nav id="top-menu" role="navigation" class="span8 text-right">
-						<?php wp_nav_menu( array ( 'container_class' => 'menu-top', 'theme_location' => 'top-menu', 'depth' => 1 ) ); ?>
-					</nav>
-					<?php endif; ?>
 				</div><!-- .row-fluid -->
 			</div><!-- #branding .container-fluid -->
 

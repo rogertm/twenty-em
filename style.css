@@ -487,6 +487,7 @@ div.menu ul {
 	margin: 0;
 }
 #site-navigation .menu-header li,
+#top-menu .menu-top li,
 div.menu li {
 	float: left;
 	position: relative;
@@ -564,6 +565,18 @@ div.menu li {
 #footer-menu ul li,
 #social-network-menu ul li{
 	display: inline-block;
+}
+#top-menu{
+	font-size: 12px;
+}
+#top-menu a{
+	line-height: 30px;
+}
+#top-menu ul ul{
+	top: auto;
+}
+#top-menu ul ul ul{
+	top: 0;
 }
 #social-network-menu{
 	line-height: 38px;

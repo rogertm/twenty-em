@@ -29,7 +29,7 @@ if ( ( '1' == $t_em_theme_options['static-header-home-only'] && is_home() ) || '
 	) : ?>
 			<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 				<h2><?php echo $t_em_theme_options['static-header-headline']; ?></h2>
-				<p class="lead"><?php echo $t_em_theme_options['static-header-content']; ?></p>
+				<p class="lead"><?php echo html_entity_decode( $t_em_theme_options['static-header-content'] ); ?></p>
 				<div class="actions">
 <?php if ( ! empty ( $t_em_theme_options['static-header-primary-button-text'] ) ) :?>
 					<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">

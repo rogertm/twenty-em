@@ -9,6 +9,7 @@
 @base-gray:			#f7f7f7; /* Default background theme color */
 @light-gray:		#757575;
 @dark-gray:			#515151;
+@black:				#000000;
 
 @a_link:	@light-blue;
 @a_visited:	@light-blue;
@@ -47,6 +48,23 @@ a:hover{
 -------------------------------------------------------------- */
 #wrap {
 	background: @white;
+}
+#top{
+	background: @black;
+	background-image: -moz-linear-gradient(top, lighten( @black, 20% ), @black);
+	background-image: -ms-linear-gradient(top, lighten( @black, 20% ), @black);
+	background-image: -webkit-linear-gradient(top, lighten( @black, 20% ), @black);
+	background-image: -o-linear-gradient(top, lighten( @black, 20% ), @black);
+	background-image: linear-gradient(top, lighten( @black, 20% ), @black);
+}
+#top ul ul li a{
+	background: lighten( @black, 20% );
+}
+#top li:hover{
+	background: @dark-gray;
+}
+#top a{
+	color: @white;
 }
 
 /* =Menus

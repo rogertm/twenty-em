@@ -778,7 +778,9 @@ window.onload = function() {
 			'icon-radioactive' : '&#xf282;',
 			'icon-radio-2' : '&#xf1a1;',
 			'icon-webcam' : '&#xf0fe;',
-			'icon-settings5' : '&#xf309;'
+			'icon-settings5' : '&#xf309;',
+			'icon-eye-open' : '&#xe086;',
+			'icon-eye-close' : '&#xe087;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
