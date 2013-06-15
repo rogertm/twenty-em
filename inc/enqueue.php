@@ -38,7 +38,7 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Register and enqueue Modernizr JS
-	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.min.2.5.3.js', array(), $t_em_theme_data['Version'], false );
+	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.js', array(), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'modernizr' );
 
 	// Register and enqueue Twitter Bootstrap Framework
@@ -144,7 +144,7 @@ add_action( 'wp_head', 't_em_bootstrap_meta' );
  */
 function t_em_enqueue_less_css(){
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
-	echo '<script src="'. T_EM_THEME_DIR_JS.'/less-1.3.0.min.js'.'"></script>'."\n";
+	echo '<script src="'. T_EM_THEME_DIR_JS.'/less.js'.'"></script>'."\n";
 
 }
 add_action( 'wp_head', 't_em_enqueue_less_css' );
@@ -155,7 +155,7 @@ add_action( 'wp_head', 't_em_enqueue_less_css' );
 function t_em_enqueue_html5shiv(){
 ?>
 	<!--[if lt IE 9]>
-	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/html5.js" type="text/javascript"></script>
+	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/html5shiv.js" type="text/javascript"></script>
 	<![endif]-->
 <?php
 }
