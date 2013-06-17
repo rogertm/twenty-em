@@ -943,6 +943,9 @@ function t_em_custom_template_content( $icon_class = '' ){
 			endif;
 		endwhile;
 ?>
+		<footer class="entry-utility">
+			<?php t_em_edit_post_link(); ?>
+		</footer>
 	</article>
 <?php
 }
@@ -1107,7 +1110,6 @@ function t_em_post_archive_set(){
 	endif;
 }
 
-
 /**
  * Display user social network set in "Social Network Options" in the admin theme options.
  *
@@ -1134,7 +1136,7 @@ function t_em_user_social_network(){
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu" class="span10 text-right">' . $output . '</nav>';
+		$output = '<nav id="social-network-menu" class="wrapper span10 text-right pull-right">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;
@@ -1333,15 +1335,6 @@ function t_em_add_bootstrap_class( $section ){
 								) ? '1' : '0';
 		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
 		$span = 12 / $total_static_header;
-		$bootstrap_classes = 'span' . $span;
-	endif;
-
-	/** Static Header Buttons */
-	if ( 'static-header-button' == $section ) :
-		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static-header-primary-button-text'] ) ) ? '1' : '0';
-		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static-header-secondary-button-text'] ) ) ? '1' : '0';
-		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
-		$span = 12 / $total_static_header_button;
 		$bootstrap_classes = 'span' . $span;
 	endif;
 

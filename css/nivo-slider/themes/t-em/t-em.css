@@ -136,6 +136,16 @@ Supports Thumbs: true
 }
 /* =Media Queries
 -------------------------------------------------------------- */
+/* Tablet portrait */
+@media (max-width: 979px) {
+	.theme-t-em.slider-text-left .nivo-caption,
+	.theme-t-em.slider-text-right .nivo-caption{
+		top: auto;
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+}
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 	.theme-t-em .nivo-caption{
@@ -145,17 +155,7 @@ Supports Thumbs: true
 		font-size: 17.5px;
 		line-height: 5px;
 	}
-	.theme-t-em .nivo-caption p{
-		display: none;
-	}
 	.theme-t-em .nivo-caption a{
 		line-height: 20px;
-	}
-	.theme-t-em.slider-text-left .nivo-caption,
-	.theme-t-em.slider-text-right .nivo-caption{
-		top: auto;
-		width: 100%;
-		left: 0;
-		right: 0;
 	}
 }

@@ -264,7 +264,7 @@ function t_em_static_header_callback(){
 
 	$extend_static_header .= '<div class="sub-layout text-option static-header">';
 	$extend_static_header .=	'<label><span>'. __( 'Headline', 't_em' ) .'</span>';
-	$extend_static_header .=		'<input type="text" class="regular-text headline" name="t_em_theme_options[static-header-headline]" value="' . $t_em_theme_options['static-header-headline'] . '" placeholder="' . __( 'Static Header Title', 't_em' ) . '">';
+	$extend_static_header .=		'<input type="text" class="regular-text headline" name="t_em_theme_options[static-header-headline]" value="' . $t_em_theme_options['static-header-headline'] . '">';
 	$extend_static_header .=	'</label>';
 	$extend_static_header .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
 	$extend_static_header .= 		'<input type="url" class="regular-text" name="t_em_theme_options[static-header-img-src]" value="' . $t_em_theme_options['static-header-img-src'] . '" />';

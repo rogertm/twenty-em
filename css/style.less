@@ -60,7 +60,8 @@ a:hover{
 #top ul ul li a{
 	background: lighten( @black, 20% );
 }
-#top li:hover{
+#top li:hover,
+#top li.current-menu-item{
 	background: @dark-gray;
 }
 #top a{
@@ -155,44 +156,9 @@ nav ul li.current-menu-parent > a {
 
 /* =Forms
 -------------------------------------------------------------- */
-// #content input[type="text"],
-// #content input[type="email"],
-// #content input[type="url"],
-// #content textarea,
-// #content select {
-// 	background: @base-gray;
-// 	color: @light-gray;
-// 	border: 1px solid lighten( @dark-gray, 50% );
-// 	.border-radius;
-// }
 #content .required{
 	color: @light-red;
 }
-// #content input[type="text"]:focus,
-// #content input[type="email"]:focus,
-// #content input[type="url"]:focus,
-// #content textarea:focus{
-// 	border: 1px solid @light-blue;
-// 	.box-shadow ( 0, 0, 2px, @light-blue );
-// }
-// #content .form-submit input,
-// #content .contact-submit input{
-// 	background: @light-blue;
-// 	background-image: linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-// 	background-image: -moz-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-// 	background-image: -ms-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-// 	background-image: -webkit-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-// 	background-image: -o-linear-gradient(top, @light-blue, darken( @light-blue, 10% ) );
-// 	.box-shadow ( 0, 0, 1px, @light-blue );
-// 	.border-radius ( 3px );
-// }
-// #content .form-submit input:active{
-// 	background-image: linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-// 	background-image: -moz-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-// 	background-image: -ms-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-// 	background-image: -webkit-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-// 	background-image: -o-linear-gradient(top, darken( @light-blue, 10% ), @light-blue );
-// }
 
 
 /* =Images
@@ -212,11 +178,4 @@ nav ul li.current-menu-parent > a {
 #footer-widget-area,
 #site-info{
 	border-top: solid 1px darken( @base-gray, 10% );
-}
-
-
-/* Maximum width of 480 pixels. */
-@media screen and (max-width: 480px){
-
-
 }

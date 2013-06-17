@@ -1,5 +1,11 @@
 jQuery(document).ready(function($){
-	$('#site-navigation .screen-menu').click(function(){
-		$('#site-navigation .menu').slideToggle('fast');
+	$('#navigation-toggle').click(function(){
+		$('#site-navigation').slideToggle('fast');
+	});
+	$('#top-toggle').click(function(){
+		$('#top').slideToggle('fast');
+	});
+	$('#footer-toggle').click(function(){
+		$('#footer-menu').slideToggle('fast');
 	});
 })

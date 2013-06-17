@@ -70,7 +70,7 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
 ?>
 			<section id="main-content" class="row-fluid">
 				<section id="content" role="main" class="span12">
-					<section id="featured-widget-area">
+					<section id="featured-widget-area" class="text-center">
 						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
 						<div class="row-fluid">
 							<?php t_em_front_page_widgets( 'two', 'btn' ); ?>

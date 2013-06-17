@@ -21,10 +21,10 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-			<div id="site-info" class="wrapper container-fluid">
+			<div id="site-info" class="container-fluid">
 				<div class="row-fluid">
 
-					<div id="copyright" class="span2">
+					<div id="copyright" class="wrapper span2 pull-left">
 						<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 							<?php bloginfo( 'name' ); ?>
 						</a>
@@ -34,8 +34,9 @@
 
 					<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
 					<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+					<h3 id="footer-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
 					<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
-						<nav id="footer-menu" class="span10 text-right">
+						<nav id="footer-menu" class="wrapper span10 text-right pull-right">
 							<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
 						</nav>
 					<?php endif; ?>

@@ -249,11 +249,9 @@ div.menu,
 }
 #copyright {
 	font-size: 14px;
-	float: left;
 }
 #twenty-em-credit{
 	clear: both;
-	text-align: center;
 	padding: 10px 0 0;
 	max-width: 100%;
 	font-style: italic;
@@ -452,6 +450,12 @@ sub {
 .jumbotron{
 	padding: 30px 0 50px;
 }
+.jumbotron .btn-large{
+	margin-right: 10px;
+}
+.actions{
+	margin-bottom: 20px;
+}
 
 /** Static Header */
 .static-header-text-left #static-header-text{
@@ -545,16 +549,10 @@ div.menu li {
 
 .screen-menu{
 	display: none;
-	padding: 7px 0;
+	padding: 0;
 }
 
 /** Top and Footer Menu */
-#top-menu,
-#footer-menu,
-#social-network-menu{
-	clear: right;
-	float: right;
-}
 #top-menu ul,
 #footer-menu ul,
 #social-network-menu ul{
@@ -1260,15 +1258,15 @@ input[type=submit] {
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
+#featured-widget-area img{
+	max-height: 145px;
+	margin-bottom: 15px;
+}
 .front-page-widget{
 	margin-bottom: 25px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
-}
-#front-page-widget-one{
-	text-align: center;
-	width: 100%;
 }
 #front-page-widget-one header > *{
 	font-size: 60px;
@@ -1374,119 +1372,75 @@ img#wpstats {
 
 /* =Media queries
 -------------------------------------------------------------- */
-/* Portrait tablet */
-/*@media (max-width: 769px) {
-	#content,
-	#sidebar,
-	.two-column-content-right #content,
-	.two-column-content-right #sidebar,
-	#colophon aside{
-		clear: both;
-		width: 100% !important;
+/* Large desktop */
+@media (min-width: 1200px) {}
+/* Portrait tablet to landscape and desktop */
+@media (max-width: 767px){
+	.wrapper{
+		padding: 2.5641% !important;
 	}
-}*/
-
-/* Portrait tablet */
-/*@media (min-width: 768px){
-	#site-navigation .menu{
+	#header{
+		padding: 0;
+	}
+	#header-image img{
+		margin-bottom: 2.5641%;
+	}
+}
+@media (min-width: 768px){
+	#top,
+	#site-navigation,
+	#footer-menu{
 		display: block !important;
 	}
-}*/
-
+}
 /* Portrait tablet to landscape and desktop */
-/*@media (max-width: 979px){
+@media (min-width: 768px) and (max-width: 979px) {}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
 	#header hgroup,
 	#site-title,
 	#site-description,
-	#top-menu,
-	#site-navigation .menu,
 	#copyright,
 	#social-network-menu,
-	#footer-menu,
 	#twenty-em-credit{
 		text-align: center;
 		width: 100%;
 		margin: 0;
 	}
-	#site-navigation .menu li{
-		display: inline-block;
-		float: none;
-	}
-	#top-menu,
-	#copyright,
-	#footer-menu,
 	#social-network-menu{
-		clear: both !important;
-		float: none !important;
-		padding: 10px 0;
-	}
-}*/
-/* Portrait tablet */
-/*@media (max-width: 769px) {
-	#footer-widget-area aside{
-		margin-left: 0;
-	}
-}*/
-/* Landscape phone to portrait tablet */
-/*@media (max-width: 767px){
-	#site-navigation .menu-header{
-		margin: 0;
-	}
-	#site-navigation .menu li{
 		float: none;
-		display: inline-block;
-		text-align: left;
-	}
-	#content figure{
-		padding: 5px 0;
-		max-width: 100%;
-	}
-	#content figure img,
-	.entry-attachment img{
-		margin: 0;
-		max-width: 98%;
-	}
-	#content figure figcaption{
-		margin: 0;
-	}
-	#colophon #footer-widget-area{
-		text-align: left;
-	}
-	#footer-widget-area .widget-container{
-		margin: 0 0 18px;
-	}
-	#comments .children{
-		padding: 0 0 0 40px;
-	}
-	#site-title{
-		margin-bottom: 15px;
 	}
 	.screen-menu{
 	display: block;
 	cursor: pointer;
-	line-height: 38px;
+	line-height: 25px;
+	margin-top: 0;
 	text-align: center;
+	font-size: 14px;
 	}
-	#site-navigation .menu-header,
-	#site-navigation .menu,
-	#top-menu .menu,
-	#footer-menu .menu{
-		margin: 0;
+	.screen-menu .font-icon{
+		vertical-align: -2px;
 	}
-	#site-navigation .menu{
+	#top,
+	#site-navigation,
+	#footer-menu{
 		display: none;
 	}
-	#site-navigation .menu li{
+	#top-menu .menu li,
+	#site-navigation .menu li,
+	#footer-menu .menu li{
 		display: block;
-		float: none;
+		float: none !important;
 		position: inherit;
 	}
 	#site-navigation ul ul,
-	#top-menu ul,
-	#footer-menu ul{
+	#top-menu .menu-top,
+	#footer-menu li{
 		clear: both;
 		display: block;
 		float: none;
+		text-align: left;
 		width: auto;
 		position: inherit;
 		box-shadow: none;
@@ -1503,22 +1457,11 @@ img#wpstats {
 		font-weight: normal;
 		margin-left: 15px;
 	}
-	#top-menu,
-	#footer-menu{
-		padding: 0;
-	}
-	#top-menu a,
-	#footer-menu a{
-		line-height: 38px;
-	}
-}*/
+}
+
 /* Landscape phones and down */
-/*@media (max-width: 480px){
-	#content{
-		font-size: 1em;
-		line-height: 18px;
+@media (max-width: 480px) {
+	.jumbotron .btn-large{
+		margin: 0 0 10px;
 	}
-	#comments .children{
-		padding: 0 0 0 20px;
-	}
-}*/
+}

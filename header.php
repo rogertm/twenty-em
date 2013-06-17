@@ -30,6 +30,7 @@
 <div id="wrap" class="hfeed">
 	<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 	<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+	<h3 id="top-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
 	<div id="top" class="wrapper container-fluid">
 		<div class="row-fluid">
 			<nav id="top-menu" role="navigation" class="span12">
@@ -44,12 +45,12 @@
 				<div class="row-fluid">
 					<hgroup class="span12">
 						<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
-						<<?php echo $heading_tag; ?> id="site-title">
+						<<?php echo $heading_tag; ?> id="site-title" class="pull-left">
 						<span>
 							<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 						</span>
 						</<?php echo $heading_tag; ?>>
-						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+						<h2 id="site-description" class="pull-right"><?php bloginfo( 'description' ); ?></h2>
 					</hgroup>
 				</div><!-- .row-fluid -->
 			</div><!-- #branding .container-fluid -->
@@ -57,12 +58,12 @@
 			<?php t_em_header_options_set(); ?>
 
 		<?php if ( has_nav_menu( 'navigation-menu' ) ) : ?>
+			<h3 id="navigation-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Navigation', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
 			<nav id="site-navigation" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
 				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#main" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
-				<h3 class="screen-menu icon-menu"><span class="hidden"><?php _e( 'Main menu', 't_em' ); ?></span></h3>
+				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#sidebar" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'navigation-menu' ) ); ?>
 			</nav><!-- #site-navigation -->

@@ -7,7 +7,7 @@ global $t_em_theme_options;
 if ( '1' == $t_em_theme_options['t-em-link'] ) :
 	global $t_em_theme_data;
 ?>
-	<div id="twenty-em-credit">
+	<div id="twenty-em-credit" class="wrapper span12 text-center">
 		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
 		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
 			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
