@@ -41,9 +41,7 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.js', array(), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'modernizr' );
 
-	// Register and enqueue Twitter Bootstrap Framework
-	wp_register_style( 'bootstrap', T_EM_THEME_DIR_CSS.'/bootstrap.css', '', $t_em_theme_data['Version'], 'all' );
-	wp_enqueue_style( 'bootstrap' );
+	// Register and enqueue Twitter Bootstrap JS Plugins
 	wp_register_script( 'bootstrap', T_EM_THEME_DIR_JS.'/bootstrap.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 	wp_enqueue_script( 'bootstrap' );
 
@@ -130,12 +128,16 @@ function t_em_ggs_style(){
 }
 
 /**
- * Add Twitter Bootstrap meta on the <head> tag
+ * Add Twitter Bootstrap meta on the <head> tag. Note that we use Bootstrap in LESS form, this make
+ * it mush more customizable.
+ *
+ * @since Twenty'em 1.0
  */
-function t_em_bootstrap_meta(){
+function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
+	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS .'/bootstrap.less">'."\n";
 }
-add_action( 'wp_head', 't_em_bootstrap_meta' );
+add_action( 'wp_head', 't_em_bootstrapped_head' );
 
 /**
  * The "rel" element in the html returned by the function wp_enqueue_style()
