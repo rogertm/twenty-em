@@ -48,10 +48,7 @@ function t_em_admin_styles_and_scripts(){
 	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'script-admin-t-em' );
 }
-if ( $_SERVER['QUERY_STRING'] == (	'page=theme-options' ||
-									'page=theme-tools-box' ||
-									'page=theme-webmaster-tools' ||
-									'page=theme-backup' ) ) :
+if ( $_SERVER['QUERY_STRING'] == ( 'page=theme-options' || 'page=theme-backup' ) ) :
 	add_action( 'admin_init', 't_em_admin_styles_and_scripts' );
 endif;
 

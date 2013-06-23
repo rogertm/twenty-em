@@ -450,10 +450,13 @@ sub {
 .jumbotron{
 	padding: 30px 0 50px;
 }
-.jumbotron .btn-large{
+#static-header img{
+	padding: 0;
+}
+#static-header .btn-large{
 	margin: 0 0 10px 0;
 }
-.actions{
+#static-header .actions{
 	margin-bottom: 20px;
 }
 
@@ -1026,10 +1029,6 @@ div.menu li {
 .commentlist .children li {
 	border: none;
 	margin: 0;
-}
-.nopassword,
-.nocomments {
-	display: none;
 }
 #comments .pingback {
 	margin-bottom: 18px;

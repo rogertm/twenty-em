@@ -284,6 +284,7 @@ if ( ! function_exists( 't_em_admin_header_style' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_admin_header_style() {
+	global $custom_header_support;
 ?>
 	<style type="text/css">
 	.appearance_page_custom-header #headimg {

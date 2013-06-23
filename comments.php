@@ -14,8 +14,8 @@
 ?>
 <section id="comments">
 <?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 't_em' ); ?></p>
-			</div><!-- #comments -->
+	<p class="nopassword lead"><?php _e( 'This post is password protected. Enter the password to view any comments.', 't_em' ); ?></p>
+</section><!-- #comments -->
 <?php
 		/* Stop the rest of comments.php from being processed,
 		 * but don't kill the script entirely -- we still have
@@ -82,4 +82,4 @@ endif; // have_comments()
 <?php
 comment_form();
 ?>
-</section><!-- #comments .media -->
+</section><!-- #comments -->

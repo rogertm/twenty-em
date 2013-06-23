@@ -12,7 +12,7 @@ if ( ( '1' == $t_em_theme_options['static-header-home-only'] && is_home() ) || '
 		<div class="row-fluid text-center">
 
 <?php if ( ! empty ( $t_em_theme_options['static-header-img-src'] ) ) : ?>
-			<div id="static-header-image" class="hidden-phone <?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 				<figure>
 					<img src="<?php echo esc_url( $t_em_theme_options['static-header-img-src'] ); ?>"
 						alt="<?php echo $t_em_theme_options['static-header-headline']; ?>"

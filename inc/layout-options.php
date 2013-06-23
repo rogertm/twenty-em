@@ -30,12 +30,12 @@ function t_em_layout_options(){
 	$layout_options = array (
 		'two-column-content-left' => array(
 			'value' => 'two-column-content-left',
-			'label' => __( 'One column. Content on right', 't_em' ),
+			'label' => __( 'Two columns. Content on left', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG . '/two-column-content-left.png',
 		),
 		'two-column-content-right' => array(
 			'value' => 'two-column-content-right',
-			'label' => __( 'One column. Content on left', 't_em' ),
+			'label' => __( 'Two columns. Content on right', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG . '/two-column-content-right.png',
 		),
 		'three-column-content-left' => array(

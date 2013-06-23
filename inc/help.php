@@ -31,9 +31,11 @@ function t_em_theme_options_help(){
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header image.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Front Page Options</strong>: Default Values: Just another WordPress front page', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Archive Options</strong>: Default Values: The content.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Layout Options</strong>: Default Values: Sidebar on right. Site width: 960px.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: 960px.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) .
 			'</ul>' .
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
@@ -66,12 +68,22 @@ function t_em_theme_options_help(){
 						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
+						'<li>' . __( '<strong>Static Header</strong>:', 't_em' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Header Options', 't_em' ),
 		'id'		=> 'header-options-help',
 		'content'	=> $header_help,
+		)
+	);
+
+	$front_page_help =	'<p>' . __( '<strong>Front Page Options</strong>:', 't_em' ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title'		=> __( 'Front Page Options', 't_em' ),
+		'id'		=> 'front-page-options-help',
+		'content'	=> $front_page_help,
 		)
 	);
 
@@ -106,11 +118,20 @@ function t_em_theme_options_help(){
 		)
 	);
 
+	$webmastertools_help = '<p>' . __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your Search Engines ID&#8217;s and Statistics Tracker codes provided by Google, Yahoo! and/or Bing.', 't_em' ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Webmaster Tools Options', 't_em' ),
+		'id' => 'webmaster-tools-help',
+		'content' => $webmastertools_help,
+		)
+	);
+
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
@@ -213,8 +234,8 @@ function t_em_webmaster_tools_help(){
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
