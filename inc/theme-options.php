@@ -54,7 +54,7 @@ endif;
 
 /**
  * Register the form setting for our t_em_theme_options array.
- * This function is attached to the admin_menu() action hook.
+ * This function is attached to the admin_init() action hook.
  *
  * @uses register_setting() Register a setting and its sanitization callback.
  * @uses add_settings_section() This are groups of settings you see on Twenty'em settings pages with
@@ -97,7 +97,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', 61 );
+	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', '61.25031992' );
 	$theme_backup_page	= add_submenu_page( 'theme-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'theme-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -557,8 +557,6 @@ function t_em_layout_classes( $existing_classes ){
 		$classes[] = 'three-column-content-middle';
 	else
 		$classes[] = $layout_set;
-
-
 
 	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
 
