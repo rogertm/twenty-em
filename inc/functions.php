@@ -1378,4 +1378,25 @@ function t_em_add_bootstrap_class( $section ){
 
 	return $bootstrap_classes;
 }
+
+/**
+ * Wrap paragraphs into <p> ...</p> tags, and clean empty lines
+ *
+ * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
+ *
+ * @return string
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_wrap_paragraph( $paragraph ){
+	$wrap_paragraph = explode( "\n", $paragraph );
+	$i = 0;
+	$ps = count($wrap_paragraph) - 1;
+	while ( $i <= $ps ) :
+		$p[$i] = "<p>" . $wrap_paragraph[$i] . "</p>";
+		$clean_paragraph[$i] = str_replace( "<p>\r</p>", "", $p[$i] );
+		$i++;
+	endwhile;
+	return implode( "", $clean_paragraph );
+}
 ?>

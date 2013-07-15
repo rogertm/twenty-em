@@ -33,6 +33,17 @@ define ( 'T_EM_INC_DIR_IMG',		get_template_directory_uri().'/inc/images' );
 define ( 'T_EM_INC_DIR_JS',			get_template_directory_uri().'/inc/js' );
 
 /**
+ * Register default values through constants
+ */
+if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )		define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );
+if ( ! defined( 'T_EM_SLIDER_MAX_HEIGHT' ) )			define( 'T_EM_SLIDER_MAX_HEIGHT', 500 );
+if ( ! defined( 'T_EM_SLIDER_MIN_HEIGHT' ) )			define( 'T_EM_SLIDER_MIN_HEIGHT', 200 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE' ) )	define( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE', 960 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )		define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1600 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )		define( 'T_EM_LAYOUT_WIDTH_MIN_VALUE', 600 );
+
+
+/**
  * Register Style Sheet and Javascript to beautify the admin option page.
  * This function is attached ti the admin_init() action hook, but just if we are in the right place.
  *
@@ -320,27 +331,6 @@ function t_em_thumbnail_sizes( $contex ){
 }
 
 /**
- * Wrap paragraphs into <p> ...</p> tags, and clean empty lines
- *
- * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
- *
- * @return string
- *
- * @since Twenty'em 1.0
- */
-function t_em_wrap_paragraph( $paragraph ){
-	$wrap_paragraph = explode( "\n", $paragraph );
-	$i = 0;
-	$ps = count($wrap_paragraph) - 1;
-	while ( $i <= $ps ) :
-		$p[$i] = "<p>" . $wrap_paragraph[$i] . "</p>";
-		$clean_paragraph[$i] = str_replace( "<p>\r</p>", "", $p[$i] );
-		$i++;
-	endwhile;
-	return implode( "", $clean_paragraph );
-}
-
-/**
  * Return the whole configuration for Theme Options stored in the data base.
  * Referenced via t_em_set_globals() in /inc/theme-options.php file.
  *
@@ -443,8 +433,8 @@ function t_em_theme_options_validate( $input ){
 	// Validate all int (input[type="number"]) options
 
 	// Slider Height values: default: 350, max: 500, min: 200.
-	if ( ( $input['slider-height'] < 200 || $input['slider-height'] > 500 ) || empty( $input['slider-height'] ) || ! is_numeric( $input['slider-height'] ) ) :
-		$input['slider-height'] = 350;
+	if ( ( $input['slider-height'] < T_EM_SLIDER_MIN_HEIGHT || $input['slider-height'] > T_EM_SLIDER_MAX_HEIGHT ) || empty( $input['slider-height'] ) || ! is_numeric( $input['slider-height'] ) ) :
+		$input['slider-height'] = T_EM_SLIDER_DEFAULT_HEIGHT;
 	else :
 		$input['slider-height'] = $input['slider-height'];
 	endif;
@@ -471,8 +461,8 @@ function t_em_theme_options_validate( $input ){
 	endif;
 
 	// Layout Width values: default : 960, max: 1600, min: 600.
-	if ( ( $input['layout-width'] < 600 || $input['layout-width'] > 1600 ) || empty( $input['layout-width'] ) || ! is_numeric( $input['layout-width'] ) ) :
-		$input['layout-width'] = 960;
+	if ( ( $input['layout-width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout-width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout-width'] ) || ! is_numeric( $input['layout-width'] ) ) :
+		$input['layout-width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
 	else :
 		$input['layout-width'] = $input['layout-width'];
 	endif;
