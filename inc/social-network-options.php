@@ -211,7 +211,7 @@ function t_em_settings_field_socialnetwork_set(){
 	global $t_em_theme_options;
 	foreach ( t_em_social_network_options() as $social ) :
 ?>
-	<div class="layout text-option social">
+	<div id="social-network-options" class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
 			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em_theme_options[$social['name']] ); ?>" />

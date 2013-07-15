@@ -8,19 +8,6 @@ global	$post,
 
 if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $t_em_theme_options['slider-home-only'] ) :
 
-	// Define the slider Width and Height
-	if ( '' != $t_em_theme_options['layout-width'] ) :
-		$slider_width = $t_em_theme_options['layout-width'];
-	elseif ( '' == $t_em_theme_options['layout-width'] ) :
-		$slider_width = '960';
-	endif;
-
-	if ( '' != $t_em_theme_options['slider-height'] ) :
-		$slider_height = $t_em_theme_options['slider-height'];
-	elseif ( '' == $t_em_theme_options['slider-height'] ) :
-		$slider_height = '350';
-	endif;
-
 	// Take category and number of slides to show from theme options
 	$args = array (
 		'post_type'			=> 'post',
@@ -50,7 +37,7 @@ if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $
 				endif;
 					?>
 					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$slider_width.'&amp;h='.$slider_height.'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout-width'].'&amp;h='.$t_em_theme_options['slider-height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
 					</a>
 					<?php
 			endwhile;

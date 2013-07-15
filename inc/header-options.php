@@ -184,9 +184,9 @@ function t_em_slider_callback(){
 
 	// Define Height of Nivo Slider
 	$extend_slider .= '<div class="sub-extend">';
-	$extend_slider .= '<p>'. __( 'By default slider width is the same than layout width. Here you may enter the value you wish to be your slider height. If empty the value will be <strong>350px</strong>', 't_em' ) .'</p>';
+	$extend_slider .= '<p>'. sprintf( __( 'By default slider width is the same than layout width. Here you may enter the value you wish to be your slider height. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), 350, 500, 200 ).'</p>';
 	$extend_slider .= 		'<div class="layout text-option thumbnail">';
-	$extend_slider .=			'<label><span>'. __( 'Slider Height', 't_em' ) .'</span>';
+	$extend_slider .=			'<label class="description"><span>'. __( 'Slider Height', 't_em' ) .'</span>';
 	$extend_slider .=				'<input type="number" name="t_em_theme_options[slider-height]" value="'.esc_attr( $t_em_theme_options['slider-height'] ).'" /><span class="unit">px</span>';
 	$extend_slider .=			'</label>';
 	$extend_slider .=		'</div>';
@@ -194,9 +194,9 @@ function t_em_slider_callback(){
 
 	// Display a select list of categories
 	$list_categories = get_categories();
-	$extend_slider .= '<div class="sub-extend">';
+	$extend_slider .= '<div class="sub-extend text-option">';
 	$extend_slider .=	'<label class="description">';
-	$extend_slider .= 		'<p>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</p>';
+	$extend_slider .= 		'<span>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</span>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider-category]">';
 	foreach ( $list_categories as $slider_category ) :
 		$selected_option = selected( $t_em_theme_options['slider-category'], $slider_category->term_id, false );
@@ -207,11 +207,11 @@ function t_em_slider_callback(){
 	$extend_slider .= '</div>';
 
 	// How many slides to show?
-	$extend_slider .= '<div class="sub-extend">';
+	$extend_slider .= '<div class="sub-extend text-option">';
 	$extend_slider .=	'<label class="description">';
-	$extend_slider .= 		'<p>'. sprintf( __( 'Introduce the number of slides you want to show. Default value will be <strong>%1$s</strong>, set at your <a href="%2$s" target="_blank">Reading Settings</a> posts per page option', 't_em' ),
+	$extend_slider .= 		'<span>'. sprintf( __( 'Introduce the number of slides you want to show. Default value will be <strong>%1$s</strong>, set at your <a href="%2$s" target="_blank">Reading Settings</a> posts per page option', 't_em' ),
 		get_option( 'posts_per_page' ),
-		admin_url( 'options-reading.php' ) ) .'</p>';
+		admin_url( 'options-reading.php' ) ) .'</span>';
 	$extend_slider .= 		'<input type="number"  name="t_em_theme_options[slider-number]" value="'. esc_attr( $t_em_theme_options['slider-number'] ) .'" />';
 	$extend_slider .=	'</label>';
 	$extend_slider .= '</div>';

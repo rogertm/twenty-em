@@ -253,8 +253,8 @@ function t_em_default_theme_options(){
 		'layout-width'									=> '960',
 		'excerpt-set'									=> 'thumbnail-left',
 		'slider-height'									=> '350',
-		'excerpt-thumbnail-height'						=> get_option( 'thumbnail_size_h' ),
 		'excerpt-thumbnail-width'						=> get_option( 'thumbnail_size_w' ),
+		'excerpt-thumbnail-height'						=> get_option( 'thumbnail_size_h' ),
 		// Social Networks Options
 		'twitter-set'									=> '',
 		'facebook-set'									=> '',
@@ -320,6 +320,27 @@ function t_em_thumbnail_sizes( $contex ){
 }
 
 /**
+ * Wrap paragraphs into <p> ...</p> tags, and clean empty lines
+ *
+ * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
+ *
+ * @return string
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_wrap_paragraph( $paragraph ){
+	$wrap_paragraph = explode( "\n", $paragraph );
+	$i = 0;
+	$ps = count($wrap_paragraph) - 1;
+	while ( $i <= $ps ) :
+		$p[$i] = "<p>" . $wrap_paragraph[$i] . "</p>";
+		$clean_paragraph[$i] = str_replace( "<p>\r</p>", "", $p[$i] );
+		$i++;
+	endwhile;
+	return implode( "", $clean_paragraph );
+}
+
+/**
  * Return the whole configuration for Theme Options stored in the data base.
  * Referenced via t_em_set_globals() in /inc/theme-options.php file.
  *
@@ -347,7 +368,6 @@ function t_em_theme_options_page(){
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Theme Options', 't_em' ) ?></h2>
 		<?php settings_errors(); ?>
-
 		<form id="t-em-setting" method="post" action="options.php">
 			<?php
 				settings_fields( 't_em_options' );
@@ -421,6 +441,41 @@ function t_em_theme_options_validate( $input ){
 	endforeach;
 
 	// Validate all int (input[type="number"]) options
+
+	// Slider Height values: default: 350, max: 500, min: 200.
+	if ( ( $input['slider-height'] < 200 || $input['slider-height'] > 500 ) || empty( $input['slider-height'] ) || ! is_numeric( $input['slider-height'] ) ) :
+		$input['slider-height'] = 350;
+	else :
+		$input['slider-height'] = $input['slider-height'];
+	endif;
+
+	// Slider Number values: default: get_option( 'posts_per_page' );
+	if ( empty( $input['slider-number'] ) || ! is_numeric( $input['slider-number'] ) ) :
+		$input['slider-number'] = get_option( 'posts_per_page' );
+	else :
+		$input['slider-number'] = $input['slider-number'];
+	endif;
+
+	// Excerpt Thumbnail Width values: default: get_option( 'thumbnail_size_w' );
+	if ( empty( $input['excerpt-thumbnail-width'] ) || ! is_numeric( $input['excerpt-thumbnail-width'] ) ) :
+		$input['excerpt-thumbnail-width'] = get_option( 'thumbnail_size_w' );
+	else :
+		$input['excerpt-thumbnail-width'] = $input['excerpt-thumbnail-width'];
+	endif;
+
+	// Excerpt Thumbnail Height values: default: get_option( 'thumbnail_size_h' );
+	if ( empty( $input['excerpt-thumbnail-height'] ) || ! is_numeric( $input['excerpt-thumbnail-height'] ) ) :
+		$input['excerpt-thumbnail-height'] = get_option( 'thumbnail_size_h' );
+	else :
+		$input['excerpt-thumbnail-height'] = $input['excerpt-thumbnail-height'];
+	endif;
+
+	// Layout Width values: default : 960, max: 1600, min: 600.
+	if ( ( $input['layout-width'] < 600 || $input['layout-width'] > 1600 ) || empty( $input['layout-width'] ) || ! is_numeric( $input['layout-width'] ) ) :
+		$input['layout-width'] = 960;
+	else :
+		$input['layout-width'] = $input['layout-width'];
+	endif;
 	foreach( array (
 		'slider-height',
 		'slider-number',
@@ -486,31 +541,37 @@ function t_em_theme_options_validate( $input ){
 		'bing-id',
 		'stats-tracker',
 	) as $text ) :
-		$input[$text] = htmlentities( $input[$text] );
+		$input[$text] = trim( htmlentities( str_replace( array( '<script type="text/javascript">', '</script>', '\t', '\n', '\r', ' ' ), '', $input[$text] ) ) );
+	endforeach;
+
+	// Validate all text field options
+	foreach ( array (
+		'headline-text-widget-one',
+		'icon-class-text-widget-one',
+		'headline-text-widget-two',
+		'icon-class-text-widget-two',
+		'headline-text-widget-three',
+		'icon-class-text-widget-three',
+		'headline-text-widget-four',
+		'icon-class-text-widget-four',
+		'static-header-headline',
+		'static-header-primary-button-text',
+		'static-header-primary-button-icon-class',
+		'static-header-secondary-button-text',
+		'static-header-secondary-button-icon-class',
+	) as $text_field ) :
+		$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
 	endforeach;
 
 	// Validate all textarea options
 	foreach ( array (
 		'content-text-widget-one',
-		'headline-text-widget-one',
-		'icon-class-text-widget-one',
 		'content-text-widget-two',
-		'headline-text-widget-two',
-		'icon-class-text-widget-two',
 		'content-text-widget-three',
-		'headline-text-widget-three',
-		'icon-class-text-widget-three',
 		'content-text-widget-four',
-		'headline-text-widget-four',
-		'icon-class-text-widget-four',
-		'static-header-headline',
 		'static-header-content',
-		'static-header-primary-button-text',
-		'static-header-primary-button-icon-class',
-		'static-header-secondary-button-text',
-		'static-header-secondary-button-icon-class',
 	) as $textarea ) :
-		$input[$textarea] = esc_textarea( $input[$textarea] );
+		$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
 	endforeach;
 
 	return $input;

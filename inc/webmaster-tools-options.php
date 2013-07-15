@@ -100,6 +100,7 @@ function t_em_settings_stats_tracker(){
 		<div class="layout textarea-option stat-tracker">
 			<label>
 				<span><?php echo $stat_tracker['label']; ?></span>
+				<p><?php echo sprintf( __( '<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</code> tags are not needed', 't_em' ), '&lt;script type="text/javascript"&gt', '&lt;/script&gt' ); ?></p>
 				<textarea name="t_em_theme_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em_theme_options[$stat_tracker['name']] ) ?></textarea>
 			</label>
 		</div>
@@ -140,7 +141,7 @@ function t_em_stats_engines_tracker(){
 		echo '<meta name="msvalidate.01" content="' . $t_em_theme_options['bing-id'] . '">' . "\n";
 
 	if ( $t_em_theme_options['stats-tracker'] )
-		echo html_entity_decode( $t_em_theme_options['stats-tracker'] ) . "\n";
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em_theme_options['stats-tracker'] ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 't_em_stats_engines_tracker' );
 ?>

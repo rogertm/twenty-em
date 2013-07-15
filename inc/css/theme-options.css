@@ -53,10 +53,13 @@
 	clear: both;
 	display: block;
 }
+#t-em-setting label{
+	margin: 10px 30px 5px 2px;
+	display: block;
+}
 #t-em-setting label.description{
 	display: block;
 	float: left;
-	margin: 0 30px 20px 2px;
 }
 #t-em-setting label.single-option{
 	clear: both;
@@ -85,6 +88,8 @@
 }
 #t-em-setting .sub-extend{
 	clear: both;
+	margin: 10px 0 0;
+	overflow: hidden;
 }
 #t-em-setting .text-option.thumbnail{
 	display: inline-block;
@@ -99,6 +104,11 @@
 #t-em-setting .social{
 	display: inline-block;
 	margin: 5px;
+}
+#t-em-setting #widgets-front-page label,
+#t-em-setting #social-network-options label{
+	margin-left: 0;
+	margin-right: 0;
 }
 #t-em-setting #text-widget-two,
 #t-em-setting #text-widget-three,

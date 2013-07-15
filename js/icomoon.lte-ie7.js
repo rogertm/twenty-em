@@ -780,7 +780,11 @@ window.onload = function() {
 			'icon-webcam' : '&#xf0fe;',
 			'icon-settings5' : '&#xf309;',
 			'icon-eye-open' : '&#xe086;',
-			'icon-eye-close' : '&#xe087;'
+			'icon-eye-close' : '&#xe087;',
+			'icon-home-2' : '&#xe088;',
+			'icon-home-3' : '&#x21b8;',
+			'icon-home2' : '&#xe089;',
+			'icon-home-4' : '&#xe08a;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

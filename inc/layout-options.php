@@ -113,7 +113,7 @@ function t_em_layout_width(){
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
-	$layout_width .= 		'<span>'. __( 'Enter the value you wish to be your theme width. If empty, the value will be <strong>960px</strong>.', 't_em' ) .'</span>';
+	$layout_width .= 		'<span>'. sprintf( __( 'Enter the value you wish to be your site width. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>.', 't_em' ), 960, 1600, 600 ) .'</span>';
 	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$t_em_theme_options['layout-width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';

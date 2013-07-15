@@ -1243,7 +1243,7 @@ function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em_theme_options['headline-text-widget-'.$widget.''] .'</'. $h_tag .'></header>' : '';
 
 		$widget_content		= ( $t_em_theme_options['content-text-widget-'.$widget.''] ) ?
-			'<div><p>'. html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) .'</p></div>' : '';
+			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) .'</div>' : '';
 
 		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] ) ?
 			'<img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" />' : '';
