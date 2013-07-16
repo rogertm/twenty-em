@@ -48,7 +48,7 @@ function t_em_theme_options_help(){
 
 	$general_help =	'<p>' . __( '<strong>General Options</strong>: By checking the check boxes below, you may enable or not this options.<br />Note: All of then are check by default.', 't_em' ) . '</p>' .
 					'<ul>' .
-						'<li>' . __( '<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em will be displayed in your site footer area.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em.com will be displayed in your site footer area.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 					'</ul>';
@@ -63,12 +63,14 @@ function t_em_theme_options_help(){
 	$header_help =	'<p>' . __( '<strong>Header Options</strong>: With this options you are able to configure your header site section.', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . __( '<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline.', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s">Header Settings</a> to customize this section.<br /> In addition you may active the checkbox "<strong>Display featured image in single posts and pages?</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s" target="_blank">Header Settings</a> to customize this section.<br /> In addition you may active the checkbox "<strong>Display featured image in single posts and pages?</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
 								 admin_url( 'themes.php?page=custom-header' ) ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s" target="_blank">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
-						'<li>' . __( '<strong>Static Header</strong>:', 't_em' ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s" target="_blank">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s" target="_blank">icons</a> to these buttons.', 't_em' ),
+								 admin_url( 'upload.php' ),
+								 T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -78,7 +80,14 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$front_page_help =	'<p>' . __( '<strong>Front Page Options</strong>:', 't_em' ) . '</p>';
+	$front_page_help =	'<p>' . __( '<strong>Front Page Options</strong>: With this options you are able to configure your front page.', 't_em' ) . '</p>' .
+						'<ul>' .
+							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s" target="_blank">Reading Settings</a> options.', 't_em' ),
+									 admin_url( 'options-reading.php' ) ) . '</li>' .
+							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s" target="_blank">icon class</a>, image (previously uploaded to your <a href="%2$s" target="_blank">Media Library</a>) and a button linked to the URL you like.', 't_em' ),
+									 T_EM_THEME_DIR_DOCS . '/icomoon.html',
+									 admin_url( 'upload.php' ) ) . '</li>' .
+						'</ul>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Front Page Options', 't_em' ),
@@ -100,7 +109,11 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. With this you may decide where you want your side bar, in case you need one. And also you can enter the value you wish to be your site width. Default value <strong>960px</strong>.', 't_em' ) . '</p>';
+	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. You may decide where you want your(s) side(s) bar(s), in case you need one.', 't_em' ) . '</p>' .
+					'<p>' . sprintf( __( 'And also enter the value (in pixels) you wish to be your site width. Default: <code>%1$s</code>, Max: <code>%2$s</code>, Min: <code>%3$s</code>.', 't_em' ),
+							T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
+							T_EM_LAYOUT_WIDTH_MAX_VALUE,
+							T_EM_LAYOUT_WIDTH_MIN_VALUE ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Layout Options', 't_em' ),
