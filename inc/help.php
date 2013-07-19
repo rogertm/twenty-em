@@ -70,7 +70,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-writing.php' ) ). '</li>' .
 						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s" target="_blank">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s" target="_blank">icons</a> to these buttons.', 't_em' ),
 								 admin_url( 'upload.php' ),
-								 T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</li>' .
+								 T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -85,7 +85,7 @@ function t_em_theme_options_help(){
 							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s" target="_blank">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
 							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s" target="_blank">icon class</a>, image (previously uploaded to your <a href="%2$s" target="_blank">Media Library</a>) and a button linked to the URL you like.', 't_em' ),
-									 T_EM_THEME_DIR_DOCS . '/icomoon.html',
+									 T_EM_THEME_DIR_DOCS_URL . '/icomoon.html',
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
 
@@ -143,112 +143,8 @@ function t_em_theme_options_help(){
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
-
-	$screen->set_help_sidebar( $sidebar );
-}
-
-/**
- * Add contextual help to Tools Box options screen
- *
- * @since Twenty'em 0.1
- */
-function t_em_tools_box_options_help(){
-	global $t_em_theme_data;
-
-	$screen = get_current_screen();
-
-	$help = '<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provides some external tools to make your work easier. Some of them are <strong>required and loaded by default</strong>, but some others you can active them, normally to work as a developer. Your current theme, <strong>%2$s</strong>, provides the following tools:', 't_em' ),
-					'http://twenty-em.com/',
-					$t_em_theme_data['Name'] ) . '</p>'.
-			'<p><strong>' . __( 'Required:', 't_em' ) . '</strong></p>' .
-			'<ul>' .
-				'<li>' . __( '<strong>LESS</strong>', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Modernizr</strong>', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>HTML5 Shiv</strong>', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Timthumb</strong>', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>IcoMoon</strong>', 't_em' ) . '</li>' .
-			'</ul>' .
-			'<p><strong>' . __( 'Not required:', 't_em' ) . '</strong></p>' .
-			'<ul>' .
-				'<li>' . __( '<strong>Golden Grid System</strong>', 't_em' ) . '</li>' .
-			'</ul>' .
-			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
-
-	$screen->add_help_tab( array(
-		'title' => __( 'Overview', 't_em' ),
-		'id' => 'theme-toolbox-help',
-		'content' => $help,
-		)
-	);
-
-	$required_help = '<p>' . __( 'All this tools are <strong>required and loaded by default</strong>, and they are necessary for the good working of your theme. In addition, We provide a small explanation of how they work, and a link to each tool web site. Enjoy it!', 't_em' ) . '</p>'.
-			'<ul>' .
-				'<li>' . sprintf( __( '<strong>LESS</strong>: A dynamic stylesheet language. Extends CSS with dynamic behavior such as variables, mixins, operations and functions. You may manage your Color Scheme using this useful tool.<br />Visit <a href="%1$s" title="less.js" target="_blank">LESS Web Site</a> for more info.', 't_em' ),
-								'http://lesscss.org' ) . '</li>' .
-				'<li>' . sprintf( __( '<strong>Modernizr</strong>: Modernizr is a small JavaScript library that detects the availability of native implementations for HTML5 and CSS3 specifications and tell you whether the current browser has this feature natively implemented or not. Modernizr also enables you to use more semantic elements from the HTML5 spec, even in Internet Explorer.<br />Visit <a href="%1$s" title="Modernizr.com" target="_blank">Modernizr Web Site</a> for more info.', 't_em' ),
-						'http://modernizr.com/' ) . '</li>' .
-				'<li>' . sprintf( __( '<strong>HTML5 Shiv</strong>: Visit <a href="%1$s" title="HTML5Shiv" target="_blank">HTML5Shiv Web Site</a> for more info', 't_em' ),
-						'https://github.com/aFarkas/html5shiv' ) . '</li>' .
-				'<li>' . sprintf( __( '<strong>Timthumb</strong>: Visit <a href="%1$s" title="Timthumb" target="_blank">Timthumb Web Site</a> for more info.', 't_em' ),
-						'http://www.binarymoon.co.uk/projects/timthumb/' ) . '</li>' .
-					'<li>' . sprintf( __( '<strong>IcoMoon</strong>: This great tool provide a big set of font symbols icons to use in your theme, appropriate to display your site correctly when someone access using a Retina Display.<br />Visit <a href="%1$s" title="IcoMoon.io" target="_blank">IcoMoon Web Site</a> for more info, or see <a href="%2$s" title="IcoMoon examples" target="_blank">all available options</a> and how to use them.', 't_em' ),
-							'http://icomoon.io/',
-							T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</li>' .
-			'</ul>';
-
-	$screen->add_help_tab( array(
-		'title' => __( 'Required tools', 't_em' ),
-		'id' => 'required-toolbox-help',
-		'content' => $required_help,
-		)
-	);
-
-	$not_required_help = '<p>' . __( 'This tools are useful to develop using Twenty&#8217;em Framework', 't_em' ) . '</p>' .
-				'<ul>' .
-					'<li>' . sprintf( __( '<strong>Golden Grid System</strong>: A folding grid for responsive design. Golden Grid System (GGS) splits the screen into 18 even columns. The leftmost and rightmost columns are used as the outer margins of the grid, which leaves 16 columns for use in design.<br />Visit <a href="%1$s" title="Golden Grid System" target="_blank">Golden Grid System Web Site</a> for more info.', 't_em' ),
-							'http://goldengridsystem.com' ) . '</li>' .
-				'</ul>';
-
-	$screen->add_help_tab( array(
-		'title' => __( 'Not required tools', 't_em' ),
-		'id' => 'not-required-toolbox-help',
-		'content' => $not_required_help,
-		)
-	);
-
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						'http://twenty-em.com/' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
-
-	$screen->set_help_sidebar( $sidebar );
-}
-
-/**
- * Add contextual help to Webmaster Tools options screen
- */
-function t_em_webmaster_tools_help(){
-	global $t_em_theme_data;
-	$help = '<p>' . __( 'In this section you should enter your Search Engines ID&#8217;s and Statistics Tracker codes provided by Google, Yahoo! and/or Bing.', 't_em' ) . '</p>'.
-			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
-
-	$screen = get_current_screen();
-
-	$screen->add_help_tab( array(
-		'title' => __( 'Overview', 't_em' ),
-		'id' => 'theme-webmaster-tools-help',
-		'content' => $help,
-		)
-	);
-
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						'http://twenty-em.com/' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR . '/readme.txt' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR_URL . '/readme.txt' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }

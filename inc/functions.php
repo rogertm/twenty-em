@@ -115,9 +115,9 @@ function t_em_setup(){
 	 * If you're building a theme based on Twenty'em, use a find and replace to change 't_em'
 	 * to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG );
+	load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG_PATH );
 	$locale = get_locale();
-	$locale_file = T_EM_THEME_DIR_LANG . "/$locale.php";
+	$locale_file = T_EM_THEME_DIR_LANG_PATH . "/$locale.php";
 	if ( is_readable( $locale_file ) ) :
 		require_once( $locale_file );
 	endif;
@@ -147,7 +147,7 @@ if ( !function_exists( 't_em_support_custom_header' ) ) :
 function t_em_support_custom_header(){
 	$custom_header_support = array (
 		'default-text-color'		=> '757575',
-		'default-image'				=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
+		'default-image'				=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header.jpg',
 		'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
 		'height'					=> apply_filters( 't_em_header_image_height', 350 ),
 		'flex-height'				=> true,
@@ -171,43 +171,43 @@ if ( !function_exists( 't_em_support_custom_header_image' ) ) :
 function t_em_support_custom_header_image(){
 	register_default_headers( array(
 		'twenty-em'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/twenty-em-header-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header-thumbnail.jpg',
 			'description'	=> __( 'Twenty&#8217;em... Theming is prose', 't_em' ),
 		),
 		'canyon'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/canyon.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/canyon-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/canyon.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/canyon-thumbnail.jpg',
 			'description'	=> __( 'Canyon', 't_em' ),
 		),
 		'fire'		=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/fire.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/fire-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/fire.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/fire-thumbnail.jpg',
 			'description'	=> __( 'Fire', 't_em' ),
 		),
 		'friends'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/friends.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/friends-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/friends.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/friends-thumbnail.jpg',
 			'description'	=> __( 'Friends', 't_em' ),
 		),
 		'cityscapes'		=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/cityscapes.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/cityscapes-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/cityscapes.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/cityscapes-thumbnail.jpg',
 			'description'	=> __( 'Cityscapes', 't_em' ),
 		),
 		'leaf'				=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/leaf.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/leaf-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/leaf.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/leaf-thumbnail.jpg',
 			'description'	=> __( 'Leaf', 't_em' ),
 		),
 		'road'				=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/road.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/road-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/road.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/road-thumbnail.jpg',
 			'description'	=> __( 'Road', 't_em' ),
 		),
 		'streets'			=> array(
-			'url'			=> T_EM_THEME_DIR_IMG . '/headers/streets.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG . '/headers/streets-thumbnail.jpg',
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/streets.jpg',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/streets-thumbnail.jpg',
 			'description'	=> __( 'Streets', 't_em' ),
 		),
 	) );
@@ -359,7 +359,7 @@ endif; // t_em_admin_header_image()
  * @since Twenty'em 0.1
  */
 function t_em_favicon(){
-	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG . '/t-em-favicon.png' .'" />'."\n";
+	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png' .'" />'."\n";
 }
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
@@ -982,7 +982,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		endif;
 		?>
 			<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
+				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 				<figcaption><?php the_title(); ?></figcaption>
 			</figure>
 		<?php
@@ -1006,7 +1006,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 			endif;
 			?>
 				<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
+					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
 					<figcaption><?php the_title(); ?></figcaption>
 				</figure>
 			<?php

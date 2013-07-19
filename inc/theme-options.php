@@ -18,19 +18,22 @@
 /**
  * Register directory and sub-directories through constants
  */
-// Theme directory
-define ( 'T_EM_THEME_DIR',			get_template_directory_uri() );
-define ( 'T_EM_THEME_DIR_CSS',		get_template_directory_uri().'/css' );
-define ( 'T_EM_THEME_DIR_IMG',		get_template_directory_uri().'/images' );
-define ( 'T_EM_THEME_DIR_JS',		get_template_directory_uri().'/js' );
-define ( 'T_EM_THEME_DIR_LANG',		get_template_directory_uri().'/lang' );
-define ( 'T_EM_THEME_DIR_DOCS',		get_template_directory_uri().'/docs' );
+// Theme Directory URL
+define ( 'T_EM_THEME_DIR_URL',			get_template_directory_uri() );
+define ( 'T_EM_THEME_DIR_CSS_URL',		get_template_directory_uri().'/css' );
+define ( 'T_EM_THEME_DIR_IMG_URL',		get_template_directory_uri().'/images' );
+define ( 'T_EM_THEME_DIR_JS_URL',		get_template_directory_uri().'/js' );
+define ( 'T_EM_THEME_DIR_DOCS_URL',		get_template_directory_uri().'/docs' );
 
-// Theme Options Directory
-define ( 'T_EM_INC_DIR',			get_template_directory_uri().'/inc' );
-define ( 'T_EM_INC_DIR_CSS',		get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_INC_DIR_IMG',		get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_INC_DIR_JS',			get_template_directory_uri().'/inc/js' );
+// Theme Includes Directory URL
+define ( 'T_EM_INC_DIR_URL',			get_template_directory_uri().'/inc' );
+define ( 'T_EM_INC_DIR_CSS_URL',		get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_INC_DIR_IMG_URL',		get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_INC_DIR_JS_URL',			get_template_directory_uri().'/inc/js' );
+
+// Some direct path we need
+define ( 'T_EM_INC_DIR_PATH',			get_template_directory().'/inc' );
+define ( 'T_EM_THEME_DIR_LANG_PATH',	get_template_directory().'/lang' );
 
 /**
  * Register default values through constants
@@ -54,9 +57,9 @@ if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )		define( 'T_EM_LAYOUT_WIDTH_MI
 function t_em_admin_styles_and_scripts(){
 	// Check the theme version right from the style sheet
 	global $t_em_theme_data;
-	wp_register_style( 'style-admin-t-em', T_EM_INC_DIR_CSS . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'style-admin-t-em', T_EM_INC_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'style-admin-t-em' );
-	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'script-admin-t-em' );
 }
 if ( $_SERVER['QUERY_STRING'] == ( 'page=theme-options' || 'page=theme-backup' ) ) :
@@ -108,7 +111,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG . '/t-em-favicon.png', '61.25031992' );
+	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '61.25031992' );
 	$theme_backup_page	= add_submenu_page( 'theme-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'theme-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -120,16 +123,16 @@ function t_em_theme_options_admin_page(){
 add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 
 // Now we call this files we need to complete the Twenty'em engine.
-require( get_template_directory() . '/inc/generals-options.php' );
-require( get_template_directory() . '/inc/header-options.php' );
-require( get_template_directory() . '/inc/front-page-options.php' );
-require( get_template_directory() . '/inc/archive-options.php' );
-require( get_template_directory() . '/inc/layout-options.php' );
-require( get_template_directory() . '/inc/social-network-options.php' );
-require( get_template_directory() . '/inc/webmaster-tools-options.php' );
-require( get_template_directory() . '/inc/theme-backup.php' );
-require( get_template_directory() . '/inc/shortcodes.php' );
-require( get_template_directory() . '/inc/help.php' );
+require( T_EM_INC_DIR_PATH . '/generals-options.php' );
+require( T_EM_INC_DIR_PATH . '/header-options.php' );
+require( T_EM_INC_DIR_PATH . '/front-page-options.php' );
+require( T_EM_INC_DIR_PATH . '/archive-options.php' );
+require( T_EM_INC_DIR_PATH . '/layout-options.php' );
+require( T_EM_INC_DIR_PATH . '/social-network-options.php' );
+require( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
+require( T_EM_INC_DIR_PATH . '/theme-backup.php' );
+require( T_EM_INC_DIR_PATH . '/shortcodes.php' );
+require( T_EM_INC_DIR_PATH . '/help.php' );
 
 /**
  * Redirect users to Twenty'em options page after theme activation and register the default options

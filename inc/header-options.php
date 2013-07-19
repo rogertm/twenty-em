@@ -99,17 +99,17 @@ function t_em_slider_callback(){
 		'slider-text-center' => array (
 			'value' => 'slider-text-center',
 			'label' => __( 'Slider text on center', 't_em' ),
-			'title' => T_EM_INC_DIR_IMG . '/slider-text-center.png',
+			'title' => T_EM_INC_DIR_IMG_URL . '/slider-text-center.png',
 		),
 		'slider-text-left' => array (
 			'value' => 'slider-text-left',
 			'label' => __( 'Slider text on left', 't_em' ),
-			'title' => T_EM_INC_DIR_IMG . '/slider-text-left.png',
+			'title' => T_EM_INC_DIR_IMG_URL . '/slider-text-left.png',
 		),
 		'slider-text-right' => array (
 			'value' => 'slider-text-right',
 			'label' => __( 'Slider text on right', 't_em' ),
-			'title' => T_EM_INC_DIR_IMG . '/slider-text-right.png',
+			'title' => T_EM_INC_DIR_IMG_URL . '/slider-text-right.png',
 		),
 	);
 
@@ -232,12 +232,12 @@ function t_em_static_header_callback(){
 		'static-header-text-right' => array (
 			'value' => 'static-header-text-right',
 			'label' => __( 'Static header text on right', 't_em' ),
-			'title' => T_EM_INC_DIR_IMG . '/slider-text-right.png',
+			'title' => T_EM_INC_DIR_IMG_URL . '/slider-text-right.png',
 		),
 		'static-header-text-left' => array (
 			'value' => 'static-header-text-left',
 			'label' => __( 'Static header text on left', 't_em' ),
-			'title' => T_EM_INC_DIR_IMG . '/slider-text-left.png',
+			'title' => T_EM_INC_DIR_IMG_URL . '/slider-text-left.png',
 		),
 	);
 
@@ -275,7 +275,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=	'<label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
 	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-primary-button-text]" value="' . $t_em_theme_options['static-header-primary-button-text'] . '">';
 	$extend_static_header .=	'</label>';
-	$extend_static_header .=	'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=	'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</span>';
 	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-primary-button-icon-class]" value="' . $t_em_theme_options['static-header-primary-button-icon-class'] . '">';
 	$extend_static_header .=	'</label>';
 	$extend_static_header .=	'<label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
@@ -284,7 +284,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=	'<label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
 	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-secondary-button-text]" value="' . $t_em_theme_options['static-header-secondary-button-text'] . '">';
 	$extend_static_header .=	'</label>';
-	$extend_static_header .=	'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=	'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</span>';
 	$extend_static_header .=		'<input type="text" class="regular-text" name="t_em_theme_options[static-header-secondary-button-icon-class]" value="' . $t_em_theme_options['static-header-secondary-button-icon-class'] . '">';
 	$extend_static_header .=	'</label>';
 	$extend_static_header .=	'<label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';

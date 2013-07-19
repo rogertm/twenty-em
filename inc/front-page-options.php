@@ -108,7 +108,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 	'<label><span>' . __( 'Content', 't_em' ) .'</span>';
 		$extend_front_page .= 		'<textarea name="t_em_theme_options[content-' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . $t_em_theme_options['content-'.$widget['name']] . '</textarea>';
 		$extend_front_page .= 	'</label>';
-		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_THEME_DIR_DOCS . '/icomoon.html' ) . '</span>';
+		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</span>';
 		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon-class-' . $widget['name'] . ']" value="' . $t_em_theme_options['icon-class-'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';

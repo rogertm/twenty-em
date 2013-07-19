@@ -20,8 +20,9 @@ get_header(); ?>
 				<header>
 					<h2 class="entry-title"><span class="icon-paper-clip font-icon"></span><?php the_title(); ?></h2>
 					<span class="entry-meta">
+						<span class="icon-calendar font-icon"></span>
 						<?php
-							$published_text  = __( '<span class="icon-calendar font-icon"></span><span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
+							$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
 							$post_title = get_the_title( $post->post_parent );
 							if ( empty( $post_title ) || 0 == $post->post_parent )
 								$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';

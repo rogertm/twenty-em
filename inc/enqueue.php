@@ -38,30 +38,30 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Register and enqueue Modernizr JS
-	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS.'/modernizr.js', array(), $t_em_theme_data['Version'], false );
+	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS_URL.'/modernizr.js', array(), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'modernizr' );
 
 	// Register and enqueue Twitter Bootstrap JS Plugins
-	wp_register_script( 'bootstrap', T_EM_THEME_DIR_JS.'/bootstrap.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_register_script( 'bootstrap', T_EM_THEME_DIR_JS_URL.'/bootstrap.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 	wp_enqueue_script( 'bootstrap' );
 
 	// Load IcoMoon set if is set by the user
-	wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS_URL . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'icomoon-style' );
 
 	// Load JQuery Nivo Slider just if is needed
 	if ( 'slider' == $t_em_theme_options['header-set'] ) :
-		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
+		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 		wp_enqueue_style( 'style-nivo-slider' );
-		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'', T_EM_THEME_DIR_CSS . '/nivo-slider/themes/'.$t_em_theme_options['nivo-style'].'/'.$t_em_theme_options['nivo-style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
+		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em_theme_options['nivo-style'].'/'.$t_em_theme_options['nivo-style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
 		wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'' );
-		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS_URL.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'nivo-slider' );
-		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), $t_em_theme_data['Version'], false );
+		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS_URL.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-jquery-nivo-slider' );
 	endif;
 
-	wp_register_script( 'navigation', T_EM_THEME_DIR_JS.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'navigation', T_EM_THEME_DIR_JS_URL.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'navigation' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
@@ -130,7 +130,7 @@ function t_em_ggs_style(){
  */
 function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS .'/bootstrap.less">'."\n";
+	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap.less">'."\n";
 }
 add_action( 'wp_head', 't_em_bootstrapped_head' );
 
@@ -140,8 +140,8 @@ add_action( 'wp_head', 't_em_bootstrapped_head' );
  * rel="stylesheet/less", so, we need do it this way.
  */
 function t_em_enqueue_less_css(){
-	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS.'/style.less' .'">'."\n";
-	echo '<script src="'. T_EM_THEME_DIR_JS.'/less.js'.'"></script>'."\n";
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL.'/style.less' .'">'."\n";
+	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
 add_action( 'wp_head', 't_em_enqueue_less_css' );
@@ -152,7 +152,7 @@ add_action( 'wp_head', 't_em_enqueue_less_css' );
 function t_em_enqueue_html5shiv(){
 ?>
 	<!--[if lt IE 9]>
-	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/html5shiv.js" type="text/javascript"></script>
+	<script src="<?php echo T_EM_THEME_DIR_JS_URL; ?>/html5shiv.js" type="text/javascript"></script>
 	<![endif]-->
 <?php
 }
@@ -164,7 +164,7 @@ add_action( 'wp_head', 't_em_enqueue_html5shiv' );
 function t_em_enqueue_icomoon(){
 ?>
 	<!--[if lt IE 7]>
-	<script src="<?php echo T_EM_THEME_DIR_JS; ?>/icomoon.lte-ie7.js" type="text/javascript"></script>
+	<script src="<?php echo T_EM_THEME_DIR_JS_URL; ?>/icomoon.lte-ie7.js" type="text/javascript"></script>
 	<![endif]-->
 <?php
 }
