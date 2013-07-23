@@ -33,7 +33,7 @@ define ( 'T_EM_INC_DIR_JS_URL',			get_template_directory_uri().'/inc/js' );
 
 // Some direct path we need
 define ( 'T_EM_INC_DIR_PATH',			get_template_directory().'/inc' );
-define ( 'T_EM_THEME_DIR_LANG_PATH',	get_template_directory().'/lang' );
+define ( 'T_EM_THEME_DIR_LANG_PATH',	get_template_directory().'/languages' );
 
 /**
  * Register default values through constants

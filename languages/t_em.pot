@@ -8,90 +8,90 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: \n"
-"Last-Translator: RogerTM <mail@rogertm.com>\n"
-"Language-Team:  <mail@twenty-em.com>\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: CUBA\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-KeywordsList: __;_e;_x;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_n;_nx\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE \n"
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "% Comments"
-msgstr "% Comentarios"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:752
 msgid "%1$s at %2$s"
-msgstr "%1$s a las %2$s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:744
 msgid "%s <span class=\"says\">says:</span>"
-msgstr "%s <span class=\"says\">dijo:</span>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:754
 #: twenty-em/inc/functions.php:789
 #: twenty-em/inc/functions.php:796
 msgid "(Edit)"
-msgstr "(Editar)"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #. Text in echo
 #: twenty-em/comments.php:63
 msgid "0 Pinkbacks <span> | </span> 0 Trackbacks"
-msgstr "0 Pinkbacks <span> | </span> 0 Trackbacks"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "1 Comment"
-msgstr "1 Comentario"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/front-page-options.php:164
 msgid "<a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/header-options.php:338
 msgid "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
 msgid "<a href=\"%1$s\" target=\"_blank\">License</a>"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Licencia</a>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
 msgid "<a href=\"%1$s\" target=\"_blank\">Reademe</a>"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Léeme</a>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/front-page-options.php:164
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
 msgid "<a href=\"%1$s\" target=\"_blank\">Visit Twenty&#8217;em home page</a><br />"
-msgstr "<a href=\"%1$s\" target=\"_blank\">Visita la página de Twenty&#8217;em</a><br />"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" rel=\"gallery\">%5$s</a></span>"
-msgstr "<span class=\"attachment-meta\">Fecha de publicación <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> en <a href=\"%3$s\" title=\"Regresar a %4$s\" rel=\"gallery\">%5$s</a></span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em/attachment.php:23
+msgid "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" rel=\"gallery\">%5$s</a></span>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:824
 msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
-msgstr "<span class=\"meta-nav\">&laquo;</span> Artículos anteriores"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
@@ -145,7 +145,7 @@ msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
-msgid "<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href=\"%1$s\" target=\"_blank\">Header Settings</a> to customize this section.<br /> In addition you may active the checkbox \"<strong>Display featured image in single posts and pages?</strong>\", it will show in single post or page the Featured Image attached to it."
+msgid "<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href=\"%1$s\" target=\"_blank\">Header Settings</a> to customize this section. In addition you may active the checkbox \"<strong>Display featured image in single posts and pages?</strong>\", it will show in single post or page the Featured Image attached to it."
 msgstr ""
 
 #. Text in function
@@ -160,7 +160,7 @@ msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
-msgid "<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: 960px."
+msgid "<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: <code>%1$spx</code>."
 msgstr ""
 
 #. Text in function
@@ -236,17 +236,17 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:707
 msgid "About %s"
-msgstr "Acerca de %s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Alternative Sidebar Widget Area"
-msgstr "Barra Lateral Alternativa para Widgets"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Alternative sidebar widget area"
-msgstr "Barra lateral alternativa para widgets"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
@@ -256,7 +256,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/404.php:20
 msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
-msgstr "Lo sentimos, pero la página que está buscando no ha sido encontrada. Tal vez buscar sea útil."
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
@@ -281,7 +281,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/author.php:27
 msgid "Author Archives: %s"
-msgstr "Archivo del Autor %s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/theme-backup.php:153
@@ -297,7 +297,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/archive.php:32
 msgid "Blog Archives"
-msgstr "Archivo del Blog"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/header-options.php:338
@@ -314,12 +314,12 @@ msgstr ""
 #: twenty-em/sidebar.php:30
 #: twenty-em/template-sitemap.php:46
 msgid "Categories"
-msgstr "Categorías"
+msgstr ""
 
 #. Text in function
 #: twenty-em/category.php:18
 msgid "Category Archives: %s"
-msgstr "Archivo de la categoríaÑ %s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/template-ephemera-content.php:121
@@ -336,17 +336,17 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Comment"
-msgstr "Comentario"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/comments.php:38
 msgid "Comments"
-msgstr "Comentarios"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/comments.php:71
 msgid "Comments are closed"
-msgstr "Los comentarios están cerrados"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/header-options.php:338
@@ -357,7 +357,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Continue reading"
-msgstr "Continuar leyendo"
+msgstr ""
 
 #. Text in function
 #: twenty-em/template-blog-content.php:58
@@ -366,12 +366,22 @@ msgstr "Continuar leyendo"
 #: twenty-em/inc/functions.php:1107
 #: twenty-em/attachment.php:89
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
-msgstr "Continuar leyendo <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/archive.php:32
 msgid "Daily Archives: <span>%s</span>"
-msgstr "Archivo diario: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em/archive.php:32
+msgid "Monthly Archives: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: twenty-em/archive.php:32
+msgid "Yearly Archives: <span>%s</span>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/social-network-options.php:220
@@ -436,12 +446,12 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Edit"
-msgstr "Editar"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Email"
-msgstr "Correo Electrónico"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/layout-options.php:170
@@ -451,7 +461,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/404.php:18
 msgid "Error 404 - Page not found!"
-msgstr "Error 404 - ¡Página no encontrada!"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/inc/theme-backup.php:155
@@ -554,7 +564,7 @@ msgstr ""
 #: twenty-em/inc/functions.php:1268
 #: twenty-em/attachment.php:23
 msgid "Full resolution"
-msgstr "Resolución completa"
+msgstr ""
 
 #. Text in function
 #: twenty-em/template-ephemera-content.php:121
@@ -597,7 +607,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Have you got a website?"
-msgstr "¿Tienes página web?"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
@@ -619,7 +629,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "How can we reach you?"
-msgstr "¿Cómo te econtramos?"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/inc/theme-backup.php:168
@@ -656,12 +666,12 @@ msgstr ""
 #. Text in echo
 #: twenty-em/content-none.php:32
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Al parecer no podemos encontrar lo que buscas. Tal vez buscar sea útil."
+msgstr ""
 
 #. Text in echo
 #: twenty-em/header.php:27
 msgid "JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing..."
-msgstr "Se requiere JavaScript para que esta página se vea correctamente. Por favor active JavaScript antes de continuar..."
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/front-page-options.php:164
@@ -692,7 +702,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Leave a comment"
-msgstr "Deje un comentario"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/content-link.php:13
@@ -740,7 +750,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/template-archive.php:74
 msgid "Monthly Archives"
-msgstr "Archivo mensual"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/social-network-options.php:220
@@ -760,7 +770,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/header.php:61
@@ -775,7 +785,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:825
 msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
-msgstr "Artículos recientes <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/header-options.php:338
@@ -800,12 +810,12 @@ msgstr ""
 #. Text in echo
 #: twenty-em/comments.php:45
 msgid "No Comments"
-msgstr "Sin Comentarios"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "No Related Posts"
-msgstr "No hay artículos relacionados"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/layout-options.php:170
@@ -820,17 +830,12 @@ msgstr ""
 #. Text in echo
 #: twenty-em/comments.php:78
 msgid "No responds to "
-msgstr "Sin hay respuestas para"
-
-#. Text in function
-#: twenty-em/inc/help.php:17
-msgid "Not required tools"
 msgstr ""
 
 #. Text in echo
 #: twenty-em/content-none.php:12
 msgid "Nothing Found"
-msgstr "Nada Encontrado"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/layout-options.php:170
@@ -855,12 +860,12 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Page %s"
-msgstr "Página %s"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/template-sitemap.php:38
 msgid "Pages"
-msgstr "Páginas"
+msgstr ""
 
 #. Text in function
 #: twenty-em/template-blog-content.php:59
@@ -872,17 +877,17 @@ msgstr "Páginas"
 #: twenty-em/single.php:36
 #: twenty-em/template-one-column.php:28
 msgid "Pages:"
-msgstr "Páginas:"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Permalink"
-msgstr "Enlace permanente"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Permalink to %1$s"
-msgstr "Enlace permanente a %1$s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/template-archive.php:53
@@ -905,7 +910,7 @@ msgstr "Enlace permanente a %1$s"
 #: twenty-em/content-gallery.php:14
 #: twenty-em/header-nivo-slider.php:53
 msgid "Permalink to %s"
-msgstr "Enlace permanente a %1$s"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/social-network-options.php:220
@@ -920,7 +925,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/inc/functions.php:789
 msgid "Pingback:"
-msgstr "Pingback:"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/social-network-options.php:220
@@ -935,7 +940,7 @@ msgstr ""
 #. Text in echo
 #: twenty-em/template-sitemap.php:54
 msgid "Posts per categories"
-msgstr "Artículos por categoría"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/header-options.php:338
@@ -982,7 +987,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/inc/functions.php:1268
 msgid "Related Posts:"
-msgstr "Artículos Relacionados"
+msgstr ""
 
 #. Text in function
 #: twenty-em/inc/help.php:17
@@ -1002,7 +1007,7 @@ msgstr ""
 #. Text in function
 #: twenty-em/search.php:19
 msgid "Search Results for: %s"
-msgstr "Resultados de la búsqueda para: %s"
+msgstr ""
 
 #. Text in echo
 #: twenty-em/searchform.php:3
