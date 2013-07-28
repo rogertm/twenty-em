@@ -18,6 +18,7 @@ get_header(); ?>
 	<div class="row-fluid">
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
+			<?php t_em_breadcrumb(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 

@@ -219,6 +219,7 @@ function t_em_default_theme_options(){
 		't-em-link'										=> '1',
 		'single-featured-img'							=> '1',
 		'single-related-posts'							=> '1',
+		'breadcrumb-path'								=> '1',
 		// Header Options
 		'header-set'									=> 'no-header-image',
 		'header-featured-image'							=> '1',
@@ -386,6 +387,7 @@ function t_em_theme_options_validate( $input ){
 		't-em-link',
 		'single-featured-img',
 		'single-related-posts',
+		'breadcrumb-path',
 		'header-featured-image',
 		'slider-home-only',
 		'static-header-home-only',

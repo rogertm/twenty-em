@@ -13,6 +13,7 @@ get_header(); ?>
 	<div class="row-fluid">
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
+			<?php t_em_breadcrumb(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
 					<h1 class="entry-title"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>

@@ -36,6 +36,10 @@ function t_em_general_options(){
 			'name'			=> 'single-related-posts',
 			'label'			=> __( 'When a single post is displayed, show related posts?', 't_em' ),
 		),
+		'breadcrumb-path'		=> array (
+			'name'			=> 'breadcrumb-path',
+			'label'			=> __( 'Display a breadcrumb path?', 't_em' ),
+		),
 	);
 
 	return apply_filters( 't_em_general_options', $general_options );

@@ -1,14 +1,14 @@
 <?php
 /**
- * The template for displaying Archive pages.
+ * The template for displaying Taxonomies.
  *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * Used to display archive-type pages for posts with a post format.
+ * If you'd like to further customize these Post Format views, you may create a
+ * new template file for each specific one.
  *
  * @package WordPress
  * @subpackage Twenty'em
+ * @link http://codex.wordpress.org/Template_Hierarchy
  * @since Twenty'em 0.1
  */
 
