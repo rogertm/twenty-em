@@ -669,6 +669,10 @@ div.menu li {
 .entry-utility span{
 	margin-right: 10px;
 }
+.entry-meta span.font-icon,
+.entry-utility span.font-icon{
+	margin-right: 0;
+}
 .single-attachment .entry-meta span.font-icon{
 	margin-right: 0;
 }
