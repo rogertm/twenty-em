@@ -24,17 +24,17 @@
  */
 function t_em_search_engines_id_options(){
 	$engines_options = array (
-		'google-id'	=> array(
+		'google_id'	=> array(
 			'label'	=> __( 'Google ID number', 't_em' ),
-			'name'	=> 'google-id',
+			'name'	=> 'google_id',
 		),
-		'yahoo-id'	=> array(
+		'yahoo_id'	=> array(
 			'label'	=> __( 'Yahoo! ID number', 't_em' ),
-			'name'	=> 'yahoo-id',
+			'name'	=> 'yahoo_id',
 		),
-		'bing-id'	=> array(
+		'bing_id'	=> array(
 			'label'	=> __( 'Bing ID number', 't_em' ),
-			'name'	=> 'bing-id',
+			'name'	=> 'bing_id',
 		),
 	);
 
@@ -51,9 +51,9 @@ function t_em_search_engines_id_options(){
 function t_em_stats_tracker_options(){
 	$tracker_options = array (
 		// One tracker is enough, Google Yeah!
-		'stats-tracker'	=> array (
+		'stats_tracker'	=> array (
 			'label'		=> __( 'Site Statistics Tracker', 't_em' ),
-			'name'		=> 'stats-tracker',
+			'name'		=> 'stats_tracker',
 		),
 	);
 
@@ -129,19 +129,19 @@ function t_em_stats_engines_tracker(){
 	global $t_em_theme_options;
 
 	// Google Engine ID
-	if ( $t_em_theme_options['google-id'] )
-		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em_theme_options['google-id'] ) . '">' . "\n";
+	if ( $t_em_theme_options['google_id'] )
+		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em_theme_options['google_id'] ) . '">' . "\n";
 
 	// Yahoo! Engine ID
-	if ( $t_em_theme_options['yahoo-id'] )
-		echo '<meta name="y_key" content="' . htmlspecialchars_decode( $t_em_theme_options['yahoo-id'] ) . '">' . "\n";
+	if ( $t_em_theme_options['yahoo_id'] )
+		echo '<meta name="y_key" content="' . htmlspecialchars_decode( $t_em_theme_options['yahoo_id'] ) . '">' . "\n";
 
 	// Bing Engine ID
-	if ( $t_em_theme_options['bing-id'] )
-		echo '<meta name="msvalidate.01" content="' . $t_em_theme_options['bing-id'] . '">' . "\n";
+	if ( $t_em_theme_options['bing_id'] )
+		echo '<meta name="msvalidate.01" content="' . $t_em_theme_options['bing_id'] . '">' . "\n";
 
-	if ( $t_em_theme_options['stats-tracker'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em_theme_options['stats-tracker'] ) . '</script>' . "\n";
+	if ( $t_em_theme_options['stats_tracker'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em_theme_options['stats_tracker'] ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 't_em_stats_engines_tracker' );
 ?>

@@ -9,7 +9,7 @@
 
 global $t_em_theme_options;
 
-if ( 'one-column' != $t_em_theme_options['layout-set'] ) :
+if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
 ?>
 
 		<section id="sidebar" class="widget-area <?php echo t_em_add_bootstrap_class( 'sidebar' ); ?>" role="complementary">

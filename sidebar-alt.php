@@ -8,7 +8,7 @@
  */
 global $t_em_theme_options;
 
-if ( in_array( $t_em_theme_options['layout-set'], array(
+if ( in_array( $t_em_theme_options['layout_set'], array(
 	'three-column-content-left',
 	'three-column-content-right',
 	'three-column-content-middle' ) ) ) :

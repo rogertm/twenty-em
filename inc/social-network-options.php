@@ -25,170 +25,170 @@
  */
 function t_em_social_network_options(){
 	$socialnetwork_options = array (
-		'twitter-set' => array (
+		'twitter_set' => array (
 			'value' => '',
-			'name' => 'twitter-set',
+			'name' => 'twitter_set',
 			'label' => __( 'Twitter URL', 't_em' ),
 			'item' => __( 'Twitter', 't_em' ),
 			'class' => 'icon-twitter',
 		),
-		'facebook-set' => array (
+		'facebook_set' => array (
 			'value' => '',
-			'name' => 'facebook-set',
+			'name' => 'facebook_set',
 			'label' => __( 'Facebook URL', 't_em' ),
 			'item' => __( 'Facebook', 't_em' ),
 			'class' => 'icon-facebook',
 		),
-		'googleplus-set' => array (
+		'googleplus_set' => array (
 			'value' => '',
-			'name' => 'googleplus-set',
+			'name' => 'googleplus_set',
 			'label' => __( 'Google + URL', 't_em' ),
 			'item' => __( 'Google +', 't_em' ),
 			'class' => 'icon-google-plus',
 		),
-		'delicious-set' => array (
+		'delicious_set' => array (
 			'value' => '',
-			'name' => 'delicious-set',
+			'name' => 'delicious_set',
 			'label' => __( 'Delicious URL', 't_em' ),
 			'item' => __( 'Delicious', 't_em' ),
 			'class' => 'icon-delicious',
 		),
-		'linkedin-set' => array (
+		'linkedin_set' => array (
 			'value' => '',
-			'name' => 'linkedin-set',
+			'name' => 'linkedin_set',
 			'label' => __( 'Linked In URL', 't_em' ),
 			'item' => __( 'Linked In', 't_em' ),
 			'class' => 'icon-linkedin',
 		),
-		'github-set' => array (
+		'github_set' => array (
 			'value' => '',
-			'name' => 'github-set',
+			'name' => 'github_set',
 			'label' => __( 'Github URL', 't_em' ),
 			'item' => __( 'Github', 't_em' ),
 			'class' => 'icon-github',
 		),
-		'wordpress-set' => array (
+		'wordpress_set' => array (
 			'value' => '',
-			'name' => 'wordpress-set',
+			'name' => 'wordpress_set',
 			'label' => __( 'WordPress URL', 't_em' ),
 			'item' => __( 'WordPress', 't_em' ),
 			'class' => 'icon-wordpress',
 		),
-		'youtube-set' => array (
+		'youtube_set' => array (
 			'value' => '',
-			'name' => 'youtube-set',
+			'name' => 'youtube_set',
 			'label' => __( 'YouTube URL', 't_em' ),
 			'item' => __( 'YouTube', 't_em' ),
 			'class' => 'icon-youtube',
 		),
-		'flickr-set' => array (
+		'flickr_set' => array (
 			'value' => '',
-			'name' => 'flickr-set',
+			'name' => 'flickr_set',
 			'label' => __( 'Flickr URL', 't_em' ),
 			'item' => __( 'Flickr', 't_em' ),
 			'class' => 'icon-flickr',
 		),
-		'instagram-set' => array (
+		'instagram_set' => array (
 			'value' => '',
-			'name' => 'instagram-set',
+			'name' => 'instagram_set',
 			'label' => __( 'Instagram URL', 't_em' ),
 			'item' => __( 'Instagram', 't_em' ),
 			'class' => 'icon-instagram',
 		),
-		'vimeo-set' => array (
+		'vimeo_set' => array (
 			'value' => '',
-			'name' => 'vimeo-set',
+			'name' => 'vimeo_set',
 			'label' => __( 'Vimeo URL', 't_em' ),
 			'item' => __( 'Vimeo', 't_em' ),
 			'class' => 'icon-vimeo',
 		),
-		'reddit-set' => array (
+		'reddit_set' => array (
 			'value' => '',
-			'name' => 'reddit-set',
+			'name' => 'reddit_set',
 			'label' => __( 'Reddit URL', 't_em' ),
 			'item' => __( 'Reddit', 't_em' ),
 			'class' => 'icon-reddit',
 		),
-		'picassa-set' => array (
+		'picassa_set' => array (
 			'value' => '',
-			'name' => 'picassa-set',
+			'name' => 'picassa_set',
 			'label' => __( 'Picassa URL', 't_em' ),
 			'item' => __( 'Picassa', 't_em' ),
 			'class' => 'icon-picassa',
 		),
-		'lastfm-set' => array (
+		'lastfm_set' => array (
 			'value' => '',
-			'name' => 'lastfm-set',
+			'name' => 'lastfm_set',
 			'label' => __( 'Lastfm URL', 't_em' ),
 			'item' => __( 'Lastfm', 't_em' ),
 			'class' => 'icon-lastfm',
 		),
-		'stumbleupon-set' => array (
+		'stumbleupon_set' => array (
 			'value' => '',
-			'name' => 'stumbleupon-set',
+			'name' => 'stumbleupon_set',
 			'label' => __( 'Stumbleupon URL', 't_em' ),
 			'item' => __( 'Stumbleupon', 't_em' ),
 			'class' => 'icon-stumbleupon',
 		),
-		'pinterest-set' => array (
+		'pinterest_set' => array (
 			'value' => '',
-			'name' => 'pinterest-set',
+			'name' => 'pinterest_set',
 			'label' => __( 'Pinterest URL', 't_em' ),
 			'item' => __( 'Pinterest', 't_em' ),
 			'class' => 'icon-pinterest',
 		),
-		'deviantart-set' => array (
+		'deviantart_set' => array (
 			'value' => '',
-			'name' => 'deviantart-set',
+			'name' => 'deviantart_set',
 			'label' => __( 'Deviantart URL', 't_em' ),
 			'item' => __( 'Deviantart', 't_em' ),
 			'class' => 'icon-deviantart',
 		),
-		'myspace-set' => array (
+		'myspace_set' => array (
 			'value' => '',
-			'name' => 'myspace-set',
+			'name' => 'myspace_set',
 			'label' => __( 'My Space URL', 't_em' ),
 			'item' => __( 'My Space', 't_em' ),
 			'class' => 'icon-myspace',
 		),
-		'xing-set' => array (
+		'xing_set' => array (
 			'value' => '',
-			'name' => 'xing-set',
+			'name' => 'xing_set',
 			'label' => __( 'Xing URL', 't_em' ),
 			'item' => __( 'Xing', 't_em' ),
 			'class' => 'icon-xing',
 		),
-		'soundcloud-set' => array (
+		'soundcloud_set' => array (
 			'value' => '',
-			'name' => 'soundcloud-set',
+			'name' => 'soundcloud_set',
 			'label' => __( 'Soundcloud URL', 't_em' ),
 			'item' => __( 'Soundcloud', 't_em' ),
 			'class' => 'icon-soundcloud',
 		),
-		'steam-set' => array (
+		'steam_set' => array (
 			'value' => '',
-			'name' => 'steam-set',
+			'name' => 'steam_set',
 			'label' => __( 'Steam URL', 't_em' ),
 			'item' => __( 'Steam', 't_em' ),
 			'class' => 'icon-steam',
 		),
-		'dribbble-set' => array (
+		'dribbble_set' => array (
 			'value' => '',
-			'name' => 'dribbble-set',
+			'name' => 'dribbble_set',
 			'label' => __( 'Dribbble URL', 't_em' ),
 			'item' => __( 'Dribbble', 't_em' ),
 			'class' => 'icon-dribbble',
 		),
-		'forrst-set' => array (
+		'forrst_set' => array (
 			'value' => '',
-			'name' => 'forrst-set',
+			'name' => 'forrst_set',
 			'label' => __( 'Sorrst URL', 't_em' ),
 			'item' => __( 'Sorrst', 't_em' ),
 			'class' => 'icon-forrst',
 		),
-		'feed-set' => array (
+		'feed_set' => array (
 			'value' => '',
-			'name' => 'feed-set',
+			'name' => 'feed_set',
 			'label' => __( 'Feed or RSS URL', 't_em' ),
 			'item' => __( 'Feed / RSS', 't_em' ),
 			'class' => 'icon-feed',

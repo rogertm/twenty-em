@@ -114,7 +114,7 @@ function t_em_layout_width(){
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
 	$layout_width .= 		'<span>'. sprintf( __( 'Enter the value you wish to be your site width. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>.', 't_em' ), T_EM_LAYOUT_WIDTH_DEFAULT_VALUE, T_EM_LAYOUT_WIDTH_MAX_VALUE, T_EM_LAYOUT_WIDTH_MIN_VALUE ) .'</span>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout-width]" value="'.$t_em_theme_options['layout-width'].'" /><span class="unit">px</span>';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em_theme_options['layout_width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
@@ -144,7 +144,7 @@ function t_em_settings_field_layout_set(){
 ?>
 	<div class="layout image-radio-option theme-layout">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[layout-set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout-set'], $layout['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout_set'], $layout['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
 		</label>
 	</div>
@@ -159,7 +159,7 @@ function t_em_settings_field_layout_set(){
 ?>
 	<div class="footer image-radio-option theme-footer">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[footer-set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em_theme_options['footer-set'], $footer['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em_theme_options['footer_set'], $footer['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
 		</label>
 	</div>

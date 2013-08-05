@@ -50,11 +50,11 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_enqueue_style( 'icomoon-style' );
 
 	// Load JQuery Nivo Slider just if is needed
-	if ( 'slider' == $t_em_theme_options['header-set'] ) :
+	if ( 'slider' == $t_em_theme_options['header_set'] ) :
 		wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 		wp_enqueue_style( 'style-nivo-slider' );
-		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em_theme_options['nivo-style'].'/'.$t_em_theme_options['nivo-style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
-		wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo-style'].'' );
+		wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em_theme_options['nivo_style'].'/'.$t_em_theme_options['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
+		wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'' );
 		wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS_URL.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'nivo-slider' );
 		wp_register_script( 'script-jquery-nivo-slider', T_EM_THEME_DIR_JS_URL.'/script.jquery.nivo.slider.js', array( 'jquery', 'nivo-slider' ), $t_em_theme_data['Version'], false );
@@ -75,49 +75,8 @@ function t_em_theme_layout_width(){
 	echo '
 <style type="text/css" media="all">
 	#wrap{
-		max-width: '.$t_em_theme_options['layout-width'].'px !important;
+		max-width: '.$t_em_theme_options['layout_width'].'px !important;
 		margin: 0 auto;
-	}
-</style>'."\n";
-}
-
-/**
- * Styles the Golden Grid System to take the site width from theme options
- */
-function t_em_ggs_style(){
-	global $t_em_theme_options;
-	if ( '0' == $t_em_theme_options['layout-width'] ) :
-		$layout_width = '960px';
-	else :
-		$layout_width = $t_em_theme_options['layout-width'].'px';
-	endif;
-	echo '
-<style type="text/css" media="all">
-	.ggs-hidden .ggs-wrapper,
-	.ggs-hidden .ggs{
-		display: none;
-	}
-	.ggs-wrapper{
-		top: 0;
-		bottom: 0;
-		height: 100%;
-		position: fixed;
-		right: 0;
-		left: 0;
-		margin: 0 auto;
-		max-width: '.$layout_width.';
-		overflow: hidden;
-	}
-	.ggs{
-		height: 100%;
-		top: 0;
-		bottom: 0;
-		margin: 0 auto;
-		left: -5.55556%;
-		right: -5.55556%;
-		position: absolute;
-		max-width: 110%;
-		overflow: hidden;
 	}
 </style>'."\n";
 }

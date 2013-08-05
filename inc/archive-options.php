@@ -77,10 +77,10 @@ function t_em_excerpt_callback(){
 	$extend_excerpt = '';
 	$extend_excerpt .= '<div class="image-radio-option-group">';
 	foreach ( $excerpt_options as $excerpt ) :
-		$checked_option = checked( $t_em_theme_options['excerpt-set'], $excerpt['value'], false );
+		$checked_option = checked( $t_em_theme_options['excerpt_set'], $excerpt['value'], false );
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt-set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt_set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
 		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" alt="" /><p>'.$excerpt['label'].'</p></span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
@@ -123,7 +123,7 @@ function t_em_settings_field_archive_set(){
 ?>
 		<div class="layout radio-option archive">
 			<label class="description">
-				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive-set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em_theme_options['archive-set'], $archive['value'] ); ?> />
+				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em_theme_options['archive_set'], $archive['value'] ); ?> />
 				<span><?php echo $archive['label']; ?></span>
 			</label>
 		</div>
@@ -135,7 +135,7 @@ function t_em_settings_field_archive_set(){
 	 */
 	foreach ( t_em_archive_options() as $sub_archive ) :
 		if ( $sub_archive['extend'] != '' ) :
-		$selected_option = ( $t_em_theme_options['archive-set'] == $sub_archive['value'] ) ? 'selected-option' : '';
+		$selected_option = ( $t_em_theme_options['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_archive['extend']; ?>

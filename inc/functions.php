@@ -472,7 +472,7 @@ function t_em_widgets_init() {
 	global $t_em_theme_options;
 
 	// Sidebars Widgets Area
-	if ( 'one-column' != $t_em_theme_options['layout-set'] ) :
+	if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
 		// Area 0, located at the top of the sidebar.
 		register_sidebar( array(
 			'name' => __( 'Main Sidebar Widget Area', 't_em' ),
@@ -485,7 +485,7 @@ function t_em_widgets_init() {
 		) );
 	endif;
 
-	if ( in_array( $t_em_theme_options['layout-set'],
+	if ( in_array( $t_em_theme_options['layout_set'],
 			array ('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
 		) ) :
 		// Area 1, located at the top of the sidebar.
@@ -501,7 +501,7 @@ function t_em_widgets_init() {
 	endif;
 
 	// Footer Widgets Area
-	if ( $t_em_theme_options['footer-set'] != 'no-footer-widget' ) :
+	if ( $t_em_theme_options['footer_set'] != 'no-footer-widget' ) :
 			// Area 2, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'First Footer Widget Area', 't_em' ),
@@ -513,7 +513,7 @@ function t_em_widgets_init() {
 				'after_title' => '</h3>',
 			) );
 
-		if ( in_array( $t_em_theme_options['footer-set'],
+		if ( in_array( $t_em_theme_options['footer_set'],
 			array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 3, located in the footer. Empty by default.
@@ -528,7 +528,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em_theme_options['footer-set'],
+		if ( in_array( $t_em_theme_options['footer_set'],
 			array ( 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 4, located in the footer. Empty by default.
@@ -543,7 +543,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em_theme_options['footer-set'],
+		if ( in_array( $t_em_theme_options['footer_set'],
 			array ( 'four-footer-widget' )
 		 ) ) :
 			// Area 5, located in the footer. Empty by default.
@@ -1032,13 +1032,13 @@ function t_em_header_options_set(){
 	global	$post,
 			$t_em_theme_options;
 
-	if ( 'no-header-image' == $t_em_theme_options['header-set'] ) :
+	if ( 'no-header-image' == $t_em_theme_options['header_set'] ) :
 		return;
-	elseif ( 'header-image' == $t_em_theme_options['header-set'] ) :
+	elseif ( 'header-image' == $t_em_theme_options['header_set'] ) :
 		get_template_part( 'header', 'image' );
-	elseif ( 'slider' == $t_em_theme_options['header-set'] ) :
+	elseif ( 'slider' == $t_em_theme_options['header_set'] ) :
 		get_template_part( 'header', 'nivo-slider' );
-	elseif ( 'static-header' == $t_em_theme_options['header-set'] ) :
+	elseif ( 'static-header' == $t_em_theme_options['header_set'] ) :
 		get_template_part( 'header', 'static-header' );
 	endif;
 }
@@ -1059,7 +1059,7 @@ function t_em_header_options_set(){
  */
 function t_em_single_post_thumbnail(){
 	global $t_em_theme_options;
-	$single_featured_img = $t_em_theme_options['single-featured-img'];
+	$single_featured_img = $t_em_theme_options['single_featured_img'];
 	if ( '1' == $single_featured_img && has_post_thumbnail() ) :
 ?>
 <figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
@@ -1089,16 +1089,16 @@ function t_em_single_post_thumbnail(){
 function t_em_post_archive_set(){
 	global $t_em_theme_options;
 
-	if ( 'the-excerpt' == $t_em_theme_options['archive-set'] ) :
+	if ( 'the-excerpt' == $t_em_theme_options['archive_set'] ) :
 
 	// Set thumbnail height and width, if the key value is empty the size is equal to
 	// thumbnail_size_h and thumbnail_size_h options respectively
-	$thumb_heigth = ( ( '' != $t_em_theme_options['excerpt-thumbnail-height'] ) ? $t_em_theme_options['excerpt-thumbnail-height'] : get_option( 'thumbnail_size_h' ) );
-	$thumb_width = ( ( '' != $t_em_theme_options['excerpt-thumbnail-width'] ) ? $t_em_theme_options['excerpt-thumbnail-width'] : get_option( 'thumbnail_size_w' ) );
+	// $thumb_heigth = ( ( '' != $t_em_theme_options['excerpt_thumbnail_height'] ) ? $t_em_theme_options['excerpt_thumbnail_height'] : get_option( 'thumbnail_size_h' ) );
+	// $thumb_width = ( ( '' != $t_em_theme_options['excerpt_thumbnail_width'] ) ? $t_em_theme_options['excerpt_thumbnail_width'] : get_option( 'thumbnail_size_w' ) );
 
 ?>
 			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $thumb_heigth, $thumb_width, 'featured-post-thumbnail', true ); ?>
+				<?php t_em_featured_post_thumbnail( $t_em_theme_options['excerpt_thumbnail_height'], $t_em_theme_options['excerpt_thumbnail_width'], 'featured-post-thumbnail', true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php
@@ -1157,7 +1157,7 @@ function t_em_user_social_network(){
  */
 function t_em_single_related_posts() {
 	global $t_em_theme_options;
-	if ( '1' == $t_em_theme_options['single-related-posts'] ) :
+	if ( '1' == $t_em_theme_options['single_related_posts'] ) :
 		global $wpdb, $post;
 
 		$now = current_time('mysql', 1);
@@ -1235,22 +1235,22 @@ function t_em_single_related_posts() {
 function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 	global $t_em_theme_options;
 
-	if ( ! empty( $t_em_theme_options['headline-text-widget-'.$widget.''] ) || ! empty( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) :
+	if ( ! empty( $t_em_theme_options['headline_text_widget_'.$widget.''] ) || ! empty( $t_em_theme_options['content_text_widget_'.$widget.''] ) ) :
 
-		$widget_icon_class	= ( $t_em_theme_options['icon-class-text-widget-'.$widget.''] ) ?
-			'<span class="'. $t_em_theme_options['icon-class-text-widget-'.$widget.''] .' font-icon"></span>' : '';
+		$widget_icon_class	= ( $t_em_theme_options['icon_class_text_widget_'.$widget.''] ) ?
+			'<span class="'. $t_em_theme_options['icon_class_text_widget_'.$widget.''] .' font-icon"></span>' : '';
 
-		$widget_headline	= ( $t_em_theme_options['headline-text-widget-'.$widget.''] ) ?
-			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em_theme_options['headline-text-widget-'.$widget.''] .'</'. $h_tag .'></header>' : '';
+		$widget_headline	= ( $t_em_theme_options['headline_text_widget_'.$widget.''] ) ?
+			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em_theme_options['headline_text_widget_'.$widget.''] .'</'. $h_tag .'></header>' : '';
 
-		$widget_content		= ( $t_em_theme_options['content-text-widget-'.$widget.''] ) ?
-			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em_theme_options['content-text-widget-'.$widget.''] ) ) .'</div>' : '';
+		$widget_content		= ( $t_em_theme_options['content_text_widget_'.$widget.''] ) ?
+			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em_theme_options['content_text_widget_'.$widget.''] ) ) .'</div>' : '';
 
-		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] ) ?
-			'<img src="'. $t_em_theme_options['thumbnail-src-text-widget-'.$widget.''] .'" alt="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'" />' : '';
+		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail_src_text_widget_'.$widget.''] ) ?
+			'<img src="'. $t_em_theme_options['thumbnail_src_text_widget_'.$widget.''] .'" alt="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'" />' : '';
 
-		$widget_link		= ( $t_em_theme_options['link-url-text-widget-'.$widget.''] ) ?
-			'<footer><a href="'. $t_em_theme_options['link-url-text-widget-'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline-text-widget-'.$widget.''] .'">
+		$widget_link		= ( $t_em_theme_options['link_url_text_widget_'.$widget.''] ) ?
+			'<footer><a href="'. $t_em_theme_options['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
 
 		$widget_wrapper = ( 'one' == $widget ) ? '<div class="hero-unit">' : '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
@@ -1288,7 +1288,7 @@ function t_em_add_bootstrap_class( $section ){
 	$bootstrap_classes = '';
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
-	$layout_set = $t_em_theme_options['layout-set'];
+	$layout_set = $t_em_theme_options['layout_set'];
 	$one_column = $layout_set['one-column'];
 	$two_column = in_array( $layout_set,
 						array( 'two-column-content-right',
@@ -1329,11 +1329,11 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Static Header Content and Image */
 	if ( 'static-header' == $section ) :
-		$static_header_img = ( ! empty ( $t_em_theme_options['static-header-img-src'] ) ) ? '1' : '0';
-		$static_header_content = ( ! empty ( $t_em_theme_options['static-header-headline'] )
-								|| ! empty ( $t_em_theme_options['static-header-content'] )
-								|| ! empty ( $t_em_theme_options['static-header-primary-button-text'] )
-								|| ! empty ( $t_em_theme_options['static-header-secondary-button-text'] )
+		$static_header_img = ( ! empty ( $t_em_theme_options['static_header_img_src'] ) ) ? '1' : '0';
+		$static_header_content = ( ! empty ( $t_em_theme_options['static_header_headline'] )
+								|| ! empty ( $t_em_theme_options['static_header_content'] )
+								|| ! empty ( $t_em_theme_options['static_header_primary_button_text'] )
+								|| ! empty ( $t_em_theme_options['static_header_secondary_button_text'] )
 								) ? '1' : '0';
 		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
 		$span = 12 / $total_static_header;
@@ -1342,8 +1342,8 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Static Header Buttons */
 	if ( 'static-header-button' == $section ) :
-		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static-header-primary-button-text'] ) ) ? '1' : '0';
-		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static-header-secondary-button-text'] ) ) ? '1' : '0';
+		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static_header_primary_button_text'] ) ) ? '1' : '0';
+		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static_header_secondary_button_text'] ) ) ? '1' : '0';
 		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
 		$span = 12 / $total_static_header_button;
 		$bootstrap_classes = 'span' . $span;
@@ -1352,9 +1352,9 @@ function t_em_add_bootstrap_class( $section ){
 	/** Front Page Widgets Area */
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'featured-widget-area' == $section ) :
-		$widget_two		= ( ! empty ( $t_em_theme_options['headline-text-widget-two'] ) || ! empty ( $t_em_theme_options['content-text-widget-two'] ) ) ? '1' : '0' ;
-		$widget_three	= ( ! empty ( $t_em_theme_options['headline-text-widget-three'] ) || ! empty ( $t_em_theme_options['content-text-widget-three'] ) ) ? '1' : '0' ;
-		$widget_four	= ( ! empty ( $t_em_theme_options['headline-text-widget-four'] ) || ! empty ( $t_em_theme_options['content-text-widget-four'] ) ) ? '1' : '0' ;
+		$widget_two		= ( ! empty ( $t_em_theme_options['headline_text_widget_two'] ) || ! empty ( $t_em_theme_options['content_text_widget_two'] ) ) ? '1' : '0' ;
+		$widget_three	= ( ! empty ( $t_em_theme_options['headline_text_widget_three'] ) || ! empty ( $t_em_theme_options['content_text_widget_three'] ) ) ? '1' : '0' ;
+		$widget_four	= ( ! empty ( $t_em_theme_options['headline_text_widget_four'] ) || ! empty ( $t_em_theme_options['content_text_widget_four'] ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array ( $widget_two, $widget_three, $widget_four ) );
 		$span = 12 / $total_widgets;
 		$bootstrap_classes = 'span' . $span;
@@ -1362,14 +1362,14 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Footer Widgets Area */
 	if ( 'footer-widget-area' == $section ) :
-		$one_widget_footer = ( 'no-footer-widget' != $t_em_theme_options['footer-set'] ) ? '1' : '0';
-		$two_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+		$one_widget_footer = ( 'no-footer-widget' != $t_em_theme_options['footer_set'] ) ? '1' : '0';
+		$two_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
 								array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 							 ) ) ? '1' : '0';
-		$three_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+		$three_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
 									array ( 'three-footer-widget', 'four-footer-widget' )
 								 ) ) ? '1' : '0';
-		$four_widget_footer = ( in_array( $t_em_theme_options['footer-set'],
+		$four_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
 									array ( 'four-footer-widget' )
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array ( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
@@ -1407,7 +1407,7 @@ function t_em_wrap_paragraph( $paragraph ){
 function t_em_breadcrumb(){
 	global $t_em_theme_options;
 
-	if ( '1' == $t_em_theme_options['breadcrumb-path'] ) :
+	if ( '1' == $t_em_theme_options['breadcrumb_path'] ) :
 		global $post, $wp_query;
 
 		$query_obj = get_queried_object();

@@ -24,20 +24,20 @@
  */
 function t_em_general_options(){
 	$general_options = array (
-		't-em-link'				=> array (
-			'name'			=> 't-em-link',
+		't_em_link'				=> array (
+			'name'			=> 't_em_link',
 			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ), 'http://twenty-em.com' ),
 		),
-		'single-featured-img'	=> array (
-			'name'			=> 'single-featured-img',
+		'single_featured_img'	=> array (
+			'name'			=> 'single_featured_img',
 			'label'			=> __( 'When a single post is displayed, show featured image on top of the post?', 't_em' ),
 		),
-		'single-related-posts'	=> array (
-			'name'			=> 'single-related-posts',
+		'single_related_posts'	=> array (
+			'name'			=> 'single_related_posts',
 			'label'			=> __( 'When a single post is displayed, show related posts?', 't_em' ),
 		),
-		'breadcrumb-path'		=> array (
-			'name'			=> 'breadcrumb-path',
+		'breadcrumb_path'		=> array (
+			'name'			=> 'breadcrumb_path',
 			'label'			=> __( 'Display a breadcrumb path?', 't_em' ),
 		),
 	);

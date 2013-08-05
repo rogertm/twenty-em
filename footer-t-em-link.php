@@ -4,7 +4,7 @@
  */
 global $t_em_theme_options;
 
-if ( '1' == $t_em_theme_options['t-em-link'] ) :
+if ( '1' == $t_em_theme_options['t_em_link'] ) :
 	global $t_em_theme_data;
 ?>
 	<div id="twenty-em-credit" class="wrapper span12 text-center">

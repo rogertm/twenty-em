@@ -6,19 +6,19 @@
 global	$post,
 		$t_em_theme_options;
 
-if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $t_em_theme_options['slider-home-only'] ) :
+if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $t_em_theme_options['slider_home_only'] ) :
 
 	// Take category and number of slides to show from theme options
 	$args = array (
 		'post_type'			=> 'post',
-		'cat'				=> $t_em_theme_options['slider-category'],
-		'posts_per_page'	=> $t_em_theme_options['slider-number'],
+		'cat'				=> $t_em_theme_options['slider_category'],
+		'posts_per_page'	=> $t_em_theme_options['slider_number'],
 		'orderby'			=> 'date',
 		'order'				=> 'DESC',
 	);
 	query_posts ( $args );
 		?>
-		<section id="nivo-slider" class="slider-wrapper theme-<?php echo $t_em_theme_options['nivo-style']; ?> <?php echo $t_em_theme_options['slider-text'] ?>">
+		<section id="nivo-slider" class="slider-wrapper theme-<?php echo $t_em_theme_options['nivo_style']; ?> <?php echo $t_em_theme_options['slider_text'] ?>">
 			<div class="ribbon"></div>
 			<div id="slider" class="nivoSlider">
 		<?php
@@ -37,7 +37,7 @@ if ( ( '1' == $t_em_theme_options['slider-home-only'] && is_home() ) || '0' == $
 				endif;
 					?>
 					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout-width'].'&amp;h='.$t_em_theme_options['slider-height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout_width'].'&amp;h='.$t_em_theme_options['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
 					</a>
 					<?php
 			endwhile;

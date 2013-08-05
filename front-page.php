@@ -17,7 +17,7 @@ get_header(); ?>
 	<div id="main" class="wrapper container-fluid">
 		<div class="row-fluid">
 <?php
-if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
+if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
 			<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
@@ -67,7 +67,7 @@ if ( 'wp-front-page' == $t_em_theme_options['front-page-set'] ) :
 			</section><!-- #main-content -->
 			<?php get_sidebar( 'alt' ); ?>
 <?php
-elseif ( 'widgets-front-page' == $t_em_theme_options['front-page-set'] ) :
+elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
 			<section id="main-content" class="row-fluid">
 				<section id="content" role="main" class="span12">

@@ -216,90 +216,90 @@ add_action( 'after_setup_theme', 't_em_set_globals' );
 function t_em_default_theme_options(){
 	$default_theme_options = array (
 		// Generals Options
-		't-em-link'										=> '1',
-		'single-featured-img'							=> '1',
-		'single-related-posts'							=> '1',
-		'breadcrumb-path'								=> '1',
+		't_em_link'										=> '1',
+		'single_featured_img'							=> '1',
+		'single_related_posts'							=> '1',
+		'breadcrumb_path'								=> '1',
 		// Header Options
-		'header-set'									=> 'no-header-image',
-		'header-featured-image'							=> '1',
-		'slider-home-only'								=> '0',
-		'slider-category'								=> get_option( 'default_category' ),
-		'slider-number'									=> get_option( 'posts_per_page' ),
-		'slider-text'									=> 'slider-text-center',
-		'nivo-style'									=> 't-em',
-		'static-header-home-only'						=> '0',
-		'static-header-text'							=> 'static-header-text-right',
-		'static-header-headline'						=> '',
-		'static-header-img-src'							=> '',
-		'static-header-content'							=> '',
-		'static-header-primary-button-text'				=> '',
-		'static-header-primary-button-icon-class'		=> '',
-		'static-header-primary-button-link'				=> '',
-		'static-header-secondary-button-text'			=> '',
-		'static-header-secondary-button-icon-class'		=> '',
-		'static-header-secondary-button-link'			=> '',
+		'header_set'									=> 'no-header-image',
+		'header_featured_image'							=> '1',
+		'slider_home_only'								=> '0',
+		'slider_category'								=> get_option( 'default_category' ),
+		'slider_number'									=> get_option( 'posts_per_page' ),
+		'slider_text'									=> 'slider-text-center',
+		'nivo_style'									=> 't-em',
+		'static_header_home_only'						=> '0',
+		'static_header_text'							=> 'static-header-text-right',
+		'static_header_headline'						=> '',
+		'static_header_img_src'							=> '',
+		'static_header_content'							=> '',
+		'static_header_primary_button_text'				=> '',
+		'static_header_primary_button_icon_class'		=> '',
+		'static_header_primary_button_link'				=> '',
+		'static_header_secondary_button_text'			=> '',
+		'static_header_secondary_button_icon_class'		=> '',
+		'static_header_secondary_button_link'			=> '',
 		// Front Page Text Witgets Options
-		'front-page-set'								=> 'wp-front-page',
-		'headline-text-widget-one'						=> '',
-		'content-text-widget-one'						=> '',
-		'icon-class-text-widget-one'					=> '',
-		'thumbnail-src-text-widget-one'					=> '',
-		'link-url-text-widget-one'						=> '',
-		'headline-text-widget-two'						=> '',
-		'content-text-widget-two'						=> '',
-		'icon-class-text-widget-two'					=> '',
-		'thumbnail-src-text-widget-two'					=> '',
-		'link-url-text-widget-two'						=> '',
-		'headline-text-widget-three'					=> '',
-		'content-text-widget-three'						=> '',
-		'icon-class-text-widget-three'					=> '',
-		'thumbnail-src-text-widget-three'				=> '',
-		'link-url-text-widget-three'					=> '',
-		'headline-text-widget-four'						=> '',
-		'content-text-widget-four'						=> '',
-		'icon-class-text-widget-four'					=> '',
-		'thumbnail-src-text-widget-four'				=> '',
-		'link-url-text-widget-four'						=> '',
+		'front_page_set'								=> 'wp-front-page',
+		'headline_text_widget_one'						=> '',
+		'content_text_widget_one'						=> '',
+		'icon_class_text_widget_one'					=> '',
+		'thumbnail_src_text_widget_one'					=> '',
+		'link_url_text_widget_one'						=> '',
+		'headline_text_widget_two'						=> '',
+		'content_text_widget_two'						=> '',
+		'icon_class_text_widget_two'					=> '',
+		'thumbnail_src_text_widget_two'					=> '',
+		'link_url_text_widget_two'						=> '',
+		'headline_text_widget_three'					=> '',
+		'content_text_widget_three'						=> '',
+		'icon_class_text_widget_three'					=> '',
+		'thumbnail_src_text_widget_three'				=> '',
+		'link_url_text_widget_three'					=> '',
+		'headline_text_widget_four'						=> '',
+		'content_text_widget_four'						=> '',
+		'icon_class_text_widget_four'					=> '',
+		'thumbnail_src_text_widget_four'				=> '',
+		'link_url_text_widget_four'						=> '',
 		// Archive Options
-		'archive-set'									=> 'the-content',
-		'layout-set'									=> 'two-column-content-left',
-		'footer-set'									=> 'four-footer-widget',
-		'layout-width'									=> '960',
-		'excerpt-set'									=> 'thumbnail-left',
-		'slider-height'									=> '350',
-		'excerpt-thumbnail-width'						=> get_option( 'thumbnail_size_w' ),
-		'excerpt-thumbnail-height'						=> get_option( 'thumbnail_size_h' ),
+		'archive_set'									=> 'the-content',
+		'layout_set'									=> 'two-column-content-left',
+		'footer_set'									=> 'four-footer-widget',
+		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
+		'excerpt_set'									=> 'thumbnail-left',
+		'slider_height'									=> T_EM_SLIDER_DEFAULT_HEIGHT,
+		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
+		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
 		// Social Networks Options
-		'twitter-set'									=> '',
-		'facebook-set'									=> '',
-		'googleplus-set'								=> '',
-		'delicious-set'									=> '',
-		'linkedin-set'									=> '',
-		'github-set'									=> '',
-		'wordpress-set'									=> '',
-		'youtube-set'									=> '',
-		'flickr-set'									=> '',
-		'instagram-set'									=> '',
-		'vimeo-set'										=> '',
-		'reddit-set'									=> '',
-		'picassa-set'									=> '',
-		'lastfm-set'									=> '',
-		'stumbleupon-set'								=> '',
-		'pinterest-set'									=> '',
-		'deviantart-set'								=> '',
-		'myspace-set'									=> '',
-		'xing-set'										=> '',
-		'soundcloud-set'								=> '',
-		'steam-set'										=> '',
-		'dribbble-set'									=> '',
-		'forrst-set'									=> '',
-		'feed-set'										=> '',
+		'twitter_set'									=> '',
+		'facebook_set'									=> '',
+		'googleplus_set'								=> '',
+		'delicious_set'									=> '',
+		'linkedin_set'									=> '',
+		'github_set'									=> '',
+		'wordpress_set'									=> '',
+		'youtube_set'									=> '',
+		'flickr_set'									=> '',
+		'instagram_set'									=> '',
+		'vimeo_set'										=> '',
+		'reddit_set'									=> '',
+		'picassa_set'									=> '',
+		'lastfm_set'									=> '',
+		'stumbleupon_set'								=> '',
+		'pinterest_set'									=> '',
+		'deviantart_set'								=> '',
+		'myspace_set'									=> '',
+		'xing_set'										=> '',
+		'soundcloud_set'								=> '',
+		'steam_set'										=> '',
+		'dribbble_set'									=> '',
+		'forrst_set'									=> '',
+		'feed_set'										=> '',
 		// Search Engines ID and Tracker Options
-		'google-id'										=> '',
-		'yahoo-id'										=> '',
-		'bing-id'										=> '',
-		'stats-tracker'									=> '',
+		'google_id'										=> '',
+		'yahoo_id'										=> '',
+		'bing_id'										=> '',
+		'stats_tracker'									=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -319,14 +319,14 @@ function t_em_default_theme_options(){
  */
 function t_em_thumbnail_sizes( $contex ){
 	$thumbnail_sizes = array (
-		'excerpt-thumbnail-width' => array(
+		'excerpt_thumbnail_width' => array(
 			'value' => '',
-			'name' => $contex . '-thumbnail-width',
+			'name' => $contex . '_thumbnail_width',
 			'label' => __( 'Width', 't_em' ),
 		),
-		'excerpt-thumbnail-height' => array(
+		'excerpt_thumbnail_height' => array(
 			'value' => '',
-			'name' => $contex . '-thumbnail-height',
+			'name' => $contex . '_thumbnail_height',
 			'label' => __( 'Height', 't_em' ),
 		),
 	);
@@ -384,13 +384,13 @@ function t_em_theme_options_validate( $input ){
 	global $excerpt_options, $slider_layout, $list_categories, $static_header_layout;
 	// All the checkbox are either 0 or 1
 	foreach ( array(
-		't-em-link',
-		'single-featured-img',
-		'single-related-posts',
-		'breadcrumb-path',
-		'header-featured-image',
-		'slider-home-only',
-		'static-header-home-only',
+		't_em_link',
+		'single_featured_img',
+		'single_related_posts',
+		'breadcrumb_path',
+		'header_featured_image',
+		'slider_home_only',
+		'static_header_home_only',
 	) as $checkbox ) :
 		if ( !isset( $input[$checkbox] ) )
 			$input[$checkbox] = null;
@@ -400,31 +400,31 @@ function t_em_theme_options_validate( $input ){
 	// Validate all radio options
 	$radio_options = array(
 		'header-options'	=> array (
-			'set'		=> 'header-set',
+			'set'		=> 'header_set',
 			'callback'	=> t_em_header_options(),
 		),
 		'slider-options'	=> array (
-			'set'		=> 'slider-text',
+			'set'		=> 'slider_text',
 			'callback'	=> $slider_layout,
 		),
 		'static-header-options'	=> array (
-			'set'		=> 'static-header-text',
+			'set'		=> 'static_header_text',
 			'callback'	=> $static_header_layout,
 		),
 		'archive-options'	=> array (
-			'set'		=> 'archive-set',
+			'set'		=> 'archive_set',
 			'callback'	=> t_em_archive_options(),
 		),
 		'excerpt-options'	=> array (
-			'set'		=> 'excerpt-set',
+			'set'		=> 'excerpt_set',
 			'callback'	=> $excerpt_options,
 		),
 		'layout-options'	=> array (
-			'set'		=> 'layout-set',
+			'set'		=> 'layout_set',
 			'callback'	=> t_em_layout_options(),
 		),
 		'footer-options'	=> array (
-			'set'		=> 'footer-set',
+			'set'		=> 'footer_set',
 			'callback'	=> t_em_footer_options(),
 		),
 	);
@@ -438,81 +438,81 @@ function t_em_theme_options_validate( $input ){
 	// Validate all int (input[type="number"]) options
 
 	// Slider Height values: default: 350, max: 500, min: 200.
-	if ( ( $input['slider-height'] < T_EM_SLIDER_MIN_HEIGHT || $input['slider-height'] > T_EM_SLIDER_MAX_HEIGHT ) || empty( $input['slider-height'] ) || ! is_numeric( $input['slider-height'] ) ) :
-		$input['slider-height'] = T_EM_SLIDER_DEFAULT_HEIGHT;
+	if ( ( $input['slider_height'] < T_EM_SLIDER_MIN_HEIGHT || $input['slider_height'] > T_EM_SLIDER_MAX_HEIGHT ) || empty( $input['slider_height'] ) || ! is_numeric( $input['slider_height'] ) ) :
+		$input['slider_height'] = T_EM_SLIDER_DEFAULT_HEIGHT;
 	else :
-		$input['slider-height'] = $input['slider-height'];
+		$input['slider_height'] = $input['slider_height'];
 	endif;
 
 	// Slider Number values: default: get_option( 'posts_per_page' );
-	if ( empty( $input['slider-number'] ) || ! is_numeric( $input['slider-number'] ) ) :
-		$input['slider-number'] = get_option( 'posts_per_page' );
+	if ( empty( $input['slider_number'] ) || ! is_numeric( $input['slider_number'] ) ) :
+		$input['slider_number'] = get_option( 'posts_per_page' );
 	else :
-		$input['slider-number'] = $input['slider-number'];
+		$input['slider_number'] = $input['slider_number'];
 	endif;
 
 	// Excerpt Thumbnail Width values: default: get_option( 'thumbnail_size_w' );
-	if ( empty( $input['excerpt-thumbnail-width'] ) || ! is_numeric( $input['excerpt-thumbnail-width'] ) ) :
-		$input['excerpt-thumbnail-width'] = get_option( 'thumbnail_size_w' );
+	if ( empty( $input['excerpt_thumbnail_width'] ) || ! is_numeric( $input['excerpt_thumbnail_width'] ) ) :
+		$input['excerpt_thumbnail_width'] = get_option( 'thumbnail_size_w' );
 	else :
-		$input['excerpt-thumbnail-width'] = $input['excerpt-thumbnail-width'];
+		$input['excerpt_thumbnail_width'] = $input['excerpt_thumbnail_width'];
 	endif;
 
 	// Excerpt Thumbnail Height values: default: get_option( 'thumbnail_size_h' );
-	if ( empty( $input['excerpt-thumbnail-height'] ) || ! is_numeric( $input['excerpt-thumbnail-height'] ) ) :
-		$input['excerpt-thumbnail-height'] = get_option( 'thumbnail_size_h' );
+	if ( empty( $input['excerpt_thumbnail_height'] ) || ! is_numeric( $input['excerpt_thumbnail_height'] ) ) :
+		$input['excerpt_thumbnail_height'] = get_option( 'thumbnail_size_h' );
 	else :
-		$input['excerpt-thumbnail-height'] = $input['excerpt-thumbnail-height'];
+		$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
 	endif;
 
 	// Layout Width values: default : 960, max: 1600, min: 600.
-	if ( ( $input['layout-width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout-width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout-width'] ) || ! is_numeric( $input['layout-width'] ) ) :
-		$input['layout-width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
+	if ( ( $input['layout_width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout_width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout_width'] ) || ! is_numeric( $input['layout_width'] ) ) :
+		$input['layout_width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
 	else :
-		$input['layout-width'] = $input['layout-width'];
+		$input['layout_width'] = $input['layout_width'];
 	endif;
 	foreach( array (
-		'slider-height',
-		'slider-number',
-		'excerpt-thumbnail-width',
-		'excerpt-thumbnail-height',
-		'layout-width',
+		'slider_height',
+		'slider_number',
+		'excerpt_thumbnail_width',
+		'excerpt_thumbnail_height',
+		'layout_width',
 	) as $int ) :
 		$input[$int] = wp_filter_nohtml_kses( $input[$int] );
 	endforeach;
 
 	// Validate all url (input[type="url"]) options
 	foreach ( array (
-		'twitter-set',
-		'facebook-set',
-		'googleplus-set',
-		'delicious-set',
-		'linkedin-set',
-		'github-set',
-		'wordpress-set',
-		'youtube-set',
-		'flickr-set',
-		'instagram-set',
-		'vimeo-set',
-		'reddit-set',
-		'picassa-set',
-		'lastfm-set',
-		'stumbleupon-set',
-		'pinterest-set',
-		'deviantart-set',
-		'myspace-set',
-		'feed-set',
-		'thumbnail-src-text-widget-one',
-		'link-url-text-widget-one',
-		'thumbnail-src-text-widget-two',
-		'link-url-text-widget-two',
-		'thumbnail-src-text-widget-three',
-		'link-url-text-widget-three',
-		'thumbnail-src-text-widget-four',
-		'link-url-text-widget-four',
-		'static-header-img-src',
-		'static-header-primary-button-link',
-		'static-header-secondary-button-link',
+		'twitter_set',
+		'facebook_set',
+		'googleplus_set',
+		'delicious_set',
+		'linkedin_set',
+		'github_set',
+		'wordpress_set',
+		'youtube_set',
+		'flickr_set',
+		'instagram_set',
+		'vimeo_set',
+		'reddit_set',
+		'picassa_set',
+		'lastfm_set',
+		'stumbleupon_set',
+		'pinterest_set',
+		'deviantart_set',
+		'myspace_set',
+		'feed_set',
+		'thumbnail_src_text_widget_one',
+		'link_url_text_widget_one',
+		'thumbnail_src_text_widget_two',
+		'link_url_text_widget_two',
+		'thumbnail_src_text_widget_three',
+		'link_url_text_widget_three',
+		'thumbnail_src_text_widget_four',
+		'link_url_text_widget_four',
+		'static_header_img_src',
+		'static_header_primary_button_link',
+		'static_header_secondary_button_link',
 	) as $url ) :
 		$input[$url] = esc_url_raw( $input[$url] );
 	endforeach;
@@ -520,7 +520,7 @@ function t_em_theme_options_validate( $input ){
 	// Validate all select list options
 	$select_options = array (
 		'slider-cat'		=> array (
-			'set'		=> 'slider-category',
+			'set'		=> 'slider_category',
 			'callback'	=> $list_categories,
 		),
 	);
@@ -531,40 +531,40 @@ function t_em_theme_options_validate( $input ){
 
 	// Validate all text (code) options
 	foreach ( array (
-		'google-id',
-		'yahoo-id',
-		'bing-id',
-		'stats-tracker',
+		'google_id',
+		'yahoo_id',
+		'bing_id',
+		'stats_tracker',
 	) as $text ) :
 		$input[$text] = trim( htmlentities( str_replace( array( '<script type="text/javascript">', '</script>', '\t', '\n', '\r', ' ' ), '', $input[$text] ) ) );
 	endforeach;
 
 	// Validate all text field options
 	foreach ( array (
-		'headline-text-widget-one',
-		'icon-class-text-widget-one',
-		'headline-text-widget-two',
-		'icon-class-text-widget-two',
-		'headline-text-widget-three',
-		'icon-class-text-widget-three',
-		'headline-text-widget-four',
-		'icon-class-text-widget-four',
-		'static-header-headline',
-		'static-header-primary-button-text',
-		'static-header-primary-button-icon-class',
-		'static-header-secondary-button-text',
-		'static-header-secondary-button-icon-class',
+		'headline_text_widget_one',
+		'icon_class_text_widget_one',
+		'headline_text_widget_two',
+		'icon_class_text_widget_two',
+		'headline_text_widget_three',
+		'icon_class_text_widget_three',
+		'headline_text_widget_four',
+		'icon_class_text_widget_four',
+		'static_header_headline',
+		'static_header_primary_button_text',
+		'static_header_primary_button_icon_class',
+		'static_header_secondary_button_text',
+		'static_header_secondary_button_icon_class',
 	) as $text_field ) :
 		$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
 	endforeach;
 
 	// Validate all textarea options
 	foreach ( array (
-		'content-text-widget-one',
-		'content-text-widget-two',
-		'content-text-widget-three',
-		'content-text-widget-four',
-		'static-header-content',
+		'content_text_widget_one',
+		'content_text_widget_two',
+		'content_text_widget_three',
+		'content_text_widget_four',
+		'static_header_content',
 	) as $textarea ) :
 		$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
 	endforeach;
@@ -579,11 +579,11 @@ function t_em_theme_options_validate( $input ){
  */
 function t_em_layout_classes( $existing_classes ){
 	global $t_em_theme_options;
-	$layout_set = $t_em_theme_options['layout-set'];
-	$static_header_set = $t_em_theme_options['static-header-text'];
+	$layout_set = $t_em_theme_options['layout_set'];
+	$static_header_set = $t_em_theme_options['static_header_text'];
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enogh
-	if ( $t_em_theme_options['front-page-set'] == 'widgets-front-page' && is_front_page() ) :
+	if ( $t_em_theme_options['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
 		$classes = array ( 'one-column' );
 	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
 		$classes = array ( 'two-column' );
@@ -627,8 +627,8 @@ add_filter( 'body_class', 't_em_layout_classes' );
  */
 function t_em_archive_classes( $existing_classes ){
 	global $t_em_theme_options;
-	$archive_set = $t_em_theme_options['archive-set'];
-	$excerpt_set = $t_em_theme_options['excerpt-set'];
+	$archive_set = $t_em_theme_options['archive_set'];
+	$excerpt_set = $t_em_theme_options['excerpt_set'];
 
 	if ( 'the-excerpt' == $archive_set ) :
 		if ( 'thumbnail-left' == $excerpt_set ) :

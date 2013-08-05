@@ -110,9 +110,9 @@
 	margin-left: 0;
 	margin-right: 0;
 }
-#t-em-setting #text-widget-two,
-#t-em-setting #text-widget-three,
-#t-em-setting #text-widget-four{
+#t-em-setting #text_widget_two,
+#t-em-setting #text_widget_three,
+#t-em-setting #text_widget_four{
 	display: table;
 	float: left;
 	margin: 0 2% 0 0;
