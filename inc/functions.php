@@ -132,7 +132,7 @@ if ( !function_exists( 't_em_support_custom_background' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_support_custom_background(){
-	$custom_background = array ( 'default-color' => 'f7f7f7' );
+	$custom_background = array ( 'default-color' => 'f0f0f0' );
 	add_theme_support( 'custom-background', $custom_background );
 }
 endif; // function t_em_support_custom_background()

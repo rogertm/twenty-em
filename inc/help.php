@@ -52,6 +52,7 @@ function t_em_theme_options_help(){
 						'<li>' . __( '<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em.com will be displayed in your site footer area.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -132,7 +133,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$webmastertools_help = '<p>' . __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your Search Engines ID&#8217;s and Statistics Tracker codes provided by Google, Yahoo! and/or Bing.', 't_em' ) . '</p>';
+	$webmastertools_help = '<p>' . __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your Search Engines ID&#8217;s provided by Google and/or Bing, and Statistics Tracker codes from the system you like.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title' => __( 'Webmaster Tools Options', 't_em' ),

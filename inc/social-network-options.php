@@ -88,6 +88,13 @@ function t_em_social_network_options(){
 			'item' => __( 'Flickr', 't_em' ),
 			'class' => 'icon-flickr',
 		),
+		'tumblr_set' => array (
+			'value' => '',
+			'name' => 'tumblr_set',
+			'label' => __( 'Tumblr URL', 't_em' ),
+			'item' => __( 'Tumblr', 't_em' ),
+			'class' => 'icon-tumblr',
+		),
 		'instagram_set' => array (
 			'value' => '',
 			'name' => 'instagram_set',

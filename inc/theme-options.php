@@ -111,7 +111,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '61.25031992' );
+	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '2.25031992' );
 	$theme_backup_page	= add_submenu_page( 'theme-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'theme-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -280,6 +280,7 @@ function t_em_default_theme_options(){
 		'wordpress_set'									=> '',
 		'youtube_set'									=> '',
 		'flickr_set'									=> '',
+		'tumblr_set'									=> '',
 		'instagram_set'									=> '',
 		'vimeo_set'										=> '',
 		'reddit_set'									=> '',
@@ -297,9 +298,9 @@ function t_em_default_theme_options(){
 		'feed_set'										=> '',
 		// Search Engines ID and Tracker Options
 		'google_id'										=> '',
-		'yahoo_id'										=> '',
 		'bing_id'										=> '',
-		'stats_tracker'									=> '',
+		'stats_tracker_header_tag'						=> '',
+		'stats_tracker_body_tag'						=> '',
 	);
 
 	return apply_filters( 't_em_default_theme_options', $default_theme_options );
@@ -492,6 +493,7 @@ function t_em_theme_options_validate( $input ){
 		'wordpress_set',
 		'youtube_set',
 		'flickr_set',
+		'tumblr_set',
 		'instagram_set',
 		'vimeo_set',
 		'reddit_set',
@@ -529,16 +531,6 @@ function t_em_theme_options_validate( $input ){
 			$input[$select] = $input[$select['set']];
 	endforeach;
 
-	// Validate all text (code) options
-	foreach ( array (
-		'google_id',
-		'yahoo_id',
-		'bing_id',
-		'stats_tracker',
-	) as $text ) :
-		$input[$text] = trim( htmlentities( str_replace( array( '<script type="text/javascript">', '</script>', '\t', '\n', '\r', ' ' ), '', $input[$text] ) ) );
-	endforeach;
-
 	// Validate all text field options
 	foreach ( array (
 		'headline_text_widget_one',
@@ -567,6 +559,17 @@ function t_em_theme_options_validate( $input ){
 		'static_header_content',
 	) as $textarea ) :
 		$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
+	endforeach;
+
+	// Validate all text (trackers) options
+	$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '<meta name="google-site-verification"', '<meta name="msvalidate.01"', 'content="', '"', '/>', '\t', '\n', '\r', ' ' );
+	foreach ( array (
+		'google_id',
+		'bing_id',
+		'stats_tracker_header_tag',
+		'stats_tracker_body_tag',
+	) as $text_tracker ) :
+		$input[$text_tracker] = trim( htmlentities( str_replace( $dirty_tracker, '', $input[$text_tracker] ) ) );
 	endforeach;
 
 	return $input;
