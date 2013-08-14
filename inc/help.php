@@ -159,7 +159,7 @@ function t_em_theme_backup_help(){
 
 	$help =	'<p>' . __( '<strong>Twenty&#8217;em Backup Manager</strong>', 't_em' ) . '</p>' .
 			'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>Twenty&#8217;em Backup Manager</strong> should be imported. ', 't_em' ),
-			admin_url( 'admin.php?page=theme-options' ) ) . '</p>' .
+			admin_url( 'admin.php?page=twenty-em-options' ) ) . '</p>' .
 			'<p>' . sprintf( __( 'Please note that this manager only backs up your settings, not your content, to backup your content use the <a href="%1$s">WordPress Export Tool</a>.', 't_em' ),
 			admin_url( 'export.php' ) ) . '</p>';
 

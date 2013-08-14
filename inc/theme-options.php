@@ -62,7 +62,7 @@ function t_em_admin_styles_and_scripts(){
 	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'script-admin-t-em' );
 }
-if ( $_SERVER['QUERY_STRING'] == ( 'page=theme-options' || 'page=theme-backup' ) ) :
+if ( $_SERVER['QUERY_STRING'] == ( 'page=twenty-em-options' || 'page=twenty-em-backup' ) ) :
 	add_action( 'admin_init', 't_em_admin_styles_and_scripts' );
 endif;
 
@@ -83,16 +83,16 @@ function t_em_register_setting_options_init(){
 	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
 
 	// Register our settings field group
-	add_settings_section( 'general', '', '__return_false', 'theme-options' );
+	add_settings_section( 'general', '', '__return_false', 'twenty-em-options' );
 
 	// Register our individual settings fields
-	add_settings_field( 't_em_general_set',			__( 'General Options', 't_em' ),			't_em_settings_field_general_options_set',		'theme-options',	'general' );
-	add_settings_field( 't_em_header_set',			__( 'Header Options', 't_em' ),				't_em_settings_field_header_set',				'theme-options',	'general' );
-	add_settings_field( 't_em_front_page_set',		__( 'Front Page Options', 't_em' ),			't_em_settings_field_front_page_options_set',	'theme-options',	'general' );
-	add_settings_field( 't_em_archive_set',			__( 'Archive Options', 't_em' ),			't_em_settings_field_archive_set',				'theme-options',	'general' );
-	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'theme-options',	'general' );
-	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'theme-options',	'general' );
-	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'theme-options', 	'general' );
+	add_settings_field( 't_em_general_set',			__( 'General Options', 't_em' ),			't_em_settings_field_general_options_set',		'twenty-em-options',	'general' );
+	add_settings_field( 't_em_header_set',			__( 'Header Options', 't_em' ),				't_em_settings_field_header_set',				'twenty-em-options',	'general' );
+	add_settings_field( 't_em_front_page_set',		__( 'Front Page Options', 't_em' ),			't_em_settings_field_front_page_options_set',	'twenty-em-options',	'general' );
+	add_settings_field( 't_em_archive_set',			__( 'Archive Options', 't_em' ),			't_em_settings_field_archive_set',				'twenty-em-options',	'general' );
+	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'twenty-em-options',	'general' );
+	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'twenty-em-options',	'general' );
+	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'twenty-em-options', 	'general' );
 }
 add_action( 'admin_init', 't_em_register_setting_options_init' );
 
@@ -111,8 +111,8 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'theme-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '2.25031992' );
-	$theme_backup_page	= add_submenu_page( 'theme-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'theme-backup', 't_em_theme_backup' );
+	$theme_page 		= add_menu_page( $t_em_theme_data['Name'] . ' ' . __( 'Theme Options', 't_em' ), $t_em_theme_data['Name'], 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '2.25031992' );
+	$theme_backup_page	= add_submenu_page( 'twenty-em-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'twenty-em-backup', 't_em_theme_backup' );
 
 	// We call our help screens
 	if ( ! $theme_page ) return;
@@ -140,8 +140,9 @@ require( T_EM_INC_DIR_PATH . '/help.php' );
  * at first time the theme is loaded.
  */
 if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
-	wp_redirect( 'admin.php?page=theme-options' );
 	add_option( 't_em_theme_options', t_em_default_theme_options() );
+	wp_redirect( 'admin.php?page=twenty-em-options' );
+	exit;
 endif;
 
 /**
@@ -367,7 +368,7 @@ function t_em_theme_options_page(){
 		<form id="t-em-setting" method="post" action="options.php">
 			<?php
 				settings_fields( 't_em_options' );
-				do_settings_sections( 'theme-options' );
+				do_settings_sections( 'twenty-em-options' );
 				submit_button();
 			?>
 		</form>

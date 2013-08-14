@@ -39,7 +39,7 @@ function t_em_backup_export(){
 																  't_em_theme_options' ) );
 
 		if ( $export_theme_options == '' ) :
-			wp_redirect( admin_url( 'admin.php?page=theme-backup&export-error=true' ) );
+			wp_redirect( admin_url( 'admin.php?page=twenty-em-backup&export-error=true' ) );
 			exit;
 		endif;
 
@@ -60,7 +60,7 @@ function t_em_backup_export(){
 		echo $output;
 		exit;
 	else:
-		wp_redirect( admin_url( 'admin.php?page=theme-backup&export-error=true' ) );
+		wp_redirect( admin_url( 'admin.php?page=twenty-em-backup&export-error=true' ) );
 		exit;
 	endif;
 } // t_em_backup_export()
@@ -97,7 +97,7 @@ function t_em_backup_import(){
 
 			// Check for our water mark and so on...
 			if ( $whos_coming[2] != md5( 'twenty-em-backup-file' ) ) :
-				wp_redirect( admin_url( 'admin.php?page=theme-backup&error=true' ) );
+				wp_redirect( admin_url( 'admin.php?page=twenty-em-backup&error=true' ) );
 				exit;
 			endif;
 
@@ -121,7 +121,7 @@ function t_em_backup_import(){
 
 		endif;
 	else :
-		wp_redirect( admin_url( 'admin.php?page=theme-backup&error=true' ) );
+		wp_redirect( admin_url( 'admin.php?page=twenty-em-backup&error=true' ) );
 		exit;
 	endif;
 } // t_em_backup_import()
@@ -135,7 +135,7 @@ function t_em_backup_notice(){
 	elseif ( isset( $_GET['export-error'] ) && $_GET['export-error'] == true ) :
 		echo '<div id="error-massage" class="error"><p>'. __( 'There was an error exporting your data. Please try again', 't_em' ) .'</p></div>';
 	elseif ( isset( $_GET['import'] ) && $_GET['import'] == true ) :
-		echo '<div id="massage" class="updated"><p>' . sprintf( __( 'Settings successfully imported. Back to <a href="%1$s">Theme Options</a>', 't_em' ), admin_url( 'admin.php?page=theme-options' ) ) . '</p></div>';
+		echo '<div id="massage" class="updated"><p>' . sprintf( __( 'Settings successfully imported. Back to <a href="%1$s">Theme Options</a>', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ) ) . '</p></div>';
 	endif;
 }
 
@@ -166,7 +166,7 @@ function t_em_theme_backup(){
 		<section id="import-settings">
 			<h3><?php _e( 'Import Settings', 't_em' ); ?></h3>
 			<p><?php _e( 'If you have your settings in a backup file in your computer, <strong>Twenty&#8217;em Framework</strong> can import those settings into this site', 't_em' ); ?></p>
-			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=theme-backup&import=true' ); ?>" method="post">
+			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=twenty-em-backup&import=true' ); ?>" method="post">
 				<?php wp_nonce_field( 't_em_backup_import', 't_em_backup_import_nonce_time' ); ?>
 				<label>
 					<?php printf( __( 'Upload File: (Maximum Size: %s)', 't_em' ), ini_get( 'post_max_size' ) ); ?><br />
