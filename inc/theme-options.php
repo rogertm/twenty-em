@@ -364,7 +364,7 @@ function t_em_theme_options_page(){
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Theme Options', 't_em' ) ?></h2>
-		<?php settings_errors(); ?>
+		<?php settings_errors( 't-em-update' ); ?>
 		<form id="t-em-setting" method="post" action="options.php">
 			<?php
 				settings_fields( 't_em_options' );
@@ -385,196 +385,202 @@ function t_em_theme_options_page(){
  */
 function t_em_theme_options_validate( $input ){
 	global $excerpt_options, $slider_layout, $list_categories, $static_header_layout;
-	// All the checkbox are either 0 or 1
-	foreach ( array(
-		't_em_link',
-		'single_featured_img',
-		'single_related_posts',
-		'breadcrumb_path',
-		'header_featured_image',
-		'slider_home_only',
-		'static_header_home_only',
-	) as $checkbox ) :
-		if ( !isset( $input[$checkbox] ) )
-			$input[$checkbox] = null;
-		$input[$checkbox] = ( $input[$checkbox] == 1 ? 1 : 0 );
-	endforeach;
+	if ( $input != null ) :
+		// All the checkbox are either 0 or 1
+		foreach ( array(
+			't_em_link',
+			'single_featured_img',
+			'single_related_posts',
+			'breadcrumb_path',
+			'header_featured_image',
+			'slider_home_only',
+			'static_header_home_only',
+		) as $checkbox ) :
+			if ( !isset( $input[$checkbox] ) )
+				$input[$checkbox] = null;
+			$input[$checkbox] = ( $input[$checkbox] == 1 ? 1 : 0 );
+		endforeach;
 
-	// Validate all radio options
-	$radio_options = array(
-		'header-options'	=> array (
-			'set'		=> 'header_set',
-			'callback'	=> t_em_header_options(),
-		),
-		'slider-options'	=> array (
-			'set'		=> 'slider_text',
-			'callback'	=> $slider_layout,
-		),
-		'static-header-options'	=> array (
-			'set'		=> 'static_header_text',
-			'callback'	=> $static_header_layout,
-		),
-		'archive-options'	=> array (
-			'set'		=> 'archive_set',
-			'callback'	=> t_em_archive_options(),
-		),
-		'excerpt-options'	=> array (
-			'set'		=> 'excerpt_set',
-			'callback'	=> $excerpt_options,
-		),
-		'layout-options'	=> array (
-			'set'		=> 'layout_set',
-			'callback'	=> t_em_layout_options(),
-		),
-		'footer-options'	=> array (
-			'set'		=> 'footer_set',
-			'callback'	=> t_em_footer_options(),
-		),
-	);
-	foreach ( $radio_options as $radio ) :
-		if ( ! isset( $input[$radio['set']] ) )
-			$input[$radio['set']] = null;
-		if ( ! array_key_exists( $input[$radio['set']], $radio['callback'] ) )
-			$input[$radio['set']] = null;
-	endforeach;
+		// Validate all radio options
+		$radio_options = array(
+			'header-options'	=> array (
+				'set'		=> 'header_set',
+				'callback'	=> t_em_header_options(),
+			),
+			'slider-options'	=> array (
+				'set'		=> 'slider_text',
+				'callback'	=> $slider_layout,
+			),
+			'static-header-options'	=> array (
+				'set'		=> 'static_header_text',
+				'callback'	=> $static_header_layout,
+			),
+			'archive-options'	=> array (
+				'set'		=> 'archive_set',
+				'callback'	=> t_em_archive_options(),
+			),
+			'excerpt-options'	=> array (
+				'set'		=> 'excerpt_set',
+				'callback'	=> $excerpt_options,
+			),
+			'layout-options'	=> array (
+				'set'		=> 'layout_set',
+				'callback'	=> t_em_layout_options(),
+			),
+			'footer-options'	=> array (
+				'set'		=> 'footer_set',
+				'callback'	=> t_em_footer_options(),
+			),
+		);
+		foreach ( $radio_options as $radio ) :
+			if ( ! isset( $input[$radio['set']] ) )
+				$input[$radio['set']] = null;
+			if ( ! array_key_exists( $input[$radio['set']], $radio['callback'] ) )
+				$input[$radio['set']] = null;
+		endforeach;
 
-	// Validate all int (input[type="number"]) options
+		// Validate all int (input[type="number"]) options
 
-	// Slider Height values: default: 350, max: 500, min: 200.
-	if ( ( $input['slider_height'] < T_EM_SLIDER_MIN_HEIGHT || $input['slider_height'] > T_EM_SLIDER_MAX_HEIGHT ) || empty( $input['slider_height'] ) || ! is_numeric( $input['slider_height'] ) ) :
-		$input['slider_height'] = T_EM_SLIDER_DEFAULT_HEIGHT;
+		// Slider Height values: default: 350, max: 500, min: 200.
+		if ( ( $input['slider_height'] < T_EM_SLIDER_MIN_HEIGHT || $input['slider_height'] > T_EM_SLIDER_MAX_HEIGHT ) || empty( $input['slider_height'] ) || ! is_numeric( $input['slider_height'] ) ) :
+			$input['slider_height'] = T_EM_SLIDER_DEFAULT_HEIGHT;
+		else :
+			$input['slider_height'] = $input['slider_height'];
+		endif;
+
+		// Slider Number values: default: get_option( 'posts_per_page' );
+		if ( empty( $input['slider_number'] ) || ! is_numeric( $input['slider_number'] ) ) :
+			$input['slider_number'] = get_option( 'posts_per_page' );
+		else :
+			$input['slider_number'] = $input['slider_number'];
+		endif;
+
+		// Excerpt Thumbnail Width values: default: get_option( 'thumbnail_size_w' );
+		if ( empty( $input['excerpt_thumbnail_width'] ) || ! is_numeric( $input['excerpt_thumbnail_width'] ) ) :
+			$input['excerpt_thumbnail_width'] = get_option( 'thumbnail_size_w' );
+		else :
+			$input['excerpt_thumbnail_width'] = $input['excerpt_thumbnail_width'];
+		endif;
+
+		// Excerpt Thumbnail Height values: default: get_option( 'thumbnail_size_h' );
+		if ( empty( $input['excerpt_thumbnail_height'] ) || ! is_numeric( $input['excerpt_thumbnail_height'] ) ) :
+			$input['excerpt_thumbnail_height'] = get_option( 'thumbnail_size_h' );
+		else :
+			$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
+		endif;
+
+		// Layout Width values: default : 960, max: 1600, min: 600.
+		if ( ( $input['layout_width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout_width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout_width'] ) || ! is_numeric( $input['layout_width'] ) ) :
+			$input['layout_width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
+		else :
+			$input['layout_width'] = $input['layout_width'];
+		endif;
+		foreach( array (
+			'slider_height',
+			'slider_number',
+			'excerpt_thumbnail_width',
+			'excerpt_thumbnail_height',
+			'layout_width',
+		) as $int ) :
+			$input[$int] = wp_filter_nohtml_kses( $input[$int] );
+		endforeach;
+
+		// Validate all url (input[type="url"]) options
+		foreach ( array (
+			'twitter_set',
+			'facebook_set',
+			'googleplus_set',
+			'delicious_set',
+			'linkedin_set',
+			'github_set',
+			'wordpress_set',
+			'youtube_set',
+			'flickr_set',
+			'tumblr_set',
+			'instagram_set',
+			'vimeo_set',
+			'reddit_set',
+			'picassa_set',
+			'lastfm_set',
+			'stumbleupon_set',
+			'pinterest_set',
+			'deviantart_set',
+			'myspace_set',
+			'feed_set',
+			'thumbnail_src_text_widget_one',
+			'link_url_text_widget_one',
+			'thumbnail_src_text_widget_two',
+			'link_url_text_widget_two',
+			'thumbnail_src_text_widget_three',
+			'link_url_text_widget_three',
+			'thumbnail_src_text_widget_four',
+			'link_url_text_widget_four',
+			'static_header_img_src',
+			'static_header_primary_button_link',
+			'static_header_secondary_button_link',
+		) as $url ) :
+			$input[$url] = esc_url_raw( $input[$url] );
+		endforeach;
+
+		// Validate all select list options
+		$select_options = array (
+			'slider-cat'		=> array (
+				'set'		=> 'slider_category',
+				'callback'	=> $list_categories,
+			),
+		);
+		foreach ( $select_options as $select ) :
+			if ( array_key_exists( $input[$select['set']], $select['callback'] ) )
+				$input[$select] = $input[$select['set']];
+		endforeach;
+
+		// Validate all text field options
+		foreach ( array (
+			'headline_text_widget_one',
+			'icon_class_text_widget_one',
+			'headline_text_widget_two',
+			'icon_class_text_widget_two',
+			'headline_text_widget_three',
+			'icon_class_text_widget_three',
+			'headline_text_widget_four',
+			'icon_class_text_widget_four',
+			'static_header_headline',
+			'static_header_primary_button_text',
+			'static_header_primary_button_icon_class',
+			'static_header_secondary_button_text',
+			'static_header_secondary_button_icon_class',
+		) as $text_field ) :
+			$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
+		endforeach;
+
+		// Validate all textarea options
+		foreach ( array (
+			'content_text_widget_one',
+			'content_text_widget_two',
+			'content_text_widget_three',
+			'content_text_widget_four',
+			'static_header_content',
+		) as $textarea ) :
+			$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
+		endforeach;
+
+		// Validate all text (trackers) options
+		$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '<meta name="google-site-verification"', '<meta name="msvalidate.01"', 'content="', '"', '/>', '\t', '\n', '\r', ' ' );
+		foreach ( array (
+			'google_id',
+			'bing_id',
+			'stats_tracker_header_tag',
+			'stats_tracker_body_tag',
+		) as $text_tracker ) :
+			$input[$text_tracker] = trim( htmlentities( str_replace( $dirty_tracker, '', $input[$text_tracker] ) ) );
+		endforeach;
+
+		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.' ), home_url() ), 'updated' );
+
+		return $input;
 	else :
-		$input['slider_height'] = $input['slider_height'];
+		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );
 	endif;
-
-	// Slider Number values: default: get_option( 'posts_per_page' );
-	if ( empty( $input['slider_number'] ) || ! is_numeric( $input['slider_number'] ) ) :
-		$input['slider_number'] = get_option( 'posts_per_page' );
-	else :
-		$input['slider_number'] = $input['slider_number'];
-	endif;
-
-	// Excerpt Thumbnail Width values: default: get_option( 'thumbnail_size_w' );
-	if ( empty( $input['excerpt_thumbnail_width'] ) || ! is_numeric( $input['excerpt_thumbnail_width'] ) ) :
-		$input['excerpt_thumbnail_width'] = get_option( 'thumbnail_size_w' );
-	else :
-		$input['excerpt_thumbnail_width'] = $input['excerpt_thumbnail_width'];
-	endif;
-
-	// Excerpt Thumbnail Height values: default: get_option( 'thumbnail_size_h' );
-	if ( empty( $input['excerpt_thumbnail_height'] ) || ! is_numeric( $input['excerpt_thumbnail_height'] ) ) :
-		$input['excerpt_thumbnail_height'] = get_option( 'thumbnail_size_h' );
-	else :
-		$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
-	endif;
-
-	// Layout Width values: default : 960, max: 1600, min: 600.
-	if ( ( $input['layout_width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout_width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout_width'] ) || ! is_numeric( $input['layout_width'] ) ) :
-		$input['layout_width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
-	else :
-		$input['layout_width'] = $input['layout_width'];
-	endif;
-	foreach( array (
-		'slider_height',
-		'slider_number',
-		'excerpt_thumbnail_width',
-		'excerpt_thumbnail_height',
-		'layout_width',
-	) as $int ) :
-		$input[$int] = wp_filter_nohtml_kses( $input[$int] );
-	endforeach;
-
-	// Validate all url (input[type="url"]) options
-	foreach ( array (
-		'twitter_set',
-		'facebook_set',
-		'googleplus_set',
-		'delicious_set',
-		'linkedin_set',
-		'github_set',
-		'wordpress_set',
-		'youtube_set',
-		'flickr_set',
-		'tumblr_set',
-		'instagram_set',
-		'vimeo_set',
-		'reddit_set',
-		'picassa_set',
-		'lastfm_set',
-		'stumbleupon_set',
-		'pinterest_set',
-		'deviantart_set',
-		'myspace_set',
-		'feed_set',
-		'thumbnail_src_text_widget_one',
-		'link_url_text_widget_one',
-		'thumbnail_src_text_widget_two',
-		'link_url_text_widget_two',
-		'thumbnail_src_text_widget_three',
-		'link_url_text_widget_three',
-		'thumbnail_src_text_widget_four',
-		'link_url_text_widget_four',
-		'static_header_img_src',
-		'static_header_primary_button_link',
-		'static_header_secondary_button_link',
-	) as $url ) :
-		$input[$url] = esc_url_raw( $input[$url] );
-	endforeach;
-
-	// Validate all select list options
-	$select_options = array (
-		'slider-cat'		=> array (
-			'set'		=> 'slider_category',
-			'callback'	=> $list_categories,
-		),
-	);
-	foreach ( $select_options as $select ) :
-		if ( array_key_exists( $input[$select['set']], $select['callback'] ) )
-			$input[$select] = $input[$select['set']];
-	endforeach;
-
-	// Validate all text field options
-	foreach ( array (
-		'headline_text_widget_one',
-		'icon_class_text_widget_one',
-		'headline_text_widget_two',
-		'icon_class_text_widget_two',
-		'headline_text_widget_three',
-		'icon_class_text_widget_three',
-		'headline_text_widget_four',
-		'icon_class_text_widget_four',
-		'static_header_headline',
-		'static_header_primary_button_text',
-		'static_header_primary_button_icon_class',
-		'static_header_secondary_button_text',
-		'static_header_secondary_button_icon_class',
-	) as $text_field ) :
-		$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
-	endforeach;
-
-	// Validate all textarea options
-	foreach ( array (
-		'content_text_widget_one',
-		'content_text_widget_two',
-		'content_text_widget_three',
-		'content_text_widget_four',
-		'static_header_content',
-	) as $textarea ) :
-		$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
-	endforeach;
-
-	// Validate all text (trackers) options
-	$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '<meta name="google-site-verification"', '<meta name="msvalidate.01"', 'content="', '"', '/>', '\t', '\n', '\r', ' ' );
-	foreach ( array (
-		'google_id',
-		'bing_id',
-		'stats_tracker_header_tag',
-		'stats_tracker_body_tag',
-	) as $text_tracker ) :
-		$input[$text_tracker] = trim( htmlentities( str_replace( $dirty_tracker, '', $input[$text_tracker] ) ) );
-	endforeach;
-
-	return $input;
 }
 
 /**
@@ -653,4 +659,15 @@ function t_em_archive_classes( $existing_classes ){
 	return array_merge( $existing_classes, $classes );
 }
 add_filter( 'post_class', 't_em_archive_classes' );
+
+/**
+ * Useful to generate an error code number when $input is totally null xD
+ *
+ * @return int Error code ID
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_rand_error_code(){
+	return sprintf( __( 'Oops! An error has occurred. Error ID: %1$s' ), md5( rand() ) );
+}
 ?>

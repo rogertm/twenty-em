@@ -135,7 +135,7 @@ function t_em_backup_notice(){
 	elseif ( isset( $_GET['export-error'] ) && $_GET['export-error'] == true ) :
 		echo '<div id="error-massage" class="error"><p>'. __( 'There was an error exporting your data. Please try again', 't_em' ) .'</p></div>';
 	elseif ( isset( $_GET['import'] ) && $_GET['import'] == true ) :
-		echo '<div id="massage" class="updated"><p>' . sprintf( __( 'Settings successfully imported. Back to <a href="%1$s">Theme Options</a>', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ) ) . '</p></div>';
+		echo '<div id="massage" class="updated"><p>' . sprintf( __( 'Settings successfully imported. Back to <a href="%1$s">Theme Options</a> or <a href="%2$s">Visit your site</a>', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ), home_url() ) . '</p></div>';
 	endif;
 }
 
