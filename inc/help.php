@@ -150,4 +150,32 @@ function t_em_theme_options_help(){
 
 	$screen->set_help_sidebar( $sidebar );
 }
+
+/**
+ * Add contextual help to Backup Manager screen
+ */
+function t_em_theme_backup_help(){
+	$screen = get_current_screen();
+
+	$help =	'<p>' . __( '<strong>Twenty&#8217;em Backup Manager</strong>', 't_em' ) . '</p>' .
+			'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>Twenty&#8217;em Backup Manager</strong> should be imported. ', 't_em' ),
+			admin_url( 'admin.php?page=theme-options' ) ) . '</p>' .
+			'<p>' . sprintf( __( 'Please note that this manager only backs up your settings, not your content, to backup your content use the <a href="%1$s">WordPress Export Tool</a>.', 't_em' ),
+			admin_url( 'export.php' ) ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title'		=> __( 'Overview', 't_em' ),
+		'id'		=> 'theme-options-help',
+		'content'	=> $help,
+		)
+	);
+
+	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
+						'http://twenty-em.com/' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR_URL . '/readme.txt' ) . '</p>';
+
+	$screen->set_help_sidebar( $sidebar );
+}
 ?>

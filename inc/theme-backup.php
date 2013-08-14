@@ -32,7 +32,7 @@ function t_em_backup_export(){
 	global 	$wpdb;
 
 	// Check for security
-	if ( isset( $_POST['t-em-backup-export'] ) && $_POST['t-em-backup-export'] === 'true' && check_admin_referer( 't-em-backup-export', 't-em-backup-export-nonce-time' ) ) :
+	if ( isset( $_POST['t_em_backup_export'] ) && $_POST['t_em_backup_export'] === 'true' && check_admin_referer( 't_em_backup_export', 't_em_backup_export_nonce_time' ) ) :
 		$export_theme_options =	$wpdb->get_var( $wpdb->prepare (" SELECT option_value
 																  FROM $wpdb->options
 																  WHERE option_name = %s",
@@ -82,15 +82,15 @@ function t_em_backup_import(){
 	global $wpdb;
 
 	// Check for security
-	if ( isset( $_POST['t-em-backup-import'] ) && $_POST['t-em-backup-import'] === 'true' && check_admin_referer( 't-em-backup-import', 't-em-backup-import-nonce-time' ) ) :
+	if ( isset( $_POST['t_em_backup_import'] ) && $_POST['t_em_backup_import'] === 'true' && check_admin_referer( 't_em_backup_import', 't_em_backup_import_nonce_time' ) ) :
 
 		// If the import setting has not been sent, we do nothing
-		if ( ! isset( $_FILES['import-theme-data'] ) ) { return; }
+		if ( ! isset( $_FILES['import_theme_data'] ) ) { return; }
 
 		// Check if the uploaded file is our file
-		if ( is_uploaded_file( $_FILES['import-theme-data']['tmp_name'] ) ) :
+		if ( is_uploaded_file( $_FILES['import_theme_data']['tmp_name'] ) ) :
 			// Read the file and extract its content
-			$upload_file = file_get_contents( $_FILES['import-theme-data']['tmp_name'] );
+			$upload_file = file_get_contents( $_FILES['import_theme_data']['tmp_name'] );
 
 			// Stop! Who's coming?
 			$whos_coming = explode( "\n", $upload_file );
@@ -139,10 +139,10 @@ function t_em_backup_notice(){
 	endif;
 }
 
-if ( ! isset( $_POST['t-em-backup-import'] ) && isset( $_POST['t-em-backup-export'] ) && $_POST['t-em-backup-export'] == true ) :
+if ( ! isset( $_POST['t_em_backup_import'] ) && isset( $_POST['t_em_backup_export'] ) && $_POST['t_em_backup_export'] == true ) :
 	t_em_backup_export();
 endif;
-if ( ! isset( $_POST['t-em-backup-export'] ) && isset( $_POST['t-em-backup-import'] ) && $_POST['t-em-backup-import'] == true ) :
+if ( ! isset( $_POST['t_em_backup_export'] ) && isset( $_POST['t_em_backup_import'] ) && $_POST['t_em_backup_import'] == true ) :
 	t_em_backup_import();
 endif;
 
@@ -157,23 +157,23 @@ function t_em_theme_backup(){
 			<p><?php _e( 'When you click in the button below <strong>Twenty&#8217;em Framework</strong> will create an TXT file for you to save in your computer.', 't_em' ); ?></p>
 			<p><?php _e( 'This file contain all your theme configuration. You can use it to restore your setting in this site or to easily setup another site based on <strong>Twenty&#8217;em Framework</strong>.', 't_em' ); ?></p>
 			<form action="options.php" method="post">
-				<?php wp_nonce_field( 't-em-backup-export', 't-em-backup-export-nonce-time' ); ?>
+				<?php wp_nonce_field( 't_em_backup_export', 't_em_backup_export_nonce_time' ); ?>
 				<?php submit_button( __( 'Download export file', 't_em' ) ); ?>
-				<input type="hidden" name="t-em-backup-export" value="true" />
+				<input type="hidden" name="t_em_backup_export" value="true" />
 			</form>
 		</section><!-- #export-settings -->
 
 		<section id="import-settings">
 			<h3><?php _e( 'Import Settings', 't_em' ); ?></h3>
 			<p><?php _e( 'If you have your settings in a backup file in your computer, <strong>Twenty&#8217;em Framework</strong> can import those settings into this site', 't_em' ); ?></p>
-			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=theme-backup&import=true' ); ?>" method="post" id="import-theme-data">
-				<?php wp_nonce_field( 't-em-backup-import', 't-em-backup-import-nonce-time' ); ?>
+			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=theme-backup&import=true' ); ?>" method="post">
+				<?php wp_nonce_field( 't_em_backup_import', 't_em_backup_import_nonce_time' ); ?>
 				<label>
 					<?php printf( __( 'Upload File: (Maximum Size: %s)', 't_em' ), ini_get( 'post_max_size' ) ); ?><br />
-					<input type="file" name="import-theme-data" id="import-theme-data" />
+					<input type="file" name="import_theme_data" />
 				</label>
 				<?php submit_button( __( 'Upload file and import', 't_em' ) ); ?>
-				<input type="hidden" name="t-em-backup-import" value="true" />
+				<input type="hidden" name="t_em_backup_import" value="true" />
 			</form>
 		</section><!-- #import-settings -->
 	</div>

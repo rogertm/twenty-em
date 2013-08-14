@@ -119,6 +119,7 @@ function t_em_theme_options_admin_page(){
 	if ( ! $theme_backup_page ) return;
 
 	add_action( "load-$theme_page", 't_em_theme_options_help' );
+	add_action( "load-$theme_backup_page", 't_em_theme_backup_help' );
 }
 add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 
