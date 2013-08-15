@@ -296,16 +296,22 @@ function t_em_admin_header_style() {
 	}
 	#headimg h1 {
 		margin: 0;
+		float: left;
+		font-family: "Open Sans",Helvetica,Arial,sans-serif;
 	}
 	#headimg h1 a {
-		font-size: 32px;
-		line-height: 36px;
+		font-size: 38.5px;
+		line-height: 40px;
+		font-weight: bold;
 		text-decoration: none;
 	}
 	#desc {
-		font-size: 14px;
-		line-height: 23px;
-		padding: 0 0 3em;
+		font-size: 12px;
+		font-family: Georgia,"Bitstream Charter",serif;
+		line-height: 36px;
+		margin: 10px 0;
+		float: right;
+		font-style: italic;
 	}
 	<?php
 		// If the user has set a custom color for the text use that
