@@ -148,8 +148,8 @@ function t_em_support_custom_header(){
 	$custom_header_support = array (
 		'default-text-color'		=> '757575',
 		'default-image'				=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header.jpg',
-		'width'						=> apply_filters( 't_em_header_image_width', 1000 ),
-		'height'					=> apply_filters( 't_em_header_image_height', 350 ),
+		'width'						=> apply_filters( 't_em_header_image_width', 1200 ),
+		'height'					=> apply_filters( 't_em_header_image_height', 420 ),
 		'flex-height'				=> true,
 		'random-default'			=> true,
 		'uploads'					=> true,
