@@ -1414,7 +1414,7 @@ function t_em_breadcrumb(){
 	global $t_em_theme_options;
 
 	if ( '1' == $t_em_theme_options['breadcrumb_path'] ) :
-		global $post, $wp_query;
+		global $post;
 
 		$query_obj = get_queried_object();
 		$home_name = __( 'Home', 't_em' );
@@ -1424,7 +1424,11 @@ function t_em_breadcrumb(){
 		$home_link = '<span><a href="'. home_url() .'">'. $home_name .'</a></span>'. $divider . ' ';
 		$year_link = ( is_year() || is_month() || is_day() ) ? '<span><a href="'. get_year_link( get_the_time( 'Y' ) ) .'">'. get_the_time( 'Y' ) .'</a></span>' : null;
 		$month_link = ( is_year() || is_month() || is_day() ) ? '<span><a href="'. get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) .'">'. get_the_time( 'F' ) .'</a></span>' : null;
+		$post_type_obj = ( is_single() ) ? get_post_type_object( $post->post_type ) : null;
+		$parent_post_type_obj = ( is_single() ) ? get_post_type_object( get_post_type( $post->post_parent ) ) : null;
+		$post_type_archive_link = ( is_single() && empty( $post_type_obj->hierarchical ) ) ? '<span><a href="'. get_post_type_archive_link( $post->post_type ) .'">'. $post_type_obj->label .'</a></span>' . $divider : null;
 		$attachment_parent_link = ( is_attachment() ) ? '<span><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></span>' . $divider : null;
+		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<span><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></span>' . $divider . '<span><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></span>' . $divider : null;
 ?>
 		<div id="you-are-here" class="breadcrumb">
 <?php
@@ -1483,6 +1487,7 @@ function t_em_breadcrumb(){
 			echo $current_before . __( 'Error 404', 't_em' ) . $current_after;
 		endif;
 
+		// Also works for page's attachments
 		if ( is_page() && ! ( is_home() || is_front_page() ) ) :
 			if ( $post->post_parent != 0 ) :
 				$parent_id = $post->post_parent;
@@ -1503,16 +1508,22 @@ function t_em_breadcrumb(){
 			if ( $post->post_type == 'post' ) :
 				$post_cat = get_the_category();
 				echo get_category_parents( $post_cat[0], true, $divider ) . $current_before . get_the_title() . $current_after;
-			elseif ( $post->post_type != 'post' ) :
-				echo $current_before . get_the_title() . $current_after;
+			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
+				echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
 			endif;
 		endif;
 
-		if ( is_attachment() ) :
-			$parent_cat = get_the_category( $post->post_parent );
-			$page_parent = get_page( $post->post_parent );
-			$attachtment_post_parent_link = ( $post->post_parent != 0 && $page_parent->post_type != 'page' ) ? get_category_parents( $parent_cat[0], true, $divider ) : null;
-			echo $attachtment_post_parent_link . $attachment_parent_link . $current_before . get_the_title() . $current_after;
+		// We manage page's attachment two if() statements above
+		if ( is_attachment() && ! is_page() ) :
+			$parent_cat = ( get_post_type( $post->post_parent ) == 'post' ) ? get_the_category( $post->post_parent ) : null;
+			if ( $parent_cat ) :
+				$attachtment_post_parent_link = get_category_parents( $parent_cat[0], true, $divider ) . $attachment_parent_link;
+			elseif ( ! in_array( get_post_type( $post->post_parent ), array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
+				$attachtment_post_parent_link = $attachment_post_type_parent_link;
+			else :
+				$attachtment_post_parent_link = null;
+			endif;
+			echo $attachtment_post_parent_link . $current_before . get_the_title() . $current_after;
 		endif;
 
 		if ( get_query_var( 'paged' ) > '1' ) :
