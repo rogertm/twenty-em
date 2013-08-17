@@ -8,15 +8,34 @@ global	$post,
 
 if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $t_em_theme_options['slider_home_only'] ) :
 
+	// We pass to the query only posts with images attached
+	$cat_posts = get_posts( array( 'category' => $t_em_theme_options['slider_category'], 'posts_per_page' => -1 ) );
+	$i = 1;
+	$p = array();
+	foreach ( $cat_posts as $cp ) :
+		$img = get_children( array( 'post_parent' => $cp->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
+		if ( ! empty( $img ) ) :
+			$tp = $cp->ID;
+			array_push( $p, $tp );
+		endif;
+	endforeach;
+	$lp = count( $p ) - $t_em_theme_options['slider_number'];
+	while ( $i <= $lp ) :
+		array_pop( $p );
+		$i++;
+	endwhile;
+
 	// Take category and number of slides to show from theme options
 	$args = array (
 		'post_type'			=> 'post',
 		'cat'				=> $t_em_theme_options['slider_category'],
-		'posts_per_page'	=> $t_em_theme_options['slider_number'],
+		'post__in'			=> $p,
+		'posts_per_page'	=> count( $p ),
 		'orderby'			=> 'date',
 		'order'				=> 'DESC',
 	);
 	query_posts ( $args );
+
 		?>
 		<section id="nivo-slider" class="slider-wrapper theme-<?php echo $t_em_theme_options['nivo_style']; ?> <?php echo $t_em_theme_options['slider_text'] ?>">
 			<div class="ribbon"></div>
@@ -35,11 +54,11 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 					$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
 						$image_src = $image_url[0];
 				endif;
-					?>
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout_width'].'&amp;h='.$t_em_theme_options['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
-					</a>
-					<?php
+				?>
+				<a href="<?php the_permalink(); ?>" rel="bookmark">
+					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout_width'].'&amp;h='.$t_em_theme_options['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+				</a>
+		<?php
 			endwhile;
 		endif;
 		?>
@@ -47,14 +66,17 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 		<?php
 		if ( have_posts() ) :
 			while ( have_posts() ) : the_post();
+				$attachment = get_children( 'post_type=attachment&post_mime_type=image&post_parent='. $post->ID .'' );
+				if ( ! empty( $attachment ) ) :
 			?>
 			<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
-				<h2 class="entry-title">
-					<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-				</h2>
-				<div class="visible-desktop"><?php the_excerpt(); ?></div>
-			</div>
+					<h2 class="entry-title">
+						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+					</h2>
+					<div class="visible-desktop"><?php the_excerpt(); ?></div>
+				</div>
 			<?php
+				endif;
 			endwhile;
 			wp_reset_query();
 		endif;

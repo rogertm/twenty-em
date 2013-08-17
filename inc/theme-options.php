@@ -449,7 +449,7 @@ function t_em_theme_options_validate( $input ){
 		endif;
 
 		// Slider Number values: default: get_option( 'posts_per_page' );
-		if ( empty( $input['slider_number'] ) || ! is_numeric( $input['slider_number'] ) ) :
+		if ( empty( $input['slider_number'] ) || $input['slider_number'] < 0 || ! is_numeric( $input['slider_number'] ) ) :
 			$input['slider_number'] = get_option( 'posts_per_page' );
 		else :
 			$input['slider_number'] = $input['slider_number'];
