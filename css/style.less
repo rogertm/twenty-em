@@ -51,16 +51,17 @@ a:hover{
 }
 #top{
 	background: @black;
-	background-image: -moz-linear-gradient(top, lighten( @black, 20% ), @black);
-	background-image: -ms-linear-gradient(top, lighten( @black, 20% ), @black);
-	background-image: -webkit-linear-gradient(top, lighten( @black, 20% ), @black);
-	background-image: -o-linear-gradient(top, lighten( @black, 20% ), @black);
-	background-image: linear-gradient(top, lighten( @black, 20% ), @black);
+	background-image: -moz-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -ms-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -webkit-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
 }
 #top ul ul li a{
 	background: lighten( @black, 20% );
 }
 #top li:hover,
+#top ul ul li:hover,
 #top li.current-menu-item{
 	background: @dark-gray;
 }
@@ -122,6 +123,29 @@ nav ul li.current-menu-parent > a {
 	background-image: -webkit-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
 	background-image: -o-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
 	background-image: linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
+}
+
+/* =Slider
+-------------------------------------------------------------- */
+#t-em-slider a{
+	color: @white;
+}
+.carousel-drivers{
+	background: @black;
+	background-image: -moz-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -ms-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -webkit-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
+	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
+}
+.carousel-drivers *{
+	color: @dark-gray !important;
+}
+.carousel-drivers li:hover{
+	background-color: lighten( @light-gray, 20% );
+}
+.carousel-drivers span:hover{
+	color: lighten( @light-gray, 20% ) !important;
 }
 
 /* =Headers Tags

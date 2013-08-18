@@ -66,22 +66,19 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 		<?php
 		if ( have_posts() ) :
 			while ( have_posts() ) : the_post();
-				$attachment = get_children( 'post_type=attachment&post_mime_type=image&post_parent='. $post->ID .'' );
-				if ( ! empty( $attachment ) ) :
 			?>
 			<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
-					<h2 class="entry-title">
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-					</h2>
-					<div class="visible-desktop"><?php the_excerpt(); ?></div>
-				</div>
+				<h2 class="entry-title">
+					<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+				</h2>
+				<div class="visible-desktop"><?php the_excerpt(); ?></div>
+			</div>
 			<?php
-				endif;
 			endwhile;
-			wp_reset_query();
 		endif;
 		?>
 		</section><!-- #nivo-slider .slider-wrapper .theme-default -->
 	<?php
+	wp_reset_query();
 endif;
 ?>
