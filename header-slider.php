@@ -1,7 +1,6 @@
 <?php
 /**
- * Display featured image post thumbnail
- * for the Nivo SLider jQuery Plugin
+ * Display a Carousel of featured posts
  */
 global	$post,
 		$t_em_theme_options;

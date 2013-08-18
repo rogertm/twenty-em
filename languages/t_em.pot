@@ -787,26 +787,6 @@ msgstr ""
 msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#. Text in function
-#: twenty-em/inc/header-options.php:338
-msgid "Nivo Bar"
-msgstr ""
-
-#. Text in function
-#: twenty-em/inc/header-options.php:338
-msgid "Nivo Dark"
-msgstr ""
-
-#. Text in function
-#: twenty-em/inc/header-options.php:338
-msgid "Nivo Default"
-msgstr ""
-
-#. Text in function
-#: twenty-em/inc/header-options.php:338
-msgid "Nivo Light"
-msgstr ""
-
 #. Text in echo
 #: twenty-em/comments.php:45
 msgid "No Comments"

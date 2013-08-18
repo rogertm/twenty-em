@@ -113,38 +113,6 @@ function t_em_slider_callback(){
 		),
 	);
 
-	/**
-	 * Twenty'em uses Nivo SLider jQuery Plugin by default, and we create our own style. If you want
-	 * add your own style, just add a new key like this:
-	 * 'style-your-style'	=> array (
-	 * 		'value'	=> 'your-style',
-	 * 		'label'	=> __( 'My own Style', 't_em' ),
-	 * ),
-	 * Do not forget to save all your stuff in /css/nivo-slider/themes/your-style/your-style.css
-	 */
-	$slider_style = array (
-		'style-t-em'	=> array (
-			'value'	=> 't-em',
-			'label'	=> __( 'Twenty&#8217;em', 't_em' ),
-		),
-		'style-default'	=> array (
-			'value'	=> 'default',
-			'label'	=> __( 'Nivo Default', 't_em' ),
-		),
-		'style-dark'	=> array (
-			'value'	=> 'dark',
-			'label'	=> __( 'Nivo Dark', 't_em' ),
-		),
-		'style-light'	=> array (
-			'value'	=> 'light',
-			'label'	=> __( 'Nivo Light', 't_em' ),
-		),
-		'style-bar'	=> array (
-			'value'	=> 'bar',
-			'label'	=> __( 'Nivo Bar', 't_em' ),
-		),
-	);
-
 	$extend_slider = '';
 
 	// Show Slider only at home page?
@@ -167,22 +135,7 @@ function t_em_slider_callback(){
 	endforeach;
 	$extend_slider .= '</div>';
 
-	// Slider Style
-	$extend_slider .= '<div class="sub-extend">';
-	$extend_slider .= '<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
-	$extend_slider .= '<p>' . __( '<strong>Important:</strong> The options above only works with Twenty&#8217;em Style.', 't_em' ) . '</p>';
-	foreach ($slider_style as $style) :
-		$checked_option = checked( $t_em_theme_options['nivo_style'], $style['value'], false );
-		$extend_slider .=	'<div class="layout radio-option">';
-		$extend_slider .=		'<label class="description">';
-		$extend_slider .=		'<input type="radio" name="t_em_theme_options[nivo_style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
-		$extend_slider .=		'<span>'. $style['label'] .'</span>';
-		$extend_slider .=		'</label>';
-		$extend_slider .=	'</div>';
-	endforeach;
-	$extend_slider .= '</div><!-- .sub-extend -->';
-
-	// Define Height of Nivo Slider
+	// Define Height of the Slider Carousel
 	$extend_slider .= '<div class="sub-extend">';
 	$extend_slider .= '<p>'. sprintf( __( 'By default slider width is the same than layout width. Here you may enter the value you wish to be your slider height. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), T_EM_SLIDER_DEFAULT_HEIGHT, T_EM_SLIDER_MAX_HEIGHT, T_EM_SLIDER_MIN_HEIGHT ).'</p>';
 	$extend_slider .= 		'<div class="layout text-option thumbnail">';

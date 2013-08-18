@@ -229,7 +229,6 @@ function t_em_default_theme_options(){
 		'slider_category'								=> get_option( 'default_category' ),
 		'slider_number'									=> get_option( 'posts_per_page' ),
 		'slider_text'									=> 'slider-text-center',
-		'nivo_style'									=> 't-em',
 		'static_header_home_only'						=> '0',
 		'static_header_text'							=> 'static-header-text-right',
 		'static_header_headline'						=> '',
