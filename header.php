@@ -34,7 +34,7 @@
 	<div id="top" class="wrapper container-fluid">
 		<div class="row-fluid">
 			<nav id="top-menu" role="navigation" class="span12">
-				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '0' ) ); ?>
+				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '1' ) ); ?>
 			</nav>
 		</div><!-- .row-fluid -->
 	</div>

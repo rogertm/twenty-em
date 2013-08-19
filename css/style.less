@@ -57,20 +57,20 @@ a:hover{
 	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
 	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
 }
-#top ul ul li a{
-	background: lighten( @black, 20% );
-}
-#top li:hover,
-#top ul ul li:hover,
-#top li.current-menu-item{
-	background: @dark-gray;
-}
-#top a{
-	color: @white;
-}
 
 /* =Menus
 -------------------------------------------------------------- */
+#top-menu ul ul li a{
+	background: lighten( @black, 10% );
+}
+#top-menu li a:hover,
+#top-menu ul ul li a:hover,
+#top-menu .current-menu-item > a{
+	background: @dark-gray !important;
+}
+#top-menu a{
+	color: @white;
+}
 #nav-menu ul li.current_page_item > a,
 #nav-menu ul li.current-menu-ancestor > a,
 #nav-menu ul li.current-menu-item > a,

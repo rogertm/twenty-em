@@ -1431,8 +1431,9 @@ img#wpstats {
 		float: none !important;
 		position: inherit;
 	}
-	#site-navigation ul ul,
+	#site-navigation .sub-menu,
 	#top-menu .menu-top,
+	#top-menu .sub-menu,
 	#footer-menu li{
 		clear: both;
 		display: block;
@@ -1447,12 +1448,17 @@ img#wpstats {
 	#footer-menu ul a{
 		width: auto;
 	}
-	#site-navigation .menu li{
+	#site-navigation .menu li,
+	#top-menu .menu li{
 		font-weight: bold;
 	}
-	#site-navigation .sub-menu li{
+	#site-navigation .sub-menu li,
+	#top-menu .sub-menu li{
 		font-weight: normal;
 		margin-left: 15px;
+	}
+	#top-menu ul ul li a{
+		background: transparent !important;
 	}
 }
 
