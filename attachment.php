@@ -9,8 +9,6 @@
 
 get_header(); ?>
 
-<div id="main" class="wrapper container-fluid">
-	<div class="row-fluid">
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
 			<?php t_em_breadcrumb(); ?>
@@ -104,7 +102,5 @@ if ( count( $attachments ) > 1 ) {
 <?php endwhile; ?>
 			</section><!-- #content -->
 		</section><!-- #main-content -->
-	</div><!-- .row-fluid -->
-</div><!-- #main -->
 
 <?php get_footer(); ?>

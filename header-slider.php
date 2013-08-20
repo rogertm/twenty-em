@@ -36,9 +36,9 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 	);
 	query_posts ( $args );
 ?>
-		<section id="t-em-slider" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?>">
+		<section id="t-em-slider" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container-fluid">
 <?php if ( have_posts() ) : ?>
-			<div class="carousel-inner">
+			<div class="carousel-inner wrapper row-fluid">
 <?php
 		while ( have_posts() ) : the_post();
 			if ( has_post_thumbnail( $post->ID ) ) :
@@ -69,7 +69,8 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 ?>
 			</div><!-- .carousel-inner -->
 <?php endif; ?>
-			<div class="carousel-drivers clearfix">
+			<div class="clearfix wrapper row-fluid">
+				<div class="carousel-drivers">
 				<ol class="carousel-indicators pull-left">
 <?php $s = 0; while ( $s < $tp ) : ?>
 					<li data-target="#t-em-slider" data-slide-to="<?php echo $s ?>"></li>
@@ -79,6 +80,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 					<span class="icon-circleleft left" href="#t-em-slider" data-slide="prev"></span>
 					<span class="icon-circleright right" href="#t-em-slider" data-slide="next"></span>
 				</div><!-- .carousel-direction -->
-			</div><!-- .carousel-drivers -->
+				</div><!-- .carousel-drivers -->
+			</div>
 		</section><!-- #t-em-slider .carousel .slide -->
 <?php endif; ?>

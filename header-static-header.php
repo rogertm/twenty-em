@@ -7,8 +7,8 @@
 global $t_em_theme_options;
 if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '0' == $t_em_theme_options['static_header_home_only'] ) :
 ?>
-<section id="static-header" class="jumbotron wrapper" role="info">
-	<div class="container-fluid">
+<section id="static-header" class="container-fluid" role="info">
+	<div class="jumbotron wrapper">
 		<div class="row-fluid text-center">
 
 <?php if ( ! empty ( $t_em_theme_options['static_header_img_src'] ) ) : ?>

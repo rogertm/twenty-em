@@ -4,6 +4,9 @@
 #t-em-slider{
 	margin-bottom: 0;
 }
+#t-em-slider .wrapper{
+	padding: 0;
+}
 .carousel-caption{
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -19,6 +22,7 @@
 .carousel-drivers{
 	position: relative;
 	padding: 3px 1%;
+	overflow: hidden;
 }
 .carousel-indicators{
 	left: 1%;

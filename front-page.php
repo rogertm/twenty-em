@@ -13,9 +13,6 @@
  */
 
 get_header(); ?>
-
-	<div id="main" class="wrapper container-fluid">
-		<div class="row-fluid">
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
@@ -82,7 +79,5 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 				</section><!-- #content -->
 			</section><!-- #main-content-->
 <?php endif; ?>
-		</div><!-- .row-fluid -->
-	</div><!-- #main .container-fluid -->
 
 <?php get_footer(); ?>

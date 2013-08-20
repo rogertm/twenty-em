@@ -1144,7 +1144,7 @@ function t_em_user_social_network(){
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu" class="wrapper span10 text-right pull-right">' . $output . '</nav>';
+		$output = '<nav id="social-network-menu" class="span10 text-right pull-right">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;

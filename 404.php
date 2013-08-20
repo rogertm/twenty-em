@@ -9,8 +9,6 @@
 
 get_header(); ?>
 
-<div id="main" class="wrapper container-fluid">
-	<div class="row-fluid">
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
 			<?php t_em_breadcrumb(); ?>
@@ -29,7 +27,5 @@ get_header(); ?>
 				document.getElementById('s') && document.getElementById('s').focus();
 			</script>
 		</section><!-- #main-content -->
-	</div><!-- .row-fluid -->
-</div><!-- #main -->
 
 <?php get_footer(); ?>

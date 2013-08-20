@@ -46,7 +46,7 @@ a:hover{
 
 /* =Structure
 -------------------------------------------------------------- */
-#wrap {
+.wrapper {
 	background: @white;
 }
 #top{
@@ -56,6 +56,9 @@ a:hover{
 	background-image: -webkit-linear-gradient(top, lighten( @black, 10% ), @black);
 	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
 	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
+}
+#inner-top.wrapper{
+	background: transparent;
 }
 
 /* =Menus
@@ -111,9 +114,9 @@ nav ul li.current-menu-parent > a {
 	color: @a_hover;
 }
 
-#site-navigation{
-	border-top: solid 1px @base-gray;
-	border-bottom: solid 1px @base-gray;
+#site-navigation .menu-header{
+	border-top: solid 1px darken( @base-gray, 10% );
+	border-bottom: solid 1px darken( @base-gray, 10% );
 }
 .screen-menu{
 	background: @base-gray;
@@ -212,7 +215,7 @@ nav ul li.current-menu-parent > a {
 
 /* =Footer
 -------------------------------------------------------------- */
-#footer-widget-area,
-#site-info{
+#colophon #footer-widget-area,
+#site-info #inner-site-info{
 	border-top: solid 1px darken( @base-gray, 10% );
 }

@@ -70,9 +70,8 @@ function t_em_theme_layout_width(){
 	global $t_em_theme_options;
 	echo '
 <style type="text/css" media="all">
-	#wrap{
+	.wrapper{
 		max-width: '.$t_em_theme_options['layout_width'].'px !important;
-		margin: 0 auto;
 	}
 </style>'."\n";
 }

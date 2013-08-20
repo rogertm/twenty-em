@@ -14,8 +14,6 @@
 
 get_header(); ?>
 
-<div id="main" class="wrapper container-fluid">
-	<div class="row-fluid">
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
 			<?php t_em_breadcrumb(); ?>
@@ -34,7 +32,5 @@ get_header(); ?>
 <?php endwhile; ?>
 			</section><!-- #content -->
 		</section><!-- #main-content .rwo-fluid -->
-	</div><!-- .row-fluid -->
-</div><!-- #main -->
 
 <?php get_footer(); ?>

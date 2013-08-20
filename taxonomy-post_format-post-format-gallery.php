@@ -13,9 +13,6 @@
  */
 
 get_header(); ?>
-
-<div id="main" class="wrapper container-fluid">
-	<div class="row-fluid">
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_breadcrumb(); ?>
@@ -34,7 +31,5 @@ get_header(); ?>
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->
 		<?php get_sidebar( 'alt' ); ?>
-	</div><!-- .row-fluid -->
-</div><!-- #main -->
 
 <?php get_footer(); ?>
