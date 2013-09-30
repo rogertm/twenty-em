@@ -72,7 +72,8 @@
 	padding: 3px;
 	border-radius: 3px;
 }
-#t-em-setting .image-radio-option-group{
+#t-em-setting .image-radio-option-group,
+#t-em-setting .text-radio-option-group{
 	clear: both;
 }
 #t-em-setting .image-radio-option span{

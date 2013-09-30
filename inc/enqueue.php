@@ -43,12 +43,19 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Register and enqueue Twitter Bootstrap JS Plugins
 	if ( 'slider' == $t_em_theme_options['header_set'] ) :
-		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'bootstrap-transition' );
-		wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-carousel.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'bootstrap-carousel' );
-		wp_register_script( 'script-jquery-slider', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'script-jquery-slider' );
+		if ( 'slider-bootstrap-carousel' == $t_em_theme_options['slider_script'] ) :
+			wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+			wp_enqueue_script( 'bootstrap-transition' );
+			wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-carousel.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], false );
+			wp_enqueue_script( 'bootstrap-carousel' );
+		elseif ( 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
+			wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
+			wp_enqueue_style( 'style-nivo-slider' );
+			wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em_theme_options['nivo_style'].'/'.$t_em_theme_options['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
+			wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'' );
+			wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS_URL.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+			wp_enqueue_script( 'nivo-slider' );
+		endif;
 		wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS_URL.'/style-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 		wp_enqueue_style( 'style-slider' );
 	endif;
@@ -123,4 +130,54 @@ function t_em_enqueue_icomoon(){
 <?php
 }
 add_action( 'wp_head', 't_em_enqueue_icomoon' );
+
+/**
+ * Bootstrap Carousel Options
+ */
+function t_em_bootstrap_carousel_options(){
+	global $t_em_theme_options;
+	if ( 'slider' == $t_em_theme_options['header_set'] && 'slider-bootstrap-carousel' == $t_em_theme_options['slider_script'] ) :
+		$pause =  ( $t_em_theme_options['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
+?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('.carousel').carousel({
+			interval: <?php echo $t_em_theme_options['bootstrap_carousel_interval'] ?>,
+			pause: <?php echo "'$pause'" ?>,
+		});
+	});
+	</script>
+<?php
+	endif;
+}
+add_action( 'wp_head', 't_em_bootstrap_carousel_options' );
+
+/**
+ * Nivo Slider Options
+ */
+function t_em_nivo_slider_options(){
+	global $t_em_theme_options;
+	if ( 'slider' == $t_em_theme_options['header_set'] && 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
+		$effect = $t_em_theme_options['nivo_effect'];
+		$pause_time = $t_em_theme_options['nivo_manual_advance'] == '1' ? 0 : $t_em_theme_options['nivo_pause_time'];
+?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('#slider').nivoSlider({
+			effect: 		<?php echo "'$effect'"; ?>,
+			animSpeed: 		<?php echo $t_em_theme_options['nivo_anim_speed']; ?>,
+			pauseTime: 		<?php echo $pause_time; ?>,
+			pauseOnHover: 	<?php echo $t_em_theme_options['nivo_pause_on_hover']; ?>,
+			manualAdvance: 	<?php echo $t_em_theme_options['nivo_manual_advance']; ?>, // Disable pause time!!!
+			directionNav: 	<?php echo $t_em_theme_options['nivo_direction_nav']; ?>,
+			controlNav: 	<?php echo $t_em_theme_options['nivo_control_nav']; ?>,
+			prevText: 		'<span class="icon-circleleft"></span>',
+			nextText: 		'<span class="icon-circleright"></span>',
+		});
+	});
+	</script>
+<?php
+	endif;
+}
+add_action( 'wp_head', 't_em_nivo_slider_options' );
 ?>

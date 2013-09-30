@@ -4,8 +4,13 @@
 #t-em-slider{
 	margin-bottom: 0;
 }
-#t-em-slider .wrapper{
+#t-em-slider .wrapper,
+#nivo-slider .wrapper{
 	padding: 0;
+}
+.theme-dark .nivo-controlNav,
+.theme-light .nivo-controlNav{
+	padding: 0 10px 10px;
 }
 .carousel-caption{
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */

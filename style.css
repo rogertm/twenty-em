@@ -1397,7 +1397,8 @@ img#wpstats {
 	#header-image .wrapper,
 	#site-navigation .wrapper,
 	#top .wrapper,
-	#t-em-slider .wrapper{
+	#t-em-slider .wrapper,
+	#nivo-slider .wrapper{
 		padding: 0 !important;
 	}
 	#header{

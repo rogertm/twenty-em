@@ -12,6 +12,19 @@ jQuery(document).ready(function($){
 	});
 });
 
+	jQuery(document).ready(function($){
+		var form_slider_script = $('#slider-scripts-options'),
+			filters = form_slider_script.find('.slider-script-extend');
+		filters.hide();
+		form_slider_script.find('.slider-script-option').change(function(){
+			filters.slideUp('fast').removeClass('selected-option');
+			switch ( $(this).val() ) {
+				case 'slider-nivo-slider': $('#slider-nivo-slider').slideDown(); break;
+				case 'slider-bootstrap-carousel': $('#slider-bootstrap-carousel').slideDown(); break;
+			}
+		});
+	});
+
 jQuery(document).ready(function($){
 	var form_archive = $('#archive-options'),
 		filters = form_archive.find('.archive-extend');

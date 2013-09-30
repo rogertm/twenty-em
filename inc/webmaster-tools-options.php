@@ -141,7 +141,7 @@ function t_em_stats_header_tracker(){
 
 	// Bing Engine ID
 	if ( $t_em_theme_options['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . $t_em_theme_options['bing_id'] . '" />' . "\n";
+		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em_theme_options['bing_id'] ) . '" />' . "\n";
 
 	// Header Stats Tracker
 	if ( $t_em_theme_options['stats_tracker_header_tag'] )

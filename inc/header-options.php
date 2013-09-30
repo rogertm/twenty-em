@@ -93,6 +93,8 @@ function t_em_header_image_callback(){
 function t_em_slider_callback(){
 	global	$t_em_theme_options,
 			$slider_layout,
+			$slider_script,
+			$nivo_effect,
 			$list_categories;
 
 	$slider_layout = array (
@@ -113,6 +115,49 @@ function t_em_slider_callback(){
 		),
 	);
 
+	$slider_script = array (
+		'slider-bootstrap-carousel' => array (
+			'value' => 'slider-bootstrap-carousel',
+			'label' => __( 'Bootstrap Carousel', 't_em' ),
+		),
+		'slider-nivo-slider' => array (
+			'value' => 'slider-nivo-slider',
+			'label' => __( 'Nivo Slider', 't_em' ),
+		),
+	);
+
+	/**
+	 * Twenty'em uses Nivo SLider jQuery Plugin by default, and we create our own style. If you want
+	 * add your own style, just add a new key like this:
+	 * 'style-your-style'	=> array (
+	 * 		'value'	=> 'your-style',
+	 * 		'label'	=> __( 'My own Style', 't_em' ),
+	 * ),
+	 * Do not forget to save all your stuff in /css/nivo-slider/themes/your-style/your-style.css
+	 */
+	$slider_style = array (
+		'style-t-em'	=> array (
+			'value'	=> 't-em',
+			'label'	=> __( 'Twenty&#8217;em', 't_em' ),
+		),
+		'style-default'	=> array (
+			'value'	=> 'default',
+			'label'	=> __( 'Nivo Default', 't_em' ),
+		),
+		'style-dark'	=> array (
+			'value'	=> 'dark',
+			'label'	=> __( 'Nivo Dark', 't_em' ),
+		),
+		'style-light'	=> array (
+			'value'	=> 'light',
+			'label'	=> __( 'Nivo Light', 't_em' ),
+		),
+		'style-bar'	=> array (
+			'value'	=> 'bar',
+			'label'	=> __( 'Nivo Bar', 't_em' ),
+		),
+	);
+
 	$extend_slider = '';
 
 	// Show Slider only at home page?
@@ -123,17 +168,121 @@ function t_em_slider_callback(){
 	$extend_slider .= '</label>';
 
 	// Display images options
-	$extend_slider .= '<div class="image-radio-option-group">';
-	foreach ( $slider_layout as $slider ) :
-		$checked_option = checked( $t_em_theme_options['slider_text'], $slider['value'], false );
+	$extend_slider .= '<div class="image-radio-option-group sub-extend">';
+	foreach ( $slider_layout as $layout ) :
+		$checked_option = checked( $t_em_theme_options['slider_text'], $layout['value'], false );
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider_text]" class="sub-radio-option" value="'.esc_attr($slider['value']).'" '. $checked_option .' />';
-		$extend_slider .=			'<span><img src="'.$slider['title'].'" /><p>'.$slider['label'].'</p></span>';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider_text]" class="sub-radio-option" value="'.esc_attr($layout['value']).'" '. $checked_option .' />';
+		$extend_slider .=			'<span><img src="'.$layout['title'].'" /><p>'.$layout['label'].'</p></span>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
 	endforeach;
 	$extend_slider .= '</div>';
+
+	// Slider Script
+	$extend_slider .= '<div id="slider-scripts-options">';
+	$extend_slider .= '<div class="text-radio-option-group sub-extend">';
+	$extend_slider .= '<p>'. __( 'Select your slider script', 't_em' ) .'</p>';
+	foreach ( $slider_script as $script ) :
+		$checked_option = checked( $t_em_theme_options['slider_script'], $script['value'], false );
+		$extend_slider .=	'<div class="layout text-radio-option slider-script">';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<input type="radio" name="t_em_theme_options[slider_script]" class="sub-radio-option slider-script-option" value="'. esc_attr( $script['value'] ) .'" '. $checked_option .' />';
+		$extend_slider .=			'<span>'. $script['label'] .'</span>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div>';
+	endforeach;
+	$extend_slider .= '</div>';
+
+		// Bootstrap Carousel Options
+		$selected_script = ( $t_em_theme_options['slider_script'] == 'slider-bootstrap-carousel' ) ? 'selected-option' : '';
+		$extend_slider .= '<div id="slider-bootstrap-carousel" class="sub-extend layout text-option slider-script-extend '. $selected_script .'">';
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .= 		'<p>' . sprintf( __( 'The amount of time, in milliseconds, to delay between automatically cycling an item. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE, T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE, T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE ) . '</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<span>'. __( 'Interval value', 't_em' ) .'</span>';
+		$extend_slider .=			'<input type="number" name="t_em_theme_options[bootstrap_carousel_interval]" value="'. $t_em_theme_options['bootstrap_carousel_interval'] .'">';
+		$extend_slider .=			'<span class="unit">mls</span>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div>';
+		$checked_option = checked( $t_em_theme_options['bootstrap_carousel_pause'], '1', false );
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .=		'<p>' . __( 'Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.', 't_em' ) . '</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Pause it?', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[bootstrap_carousel_pause]" value="1" '. $checked_option .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div>';
+		$extend_slider .= '</div><!-- .sub-extend -->';
+
+		// Nivo Slider Options
+		$selected_script = ( $t_em_theme_options['slider_script'] == 'slider-nivo-slider' ) ? 'selected-option' : '';
+		$extend_slider .= '<div id="slider-nivo-slider" class="slider-script-extend text-option '. $selected_script .'">';
+		$extend_slider .= 	'<div class="sub-extend">';
+		$extend_slider .= 	'<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
+		$extend_slider .= 	'<p>' . __( '<strong>Note:</strong> The alignment options above only works with Twenty&#8217;em Style.', 't_em' ) . '</p>';
+		foreach ($slider_style as $style) :
+			$checked_option = checked( $t_em_theme_options['nivo_style'], $style['value'], false );
+			$extend_slider .=	'<div class="layout radio-option">';
+			$extend_slider .=		'<label class="description">';
+			$extend_slider .=		'<input type="radio" name="t_em_theme_options[nivo_style]" class="sub-radio-option" value="'.esc_attr( $style['value'] ).'" '. $checked_option .' />';
+			$extend_slider .=		'<span>'. $style['label'] .'</span>';
+			$extend_slider .=		'</label>';
+			$extend_slider .=	'</div>';
+		endforeach;
+		$extend_slider .= 	'</div><!-- .sub-extend -->';
+		$nivo_effect = array ( 'random', 'sliceDownRight', 'sliceDownLeft', 'sliceUpRight', 'sliceUpLeft', 'sliceUpDown', 'sliceUpDownLeft', 'fold', 'fade', 'boxRandom', 'boxRain', 'boxRainReverse', 'boxRainGrow', 'boxRainGrowReverse' );
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .=		'<p>'. __( 'Select your slider effect', 't_em' ) .'</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<span>' . __( 'Effect', 't_em' ) . '</span>';
+		$extend_slider .=			'<select name="t_em_theme_options[nivo_effect]">';
+		foreach ( $nivo_effect as $effect ) :
+			$selected_option = selected( $t_em_theme_options['nivo_effect'], $effect, false );
+			$extend_slider .=		'<option value="'. $effect .'" '. $selected_option .'>'. $effect .'</option>';
+		endforeach;
+		$extend_slider .=			'</select>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div><!-- .sub-extend -->';
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .= 		'<p>' . sprintf( __( 'The amount of time, in milliseconds, of the animation speed. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE, T_EM_NIVO_ANIM_SPEED_MAX_VALUE, T_EM_NIVO_ANIM_SPEED_MIN_VALUE ) . '</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<span>'. __( 'Animation speed', 't_em' ) .'</span>';
+		$extend_slider .=			'<input type="number" name="t_em_theme_options[nivo_anim_speed]" value="'. $t_em_theme_options['nivo_anim_speed'] .'">';
+		$extend_slider .=			'<span class="unit">mls</span>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div><!-- .sub-extend -->';
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .= 		'<p>' . sprintf( __( 'The amount of time, in milliseconds, to delay between automatically cycling an item. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE, T_EM_NIVO_PAUSE_TIME_MAX_VALUE, T_EM_NIVO_PAUSE_TIME_MIN_VALUE ) . '</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			'<span>'. __( 'Pause Time', 't_em' ) .'</span>';
+		$extend_slider .=			'<input type="number" name="t_em_theme_options[nivo_pause_time]" value="'. $t_em_theme_options['nivo_pause_time'] .'">';
+		$extend_slider .=			'<span class="unit">mls</span>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div><!-- .sub-extend -->';
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .=		'<p>'. __( 'Control Options', 't_em' ) .'</p>';
+		$extend_slider .=		'<p>'. __( '<strong>Note:</strong> "Manual Advance" will disable the "Pause Time" option', 't_em' ) .'</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Pause on Hover', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[nivo_pause_on_hover]" value="1" '. checked( $t_em_theme_options['nivo_pause_on_hover'], '1', false ) .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Direction Nav', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[nivo_direction_nav]" value="1" '. checked( $t_em_theme_options['nivo_direction_nav'], '1', false ) .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Control Nav', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[nivo_control_nav]" value="1" '. checked( $t_em_theme_options['nivo_control_nav'], '1', false ) .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Manual Advance', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[nivo_manual_advance]" value="1" '. checked( $t_em_theme_options['nivo_manual_advance'], '1', false ) .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div><!-- .sub-extend -->';
+		$extend_slider .= '</div><!-- #slider-nivo-slider .slider-script-extend -->';
+	$extend_slider .= '</div><!-- #slider-scripts-options -->';
 
 	// Define Height of the Slider Carousel
 	$extend_slider .= '<div class="sub-extend">';

@@ -38,12 +38,26 @@ define ( 'T_EM_THEME_DIR_LANG_PATH',	get_template_directory().'/languages' );
 /**
  * Register default values through constants
  */
-if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )		define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );
-if ( ! defined( 'T_EM_SLIDER_MAX_HEIGHT' ) )			define( 'T_EM_SLIDER_MAX_HEIGHT', 500 );
-if ( ! defined( 'T_EM_SLIDER_MIN_HEIGHT' ) )			define( 'T_EM_SLIDER_MIN_HEIGHT', 200 );
-if ( ! defined( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE' ) )	define( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE', 960 );
-if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )		define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1600 );
-if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )		define( 'T_EM_LAYOUT_WIDTH_MIN_VALUE', 600 );
+if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )						define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );
+if ( ! defined( 'T_EM_SLIDER_MAX_HEIGHT' ) )							define( 'T_EM_SLIDER_MAX_HEIGHT', 500 );
+if ( ! defined( 'T_EM_SLIDER_MIN_HEIGHT' ) )							define( 'T_EM_SLIDER_MIN_HEIGHT', 200 );
+
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE' ) )					define( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE', 960 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1600 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MIN_VALUE', 600 );
+
+if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE' ) )	define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE', 5000 );
+if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE' ) )		define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE', 10000 );
+if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE' ) )		define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE', 1000 );
+
+if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE' ) )				define( 'T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE', 5000 );
+if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_MAX_VALUE' ) )					define( 'T_EM_NIVO_PAUSE_TIME_MAX_VALUE', 10000 );
+if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_MIN_VALUE' ) )					define( 'T_EM_NIVO_PAUSE_TIME_MIN_VALUE', 1000 );
+
+if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE' ) )				define( 'T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE', 500 );
+if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE', 1000 );
+if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE', 100 );
+
 
 
 /**
@@ -229,6 +243,18 @@ function t_em_default_theme_options(){
 		'slider_category'								=> get_option( 'default_category' ),
 		'slider_number'									=> get_option( 'posts_per_page' ),
 		'slider_text'									=> 'slider-text-center',
+		'slider_height'									=> T_EM_SLIDER_DEFAULT_HEIGHT,
+		'slider_script'									=> 'slider-bootstrap-carousel',
+		'bootstrap_carousel_interval'					=> T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE,
+		'bootstrap_carousel_pause'						=> '1',
+		'nivo_style'									=> 't-em',
+		'nivo_effect'									=> 'random',
+		'nivo_pause_time'								=> T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE,
+		'nivo_anim_speed'								=> T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE,
+		'nivo_pause_on_hover'							=> '1',
+		'nivo_direction_nav'							=> '1',
+		'nivo_control_nav'								=> '1',
+		'nivo_manual_advance'							=> '0',
 		'static_header_home_only'						=> '0',
 		'static_header_text'							=> 'static-header-text-right',
 		'static_header_headline'						=> '',
@@ -268,7 +294,6 @@ function t_em_default_theme_options(){
 		'footer_set'									=> 'four-footer-widget',
 		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
 		'excerpt_set'									=> 'thumbnail-left',
-		'slider_height'									=> T_EM_SLIDER_DEFAULT_HEIGHT,
 		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
 		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
 		// Social Networks Options
@@ -383,7 +408,7 @@ function t_em_theme_options_page(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
-	global $excerpt_options, $slider_layout, $list_categories, $static_header_layout;
+	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout;
 	if ( $input != null ) :
 		// All the checkbox are either 0 or 1
 		foreach ( array(
@@ -393,6 +418,11 @@ function t_em_theme_options_validate( $input ){
 			'breadcrumb_path',
 			'header_featured_image',
 			'slider_home_only',
+			'bootstrap_carousel_pause',
+			'nivo_pause_on_hover',
+			'nivo_direction_nav',
+			'nivo_control_nav',
+			'nivo_manual_advance',
 			'static_header_home_only',
 		) as $checkbox ) :
 			if ( !isset( $input[$checkbox] ) )
@@ -409,6 +439,10 @@ function t_em_theme_options_validate( $input ){
 			'slider-options'	=> array (
 				'set'		=> 'slider_text',
 				'callback'	=> $slider_layout,
+			),
+			'slider-options'	=> array (
+				'set'		=> 'slider_script',
+				'callback'	=> $slider_script,
 			),
 			'static-header-options'	=> array (
 				'set'		=> 'static_header_text',
@@ -468,15 +502,39 @@ function t_em_theme_options_validate( $input ){
 			$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
 		endif;
 
-		// Layout Width values: default : 960, max: 1600, min: 600.
+		// Layout Width values: default: 960, max: 1600, min: 600.
 		if ( ( $input['layout_width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout_width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout_width'] ) || ! is_numeric( $input['layout_width'] ) ) :
 			$input['layout_width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
 		else :
 			$input['layout_width'] = $input['layout_width'];
 		endif;
+
+		// Bootstrap Carousel Interval: default: 5000, max: 10000, min: 1000.
+		if ( ( $input['bootstrap_carousel_interval'] < T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE || $input['bootstrap_carousel_interval'] > T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE ) || empty( $input['bootstrap_carousel_interval'] ) || ! is_numeric( $input['bootstrap_carousel_interval'] ) ) :
+			$input['bootstrap_carousel_interval'] = T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE;
+		else :
+			$input['bootstrap_carousel_interval'] = $input['bootstrap_carousel_interval'];
+		endif;
+
+		// Nivo Slider Pause Time
+		if ( ( $input['nivo_pause_time'] < T_EM_NIVO_PAUSE_TIME_MIN_VALUE || $input['nivo_pause_time'] > T_EM_NIVO_PAUSE_TIME_MAX_VALUE ) || empty( $input['nivo_pause_time'] ) || ! is_numeric( $input['nivo_pause_time'] ) ) :
+			$input['nivo_pause_time'] = T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE;
+		else :
+			$input['nivo_pause_time'] = $input['nivo_pause_time'];
+		endif;
+
+		// Nivo Slider Animation Speed
+		if ( ( $input['nivo_anim_speed'] < T_EM_NIVO_ANIM_SPEED_MIN_VALUE || $input['nivo_anim_speed'] > T_EM_NIVO_ANIM_SPEED_MAX_VALUE ) || empty( $input['nivo_anim_speed'] ) || ! is_numeric( $input['nivo_anim_speed'] ) ) :
+			$input['nivo_anim_speed'] = T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE;
+		else :
+			$input['nivo_anim_speed'] = $input['nivo_anim_speed'];
+		endif;
 		foreach( array (
 			'slider_height',
 			'slider_number',
+			'bootstrap_carousel_interval',
+			'nivo_pause_time',
+			'nivo_anim_speed',
 			'excerpt_thumbnail_width',
 			'excerpt_thumbnail_height',
 			'layout_width',
@@ -523,9 +581,13 @@ function t_em_theme_options_validate( $input ){
 
 		// Validate all select list options
 		$select_options = array (
-			'slider-cat'		=> array (
+			'slider-cat'	=> array (
 				'set'		=> 'slider_category',
 				'callback'	=> $list_categories,
+			),
+			'nivo-effect'	=> array (
+				'set'		=> 'nivo_effect',
+				'callback'	=> $nivo_effect,
 			),
 		);
 		foreach ( $select_options as $select ) :

@@ -1043,7 +1043,11 @@ function t_em_header_options_set(){
 	elseif ( 'header-image' == $t_em_theme_options['header_set'] ) :
 		get_template_part( 'header', 'image' );
 	elseif ( 'slider' == $t_em_theme_options['header_set'] ) :
-		get_template_part( 'header', 'slider' );
+		if ( 'slider-bootstrap-carousel' == $t_em_theme_options['slider_script'] ) :
+			get_template_part( 'header', 'slider' );
+		elseif ( 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
+			get_template_part( 'header', 'nivo-slider' );
+		endif;
 	elseif ( 'static-header' == $t_em_theme_options['header_set'] ) :
 		get_template_part( 'header', 'static-header' );
 	endif;

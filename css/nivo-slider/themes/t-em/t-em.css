@@ -1,0 +1,160 @@
+/*
+Skin Name: Nivo Slider Twenty´em Theme
+Skin URI: http://twenty-em.com
+Description: The Twenty´em skin for the Nivo Slider.
+Version: 1.0
+Author: RogerTM
+Author URI: http://blog.rogertm.com
+Supports Thumbs: true
+*/
+
+.theme-t-em .nivoSlider {
+	background:#fff url(loading.gif) no-repeat 50% 50%;
+	font-family: "Open Sans",Helvetica,Arial,sans-serif;
+	overflow: visible;
+}
+.theme-t-em .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.theme-t-em .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-t-em .nivo-controlNav {
+	background: #f7f7f7;
+	background: -moz-linear-gradient(center top, #f7f7f7, #ececec);
+	background: -o-linear-gradient(top, #f7f7f7, #ececec);
+	background: -webkit-gradient(linear, center top, from(#f7f7f7), to(#ececec)); /* older webkit syntax */
+	background: -webkit-linear-gradient(top, #f7f7f7, #ececec);
+	text-align: left;
+	padding: 5px 0 5px 3px;
+	z-index: 10;
+	/*position: absolute;*/
+	bottom: 0;
+	width: 100%;
+}
+.theme-t-em .nivo-controlNav a {
+	background: #fff;
+	margin: 0 2px;
+	text-align: center;
+	display:inline-block;
+	width:20px;
+	border:0;
+	border-radius: 2px;
+}
+.theme-t-em .nivo-controlNav a.active {
+	color: #d54e21;
+}
+.theme-t-em .nivo-directionNav{
+	font-size: 2em;
+}
+.theme-t-em .nivo-directionNav a {
+	display:block;
+	width:auto;
+	height:auto;
+	border:0;
+	text-decoration: none;
+	color: #fff;
+	opacity: 0;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+}
+.theme-t-em:hover .nivo-directionNav a { opacity: 1; }
+.theme-t-em a.nivo-nextNav {
+	right:15px;
+}
+.theme-t-em a.nivo-prevNav {
+	left: 15px;
+}
+
+.theme-t-em .nivo-caption {
+	bottom: 0;
+	padding: 15px;
+	opacity: .7;
+}
+.theme-t-em .nivo-caption a {
+	color:#fff;
+	text-decoration: none;
+	line-height: 30px;
+}
+.theme-t-em .nivo-caption a:hover {
+	border-bottom: dotted 1px;
+}
+.theme-t-em .nivo-caption p {
+	font-size: 1em;
+}
+.theme-t-em .nivo-caption .more-link{
+	font-size: 12px;
+	margin-top: 5px;
+}
+.theme-t-em .more-link{
+	margin: 0;
+}
+.theme-t-em .entry-title{
+	margin: 0;
+	padding: 0 5px;
+	font-size: 1.5em;
+}
+.theme-t-em .nivo-caption,
+.theme-t-em .nivo-controlNav{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.theme-t-em .nivo-controlNav.nivo-thumbs-enabled {
+	width: 100%;
+}
+.theme-t-em .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.theme-t-em .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}
+
+/* =Custom Styles
+-------------------------------------------------------------- */
+/* Text on Left */
+.theme-t-em.slider-text-left .nivo-caption{
+	width: 37%;
+	left: 0;
+	top: 0;
+}
+/* Text on Right */
+.theme-t-em.slider-text-right .nivo-caption{
+	width: 37%;
+	right: 0;
+	left: 63%;
+	top: 0;
+}
+/* =Media Queries
+-------------------------------------------------------------- */
+@media screen and (max-width: 600px) {
+	.theme-t-em .nivo-caption{
+		font-size: .8em;
+		padding: 10px;
+	}
+	.theme-t-em .nivo-caption p{
+		display: none;
+	}
+	.theme-t-em .nivo-caption a{
+		line-height: 20px;
+	}
+	.theme-t-em.slider-text-left .nivo-caption,
+	.theme-t-em.slider-text-right .nivo-caption{
+		top: auto;
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+}
