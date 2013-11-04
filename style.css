@@ -644,6 +644,9 @@ div.menu li {
 #content ol ul {
 	margin-bottom: 0;
 }
+.accordion-group .hentry{
+	margin: 0;
+}
 .hentry {
 	margin: 0 0 40px 0;
 }
