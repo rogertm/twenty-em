@@ -1100,12 +1100,6 @@ function t_em_post_archive_set(){
 	global $t_em_theme_options;
 
 	if ( 'the-excerpt' == $t_em_theme_options['archive_set'] ) :
-
-	// Set thumbnail height and width, if the key value is empty the size is equal to
-	// thumbnail_size_h and thumbnail_size_h options respectively
-	// $thumb_heigth = ( ( '' != $t_em_theme_options['excerpt_thumbnail_height'] ) ? $t_em_theme_options['excerpt_thumbnail_height'] : get_option( 'thumbnail_size_h' ) );
-	// $thumb_width = ( ( '' != $t_em_theme_options['excerpt_thumbnail_width'] ) ? $t_em_theme_options['excerpt_thumbnail_width'] : get_option( 'thumbnail_size_w' ) );
-
 ?>
 			<div class="entry-summary">
 				<?php t_em_featured_post_thumbnail( $t_em_theme_options['excerpt_thumbnail_height'], $t_em_theme_options['excerpt_thumbnail_width'], 'featured-post-thumbnail', true ); ?>
