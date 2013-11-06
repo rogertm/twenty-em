@@ -67,10 +67,10 @@ Supports Thumbs: true
 }
 .theme-t-em:hover .nivo-directionNav a { opacity: 1; }
 .theme-t-em a.nivo-nextNav {
-	right:15px;
+	right:2%;
 }
 .theme-t-em a.nivo-prevNav {
-	left: 15px;
+	left: 2%;
 }
 
 .theme-t-em .nivo-caption {
@@ -125,17 +125,24 @@ Supports Thumbs: true
 /* =Custom Styles
 -------------------------------------------------------------- */
 /* Text on Left */
-.theme-t-em.slider-text-left .nivo-caption{
+.slider-text-left .theme-t-em .nivo-caption{
 	width: 37%;
 	left: 0;
 	top: 0;
 }
+.slider-text-left .theme-t-em a.nivo-prevNav{
+	left: 39%;
+}
 /* Text on Right */
-.theme-t-em.slider-text-right .nivo-caption{
+.slider-text-right .theme-t-em .nivo-caption{
 	width: 37%;
 	right: 0;
 	left: 63%;
 	top: 0;
+}
+.slider-text-right .theme-t-em a.nivo-nextNav{
+	left: 59%;
+	right: 59%;
 }
 /* =Media Queries
 -------------------------------------------------------------- */
@@ -150,8 +157,8 @@ Supports Thumbs: true
 	.theme-t-em .nivo-caption a{
 		line-height: 20px;
 	}
-	.theme-t-em.slider-text-left .nivo-caption,
-	.theme-t-em.slider-text-right .nivo-caption{
+	.slider-text-left .nivo-caption,
+	.slider-text-right .nivo-caption{
 		top: auto;
 		width: 100%;
 		left: 0;
