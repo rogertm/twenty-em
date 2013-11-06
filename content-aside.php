@@ -8,7 +8,7 @@
  */
 ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_add_bootstrap_class( 'archive-columns' ) ); ?>>
 			<header class="entry-header">
 				<span class="entry-format muted"><span class="icon-circle font-icon"></span><?php _e( 'Aside', 't_em' ); ?></span>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>

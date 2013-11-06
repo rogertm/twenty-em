@@ -24,6 +24,7 @@ get_header(); ?>
 	 * We reset this later so we can run the loop properly with a call to rewind_posts().
 	 */
 	if ( have_posts() ) :
+		$i = 0;
 		the_post();
 ?>
 			<header>
@@ -47,11 +48,21 @@ get_header(); ?>
 	 */
 	rewind_posts();
 
-	// Run the loop for the archives page to output the posts.
 	t_em_page_navi( 'nav-above' );
+?>
+				<div class="row-fluid">
+<?php
 	while ( have_posts() ) : the_post();
+		if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
+			echo '</div>';
+			echo '<div class="row-fluid">';
+		endif;
 		get_template_part( 'content', get_post_format() );
+		$i++;
 	endwhile;
+?>
+				</div><!-- .row-fluid -->
+<?php
 	t_em_page_navi( 'nav-below' );
 	else :
 		get_template_part( 'content', 'none' );

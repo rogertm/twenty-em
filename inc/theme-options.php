@@ -296,6 +296,7 @@ function t_em_default_theme_options(){
 		'excerpt_set'									=> 'thumbnail-left',
 		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
 		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
+		'archive_in_columns'							=> '1',
 		// Social Networks Options
 		'twitter_set'									=> '',
 		'facebook_set'									=> '',
@@ -408,7 +409,7 @@ function t_em_theme_options_page(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
-	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout;
+	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout, $archive_in_columns;
 	if ( $input != null ) :
 		// All the checkbox are either 0 or 1
 		foreach ( array(
@@ -451,6 +452,10 @@ function t_em_theme_options_validate( $input ){
 			'archive-options'	=> array (
 				'set'		=> 'archive_set',
 				'callback'	=> t_em_archive_options(),
+			),
+			'archive-options'	=> array (
+				'set'		=> 'archive_in_columns',
+				'callback'	=> $archive_in_columns,
 			),
 			'excerpt-options'	=> array (
 				'set'		=> 'excerpt_set',

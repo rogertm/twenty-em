@@ -54,7 +54,8 @@ function t_em_archive_options(){
  */
 function t_em_excerpt_callback(){
 	global	$t_em_theme_options,
-			$excerpt_options;
+			$excerpt_options,
+			$archive_in_columns;
 
 	$excerpt_options = array (
 		'thumbnail-left' => array(
@@ -71,6 +72,21 @@ function t_em_excerpt_callback(){
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
 			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/thumbnail-center.png',
+		),
+	);
+
+	$archive_in_columns = array (
+		'1'	=> array(
+			'value'	=> 1,
+			'label'	=> __( 'One column', 't_em' ),
+		),
+		'2'	=> array(
+			'value'	=> 2,
+			'label'	=> __( 'Two columns', 't_em' ),
+		),
+		'3'	=> array(
+			'value'	=> 3,
+			'label'	=> __( 'Three columns', 't_em' ),
 		),
 	);
 
@@ -99,6 +115,19 @@ function t_em_excerpt_callback(){
 		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em_theme_options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_excerpt .=			'</label>';
 		$extend_excerpt .=		'</div>';
+	endforeach;
+	$extend_excerpt .= '</div><!-- .sub-extend -->';
+
+	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
+	$extend_excerpt .=	'<p>'. __( 'Break Loop in columns (It may affect the thumbnail size)', 't_em' ) .'</p>';
+	foreach ( $archive_in_columns as $columns ) :
+		$checked_option = checked( $t_em_theme_options['archive_in_columns'], $columns['value'], false );
+		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
+		$extend_excerpt .=		'<label class="description">';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_in_columns]" value="'. esc_attr( $columns['value'] ) .'" '. $checked_option .'>';
+		$extend_excerpt .=			'<span>'. $columns['label'] .'</span>';
+		$extend_excerpt .=		'</label>';
+		$extend_excerpt .=	'</div>';
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
 

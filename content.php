@@ -8,7 +8,7 @@
  */
 ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_add_bootstrap_class( 'archive-columns' ) ); ?>>
 			<header class="entry-header">
 				<?php if ( is_sticky() ) : ?>
 					<span class="entry-format muted"><span class="icon-pin font-icon"></span><?php _e( 'Featured', 't_em' ); ?></span>

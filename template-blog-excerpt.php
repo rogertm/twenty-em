@@ -27,30 +27,36 @@ get_header(); ?>
 
 				<?php t_em_custom_template_content(); ?>
 
-<?php
-// Query for Custom Loop
-$args = array ( 'post_type' => 'post',
-				'posts_per_page' => get_option( 'posts_per_page' ),
-				'paged' => get_query_var( 'paged' )
-		);
-$wp_query = new WP_Query ( $args );
+			<?php
+			// Query for Custom Loop
+			$args = array ( 'post_type' => 'post',
+							'posts_per_page' => get_option( 'posts_per_page' ),
+							'paged' => get_query_var( 'paged' )
+					);
+			$wp_query = new WP_Query ( $args );
+			?>
+			<?php t_em_page_navi( 'nav-above' ); ?>
+				<div class="row-fluid">
+			<?php
+			if ( have_posts() ) :
+				$i = 0;
+				while ( have_posts() ) : the_post();
+					if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
+						echo '</div>';
+						echo '<div class="row-fluid">';
+					endif;
+					get_template_part( 'content', get_post_format() );
+					$i++;
+				endwhile;
+			?>
+				</div><!-- .row-fluid -->
+			<?php
+				t_em_page_navi( 'nav-below' );
+			else :
+				get_template_part( 'content', 'none' );
+			endif;
+			?>
 
-if ( have_posts() ) :
-
-	t_em_page_navi( 'nav-above' );
-
-// Start the Custom Loop
-	while ( have_posts() ) : the_post();
-		get_template_part( 'content', get_post_format() );
-	endwhile;
-
-	t_em_page_navi( 'nav-below' );
-
-	else :
-		get_template_part( 'content', 'none' );
-	endif;
-	wp_reset_query();
-?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

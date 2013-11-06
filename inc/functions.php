@@ -823,7 +823,7 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
 function t_em_page_navi( $nav_id ){
 	global $wp_query;
 ?>
-<nav id="<?php echo $nav_id ?>" class="navigation">
+<nav id="<?php echo $nav_id ?>" class="navigation span12">
 <?php
 	if ( ! function_exists( 'wp_pagenavi' ) ) :
 		if ( $wp_query->max_num_pages > 1 ) :
@@ -1329,6 +1329,12 @@ function t_em_add_bootstrap_class( $section ){
 	// #sidebar and two-column
 	if ( 'sidebar' == $section && $two_column ) :
 		$bootstrap_classes = 'span4';
+	endif;
+
+	// Archive columns
+	if ( 'archive-columns' == $section ) :
+		$span = 12 / $t_em_theme_options['archive_in_columns'];
+		$bootstrap_classes = 'span' . $span;
 	endif;
 
 	/** Static Header Content and Image */
