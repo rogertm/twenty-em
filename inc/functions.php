@@ -1128,7 +1128,7 @@ function t_em_post_archive_set(){
  *
  * @since Twenty'em 0.1
  */
-function t_em_user_social_network(){
+function t_em_user_social_network( $classes = '' ){
 	global 	$t_em_theme_options;
 
 	$user_social_network = t_em_social_network_options();
@@ -1142,7 +1142,7 @@ function t_em_user_social_network(){
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu" class="span10 text-right pull-right">' . $output . '</nav>';
+		$output = '<nav id="social-network-menu" class="'. $classes .'">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;

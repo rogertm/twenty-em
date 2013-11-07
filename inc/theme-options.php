@@ -691,6 +691,8 @@ function t_em_layout_classes( $existing_classes ){
 	else
 		$classes[] = $layout_set;
 
+	$classes[] = $t_em_theme_options['slider_text'];
+
 	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
 
 	return array_merge( $existing_classes, $classes );

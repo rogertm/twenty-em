@@ -31,7 +31,7 @@
 					</a>
 				</div><!-- #copyright -->
 
-				<?php echo t_em_user_social_network() ?>
+				<?php echo t_em_user_social_network( 'span10 text-right pull-right' ) ?>
 
 				<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
 				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
