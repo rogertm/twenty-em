@@ -91,7 +91,7 @@ function t_em_theme_layout_width(){
  */
 function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap.less">'."\n";
+	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL .'/bootstrap.less">'."\n";
 }
 add_action( 'wp_head', 't_em_bootstrapped_head' );
 
@@ -101,7 +101,7 @@ add_action( 'wp_head', 't_em_bootstrapped_head' );
  * rel="stylesheet/less", so, we need do it this way.
  */
 function t_em_enqueue_less_css(){
-	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL.'/style.less' .'">'."\n";
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL.'/style.less' .'">'."\n";
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
