@@ -415,18 +415,6 @@ function t_em_page_menu_args( $args ) {
 add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 
 /**
- * Twenty'em sets the post excerpt length to 40 characters.
- *
- * @since Twenty'em 0.1
- *
- * @return int
- */
-function t_em_excerpt_length( $length ) {
-	return 40;
-}
-add_filter( 'excerpt_length', 't_em_excerpt_length' );
-
-/**
  * Returns a "Continue Reading" link for excerpts
  *
  * @since Twenty'em 0.1
