@@ -24,10 +24,15 @@
 }
 
 /* Define box shadows */
-.box-shadow ( @x: 0, @y: 0, @blur: 1px, @color: #000 ){
+.box-shadow ( @x: 0, @y: 0, @blur: 1px, @color: @black ){
 	box-shadow: @arguments;
 	-moz-box-shadow: @arguments;
 	-webkit-box-shadow: @arguments;
+}
+
+/* Define text shadows */
+.text-shadow ( @x: 0, @y: 0, @blur: 1px, @color: @black ){
+	text-shadow: @arguments;
 }
 
 
@@ -74,49 +79,15 @@
 #top-menu a{
 	color: @white;
 }
-// #nav-menu ul li.current_page_item > a,
-// #nav-menu ul li.current-menu-ancestor > a,
-// #nav-menu ul li.current-menu-item > a,
-// #nav-menu ul li.current-menu-parent > a {
-// 	color: @a_hover;
-// }
-// * html #nav-menu ul li.current_page_item a,
-// * html #nav-menu ul li.current-menu-ancestor a,
-// * html #nav-menu ul li.current-menu-item a,
-// * html #nav-menu ul li.current-menu-parent a,
-// * html #nav-menu ul li a:hover {
-// 	color: @a_hover;
-// }
-// .ie6 nav ul li.current_page_item a,
-// .ie6 nav ul li.current-menu-ancestor a,
-// .ie6 nav ul li.current-menu-item a,
-// .ie6 nav ul li.current-menu-parent a,
-// .ie6 nav ul li a:hover {
-// 	color: @a_hover;
-// }
-// #site-navigation ul li.current_page_item > a,
-// #site-navigation ul li.current-menu-ancestor > a,
-// #site-navigation ul li.current-menu-item > a,
-// #site-navigation ul li.current-menu-parent > a {
-// 	color: @a_hover;
-// }
-// nav ul li.current_page_item > a,
-// nav ul li.current-menu-ancestor > a,
-// nav ul li.current-menu-item > a,
-// nav ul li.current-menu-parent > a {
-// 	color: @a_hover;
-// }
-// * html #site-navigation ul li.current_page_item a,
-// * html #site-navigation ul li.current-menu-ancestor a,
-// * html #site-navigation ul li.current-menu-item a,
-// * html #site-navigation ul li.current-menu-parent a,
-// * html #site-navigation ul li a:hover {
-// 	color: @a_hover;
-// }
 
 #site-navigation .menu-header{
 	border-top: solid 1px darken( @base-gray, 10% );
 	border-bottom: solid 1px darken( @base-gray, 10% );
+}
+#site-navigation ul ul {
+	box-shadow: 0px 3px 3px fade( @black, 20% );
+	-moz-box-shadow: 0px 3px 3px fade( @black, 20% );
+	-webkit-box-shadow: 0px 3px 3px fade( @black, 20% );
 }
 .screen-menu{
 	background: @base-gray;
@@ -215,7 +186,7 @@
 
 /* =Footer
 -------------------------------------------------------------- */
-#colophon #footer-widget-area,
-#site-info #inner-site-info{
+#footer-widget-area,
+#inner-site-info{
 	border-top: solid 1px darken( @base-gray, 10% );
 }
