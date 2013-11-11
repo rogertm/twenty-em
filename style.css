@@ -750,7 +750,7 @@ div.menu li {
 .page-link a:hover {
 }
 .more-link{
-	display: block;
+	display: table;
 	margin: 8px 0;
 	font-size: 14px;
 }

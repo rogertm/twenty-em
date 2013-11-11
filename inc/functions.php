@@ -434,7 +434,7 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return ' <span class="more-link"><a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a></span>';
+	return '<a href="'. get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
 }
 
 /**

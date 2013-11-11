@@ -94,6 +94,7 @@ Supports Thumbs: true
 }
 .theme-t-em .more-link{
 	margin: 0;
+	display: table !important;
 }
 .theme-t-em .entry-title{
 	margin: 0;

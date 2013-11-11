@@ -581,7 +581,7 @@ window.onload = function() {
 			'icon-arrow-left' : '&#xe051;',
 			'icon-arrow-down' : '&#xe052;',
 			'icon-arrow-up' : '&#xe053;',
-			'icon-untitled' : '&#xe054;',
+			'icon-arrow-right' : '&#xe054;',
 			'icon-ellipsis' : '&#xe055;',
 			'icon-dots' : '&#xe056;',
 			'icon-dot' : '&#xe057;',
