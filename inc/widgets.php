@@ -25,7 +25,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 't_em_popular_entries', 'description' => __( "The most Popular Posts on your site") );
-		parent::__construct('popular-posts', sprintf( __('Popular Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_popular_entries', sprintf( __('Popular Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_popular_entries';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -94,7 +94,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 	function form( $instance ) {
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
-		$number = isset($instance['number']) ? absint($instance['number']) : 5;
+		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -231,7 +231,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 	function form( $instance ) {
 		$title = isset( $instance['title']) ? esc_attr($instance['title'] ) : '';
 		$number = isset( $instance['number']) ? absint($instance['number'] ) : get_option( 'posts_per_page' );
-		$columns = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 1;
+		$columns = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 2;
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -251,11 +251,105 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 }
 
 /**
+ * Recents_News Widget Class
+ *
+ * @since Twenty'em 1.0
+ */
+class Twenty_Em_Widget_Recents_News extends WP_Widget {
+
+	function __construct() {
+		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( "Display the most Recents Posts on your site, including thumbnail and excerpt") );
+		parent::__construct('t_em_recents_news', sprintf( __('Recents Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		$this->alt_option_name = 't_em_recents_news';
+
+		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
+		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
+		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
+	}
+
+	function widget($args, $instance) {
+		$cache = wp_cache_get('t_em_widget_popular_posts', 'widget');
+
+		if ( !is_array($cache) )
+			$cache = array();
+
+		if ( ! isset( $args['widget_id'] ) )
+			$args['widget_id'] = $this->id;
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+			echo $cache[ $args['widget_id'] ];
+			return;
+		}
+
+		ob_start();
+		extract($args);
+
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recents Posts') : $instance['title'], $instance, $this->id_base);
+		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
+ 			$number = 10;
+
+		$r = new WP_Query(array('posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true));
+		if ($r->have_posts()) :
+?>
+		<?php echo $before_widget; ?>
+		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
+		<ul>
+		<?php  while ($r->have_posts()) : $r->the_post(); ?>
+		<li>
+			<?php t_em_featured_post_thumbnail( 100, 100 ) ?>
+			<a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+			<?php the_excerpt(); ?>
+		</li>
+		<?php endwhile; ?>
+		</ul>
+		<?php echo $after_widget; ?>
+<?php
+		// Reset the global $the_post as this query will have stomped on it
+		wp_reset_postdata();
+
+		endif;
+
+		$cache[$args['widget_id']] = ob_get_flush();
+		wp_cache_set('t_em_widget_popular_posts', $cache, 'widget');
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['number'] = (int) $new_instance['number'];
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset($alloptions['t_em_recents_news']) )
+			delete_option('t_em_recents_news');
+
+		return $instance;
+	}
+
+	function flush_widget_cache() {
+		wp_cache_delete('t_em_widget_popular_posts', 'widget');
+	}
+
+	function form( $instance ) {
+		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:'); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+<?php
+	}
+}
+
+/**
  * Register widgets
  */
 function t_em_register_widgets() {
 	register_widget( 'Twenty_Em_Widget_Popular_Posts' );
 	register_widget( 'Twenty_Em_Widget_Image_Gallery' );
+	register_widget( 'Twenty_Em_Widget_Recents_News' );
 }
 add_action( 'widgets_init', 't_em_register_widgets' );
 ?>
