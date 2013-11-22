@@ -734,7 +734,7 @@ function t_em_comment( $comment, $args, $depth ) {
 	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
 			<div class="pull-right"><?php echo get_avatar( $comment, 60 ); ?></div>
-			<header class="comment-header media-header">
+			<header class="comment-header media-heading">
 				<div class="comment-author vcard">
 					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 				</div><!-- .comment-author .vcard -->
@@ -749,7 +749,7 @@ function t_em_comment( $comment, $args, $depth ) {
 						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 't_em' ), ' ' );
 					?>
 				</div><!-- .comment-meta .commentmetadata -->
-			</header><!-- comment-header -->
+			</header><!-- comment-heading -->
 			<div class="comment-body"><?php comment_text(); ?></div>
 
 			<div class="reply">
