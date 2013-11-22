@@ -2,6 +2,9 @@
  * Twenty'em LESS CSS
  */
 
+/** Import Bootstrap Less */
+@import "bootstrap.less";
+
 /* Define theme colors */
 @white:				#fff;
 @light-blue:		#21759b;
@@ -169,6 +172,13 @@
 -------------------------------------------------------------- */
 #content .required{
 	color: @light-red;
+}
+/* Bootstrap style for submit buttons (Also JetPack Plugin) */
+#commentform #submit,
+.contact-form.commentsblock input[type="submit"]{
+	.buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+	.btn-primary;
+	.border-radius(4px);
 }
 
 
