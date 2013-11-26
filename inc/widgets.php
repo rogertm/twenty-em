@@ -154,20 +154,6 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<div class="row-fluid">
-			<style type="text/css">
-				.row-wrapper{
-					margin-top: 15px;
-				}
-				.img-gallery-thumbnail{
-					width: 100%;
-				}
-				.span6 .img-gallery-thumbnail{
-					width: auto !important;
-				}
-				.span4 .img-gallery-thumbnail{
-					width: 90%;
-				}
-			</style>
 <?php
 			if ( $gallery_args->have_posts() ) :
 				$i = 0;
@@ -208,6 +194,10 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_image_gallery', $cache, 'widget');
+
+		global $t_em_theme_data;
+		wp_register_style( 'widget-image-gallery-style', T_EM_THEME_DIR_CSS_URL . '/widget-image-gallery-style.css', array(), $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'widget-image-gallery-style' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -253,13 +243,15 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 /**
  * Recents_News Widget Class
  *
+ * @uses t_em_featured_post_thumbnail() and timthumb
+ *
  * @since Twenty'em 1.0
  */
-class Twenty_Em_Widget_Recents_News extends WP_Widget {
+class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( "Display the most Recents Posts on your site, including thumbnail and excerpt") );
-		parent::__construct('t_em_recents_news', sprintf( __('Recents Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( "Display the most Recent Posts on your site, including thumbnail and excerpt") );
+		parent::__construct('t_em_recents_news', sprintf( __('Recent Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recents_news';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -268,7 +260,7 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		$cache = wp_cache_get('t_em_widget_popular_posts', 'widget');
+		$cache = wp_cache_get('t_em_widget_recent_posts', 'widget');
 
 		if ( !is_array($cache) )
 			$cache = array();
@@ -284,9 +276,9 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recents Posts') : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts') : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
- 			$number = 10;
+ 			$number = get_option( 'posts_per_page' );
 
 		$r = new WP_Query(array('posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true));
 		if ($r->have_posts()) :
@@ -295,10 +287,14 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<ul>
 		<?php  while ($r->have_posts()) : $r->the_post(); ?>
-		<li>
-			<?php t_em_featured_post_thumbnail( 100, 100 ) ?>
-			<a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
-			<?php the_excerpt(); ?>
+		<li class="t-em-recent-post-wrapper">
+			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail', false ) ?>
+			<div class="t-em-recent-post-content">
+				<a class="t-em-recent-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+				<?php // the_excerpt(); ?>
+				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
+				<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
+			</div>
 		</li>
 		<?php endwhile; ?>
 		</ul>
@@ -310,7 +306,11 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 		endif;
 
 		$cache[$args['widget_id']] = ob_get_flush();
-		wp_cache_set('t_em_widget_popular_posts', $cache, 'widget');
+		wp_cache_set('t_em_widget_recent_posts', $cache, 'widget');
+
+		global $t_em_theme_data;
+		wp_register_style( 'widget-recent-posts-style', T_EM_THEME_DIR_CSS_URL . '/widget-recent-posts-style.css', array(), $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'widget-recent-posts-style' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -327,7 +327,7 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 	}
 
 	function flush_widget_cache() {
-		wp_cache_delete('t_em_widget_popular_posts', 'widget');
+		wp_cache_delete('t_em_widget_recent_posts', 'widget');
 	}
 
 	function form( $instance ) {
@@ -349,7 +349,7 @@ class Twenty_Em_Widget_Recents_News extends WP_Widget {
 function t_em_register_widgets() {
 	register_widget( 'Twenty_Em_Widget_Popular_Posts' );
 	register_widget( 'Twenty_Em_Widget_Image_Gallery' );
-	register_widget( 'Twenty_Em_Widget_Recents_News' );
+	register_widget( 'Twenty_Em_Widget_Recent_Posts' );
 }
 add_action( 'widgets_init', 't_em_register_widgets' );
 ?>

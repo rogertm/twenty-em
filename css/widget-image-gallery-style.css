@@ -1,0 +1,16 @@
+/**
+ * Style for Image Gallery Widget
+ */
+
+.row-wrapper{
+	margin-top: 15px;
+}
+.img-gallery-thumbnail{
+	width: 100%;
+}
+.span6 .img-gallery-thumbnail{
+	width: auto !important;
+}
+.span4 .img-gallery-thumbnail{
+	width: 90%;
+}

@@ -1,0 +1,17 @@
+/**
+ * Style for Recent Posts Widget
+ */
+.t-em-recent-post-wrapper{
+	display: inline-block;
+	margin-top: 10px !important;
+}
+.t-em-recent-post-thumbnail{
+	float: left;
+	margin-right: 2.5641%;
+}
+.t-em-recent-post-thumbnail figcaption{
+	display: none;
+}
+.t-em-recent-post-thumbnail + .t-em-recent-post-content{
+	margin-left: 110px;
+}
