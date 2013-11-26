@@ -23,9 +23,9 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
-			<?php t_em_custom_template_content(); ?>
+			<?php t_em_template_content() ?>
 
 <?php
 // Query for the Custom Loop
@@ -100,6 +100,7 @@ if ( have_posts() ) :
 		endswitch;
 ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 						<header class="entry-header">
 							<span class="entry-format muted"><span class="<?php echo $icon; ?> font-icon"></span><?php echo $format; ?></span>
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -116,6 +117,7 @@ if ( have_posts() ) :
 							<?php t_em_comments_link(); ?>
 							<?php t_em_edit_post_link(); ?>
 						</footer><!-- .entry-utility -->
+
 					</article>
 <?php
 	endwhile;
@@ -125,6 +127,7 @@ if ( have_posts() ) :
 	endif;
 	wp_reset_query();
 ?>
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

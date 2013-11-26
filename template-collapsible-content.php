@@ -18,11 +18,13 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
 				<div id="accordion-box" class="accordion">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+
+					<?php t_em_page_before(); ?>
 
 					<div class="accordion-group">
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -70,8 +72,11 @@ get_header(); ?>
 <?php
 	endforeach;
 ?>
+
+					<?php t_em_page_after() ?>
 <?php endwhile; ?>
 				</div><!-- #accordion-box .accordion -->
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

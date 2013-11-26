@@ -27,6 +27,7 @@ global $t_em_theme_options;
 		<div id="colophon" class="container-fluid">
 
 			<section id="footer-widget-area" class="wrapper row-fluid" role="complementary">
+				<?php t_em_sidebar_footer_before(); ?>
 
 <?php if ( is_active_sidebar( 'first-footer-widget-area' )
 			&& 'no-footer-widget' != $t_em_theme_options['footer_set'] ) : ?>
@@ -58,6 +59,7 @@ global $t_em_theme_options;
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
 					</aside><!-- #fourth .widget-area -->
 <?php endif; ?>
+				<?php t_em_sidebar_footer_after(); ?>
 			</section><!-- #footer-widget-area .container-fluid -->
 
 	</div><!-- #colophon -->

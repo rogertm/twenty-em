@@ -93,7 +93,7 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL .'/bootstrap.less">'."\n";
 }
-add_action( 'wp_head', 't_em_bootstrapped_head' );
+add_action( 't_em_head', 't_em_bootstrapped_head' );
 
 /**
  * The "rel" element in the html returned by the function wp_enqueue_style()
@@ -105,7 +105,7 @@ function t_em_enqueue_less_css(){
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
-add_action( 'wp_head', 't_em_enqueue_less_css' );
+add_action( 't_em_head', 't_em_enqueue_less_css' );
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
@@ -117,7 +117,7 @@ function t_em_enqueue_html5shiv(){
 	<![endif]-->
 <?php
 }
-add_action( 'wp_head', 't_em_enqueue_html5shiv' );
+add_action( 't_em_head', 't_em_enqueue_html5shiv' );
 
 /**
  * Loads IcoMoon javascript supports to IE 7 and IE 6... Asco!
@@ -129,7 +129,7 @@ function t_em_enqueue_icomoon(){
 	<![endif]-->
 <?php
 }
-add_action( 'wp_head', 't_em_enqueue_icomoon' );
+add_action( 't_em_head', 't_em_enqueue_icomoon' );
 
 /**
  * Bootstrap Carousel Options
@@ -150,7 +150,7 @@ function t_em_bootstrap_carousel_options(){
 <?php
 	endif;
 }
-add_action( 'wp_head', 't_em_bootstrap_carousel_options' );
+add_action( 't_em_head', 't_em_bootstrap_carousel_options' );
 
 /**
  * Nivo Slider Options
@@ -179,5 +179,5 @@ function t_em_nivo_slider_options(){
 <?php
 	endif;
 }
-add_action( 'wp_head', 't_em_nivo_slider_options' );
+add_action( 't_em_head', 't_em_nivo_slider_options' );
 ?>

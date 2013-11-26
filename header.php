@@ -20,25 +20,13 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
+<?php t_em_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<!--[if lte IE 8 ]>
-<noscript class="alert alert-error lead"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
-<![endif]-->
-
+	<?php t_em_top(); ?>
 <div id="wrap" class="hfeed">
-	<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-	<?php /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-	<h3 id="top-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-	<div id="top" class="container-fluid">
-		<div id="inner-top" class="wrapper row-fluid">
-			<nav id="top-menu" role="navigation" class="span12">
-				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '1' ) ); ?>
-			</nav>
-		</div><!-- .row-fluid -->
-	</div>
-	<?php endif; ?>
+	<?php t_em_header_before(); ?>
 	<header id="header">
 		<section id="masthead">
 			<div id="branding" role="banner" class="container-fluid">
@@ -55,21 +43,14 @@
 				</div><!-- .row-fluid -->
 			</div><!-- #branding .container-fluid -->
 
-			<?php t_em_header_options_set(); ?>
+			<?php t_em_header_inside(); ?>
 
-		<?php if ( has_nav_menu( 'navigation-menu' ) ) : ?>
-			<h3 id="navigation-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Navigation', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-			<nav id="site-navigation" role="navigation" class="container-fluid">
-				<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
-				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#sidebar" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
-				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-				<?php wp_nav_menu( array( 'container_class' => 'menu-header wrapper row-fluid', 'theme_location' => 'navigation-menu' ) ); ?>
-			</nav><!-- #site-navigation -->
-		<?php endif; ?>
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
+	<?php t_em_header_after(); ?>
+
 	<div id="main" class="container-fluid">
+		<?php t_em_main_before(); ?>
 		<div id="inner-main" class="wrapper row-fluid">
+

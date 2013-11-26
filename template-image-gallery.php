@@ -23,11 +23,12 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
-				<?php t_em_custom_template_content(); ?>
+				<?php t_em_template_content() ?>
 
 				<article id="gallery">
+
 
 <?php
 // Query for custom Loop
@@ -68,7 +69,9 @@ endif;
 wp_reset_query();
 ?>
 
+
 				</article><!-- #gallery -->
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

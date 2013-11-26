@@ -932,12 +932,15 @@ function t_em_custom_template_content( $icon_class = '' ){
 			<h1 class="entry-title"><?php echo $span_icon_class ?><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php
+	if ( have_posts() ) :
 		while ( have_posts() ) : the_post();
 			if ( get_the_content() ) : ?>
 			<div class="entry-content"><?php the_content(); ?></div>
 <?php
 			endif;
 		endwhile;
+		wp_reset_postdata();
+	endif;
 ?>
 		<footer class="entry-utility">
 			<?php t_em_edit_post_link(); ?>
@@ -945,6 +948,7 @@ function t_em_custom_template_content( $icon_class = '' ){
 	</article>
 <?php
 }
+add_action( 't_em_template_content', 't_em_custom_template_content' );
 
 /**
  * Display featured image in posts archives when "Display the Excerpt" option is activated in admin
@@ -1015,7 +1019,8 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 }
 
 /**
- * Display header set depending of the activated "Header Options" in admin theme option page
+ * Display header set depending of the activated "Header Options" in admin theme option page. This
+ * function is attached to the t_em_header_inside action hook.
  *
  * @global $post
  * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
@@ -1040,10 +1045,12 @@ function t_em_header_options_set(){
 		get_template_part( 'header', 'static-header' );
 	endif;
 }
+add_action( 't_em_header_inside', 't_em_header_options_set' );
 
 /**
  * Display featured post thumbnail on top of a single post if it is set by the user in
- * "General Options" in the admin options page.
+ * "General Options" in the admin options page. This function is attached to the t_em_post_inside_before()
+ * action hook.
  *
  * @uses has_post_thumbnail() Returns a boolean if a post has a Featured Image
  * @uses the_post_thumbnail() Display the Featured Image for the current post, as set in that
@@ -1068,6 +1075,7 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
+add_action( 't_em_post_inside_before', 't_em_single_post_thumbnail' );
 
 /**
  * Display posts archive in excerpt or content form. Set in "Archive Options" in admin
@@ -1134,8 +1142,12 @@ function t_em_user_social_network( $classes = '' ){
 	else :
 		$output = '';
 	endif;
-	return $output;
+	echo $output;
 }
+function t_em_hook_user_social_network(){
+	t_em_user_social_network( 'span10 text-right pull-right' );
+}
+add_action( 't_em_site_info', 't_em_hook_user_social_network', 11 );
 
 /**
  * Show related posts to the current single post if it's set by the user in "General Options" in
@@ -1199,11 +1211,12 @@ function t_em_single_related_posts() {
 				$output = '<section id="related-posts">'.$output.'</section>';
 			endif;
 
-			return $output;
+			echo $output;
 
 		endif;
 	endif;
 }
+add_action( 't_em_post_after', 't_em_single_related_posts' );
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
@@ -1526,4 +1539,134 @@ function t_em_breadcrumb(){
 <?php
 	endif;
 }
+add_action( 't_em_content_before', 't_em_breadcrumb' );
+
+/**
+ * Javascript required. This function is attached to the t_em_top() action hook
+ */
+function t_em_javascript_required(){
+?>
+<!--[if lte IE 8 ]>
+<noscript class="alert alert-error lead"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<![endif]-->
+<?php
+}
+add_action( 't_em_top', 't_em_javascript_required' );
+
+/**
+ * Top menu. This function is attached to the t_em_header_before action hook
+ */
+function t_em_top_menu(){
+if ( has_nav_menu( 'top-menu' ) ) :
+/* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
+	<h3 id="top-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
+	<div id="top" class="container-fluid">
+		<div id="inner-top" class="wrapper row-fluid">
+			<nav id="top-menu" role="navigation" class="span12">
+				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '1' ) ); ?>
+			</nav>
+		</div><!-- .row-fluid -->
+	</div>
+<?php endif;
+}
+add_action( 't_em_header_before', 't_em_top_menu' );
+
+/**
+ * Navigation Menu. This function is attached to the t_em_header_inside action hook
+ */
+function t_em_navigation_menu(){
+if ( has_nav_menu( 'navigation-menu' ) ) : ?>
+	<h3 id="navigation-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Navigation', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
+	<nav id="site-navigation" role="navigation" class="container-fluid">
+		<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
+		<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
+		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
+		<div class="skip-link"><a class="assistive-text" href="#sidebar" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
+		<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
+		<?php wp_nav_menu( array( 'container_class' => 'menu-header wrapper row-fluid', 'theme_location' => 'navigation-menu' ) ); ?>
+	</nav><!-- #site-navigation -->
+<?php endif;
+}
+add_action( 't_em_header_inside', 't_em_navigation_menu' );
+
+/**
+ * Single Nav Above
+ */
+function t_em_single_nav_above(){
+?>
+	<nav id="nav-above" class="navigation">
+		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . __( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
+		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . __( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
+	</nav><!-- #nav-above -->
+<?php
+}
+add_action( 't_em_post_before', 't_em_single_nav_above' );
+
+/**
+ * Single Nav Below
+ */
+function t_em_single_nav_below(){
+?>
+	<nav id="nav-below" class="navigation">
+		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
+		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
+	</nav><!-- #nav-below -->
+<?php
+}
+add_action( 't_em_post_after', 't_em_single_nav_below', 9 );
+
+/**
+ * The Footer Menu, if it's active by the user we display it, else, we get nothing
+ */
+function t_em_footer_menu(){
+if ( has_nav_menu( 'footer-menu' ) ) :
+?>
+	<h3 id="footer-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
+		<nav id="footer-menu" class="span10 text-right pull-right">
+			<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
+		</nav>
+<?php endif; ?>
+<?php
+}
+add_action( 't_em_site_info', 't_em_footer_menu', 12 );
+
+/**
+ * Copy Right
+ */
+function t_em_copy_right(){
+?>
+	<div id="copyright" class="span2 pull-left">
+		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<?php bloginfo( 'name' ); ?>
+		</a>
+	</div><!-- #copyright -->
+<?php
+}
+add_action( 't_em_site_info', 't_em_copy_right' );
+
+/**
+ * Display Twenty'em.com link at bottom of the page
+ */
+function t_em_dot_com_link(){
+global $t_em_theme_options;
+
+if ( '1' == $t_em_theme_options['t_em_link'] ) :
+	global $t_em_theme_data;
+?>
+	<div id="twenty-em-credit" class="text-center">
+		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
+		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
+			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
+			<?php _e('WordPress', 't_em'); ?></a>
+		<?php _e( 'and', 't_em' ); ?>
+		<a href="<?php esc_url( _e( 'http://twenty-em.com/', 't_em' ) ) ?>"
+			title="<?php esc_attr_e( 'Theming is Prose', 't_em' ); ?>">
+			<?php esc_attr_e( __( 'Twenty&#8217;em', 't_em' ) ) ?></a>.
+		<?php _e( 'Theme name: ', 't_em' ); ?><a href="<?php echo $t_em_theme_data['ThemeURI']; ?>" title="<?php printf( __( 'Version: %s', 't_em' ), $t_em_theme_data['Version'] ); ?>"><?php echo $t_em_theme_data['Name']; ?></a>
+		<?php _e( 'by: ', 't_em' ); ?><?php echo $t_em_theme_data['Author']; ?>
+	</div>
+<?php
+endif;
+}
+add_action( 't_em_site_info', 't_em_dot_com_link', 13 );
 ?>

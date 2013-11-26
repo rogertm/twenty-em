@@ -155,6 +155,7 @@ require( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
 require( T_EM_INC_DIR_PATH . '/theme-backup.php' );
 require( T_EM_INC_DIR_PATH . '/shortcodes.php' );
 require( T_EM_INC_DIR_PATH . '/help.php' );
+require( T_EM_INC_DIR_PATH . '/hooks.php' );
 
 /**
  * Redirect users to Twenty'em options page after theme activation and register the default options

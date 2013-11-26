@@ -23,9 +23,9 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
-				<?php t_em_custom_template_content(); ?>
+			<?php t_em_template_content() ?>
 
 <?php
 // Query for Custom Loop
@@ -43,6 +43,7 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 			<header class="entry-header">
 				<?php if ( is_sticky() ) : ?>
 					<span class="entry-format muted"><span class="icon-pin font-icon"></span><?php _e( 'Featured', 't_em' ); ?></span>
@@ -63,6 +64,7 @@ if ( have_posts() ) :
 				<?php t_em_comments_link(); ?>
 				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
+
 		</article><!-- #post-## -->
 <?php
 	endwhile;
@@ -74,6 +76,7 @@ else :
 endif;
 wp_reset_query();
 ?>
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

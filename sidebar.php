@@ -13,7 +13,7 @@ if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
 ?>
 
 		<section id="sidebar" class="widget-area <?php echo t_em_add_bootstrap_class( 'sidebar' ); ?>" role="complementary">
-
+			<?php t_em_sidebar_before(); ?>
 <?php
 	/* When we call the dynamic_sidebar() function, it'll spit out
 	 * the widgets for that widget area. If it instead returns false,
@@ -43,6 +43,8 @@ if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
 			</aside>
 
 		<?php endif; // end primary widget area ?>
+
+			<?php t_em_sidebar_after(); ?>
 		</section><!-- #sidebar .widget-area -->
 
 <?php endif; // If there is sidebar or not! ?>

@@ -16,20 +16,29 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
+			<?php t_em_page_before(); ?>
+
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<?php t_em_page_inside_before(); ?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<div class="entry-content">
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-					<?php t_em_edit_post_link(); ?>
 				</div><!-- .entry-content -->
+				<footer class="entry-utility">
+					<?php t_em_edit_post_link(); ?>
+				</footer>
+				<?php t_em_page_inside_after(); ?>
 			</article><!-- #post-## -->
 
+			<?php t_em_page_after() ?>
+
 <?php endwhile; ?>
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 		</section><!-- #main-content .rwo-fluid -->
 

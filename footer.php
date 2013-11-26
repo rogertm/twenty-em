@@ -11,11 +11,12 @@
  */
 ?>
 		</div><!-- #inner-main .row-fluid -->
+		<?php t_em_main_after(); ?>
 	</div><!-- #main .container-fluid -->
 
 
 	<footer id="footer" role="contentinfo">
-
+		<?php t_em_footer_before(); ?>
 <?php
 	/* A sidebar in the footer? Yep. You can customize
 	 * your footer with four columns of widgets.
@@ -24,28 +25,10 @@
 ?>
 		<div id="site-info" class="container-fluid">
 			<div id="inner-site-info" class="wrapper row-fluid">
-
-				<div id="copyright" class="span2 pull-left">
-					<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<?php bloginfo( 'name' ); ?>
-					</a>
-				</div><!-- #copyright -->
-
-				<?php echo t_em_user_social_network( 'span10 text-right pull-right' ) ?>
-
-				<?php /* The Footer Menu, if it's active by the user we display it, else, we get nothing */ ?>
-				<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
-				<h3 id="footer-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-				<?php /* This is a secundary menu, and will be hidden on small screens like phones */ ?>
-					<nav id="footer-menu" class="span10 text-right pull-right">
-						<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
-					</nav>
-				<?php endif; ?>
-
-				<?php get_template_part( 'footer', 't-em-link' ); ?>
-
+				<?php t_em_site_info(); ?>
 			</div><!-- .row-fluid -->
 		</div><!-- #site-info .container-fluid -->
+		<?php t_em_footer_after(); ?>
 	</footer><!-- #footer -->
 
 </div><!-- #wrap -->

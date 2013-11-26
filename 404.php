@@ -11,7 +11,7 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
-			<?php t_em_breadcrumb(); ?>
+				<?php t_em_content_before(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
 					<h1 class="entry-title"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
@@ -21,6 +21,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
 
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<script type="text/javascript">
 				// focus on search field after it has loaded

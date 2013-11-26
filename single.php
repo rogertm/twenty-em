@@ -11,17 +11,14 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-		<nav id="nav-above" class="navigation">
-			<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . __( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
-			<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . __( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
-		</nav><!-- #nav-above -->
+		<?php t_em_post_before(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php t_em_single_post_thumbnail(); ?>
+			<?php t_em_post_inside_before(); ?>
 			<header>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 
@@ -41,18 +38,17 @@ get_header(); ?>
 				<?php t_em_posted_in(); ?>
 				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
+
+			<?php t_em_post_inside_after(); ?>
 		</article><!-- #post-## -->
 
-		<nav id="nav-below" class="navigation">
-			<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
-			<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
-		</nav><!-- #nav-below -->
+		<?php t_em_post_after() ?>
 
-		<?php echo t_em_single_related_posts() ?>
+<?php endwhile; // end of the loop. ?>
 
 		<?php comments_template( '', true ); ?>
 
-<?php endwhile; // end of the loop. ?>
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

@@ -11,7 +11,7 @@ get_header(); ?>
 
 		<section id="main-content" class="row-fluid">
 			<section id="content" role="main" class="span12">
-			<?php t_em_breadcrumb(); ?>
+			<?php t_em_content_before(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -100,6 +100,7 @@ if ( count( $attachments ) > 1 ) {
 <?php comments_template(); ?>
 
 <?php endwhile; ?>
+				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 		</section><!-- #main-content -->
 
