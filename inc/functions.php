@@ -75,7 +75,6 @@ endif;
  *
  * @since Twenty'em 0.1
  */
-add_action( 'after_setup_theme', 't_em_setup' );
 function t_em_setup(){
 
 	// Adds support featured image (post thumbnails).
@@ -123,6 +122,7 @@ function t_em_setup(){
 	endif;
 
 } // t_em_setup()
+add_action( 'after_setup_theme', 't_em_setup' );
 
 if ( !function_exists( 't_em_support_custom_background' ) ) :
 /**
@@ -948,7 +948,6 @@ function t_em_custom_template_content( $icon_class = '' ){
 	</article>
 <?php
 }
-add_action( 't_em_template_content', 't_em_custom_template_content' );
 
 /**
  * Display featured image in posts archives when "Display the Excerpt" option is activated in admin
@@ -1045,7 +1044,6 @@ function t_em_header_options_set(){
 		get_template_part( 'header', 'static-header' );
 	endif;
 }
-add_action( 't_em_header_inside', 't_em_header_options_set' );
 
 /**
  * Display featured post thumbnail on top of a single post if it is set by the user in
@@ -1075,7 +1073,6 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
-add_action( 't_em_post_inside_before', 't_em_single_post_thumbnail' );
 
 /**
  * Display posts archive in excerpt or content form. Set in "Archive Options" in admin
@@ -1147,7 +1144,6 @@ function t_em_user_social_network( $classes = '' ){
 function t_em_hook_user_social_network(){
 	t_em_user_social_network( 'span10 text-right pull-right' );
 }
-add_action( 't_em_site_info', 't_em_hook_user_social_network', 11 );
 
 /**
  * Show related posts to the current single post if it's set by the user in "General Options" in
@@ -1216,7 +1212,6 @@ function t_em_single_related_posts() {
 		endif;
 	endif;
 }
-add_action( 't_em_post_after', 't_em_single_related_posts' );
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
@@ -1539,7 +1534,6 @@ function t_em_breadcrumb(){
 <?php
 	endif;
 }
-add_action( 't_em_content_before', 't_em_breadcrumb' );
 
 /**
  * Javascript required. This function is attached to the t_em_top() action hook
@@ -1551,7 +1545,6 @@ function t_em_javascript_required(){
 <![endif]-->
 <?php
 }
-add_action( 't_em_top', 't_em_javascript_required' );
 
 /**
  * Top menu. This function is attached to the t_em_header_before action hook
@@ -1569,7 +1562,6 @@ if ( has_nav_menu( 'top-menu' ) ) :
 	</div>
 <?php endif;
 }
-add_action( 't_em_header_before', 't_em_top_menu' );
 
 /**
  * Navigation Menu. This function is attached to the t_em_header_inside action hook
@@ -1587,7 +1579,6 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	</nav><!-- #site-navigation -->
 <?php endif;
 }
-add_action( 't_em_header_inside', 't_em_navigation_menu' );
 
 /**
  * Single Nav Above
@@ -1600,7 +1591,6 @@ function t_em_single_nav_above(){
 	</nav><!-- #nav-above -->
 <?php
 }
-add_action( 't_em_post_before', 't_em_single_nav_above' );
 
 /**
  * Single Nav Below
@@ -1613,7 +1603,6 @@ function t_em_single_nav_below(){
 	</nav><!-- #nav-below -->
 <?php
 }
-add_action( 't_em_post_after', 't_em_single_nav_below', 9 );
 
 /**
  * The Footer Menu, if it's active by the user we display it, else, we get nothing
@@ -1628,7 +1617,6 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 <?php endif; ?>
 <?php
 }
-add_action( 't_em_site_info', 't_em_footer_menu', 12 );
 
 /**
  * Copy Right
@@ -1642,7 +1630,6 @@ function t_em_copy_right(){
 	</div><!-- #copyright -->
 <?php
 }
-add_action( 't_em_site_info', 't_em_copy_right' );
 
 /**
  * Display Twenty'em.com link at bottom of the page
@@ -1668,5 +1655,4 @@ if ( '1' == $t_em_theme_options['t_em_link'] ) :
 <?php
 endif;
 }
-add_action( 't_em_site_info', 't_em_dot_com_link', 13 );
 ?>

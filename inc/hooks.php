@@ -1,6 +1,6 @@
 <?php
 /**
- * Twenty'em theme options.
+ * Twenty'em Hooks definitions.
  *
  * @file			hooks.php
  * @package			WordPress
@@ -11,7 +11,7 @@
  * @version			1.0
  * @filesource		wp-content/themes/twenty-em/inc/hooks.php
  * @link			http://codex.wordpress.org/Plugin_API/Hooks
- * @since			Twenty'em 1.0
+ * @since			Twenty'em 1.0.1
  */
 ?>
 <?php
