@@ -46,13 +46,34 @@ function t_em_header_before(){
 }
 
 /**
- * Fire the t_em_header_inside action, just before closing </section><!-- #masthead --> tag
+ * Fire the t_em_header_inside_before action, just after opening <div id="branding"> tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_header_inside_before(){
+	do_action( 't_em_header_inside_before' );
+}
+
+/**
+ * Fire the t_em_header_inside action, just after opening <div id="branding"><div class="wrapper row-fluid">
+ * tag
  *
  * @file header.php
  * @since Twenty'em 1.0.1
  */
 function t_em_header_inside(){
 	do_action( 't_em_header_inside' );
+}
+
+/**
+ * Fire the t_em_header_inside_after action, just before closing </section><!-- #masthead --> tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_header_inside_after(){
+	do_action( 't_em_header_inside_after' );
 }
 
 /**

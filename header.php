@@ -30,20 +30,13 @@
 	<header id="header">
 		<section id="masthead">
 			<div id="branding" role="banner" class="container-fluid">
+				<?php t_em_header_inside_before() ?>
 				<div class="wrapper row-fluid">
-					<hgroup class="span12">
-						<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
-						<<?php echo $heading_tag; ?> id="site-title" class="pull-left">
-						<span>
-							<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-						</span>
-						</<?php echo $heading_tag; ?>>
-						<h2 id="site-description" class="pull-right"><?php bloginfo( 'description' ); ?></h2>
-					</hgroup>
+					<?php t_em_header_inside(); ?>
 				</div><!-- .row-fluid -->
 			</div><!-- #branding .container-fluid -->
 
-			<?php t_em_header_inside(); ?>
+			<?php t_em_header_inside_after(); ?>
 
 		</section><!-- #masthead -->
 	</header><!-- #header -->

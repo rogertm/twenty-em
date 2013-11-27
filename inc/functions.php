@@ -1547,6 +1547,23 @@ function t_em_javascript_required(){
 }
 
 /**
+ * Heading Site Title
+ */
+function t_em_heading_site_title(){
+?>
+	<hgroup class="span12">
+		<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
+		<<?php echo $heading_tag; ?> id="site-title" class="pull-left">
+		<span>
+			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+		</span>
+		</<?php echo $heading_tag; ?>>
+		<h2 id="site-description" class="pull-right"><?php bloginfo( 'description' ); ?></h2>
+	</hgroup>
+<?php
+}
+
+/**
  * Top menu. This function is attached to the t_em_header_before action hook
  */
 function t_em_top_menu(){

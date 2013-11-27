@@ -15,9 +15,15 @@
  */
 ?>
 <?php
+if ( ! function_exists( 't_em_hook_action_heading_site_title' ) ) :
+	function t_em_hook_action_heading_site_title(){
+		add_action( 't_em_header_inside', 't_em_heading_site_title' );
+	}
+endif;
+
 if ( ! function_exists( 't_em_hook_action_header_options_set' ) ) :
 	function t_em_hook_action_header_options_set(){
-		add_action( 't_em_header_inside', 't_em_header_options_set', 9 );
+		add_action( 't_em_header_inside_after', 't_em_header_options_set', 9 );
 	}
 endif;
 
@@ -65,7 +71,7 @@ endif;
 
 if ( ! function_exists( 't_em_hook_action_navigation_menu' ) ) :
 	function t_em_hook_action_navigation_menu(){
-		add_action( 't_em_header_inside', 't_em_navigation_menu' );
+		add_action( 't_em_header_inside_after', 't_em_navigation_menu' );
 	}
 endif;
 
@@ -103,6 +109,7 @@ endif;
  * Register all theme action hooks
  */
 function t_em_register_action_hooks(){
+	t_em_hook_action_heading_site_title();
 	t_em_hook_action_header_options_set();
 	t_em_hook_action_single_post_thumbnail();
 	t_em_hook_action_custom_template_content();
