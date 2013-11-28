@@ -37,10 +37,10 @@ get_header(); ?>
 									<?php the_content(); ?>
 									<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 								</div><!-- .accordion-inner -->
-							</div><!-- .entry-content -->
-							<footer class="entry-utility">
-								<?php t_em_edit_post_link(); ?>
-							</footer>
+								<footer class="entry-utility">
+									<?php t_em_edit_post_link(); ?>
+								</footer>
+							</div><!-- #collapse-## .entry-content -->
 						</article><!-- #post-## -->
 					</div><!-- .accordion-group -->
 <?php
@@ -66,8 +66,11 @@ get_header(); ?>
 								<div class="accordion-inner">
 									<?php echo $content; ?>
 								</div><!-- .accordion-inner -->
-							</div><!-- #accordion-# -->
-						</article>
+								<footer class="entry-utility">
+									<?php t_em_edit_post_link(); ?>
+								</footer>
+							</div><!-- #collapse-## .entry-content -->
+						</article><!-- #post-## -->
 					</div><!-- .accordion-group -->
 <?php
 	endforeach;
