@@ -67,7 +67,7 @@ get_header(); ?>
 									<?php echo $content; ?>
 								</div><!-- .accordion-inner -->
 								<footer class="entry-utility">
-									<?php t_em_edit_post_link(); ?>
+									<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icon-edit font-icon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
 								</footer>
 							</div><!-- #collapse-## .entry-content -->
 						</article><!-- #post-## -->
