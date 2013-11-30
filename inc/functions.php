@@ -1121,7 +1121,7 @@ function t_em_post_archive_set(){
  *
  * @since Twenty'em 0.1
  */
-function t_em_user_social_network( $classes = '' ){
+function t_em_user_social_network( $nav_classes = '', $ul_classes = '', $li_classes = '' ){
 	global 	$t_em_theme_options;
 
 	$user_social_network = t_em_social_network_options();
@@ -1129,13 +1129,13 @@ function t_em_user_social_network( $classes = '' ){
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em_theme_options[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item '. $li_classes .'"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
-		$output = '<ul class="menu">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu" class="'. $classes .'">' . $output . '</nav>';
+		$output = '<ul class="menu '. $ul_classes .'">' . $output_items . '</ul>';
+		$output = '<nav id="social-network-menu" class="'. $nav_classes .'">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;
