@@ -1,5 +1,5 @@
 /**
- * Theme Name:	Twenty&#8217;em
+ * Theme Name:	Twenty’em
  * Theme URI:	http://twenty-em.com/
  * Description:	A HTML5 & CSS3 WordPress framework for themes developers
  * Author:		RogerTM
@@ -182,7 +182,7 @@ h3#reply-title,
 #sidebar .widget-container,
 #top-menu .menu,
 #footer-menu .menu,
-#social-network-menu .menu,
+#t-em-social-network-menu .menu,
 #cancel-comment-reply-link,
 .slider-sumary,
 .form-allowed-tags,
@@ -570,13 +570,13 @@ div.menu li {
 /** Top and Footer Menu */
 #top-menu ul,
 #footer-menu ul,
-#social-network-menu ul{
+#t-em-social-network-menu ul{
 	list-style: none;
 	margin: 0;
 }
 #top-menu ul li,
 #footer-menu ul li,
-#social-network-menu ul li{
+#t-em-social-network-menu ul li{
 	display: inline-block;
 }
 #top-menu{
@@ -591,13 +591,13 @@ div.menu li {
 #top-menu ul ul ul{
 	top: 0;
 }
-#social-network-menu{
+#t-em-social-network-menu{
 	line-height: 38px;
 }
-#social-network-menu .font-icon{
+#t-em-social-network-menu .font-icon{
 	font-size: 1.5em;
 }
-#social-network-menu span{
+#t-em-social-network-menu span{
 	font-size: .7em;
 }
 
@@ -1399,13 +1399,13 @@ img#wpstats {
 	#site-title,
 	#site-description,
 	#copyright,
-	#social-network-menu,
+	#t-em-social-network-menu,
 	#twenty-em-credit{
 		text-align: center;
 		width: 100%;
 		margin: 0;
 	}
-	#social-network-menu{
+	#t-em-social-network-menu{
 		float: none;
 	}
 	.screen-menu{

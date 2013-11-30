@@ -1121,7 +1121,7 @@ function t_em_post_archive_set(){
  *
  * @since Twenty'em 0.1
  */
-function t_em_user_social_network( $nav_classes = '', $ul_classes = '', $li_classes = '' ){
+function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classes = '', $li_classes = '' ){
 	global 	$t_em_theme_options;
 
 	$user_social_network = t_em_social_network_options();
@@ -1135,14 +1135,14 @@ function t_em_user_social_network( $nav_classes = '', $ul_classes = '', $li_clas
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu '. $ul_classes .'">' . $output_items . '</ul>';
-		$output = '<nav id="social-network-menu" class="'. $nav_classes .'">' . $output . '</nav>';
+		$output = '<nav id="'. $nav_id .'-social-network-menu" class="'. $nav_classes .'">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 'span10 text-right pull-right' );
+	t_em_user_social_network( 't-em', 'span10 text-right pull-right' );
 }
 
 /**
