@@ -1289,7 +1289,7 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
 	$layout_set = $t_em_theme_options['layout_set'];
-	$one_column = $layout_set['one-column'];
+	$one_column = in_array( $layout_set, array( 'one-column' ) );
 	$two_column = in_array( $layout_set,
 						array( 'two-column-content-right',
 							   'two-column-content-left' ) );
