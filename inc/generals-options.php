@@ -46,6 +46,25 @@ function t_em_general_options(){
 }
 
 /**
+ * Extend setting for General Options in Twenty'em admin panel.
+ *
+ * @return string
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_general_options_favicon(){
+	global $t_em_theme_options;
+?>
+	<div class="sub-layout text-option general">
+		<label class="description single-option">
+			<span><?php echo sprintf( __( '<a href="%1$s" target="_blank">Favicon URL</a>', 't_em' ), admin_url( 'upload.php' ) ); ?></span>
+			<input type="url" class="regular-text" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em_theme_options['favicon_url'] ?>" />
+		</label>
+	</div>
+<?php
+}
+
+/**
  * Render the General Options setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
@@ -70,6 +89,7 @@ function t_em_settings_field_general_options_set(){
 		</div>
 <?php
 	endforeach;
+	t_em_general_options_favicon();
 ?>
 	</div><!-- #general-options -->
 <?php

@@ -365,7 +365,8 @@ endif; // t_em_admin_header_image()
  * @since Twenty'em 0.1
  */
 function t_em_favicon(){
-	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png' .'" />'."\n";
+	global $t_em_theme_options;
+	echo '<link rel="shortcut icon" href="'. $t_em_theme_options['favicon_url'] .'" />'."\n";
 }
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );

@@ -245,6 +245,7 @@ function t_em_default_theme_options(){
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
+		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
 		'header_featured_image'							=> '1',
@@ -558,6 +559,7 @@ function t_em_theme_options_validate( $input ){
 
 		// Validate all url (input[type="url"]) options
 		foreach ( array (
+			'favicon_url',
 			'twitter_set',
 			'facebook_set',
 			'googleplus_set',
