@@ -245,7 +245,7 @@ function t_em_default_theme_options(){
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
-		'separate_comments_pings_tracks'				=> '0',
+		'separate_comments_pings_tracks'				=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
