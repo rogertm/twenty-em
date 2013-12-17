@@ -24,8 +24,8 @@
 class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_popular_entries', 'description' => __( "The most Popular Posts on your site") );
-		parent::__construct('t_em_popular_entries', sprintf( __('Popular Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		$widget_ops = array('classname' => 't_em_popular_entries', 'description' => __( 'The most Popular Posts on your site', 't_em') );
+		parent::__construct('t_em_popular_entries', sprintf( __( 'Popular Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_popular_entries';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -50,7 +50,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Popular Posts') : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty($instance['title']) ? __( 'Popular Posts', 't_em' ) : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
  			$number = 10;
 
@@ -96,10 +96,10 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
@@ -113,8 +113,8 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_image_gallery', 'description' => __( "Display all images on your site attached to a post") );
-		parent::__construct('t_em_image_gallery', sprintf( __('Image Gallery %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		$widget_ops = array( 'classname' => 't_em_image_gallery', 'description' => __( 'Display all images on your site attached to a post', 't_em' ) );
+		parent::__construct('t_em_image_gallery', sprintf( __( 'Image Gallery %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_image_gallery';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -139,7 +139,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Image Gallery') : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty($instance['title']) ? __( 'Image Gallery', 't_em' ) : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
 			$number = get_option( 'posts_per_page' );
 
@@ -223,10 +223,10 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		$number = isset( $instance['number']) ? absint($instance['number'] ) : get_option( 'posts_per_page' );
 		$columns = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 2;
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e('Number of images to show:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of images to show:', 't_em' ); ?></label>
 		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><label for="<?php echo $this->get_field_id( 'columns' ) ?>"><?php _e( 'Show images in columns', 't_em' ); ?></label>
@@ -250,8 +250,8 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( "Display the most Recent Posts on your site, including thumbnail and excerpt") );
-		parent::__construct('t_em_recents_news', sprintf( __('Recent Posts %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( 'Display the most Recent Posts on your site, including thumbnail and excerpt', 't_em' ) );
+		parent::__construct('t_em_recents_news', sprintf( __( 'Recent Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recents_news';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -276,7 +276,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts') : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty($instance['title']) ? __( 'Recent Posts', 't_em' ) : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
  			$number = get_option( 'posts_per_page' );
 
@@ -334,10 +334,10 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}

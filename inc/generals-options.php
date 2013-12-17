@@ -27,18 +27,27 @@ function t_em_general_options(){
 		't_em_link'				=> array (
 			'name'			=> 't_em_link',
 			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ), 'http://twenty-em.com' ),
+			'sublabel'		=> '',
 		),
 		'single_featured_img'	=> array (
 			'name'			=> 'single_featured_img',
 			'label'			=> __( 'When a single post is displayed, show featured image on top of the post?', 't_em' ),
+			'sublabel'		=> '',
 		),
 		'single_related_posts'	=> array (
 			'name'			=> 'single_related_posts',
 			'label'			=> __( 'When a single post is displayed, show related posts?', 't_em' ),
+			'sublabel'		=> '',
 		),
 		'breadcrumb_path'		=> array (
 			'name'			=> 'breadcrumb_path',
 			'label'			=> __( 'Display a breadcrumb path?', 't_em' ),
+			'sublabel'		=> '',
+		),
+		'separate_comments_pings_tracks'	=> array (
+			'name'			=> 'separate_comments_pings_tracks',
+			'label'			=> __( 'Separate comments from pingbacks and trackbacks?', 't_em' ),
+			'sublabel'		=> sprintf( __( 'For a best performances of this option, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ), admin_url( 'options-discussion.php#page_comments' ) ),
 		),
 	);
 
@@ -57,7 +66,12 @@ function t_em_general_options_favicon(){
 ?>
 	<div class="sub-layout text-option general">
 		<label class="description single-option">
-			<span><?php echo sprintf( __( '<a href="%1$s" target="_blank">Favicon URL</a>', 't_em' ), admin_url( 'upload.php' ) ); ?></span>
+			<span>
+				<?php echo sprintf( __( '<a href="%1$s" target="_blank">Favicon URL</a>', 't_em' ), admin_url( 'upload.php' ) ); ?>
+			<?php if ( '' != $t_em_theme_options['favicon_url'] ) : ?>
+					<p><?php _e( 'Current favicon:', 't_em' ) ?>&nbsp;<img src="<?php echo $t_em_theme_options['favicon_url'] ?>" width="16" height="16" /></p>
+			<?php endif; ?>
+			</span>
 			<input type="url" class="regular-text" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em_theme_options['favicon_url'] ?>" />
 		</label>
 	</div>
@@ -85,6 +99,7 @@ function t_em_settings_field_general_options_set(){
 				<span><?php echo $general['label']; ?></span>
 				<?php $checked_option = checked( $t_em_theme_options[$general['name']], '1', false ); ?>
 				<input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
+				<p><span><?php echo $general['sublabel'] ?></span></p>
 			</label>
 		</div>
 <?php

@@ -366,7 +366,9 @@ endif; // t_em_admin_header_image()
  */
 function t_em_favicon(){
 	global $t_em_theme_options;
-	echo '<link rel="shortcut icon" href="'. $t_em_theme_options['favicon_url'] .'" />'."\n";
+	if ( '' != $t_em_theme_options['favicon_url'] ) :
+		echo '<link rel="shortcut icon" href="'. $t_em_theme_options['favicon_url'] .'" />'."\n";
+	endif;
 }
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
@@ -779,7 +781,6 @@ function t_em_comment_pingback_trackback( $comment ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
-		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
 		<p><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
@@ -795,6 +796,69 @@ function t_em_comment_pingback_trackback( $comment ) {
 	endswitch;
 }
 endif; // function t_em_comment_pingback_trackback()
+
+if ( ! function_exists( 't_em_comment_all' ) ) :
+/**
+ * Template for comments, pingbacks and trackbacks
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own t_em_comment_pingback_trackback(), and that function will be used instead.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_comment_all( $comment, $args, $depth ){
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+	?>
+	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
+		<p><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+		<div class="comment-body"><?php comment_text(); ?></div>
+	<?php
+			break;
+		case 'trackback' :
+	?>
+	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
+		<p><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+		<div class="comment-body"><?php comment_text(); ?></div>
+	<?php
+			break;
+		default :
+		global $post;
+	?>
+	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
+		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
+			<div class="pull-right"><?php echo get_avatar( $comment, 60 ); ?></div>
+			<header class="comment-header media-heading">
+				<div class="comment-author vcard">
+					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+				</div><!-- .comment-author .vcard -->
+				<?php if ( $comment->comment_approved == '0' ) : ?>
+					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
+					<br />
+				<?php endif; ?>
+
+				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<?php
+						/* translators: 1: date, 2: time */
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 't_em' ), ' ' );
+					?>
+				</div><!-- .comment-meta .commentmetadata -->
+			</header><!-- comment-heading -->
+			<div class="comment-body"><?php comment_text(); ?></div>
+
+			<div class="reply">
+				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div><!-- .reply -->
+		</div><!-- #comment-## .comment-wrap -->
+
+	<?php
+		break;
+	endswitch;
+}
+endif;
 
 if ( ! function_exists( 't_em_page_navi' ) ) :
 /**

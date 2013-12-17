@@ -245,6 +245,7 @@ function t_em_default_theme_options(){
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
+		'separate_comments_pings_tracks'				=> '0',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
@@ -427,6 +428,7 @@ function t_em_theme_options_validate( $input ){
 			'single_featured_img',
 			'single_related_posts',
 			'breadcrumb_path',
+			'separate_comments_pings_tracks',
 			'header_featured_image',
 			'slider_home_only',
 			'bootstrap_carousel_pause',
@@ -747,6 +749,6 @@ add_filter( 'post_class', 't_em_archive_classes' );
  * @since Twenty'em 1.0
  */
 function t_em_rand_error_code(){
-	return sprintf( __( 'Oops! An error has occurred. Error ID: %1$s' ), md5( rand() ) );
+	return sprintf( __( 'Oops! An error has occurred. Error ID: %1$s', 't_em' ), md5( rand() ) );
 }
 ?>

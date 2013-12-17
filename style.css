@@ -253,7 +253,7 @@ div.menu,
 	max-width: 100%;
 	font-style: italic;
 }
-#comment,
+#comment-count,
 #pingback,
 #related-posts-title {
 	font-size: 16px;
@@ -1009,6 +1009,9 @@ div.menu li {
 }
 #comments .comment-body blockquote p:last-child {
 	margin-bottom: 24px;
+}
+.bypostauthor > div{
+	/** Whatever you want */
 }
 .commentlist ol {
 	list-style: decimal;

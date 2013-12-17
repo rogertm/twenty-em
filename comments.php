@@ -26,53 +26,78 @@
 ?>
 <?php
 if ( have_comments() ) :
-	global $wp_query;
 ?>
 	<h3 id="comments-title"><?php
 	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 't_em' ),
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 	?></h3>
 <?php
-	if ( !empty($comments_by_type['comment']) ) :
-?>
-		<h4 id="comment"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h4>
-		<ul class="commentlist media-list">
-			<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
-		</ul>
-<?php
-	else : // If there are no responds type comments
-?>
-		<h4 id="comment"><?php _e('No Comments', 't_em'); ?></h4>
-<?php
-	endif; // !empty($comments_by_type['comment'])
-?>
-<?php
-	if ( !empty($comments_by_type['pings']) ) :
-?>
-		<h3 id="pingback">
-			<?php echo count( $wp_query->comments_by_type['pingback'] ); ?> Pingbacks
-			<span> | </span>
-			<?php echo count( $wp_query->comments_by_type['trackback'] ); ?> Trackbacks
-			</h4>
-		<ul class="commentlist">
-			<?php wp_list_comments( array( 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
-		</ul>
-<?php
-	else : // If there are no responds type pingback
-?>
-		<h4 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks', 't_em'); ?></h4>
-<?php
-	endif; // !empty($comments_by_type['pings'])
-?>
+	global $t_em_theme_options;
+	if ( '1' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
 
+		if ( ! empty($comments_by_type['comment']) ) :
+?>
+			<h4 id="comment-count"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h4>
+			<ul class="commentlist media-list">
+				<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
+			</ul>
 <?php
-	if ( !comments_open() ) :
+		else : // If there are no responds type comments
+?>
+			<h4 id="comment"><?php _e('No Comments', 't_em'); ?></h4>
+<?php
+		endif; // !empty($comments_by_type['comment'])
+?>
+<?php
+		if ( ! empty($comments_by_type['pings']) ) :
+?>
+			<h4 id="pingback">
+				<?php echo count( $wp_query->comments_by_type['pingback'] ); ?>
+				<?php _e( 'Pingbacks', 't_em' ); ?>
+				<span> | </span>
+				<?php echo count( $wp_query->comments_by_type['trackback'] ); ?>
+				<?php _e( 'Trackbacks', 't_em' ); ?>
+			</h4>
+			<ul class="commentlist">
+				<?php wp_list_comments( array( 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
+			</ul>
+<?php
+		else : // If there are no responds type pingback
+?>
+			<h4 id="pingback"><?php _e('0 Pinkbacks <span> | </span> 0 Trackbacks', 't_em'); ?></h4>
+<?php
+		endif; // !empty($comments_by_type['pings'])
+
+	else : // ( '0' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
+		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+?>
+		<nav id="comment-nav-above" class="navigation" role="navigation">
+			<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&laquo;</span> Older Comments', 't_em' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
+		</nav>
+<?php
+		endif;
+?>
+		<ul class="commentlist media-list">
+		<?php wp_list_comments( array( 'callback' => 't_em_comment_all' ) ); ?>
+		</ul>
+<?php
+		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+?>
+		<nav id="comment-nav-below" class="navigation" role="navigation">
+			<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&laquo;</span> Older Comments', 't_em' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
+		</nav>
+<?php
+		endif;
+	endif; // '1' == $t_em_theme_options['separate_comments_pings_tracks']
+
+	if ( ! comments_open() ) :
 ?>
 		<h4 id="comments-closed"><?php _e('Comments are closed', 't_em'); ?></h4>
 <?php
 	endif;
-?>
-<?php
+
 else : // If there are no responds
 ?>
 	<h3 id="comments-title"><?php _e('No responds to ', 't_em'); ?><em><?php the_title(); ?></em></h3>
