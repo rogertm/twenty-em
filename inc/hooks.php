@@ -311,4 +311,14 @@ function t_em_footer_before(){
 function t_em_footer_after(){
 	do_action( 't_em_footer_after' );
 }
+
+/**
+ * Fire the t_em_footer action, just before closing the </body> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_footer(){
+	do_action( 't_em_footer' );
+}
 ?>
