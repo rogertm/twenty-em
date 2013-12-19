@@ -91,6 +91,13 @@ function t_em_excerpt_callback(){
 	);
 
 	$extend_excerpt = '';
+	$extend_excerpt .= '<div class="layout text-option excerpt-length">';
+	$extend_excerpt .=		'<label>';
+	$extend_excerpt .=			'<p>'. sprintf( __( 'The amount of words displayed in the excerpt. If empty, the default value will be <code>%1$s</code> words.' ), '55' ) .'</p>';
+	$extend_excerpt .=			'<input type="number" name="t_em_theme_options[excerpt_length]" value="'.$t_em_theme_options['excerpt_length'].'" />';
+	$extend_excerpt .=		'</label>';
+	$extend_excerpt .= '</div>';
+
 	$extend_excerpt .= '<div class="image-radio-option-group">';
 	foreach ( $excerpt_options as $excerpt ) :
 		$checked_option = checked( $t_em_theme_options['excerpt_set'], $excerpt['value'], false );

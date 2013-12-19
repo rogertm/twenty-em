@@ -301,13 +301,15 @@ function t_em_default_theme_options(){
 		'link_url_text_widget_four'						=> '',
 		// Archive Options
 		'archive_set'									=> 'the-content',
-		'layout_set'									=> 'two-column-content-left',
-		'footer_set'									=> 'four-footer-widget',
-		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
+		'excerpt_length'								=> '55',
 		'excerpt_set'									=> 'thumbnail-left',
 		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
 		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
 		'archive_in_columns'							=> '1',
+		// Layout Options
+		'layout_set'									=> 'two-column-content-left',
+		'footer_set'									=> 'four-footer-widget',
+		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
 		// Social Networks Options
 		'twitter_set'									=> '',
 		'facebook_set'									=> '',
@@ -503,6 +505,11 @@ function t_em_theme_options_validate( $input ){
 			$input['slider_number'] = get_option( 'posts_per_page' );
 		else :
 			$input['slider_number'] = $input['slider_number'];
+		endif;
+
+		// Excerpt length value: default: 55
+		if ( empty( $input['excerpt_length'] ) || ! is_numeric( $input['excerpt_length'] ) ) :
+			$input['excerpt_length'] = 55;
 		endif;
 
 		// Excerpt Thumbnail Width values: default: get_option( 'thumbnail_size_w' );

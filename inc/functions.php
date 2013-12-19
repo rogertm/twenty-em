@@ -48,14 +48,6 @@
  */
 ?>
 <?php
-
-/**
- * Sets up the content width value based on the theme's design and stylesheet.
- */
-if ( ! isset( $content_width ) ) :
-	$content_width = 750;
-endif;
-
 /**
  * Sets up theme defaults and registers the various WordPress features that Twenty'em supports.
  *
@@ -329,7 +321,7 @@ function t_em_header_style(){
 	</style>
 <?php
 }
-endif; // function t_em_header_style()
+endif;
 
 if ( ! function_exists( 't_em_admin_header_style' ) ) :
 /**
@@ -385,7 +377,7 @@ function t_em_admin_header_style() {
 	</style>
 <?php
 }
-endif; // t_em_admin_header_style()
+endif;
 
 if ( ! function_exists( 't_em_admin_header_image' ) ) :
 /**
@@ -412,7 +404,27 @@ function t_em_admin_header_image() { ?>
 	</div>
 <?php
 }
-endif; // t_em_admin_header_image()
+endif;
+
+/**
+ * Set the post excerpt length depending of the $t_em_theme_options['excerpt_length'] value.
+ * You don't need to override this value in a Child Theme, just because you can set this value from
+ * the Twenty'em Framework interface.
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_excerpt_length( $length ){
+	global $t_em_theme_options;
+	return $t_em_theme_options['excerpt_length'];
+}
+add_filter( 'excerpt_length', 't_em_excerpt_length' );
+
+/**
+ * Sets up the content width value based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) :
+	$content_width = 750;
+endif;
 
 /**
  * Add favicon to our site, admin dashboard included
