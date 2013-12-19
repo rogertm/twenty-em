@@ -60,14 +60,8 @@ endif;
  * Sets up theme defaults and registers the various WordPress features that Twenty'em supports.
  *
  * @uses add_theme_support() To add support for thumbnails, automatic feed links, post formats,
- * custom background, custom header and JetPack Infinite Scroll. Custom background, header text,
- * header image and JP Infinite Scroll are treat as pluggable functions, so they can be override
- * in Child Themes.
- * @uses register_nav_menus() To add support for navigation menus.
- * @uses add_editor_style() To style the visual editor.
- * @uses load_theme_textdomain() For translation/localization support.
- * @uses t_em_theme_data() to access the theme data provided in style.css file
- * @uses t_em_set_globals() to access the data stored in the WordPress data base (theme options)
+ * custom background, custom header and JetPack Infinite Scroll.
+ * All this functions are treat as pluggable, so they can be override in Child Themes.
  *
  * @link http://codex.wordpress.org/Theme_Features Visit for full documentation about Theme Features
  *
@@ -77,17 +71,17 @@ endif;
  */
 function t_em_setup(){
 
-	// Adds support featured image (post thumbnails).
-	add_theme_support( 'post-thumbnails' );
+	// Adds support featured image (pluggable function).
+	t_em_support_post_thumbnails();
 
-	// Adds RSS feed links to <head> for posts and comments.
-	add_theme_support( 'automatic-feed-links' );
+	// Adds RSS feed links to <head> for posts and comments (pluggable function).
+	t_em_support_automatic_feed_links();
 
 	// Adds support for variety of post formats.
-	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
+	t_em_support_post_formats();
 
-	// This theme styles the visual editor with editor-style.css to match the theme style.
-	add_editor_style( 'css/editor-style.css' );
+	// This theme styles the visual editor with editor-style.css to match the theme style (pluggable function).
+	t_em_support_add_editor_style();
 
 	// Adds support for custom background (pluggable function).
 	t_em_support_custom_background();
@@ -101,13 +95,8 @@ function t_em_setup(){
 	// This theme also support JetPack Infinite Scroll (pluggable function).
 	t_em_support_jp_infinite_scroll();
 
-	// This theme uses navigation menus in three locations.
-	register_nav_menus ( array (
-		'top-menu'			=> __('Top Menu', 't_em'),
-		'navigation-menu'	=> __('Navigation Menu', 't_em'),
-		'footer-menu'		=> __('Footer Menu', 't_em')
-		)
-	);
+	// This theme uses navigation menus in three locations (pluggable function).
+	t_em_register_nav_menus();
 
 	/* Make Twenty'em available for translation.
 	 * Translations can be added to the lang/ directory.
@@ -121,10 +110,59 @@ function t_em_setup(){
 		require_once( $locale_file );
 	endif;
 
-} // t_em_setup()
+}
 add_action( 'after_setup_theme', 't_em_setup' );
 
-if ( !function_exists( 't_em_support_custom_background' ) ) :
+if ( ! function_exists( 't_em_support_post_thumbnails' ) ) :
+/**
+ * Pluggable Function: Adds theme support for post thumbnails
+ * Referenced via t_em_setup().
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_support_post_thumbnails(){
+	add_theme_support( 'post-thumbnails' );
+}
+endif;
+
+if ( ! function_exists( 't_em_support_automatic_feed_links' ) ) :
+/**
+ * Pluggable Function: Adds RSS feed links to <head> for posts and comments.
+ * Referenced via t_em_setup().
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_support_automatic_feed_links(){
+	add_theme_support( 'automatic-feed-links' );
+}
+endif;
+
+if ( ! function_exists( 't_em_support_post_formats' ) ) :
+/**
+ * Pluggable Function: Adds support for variety of post formats.
+ * Referenced via t_em_setup().
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_support_post_formats(){
+	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
+}
+endif;
+
+if ( ! function_exists( 't_em_support_add_editor_style' ) ) :
+/**
+ * Pluggable Function: This theme styles the visual editor with editor-style.css to match the theme
+ * style.
+ * Referenced via t_em_setup().
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_support_add_editor_style(){
+	add_editor_style( 'css/editor-style.css' );
+}
+endif;
+
+if ( ! function_exists( 't_em_support_custom_background' ) ) :
 /**
  * Pluggable Function: Adds theme support for custom background.
  * Referenced via t_em_setup().
@@ -135,9 +173,9 @@ function t_em_support_custom_background(){
 	$custom_background = array ( 'default-color' => 'f0f0f0' );
 	add_theme_support( 'custom-background', $custom_background );
 }
-endif; // function t_em_support_custom_background()
+endif;
 
-if ( !function_exists( 't_em_support_custom_header' ) ) :
+if ( ! function_exists( 't_em_support_custom_header' ) ) :
 /**
  * Pluggable Function: Adds theme support for custom header image
  * Referenced via t_em_setup().
@@ -159,9 +197,9 @@ function t_em_support_custom_header(){
 	);
 	add_theme_support( 'custom-header', $custom_header_support );
 }
-endif; // function t_em_support_custom_header()
+endif;
 
-if ( !function_exists( 't_em_support_custom_header_image' ) ) :
+if ( ! function_exists( 't_em_support_custom_header_image' ) ) :
 /**
  * Pluggable Function:  Default custom headers packaged with the theme.
  * Referenced via t_em_setup().
@@ -212,9 +250,26 @@ function t_em_support_custom_header_image(){
 		),
 	) );
 }
-endif; // function t_em_support_custom_header_image()
+endif;
 
-if ( !function_exists('t_em_support_jp_infinite_scroll') ) :
+if ( ! function_exists( 't_em_register_nav_menus' ) ) :
+/**
+ * Pluggable Function: This theme uses navigation menus in three locations. Woew!
+ * Referenced via t_em_setup().
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_register_nav_menus(){
+	register_nav_menus ( array (
+		'top-menu'			=> __('Top Menu', 't_em'),
+		'navigation-menu'	=> __('Navigation Menu', 't_em'),
+		'footer-menu'		=> __('Footer Menu', 't_em'),
+		)
+	);
+}
+endif;
+
+if ( ! function_exists( 't_em_support_jp_infinite_scroll' ) ) :
 /**
  * Pluggable Function: Adds theme support for JetPack Infinite Scroll
  *
