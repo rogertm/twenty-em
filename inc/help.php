@@ -53,6 +53,11 @@ function t_em_theme_options_help(){
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Separate comments from pingbacks and trackbacks</strong>: Display pingbacks and trackbacks in a different list at the end of all comments. For this option works properly, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ),
+								 admin_url( 'options-discussion.php#page_comments' ) ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s" target="_blank">Upload</a> and/or select from your <a href="%2$s" target="_blank">Media Library</a> a favicon to your site.', 't_em' ),
+								 admin_url( 'media-new.php' ),
+								 admin_url( 'upload.php' ) ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -101,7 +106,7 @@ function t_em_theme_options_help(){
 	$archive_help =	'<p>' . __( '<strong>Archive Options</strong>: Two simple ways to show your posts archive: The Content or The Excerpt.', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . __( '<strong>The Content</strong>: If you are running <em>Just another WordPress Blog</em>, this could be a great option, showing the whole content of your posts when an archive is displayed.', 't_em' ) . '</li>' .
-						'<li>' . __( '<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your posts, but let you manage some other options, like thumbnail alignment and thumbnail Width and Height.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your posts, also let you manage some other options, like excerpt length, thumbnail alignment and thumbnail Width and Height.', 't_em' ) . '</li>' .
 					'<ul>';
 
 	$screen->add_help_tab( array(
@@ -192,6 +197,15 @@ function t_em_theme_options_help(){
 		'content' => $shortcodes_help,
 		)
 	);
+
+	$templates_help = '<p>'. __( '<strong>Page Templates</strong>:', 't_em' ) .'</p>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Pages Templates', 't_em' ),
+		'id' => 'template-help',
+		'content' => $templates_help,
+		)
+	 );
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
