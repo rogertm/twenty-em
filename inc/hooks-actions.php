@@ -23,7 +23,7 @@ endif;
 
 if ( ! function_exists( 't_em_hook_action_header_options_set' ) ) :
 	function t_em_hook_action_header_options_set(){
-		add_action( 't_em_header_inside_after', 't_em_header_options_set', 9 );
+		add_action( 't_em_header_after', 't_em_header_options_set', 9 );
 	}
 endif;
 
@@ -71,7 +71,7 @@ endif;
 
 if ( ! function_exists( 't_em_hook_action_navigation_menu' ) ) :
 	function t_em_hook_action_navigation_menu(){
-		add_action( 't_em_header_inside_after', 't_em_navigation_menu' );
+		add_action( 't_em_header_after', 't_em_navigation_menu' );
 	}
 endif;
 
