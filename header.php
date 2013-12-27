@@ -34,10 +34,8 @@
 				<div class="wrapper row-fluid">
 					<?php t_em_header_inside(); ?>
 				</div><!-- .row-fluid -->
+				<?php t_em_header_inside_after(); ?>
 			</div><!-- #branding .container-fluid -->
-
-			<?php t_em_header_inside_after(); ?>
-
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
