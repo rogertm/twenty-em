@@ -55,7 +55,7 @@ get_header(); ?>
 		$content = $page->post_content;
 		// Check for empty pages
 		if ( ! $content ) continue;
-		$content = apply_filters( 'the_content', $content );
+			$content = apply_filters( 'the_content', $content );
 ?>
 					<div class="accordion-group">
 						<article id="post-<?php echo $page->ID ?>" <?php post_class(); ?>>
@@ -87,9 +87,9 @@ get_header(); ?>
 <?php
 	// Register and enqueue bootstrap-collapse.js plugin
 	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 	wp_enqueue_script( 'bootstrap-transition' );
-	wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-collapse.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-collapse.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 	wp_enqueue_script( 'bootstrap-collapse' );
 ?>
 
