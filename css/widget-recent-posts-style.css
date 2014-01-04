@@ -5,6 +5,9 @@
 	display: inline-block;
 	margin-top: 10px !important;
 }
+.t-em-recent-post-title{
+	font-weight: bold;
+}
 .t-em-recent-post-thumbnail{
 	float: left;
 	margin-right: 2.5641%;
