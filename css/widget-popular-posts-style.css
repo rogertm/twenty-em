@@ -1,0 +1,17 @@
+/**
+ * Style for Popular Posts Widget
+ */
+.t-em-popular-post-wrapper{
+	display: inline-block;
+	margin-top: 10px !important;
+}
+.t-em-popular-post-thumbnail{
+	float: left;
+	margin-right: 2.5641%;
+}
+.t-em-popular-post-thumbnail figcaption{
+	display: none;
+}
+.t-em-popular-post-thumbnail + .t-em-popular-post-content{
+	margin-left: 110px;
+}
