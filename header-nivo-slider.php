@@ -9,7 +9,7 @@ global	$post,
 if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $t_em_theme_options['slider_home_only'] ) :
 
 	// We pass to the query only posts with images attached
-	$cat_posts = get_posts( array( 'category' => $t_em_theme_options['slider_category'], 'posts_per_page' => -1 ) );
+	$cat_posts = get_posts( array( 'category' => $t_em_theme_options['slider_category'], 'posts_per_page' => 99 ) );
 	$i = 1;
 	$p = array();
 	foreach ( $cat_posts as $cp ) :
