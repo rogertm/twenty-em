@@ -12,6 +12,14 @@
 	float: left;
 	margin-right: 2.5641%;
 }
+.t-em-popular-post-thumbnail img{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 4px #dedede;
+	-moz-box-shadow: 0 1px 4px #dedede;
+	box-shadow: 0 1px 4px #dedede;
+}
 .t-em-popular-post-thumbnail figcaption{
 	display: none;
 }

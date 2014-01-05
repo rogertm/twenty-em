@@ -163,6 +163,8 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 /**
  * Popular_Posts Widget Class
  *
+ * @uses t_em_featured_post_thumbnail() and timthumb
+ *
  * @since Twenty'em 1.0
  */
 class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
@@ -352,10 +354,29 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
 			$number = get_option( 'posts_per_page' );
 
+				// We pass to the query only posts with images attached
+				$all_posts = get_posts( array( 'posts_per_page' => 99 ) );
+				$i = 1;
+				$p = array();
+				foreach ( $all_posts as $cp ) :
+					$img = get_children( array( 'post_parent' => $cp->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
+					if ( ! empty( $img ) ) :
+						$tp = $cp->ID;
+						array_push( $p, $tp );
+					endif;
+				endforeach;
+				$tp = count( $p );
+				$lp = $tp - $number;
+				while ( $i <= $lp ) :
+					array_pop( $p );
+					$i++;
+				endwhile;
+				$tp = count( $p );
+
 		$gallery_args = new WP_Query( array (
-						'post_type'			=> 'attachment',
-						'post_status'		=> 'inherit',
-						'posts_per_page'	=> $number,
+						'post_type'			=> 'post',
+						'post__in'			=> $p,
+						'posts_per_page'	=> $tp,
 						)
 					);
 		if ($gallery_args->have_posts()) :
@@ -368,25 +389,14 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 				$i = 0;
 				while ($gallery_args->have_posts()) : $gallery_args->the_post();
 					if ( 0 == $i % $instance['columns'] ) :
+						$one_column_gallery = ( 1 == $instance['columns'] ) ? 't-em-one-column-gallery' : null;
 						echo '</div>';
-						echo '<div class="row-fluid row-wrapper">';
+						echo '<div class="row-fluid t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
-					$image_id = get_the_ID();
-					if ( wp_attachment_is_image( $image_id ) ) :
-						$image_attr = wp_get_attachment_image_src( $image_id );
-						$ancestor_id = get_post_ancestors( $image_id );
-						$image_link = ( $ancestor_id ) ? $ancestor_id[0] : $image_id;
-						$image_alt = ( $ancestor_id ) ? $ancestor_id[0] : $image_id;
-						// Any way, just display images attached to a post.
-						if ( ! empty( $ancestor_id[0] ) ) :
-							$span = 12 / $instance['columns'];
-?>
-						<a href="<?php echo get_permalink( $image_link ); ?>" title="<?php echo get_the_title( $image_alt ); ?>" class="span<?php echo $span ?>">
-							<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="img-gallery-thumbnail img-rounded img-polaroid">
-						</a>
-<?php
-						endif;
-					endif;
+					$span = 12 / $instance['columns'];
+					echo '<div class="span'. $span .'">';
+						t_em_featured_post_thumbnail( 300, 300, 't-em-img-gallery-thumbnail' );
+					echo '</div>';
 					$i++;
 				endwhile;
 ?>

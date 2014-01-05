@@ -2,15 +2,49 @@
  * Style for Image Gallery Widget
  */
 
-.row-wrapper{
+.t-em-img-gallery-row-wrapper{
 	margin-top: 15px;
 }
-.img-gallery-thumbnail{
-	width: 100%;
+figure.t-em-img-gallery-thumbnail,
+.t-em-img-gallery-thumbnail img{
+	max-width: 100%;
+	width: auto;
 }
-.span6 .img-gallery-thumbnail{
-	width: auto !important;
+.t-em-img-gallery-thumbnail img{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 4px #dedede;
+	-moz-box-shadow: 0 1px 4px #dedede;
+	box-shadow: 0 1px 4px #dedede;
 }
-.span4 .img-gallery-thumbnail{
-	width: 90%;
+.t-em-img-gallery-thumbnail figcaption{
+	display: none;
+}
+@media( max-width: 767px ){
+	.t-em-img-gallery-row-wrapper{
+		margin: 1% 0 auto 0;
+	}
+	.t-em-img-gallery-thumbnail img{
+		margin-left: 3%;
+		width: 97%;
+	}
+	.t-em-img-gallery-thumbnail img:first-child{
+		margin-left: 0;
+	}
+	/** Fix one columns widget, displayed in two columns */
+	.t-em-img-gallery-row-wrapper.t-em-one-column-gallery{
+		float: left;
+		width: 50%;
+	}
+	/** Fix two columns widget */
+	.t-em-img-gallery-row-wrapper > div.span6{
+		float: left;
+		width: 50%;
+	}
+	/** Fix three columns widget */
+	.t-em-img-gallery-row-wrapper > div.span4{
+		float: left;
+		width: 33%;
+	}
 }
