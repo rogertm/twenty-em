@@ -354,31 +354,31 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
 			$number = get_option( 'posts_per_page' );
 
-				// We pass to the query only posts with images attached
-				$all_posts = get_posts( array( 'posts_per_page' => 99 ) );
-				$i = 1;
-				$p = array();
-				foreach ( $all_posts as $cp ) :
-					$img = get_children( array( 'post_parent' => $cp->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
-					if ( ! empty( $img ) ) :
-						$tp = $cp->ID;
-						array_push( $p, $tp );
-					endif;
-				endforeach;
-				$tp = count( $p );
-				$lp = $tp - $number;
-				while ( $i <= $lp ) :
-					array_pop( $p );
-					$i++;
-				endwhile;
-				$tp = count( $p );
+			// We pass to the query only posts with images attached
+			$all_posts = get_posts( array( 'posts_per_page' => 99 ) );
+			$i = 1;
+			$p = array();
+			foreach ( $all_posts as $cp ) :
+				$img = get_children( array( 'post_parent' => $cp->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
+				if ( ! empty( $img ) ) :
+					$tp = $cp->ID;
+					array_push( $p, $tp );
+				endif;
+			endforeach;
+			$tp = count( $p );
+			$lp = $tp - $number;
+			while ( $i <= $lp ) :
+				array_pop( $p );
+				$i++;
+			endwhile;
+			$tp = count( $p );
 
-		$gallery_args = new WP_Query( array (
-						'post_type'			=> 'post',
-						'post__in'			=> $p,
-						'posts_per_page'	=> $tp,
-						)
-					);
+			$gallery_args = new WP_Query( array (
+							'post_type'			=> 'post',
+							'post__in'			=> $p,
+							'posts_per_page'	=> $tp,
+							)
+						);
 		if ($gallery_args->have_posts()) :
 ?>
 		<?php echo $before_widget; ?>
