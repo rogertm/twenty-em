@@ -766,7 +766,7 @@ function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="entry-author-info" class="well media">
 		<div id="author-avatar" class="pull-left">
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 't_em_author_bio_avatar_size', 80 ), '', get_the_author() ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_filters( 't_em_author_bio_avatar_size', 80 ), '', get_the_author() ); ?>
 		</div><!-- #author-avatar -->
 		<div id="author-description" class="media-body">
 			<h2 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h2>
