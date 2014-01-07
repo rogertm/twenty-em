@@ -30,9 +30,45 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		parent::__construct('t_em_recents_news', sprintf( __( 'Recent Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recents_news';
 
+		if ( is_active_widget( false, false, $this->id_base ) )
+			add_action( 'wp_head', array( $this, 't_em_recent_posts_style' ) );
+
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
+	}
+
+	function t_em_recent_posts_style(){
+?>
+	<style type="text/css">
+		.t-em-recent-post-wrapper{
+			margin-top: 10px !important;
+			clear: both;
+			overflow: hidden;
+		}
+		.t-em-recent-post-title{
+			font-weight: bold;
+		}
+		.t-em-recent-post-thumbnail{
+			float: left;
+			margin-right: 2.5641%;
+		}
+		.t-em-recent-post-thumbnail img{
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			-webkit-box-shadow: 0 1px 4px #dedede;
+			-moz-box-shadow: 0 1px 4px #dedede;
+			box-shadow: 0 1px 4px #dedede;
+		}
+		.t-em-recent-post-thumbnail figcaption{
+			display: none;
+		}
+		.t-em-recent-post-thumbnail + .t-em-recent-post-content{
+			margin-left: 110px;
+		}
+	</style>
+<?php
 	}
 
 	function widget($args, $instance) {
@@ -119,10 +155,6 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_recent_posts', $cache, 'widget');
-
-		global $t_em_theme_data;
-		wp_register_style( 'widget-recent-posts-style', T_EM_THEME_DIR_CSS_URL . '/widget-recent-posts-style.css', array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'widget-recent-posts-style' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -170,13 +202,49 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_popular_entries', 'description' => __( 'The most Popular Posts on your site', 't_em') );
-		parent::__construct('t_em_popular_entries', sprintf( __( 'Popular Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
-		$this->alt_option_name = 't_em_popular_entries';
+		$widget_ops = array('classname' => 't_em_popular_posts', 'description' => __( 'The most Popular Posts on your site', 't_em') );
+		parent::__construct('t_em_popular_posts', sprintf( __( 'Popular Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
+		$this->alt_option_name = 't_em_popular_posts';
+
+		if ( is_active_widget( false, false, $this->id_base ) )
+			add_action( 'wp_head', array( $this, 't_em_popular_posts_style' ) );
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
+	}
+
+	function t_em_popular_posts_style(){
+?>
+		<style type="text/css">
+			.t-em-popular-post-wrapper{
+				margin-top: 10px !important;
+				clear: both;
+				overflow: hidden;
+			}
+			.t-em-popular-post-title{
+				font-weight: bold;
+			}
+			.t-em-popular-post-thumbnail{
+				float: left;
+				margin-right: 2.5641%;
+			}
+			.t-em-popular-post-thumbnail img{
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				-webkit-box-shadow: 0 1px 4px #dedede;
+				-moz-box-shadow: 0 1px 4px #dedede;
+				box-shadow: 0 1px 4px #dedede;
+			}
+			.t-em-popular-post-thumbnail figcaption{
+				display: none;
+			}
+			.t-em-popular-post-thumbnail + .t-em-popular-post-content{
+				margin-left: 110px;
+			}
+		</style>
+<?php
 	}
 
 	function widget($args, $instance) {
@@ -270,10 +338,6 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_popular_posts', $cache, 'widget');
-
-		global $t_em_theme_data;
-		wp_register_style( 'widget-popular-posts-style', T_EM_THEME_DIR_CSS_URL . '/widget-popular-posts-style.css', array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'widget-popular-posts-style' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -285,8 +349,8 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['t_em_popular_entries']) )
-			delete_option('t_em_popular_entries');
+		if ( isset($alloptions['t_em_popular_posts']) )
+			delete_option('t_em_popular_posts');
 
 		return $instance;
 	}
@@ -328,9 +392,65 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		parent::__construct('t_em_image_gallery', sprintf( __( 'Image Gallery %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_image_gallery';
 
+		if ( is_active_widget(false, false, $this->id_base) )
+			add_action( 'wp_head', array($this, 't_em_gallery_style') );
+
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
+	}
+
+	function t_em_gallery_style(){
+?>
+		<style type="text/css">
+			.t-em-img-gallery-row-wrapper{
+				margin-top: 15px;
+			}
+			figure.t-em-img-gallery-thumbnail,
+			.t-em-img-gallery-thumbnail img{
+				max-width: 100%;
+				width: auto;
+			}
+			.t-em-img-gallery-thumbnail img{
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				-webkit-box-shadow: 0 1px 4px #dedede;
+				-moz-box-shadow: 0 1px 4px #dedede;
+				box-shadow: 0 1px 4px #dedede;
+			}
+			.t-em-img-gallery-thumbnail figcaption{
+				display: none;
+			}
+			@media( max-width: 767px ){
+				.t-em-img-gallery-row-wrapper{
+					margin: 1% 0 auto 0;
+				}
+				.t-em-img-gallery-thumbnail img{
+					margin-left: 3%;
+					width: 97%;
+				}
+				.t-em-img-gallery-thumbnail img:first-child{
+					margin-left: 0;
+				}
+				/** Fix one columns widget, displayed in two columns */
+				.t-em-img-gallery-row-wrapper.t-em-one-column-gallery{
+					float: left;
+					width: 50%;
+				}
+				/** Fix two columns widget */
+				.t-em-img-gallery-row-wrapper > div.span6{
+					float: left;
+					width: 50%;
+				}
+				/** Fix three columns widget */
+				.t-em-img-gallery-row-wrapper > div.span4{
+					float: left;
+					width: 33%;
+				}
+			}
+		</style>
+<?php
 	}
 
 	function widget($args, $instance) {
@@ -413,10 +533,6 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_image_gallery', $cache, 'widget');
-
-		global $t_em_theme_data;
-		wp_register_style( 'widget-image-gallery-style', T_EM_THEME_DIR_CSS_URL . '/widget-image-gallery-style.css', array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'widget-image-gallery-style' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -483,8 +599,8 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 ?>
 	<style type="text/css">
 		.t-em-recent-comments{
-			display:inline-block;
 			margin-top: 10px !important;
+			clear: both;
 		}
 		.t-em-recent-comments figure{
 			display: inline;

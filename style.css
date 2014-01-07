@@ -1176,8 +1176,9 @@ input[type=submit] {
 .widget-area ul li{
 	margin: 3px 0 3px 5px;
 }
-.widget-container {
+.widget-container{
 	margin: 0 0 18px 0;
+	clear: both;
 }
 .widget-title {
 	font-weight: bold;
