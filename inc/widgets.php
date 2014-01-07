@@ -45,6 +45,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 			margin-top: 10px !important;
 			clear: both;
 			overflow: hidden;
+			padding: 5px 0 5px 5px;
 		}
 		.t-em-recent-post-title{
 			font-weight: bold;
@@ -221,6 +222,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 				margin-top: 10px !important;
 				clear: both;
 				overflow: hidden;
+				padding: 5px 0 5px 5px;
 			}
 			.t-em-popular-post-title{
 				font-weight: bold;
@@ -602,6 +604,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 			margin-top: 10px !important;
 			clear: both;
 			overflow: hidden;
+			padding: 5px 0 5px 5px;
 		}
 		.t-em-recent-comments figure{
 			display: inline;
