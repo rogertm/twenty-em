@@ -601,6 +601,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		.t-em-recent-comments{
 			margin-top: 10px !important;
 			clear: both;
+			overflow: hidden;
 		}
 		.t-em-recent-comments figure{
 			display: inline;
