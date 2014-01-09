@@ -602,19 +602,6 @@ div.menu li {
 	font-size: .7em;
 }
 
-/** Style for WP-PageNavi plugin */
-.wp-pagenavi {
-	clear: both;
-	padding: 10px 0;
-}
-.wp-pagenavi a, .wp-pagenavi span {
-	padding: 3px 5px !important;
-	margin: 3px;
-}
-.wp-pagenavi span.current {
-	font-weight: bold;
-}
-
 
 /* =Content
 -------------------------------------------------------------- */
@@ -666,10 +653,12 @@ div.menu li {
 .page-title a:hover {
 }
 #content .entry-title {
-	font-size: 21px;
 	font-weight: normal;
 	line-height: 1.5em;
 	margin: 0;
+}
+.entry-title a{
+	display: inline-block;
 }
 .entry-title a:link,
 .entry-title a:visited {
@@ -932,11 +921,12 @@ div.menu li {
 
 /* =Navigation
 -------------------------------------------------------------- */
-
 .navigation {
 	font-size: 12px;
-	line-height: 18px;
 	overflow: hidden;
+	margin: 20px 0;
+	line-height: 38px;
+	position: relative;
 }
 .navigation a:link,
 .navigation a:visited {
@@ -946,26 +936,18 @@ div.menu li {
 .navigation a:hover {
 }
 .nav-previous {
-	float: left;
-	width: 50%;
-}
-.nav-next {
 	float: right;
 	text-align: right;
 	width: 50%;
 }
-#nav-above {
-	margin: 0 0 18px 0;
+.nav-next {
+	float: left;
+	width: 50%;
 }
-#nav-above {
-	display: none;
-}
-.paged #nav-above,
-.single #nav-above {
-	display: block;
-}
-#nav-below {
-	margin: 24px 0;
+.navigation .nav-previous a,
+.navigation .nav-next a,
+.navigation .page-numbers{
+	padding: 7px 10px;
 }
 /* If JetPack module Infinite Scroll is active */
 .infinite-scroll .navigation{

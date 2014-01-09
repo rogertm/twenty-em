@@ -47,8 +47,6 @@ get_header(); ?>
 	 * we can run the loop properly, in full.
 	 */
 	rewind_posts();
-
-	t_em_page_navi( 'nav-above' );
 ?>
 				<div class="row-fluid">
 <?php
@@ -63,7 +61,6 @@ get_header(); ?>
 ?>
 				</div><!-- .row-fluid -->
 <?php
-	t_em_page_navi( 'nav-below' );
 	else :
 		get_template_part( 'content', 'none' );
 	endif;

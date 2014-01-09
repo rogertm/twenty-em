@@ -75,15 +75,15 @@ if ( ! function_exists( 't_em_hook_action_navigation_menu' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 't_em_hook_action_single_nav_above' ) ) :
-	function t_em_hook_action_single_nav_above(){
-		add_action( 't_em_post_before', 't_em_single_nav_above' );
+if ( ! function_exists( 't_em_hook_action_page_navi' ) ) :
+	function t_em_hook_action_page_navi(){
+		add_action( 't_em_content_after', 't_em_page_navi' );
 	}
 endif;
 
 if ( ! function_exists( 't_em_hook_action_single_nav_below' ) ) :
 	function t_em_hook_action_single_nav_below(){
-		add_action( 't_em_post_after', 't_em_single_nav_below', 9 );
+		add_action( 't_em_post_after', 't_em_single_navigation', 9 );
 	}
 endif;
 
@@ -119,7 +119,7 @@ function t_em_register_action_hooks(){
 	t_em_hook_action_javascript_required();
 	t_em_hook_action_top_menu();
 	t_em_hook_action_navigation_menu();
-	t_em_hook_action_single_nav_above();
+	t_em_hook_action_page_navi();
 	t_em_hook_action_single_nav_below();
 	t_em_hook_action_footer_menu();
 	t_em_hook_action_copy_right();

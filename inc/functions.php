@@ -940,24 +940,60 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_page_navi( $nav_id ){
-	global $wp_query;
-?>
-<nav id="<?php echo $nav_id ?>" class="navigation span12">
-<?php
-	if ( ! function_exists( 'wp_pagenavi' ) ) :
-		if ( $wp_query->max_num_pages > 1 ) :
-?>
-	<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 't_em' ) ); ?></div>
-	<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
-<?php
-		endif;
-	else :
-		// We load our favorite pagination plugin
-		wp_pagenavi();
+function t_em_page_navi(){
+	global $wp_query, $t_em_theme_options;
+	// Don't print empty markup if there's only one page.
+	if ( $wp_query->max_num_pages < 2 ) :
+		return;
 	endif;
 ?>
-</nav>
+	<nav class="navigation">
+<?php
+		if ( 'prev-next' == $t_em_theme_options['archive_pagination'] ) :
+?>
+			<div class="nav-next"><?php previous_posts_link( __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></div>
+<?php
+		elseif ( 'page-navi' == $t_em_theme_options['archive_pagination'] ) :
+			// This piece of code is taken from twentyfourteen :)
+			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
+			$query_args 	= array();
+			$url_parts 		= explode( '?', $pagenum_link );
+
+			if ( isset( $url_parts[1] ) ) {
+				wp_parse_str( $url_parts[1], $query_args );
+			}
+
+			$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+			$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+			$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+			$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+			$links = paginate_links( array(
+				'base'		=> $pagenum_link,
+				'format'	=> $format,
+				'total'		=> $wp_query->max_num_pages,
+				'current'	=> $paged,
+				'end_size'	=> 1,
+				'mid_size'	=> 2,
+				'add_args'	=> array_map( 'urlencode', $query_args ),
+				'prev_text'	=> __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ),
+				'next_text'	=> __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ),
+			) );
+			if ( $links ) :
+				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
+				$total_pages = $wp_query->max_num_pages;
+?>
+				<span class="pages page-numbers"><?php echo sprintf( __( 'Page %1$s of %2$s' ), $current_page, $total_pages ); ?></span>
+				<?php echo $links; ?>
+<?php
+			endif;
+			// End of stolen code
+		endif;
+?>
+	</nav>
 <?php
 }
 endif; // function t_em_page_navi()
@@ -1730,26 +1766,14 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 }
 
 /**
- * Single Nav Above
+ * Single post navigation
  */
-function t_em_single_nav_above(){
+function t_em_single_navigation(){
 ?>
-	<nav id="nav-above" class="navigation">
-		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . __( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
-		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . __( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
+	<nav class="navigation">
+		<div class="nav-previous"><?php previous_post_link( '%link', '%title <span class="meta-nav icon-double-angle-right"></span>' ); ?></div>
+		<div class="nav-next"><?php next_post_link( '%link', '<span class="meta-nav icon-double-angle-left"></span> %title' ); ?></div>
 	</nav><!-- #nav-above -->
-<?php
-}
-
-/**
- * Single Nav Below
- */
-function t_em_single_nav_below(){
-?>
-	<nav id="nav-below" class="navigation">
-		<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&laquo;', 'Previous post link', 't_em' ) . '</span> %title' ); ?></div>
-		<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&raquo;', 'Next post link', 't_em' ) . '</span>' ); ?></div>
-	</nav><!-- #nav-below -->
 <?php
 }
 

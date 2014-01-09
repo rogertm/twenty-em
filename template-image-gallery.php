@@ -41,8 +41,6 @@ $wp_query = new WP_Query ( $args );
 
 if ( have_posts() ) :
 
-	t_em_page_navi( 'nav-above' );
-
 	// Start the custom Loop
 	while( have_posts() ) : the_post();
 		$image_id = get_the_ID();
@@ -65,7 +63,6 @@ if ( have_posts() ) :
 		endif;
 	endwhile;
 	wp_reset_postdata();
-	t_em_page_navi( 'nav-below' );
 	else :
 		get_template_part( 'content', 'none' );
 endif;

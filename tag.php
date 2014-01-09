@@ -17,8 +17,6 @@ get_header(); ?>
 					<h1 class="page-title">
 						<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 				</header>
-
-			<?php t_em_page_navi( 'nav-above' ); ?>
 				<div class="row-fluid">
 			<?php
 			if ( have_posts() ) :
@@ -34,7 +32,6 @@ get_header(); ?>
 			?>
 				</div><!-- .row-fluid -->
 			<?php
-				t_em_page_navi( 'nav-below' );
 			else :
 				get_template_part( 'content', 'none' );
 			endif;

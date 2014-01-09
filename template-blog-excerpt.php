@@ -35,7 +35,6 @@ get_header(); ?>
 					);
 			$wp_query = new WP_Query ( $args );
 			?>
-			<?php t_em_page_navi( 'nav-above' ); ?>
 				<div class="row-fluid">
 			<?php
 			if ( have_posts() ) :
@@ -51,7 +50,6 @@ get_header(); ?>
 			?>
 				</div><!-- .row-fluid -->
 			<?php
-				t_em_page_navi( 'nav-below' );
 			else :
 				get_template_part( 'content', 'none' );
 			endif;

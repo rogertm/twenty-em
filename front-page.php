@@ -48,7 +48,6 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 	// Else, we display a list of post
 	else :
 ?>
-		<?php t_em_page_navi( 'nav-above' ); ?>
 			<div class="row-fluid">
 		<?php
 		if ( have_posts() ) :
@@ -64,7 +63,6 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 		?>
 			</div><!-- .row-fluid -->
 		<?php
-			t_em_page_navi( 'nav-below' );
 		else :
 			get_template_part( 'content', 'none' );
 		endif;
@@ -80,7 +78,7 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
 			<section id="main-content" class="row-fluid">
 				<section id="content" role="main" class="span12">
-					<?php t_em_content_before(); ?>
+					<?php t_em_front_page_widgets_before(); ?>
 					<section id="featured-widget-area" class="text-center">
 						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
 						<div class="row-fluid">
@@ -89,7 +87,7 @@ elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 							<?php t_em_front_page_widgets( 'four', 'btn' ); ?>
 						</div>
 					</section><!-- #featured-widget-area -->
-					<?php t_em_content_after(); ?>
+					<?php t_em_front_page_widgets_after(); ?>
 				</section><!-- #content -->
 			</section><!-- #main-content-->
 <?php endif; ?>

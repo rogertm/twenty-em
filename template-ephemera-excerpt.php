@@ -56,8 +56,6 @@ $wp_query = new WP_Query( $args );
 
 if ( have_posts() ) :
 
-	t_em_page_navi( 'nav-above' );
-
 	while ( have_posts() ) : the_post();
 
 		$icon_format = get_post_format();
@@ -107,7 +105,6 @@ if ( have_posts() ) :
 					</article>
 <?php
 	endwhile;
-	t_em_page_navi( 'nav-below' );
 	else :
 		get_template_part( 'content', 'none' );
 	endif;

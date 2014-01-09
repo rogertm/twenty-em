@@ -55,7 +55,8 @@ function t_em_archive_options(){
 function t_em_excerpt_callback(){
 	global	$t_em_theme_options,
 			$excerpt_options,
-			$archive_in_columns;
+			$archive_in_columns,
+			$archive_pagination;
 
 	$excerpt_options = array (
 		'thumbnail-left' => array(
@@ -87,6 +88,17 @@ function t_em_excerpt_callback(){
 		'3'	=> array(
 			'value'	=> 3,
 			'label'	=> __( 'Three columns', 't_em' ),
+		),
+	);
+
+	$archive_pagination = array (
+		'prev-next'	=> array(
+			'value'	=> 'prev-next',
+			'label'	=> __( 'Previous - Next post link', 't_em' ),
+		),
+		'page-navi'	=> array(
+			'value'	=> 'page-navi',
+			'label'	=> __( 'Navigated link ( e.g.: « Prev 1 … 3 4 5 6 7 … 9 Next » )', 't_em' ),
 		),
 	);
 
@@ -133,6 +145,19 @@ function t_em_excerpt_callback(){
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_in_columns]" value="'. esc_attr( $columns['value'] ) .'" '. $checked_option .'>';
 		$extend_excerpt .=			'<span>'. $columns['label'] .'</span>';
+		$extend_excerpt .=		'</label>';
+		$extend_excerpt .=	'</div>';
+	endforeach;
+	$extend_excerpt .= '</div><!-- .sub-extend -->';
+
+	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
+	$extend_excerpt .=	'<p>'. __( 'Archive Pagination', 't_em' ) .'</p>';
+	foreach ( $archive_pagination as $pagination ) :
+		$checked_option = checked( $t_em_theme_options['archive_pagination'], $pagination['value'], false );
+		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
+		$extend_excerpt .=		'<label class="description">';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
+		$extend_excerpt .=			'<span>'. $pagination['label'] .'</span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;

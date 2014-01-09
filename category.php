@@ -23,8 +23,6 @@ get_header(); ?>
 				if ( ! empty( $category_description ) ) :
 					echo '<div id="category-description" class="archive-meta well">' . $category_description . '</div>';
 				endif;
-
-			t_em_page_navi( 'nav-above' );
 			?>
 				<div class="row-fluid">
 			<?php
@@ -41,7 +39,6 @@ get_header(); ?>
 			?>
 				</div><!-- .row-fluid -->
 			<?php
-				t_em_page_navi( 'nav-below' );
 			else :
 				get_template_part( 'content', 'none' );
 			endif;

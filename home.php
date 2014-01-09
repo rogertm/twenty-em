@@ -17,8 +17,6 @@ get_header(); ?>
 		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_content_before(); ?>
-
-			<?php t_em_page_navi( 'nav-above' ); ?>
 				<div class="row-fluid">
 			<?php
 			if ( have_posts() ) :
@@ -34,7 +32,6 @@ get_header(); ?>
 			?>
 				</div><!-- .row-fluid -->
 			<?php
-				t_em_page_navi( 'nav-below' );
 			else :
 				get_template_part( 'content', 'none' );
 			endif;
