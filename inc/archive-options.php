@@ -94,11 +94,11 @@ function t_em_excerpt_callback(){
 	$archive_pagination = array (
 		'prev-next'	=> array(
 			'value'	=> 'prev-next',
-			'label'	=> __( 'Previous - Next post link', 't_em' ),
+			'label'	=> __( 'Display <code>Newer</code> and <code>Older</code> posts links', 't_em' ),
 		),
 		'page-navi'	=> array(
 			'value'	=> 'page-navi',
-			'label'	=> __( 'Navigated link ( e.g.: « Prev 1 … 3 4 5 6 7 … 9 Next » )', 't_em' ),
+			'label'	=> __( 'Display a paginated list of links <code>« Newer 1 … 3 4 5 6 7 … 9 Older »</code>', 't_em' ),
 		),
 	);
 
