@@ -306,7 +306,7 @@ function t_em_default_theme_options(){
 		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
 		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
 		'archive_in_columns'							=> '1',
-		'archive_pagination'							=> 'prev-next',
+		'archive_pagination_set'						=> 'prev-next',
 		// Layout Options
 		'layout_set'									=> 'two-column-content-left',
 		'footer_set'									=> 'four-footer-widget',

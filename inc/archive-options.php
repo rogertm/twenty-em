@@ -49,14 +49,14 @@ function t_em_archive_options(){
  *
  * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
  * @global $excerpt_options Returns an array of our archive excerpt options.
+ * @global $archive_in_columns Returns a string value for archive columns.
  *
  * @since Twenty'em 0.1
  */
 function t_em_excerpt_callback(){
 	global	$t_em_theme_options,
 			$excerpt_options,
-			$archive_in_columns,
-			$archive_pagination;
+			$archive_in_columns;
 
 	$excerpt_options = array (
 		'thumbnail-left' => array(
@@ -88,17 +88,6 @@ function t_em_excerpt_callback(){
 		'3'	=> array(
 			'value'	=> 3,
 			'label'	=> __( 'Three columns', 't_em' ),
-		),
-	);
-
-	$archive_pagination = array (
-		'prev-next'	=> array(
-			'value'	=> 'prev-next',
-			'label'	=> __( 'Display <code>Newer</code> and <code>Older</code> posts links', 't_em' ),
-		),
-		'page-navi'	=> array(
-			'value'	=> 'page-navi',
-			'label'	=> __( 'Display a paginated list of links <code>« Newer 1 … 3 4 5 6 7 … 9 Older »</code>', 't_em' ),
 		),
 	);
 
@@ -150,13 +139,40 @@ function t_em_excerpt_callback(){
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
 
+	return $extend_excerpt;
+}
+
+/**
+ * Extend setting for Archive Pagination Option in Twenty'em admin panel.
+ * Referenced via t_em_archive_options() in /inc/archive-options.php.
+ *
+ * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $archive_pagination Returns a string value for pagination.
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_settings_archive_pagination(){
+	global $t_em_theme_options, $archive_pagination;
+
+	$archive_pagination = array (
+		'prev-next'	=> array(
+			'value'	=> 'prev-next',
+			'label'	=> __( 'Display <code>Newer</code> and <code>Older</code> posts links', 't_em' ),
+		),
+		'page-navi'	=> array(
+			'value'	=> 'page-navi',
+			'label'	=> __( 'Display a paginated list of links <code>« Newer 1 … 3 4 5 6 7 … 9 Older »</code>', 't_em' ),
+		),
+	);
+
+	$extend_excerpt = '';
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
 	$extend_excerpt .=	'<p>'. __( 'Archive Pagination', 't_em' ) .'</p>';
 	foreach ( $archive_pagination as $pagination ) :
-		$checked_option = checked( $t_em_theme_options['archive_pagination'], $pagination['value'], false );
-		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
+		$checked_option = checked( $t_em_theme_options['archive_pagination_set'], $pagination['value'], false );
+		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
+		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination_set]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
 		$extend_excerpt .=			'<span>'. $pagination['label'] .'</span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
@@ -204,6 +220,8 @@ function t_em_settings_field_archive_set(){
 <?php
 		endif;
 	endforeach;
+
+	echo t_em_settings_archive_pagination();
 ?>
 	</div><!-- #archive-options -->
 <?php

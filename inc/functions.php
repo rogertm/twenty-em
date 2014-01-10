@@ -949,12 +949,12 @@ function t_em_page_navi(){
 ?>
 	<nav class="navigation">
 <?php
-		if ( 'prev-next' == $t_em_theme_options['archive_pagination'] ) :
+		if ( 'prev-next' == $t_em_theme_options['archive_pagination_set'] ) :
 ?>
 			<div class="nav-next"><?php previous_posts_link( __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ) ); ?></div>
 			<div class="nav-previous"><?php next_posts_link( __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></div>
 <?php
-		elseif ( 'page-navi' == $t_em_theme_options['archive_pagination'] ) :
+		elseif ( 'page-navi' == $t_em_theme_options['archive_pagination_set'] ) :
 			// This piece of code is taken from twentyfourteen :)
 			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
