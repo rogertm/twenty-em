@@ -110,7 +110,7 @@ if ( ! function_exists( 't_em_support_post_thumbnails' ) ) :
  * Pluggable Function: Adds theme support for post thumbnails
  * Referenced via t_em_setup().
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_support_post_thumbnails(){
 	add_theme_support( 'post-thumbnails' );
@@ -122,7 +122,7 @@ if ( ! function_exists( 't_em_support_automatic_feed_links' ) ) :
  * Pluggable Function: Adds RSS feed links to <head> for posts and comments.
  * Referenced via t_em_setup().
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_support_automatic_feed_links(){
 	add_theme_support( 'automatic-feed-links' );
@@ -134,7 +134,7 @@ if ( ! function_exists( 't_em_support_post_formats' ) ) :
  * Pluggable Function: Adds support for variety of post formats.
  * Referenced via t_em_setup().
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_support_post_formats(){
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
@@ -147,7 +147,7 @@ if ( ! function_exists( 't_em_support_add_editor_style' ) ) :
  * style.
  * Referenced via t_em_setup().
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_support_add_editor_style(){
 	add_editor_style( 'css/editor-style.css' );
@@ -249,7 +249,7 @@ if ( ! function_exists( 't_em_register_nav_menus' ) ) :
  * Pluggable Function: This theme uses navigation menus in three locations. Woew!
  * Referenced via t_em_setup().
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_register_nav_menus(){
 	register_nav_menus ( array (
@@ -411,7 +411,7 @@ endif;
  * You don't need to override this value in a Child Theme, just because you can set this value from
  * the Twenty'em Framework interface.
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_excerpt_length( $length ){
 	global $t_em_theme_options;
@@ -873,7 +873,7 @@ if ( ! function_exists( 't_em_comment_all' ) ) :
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
- * @since Twenty'em 1.0.1
+ * @since Twenty'em 1.0
  */
 function t_em_comment_all( $comment, $args, $depth ){
 	$GLOBALS['comment'] = $comment;
