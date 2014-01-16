@@ -72,8 +72,8 @@ if ( have_comments() ) :
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 		<nav id="comment-nav-above" class="navigation" role="navigation">
-			<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&laquo;</span> Older Comments', 't_em' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments <span class="meta-nav">&laquo;</span>', 't_em' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( '<span class="meta-nav">&raquo;</span> Newer Comments', 't_em' ) ); ?></div>
 		</nav>
 <?php
 		endif;
@@ -85,8 +85,8 @@ if ( have_comments() ) :
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 		<nav id="comment-nav-below" class="navigation" role="navigation">
-			<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&laquo;</span> Older Comments', 't_em' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?></div>
+			<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments <span class="meta-nav">&laquo;</span>', 't_em' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( '<span class="meta-nav">&raquo;</span> Newer Comments', 't_em' ) ); ?></div>
 		</nav>
 <?php
 		endif;

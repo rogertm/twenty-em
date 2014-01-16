@@ -16,18 +16,18 @@
 ?>
 <?php
 // First of all we call this files we need to complete the Twenty'em engine.
-require( T_EM_INC_DIR_PATH . '/generals-options.php' );
-require( T_EM_INC_DIR_PATH . '/header-options.php' );
-require( T_EM_INC_DIR_PATH . '/front-page-options.php' );
-require( T_EM_INC_DIR_PATH . '/archive-options.php' );
-require( T_EM_INC_DIR_PATH . '/layout-options.php' );
-require( T_EM_INC_DIR_PATH . '/social-network-options.php' );
-require( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
-require( T_EM_INC_DIR_PATH . '/theme-backup.php' );
-require( T_EM_INC_DIR_PATH . '/shortcodes.php' );
-require( T_EM_INC_DIR_PATH . '/help.php' );
-require( T_EM_INC_DIR_PATH . '/hooks.php' );
-require( T_EM_INC_DIR_PATH . '/hooks-actions.php' );
+require_once( T_EM_INC_DIR_PATH . '/generals-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/header-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/front-page-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/archive-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/layout-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/social-network-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
+require_once( T_EM_INC_DIR_PATH . '/theme-backup.php' );
+require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
+require_once( T_EM_INC_DIR_PATH . '/help.php' );
+require_once( T_EM_INC_DIR_PATH . '/hooks.php' );
+require_once( T_EM_INC_DIR_PATH . '/hooks-actions.php' );
 
 
 /**
@@ -189,6 +189,8 @@ add_action( 'after_setup_theme', 't_em_set_globals' );
  */
 function t_em_default_theme_options(){
 	$default_theme_options = array (
+		// Twenty'em Version
+		'framework_version'								=> T_EM_FRAMEWORK_VERSION,
 		// Generals Options
 		't_em_link'										=> '1',
 		'single_featured_img'							=> '1',
@@ -336,6 +338,37 @@ function t_em_get_theme_options(){
 }
 
 /**
+ * Update Twenty'em Framework if necessary
+ * We, I mean, I am trying this
+ */
+function t_em_framework_update(){
+	global $t_em_theme_options, $t_em_options_diff;
+	$t_em_options_diff = array_diff_key( t_em_default_theme_options(), get_option( 't_em_theme_options' ) );
+	if ( isset( $_POST['update_framework'] ) && check_admin_referer( 'form_action', 'update_t_em_framework' ) ) :
+		update_option( 't_em_theme_options', array_merge( $t_em_options_diff, get_option( 't_em_theme_options' ) ) );
+	endif;
+	if ( ! isset( $_GET['update-framework'] ) ) :
+?>
+		<div class="updated below-h2">
+			<p><?php echo sprintf( __( 'Before continue you need to update the <strong>%1$s</strong> framework from previous version <strong>%2$s</strong> to next version <strong>%3$s</strong>', 't_em' ), T_EM_FRAMEWORK_NAME, $t_em_theme_options['framework_version'], T_EM_FRAMEWORK_VERSION ) ?></p>
+		</div>
+<?php
+	elseif ( isset( $_GET['update-framework'] ) && $_GET['update-framework'] == true ) :
+?>
+		<div class="updated below-h2">
+			<p><?php echo sprintf( __( 'Already updated to <strong>%1$s</strong> version <strong>%2$s</strong>. Back to <a href="%3$s">Theme Options</a> panel', 't_em' ), T_EM_FRAMEWORK_NAME, T_EM_FRAMEWORK_VERSION, admin_url( 'admin.php?page=twenty-em-options' ) ); ?></p>
+		</div>
+<?php
+	endif;
+?>
+		<form id="t-em-update-framework" method="post" action="<?php echo admin_url( 'admin.php?page=twenty-em-options&update-framework=true' ) ?>">
+			<?php submit_button( __( 'Update Framework', 't_em' ), 'primary', 'update_framework', false ); ?>
+			<?php wp_nonce_field( 'form_action', 'update_t_em_framework' ) ?>
+		</form>
+<?php
+}
+
+/**
  * Finally a Options Page is displayed.
  * Referenced via t_em_theme_options_admin_page(), add_menu_page() callback
  *
@@ -348,11 +381,19 @@ function t_em_get_theme_options(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_page(){
+	global $t_em_theme_options;
+	$t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em_theme_options );
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo wp_get_theme() . ' ' . __( 'Theme Options', 't_em' ) ?></h2>
 		<?php settings_errors( 't-em-update' ); ?>
+		<?php
+		// DO NOT TOUCH!!!
+		// if ( ( $t_em_theme_options['framework_version'] < T_EM_FRAMEWORK_VERSION && ! empty( $t_em_options_diff ) ) || isset( $_GET['update-framework'] ) && $_GET['update-framework'] == true ) :
+		// 	t_em_framework_update();
+		// else :
+		?>
 		<form id="t-em-setting" method="post" action="options.php">
 			<?php
 				settings_fields( 't_em_options' );
@@ -360,7 +401,7 @@ function t_em_theme_options_page(){
 				submit_button();
 			?>
 		</form>
-
+	<?php // endif; ?>
 	</div><!-- .wrap -->
 <?php
 }
@@ -373,7 +414,11 @@ function t_em_theme_options_page(){
  */
 function t_em_theme_options_validate( $input ){
 	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout, $archive_in_columns, $archive_pagination;
-	if ( $input != null ) :
+	if ( $input != null && ! isset( $_POST['update_framework'] ) ) :
+
+		// CONSTANTS
+		$input['framework_version'] = T_EM_FRAMEWORK_VERSION;
+
 		// All the checkbox are either 0 or 1
 		foreach ( array(
 			't_em_link',
