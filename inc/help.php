@@ -147,7 +147,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$shortcodes_help = '<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> lets you use some shortcodes in your posts or pages content. Buttons for these macro codes are enables from the text&#8217;s tab in your post/page editor.', 't_em' ),
+	$shortcodes_help = '<p>' . sprintf( __( '<strong>Shortcodes:</strong> <strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> lets you use some shortcodes in your posts or pages content. Buttons for these macro codes are enables from the text&#8217;s tab in your post/page editor.', 't_em' ),
 						'http://twenty-em.com/' ) . '</p>' .
 						'<p>' . sprintf( __( 'Below a list of shortcodes provided by your current theme <strong>%1$s</strong>:', 't_em' ),
 						$t_em_theme_data['Name'] ) . '</p>' .
@@ -198,7 +198,8 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$templates_help = '<p>'. __( '<strong>Page Templates</strong>:', 't_em' ) .'</p>';
+	$templates_help = '<p>'. sprintf( __( '<strong>Page Templates</strong>: <strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong>', 't_em' ),
+					'http://twenty-em.com/' ) .'</p>';
 
 	$screen->add_help_tab( array(
 		'title' => __( 'Pages Templates', 't_em' ),
