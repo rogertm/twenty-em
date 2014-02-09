@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row">
+		<section id="main-content">
 			<section id="content" role="main" class="col-md-12">
 				<?php t_em_content_before(); ?>
 

@@ -132,7 +132,8 @@ ol, ul {
 /*
 LAYOUT: One column fixed layout
 */
-.one-column #content{
+.one-column #content,
+.error404 #content{
 	padding-right: 0;
 }
 

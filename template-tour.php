@@ -16,8 +16,8 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row">
-			<section id="content" role="main" class="col-md-12">
+		<section id="main-content">
+			<section id="content" role="main">
 				<?php t_em_content_before(); ?>
 				<?php t_em_custom_template_content(); ?>
 <?php

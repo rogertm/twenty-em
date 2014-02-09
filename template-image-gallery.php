@@ -21,7 +21,7 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_content_before(); ?>
 
@@ -56,7 +56,7 @@ if ( have_posts() ) :
 			if ( $post_parent_id['post_status'] == 'publish' ) :
 ?>
 					<a href="<?php echo get_permalink( $image_link ); ?>" title="<?php echo get_the_title( $image_alt ); ?>">
-						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail img-rounded img-polaroid" >
+						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail img-thumbnail" >
 					</a>
 <?php
 			endif;

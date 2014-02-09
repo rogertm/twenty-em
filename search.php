@@ -9,14 +9,14 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_content_before(); ?>
-				<div class="row">
-			<?php if ( have_posts() ) : ?>
 				<header>
 					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header>
+			<?php if ( have_posts() ) : ?>
+				<div class="row">
 			<?php
 				$i = 0;
 				while ( have_posts() ) : the_post();

@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row">
-			<section id="content" role="main" class="col-md-12">
+		<section id="main-content">
+			<section id="content" role="main">
 			<?php t_em_content_before(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
