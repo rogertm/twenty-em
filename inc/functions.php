@@ -1103,7 +1103,7 @@ function t_em_custom_template_content( $icon_class = '' ){
 	if ( have_posts() ) :
 		while ( have_posts() ) : the_post();
 			if ( get_the_content() ) : ?>
-			<div class="entry-content"><?php the_content(); ?></div>
+			<div class="entry-content lead"><?php the_content(); ?></div>
 <?php
 			endif;
 		endwhile;
