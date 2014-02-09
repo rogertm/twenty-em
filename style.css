@@ -130,14 +130,6 @@ ol, ul {
 }
 
 /*
-LAYOUT: One column fixed layout
-*/
-.one-column #content,
-.error404 #content{
-	padding-right: 0;
-}
-
-/*
 LAYOUT: Two column fixed layout with content on the right
 */
 .two-column-content-right #content{

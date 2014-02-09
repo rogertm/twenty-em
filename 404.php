@@ -10,7 +10,7 @@
 get_header(); ?>
 
 		<section id="main-content">
-			<section id="content" role="main" class="col-md-12">
+			<section id="content" role="main">
 				<?php t_em_content_before(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">

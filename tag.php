@@ -17,9 +17,9 @@ get_header(); ?>
 					<h1 class="page-title">
 						<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 				</header>
+			<?php if ( have_posts() ) : ?>
 				<div class="row">
 			<?php
-			if ( have_posts() ) :
 				$i = 0;
 				while ( have_posts() ) : the_post();
 					if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :

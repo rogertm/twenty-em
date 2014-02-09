@@ -24,9 +24,9 @@ get_header(); ?>
 					echo '<div id="category-description" class="archive-meta well">' . $category_description . '</div>';
 				endif;
 			?>
+			<?php if ( have_posts() ) : ?>
 				<div class="row">
 			<?php
-			if ( have_posts() ) :
 				$i = 0;
 				while ( have_posts() ) : the_post();
 					if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
