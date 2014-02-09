@@ -505,7 +505,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<div class="row-fluid">
+		<div class="row">
 <?php
 			if ( $gallery_args->have_posts() ) :
 				$i = 0;
@@ -513,7 +513,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 					if ( 0 == $i % $instance['columns'] ) :
 						$one_column_gallery = ( 1 == $instance['columns'] ) ? 't-em-one-column-gallery' : null;
 						echo '</div>';
-						echo '<div class="row-fluid t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
+						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
 					$span = 12 / $instance['columns'];
 					echo '<div class="span'. $span .'">';
@@ -522,7 +522,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 					$i++;
 				endwhile;
 ?>
-		</div><!-- .row-fluid -->
+		</div><!-- .row -->
 <?php
 			endif;
 ?>

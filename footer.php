@@ -10,9 +10,9 @@
  * @since Twenty'em 0.1
  */
 ?>
-		</div><!-- #inner-main .row-fluid -->
+		</div><!-- #inner-main .row -->
 		<?php t_em_main_after(); ?>
-	</div><!-- #main .container-fluid -->
+	</div><!-- #main .container -->
 
 
 	<footer id="footer" role="contentinfo">
@@ -23,11 +23,11 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-		<div id="site-info" class="container-fluid">
-			<div id="inner-site-info" class="wrapper row-fluid">
+		<div id="site-info" class="wrapper container">
+			<div id="inner-site-info" class="row">
 				<?php t_em_site_info(); ?>
-			</div><!-- .row-fluid -->
-		</div><!-- #site-info .container-fluid -->
+			</div><!-- .row -->
+		</div><!-- #site-info .container -->
 		<?php t_em_footer_after(); ?>
 	</footer><!-- #footer -->
 

@@ -24,9 +24,9 @@ global $t_em_theme_options;
 		return;
 	// If we get this far, we have widgets. Let do this.
 ?>
-		<div id="colophon" class="container-fluid">
+		<div id="colophon" class="wrapper container">
 
-			<section id="footer-widget-area" class="wrapper row-fluid" role="complementary">
+			<section id="footer-widget-area" class="row" role="complementary">
 				<?php t_em_sidebar_footer_before(); ?>
 
 <?php if ( is_active_sidebar( 'first-footer-widget-area' )
@@ -60,6 +60,6 @@ global $t_em_theme_options;
 					</aside><!-- #fourth .widget-area -->
 <?php endif; ?>
 				<?php t_em_sidebar_footer_after(); ?>
-			</section><!-- #footer-widget-area .container-fluid -->
+			</section><!-- #footer-widget-area .container -->
 
 	</div><!-- #colophon -->

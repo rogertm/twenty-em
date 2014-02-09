@@ -29,19 +29,19 @@
 	<?php t_em_header_before(); ?>
 	<header id="header">
 		<section id="masthead">
-			<div id="branding" role="banner" class="container-fluid">
+			<div id="branding" role="banner" class="wrapper container">
 				<?php t_em_header_inside_before() ?>
-				<div class="wrapper row-fluid">
+				<div class="">
 					<?php t_em_header_inside(); ?>
-				</div><!-- .row-fluid -->
+				</div>
 				<?php t_em_header_inside_after(); ?>
-			</div><!-- #branding .container-fluid -->
+			</div><!-- #branding .wrapper .container -->
 		</section><!-- #masthead -->
 	</header><!-- #header -->
 
 	<?php t_em_header_after(); ?>
 
-	<div id="main" class="container-fluid">
+	<div id="main">
 		<?php t_em_main_before(); ?>
-		<div id="inner-main" class="wrapper row-fluid">
+		<div id="inner-main" class="wrapper container">
 

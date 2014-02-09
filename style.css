@@ -118,16 +118,43 @@ ol, ul {
 
 /* =Layout
 -------------------------------------------------------------- */
+#content{
+	padding-left: 0;
+}
+#main-content{
+	padding: 0;
+}
+#sidebar,
+#sidebar-alt{
+	padding-right: 0;
+}
+
+/*
+LAYOUT: One column fixed layout
+*/
+.one-column #content{
+	padding-right: 0;
+}
+
 /*
 LAYOUT: Two column fixed layout with content on the right
 */
 .two-column-content-right #content{
 	float: right;
-	margin-left: 2.5641%;
+	padding-right: 0;
+	padding-left: 15px;
 }
 .two-column-content-right #sidebar{
 	float: left;
-	margin-left: 0;
+	padding-right: 15px;
+	padding-left: 0;
+}
+
+/*
+LAYOUT: Three column fixed layout with content on the left
+*/
+.three-column-content-left #sidebar{
+	padding-right: 15px;
 }
 
 /*
@@ -136,24 +163,34 @@ LAYOUT: Three column fixed layout with content on the right
 .three-column-content-right #main-content,
 .three-column-content-right #content{
 	float: right;
-	margin-left: 2.5641%;
+	padding-right: 0;
 }
-.three-column-content-right #sidebar-alt,
-.three-column-content-right #sidebar{
+.three-column-content-right #content{
+	padding-right: 0;
+	padding-left: 15px;
+}
+.three-column-content-right #sidebar,
+.three-column-content-right #sidebar-alt{
 	float: left;
-	margin-left: 0;
+	padding-right: 15px;
+}
+.three-column-content-right #sidebar-alt{
+	padding-left: 0;
 }
 
 /*
-LAYOUT: Three column fixed layout with content on the right
+LAYOUT: Three column fixed layout with content on the middle
 */
 .three-column-content-middle #main-content{
 	float: right;
-	margin-left: 2.5641%;
+}
+.three-column-content-middle #content{
+	padding-left: 15px;
 }
 .three-column-content-middle #sidebar-alt{
 	float: left;
-	margin-left: 0;
+	padding-right: 15px;
+	padding-left: 0;
 }
 
 /*

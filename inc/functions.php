@@ -1310,7 +1310,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 't-em', 'span10 text-right pull-right' );
+	t_em_user_social_network( 't-em', 'col-md-10 text-right' );
 }
 
 /**
@@ -1468,37 +1468,37 @@ function t_em_add_bootstrap_class( $section ){
 
 	// #main-content and three-column or ( two-column or one-column )
 	if ( 'main-content' == $section && $three_column ) :
-		$bootstrap_classes = 'span9';
+		$bootstrap_classes = 'col-md-9';
 	elseif ( 'main-content' == $section && ( $two_column || $one_column ) ) :
-		$bootstrap_classes = 'span12';
+		$bootstrap_classes = 'col-md-12';
 	endif;
 	// #content and three-column or one-column
 	if ( 'content' == $section && $three_column ) :
-		$bootstrap_classes = 'span8';
+		$bootstrap_classes = 'col-md-8';
 	elseif ( 'content' == $section && $one_column ) :
-		$bootstrap_classes = 'span12';
+		$bootstrap_classes = 'col-md-12';
 	endif;
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
-		$bootstrap_classes = 'span4';
+		$bootstrap_classes = 'col-md-4';
 	endif;
 	// #sidebar-alt and three-column
 	if ( 'sidebar-alt' == $section && $three_column ) :
-		$bootstrap_classes = 'span3';
+		$bootstrap_classes = 'col-md-3';
 	endif;
 	// #content and two-column
 	if ( 'content' == $section && $two_column ) :
-		$bootstrap_classes = 'span8';
+		$bootstrap_classes = 'col-md-8';
 	endif;
 	// #sidebar and two-column
 	if ( 'sidebar' == $section && $two_column ) :
-		$bootstrap_classes = 'span4';
+		$bootstrap_classes = 'col-md-4';
 	endif;
 
 	// Archive columns
 	if ( 'archive-columns' == $section ) :
-		$span = 12 / $t_em_theme_options['archive_in_columns'];
-		$bootstrap_classes = 'span' . $span;
+		$cols = 12 / $t_em_theme_options['archive_in_columns'];
+		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	/** Static Header Content and Image */
@@ -1510,8 +1510,8 @@ function t_em_add_bootstrap_class( $section ){
 								|| ! empty ( $t_em_theme_options['static_header_secondary_button_text'] )
 								) ? '1' : '0';
 		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
-		$span = 12 / $total_static_header;
-		$bootstrap_classes = 'span' . $span;
+		$cols = 12 / $total_static_header;
+		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	/** Static Header Buttons */
@@ -1519,8 +1519,8 @@ function t_em_add_bootstrap_class( $section ){
 		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static_header_primary_button_text'] ) ) ? '1' : '0';
 		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static_header_secondary_button_text'] ) ) ? '1' : '0';
 		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
-		$span = 12 / $total_static_header_button;
-		$bootstrap_classes = 'span' . $span;
+		$cols = 12 / $total_static_header_button;
+		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	/** Front Page Widgets Area */
@@ -1530,8 +1530,8 @@ function t_em_add_bootstrap_class( $section ){
 		$widget_three	= ( ! empty ( $t_em_theme_options['headline_text_widget_three'] ) || ! empty ( $t_em_theme_options['content_text_widget_three'] ) ) ? '1' : '0' ;
 		$widget_four	= ( ! empty ( $t_em_theme_options['headline_text_widget_four'] ) || ! empty ( $t_em_theme_options['content_text_widget_four'] ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array ( $widget_two, $widget_three, $widget_four ) );
-		$span = 12 / $total_widgets;
-		$bootstrap_classes = 'span' . $span;
+		$cols = 12 / $total_widgets;
+		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	/** Footer Widgets Area */
@@ -1547,8 +1547,8 @@ function t_em_add_bootstrap_class( $section ){
 									array ( 'four-footer-widget' )
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array ( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
-		$span = 12 / $total_widgets;
-		$bootstrap_classes = 'span' . $span;
+		$cols = 12 / $total_widgets;
+		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	return $bootstrap_classes;
@@ -1719,7 +1719,7 @@ function t_em_javascript_required(){
  */
 function t_em_heading_site_title(){
 ?>
-	<hgroup class="span12">
+	<hgroup class="col-md-12">
 		<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 		<<?php echo $heading_tag; ?> id="site-title" class="pull-left">
 		<span>
@@ -1738,12 +1738,12 @@ function t_em_top_menu(){
 if ( has_nav_menu( 'top-menu' ) ) :
 /* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
 	<h3 id="top-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-	<div id="top" class="container-fluid">
-		<div id="inner-top" class="wrapper row-fluid">
-			<nav id="top-menu" role="navigation" class="span12">
+	<div id="top">
+		<div id="inner-top" class="wrapper container">
+			<nav id="top-menu" role="navigation">
 				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '1' ) ); ?>
 			</nav>
-		</div><!-- .row-fluid -->
+		</div><!-- .wrapper -->
 	</div>
 <?php endif;
 }
@@ -1754,13 +1754,13 @@ if ( has_nav_menu( 'top-menu' ) ) :
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<h3 id="navigation-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Navigation', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-	<nav id="site-navigation" role="navigation" class="container-fluid">
+	<nav id="site-navigation" role="navigation">
 		<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
 		<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
 		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
 		<div class="skip-link"><a class="assistive-text" href="#sidebar" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
 		<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-		<?php wp_nav_menu( array( 'container_class' => 'menu-header wrapper row-fluid', 'theme_location' => 'navigation-menu' ) ); ?>
+		<?php wp_nav_menu( array( 'container_class' => 'menu-header wrapper container', 'theme_location' => 'navigation-menu' ) ); ?>
 	</nav><!-- #site-navigation -->
 <?php endif;
 }
@@ -1784,7 +1784,7 @@ function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
 ?>
 	<h3 id="footer-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-		<nav id="footer-menu" class="span10 text-right pull-right">
+		<nav id="footer-menu" class="col-md-10 text-right pull-right">
 			<?php wp_nav_menu( array ( 'container_class' => 'menu-footer', 'theme_location' => 'footer-menu', 'depth' => 1 ) ); ?>
 		</nav>
 <?php endif; ?>
@@ -1796,7 +1796,7 @@ if ( has_nav_menu( 'footer-menu' ) ) :
  */
 function t_em_copy_right(){
 ?>
-	<div id="copyright" class="span2 pull-left">
+	<div id="copyright" class="col-md-2 pull-left">
 		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<?php bloginfo( 'name' ); ?>
 		</a>
@@ -1811,7 +1811,7 @@ function t_em_dot_com_link(){
 global $t_em_theme_options, $t_em_theme_data;
 $hidden_class = ( '0' == $t_em_theme_options['t_em_link'] ) ? 'hidden' : null;
 ?>
-	<div id="twenty-em-credit" class="text-center <?php echo $hidden_class ?>">
+	<div id="twenty-em-credit" class="text-center small <?php echo $hidden_class ?>">
 		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
 		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
 			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">

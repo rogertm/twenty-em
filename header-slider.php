@@ -36,9 +36,9 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 	);
 	query_posts ( $args );
 ?>
-		<section id="t-em-slider" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container-fluid">
+		<section id="t-em-slider" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container">
 <?php if ( have_posts() ) : ?>
-			<div class="carousel-inner wrapper row-fluid">
+			<div class="carousel-inner wrapper row">
 <?php
 		while ( have_posts() ) : the_post();
 			if ( has_post_thumbnail( $post->ID ) ) :
@@ -69,7 +69,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 ?>
 			</div><!-- .carousel-inner -->
 <?php endif; ?>
-			<div class="clearfix wrapper row-fluid">
+			<div class="clearfix wrapper row">
 				<div class="carousel-drivers">
 				<ol class="carousel-indicators pull-left">
 <?php $s = 0; while ( $s < $tp ) : ?>

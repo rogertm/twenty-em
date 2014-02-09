@@ -16,7 +16,7 @@ get_header(); ?>
 <?php
 if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
-			<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+			<section id="main-content" class="<?php echo t_em_add_bootstrap_class('main-content'); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 				<?php t_em_content_before(); ?>
 <?php
@@ -48,20 +48,20 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 	// Else, we display a list of post
 	else :
 ?>
-			<div class="row-fluid">
+			<div class="row">
 		<?php
 		if ( have_posts() ) :
 			$i = 0;
 			while ( have_posts() ) : the_post();
 				if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
 					echo '</div>';
-					echo '<div class="row-fluid">';
+					echo '<div class="row">';
 				endif;
 				get_template_part( 'content', get_post_format() );
 				$i++;
 			endwhile;
 		?>
-			</div><!-- .row-fluid -->
+			</div><!-- .row -->
 		<?php
 		else :
 			get_template_part( 'content', 'none' );
@@ -76,12 +76,12 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
-			<section id="main-content" class="row-fluid">
-				<section id="content" role="main" class="span12">
+			<section id="main-content" class="row">
+				<section id="content" role="main" class="col-md-12">
 					<?php t_em_front_page_widgets_before(); ?>
 					<section id="featured-widget-area" class="text-center">
 						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
-						<div class="row-fluid">
+						<div class="row">
 							<?php t_em_front_page_widgets( 'two', 'btn' ); ?>
 							<?php t_em_front_page_widgets( 'three', 'btn' ); ?>
 							<?php t_em_front_page_widgets( 'four', 'btn' ); ?>

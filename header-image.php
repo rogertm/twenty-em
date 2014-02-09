@@ -10,8 +10,8 @@ if ( $header_image ) :
 	$header_image_width = get_theme_support( 'custom-header', 'width' );
 	$header_image_height = get_theme_support( 'custom-header', 'height' );
 ?>
-	<section id="header-image" class="container-fluid">
-		<div class="wrapper row-fluid">
+	<section id="header-image" class="container">
+		<div class="wrapper row">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
 	// Check if the user choose to display featured image in single posts and pages

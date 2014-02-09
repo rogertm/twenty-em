@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+		<section id="main-content" class="row <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_content_before(); ?>
 

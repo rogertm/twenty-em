@@ -56,7 +56,7 @@ function t_em_header_inside_before(){
 }
 
 /**
- * Fire the t_em_header_inside action, just after opening <div id="branding"><div class="wrapper row-fluid">
+ * Fire the t_em_header_inside action, just after opening <div id="branding"><div class="wrapper row">
  * tag
  *
  * @file header.php
@@ -97,7 +97,7 @@ function t_em_main_before(){
 }
 
 /**
- * Fire the t_em_main_after action, just before closing </div><!-- #main .container-fluid --> tag
+ * Fire the t_em_main_after action, just before closing </div><!-- #main .container --> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0

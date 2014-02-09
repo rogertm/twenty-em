@@ -7,9 +7,9 @@
 global $t_em_theme_options;
 if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '0' == $t_em_theme_options['static_header_home_only'] ) :
 ?>
-<section id="static-header" class="container-fluid" role="info">
+<section id="static-header" class="container" role="info">
 	<div class="jumbotron wrapper">
-		<div class="row-fluid text-center">
+		<div class="row text-center">
 
 <?php if ( ! empty ( $t_em_theme_options['static_header_img_src'] ) ) : ?>
 			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
@@ -53,8 +53,8 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 			</div><!-- #static-header-text -->
 <?php endif; ?>
 
-		</div><!-- .row-fluid .text-center -->
-	</div><!-- .container-fluid -->
+		</div><!-- .row .text-center -->
+	</div><!-- .container -->
 </section><!-- #static-header .jumbotron -->
 <?php
 endif;

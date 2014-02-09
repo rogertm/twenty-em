@@ -9,10 +9,10 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="row-fluid <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+		<section id="main-content" class="row <?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_content_before(); ?>
-				<div class="row-fluid">
+				<div class="row">
 			<?php if ( have_posts() ) : ?>
 				<header>
 					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
@@ -22,13 +22,13 @@ get_header(); ?>
 				while ( have_posts() ) : the_post();
 					if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
 						echo '</div>';
-						echo '<div class="row-fluid">';
+						echo '<div class="row">';
 					endif;
 					get_template_part( 'content', get_post_format() );
 					$i++;
 				endwhile;
 			?>
-				</div><!-- .row-fluid -->
+				</div><!-- .row -->
 			<?php
 			else :
 				get_template_part( 'content', 'none' );
