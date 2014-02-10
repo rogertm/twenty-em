@@ -19,7 +19,7 @@ get_header(); ?>
 		<section id="main-content">
 			<section id="content" role="main">
 				<?php t_em_content_before(); ?>
-				<?php t_em_custom_template_content(); ?>
+				<?php t_em_template_content(); ?>
 <?php
 	// Display all child pages of current page.
 	$args = array (
@@ -69,16 +69,5 @@ get_header(); ?>
 				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 		</section>
-
-<?php
-	// Register and enqueue bootstrap-tabs.js plugin
-	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-transition' );
-	wp_register_script( 'bootstrap-tabs', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-tab.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-tabs' );
-	wp_register_script( 'script-tourable', T_EM_THEME_DIR_JS_URL . '/script.tourable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'script-tourable' );
-?>
 
 <?php get_footer(); ?>

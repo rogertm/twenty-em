@@ -66,6 +66,25 @@ function t_em_enqueue_styles_and_scripts(){
 
 	wp_register_script( 'navigation', T_EM_THEME_DIR_JS_URL.'/navigation.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'navigation' );
+
+	// Load required Bootstrap js files for custom templates
+	if ( is_page_template( 'template-collapsible-content.php' ) ) :
+		// Register and enqueue bootstrap-collapse.js plugin
+		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'bootstrap-transition' );
+		wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-collapse.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'bootstrap-collapse' );
+	endif;
+
+	if ( is_page_template( 'template-tour.php' ) ) :
+		// Register and enqueue bootstrap-tabs.js plugin
+		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'bootstrap-transition' );
+		wp_register_script( 'bootstrap-tabs', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-tab.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'bootstrap-tabs' );
+		wp_register_script( 'script-tourable', T_EM_THEME_DIR_JS_URL . '/script.tourable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'script-tourable' );
+	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 

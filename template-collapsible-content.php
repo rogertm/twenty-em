@@ -18,31 +18,10 @@ get_header(); ?>
 
 		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_content_before(); ?>
+				<?php t_em_content_before(); ?>
 
-				<div id="accordion-box" class="accordion">
-
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
-					<?php t_em_page_before(); ?>
-
-					<div class="accordion-group">
-						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<header>
-								<h1 class="entry-title accordion-heading"><a href="#collapse-<?php the_ID(); ?>" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-box"><?php the_title(); ?><span class="icon-arrow-down font-icon pull-right"></span></a></h1>
-							</header>
-
-							<div id="collapse-<?php the_ID(); ?>" class="entry-content accordion-body collapse in">
-								<div class="accordion-inner">
-									<?php the_content(); ?>
-									<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-								</div><!-- .accordion-inner -->
-								<footer class="entry-utility">
-									<?php t_em_edit_post_link(); ?>
-								</footer>
-							</div><!-- #collapse-## .entry-content -->
-						</article><!-- #post-## -->
-					</div><!-- .accordion-group -->
+				<?php t_em_template_content(); ?>
+				<div id="accordion-box" class="panel-group">
 <?php
 	// Display all child pages of the current page.
 	$args = array (
@@ -57,40 +36,31 @@ get_header(); ?>
 		if ( ! $content ) continue;
 			$content = apply_filters( 'the_content', $content );
 ?>
-					<div class="accordion-group">
-						<article id="post-<?php echo $page->ID ?>" <?php post_class(); ?>>
-							<header>
-								<h2 class="entry-title accordion-heading"><a href="#collapse-<?php echo $page->ID ?>" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-box"><?php echo $page->post_title; ?><span class="icon-arrow-down font-icon pull-right"></span></a></h2>
-							</header>
-							<div id="collapse-<?php echo $page->ID ?>" class="entry-content accordion-body collapse">
-								<div class="accordion-inner">
-									<?php echo $content; ?>
-								</div><!-- .accordion-inner -->
-								<footer class="entry-utility">
-									<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icon-edit font-icon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
-								</footer>
-							</div><!-- #collapse-## .entry-content -->
-						</article><!-- #post-## -->
-					</div><!-- .accordion-group -->
+					<article id="post-<?php echo $page->ID ?>" class="panel panel-default">
+						<header class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#collapse-<?php echo $page->ID ?>" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-box">
+									<?php echo $page->post_title; ?><span class="icon-arrow-down font-icon pull-right"></span>
+								</a>
+							</h4>
+						</header>
+						<div id="collapse-<?php echo $page->ID ?>" class="panel-collapse collapse">
+							<div class="panel-body">
+								<?php echo $content; ?>
+							</div><!-- .accordion-inner -->
+							<footer class="entry-utility">
+								<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icon-edit font-icon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
+							</footer>
+						</div><!-- #collapse-## .entry-content -->
+					</article><!-- .panel panel-default -->
 <?php
 	endforeach;
 ?>
-
-					<?php t_em_page_after() ?>
-<?php endwhile; ?>
-				</div><!-- #accordion-box .accordion -->
+				</div><!-- #accordion-box .panel-group -->
 				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->
 		<?php get_sidebar( 'alt' ); ?>
-<?php
-	// Register and enqueue bootstrap-collapse.js plugin
-	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-transition' );
-	wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-collapse.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-collapse' );
-?>
 
 <?php get_footer(); ?>
