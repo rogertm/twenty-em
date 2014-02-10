@@ -14,7 +14,7 @@ get_header(); ?>
 				<?php t_em_content_before(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
-					<h1 class="entry-title"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
+					<h1 class="entry-title page-header"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
 					<div class="entry-content">
 						<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', 't_em' ); ?></p>
 						<?php get_search_form(); ?>

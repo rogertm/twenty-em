@@ -91,7 +91,7 @@ nav ul li:hover > ul {
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
 
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -113,7 +113,7 @@ time, mark, audio, video {
 }
 ol, ul {
 	list-style: none;
-}
+}*/
 
 
 /* =Layout
@@ -197,7 +197,7 @@ LAYOUT: Footer
 
 /* =Fonts
 -------------------------------------------------------------- */
-.page-title span,
+/*.page-title span,
 .pingback a.url,
 h2#site-description,
 #content blockquote {
@@ -249,7 +249,7 @@ input[type="email"],
 input[type="url"],
 textarea {
 	font-family: "Open Sans",Helvetica,Arial,sans-serif;
-}
+}*/
 
 
 /* =Structure
@@ -327,7 +327,7 @@ div.menu,
 /* =Global Elements
 -------------------------------------------------------------- */
 /* Main global 'theme' and typographic styles */
-body {
+/*body {
 	color: #333;
 	font-size: 14px;
 	line-height: 20px;
@@ -344,10 +344,10 @@ hr {
 	clear: both;
 	height: 1px;
 	margin-bottom: 18px;
-}
+}*/
 
 /* Text elements */
-p {
+/*p {
 	margin-bottom: 18px;
 }
 ul {
@@ -427,7 +427,7 @@ sup {
 }
 sub {
 	top: .5ex;
-}
+}*/
 
 /* Assistive text */
 .assistive-text {
@@ -511,6 +511,16 @@ sub {
 
 /* =Menu
 -------------------------------------------------------------- */
+ul.menu,
+ul.sub-menu{
+	padding-left: 0 !important;
+}
+ul.sub-menu li{
+	padding: 0 !important;
+}
+ul.sub-menu li a{
+	width: 180px;
+}
 
 /** Navigation Menu */
 #site-navigation {
@@ -567,7 +577,6 @@ div.menu li {
 #site-navigation ul ul a {
 	line-height: 1em;
 	padding: 10px;
-	width: 160px;
 	height: auto;
 }
 #site-navigation li:hover > a,
@@ -642,7 +651,7 @@ div.menu li {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-#content p,
+/*#content p,
 #content ul,
 #content ol,
 #content dd,
@@ -655,7 +664,7 @@ div.menu li {
 #content ul ol,
 #content ol ul {
 	margin-bottom: 0;
-}
+}*/
 .accordion-group .hentry{
 	margin: 0;
 }
@@ -682,10 +691,10 @@ div.menu li {
 .page-title a:active,
 .page-title a:hover {
 }
-#content .entry-title {
+#content .entry-title,
+#content .page-header {
 	font-weight: normal;
 	line-height: 1.5em;
-	margin: 0;
 }
 .entry-title a{
 	display: inline-block;
@@ -777,8 +786,6 @@ div.menu li {
 #entry-author-info,
 #category-description {
 	clear: both;
-	font-size: 14px;
-	line-height: 20px;
 }
 #author-avatar img {
 	display: block;
@@ -1184,6 +1191,7 @@ input[type=submit] {
 .widget-area ul {
 	list-style: none;
 	margin-left: 0;
+	padding-left: 0;
 }
 .widget-area ul li{
 	margin: 3px 0 3px 5px;
@@ -1193,9 +1201,8 @@ input[type=submit] {
 	clear: both;
 }
 .widget-title {
-	font-weight: bold;
-	font-size: 14px;
-	margin: 0;
+	margin: 25px 0 15px;
+	padding-bottom: 7px;
 }
 .widget-area ul li a{
 	line-height: 22px;
@@ -1265,19 +1272,8 @@ input[type=submit] {
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
-#featured-widget-area img{
-	max-height: 145px;
-	margin-bottom: 15px;
-}
 .front-page-widget{
-	margin-bottom: 25px;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
-}
-#front-page-widget-one header > *{
-	font-size: 60px;
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 }
 
 /* =Footer

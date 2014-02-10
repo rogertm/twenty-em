@@ -766,10 +766,10 @@ function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="entry-author-info" class="well media">
 		<div id="author-avatar" class="pull-left">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_filters( 't_em_author_bio_avatar_size', 80 ), '', get_the_author() ); ?>
+			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_filters( 't_em_author_bio_avatar_size', 64 ), '', get_the_author() ); ?>
 		</div><!-- #author-avatar -->
 		<div id="author-description" class="media-body">
-			<h2 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h2>
+			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
 			<?php the_author_meta( 'description' ); ?>
 			<?php if ( is_single() ) : ?>
 			<div id="author-link">
@@ -781,6 +781,20 @@ function t_em_author_meta(){
 		</div><!-- #author-description -->
 	</div><!-- #entry-author-info -->
 <?php
+	endif;
+}
+endif;
+
+if ( ! function_exists( 't_em_category_description' ) ) :
+/**
+ * Display the category description.
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_category_description(){
+	$category_description = category_description();
+	if ( ! empty( $category_description ) ) :
+		echo '<div id="category-description" class="archive-meta lead">' . $category_description . '</div>';
 	endif;
 }
 endif;
@@ -1097,7 +1111,7 @@ function t_em_custom_template_content( $icon_class = '' ){
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
 		<header>
-			<h1 class="entry-title"><?php echo $span_icon_class ?><?php echo $template_data->post_title; ?></h1>
+			<h1 class="page-header"><?php echo $span_icon_class ?><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php
 	if ( have_posts() ) :
@@ -1400,7 +1414,7 @@ function t_em_single_related_posts() {
  *
  * @since Twenty'em 1.0
  */
-function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
+function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '', $h_tag = '' ){
 	global $t_em_theme_options;
 
 	if ( ! empty( $t_em_theme_options['headline_text_widget_'.$widget.''] ) || ! empty( $t_em_theme_options['content_text_widget_'.$widget.''] ) ) :
@@ -1421,23 +1435,59 @@ function t_em_front_page_widgets( $widget, $btn_class = '', $h_tag = 'h3' ){
 			'<footer><a href="'. $t_em_theme_options['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
 
-		$widget_wrapper = ( 'one' == $widget ) ? '<div class="hero-unit">' : '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
-		$widget_wrapper_end = '</div>';
+		// $widget_wrapper = ( 'one' != $widget ) ? '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">' : null;
+		// $widget_wrapper_end = ( 'one' != $widget ) ? '</div>' : null;
+
+		if ( $widget != 'one' ) :
+			$widget_wrapper		= '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
+			$widget_wrapper_end	= '</div>';
+			$widget_caption		= '<div class="caption">';
+			$widget_caption_end	= '</div>';
+		else :
+			$widget_wrapper		= null;
+			$widget_wrapper_end	= null;
+			$widget_caption		= null;
+			$widget_caption_end	= null;
+		endif;
 
 		echo $widget_wrapper;
 ?>
-		<div id="front-page-widget-<?php echo $widget ?>" class="front-page-widget">
+		<div id="front-page-widget-<?php echo $widget ?>" class="front-page-widget <?php echo $wrapper_class; ?>">
 			<?php
-			echo $widget_headline;
 			echo $widget_thumbnail_url;
-			echo $widget_content;
-			echo $widget_link;
+			echo $widget_caption;
+				echo $widget_headline;
+				echo $widget_content;
+				echo $widget_link;
+			echo $widget_caption_end;
 			?>
 		</div>
 <?php
 		echo $widget_wrapper_end;
 	endif;
 }
+
+if ( ! function_exists( 't_em_display_front_page_widgets' ) ) :
+/**
+ * Display Text Widgets in the front page
+ *
+ * @uses t_em_front_page_widgets() See t_em_front_page_widgets() function above
+ * @since Twenty'em 1.0
+ */
+function t_em_display_front_page_widgets(){
+?>
+	<div class="text-center">
+		<?php t_em_front_page_widgets( 'one', 'jumbotron', 'btn btn-lg btn-primary', 'h1' ); ?>
+	</div>
+	<div class="row">
+		<?php t_em_front_page_widgets( 'two', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'three', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'four', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
+	</div>
+<?php
+}
+endif;
+
 
 /**
  * Add Bootstrap CSS Classes dynamically.
@@ -1741,7 +1791,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 	<div id="top">
 		<div id="inner-top" class="wrapper container">
 			<nav id="top-menu" role="navigation">
-				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '1' ) ); ?>
+				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '0' ) ); ?>
 			</nav>
 		</div><!-- .wrapper -->
 	</div>

@@ -31,9 +31,9 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<header>
 						<?php if ( is_front_page() ) : ?>
-							<h2 class="entry-title"><?php the_title(); ?></h2>
+							<h2 class="page-header"><?php the_title(); ?></h2>
 						<?php else : ?>
-							<h1 class="entry-title"><?php the_title(); ?></h1>
+							<h1 class="page-header"><?php the_title(); ?></h1>
 						<?php endif; ?>
 						</header>
 						<div class="entry-content">
@@ -47,10 +47,10 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 		endif; // have_posts()
 	// Else, we display a list of post
 	else :
+		if ( have_posts() ) :
 ?>
 			<div class="row">
-		<?php
-		if ( have_posts() ) :
+<?php
 			$i = 0;
 			while ( have_posts() ) : the_post();
 				if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
@@ -76,16 +76,13 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 <?php
 elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
 ?>
-			<section id="main-content" class="row">
-				<section id="content" role="main" class="col-md-12">
+			<section id="main-content">
+				<section id="content" role="main">
 					<?php t_em_front_page_widgets_before(); ?>
-					<section id="featured-widget-area" class="text-center">
-						<?php t_em_front_page_widgets( 'one', 'btn btn-large btn-primary', 'h2' ); ?>
-						<div class="row">
-							<?php t_em_front_page_widgets( 'two', 'btn' ); ?>
-							<?php t_em_front_page_widgets( 'three', 'btn' ); ?>
-							<?php t_em_front_page_widgets( 'four', 'btn' ); ?>
-						</div>
+					<section id="featured-widget-area">
+						<?php t_em_front_page_widgets_inside_before(); ?>
+						<?php t_em_display_front_page_widgets(); ?>
+						<?php t_em_front_page_widgets_inside_after(); ?>
 					</section><!-- #featured-widget-area -->
 					<?php t_em_front_page_widgets_after(); ?>
 				</section><!-- #content -->

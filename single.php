@@ -20,7 +20,7 @@ get_header(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_post_inside_before(); ?>
 			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="page-header"><?php the_title(); ?></h1>
 
 				<span class="entry-meta">
 					<?php t_em_posted_on(); ?>

@@ -17,7 +17,7 @@ get_header(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header>
-					<h2 class="entry-title"><span class="icon-paper-clip font-icon"></span><?php the_title(); ?></h2>
+					<h2 class="entry-title page-header"><span class="icon-paper-clip font-icon"></span><?php the_title(); ?></h2>
 					<span class="entry-meta">
 						<span class="icon-calendar font-icon"></span>
 						<?php

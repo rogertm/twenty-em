@@ -405,6 +405,9 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 	function t_em_gallery_style(){
 ?>
 		<style type="text/css">
+			.row.t-em-img-gallery-row-wrapper{
+				margin: 0;
+			}
 			.t-em-img-gallery-row-wrapper{
 				margin-top: 15px;
 			}
@@ -441,12 +444,12 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 					width: 50%;
 				}
 				/** Fix two columns widget */
-				.t-em-img-gallery-row-wrapper > div.span6{
+				.t-em-img-gallery-row-wrapper > div.col-md-6{
 					float: left;
 					width: 50%;
 				}
 				/** Fix three columns widget */
-				.t-em-img-gallery-row-wrapper > div.span4{
+				.t-em-img-gallery-row-wrapper > div.col-md-4{
 					float: left;
 					width: 33%;
 				}
@@ -516,7 +519,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
 					$span = 12 / $instance['columns'];
-					echo '<div class="span'. $span .'">';
+					echo '<div class="col-md-'. $span .' thumbnail">';
 						t_em_featured_post_thumbnail( 300, 300, 't-em-img-gallery-thumbnail' );
 					echo '</div>';
 					$i++;

@@ -14,8 +14,8 @@ get_header(); ?>
 			<?php t_em_content_before(); ?>
 
 				<header>
-					<h1 class="page-title">
-						<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+					<h1 class="page-header">
+						<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span class="small">' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 				</header>
 			<?php if ( have_posts() ) : ?>
 				<div class="row">
