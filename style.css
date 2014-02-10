@@ -772,9 +772,6 @@ div.menu li {
 	padding: 0.5em 0.75em;
 	text-decoration: none;
 }
-.home .sticky .page-link a {
-	background: #d9e8f7;
-}
 .page-link a:active,
 .page-link a:hover {
 }
@@ -827,6 +824,10 @@ div.menu li {
 .single .featured-post-thumbnail{
 	float: none !important;
 	margin: 0 auto !important;
+}
+.row article.sticky{
+	margin: 35px 15px 50px;
+	width: 96%;
 }
 
 
@@ -1182,7 +1183,6 @@ input[type=submit] {
 }
 #commentform .form-allowed-tags code{
 	white-space: pre-wrap;
-	color: #333;
 }
 
 

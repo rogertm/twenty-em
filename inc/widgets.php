@@ -427,7 +427,15 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 			.t-em-img-gallery-thumbnail figcaption{
 				display: none;
 			}
-			@media( max-width: 767px ){
+			.t-em-img-gallery-row-wrapper .col-md-6.thumbnail{
+				margin: 0 2.5% 2.5%;
+				max-width: 45%;
+			}
+			.t-em-img-gallery-row-wrapper .col-md-4.thumbnail{
+				margin: 0 1.5% 1.5%;
+				max-width: 30%;
+			}
+		@media( max-width: 767px ){
 				.t-em-img-gallery-row-wrapper{
 					margin: 1% 0 auto 0;
 				}
@@ -520,7 +528,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 					endif;
 					$span = 12 / $instance['columns'];
 					echo '<div class="col-md-'. $span .' thumbnail">';
-						t_em_featured_post_thumbnail( 300, 300, 't-em-img-gallery-thumbnail' );
+						t_em_featured_post_thumbnail( 500, 500, 't-em-img-gallery-thumbnail' );
 					echo '</div>';
 					$i++;
 				endwhile;

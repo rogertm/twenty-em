@@ -1435,9 +1435,6 @@ function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '',
 			'<footer><a href="'. $t_em_theme_options['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
 
-		// $widget_wrapper = ( 'one' != $widget ) ? '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">' : null;
-		// $widget_wrapper_end = ( 'one' != $widget ) ? '</div>' : null;
-
 		if ( $widget != 'one' ) :
 			$widget_wrapper		= '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
 			$widget_wrapper_end	= '</div>';
