@@ -27,10 +27,10 @@
 <?php
 if ( have_comments() ) :
 ?>
-	<h3 id="comments-title"><?php
+	<h2 id="comments-title"><?php
 	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 't_em' ),
-	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-	?></h3>
+	number_format_i18n( get_comments_number() ), '<span class="small">' . get_the_title() . '</span>' );
+	?></h2>
 <?php
 	global $t_em_theme_options;
 	if ( '1' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
@@ -58,7 +58,7 @@ if ( have_comments() ) :
 				<?php echo count( $wp_query->comments_by_type['trackback'] ); ?>
 				<?php _e( 'Trackbacks', 't_em' ); ?>
 			</h4>
-			<ul class="commentlist">
+			<ul class="commentlist media-list">
 				<?php wp_list_comments( array( 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
 			</ul>
 <?php
@@ -100,7 +100,7 @@ if ( have_comments() ) :
 
 else : // If there are no responds
 ?>
-	<h3 id="comments-title"><?php _e('No responds to ', 't_em'); ?><em><?php the_title(); ?></em></h3>
+	<h2 id="comments-title"><?php _e('No responds to ', 't_em'); ?><span class="small"><?php the_title(); ?></span></h2>
 <?php
 endif; // have_comments()
 ?>
