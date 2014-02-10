@@ -77,13 +77,15 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	if ( is_page_template( 'template-tour.php' ) ) :
-		// Register and enqueue bootstrap-tabs.js plugin
+		// Register and enqueue bootstrap-tabs.js plugin and custom css for tabs
 		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'bootstrap-transition' );
 		wp_register_script( 'bootstrap-tabs', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-tab.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'bootstrap-tabs' );
 		wp_register_script( 'script-tourable', T_EM_THEME_DIR_JS_URL . '/script.tourable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'script-tourable' );
+		wp_register_style( 'bootstrap-tabs', T_EM_THEME_DIR_CSS_URL . '/style-bs-tabs.css', array(), $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'bootstrap-tabs' );
 	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );

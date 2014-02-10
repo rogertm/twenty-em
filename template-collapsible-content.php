@@ -21,7 +21,7 @@ get_header(); ?>
 				<?php t_em_content_before(); ?>
 
 				<?php t_em_template_content(); ?>
-				<div id="accordion-box" class="panel-group">
+
 <?php
 	// Display all child pages of the current page.
 	$args = array (
@@ -30,6 +30,9 @@ get_header(); ?>
 		'child_of'		=> $post->ID,
 	);
 	$child_pages = get_pages( $args );
+?>
+				<div id="accordion-box" class="panel-group">
+<?php
 	foreach ( $child_pages as $page ) :
 		$content = $page->post_content;
 		// Check for empty pages

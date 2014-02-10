@@ -1,0 +1,88 @@
+/**
+ * Style Bootstrap Tabs
+ * Brings back the old Bootstrap tabs style
+ */
+.tabbable{
+	overflow: auto;
+	margin-bottom: 50px;
+}
+.tabbable h4{
+	font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.tab-content{
+	overflow: auto;
+}
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs{
+	border-bottom: 0;
+}
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus{
+	border-color: transparent #ddd #ddd;
+}
+
+/* Tabs Below */
+.tabs-below > .nav-tabs{
+	border-top: 1px solid #ddd;
+}
+.tabs-below > .nav-tabs > li{
+	margin-bottom: 0;
+	margin-top: -1px;
+}
+.tabs-below > .nav-tabs > li > a{
+	border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	-webkit-border-radius: 0 0 4px 4px;
+}
+
+/* Tabs Left */
+.tabs-left > .nav-tabs{
+	border-right: 1px solid #ddd;
+	float: left;
+	margin-right: 20px;
+}
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus{
+	border-color: #ddd transparent #ddd #ddd;
+}
+.tabs-left > .nav-tabs > li > a{
+	margin-right: -1px !important;
+	border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+}
+
+/* Tabs Right */
+.tabs-right > .nav-tabs{
+	border-left: 1px solid #ddd;
+	float: right;
+	margin-left: 20px;
+}
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus{
+	border-color: #ddd #ddd #ddd transparent;
+}
+.tabs-right > .nav-tabs > li > a{
+	margin-left: -1px !important;
+	border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	-webkit-border-radius: 0 4px 4px 0;
+}
+
+/* Tabs Left and Right */
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li{
+	float: none;
+}
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a{
+	margin-bottom: 3px;
+	margin-right: 0;
+	min-width: 75px;
+}

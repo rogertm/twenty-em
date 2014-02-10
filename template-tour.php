@@ -19,6 +19,7 @@ get_header(); ?>
 		<section id="main-content">
 			<section id="content" role="main">
 				<?php t_em_content_before(); ?>
+
 				<?php t_em_template_content(); ?>
 <?php
 	// Display all child pages of current page.
@@ -38,9 +39,10 @@ get_header(); ?>
 		if ( ! $content ) continue;
 			$content = apply_filters( 'the_content', $content );
 ?>
-						<li><a href="#tab-<?php echo $page->ID; ?>" data-toggle="tab"><?php echo $page->post_title; ?></a></li>
+						<li><a href="#tab-<?php echo $page->ID; ?>" data-toggle="tab">
+							<h4><?php echo $page->post_title; ?></h4>
+						</a></li>
 <?php
-
 	endforeach;
 ?>
 					</ul>
@@ -52,7 +54,7 @@ get_header(); ?>
 		if ( ! $content ) continue;
 			$content = apply_filters( 'the_content', $content );
 ?>
-						<article id="tab-<?php echo $page->ID ?>" class="tab-pane fade in">
+						<article id="tab-<?php echo $page->ID ?>" class="tab-pane">
 							<div class="entry-content">
 								<?php echo $content; ?>
 							</div>
