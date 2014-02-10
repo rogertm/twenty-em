@@ -26,10 +26,6 @@ footer {
 	width:100%;
 }
 
-h2#site-description {
-	font-size: 12px;
-	line-height: 36px;
-}
 #content figure{
 	margin: 0 auto;
 	line-height: 18px;
@@ -447,11 +443,12 @@ sub {
 	right: 0;
 }
 .wrapper{
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
 	margin: 0 auto;
 	padding: 0 1.28205%;
+}
+.jumbotron .btn{
+	margin: 15px 0;
+	padding: 14px 24px;
 }
 
 
@@ -460,13 +457,8 @@ sub {
 #header {
 	position: relative;
 }
-#branding hgroup{
-	padding: 15px 0 0 0;
-}
 #site-title {
-	font-size: 38.5px;
-	line-height: 40px;
-	margin: 0 0 15px;
+	font-size: 50px;
 	font-weight: bold;
 }
 #site-title a {
@@ -474,6 +466,8 @@ sub {
 }
 #site-description {
 	font-style: italic;
+	font-size: 20px;
+	margin-top: 50px;
 }
 #header-image .wrapper{
 	padding: 0;
@@ -482,15 +476,17 @@ sub {
 	width: 100%;
 	height: auto;
 }
-.jumbotron{
-	padding: 30px 2.5641% 50px;
+#static-header .jumbotron{
+	margin-bottom: 0;
+	padding-top: 50px;
+	padding-bottom: 75px;
 }
 #static-header img{
 	padding: 0;
+	max-width: 100%;
 }
-#static-header .btn-large{
-	margin: 0 0 10px 0;
-	min-width: 50%;
+#static-header .btn-lg{
+	min-width: 85%;
 }
 #static-header .actions{
 	margin-bottom: 20px;
@@ -499,11 +495,11 @@ sub {
 /** Static Header */
 .static-header-text-left #static-header-text{
 	float: left;
-	margin-left: 0;
+	/*margin-left: 0;*/
 }
 .static-header-text-left #static-header-image{
 	float: right;
-	margin-left: 2.5641%;
+	/*margin-left: 2.5641%;*/
 }
 
 /* =Menu

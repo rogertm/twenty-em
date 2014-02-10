@@ -7,9 +7,10 @@
 global $t_em_theme_options;
 if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '0' == $t_em_theme_options['static_header_home_only'] ) :
 ?>
-<section id="static-header" class="container" role="info">
-	<div class="jumbotron wrapper">
+<section id="static-header" class="" role="info">
+	<div class="wrapper container jumbotron">
 		<div class="row text-center">
+			<div class="">
 
 <?php if ( ! empty ( $t_em_theme_options['static_header_img_src'] ) ) : ?>
 			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
@@ -17,7 +18,7 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 					<img src="<?php echo esc_url( $t_em_theme_options['static_header_img_src'] ); ?>"
 						alt="<?php echo $t_em_theme_options['static_header_headline']; ?>"
 						title="<?php echo $t_em_theme_options['static_header_headline']; ?>"
-						class="img-rounded img-polaroid">
+						class="img-rounded img-thumbnail">
 				</figure>
 			</div><!-- #static-header-image -->
 <?php endif; ?>
@@ -35,7 +36,7 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 					<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 					<a href="<?php echo esc_url( $t_em_theme_options['static_header_primary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_text'] ); ?>"
-						class="btn btn-primary btn-large">
+						class="btn btn-primary btn-lg">
 							<span class="<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_icon_class'] ) ?>"></span>
 							<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_text'] ); ?></a>
 					</div>
@@ -44,7 +45,7 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 					<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 					<a href="<?php echo esc_url( $t_em_theme_options['static_header_secondary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_text'] ); ?>"
-						class="btn btn-inverse btn-large">
+						class="btn btn-default btn-lg">
 							<span class="<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_icon_class'] ) ?>"></span>
 							<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_text'] ); ?></a>
 					</div>
@@ -52,10 +53,10 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 				</div><!-- .actions -->
 			</div><!-- #static-header-text -->
 <?php endif; ?>
-
+			</div>
 		</div><!-- .row .text-center -->
-	</div><!-- .container -->
-</section><!-- #static-header .jumbotron -->
+	</div><!-- -->
+</section><!-- #static-header .container -->
 <?php
 endif;
 ?>

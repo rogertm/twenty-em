@@ -1766,7 +1766,7 @@ function t_em_javascript_required(){
  */
 function t_em_heading_site_title(){
 ?>
-	<hgroup class="col-md-12">
+	<hgroup>
 		<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 		<<?php echo $heading_tag; ?> id="site-title" class="pull-left">
 		<span>
