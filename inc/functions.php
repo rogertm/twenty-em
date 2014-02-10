@@ -1474,12 +1474,12 @@ if ( ! function_exists( 't_em_display_front_page_widgets' ) ) :
 function t_em_display_front_page_widgets(){
 ?>
 	<div class="text-center">
-		<?php t_em_front_page_widgets( 'one', 'jumbotron', 'btn btn-lg btn-primary', 'h1' ); ?>
+		<?php t_em_front_page_widgets( 'one', 'jumbotron', 'btn '.t_em_front_page_widgets_primary_btn_class().'', 'h1' ); ?>
 	</div>
 	<div class="row">
-		<?php t_em_front_page_widgets( 'two', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
-		<?php t_em_front_page_widgets( 'three', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
-		<?php t_em_front_page_widgets( 'four', 'thumbnail', 'btn btn-sm btn-default', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'two', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'three', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'four', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
 	</div>
 <?php
 }
@@ -1872,4 +1872,48 @@ $hidden_class = ( '0' == $t_em_theme_options['t_em_link'] ) ? 'hidden' : null;
 	</div>
 <?php
 }
+
+/**
+ * Helper pluggable functions.
+ *
+ * Set Bootstrap Buttons Classes
+ *
+ * @return string Bootstrap buttons classes
+ * @since Twenty'em 1.0
+ */
+if ( ! function_exists( 't_em_static_header_primary_btn_class' ) ) :
+/**
+ * Static Header Primary Button
+ */
+function t_em_static_header_primary_btn_class(){
+	return 'btn-primary btn-lg';
+}
+endif;
+
+if ( ! function_exists( 't_em_static_header_secondary_btn_class' ) ) :
+/**
+ * Static Header Secondary Button
+ */
+function t_em_static_header_secondary_btn_class(){
+	return 'btn-default btn-lg';
+}
+endif;
+
+if ( ! function_exists( 't_em_front_page_widgets_primary_btn_class' ) ) :
+/**
+ * Front Page Jumbotron Button Class
+ */
+function t_em_front_page_widgets_primary_btn_class(){
+	return 'btn-primary btn-lg';
+}
+endif;
+
+if ( ! function_exists( 't_em_front_page_widgets_secondary_btn_class' ) ) :
+/**
+ * Front Page Secondary text area Buttons
+ */
+function t_em_front_page_widgets_secondary_btn_class(){
+	return 'btn-default btn-sm';
+}
+endif;
 ?>

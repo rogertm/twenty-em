@@ -29,6 +29,7 @@ footer {
 #content figure{
 	margin: 0 auto;
 	line-height: 18px;
+	max-width: 100%;
 }
 #content figure img {
 	margin: 3px auto;
@@ -467,7 +468,7 @@ sub {
 #site-description {
 	font-style: italic;
 	font-size: 20px;
-	margin-top: 50px;
+	margin-top: 45px;
 }
 #header-image .wrapper{
 	padding: 0;

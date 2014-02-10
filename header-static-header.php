@@ -36,7 +36,7 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 					<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 					<a href="<?php echo esc_url( $t_em_theme_options['static_header_primary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_text'] ); ?>"
-						class="btn btn-primary btn-lg">
+						class="btn <?php echo t_em_static_header_primary_btn_class(); ?>">
 							<span class="<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_icon_class'] ) ?>"></span>
 							<?php echo esc_attr( $t_em_theme_options['static_header_primary_button_text'] ); ?></a>
 					</div>
@@ -45,7 +45,7 @@ if ( ( '1' == $t_em_theme_options['static_header_home_only'] && is_home() ) || '
 					<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 					<a href="<?php echo esc_url( $t_em_theme_options['static_header_secondary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_text'] ); ?>"
-						class="btn btn-default btn-lg">
+						class="btn <?php echo t_em_static_header_secondary_btn_class(); ?>">
 							<span class="<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_icon_class'] ) ?>"></span>
 							<?php echo esc_attr( $t_em_theme_options['static_header_secondary_button_text'] ); ?></a>
 					</div>
