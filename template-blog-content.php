@@ -44,7 +44,7 @@ if ( have_posts() ) :
 
 			<header class="entry-header">
 				<?php if ( is_sticky() ) : ?>
-					<span class="entry-format muted"><span class="icon-pin font-icon"></span><?php _e( 'Featured', 't_em' ); ?></span>
+					<span class="entry-format text-muted"><span class="icon-pin font-icon"></span><?php _e( 'Featured', 't_em' ); ?></span>
 				<?php endif; ?>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 				<span class="entry-meta">
@@ -70,7 +70,6 @@ if ( have_posts() ) :
 else :
 	get_template_part( 'content', 'none' );
 endif;
-wp_reset_query();
 ?>
 				<?php t_em_content_after(); ?>
 			</section><!-- #content -->
