@@ -49,12 +49,14 @@ add_action( 'admin_print_footer_scripts', 't_em_quickttags_buttons' );
  */
 function t_em_shortcode_alert_success( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-success alert-block',
-			'span_icon' => '<span class="icon-thumbs-up font-icon"></span>',
+			'class' => 'alert alert-success',
 			'close' => 'false',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
+	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	if ( $close ) :
+		add_action( 't_em_footer', 't_em_shortcode_alert_bs_script' );
+	endif;
+	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'success', 't_em_shortcode_alert_success' );
 
@@ -71,36 +73,16 @@ add_shortcode( 'success', 't_em_shortcode_alert_success' );
  */
 function t_em_shortcode_alert_warning( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-warning alert-block',
-			'span_icon' => '<span class="icon-warning font-icon"></span>',
+			'class' => 'alert alert-warning',
 			'close' => 'false',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
+	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	if ( $close ) :
+		add_action( 't_em_footer', 't_em_shortcode_alert_bs_script' );
+	endif;
+	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'warning', 't_em_shortcode_alert_warning' );
-
-/**
- * Shortcode [help]
- * Enclosing. Permit other shortcodes.
- * Behavior: [help close="false"][/help]
- * Options:
- * 0. close. Optional. Default value "false" Display a close button
- *
- * @link http://codex.wordpress.org/Shortcode_API
- *
- * @since Twenty'em 1.0
- */
-function t_em_shortcode_alert_help( $atts, $content = null ){
-	extract( shortcode_atts( array (
-			'class' => 'alert alert-info alert-block',
-			'span_icon' => '<span class="icon-help font-icon"></span>',
-			'close' => 'false',
-		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
-}
-add_shortcode( 'help', 't_em_shortcode_alert_help' );
 
 /**
  * Shortcode [info]
@@ -115,12 +97,14 @@ add_shortcode( 'help', 't_em_shortcode_alert_help' );
  */
 function t_em_shortcode_alert_info( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-info alert-block',
-			'span_icon' => '<span class="icon-info-2 font-icon"></span>',
+			'class' => 'alert alert-info',
 			'close' => 'false',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
+	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	if ( $close ) :
+		add_action( 't_em_footer', 't_em_shortcode_alert_bs_script' );
+	endif;
+	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'info', 't_em_shortcode_alert_info' );
 
@@ -137,36 +121,16 @@ add_shortcode( 'info', 't_em_shortcode_alert_info' );
  */
 function t_em_shortcode_alert_error( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-error alert-block',
-			'span_icon' => '<span class="icon-danger font-icon"></span>',
+			'class' => 'alert alert-danger',
 			'close' => 'false',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
+	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	if ( $close ) :
+		add_action( 't_em_footer', 't_em_shortcode_alert_bs_script' );
+	endif;
+	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'error', 't_em_shortcode_alert_error' );
-
-/**
- * Shortcode [bug]
- * Enclosing. Permit other shortcodes.
- * Behavior: [bug close="false"][/bug]
- * Options:
- * 0. close. Optional. Default value "false" Display a close button
- *
- * @link http://codex.wordpress.org/Shortcode_API
- *
- * @since Twenty'em 1.0
- */
-function t_em_shortcode_alert_bug( $atts, $content = null ){
-	extract( shortcode_atts( array (
-			'class' => 'alert alert-error alert-block',
-			'span_icon' => '<span class="icon-bug font-icon"></span>',
-			'close' => 'false',
-		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' : '';
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . $span_icon . do_shortcode( $content ) .'</div>';
-}
-add_shortcode( 'bug', 't_em_shortcode_alert_bug' );
 
 /**
  * Shortcode [quote]
@@ -234,4 +198,13 @@ function t_em_shortcode_icomoon_icon( $atts ){
 	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' font-icon"></span>';
 }
 add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
+
+/**
+ * Register and enqueue necessary js plugin for close alert blocks
+ */
+function t_em_shortcode_alert_bs_script(){
+	global $t_em_theme_data;
+	wp_register_script( 'bootstrap-alert', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-alert.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'bootstrap-alert' );
+}
 ?>
