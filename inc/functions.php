@@ -1324,7 +1324,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 't-em', 'col-md-10 text-right' );
+	t_em_user_social_network( 't-em', 'col-md-10', 'list-inline pull-right' );
 }
 
 /**
@@ -1756,7 +1756,7 @@ function t_em_breadcrumb(){
 function t_em_javascript_required(){
 ?>
 <!--[if lte IE 8 ]>
-<noscript class="alert alert-error lead"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly. Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript class="alert alert-danger lead container text-center"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 <?php
 }
@@ -1783,16 +1783,32 @@ function t_em_heading_site_title(){
  */
 function t_em_top_menu(){
 if ( has_nav_menu( 'top-menu' ) ) :
-/* The Top Menu, if it's active by the user we display it, else, we get nothing */ ?>
-	<h3 id="top-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Select a page:', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-	<div id="top">
-		<div id="inner-top" class="wrapper container">
-			<nav id="top-menu" role="navigation">
-				<?php wp_nav_menu( array ( 'container_class' => 'menu-top pull-right', 'theme_location' => 'top-menu', 'depth' => '0' ) ); ?>
-			</nav>
-		</div><!-- .wrapper -->
+?>
+	<div id="top-menu" role="navigation">
+		<nav class="navbar navbar-t-em-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
+						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand visible-xs"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+				</div><!-- .navbar-header -->
+				<?php wp_nav_menu( array(
+					'theme_location'	=> 'top-menu',
+					'container'			=> 'div',
+					'container_id'		=> 'site-top-menu',
+					'container_class'	=> 'collapse navbar-collapse navbar-right',
+					'menu_class'		=> 'nav navbar-nav',
+					'depth'				=> 0 ) );
+				?>
+			</div>
+		</nav>
 	</div>
 <?php endif;
+	add_action( 't_em_footer', 't_em_navbar_js_script' );
 }
 
 /**
@@ -1800,16 +1816,31 @@ if ( has_nav_menu( 'top-menu' ) ) :
  */
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
-	<h3 id="navigation-toggle" class="screen-menu"><span class="hidden-desktop"><?php _e( 'Navigation', 't_em' ); ?><span class="icon-reorder font-icon"></span></span></h3>
-	<nav id="site-navigation" role="navigation">
-		<h3 class="assistive-text"><?php _e( 'Skip menu', 't_em' ); ?></h3>
-		<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 't_em' ); ?>"><?php _e( 'Skip to primary content', 't_em' ); ?></a></div>
-		<div class="skip-link"><a class="assistive-text" href="#sidebar" title="<?php esc_attr_e( 'Skip to secondary content', 't_em' ); ?>"><?php _e( 'Skip to secondary content', 't_em' ); ?></a></div>
-		<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-		<?php wp_nav_menu( array( 'container_class' => 'menu-header wrapper container', 'theme_location' => 'navigation-menu' ) ); ?>
-	</nav><!-- #site-navigation -->
+	<div id="site-navigation" role="navigation">
+		<div class="wrapper container">
+			<nav class="navbar navbar-t-em">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-navigation-menu">
+						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand visible-xs"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+				</div><!-- .navbar-header -->
+				<?php wp_nav_menu( array(
+					'theme_location'	=> 'navigation-menu',
+					'container'			=> 'div',
+					'container_id'		=> 'site-navigation-menu',
+					'container_class'	=> 'collapse navbar-collapse',
+					'menu_class'		=> 'nav navbar-nav',
+					'depth'				=> 0 ) );
+				?>
+			</nav>
+		</div>
+	</div>
 <?php endif;
+	add_action( 't_em_footer', 't_em_navbar_js_script' );
 }
 
 /**

@@ -122,7 +122,7 @@ add_action( 't_em_head', 't_em_bootstrapped_head' );
  * rel="stylesheet/less", so, we need do it this way.
  */
 function t_em_enqueue_less_css(){
-	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL.'/style.less' .'">'."\n";
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL.'/style-theme.less' .'">'."\n";
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
@@ -201,4 +201,24 @@ function t_em_nivo_slider_options(){
 	endif;
 }
 add_action( 't_em_head', 't_em_nivo_slider_options' );
+
+/**
+ * Register and enqueue Bootstrap Alert js plugin for close alert blocks
+ */
+function t_em_shortcode_alert_bs_script(){
+	global $t_em_theme_data;
+	wp_register_script( 'bootstrap-alert', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-alert.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'bootstrap-alert' );
+}
+
+/**
+ * Register and enqueue Bootstrap Collapse js plugin for navbars
+ */
+function t_em_navbar_js_script(){
+	global $t_em_theme_data;
+	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/bootstrap-transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'bootstrap-transition' );
+	wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-collapse.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'bootstrap-collapse' );
+}
 ?>

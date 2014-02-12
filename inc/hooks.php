@@ -56,7 +56,7 @@ function t_em_header_inside_before(){
 }
 
 /**
- * Fire the t_em_header_inside action, just after opening <div id="branding"><div class="wrapper row">
+ * Fire the t_em_header_inside action, just after opening <div id="branding"><div class="branding-inner">
  * tag
  *
  * @file header.php

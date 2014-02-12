@@ -1,0 +1,188 @@
+/**
+ * Twenty'em LESS CSS
+ */
+
+/** Import Bootstrap Less */
+@import "bootstrap.less";
+
+/** Override the default Bootstrap font directory */
+@icon-font-path:	"wp-content/themes/twenty-em/fonts/";
+
+/* Define theme colors */
+@white:	#fff;
+@black:	#000;
+
+/* =Structure
+-------------------------------------------------------------- */
+.wrapper {
+	background: @white;
+}
+
+/* =Navbar
+-------------------------------------------------------------- */
+/** Commons elements for Twenty'em Navbars */
+
+.navbar-default li:hover ul,
+.navbar-inverse li:hover ul,
+.navbar-t-em li:hover ul,
+.navbar-t-em-inverse li:hover ul{
+	font-size: @font-size-base;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	z-index: @zindex-dropdown;
+	float: left;
+	min-width: 180px;
+	padding: 5px 0;
+	margin: 0; // override default ul
+	list-style: none;
+	font-size: @font-size-base;
+	border-radius: 0 0 @border-radius-base;
+	.box-shadow(0 6px 12px rgba(0,0,0,.175));
+	background-clip: padding-box;
+}
+.navbar-default ul ul ul,
+.navbar-inverse ul ul ul,
+.navbar-t-em ul ul ul,
+.navbar-t-em-inverse ul ul ul{
+	left: 100% !important;
+	top: auto !important;
+	// Calculate the height of the parent item
+	margin-top: -( @line-height-base + @padding-base-vertical + @font-size-base ) * 1.75 !important;
+}
+.navbar-default .sub-menu li > a,
+.navbar-inverse .sub-menu li > a,
+.navbar-t-em .sub-menu li > a,
+.navbar-t-em-inverse .sub-menu li > a{
+	line-height: @line-height-base;
+	padding: @padding-base-vertical @padding-base-horizontal;
+	display: block;
+}
+
+/** Default Navbar style for Twenty'em */
+.navbar-t-em{
+	background-color: @white;
+	border-color: @gray-lighter;
+}
+.navbar-t-em .sub-menu .current-menu-item > a,
+.navbar-t-em .sub-menu .current-menu-item > a:hover,
+.navbar-t-em .sub-menu .current-menu-item > a:focus,
+.navbar-t-em .current-menu-item{
+	background-color: @gray-lighter !important;
+	color: @gray-dark !important;
+}
+.navbar-t-em li:hover ul{
+	background-color: @dropdown-bg;
+	border: 1px solid @dropdown-fallback-border; // IE8 fallback
+	border: 1px solid @dropdown-border;
+	border-color: @gray-lighter;
+}
+.navbar-t-em .sub-menu li > a{
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: @dropdown-link-hover-color;
+		background-color: @dropdown-link-hover-bg;
+	}
+}
+.navbar-t-em .sub-menu .current-menu-item > a{
+	&,
+	&:hover,
+	&:focus {
+		color: @dropdown-link-active-color;
+		text-decoration: none;
+		outline: 0;
+		background-color: @dropdown-link-active-bg;
+	}
+}
+.navbar-t-em .navbar-toggle{
+	border-color: @gray-light;
+}
+.navbar-t-em .navbar-toggle:hover{
+	background-color: @gray-lighter;
+}
+.navbar-t-em .navbar-toggle .icon-bar{
+	background-color: @gray-light;
+}
+
+/** Inverse Navbar style for Twenty'em */
+.navbar-t-em-inverse,
+.navbar-t-em-inverse .sub-menu{
+	background-color: @navbar-inverse-bg !important;
+	border-color: @navbar-inverse-border !important;
+	color: @gray-light;
+}
+.navbar-t-em-inverse a{
+	color: @gray-light;
+}
+.navbar-t-em-inverse .sub-menu li > a:hover,
+.navbar-t-em-inverse .nav > li > a:hover,
+.navbar-t-em-inverse .nav > li > a:focus,
+.navbar-t-em-inverse .current-menu-item > a,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a:hover,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a:focus,
+.navbar-t-em-inverse .current-menu-item{
+	background-color: @black !important;
+	color: @white !important;
+}
+.navbar-t-em-inverse li:hover ul{
+	background-color: @dropdown-bg;
+	border: 1px solid @dropdown-fallback-border; // IE8 fallback
+	border: 1px solid @dropdown-border;
+	border-color: @gray-lighter;
+}
+.navbar-t-em-inverse .sub-menu li > a{
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: @dropdown-link-hover-color;
+		background-color: @dropdown-link-hover-bg;
+	}
+}
+.navbar-t-em-inverse .sub-menu .current-menu-item > a{
+	&,
+	&:hover,
+	&:focus {
+		color: @dropdown-link-active-color;
+		text-decoration: none;
+		outline: 0;
+		background-color: @dropdown-link-active-bg;
+	}
+}
+.navbar-t-em-inverse .navbar-toggle{
+	border-color: @gray-dark;
+}
+.navbar-t-em-inverse .navbar-toggle:hover{
+	background-color: @black;
+}
+.navbar-t-em-inverse .navbar-toggle .icon-bar{
+	background-color: @gray-light;
+}
+
+// Site Navigation and Top Menu
+#top-menu .navbar,
+#site-navigation .navbar{
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+#top-menu .navbar{
+	margin-bottom: 0;
+}
+#site-navigation .navbar{
+	margin: 0 -15px;
+}
+
+
+/* =Media Query
+-------------------------------------------------------------- */
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: @screen-xs-max) {
+	.navbar-t-em .sub-menu{
+		display: block;
+		position: inherit;
+	}
+}

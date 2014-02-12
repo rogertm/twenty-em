@@ -198,13 +198,4 @@ function t_em_shortcode_icomoon_icon( $atts ){
 	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' font-icon"></span>';
 }
 add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
-
-/**
- * Register and enqueue necessary js plugin for close alert blocks
- */
-function t_em_shortcode_alert_bs_script(){
-	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-alert', T_EM_THEME_DIR_JS_URL . '/bootstrap/bootstrap-alert.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-alert' );
-}
 ?>
