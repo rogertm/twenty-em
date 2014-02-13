@@ -36,7 +36,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 	);
 	query_posts ( $args );
 ?>
-		<section id="t-em-slider" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container">
+		<section id="t-em-slider" data-ride="carousel" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container">
 <?php if ( have_posts() ) : ?>
 			<div class="carousel-inner wrapper row">
 <?php
