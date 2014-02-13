@@ -6,23 +6,53 @@
 @import "bootstrap.less";
 
 /** Override the default Bootstrap font directory */
-@icon-font-path:	"wp-content/themes/twenty-em/fonts/";
+// @icon-font-path:	"wp-content/themes/twenty-em/fonts/";
 
 /* =Variables
 -------------------------------------------------------------- */
+
+/** Global values */
+
+// Links
+@t-em-link-color:		#21759b;
+@t-em-link-hover-color:	#d54e21;
+
+// Buttons
+@btn-t-em-inverse-color:	#fff;
+@btn-t-em-inverse-bg:		@gray-dark;
+@btn-t-em-inverse-border:	darken(@btn-t-em-inverse-bg, 5%);
+
+// Jumbotron button padding
+@jumbotron-btn-vertical-padding:	14px;
+@jumbotron-btn-horizontal-padding:	24px;
+
+/* =Component Mixins
+-------------------------------------------------------------- */
+
+// Heading
 .heading-small {
 	font-size: 65%;
 	color: @headings-small-color;
 }
 
-/* Define theme colors */
-@white:	#fff;
-@black:	#000;
+// Front Page
+.front-page-widget-caption{
+	color: @gray-dark;
+	padding: 9px;
+}
+
+// Buttons
+.btn-t-em-inverse {
+	.button-variant(@btn-t-em-inverse-color; @btn-t-em-inverse-bg; @btn-t-em-inverse-border);
+}
 
 /* =Structure
 -------------------------------------------------------------- */
 .wrapper {
 	background: @body-bg;
+}
+.jumbotron .btn{
+	padding: @jumbotron-btn-vertical-padding @jumbotron-btn-horizontal-padding !important;
 }
 
 /* =Content
@@ -38,6 +68,42 @@
 	width: 100%;
 }
 
+// Static Header
+#static-header-text .btn{
+	min-width: 75%;
+}
+#static-header-text .btn.primary-button{
+	.btn-primary;
+	.btn-lg;
+}
+#static-header-text .btn.secondary-button{
+	.btn-t-em-inverse;
+	.btn-lg;
+}
+
+// Front Page text widgets
+#front-page-widget-two,
+#front-page-widget-three,
+#front-page-widget-four{
+	.thumbnail;
+}
+#front-page-widget-one .btn{
+	.btn-primary;
+	.btn-lg;
+}
+#front-page-widget-two .btn,
+#front-page-widget-three .btn,
+#front-page-widget-four .btn{
+	.btn-default;
+}
+
+/* =Footer
+-------------------------------------------------------------- */
+#colophon,
+#site-info{
+	border-top: solid 1px @gray-lighter;
+}
+
 /* =Typography
 -------------------------------------------------------------- */
 .page-header span,
@@ -49,6 +115,9 @@
 }
 #entry-author-info{
 	.well;
+}
+.widget-title{
+	border-bottom: solid 1px @page-header-border-color;
 }
 
 /* =Navbars
@@ -94,7 +163,7 @@
 
 /** Default Navbar style for Twenty'em */
 .navbar-t-em{
-	background-color: @white;
+	background-color: #fff;
 	border-color: @gray-lighter;
 	color: @gray-light;
 }
@@ -159,8 +228,8 @@
 .navbar-t-em-inverse .sub-menu .current-menu-item > a:hover,
 .navbar-t-em-inverse .sub-menu .current-menu-item > a:focus,
 .navbar-t-em-inverse .current-menu-item{
-	background-color: @black !important;
-	color: @white !important;
+	background-color: #000 !important;
+	color: #fff !important;
 }
 .navbar-t-em-inverse li:hover ul{
 	background-color: @dropdown-bg;
@@ -190,7 +259,7 @@
 	border-color: @gray-dark;
 }
 .navbar-t-em-inverse .navbar-toggle:hover{
-	background-color: @black;
+	background-color: #000;
 }
 .navbar-t-em-inverse .navbar-toggle .icon-bar{
 	background-color: @gray-light;
@@ -224,7 +293,7 @@
 	color: @pagination-active-color;
 }
 #site-navigation.site-pagination.pagi ul .page-numbers.dots{
-	background-color: @white;
+	background-color: #fff;
 }
 #site-navigation.site-pagination.navi ul,
 #comments-navigation.comments-pagination.navi ul{

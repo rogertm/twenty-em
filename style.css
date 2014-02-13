@@ -733,11 +733,6 @@ div.menu li {
 .page-link a:active,
 .page-link a:hover {
 }
-.more-link{
-	display: table;
-	margin: 8px 0;
-	font-size: 14px;
-}
 #entry-author-info,
 #category-description {
 	clear: both;

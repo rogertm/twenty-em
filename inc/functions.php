@@ -492,7 +492,7 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return '<a href="'. get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
+	return '<a href="'. get_permalink() . '" class="more-link clearfix">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
 }
 
 /**
@@ -1411,9 +1411,11 @@ function t_em_single_related_posts() {
  * 1. two
  * 2. three
  * 3. four
+ * @param $string $wrapper_class Optional Bootstrap or whichever css class to apply to the widget
+ * div box. Default: 'empty'
  * @param string $btn_class Optional Bootstrap or whichever css class to apply to the <a>...</a> tag
  * Default: 'empty'.
- * @param string $h_tag Optional Header tag (h1, h2, h3, ...) for widget title. Default: 'h3'
+ * @param string $h_tag Optional Header tag (h1, h2, h3, ...) for widget title. Default: 'empty'
  *
  * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
  *
@@ -1445,7 +1447,7 @@ function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '',
 		if ( $widget != 'one' ) :
 			$widget_wrapper		= '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
 			$widget_wrapper_end	= '</div>';
-			$widget_caption		= '<div class="caption">';
+			$widget_caption		= '<div class="front-page-widget-caption">';
 			$widget_caption_end	= '</div>';
 		else :
 			$widget_wrapper		= null;
@@ -1481,12 +1483,12 @@ if ( ! function_exists( 't_em_display_front_page_widgets' ) ) :
 function t_em_display_front_page_widgets(){
 ?>
 	<div class="text-center">
-		<?php t_em_front_page_widgets( 'one', 'jumbotron', 'btn '.t_em_front_page_widgets_primary_btn_class().'', 'h1' ); ?>
+		<?php t_em_front_page_widgets( 'one', 'jumbotron', 'btn', 'h1' ); ?>
 	</div>
 	<div class="row">
-		<?php t_em_front_page_widgets( 'two', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
-		<?php t_em_front_page_widgets( 'three', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
-		<?php t_em_front_page_widgets( 'four', 'thumbnail', 'btn '.t_em_front_page_widgets_secondary_btn_class().'', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'two', '', 'btn', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'three', '', 'btn', 'h3' ); ?>
+		<?php t_em_front_page_widgets( 'four', '', 'btn', 'h3' ); ?>
 	</div>
 <?php
 }
@@ -1928,48 +1930,4 @@ $hidden_class = ( '0' == $t_em_theme_options['t_em_link'] ) ? 'hidden' : null;
 	</div>
 <?php
 }
-
-/**
- * Helper pluggable functions.
- *
- * Set Bootstrap Buttons Classes
- *
- * @return string Bootstrap buttons classes
- * @since Twenty'em 1.0
- */
-if ( ! function_exists( 't_em_static_header_primary_btn_class' ) ) :
-/**
- * Static Header Primary Button
- */
-function t_em_static_header_primary_btn_class(){
-	return 'btn-primary btn-lg';
-}
-endif;
-
-if ( ! function_exists( 't_em_static_header_secondary_btn_class' ) ) :
-/**
- * Static Header Secondary Button
- */
-function t_em_static_header_secondary_btn_class(){
-	return 'btn-default btn-lg';
-}
-endif;
-
-if ( ! function_exists( 't_em_front_page_widgets_primary_btn_class' ) ) :
-/**
- * Front Page Jumbotron Button Class
- */
-function t_em_front_page_widgets_primary_btn_class(){
-	return 'btn-primary btn-lg';
-}
-endif;
-
-if ( ! function_exists( 't_em_front_page_widgets_secondary_btn_class' ) ) :
-/**
- * Front Page Secondary text area Buttons
- */
-function t_em_front_page_widgets_secondary_btn_class(){
-	return 'btn-default btn-sm';
-}
-endif;
 ?>
