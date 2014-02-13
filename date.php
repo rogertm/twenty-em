@@ -31,11 +31,11 @@ get_header(); ?>
 				<h1 class="page-header">
 				<?php
 				if ( is_day() ) :
-					printf( __( 'Daily Archives: <span class="small">%s</span>', 't_em' ), get_the_date() );
+					printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
 				elseif ( is_month() ) :
-					printf( __( 'Monthly Archives: <span class="small">%s</span>', 't_em' ), get_the_date('F Y') );
+					printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
 				elseif ( is_year() ) :
-					printf( __( 'Yearly Archives: <span class="small">%s</span>', 't_em' ), get_the_date('Y') );
+					printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
 				else :
 					_e( 'Blog Archives', 't_em' );
 				endif;

@@ -165,7 +165,7 @@ function t_em_front_page_widgets_inside_before(){
 }
 
 /**
- *	Fire the t_em_front_page_widgets_inside_after, just before closing <section> <!-- #featured-widget-area --> tag.
+ * Fire the t_em_front_page_widgets_inside_after, just before closing <section> <!-- #featured-widget-area --> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em_theme_options['front_page_set'] == 'widgets-front-page'.
  *
@@ -263,6 +263,26 @@ function t_em_page_inside_after(){
  */
 function t_em_template_content(){
 	do_action( 't_em_template_content' );
+}
+
+/**
+ * Fire the t_em_comments_list_before action, just before opening <ul class="commentlist media-list"> tag
+ *
+ * @file comments.php
+ * @since Twenty'em 1.0
+ */
+function t_em_comments_list_before(){
+	do_action( 't_em_comments_list_before' );
+}
+
+/**
+ * Fire the t_em_comments_list_after action, just after closing </ul> <!-- .commentlist .media-list --> tag
+ *
+ * @file comments.php
+ * @since Twenty'em 1.0
+ */
+function t_em_comments_list_after(){
+	do_action( 't_em_comments_list_after' );
 }
 
 /**

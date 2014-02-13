@@ -28,8 +28,8 @@
 if ( have_comments() ) :
 ?>
 	<h2 id="comments-title"><?php
-	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 't_em' ),
-	number_format_i18n( get_comments_number() ), '<span class="small">' . get_the_title() . '</span>' );
+	printf( _n( 'One response to: %2$s', '%1$s responses to: %2$s', get_comments_number(), 't_em' ),
+	number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 	?></h2>
 <?php
 	global $t_em_theme_options;
@@ -38,9 +38,11 @@ if ( have_comments() ) :
 		if ( ! empty($comments_by_type['comment']) ) :
 ?>
 			<h4 id="comment-count"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></h4>
+			<?php t_em_comments_list_before(); ?>
 			<ul class="commentlist media-list">
 				<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
 			</ul>
+			<?php t_em_comments_list_after(); ?>
 <?php
 		else : // If there are no responds type comments
 ?>
@@ -69,27 +71,16 @@ if ( have_comments() ) :
 		endif; // !empty($comments_by_type['pings'])
 
 	else : // ( '0' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
-?>
-		<nav id="comment-nav-above" class="navigation" role="navigation">
-			<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments <span class="meta-nav">&laquo;</span>', 't_em' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( '<span class="meta-nav">&raquo;</span> Newer Comments', 't_em' ) ); ?></div>
-		</nav>
-<?php
-		endif;
+
+		t_em_comments_list_before();
 ?>
 		<ul class="commentlist media-list">
 		<?php wp_list_comments( array( 'callback' => 't_em_comment_all' ) ); ?>
 		</ul>
 <?php
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
-?>
-		<nav id="comment-nav-below" class="navigation" role="navigation">
-			<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments <span class="meta-nav">&laquo;</span>', 't_em' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( '<span class="meta-nav">&raquo;</span> Newer Comments', 't_em' ) ); ?></div>
-		</nav>
-<?php
-		endif;
+
+		t_em_comments_list_after();
+
 	endif; // '1' == $t_em_theme_options['separate_comments_pings_tracks']
 
 	if ( ! comments_open() ) :
@@ -100,7 +91,7 @@ if ( have_comments() ) :
 
 else : // If there are no responds
 ?>
-	<h2 id="comments-title"><?php _e('No responds to ', 't_em'); ?><span class="small"><?php the_title(); ?></span></h2>
+	<h2 id="comments-title"><?php _e('No responds to: ', 't_em'); ?><span ><?php the_title(); ?></span></h2>
 <?php
 endif; // have_comments()
 ?>

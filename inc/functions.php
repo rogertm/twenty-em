@@ -764,7 +764,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
  */
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-	<div id="entry-author-info" class="well media">
+	<div id="entry-author-info" class="media">
 		<div id="author-avatar" class="pull-left">
 			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_filters( 't_em_author_bio_avatar_size', 64 ), '', get_the_author() ); ?>
 		</div><!-- #author-avatar -->
@@ -794,7 +794,7 @@ if ( ! function_exists( 't_em_category_description' ) ) :
 function t_em_category_description(){
 	$category_description = category_description();
 	if ( ! empty( $category_description ) ) :
-		echo '<div id="category-description" class="archive-meta lead">' . $category_description . '</div>';
+		echo '<div id="category-description" class="archive-meta">' . $category_description . '</div>';
 	endif;
 }
 endif;
@@ -961,14 +961,20 @@ function t_em_page_navi(){
 		return;
 	endif;
 ?>
-	<nav class="navigation">
 <?php
 		if ( 'prev-next' == $t_em_theme_options['archive_pagination_set'] ) :
 ?>
-			<div class="nav-next"><?php previous_posts_link( __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ) ); ?></div>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></div>
+	<nav id="site-navigation" class="site-pagination navi">
+		<ul>
+			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icon-double-angle-left"></span> Older posts', 't_em' ) ); ?></li>
+			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></li>
+		</ul>
+	</nav>
 <?php
 		elseif ( 'page-navi' == $t_em_theme_options['archive_pagination_set'] ) :
+?>
+	<nav id="site-navigation" class="site-pagination pagi">
+<?php
 			// This piece of code is taken from twentyfourteen :)
 			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
@@ -992,6 +998,7 @@ function t_em_page_navi(){
 				'current'	=> $paged,
 				'end_size'	=> 1,
 				'mid_size'	=> 2,
+				'type'		=> 'list',
 				'add_args'	=> array_map( 'urlencode', $query_args ),
 				'prev_text'	=> __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ),
 				'next_text'	=> __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ),
@@ -1000,7 +1007,7 @@ function t_em_page_navi(){
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
 				$total_pages = $wp_query->max_num_pages;
 ?>
-				<span class="pages page-numbers"><?php echo sprintf( __( 'Page %1$s of %2$s' ), $current_page, $total_pages ); ?></span>
+				<span class="pages page-numbers sr-only"><?php echo sprintf( __( 'Page %1$s of %2$s' ), $current_page, $total_pages ); ?></span>
 				<?php echo $links; ?>
 <?php
 			endif;
@@ -1034,11 +1041,11 @@ function t_em_comment_form_fields() {
 	$aria_req = ( $req ? " aria-required='true' " : "" );
 	$fields =  array(
 		'author' => '<p class="comment-form-author"><label for="author">' . __( 'Name', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
-					'<input id="author" class="input-xlarge" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
+					'<input id="author" class="input-xlarge" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" ' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
 		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
-					'<input id="email" class="input-xlarge" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
+					'<input id="email" class="input-xlarge" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" ' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
 		'url'	 => '<p class="comment-form-url"><label for="url">' . __( 'Website', 't_em' ) . '</label>' .
-					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /><p>'
+					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /><p>'
 	);
 	return $fields;
 }
@@ -1847,12 +1854,12 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
 	wp_nav_menu( array(
-		'theme_location'  => 'footer-menu',
-		'container'       => 'nav',
-		'container_id'    => 'footer-menu',
-		'container_class' => 'col-md-10 col-xs-12 text-right',
-		'menu_class'      => 'list-inline',
-		'depth'           => 1,  ) );
+		'theme_location'	=> 'footer-menu',
+		'container'			=> 'nav',
+		'container_id'		=> 'footer-menu',
+		'container_class'	=> 'col-md-10 col-xs-12 text-right',
+		'menu_class'		=> 'list-inline',
+		'depth'				=> 1, ) );
 endif;
 }
 
@@ -1861,11 +1868,30 @@ endif;
  */
 function t_em_single_navigation(){
 ?>
-	<nav class="navigation">
-		<div class="nav-previous"><?php previous_post_link( '%link', '%title <span class="meta-nav icon-double-angle-right"></span>' ); ?></div>
-		<div class="nav-next"><?php next_post_link( '%link', '<span class="meta-nav icon-double-angle-left"></span> %title' ); ?></div>
+	<nav id="single-navigation" class="single-pagination navi" role="navigation">
+		<ul>
+			<li class="previous"><?php previous_post_link( '%link', '<span class="meta-nav icon-double-angle-left"></span> %title' ); ?></li>
+			<li class="next"><?php next_post_link( '%link', '%title <span class="meta-nav icon-double-angle-right"></span>' ); ?></li>
+		</ul>
 	</nav><!-- #nav-above -->
 <?php
+}
+
+/**
+ * Comments navigation.
+ * This function is attached to the t_em_comments_list_before and t_em_comments_list_after action hooks
+ */
+function t_em_comments_pagination(){
+if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+?>
+	<nav id="comments-navigation" class="comments-pagination navi" role="navigation">
+		<ul>
+			<li class="previous"><?php previous_comments_link( __( '<span class="meta-nav icon-double-angle-left"></span> Older Comments', 't_em' ) ); ?></li>
+			<li class="next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></li>
+		</ul>
+	</nav>
+<?php
+endif;
 }
 
 /**

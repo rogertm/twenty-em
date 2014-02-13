@@ -100,7 +100,7 @@ if ( have_posts() ) :
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 						<header class="entry-header">
-							<span class="entry-format text-muted"><span class="<?php echo $icon; ?> font-icon"></span><?php echo $format; ?></span>
+							<span class="entry-format"><span class="<?php echo $icon; ?> font-icon"></span><?php echo $format; ?></span>
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 							<span class="entry-meta">
 								<?php t_em_posted_on(); ?>

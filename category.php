@@ -15,7 +15,7 @@ get_header(); ?>
 
 				<header>
 					<h1 class="page-header"><?php
-						printf( __( 'Category Archives: %s', 't_em' ), '<span class="small">' . single_cat_title( '', false ) . '</span>' );
+						printf( __( 'Category Archives: %s', 't_em' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 					?></h1>
 				</header>
 			<?php t_em_category_description(); ?>

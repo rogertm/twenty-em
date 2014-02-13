@@ -15,7 +15,7 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 				<header>
-					<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span class="small">' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header>
 				<div class="row">
 			<?php

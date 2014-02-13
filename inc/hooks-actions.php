@@ -87,6 +87,13 @@ if ( ! function_exists( 't_em_hook_action_single_nav_below' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 't_em_hook_action_comments_nav' ) ) :
+	function t_em_hook_action_comments_nav(){
+		add_action( 't_em_comments_list_before', 't_em_comments_pagination' );
+		add_action( 't_em_comments_list_after', 't_em_comments_pagination' );
+	}
+endif;
+
 if ( ! function_exists( 't_em_hook_action_footer_menu' ) ) :
 	function t_em_hook_action_footer_menu(){
 		add_action( 't_em_site_info', 't_em_footer_menu', 12 );
@@ -121,6 +128,7 @@ function t_em_register_action_hooks(){
 	t_em_hook_action_navigation_menu();
 	t_em_hook_action_page_navi();
 	t_em_hook_action_single_nav_below();
+	t_em_hook_action_comments_nav();
 	t_em_hook_action_footer_menu();
 	t_em_hook_action_copy_right();
 	t_em_hook_action_dot_com_link();
