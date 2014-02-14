@@ -76,9 +76,11 @@ if ( count( $attachments ) > 1 ) {
 						</figure>
 					</p>
 
-					<div id="nav-below" class="navigation">
-						<div class="nav-previous"><?php previous_image_link( false ); ?></div>
-						<div class="nav-next"><?php next_image_link( false ); ?></div>
+					<div id="attachment-navigation" class="attachment-pagination navi">
+						<ul>
+							<li class="previous"><?php previous_image_link( false ); ?></li>
+							<li class="next"><?php next_image_link( false ); ?></li>
+						</ul>
 					</div><!-- #nav-below -->
 <?php else : ?>
 					<a href="<?php echo wp_get_attachment_url(); ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment"><?php echo basename( get_permalink() ); ?></a>

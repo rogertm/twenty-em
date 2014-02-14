@@ -56,7 +56,7 @@ if ( have_posts() ) :
 			if ( $post_parent_id['post_status'] == 'publish' ) :
 ?>
 					<a href="<?php echo get_permalink( $image_link ); ?>" title="<?php echo get_the_title( $image_alt ); ?>">
-						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail img-thumbnail" >
+						<img src="<?php echo $image_attr[0]; ?>" alt="<?php echo get_the_title( $image_alt ); ?>" class="gallery-thumbnail" >
 					</a>
 <?php
 			endif;

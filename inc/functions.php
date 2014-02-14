@@ -1765,7 +1765,7 @@ function t_em_breadcrumb(){
 function t_em_javascript_required(){
 ?>
 <!--[if lte IE 8 ]>
-<noscript class="alert alert-danger lead container text-center"><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 <?php
 }
@@ -1810,7 +1810,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					'container_id'		=> 'site-top-menu',
 					'container_class'	=> 'collapse navbar-collapse navbar-right',
 					'menu_class'		=> 'nav navbar-nav',
-					'depth'				=> 1 ) );
+					'depth'				=> 0 ) );
 				?>
 			</div>
 		</nav>
@@ -1916,7 +1916,7 @@ function t_em_dot_com_link(){
 global $t_em_theme_options, $t_em_theme_data;
 $hidden_class = ( '0' == $t_em_theme_options['t_em_link'] ) ? 'hidden' : null;
 ?>
-	<div id="twenty-em-credit" class="text-center small <?php echo $hidden_class ?>">
+	<div id="twenty-em-credit" class="text-center small col-md-12 <?php echo $hidden_class ?>">
 		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
 		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
 			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">

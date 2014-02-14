@@ -59,6 +59,10 @@
 -------------------------------------------------------------- */
 // Utilities
 .entry-meta,
+.entry-utility{
+	.small;
+}
+.entry-meta,
 .entry-utility,
 .entry-format{
 	.text-muted;
@@ -97,6 +101,20 @@
 	.btn-default;
 }
 
+/* =Attachment Pages
+-------------------------------------------------------------- */
+.attachment .entry-content .entry-caption {
+	.lead;
+}
+
+/* =Images
+-------------------------------------------------------------- */
+#content .gallery img,
+#gallery .gallery-thumbnail{
+	.img-thumbnail;
+}
+
+
 /* =Footer
 -------------------------------------------------------------- */
 #colophon,
@@ -118,6 +136,9 @@
 }
 .widget-title{
 	border-bottom: solid 1px @page-header-border-color;
+}
+#content .gallery .gallery-caption{
+	.small;
 }
 
 /* =Navbars
@@ -296,7 +317,8 @@
 	background-color: #fff;
 }
 #site-navigation.site-pagination.navi ul,
-#comments-navigation.comments-pagination.navi ul{
+#comments-navigation.comments-pagination.navi ul,
+#attachment-navigation.attachment-pagination.navi ul{
 	.pager;
 }
 
