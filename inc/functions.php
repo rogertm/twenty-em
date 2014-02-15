@@ -764,10 +764,8 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
  */
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-	<div id="entry-author-info" class="media">
-		<div id="author-avatar" class="pull-left">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ), apply_filters( 't_em_author_bio_avatar_size', 64 ), '', get_the_author() ); ?>
-		</div><!-- #author-avatar -->
+	<div id="author-info-<?php echo get_the_author(); ?>" class="author-info media">
+		<?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
 			<?php the_author_meta( 'description' ); ?>
@@ -817,10 +815,10 @@ function t_em_comment( $comment, $args, $depth ) {
 	?>
 	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
-			<div class="pull-right"><?php echo get_avatar( $comment, 60 ); ?></div>
+			<?php echo get_avatar( $comment, '', '', get_comment_author() ); ?>
 			<header class="comment-header media-heading">
 				<div class="comment-author vcard">
-					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '<h5>%1$s <span class="says">says:</span></h5>', 't_em' ), get_comment_author_link() ); ?>
 				</div><!-- .comment-author .vcard -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
 					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
@@ -830,8 +828,7 @@ function t_em_comment( $comment, $args, $depth ) {
 				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 't_em' ), ' ' );
-					?>
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small>
 				</div><!-- .comment-meta .commentmetadata -->
 			</header><!-- comment-heading -->
 			<div class="comment-body"><?php comment_text(); ?></div>
@@ -863,15 +860,15 @@ function t_em_comment_pingback_trackback( $comment ) {
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 	?>
-	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
-	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 	endswitch;
@@ -894,27 +891,27 @@ function t_em_comment_all( $comment, $args, $depth ){
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 	?>
-	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
-	<li id="comment-<?php comment_ID(); ?>" class="post pingback">
-		<p><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 't_em'), ' ' ); ?></p>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		default :
 		global $post;
 	?>
-	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
+	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
-			<div class="pull-right"><?php echo get_avatar( $comment, 60 ); ?></div>
+			<?php echo get_avatar( $comment, '', '', get_comment_author() ); ?>
 			<header class="comment-header media-heading">
 				<div class="comment-author vcard">
-					<?php printf( __( '%s <span class="says">says:</span>', 't_em' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '<h5>%1$s <span class="says">says:</span></h5>', 't_em' ), get_comment_author_link() ); ?>
 				</div><!-- .comment-author .vcard -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
 					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
@@ -924,8 +921,7 @@ function t_em_comment_all( $comment, $args, $depth ){
 				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 't_em' ), ' ' );
-					?>
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small>
 				</div><!-- .comment-meta .commentmetadata -->
 			</header><!-- comment-heading -->
 			<div class="comment-body"><?php comment_text(); ?></div>

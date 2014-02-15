@@ -22,6 +22,12 @@
 @btn-t-em-inverse-bg:		@gray-dark;
 @btn-t-em-inverse-border:	darken(@btn-t-em-inverse-bg, 5%);
 
+// Avatar Sizes
+@avatar-size-xs:	8px;
+@avatar-size-sm:	16px;
+@avatar-size-md:	64px;
+@avatar-size-lg:	96px;
+
 // Jumbotron button padding
 @jumbotron-btn-vertical-padding:	14px;
 @jumbotron-btn-horizontal-padding:	24px;
@@ -71,6 +77,9 @@
 	.pull-left;
 	width: 100%;
 }
+.author-info{
+	.well;
+}
 
 // Static Header
 #static-header-text .btn{
@@ -110,10 +119,15 @@
 /* =Images
 -------------------------------------------------------------- */
 #content .gallery img,
-#gallery .gallery-thumbnail{
+#gallery .gallery-thumbnail,
+.avatar{
 	.img-thumbnail;
 }
-
+.avatar{
+	height: @avatar-size-md !important;
+	width: @avatar-size-md !important;
+	.pull-left;
+}
 
 /* =Footer
 -------------------------------------------------------------- */
@@ -128,16 +142,18 @@
 #comments-title span{
 	.heading-small;
 }
+.comment-author .says{
+	.small;
+	color: @headings-small-color;
+}
 #category-description{
 	.lead;
-}
-#entry-author-info{
-	.well;
 }
 .widget-title{
 	border-bottom: solid 1px @page-header-border-color;
 }
-#content .gallery .gallery-caption{
+#content .gallery .gallery-caption,
+.comment-meta{
 	.small;
 }
 
@@ -327,6 +343,22 @@
 	.nav;
 	.nav-pills;
 	.nav-justified;
+}
+
+/* =Comments
+-------------------------------------------------------------- */
+.commentlist .thread-even,
+.commentlist .thread-odd{
+	border-bottom: 1px solid @gray-lighter;
+}
+.commentlist .pingback,
+.commentlist .trackback,
+.commentlist small{
+	color: @gray-light;
+	.small;
+}
+.commentlist h5 small{
+	.heading-small;
 }
 
 /* =Forms

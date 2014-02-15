@@ -620,12 +620,12 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		.t-em-recent-comments figure{
 			display: inline;
 			float: left;
-			margin-right: 2.5641%;
+			margin-right: 5px;
 		}
 		.t-em-recent-comments .avatar{
 			display: inline-block;
-			width: 64px;
-			height: 64px;
+			width: 64px !important;
+			height: 64px !important;
 		}
 		.t-em-recent-comments a{
 			display:inline !important;
