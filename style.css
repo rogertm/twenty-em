@@ -415,9 +415,6 @@ ul.sub-menu li a{
 #searchform{
 	padding: 5px;
 }
-#searchform label {
-	display: none;
-}
 #commentform .form-allowed-tags code{
 	white-space: pre-wrap;
 }
