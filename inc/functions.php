@@ -1327,7 +1327,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 't-em', 'col-md-10 col-xs-12', 'list-inline text-right' );
+	t_em_user_social_network( 't-em', 'social-network-menu pull-right col-md-10 col-xs-12', 'list-inline text-right' );
 }
 
 /**
@@ -1855,8 +1855,8 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 		'theme_location'	=> 'footer-menu',
 		'container'			=> 'nav',
 		'container_id'		=> 'footer-menu',
-		'container_class'	=> 'col-md-10 col-xs-12 text-right',
-		'menu_class'		=> 'list-inline',
+		'container_class'	=> 'col-md-10 col-xs-12 pull-right',
+		'menu_class'		=> 'list-inline text-right',
 		'depth'				=> 1, ) );
 endif;
 }

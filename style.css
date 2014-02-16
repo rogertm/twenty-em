@@ -1,19 +1,18 @@
 /**
  * Theme Name:	Twenty’em
  * Theme URI:	http://twenty-em.com/
- * Description:	A HTML5 & CSS3 WordPress framework for themes developers
+ * Description:	A HTML5 & CSS3 WordPress theme/framework for developers. Great for Child Themes's creation
  * Author:		RogerTM
  * Author URI:	http://blog.rogertm.com/
- * Version:		1.0
+ * Version:		1.0 Beta
  * License:		GNU General Public License v2 or later
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.html
- * Tags:		black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style
+ * Tags:		bootstrap, less, theme-options, custom-layout, responsive-layout, one-column, two-columns, three-columns, fluid-width, full-width-template, custom-front-page, custom-header, custom-background, custom-menu, custom-widgets, page-templates, post-formats, threaded-comments, featured-image-header, featured-images, flexible-header, sticky-post, translation-ready, accessibility-ready, microformats, rtl-language-support, editor-style, backup-setting
  */
 
-/* Grab the original Twenty'em styles */
-/* This stylesheet merely overrides a few and brings HTML5 to the masses! */
-
-/* A message for users with JavaScript turned off **/
+/* =Global Elements
+-------------------------------------------------------------- */
+/* A message for users with JavaScript turned off */
 noscript {
 	display: block;
 	text-align: center;
@@ -24,17 +23,6 @@ noscript {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 25px;
 }
-
-nav ul ul {
-	display:none;
-}
-nav ul li:hover > ul {
-	display:block;
-}
-
-
-/* =Global Elements
--------------------------------------------------------------- */
 .wrapper{
 	margin: 0 auto;
 	padding: 0 1.28205%;
@@ -53,9 +41,7 @@ nav ul li:hover > ul {
 	padding-right: 0;
 }
 
-/*
-LAYOUT: Two column fixed layout with content on the right
-*/
+/* LAYOUT: Two column fixed layout with content on the right */
 .two-column-content-right #content{
 	float: right;
 	padding-right: 0;
@@ -67,16 +53,12 @@ LAYOUT: Two column fixed layout with content on the right
 	padding-left: 0;
 }
 
-/*
-LAYOUT: Three column fixed layout with content on the left
-*/
+/* LAYOUT: Three column fixed layout with content on the left */
 .three-column-content-left #sidebar{
 	padding-right: 15px;
 }
 
-/*
-LAYOUT: Three column fixed layout with content on the right
-*/
+/* LAYOUT: Three column fixed layout with content on the right */
 .three-column-content-right #main-content,
 .three-column-content-right #content{
 	float: right;
@@ -95,9 +77,7 @@ LAYOUT: Three column fixed layout with content on the right
 	padding-left: 0;
 }
 
-/*
-LAYOUT: Three column fixed layout with content on the middle
-*/
+/* LAYOUT: Three column fixed layout with content on the middle */
 .three-column-content-middle #main-content{
 	float: right;
 }
@@ -109,7 +89,6 @@ LAYOUT: Three column fixed layout with content on the middle
 	padding-right: 15px;
 	padding-left: 0;
 }
-
 
 /* =Structure
 -------------------------------------------------------------- */
@@ -153,7 +132,6 @@ LAYOUT: Three column fixed layout with content on the middle
 	font-size: 252px;
 	margin: 0 20px 20px;
 }
-
 
 /* =Header
 -------------------------------------------------------------- */
@@ -205,7 +183,12 @@ LAYOUT: Three column fixed layout with content on the middle
 
 /* =Menu
 -------------------------------------------------------------- */
-
+nav ul ul {
+	display:none;
+}
+nav ul li:hover > ul {
+	display:block;
+}
 ul.menu,
 ul.sub-menu{
 	padding-left: 0 !important;
@@ -216,7 +199,10 @@ ul.sub-menu li{
 ul.sub-menu li a{
 	width: 180px;
 }
-
+/* If JetPack module Infinite Scroll is active */
+.infinite-scroll .navigation{
+	display: none !important;
+}
 
 /* =Content
 -------------------------------------------------------------- */
@@ -286,7 +272,6 @@ ul.sub-menu li a{
 	width: 96%;
 }
 
-
 /* =Images
 -------------------------------------------------------------- */
 #content figure figcaption {
@@ -348,7 +333,7 @@ ul.sub-menu li a{
 #content .gallery br+br {
 	display: none;
 }
-#content .attachment img { /* single attachment images should be centered */
+#content .attachment img {
 	display: block;
 	margin: 0 auto;
 }
@@ -359,15 +344,6 @@ ul.sub-menu li a{
 	width: 100px;
 }
 
-
-/* =Navigation
--------------------------------------------------------------- */
-/* If JetPack module Infinite Scroll is active */
-.infinite-scroll .navigation{
-	display: none !important;
-}
-
-
 /* =Comments
 -------------------------------------------------------------- */
 .comment .media-body{
@@ -377,7 +353,7 @@ ul.sub-menu li a{
 	overflow: hidden;
 }
 .bypostauthor > div{
-	/** Whatever you want */
+	/* Whatever you want */
 }
 .avatar {
 	border: solid 1px;
@@ -409,7 +385,6 @@ ul.sub-menu li a{
 	font-style: italic;
 }
 
-
 /* =Forms
 -------------------------------------------------------------- */
 #searchform{
@@ -419,7 +394,6 @@ ul.sub-menu li a{
 	white-space: pre-wrap;
 }
 
-
 /* =Widget Areas
 -------------------------------------------------------------- */
 .widget-area ul {
@@ -427,182 +401,40 @@ ul.sub-menu li a{
 	margin-left: 0;
 	padding-left: 0;
 }
+.widget-area ul ul {
+	margin-left: 15px;
+}
 .widget-area ul li{
-	margin: 3px 0 3px 5px;
+	margin: 5px;
 }
 .widget-container{
-	margin: 0 0 18px 0;
+	margin: 0 0 20px 0;
 	clear: both;
 }
-.widget-title {
-	margin: 25px 0 15px;
-	padding-bottom: 7px;
-}
-.widget-area ul li a{
-	line-height: 22px;
-}
-.widget-area a:link,
-.widget-area a:visited {
-	text-decoration: none;
-}
-.widget-area a:active,
-.widget-area a:hover {
-	text-decoration: underline;
-}
-.widget-area .entry-meta {
-	font-size: 11px;
-}
-#wp_tag_cloud div {
-	line-height: 1.6em;
-}
+/* Tag cloud */
 .tagcloud a{
-	line-height: 22px;
+	line-height: 25px;
 }
-#wp-calendar {
-	width: 100%;
-}
-#wp-calendar caption {
-	font-size: 14px;
-	font-weight: bold;
-	padding-bottom: 4px;
-	padding-top: 4px;
-	text-align: left;
-}
-#wp-calendar thead {
-	font-size: 11px;
-}
-#wp-calendar tbody td {
-	padding: 3px 0 2px;
-	text-align: center;
-}
+/* Calendar */
 #wp-calendar tbody .pad {
 	background: none;
 }
 #wp-calendar tfoot #next {
 	text-align: right;
 }
-
-.widget_rss .widget-title img {
-	width: 11px;
-	height: 11px;
-}
-.recentcomments{
-	padding-left: 5px;
-}
-.recentcomments a{
-	padding: 0 !important;
-}
-
-/* Main sidebars */
-#main .widget-area ul {
-	margin-left: 0;
-	padding: 0;
-}
-#main .widget-area ul ul {
-	border: none;
-	margin-left: 1.3em;
-	padding: 0;
+/* RSS */
+.widget_rss li .rsswidget{
+	display: block;
 }
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
 .front-page-widget{
-	margin-bottom: 30px;
+	margin-bottom: 50px !important;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
 #colophon {
 	overflow: hidden;
-}
-#copyright a {
-	text-decoration: none;
-	line-height: 38px;
-}
-img#wpstats {
-	display: block;
-	margin: 0 auto 10px;
-}
-
-
-/* =Print Style
--------------------------------------------------------------- */
-
-@media print {
-	body {
-		background: none !important;
-	}
-	#wrap {
-		clear: both !important;
-		display: block !important;
-		float: none !important;
-		position: relative !important;
-	}
-	#header {
-		border-bottom: 2pt solid #000;
-		padding-bottom: 18pt;
-	}
-	#colophon {
-		border-top: 2pt solid #000;
-	}
-	#site-title,
-	#site-description {
-		float: none;
-		line-height: 1.4em;
-		margin: 0;
-		padding: 0;
-	}
-	#site-title {
-		font-size: 13pt;
-	}
-	.entry-content {
-		font-size: 14pt;
-		line-height: 1.6em;
-	}
-	.entry-title {
-		font-size: 21pt;
-	}
-	#site-navigation,
-	#branding img,
-	#respond,
-	.comment-edit-link,
-	.edit-link,
-	.navigation,
-	.page-link,
-	.widget-area {
-		display: none !important;
-	}
-	#content,
-	#header,
-	#footer {
-		margin: 0;
-		width: 100%;
-	}
-	#content,
-	.one-column #content {
-		margin: 24pt 0 0;
-		width: 100%;
-	}
-	.wp-caption p {
-		font-size: 11pt;
-	}
-	#site-info{
-		float: none;
-		width: auto;
-	}
-	#colophon {
-		width: auto;
-	}
-	img#wpstats {
-		display: none;
-	}
-	#entry-author-info {
-		border: 1px solid #e7e7e7;
-	}
-	#main {
-		display: inline;
-	}
-	.home .sticky {
-		border: none;
-	}
 }
