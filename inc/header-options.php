@@ -180,6 +180,8 @@ function t_em_slider_callback(){
 	endforeach;
 	$extend_slider .= '</div>';
 
+	$extend_slider .= '<p>' . __( '<strong>Note:</strong> The alignment options above only works with <strong>Twenty&#8217;em Style</strong> in <strong>Nivo Slider</strong> script.', 't_em' ) . '</p>';
+
 	// Slider Script
 	$extend_slider .= '<div id="slider-scripts-options">';
 	$extend_slider .= '<div class="text-radio-option-group sub-extend">';
@@ -221,7 +223,6 @@ function t_em_slider_callback(){
 		$extend_slider .= '<div id="slider-nivo-slider" class="slider-script-extend text-option '. $selected_script .'">';
 		$extend_slider .= 	'<div class="sub-extend">';
 		$extend_slider .= 	'<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
-		$extend_slider .= 	'<p>' . __( '<strong>Note:</strong> The alignment options above only works with Twenty&#8217;em Style.', 't_em' ) . '</p>';
 		foreach ($slider_style as $style) :
 			$checked_option = checked( $t_em_theme_options['nivo_style'], $style['value'], false );
 			$extend_slider .=	'<div class="layout radio-option">';

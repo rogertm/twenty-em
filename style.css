@@ -4,7 +4,7 @@
  * Description:	A HTML5 & CSS3 WordPress theme/framework for developers. Great for Child Themes's creation
  * Author:		RogerTM
  * Author URI:	http://blog.rogertm.com/
- * Version:		1.0 Beta
+ * Version:		1.0-Beta
  * License:		GNU General Public License v2 or later
  * License URI:	http://www.gnu.org/licenses/gpl-2.0.html
  * Tags:		bootstrap, less, theme-options, custom-layout, responsive-layout, one-column, two-columns, three-columns, fluid-width, full-width-template, custom-front-page, custom-header, custom-background, custom-menu, custom-widgets, page-templates, post-formats, threaded-comments, featured-image-header, featured-images, flexible-header, sticky-post, translation-ready, accessibility-ready, microformats, rtl-language-support, editor-style, backup-setting
@@ -92,7 +92,6 @@ noscript {
 
 /* =Structure
 -------------------------------------------------------------- */
-
 /* Footer */
 #inner-site-info{
 	padding-top: 20px;
@@ -179,6 +178,10 @@ noscript {
 }
 .static-header-text-left #static-header-image{
 	float: right;
+}
+/* Bootstrap Slider Carousel */
+#slider-carousel{
+	padding: 0;
 }
 
 /* =Menu

@@ -35,10 +35,16 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 		'order'				=> 'DESC',
 	);
 	query_posts ( $args );
+	$slider_pause = ( $t_em_theme_options['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
-		<section id="t-em-slider" data-ride="carousel" class="carousel slide <?php echo $t_em_theme_options['slider_text'] ?> container">
+	<section id="slider-carousel" data-ride="carousel" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em_theme_options['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide <?php echo $t_em_theme_options['slider_text'] ?>">
 <?php if ( have_posts() ) : ?>
-			<div class="carousel-inner wrapper row">
+			<ol class="carousel-indicators">
+		<?php $s = 0; while ( $s < $tp ) : ?>
+				<li data-target="#slider-carousel" data-slide-to="<?php echo $s ?>"></li>
+		<?php $s++; endwhile; ?>
+			</ol><!-- .carousel-indicators -->
+			<div class="carousel-inner">
 <?php
 		while ( have_posts() ) : the_post();
 			if ( has_post_thumbnail( $post->ID ) ) :
@@ -60,27 +66,20 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 						<h3 class="entry-title">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 						</h3>
-						<div class="visible-desktop"><?php the_excerpt(); ?></div>
+						<div class="hidden-xs hidden-sm"><?php the_excerpt(); ?></div>
 					</div>
-				</div>
+				</div><!-- .item -->
 <?php
 		endwhile;
 		wp_reset_query();
 ?>
 			</div><!-- .carousel-inner -->
+			<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#slider-carousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
 <?php endif; ?>
-			<div class="clearfix wrapper row">
-				<div class="carousel-drivers">
-				<ol class="carousel-indicators pull-left">
-<?php $s = 0; while ( $s < $tp ) : ?>
-					<li data-target="#t-em-slider" data-slide-to="<?php echo $s ?>"></li>
-<?php $s++; endwhile; ?>
-				</ol><!-- .carousel-indicators -->
-				<div class="carousel-direction pull-right">
-					<span class="icon-circleleft left" href="#t-em-slider" data-slide="prev"></span>
-					<span class="icon-circleright right" href="#t-em-slider" data-slide="next"></span>
-				</div><!-- .carousel-direction -->
-				</div><!-- .carousel-drivers -->
-			</div>
-		</section><!-- #t-em-slider .carousel .slide -->
+	</section><!-- #slider-carousel -->
 <?php endif; ?>
