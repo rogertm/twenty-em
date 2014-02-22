@@ -4,9 +4,11 @@
 // --------------------------------------------------
 
 
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
+// Global values
+// --------------------------------------------------
+
+// Grays
+// -------------------------
 
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
@@ -14,127 +16,107 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
+// Brand colors
+// -------------------------
+
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
+@brand-info:            #5bc0de;
 
+// Scaffolding
+// -------------------------
 
-//== Scaffolding
-//
-// ## Settings for some of the most global styles.
-
-//** Background color for `<body>`.
 @body-bg:               #fff;
-//** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
-//** Global textual link color.
+// Links
+// -------------------------
+
 @link-color:            @brand-primary;
-//** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
 
-
-//== Typography
-//
-//## Font, line-height, and color for body text, headings, and more.
+// Typography
+// -------------------------
 
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
-//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
-@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
-@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
+@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
+@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
 @font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
 
-//** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
-//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-//** By default, this inherits from the `<body>`.
-@headings-font-family:    inherit;
+@headings-font-family:    @font-family-base;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
 
 
-//-- Iconography
-//
-//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.
+// Iconography
+// -------------------------
 
 @icon-font-path:          "../fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
-@icon-font-svg-id:        "glyphicons_halflingsregular";
-
-//== Components
-//
-//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
-
-@padding-base-vertical:     6px;
-@padding-base-horizontal:   12px;
-
-@padding-large-vertical:    10px;
-@padding-large-horizontal:  16px;
-
-@padding-small-vertical:    5px;
-@padding-small-horizontal:  10px;
-
-@padding-xs-vertical:       1px;
-@padding-xs-horizontal:     5px;
-
-@line-height-large:         1.33;
-@line-height-small:         1.5;
-
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
-
-//** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    #fff;
-//** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-primary;
-
-//** Width of the `border` for generating carets that indicator dropdowns.
-@caret-width-base:          4px;
-//** Carets increase slightly in size for larger components.
-@caret-width-large:         5px;
 
 
-//== Tables
-//
-//## Customizes the `.table` component with basic values, each used across all table variations.
+// Components
+// -------------------------
+// Based on 14px font-size and 1.428 line-height (~20px to start)
 
-//** Padding for `<th>`s and `<td>`s.
-@table-cell-padding:            8px;
-//** Padding for cells in `.table-condensed`.
-@table-condensed-cell-padding:  5px;
+@padding-base-vertical:          6px;
+@padding-base-horizontal:        12px;
 
-//** Default background color used for all tables.
-@table-bg:                      transparent;
-//** Background color used for `.table-striped`.
-@table-bg-accent:               #f9f9f9;
-//** Background color used for `.table-hover`.
-@table-bg-hover:                #f5f5f5;
-@table-bg-active:               @table-bg-hover;
+@padding-large-vertical:         10px;
+@padding-large-horizontal:       16px;
 
-//** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@padding-small-vertical:         5px;
+@padding-small-horizontal:       10px;
+
+@padding-xs-vertical:            1px;
+@padding-xs-horizontal:          5px;
+
+@line-height-large:              1.33;
+@line-height-small:              1.5;
+
+@border-radius-base:             4px;
+@border-radius-large:            6px;
+@border-radius-small:            3px;
+
+@component-active-color:         #fff;
+@component-active-bg:            @brand-primary;
+
+@caret-width-base:               4px;
+@caret-width-large:              5px;
+
+// Tables
+// -------------------------
+
+@table-cell-padding:                 8px;
+@table-condensed-cell-padding:       5px;
+
+@table-bg:                           transparent; // overall background-color
+@table-bg-accent:                    #f9f9f9; // for striping
+@table-bg-hover:                     #f5f5f5;
+@table-bg-active:                    @table-bg-hover;
+
+@table-border-color:                 #ddd; // table and cell border
 
 
-//== Buttons
-//
-//## For each of Bootstrap's buttons, define text, background and border color.
+// Buttons
+// -------------------------
 
 @btn-font-weight:                normal;
 
@@ -150,10 +132,6 @@
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 #fff;
-@btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
-
 @btn-warning-color:              #fff;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             darken(@btn-warning-bg, 5%);
@@ -162,87 +140,65 @@
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
 @btn-link-disabled-color:        @gray-light;
 
 
-//== Forms
-//
-//##
+// Forms
+// -------------------------
 
-//** `<input>` background color
 @input-bg:                       #fff;
-//** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
-//** Text color for `<input>`s
 @input-color:                    @gray;
-//** `<input>` border color
 @input-border:                   #ccc;
-//** `<input>` border radius
 @input-border-radius:            @border-radius-base;
-//** Border color for inputs on focus
 @input-border-focus:             #66afe9;
 
-//** Placeholder text color
 @input-color-placeholder:        @gray-light;
 
-//** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-//** Large `.form-control` height
 @input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
-//** Small `.form-control` height
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
 
-//** Background color for textual input addons
 @input-group-addon-bg:           @gray-lighter;
-//** Border color for textual input addons
 @input-group-addon-border-color: @input-border;
 
 
-//== Dropdowns
-//
-//## Dropdown menu container and contents.
+// Dropdowns
+// -------------------------
 
-//** Background for the dropdown menu.
 @dropdown-bg:                    #fff;
-//** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
-//** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border:       #ccc;
-//** Divider color for between dropdown items.
 @dropdown-divider-bg:            #e5e5e5;
 
-//** Dropdown link text color.
 @dropdown-link-color:            @gray-dark;
-//** Hover color for dropdown links.
 @dropdown-link-hover-color:      darken(@gray-dark, 5%);
-//** Hover background for dropdown links.
 @dropdown-link-hover-bg:         #f5f5f5;
 
-//** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
-//** Active dropdown menu item background color.
 @dropdown-link-active-bg:        @component-active-bg;
 
-//** Disabled dropdown menu item background color.
 @dropdown-link-disabled-color:   @gray-light;
 
-//** Text color for headers within dropdown menus.
 @dropdown-header-color:          @gray-light;
 
-// Note: Deprecated @dropdown-caret-color as of v3.1.0
-@dropdown-caret-color:           #000;
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
 
 
-//-- Z-index master list
-//
-// Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
-//
-// Note: These variables are not generated into the Customizer.
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
 
 @zindex-navbar:            1000;
 @zindex-dropdown:          1000;
@@ -252,10 +208,8 @@
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
 
-
-//== Media queries breakpoints
-//
-//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+// Media queries breakpoints
+// --------------------------------------------------
 
 // Extra small screen / phone
 // Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
@@ -287,52 +241,31 @@
 @screen-md-max:              (@screen-lg-min - 1);
 
 
-//== Grid system
-//
-//## Define your custom responsive grid.
+// Grid system
+// --------------------------------------------------
 
-//** Number of columns in the grid.
+// Number of columns in the grid system
 @grid-columns:              12;
-//** Padding between columns. Gets divided in half for the left and right.
+// Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         30px;
+
 // Navbar collapse
-//** Point at which the navbar becomes uncollapsed.
+
+// Point at which the navbar becomes uncollapsed
 @grid-float-breakpoint:     @screen-sm-min;
-//** Point at which the navbar begins collapsing.
+// Point at which the navbar begins collapsing
 @grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
 
-//== Container sizes
-//
-//## Define the maximum width of `.container` for different screen sizes.
-
-// Small screen / tablet
-@container-tablet:             ((720px + @grid-gutter-width));
-//** For `@screen-sm-min` and up.
-@container-sm:                 @container-tablet;
-
-// Medium screen / desktop
-@container-desktop:            ((940px + @grid-gutter-width));
-//** For `@screen-md-min` and up.
-@container-md:                 @container-desktop;
-
-// Large screen / wide desktop
-@container-large-desktop:      ((1140px + @grid-gutter-width));
-//** For `@screen-lg-min` and up.
-@container-lg:                 @container-large-desktop;
-
-
-//== Navbar
-//
-//##
+// Navbar
+// -------------------------
 
 // Basics of a navbar
 @navbar-height:                    50px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
-@navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             #777;
 @navbar-default-bg:                #f8f8f8;
@@ -354,11 +287,12 @@
 
 // Navbar toggle
 @navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-icon-bar-bg:        #ccc;
 @navbar-default-toggle-border-color:       #ddd;
 
 
 // Inverted navbar
+//
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @gray-light;
 @navbar-inverse-bg:                         #222;
@@ -384,11 +318,9 @@
 @navbar-inverse-toggle-border-color:        #333;
 
 
-//== Navs
-//
-//##
+// Navs
+// -------------------------
 
-//=== Shared nav styles
 @nav-link-padding:                          10px 15px;
 @nav-link-hover-bg:                         @gray-lighter;
 
@@ -397,7 +329,7 @@
 
 @nav-open-link-hover-color:                 #fff;
 
-//== Tabs
+// Tabs
 @nav-tabs-border-color:                     #ddd;
 
 @nav-tabs-link-hover-border-color:          @gray-lighter;
@@ -409,63 +341,45 @@
 @nav-tabs-justified-link-border-color:            #ddd;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
-//== Pills
+// Pills
 @nav-pills-border-radius:                   @border-radius-base;
 @nav-pills-active-link-hover-bg:            @component-active-bg;
 @nav-pills-active-link-hover-color:         @component-active-color;
 
 
-//== Pagination
-//
-//##
+// Pagination
+// -------------------------
 
-@pagination-color:                     @link-color;
 @pagination-bg:                        #fff;
 @pagination-border:                    #ddd;
 
-@pagination-hover-color:               @link-hover-color;
 @pagination-hover-bg:                  @gray-lighter;
-@pagination-hover-border:              #ddd;
 
-@pagination-active-color:              #fff;
 @pagination-active-bg:                 @brand-primary;
-@pagination-active-border:             @brand-primary;
+@pagination-active-color:              #fff;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
 
 
-//== Pager
-//
-//##
+// Pager
+// -------------------------
 
-@pager-bg:                             @pagination-bg;
-@pager-border:                         @pagination-border;
 @pager-border-radius:                  15px;
-
-@pager-hover-bg:                       @pagination-hover-bg;
-
-@pager-active-bg:                      @pagination-active-bg;
-@pager-active-color:                   @pagination-active-color;
-
-@pager-disabled-color:                 @pagination-disabled-color;
+@pager-disabled-color:                 @gray-light;
 
 
-//== Jumbotron
-//
-//##
+// Jumbotron
+// -------------------------
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
 @jumbotron-bg:                   @gray-lighter;
 @jumbotron-heading-color:        inherit;
-@jumbotron-font-size:            ceil((@font-size-base * 1.5));
+@jumbotron-font-size:            ceil(@font-size-base * 1.5);
 
 
-//== Form states and alerts
-//
-//## Define colors for form feedback states and, by default, alerts.
+// Form states and alerts
+// -------------------------
 
 @state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
@@ -484,113 +398,65 @@
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 
-//== Tooltips
-//
-//##
-
-//** Tooltip max width
+// Tooltips
+// -------------------------
 @tooltip-max-width:           200px;
-//** Tooltip text color
 @tooltip-color:               #fff;
-//** Tooltip background color
 @tooltip-bg:                  #000;
-@tooltip-opacity:             .9;
 
-//** Tooltip arrow width
 @tooltip-arrow-width:         5px;
-//** Tooltip arrow color
 @tooltip-arrow-color:         @tooltip-bg;
 
 
-//== Popovers
-//
-//##
-
-//** Popover body background color
+// Popovers
+// -------------------------
 @popover-bg:                          #fff;
-//** Popover maximum width
 @popover-max-width:                   276px;
-//** Popover border color
 @popover-border-color:                rgba(0,0,0,.2);
-//** Popover fallback border color
 @popover-fallback-border-color:       #ccc;
 
-//** Popover title background color
 @popover-title-bg:                    darken(@popover-bg, 3%);
 
-//** Popover arrow width
 @popover-arrow-width:                 10px;
-//** Popover arrow color
 @popover-arrow-color:                 #fff;
 
-//** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
-//** Popover outer arrow color
-@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
-//** Popover outer arrow fallback color
-@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
+@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:  #999;
 
 
-//== Labels
-//
-//##
+// Labels
+// -------------------------
 
-//** Default label background color
 @label-default-bg:            @gray-light;
-//** Primary label background color
 @label-primary-bg:            @brand-primary;
-//** Success label background color
 @label-success-bg:            @brand-success;
-//** Info label background color
 @label-info-bg:               @brand-info;
-//** Warning label background color
 @label-warning-bg:            @brand-warning;
-//** Danger label background color
 @label-danger-bg:             @brand-danger;
 
-//** Default label text color
 @label-color:                 #fff;
-//** Default text color of a linked label
 @label-link-hover-color:      #fff;
 
 
-//== Modals
-//
-//##
-
-//** Padding applied to the modal body
+// Modals
+// -------------------------
 @modal-inner-padding:         20px;
 
-//** Padding applied to the modal title
 @modal-title-padding:         15px;
-//** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
-//** Background color of modal content area
 @modal-content-bg:                             #fff;
-//** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
-//** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
-//** Modal backdrop background color
 @modal-backdrop-bg:           #000;
-//** Modal backdrop opacity
-@modal-backdrop-opacity:      .5;
-//** Modal header border color
 @modal-header-border-color:   #e5e5e5;
-//** Modal footer border color
 @modal-footer-border-color:   @modal-header-border-color;
 
-@modal-lg:                    900px;
-@modal-md:                    600px;
-@modal-sm:                    300px;
 
-
-//== Alerts
-//
-//## Define alert colors, border radius, and padding.
-
+// Alerts
+// -------------------------
 @alert-padding:               15px;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
@@ -612,62 +478,38 @@
 @alert-danger-border:         @state-danger-border;
 
 
-//== Progress bars
-//
-//##
-
-//** Background color of the whole progress component
+// Progress bars
+// -------------------------
 @progress-bg:                 #f5f5f5;
-//** Progress bar text color
 @progress-bar-color:          #fff;
 
-//** Default progress bar color
 @progress-bar-bg:             @brand-primary;
-//** Success progress bar color
 @progress-bar-success-bg:     @brand-success;
-//** Warning progress bar color
 @progress-bar-warning-bg:     @brand-warning;
-//** Danger progress bar color
 @progress-bar-danger-bg:      @brand-danger;
-//** Info progress bar color
 @progress-bar-info-bg:        @brand-info;
 
 
-//== List group
-//
-//##
+// List group
+// -------------------------
+@list-group-bg:               #fff;
+@list-group-border:           #ddd;
+@list-group-border-radius:    @border-radius-base;
 
-//** Background color on `.list-group-item`
-@list-group-bg:                 #fff;
-//** `.list-group-item` border color
-@list-group-border:             #ddd;
-//** List group border radius
-@list-group-border-radius:      @border-radius-base;
+@list-group-hover-bg:         #f5f5f5;
+@list-group-active-color:     @component-active-color;
+@list-group-active-bg:        @component-active-bg;
+@list-group-active-border:    @list-group-active-bg;
 
-//** Background color of single list elements on hover
-@list-group-hover-bg:           #f5f5f5;
-//** Text color of active list elements
-@list-group-active-color:       @component-active-color;
-//** Background color of active list elements
-@list-group-active-bg:          @component-active-bg;
-//** Border color of active list elements
-@list-group-active-border:      @list-group-active-bg;
-@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
-
-@list-group-link-color:         #555;
-@list-group-link-heading-color: #333;
+@list-group-link-color:          #555;
+@list-group-link-heading-color:  #333;
 
 
-//== Panels
-//
-//##
-
+// Panels
+// -------------------------
 @panel-bg:                    #fff;
-@panel-body-padding:          15px;
-@panel-border-radius:         @border-radius-base;
-
-//** Border color for elements within panels
 @panel-inner-border:          #ddd;
+@panel-border-radius:         @border-radius-base;
 @panel-footer-bg:             #f5f5f5;
 
 @panel-default-text:          @gray-dark;
@@ -682,10 +524,6 @@
 @panel-success-border:        @state-success-border;
 @panel-success-heading-bg:    @state-success-bg;
 
-@panel-info-text:             @state-info-text;
-@panel-info-border:           @state-info-border;
-@panel-info-heading-bg:       @state-info-bg;
-
 @panel-warning-text:          @state-warning-text;
 @panel-warning-border:        @state-warning-border;
 @panel-warning-heading-bg:    @state-warning-bg;
@@ -694,46 +532,34 @@
 @panel-danger-border:         @state-danger-border;
 @panel-danger-heading-bg:     @state-danger-bg;
 
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
 
-//== Thumbnails
-//
-//##
 
-//** Padding around the thumbnail image
+// Thumbnails
+// -------------------------
 @thumbnail-padding:           4px;
-//** Thumbnail background color
 @thumbnail-bg:                @body-bg;
-//** Thumbnail border color
 @thumbnail-border:            #ddd;
-//** Thumbnail border radius
 @thumbnail-border-radius:     @border-radius-base;
 
-//** Custom text color for thumbnail captions
 @thumbnail-caption-color:     @text-color;
-//** Padding around the thumbnail caption
 @thumbnail-caption-padding:   9px;
 
 
-//== Wells
-//
-//##
-
+// Wells
+// -------------------------
 @well-bg:                     #f5f5f5;
-@well-border:                 darken(@well-bg, 7%);
 
 
-//== Badges
-//
-//##
-
+// Badges
+// -------------------------
 @badge-color:                 #fff;
-//** Linked badge text color on hover
 @badge-link-hover-color:      #fff;
 @badge-bg:                    @gray-light;
 
-//** Badge text color in active nav link
 @badge-active-color:          @link-color;
-//** Badge background color in active nav link
 @badge-active-bg:             #fff;
 
 @badge-font-weight:           bold;
@@ -741,25 +567,16 @@
 @badge-border-radius:         10px;
 
 
-//== Breadcrumbs
-//
-//##
-
-@breadcrumb-padding-vertical:   8px;
-@breadcrumb-padding-horizontal: 15px;
-//** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
-//** Breadcrumb text color
-@breadcrumb-color:              #ccc;
-//** Text color of current page in the breadcrumb
-@breadcrumb-active-color:       @gray-light;
-//** Textual separator for between breadcrumb elements
-@breadcrumb-separator:          "/";
+// Breadcrumbs
+// -------------------------
+@breadcrumb-bg:               #f5f5f5;
+@breadcrumb-color:            #ccc;
+@breadcrumb-active-color:     @gray-light;
+@breadcrumb-separator:        "/";
 
 
-//== Carousel
-//
-//##
+// Carousel
+// ------------------------
 
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
@@ -774,60 +591,56 @@
 @carousel-caption-color:                      #fff;
 
 
-//== Close
-//
-//##
-
+// Close
+// ------------------------
 @close-font-weight:           bold;
 @close-color:                 #000;
 @close-text-shadow:           0 1px 0 #fff;
 
 
-//== Code
-//
-//##
-
+// Code
+// ------------------------
 @code-color:                  #c7254e;
 @code-bg:                     #f9f2f4;
-
-@kbd-color:                   #fff;
-@kbd-bg:                      #333;
 
 @pre-bg:                      #f5f5f5;
 @pre-color:                   @gray-dark;
 @pre-border-color:            #ccc;
 @pre-scrollable-max-height:   340px;
 
-
-//== Type
-//
-//##
-
-//** Text muted color
+// Type
+// ------------------------
 @text-muted:                  @gray-light;
-//** Abbreviations and acronyms border color
 @abbr-border-color:           @gray-light;
-//** Headings small color
 @headings-small-color:        @gray-light;
-//** Blockquote small color
 @blockquote-small-color:      @gray-light;
-//** Blockquote font size
-@blockquote-font-size:        (@font-size-base * 1.25);
-//** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
-//** Page header border color
 @page-header-border-color:    @gray-lighter;
 
+// Miscellaneous
+// -------------------------
 
-//== Miscellaneous
-//
-//##
-
-//** Horizontal line color.
+// Hr border color
 @hr-border:                   @gray-lighter;
 
-//** Horizontal offset for forms and lists.
+// Horizontal forms & lists
 @component-offset-horizontal: 180px;
+
+
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+@container-tablet:             ((720px + @grid-gutter-width));
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            ((940px + @grid-gutter-width));
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      ((1140px + @grid-gutter-width));
+@container-lg:                 @container-large-desktop;
 
 //
 // Mixins
@@ -885,7 +698,8 @@
 
 // Placeholder text
 .placeholder(@color: @input-color-placeholder) {
-  &::-moz-placeholder           { color: @color;   // Firefox
+  &:-moz-placeholder            { color: @color; } // Firefox 4-18
+  &::-moz-placeholder           { color: @color;   // Firefox 19+
                                   opacity: 1; } // See https://github.com/twbs/bootstrap/pull/11526
   &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
@@ -945,10 +759,6 @@
 }
 
 // Drop shadows
-//
-// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
-//   supported browsers that have box shadow capabilities now support the
-//   standard `box-shadow` property.
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
@@ -981,17 +791,17 @@
 // Transformations
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees); // IE9 only
+      -ms-transform: rotate(@degrees); // IE9+
           transform: rotate(@degrees);
 }
-.scale(@ratio; @ratio-y...) {
-  -webkit-transform: scale(@ratio, @ratio-y);
-      -ms-transform: scale(@ratio, @ratio-y); // IE9 only
-          transform: scale(@ratio, @ratio-y);
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+      -ms-transform: scale(@ratio); // IE9+
+          transform: scale(@ratio);
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y); // IE9 only
+      -ms-transform: translate(@x, @y); // IE9+
           transform: translate(@x, @y);
 }
 .skew(@x; @y) {
@@ -1006,12 +816,12 @@
 
 .rotateX(@degrees) {
   -webkit-transform: rotateX(@degrees);
-      -ms-transform: rotateX(@degrees); // IE9 only
+      -ms-transform: rotateX(@degrees); // IE9+
           transform: rotateX(@degrees);
 }
 .rotateY(@degrees) {
   -webkit-transform: rotateY(@degrees);
-      -ms-transform: rotateY(@degrees); // IE9 only
+      -ms-transform: rotateY(@degrees); // IE9+
           transform: rotateY(@degrees);
 }
 .perspective(@perspective) {
@@ -1027,7 +837,6 @@
 .transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
-      -ms-transform-origin: @origin; // IE9 only
           transform-origin: @origin;
 }
 
@@ -1035,30 +844,6 @@
 .animation(@animation) {
   -webkit-animation: @animation;
           animation: @animation;
-}
-.animation-name(@name) {
-  -webkit-animation-name: @name;
-          animation-name: @name;
-}
-.animation-duration(@duration) {
-  -webkit-animation-duration: @duration;
-          animation-duration: @duration;
-}
-.animation-timing-function(@timing-function) {
-  -webkit-animation-timing-function: @timing-function;
-          animation-timing-function: @timing-function;
-}
-.animation-delay(@delay) {
-  -webkit-animation-delay: @delay;
-          animation-delay: @delay;
-}
-.animation-iteration-count(@iteration-count) {
-  -webkit-animation-iteration-count: @iteration-count;
-          animation-iteration-count: @iteration-count;
-}
-.animation-direction(@direction) {
-  -webkit-animation-direction: @direction;
-          animation-direction: @direction;
 }
 
 // Backface visibility
@@ -1083,6 +868,7 @@
   -webkit-user-select: @select;
      -moz-user-select: @select;
       -ms-user-select: @select; // IE10+
+       -o-user-select: @select;
           user-select: @select;
 }
 
@@ -1211,7 +997,7 @@
 //
 // Keep images from scaling beyond the width of their parents.
 
-.img-responsive(@display: block) {
+.img-responsive(@display: block;) {
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
@@ -1272,53 +1058,25 @@
 .table-row-variant(@state; @background) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
-  .table > thead > tr,
-  .table > tbody > tr,
-  .table > tfoot > tr {
-    > td.@{state},
-    > th.@{state},
-    &.@{state} > td,
-    &.@{state} > th {
-      background-color: @background;
+  .table {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr > .@{state},
+      > .@{state} > td,
+      > .@{state} > th {
+        background-color: @background;
+      }
     }
   }
 
   // Hover states for `.table-hover`
   // Note: this is not available for cells or rows within `thead` or `tfoot`.
-  .table-hover > tbody > tr {
-    > td.@{state}:hover,
-    > th.@{state}:hover,
-    &.@{state}:hover > td,
-    &.@{state}:hover > th {
+  .table-hover > tbody {
+    > tr > .@{state}:hover,
+    > .@{state}:hover > td,
+    > .@{state}:hover > th {
       background-color: darken(@background, 5%);
-    }
-  }
-}
-
-// List Groups
-// -------------------------
-.list-group-item-variant(@state; @background; @color) {
-  .list-group-item-@{state} {
-    color: @color;
-    background-color: @background;
-
-    a& {
-      color: @color;
-
-      .list-group-item-heading { color: inherit; }
-
-      &:hover,
-      &:focus {
-        color: @color;
-        background-color: darken(@background, 5%);
-      }
-      &.active,
-      &.active:hover,
-      &.active:focus {
-        color: #fff;
-        background-color: @color;
-        border-color: @color;
-      }
     }
   }
 }
@@ -1361,7 +1119,7 @@
 
   .badge {
     color: @background;
-    background-color: @color;
+    background-color: #fff;
   }
 }
 
@@ -1410,24 +1168,6 @@
   }
 }
 
-// Contextual backgrounds
-// -------------------------
-.bg-variant(@color) {
-  background-color: @color;
-  a&:hover {
-    background-color: darken(@color, 10%);
-  }
-}
-
-// Typography
-// -------------------------
-.text-emphasis-variant(@color) {
-  color: @color;
-  a&:hover {
-    color: darken(@color, 10%);
-  }
-}
-
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
@@ -1458,7 +1198,10 @@
 }
 
 .responsive-invisibility() {
-  display: none !important;
+    &,
+  tr&,
+  th&,
+  td& { display: none !important; }
 }
 
 
@@ -1471,14 +1214,14 @@
   margin-left: auto;
   padding-left:  (@grid-gutter-width / 2);
   padding-right: (@grid-gutter-width / 2);
-  &:extend(.clearfix all);
+  .clearfix();
 }
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
   margin-left:  (@gutter / -2);
   margin-right: (@gutter / -2);
-  &:extend(.clearfix all);
+  .clearfix();
 }
 
 // Generate the extra small columns
@@ -1486,39 +1229,30 @@
   position: relative;
   float: left;
   width: percentage((@columns / @grid-columns));
+  // Prevent columns from collapsing when empty
   min-height: 1px;
+  // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 }
-.make-xs-column-offset(@columns) {
-  @media (min-width: @screen-xs-min) {
-    margin-left: percentage((@columns / @grid-columns));
-  }
-}
-.make-xs-column-push(@columns) {
-  @media (min-width: @screen-xs-min) {
-    left: percentage((@columns / @grid-columns));
-  }
-}
-.make-xs-column-pull(@columns) {
-  @media (min-width: @screen-xs-min) {
-    right: percentage((@columns / @grid-columns));
-  }
-}
-
 
 // Generate the small columns
 .make-sm-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
+  // Prevent columns from collapsing when empty
   min-height: 1px;
+  // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
+  // Calculate width based on number of columns available
   @media (min-width: @screen-sm-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
+
+// Generate the small column offsets
 .make-sm-column-offset(@columns) {
   @media (min-width: @screen-sm-min) {
     margin-left: percentage((@columns / @grid-columns));
@@ -1535,26 +1269,30 @@
   }
 }
 
-
 // Generate the medium columns
 .make-md-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
+  // Prevent columns from collapsing when empty
   min-height: 1px;
+  // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
+  // Calculate width based on number of columns available
   @media (min-width: @screen-md-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
+
+// Generate the medium column offsets
 .make-md-column-offset(@columns) {
   @media (min-width: @screen-md-min) {
     margin-left: percentage((@columns / @grid-columns));
   }
 }
 .make-md-column-push(@columns) {
-  @media (min-width: @screen-md-min) {
+  @media (min-width: @screen-md) {
     left: percentage((@columns / @grid-columns));
   }
 }
@@ -1564,19 +1302,23 @@
   }
 }
 
-
 // Generate the large columns
 .make-lg-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
+  // Prevent columns from collapsing when empty
   min-height: 1px;
+  // Inner gutter via padding
   padding-left:  (@gutter / 2);
   padding-right: (@gutter / 2);
 
+  // Calculate width based on number of columns available
   @media (min-width: @screen-lg-min) {
     float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
+
+// Generate the large column offsets
 .make-lg-column-offset(@columns) {
   @media (min-width: @screen-lg-min) {
     margin-left: percentage((@columns / @grid-columns));
@@ -1603,11 +1345,11 @@
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col((@index + 1), @item);
+    .col(@index + 1, @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
     @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
-    .col((@index + 1), ~"@{list}, @{item}");
+    .col(@index + 1, ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
@@ -1622,14 +1364,14 @@
   .col(1); // kickstart it
 }
 
-.float-grid-columns(@class) {
+.make-grid-columns-float(@class) {
   .col(@index) when (@index = 1) { // initial
     @item: ~".col-@{class}-@{index}";
-    .col((@index + 1), @item);
+    .col(@index + 1, @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general
     @item: ~".col-@{class}-@{index}";
-    .col((@index + 1), ~"@{list}, @{item}");
+    .col(@index + 1, ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
@@ -1639,42 +1381,34 @@
   .col(1); // kickstart it
 }
 
-.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = push) {
+.calc-grid(@index, @class, @type) when (@type = push) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = pull) {
+.calc-grid(@index, @class, @type) when (@type = pull) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = offset) {
+.calc-grid(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
     margin-left: percentage((@index / @grid-columns));
   }
 }
 
 // Basic looping in LESS
-.loop-grid-columns(@index, @class, @type) when (@index >= 0) {
-  .calc-grid-column(@index, @class, @type);
+.make-grid(@index, @class, @type) when (@index >= 0) {
+  .calc-grid(@index, @class, @type);
   // next iteration
-  .loop-grid-columns((@index - 1), @class, @type);
+  .make-grid(@index - 1, @class, @type);
 }
 
-// Create grid for specific class
-.make-grid(@class) {
-  .float-grid-columns(@class);
-  .loop-grid-columns(@grid-columns, @class, width);
-  .loop-grid-columns(@grid-columns, @class, pull);
-  .loop-grid-columns(@grid-columns, @class, push);
-  .loop-grid-columns(@grid-columns, @class, offset);
-}
 
 // Form validation states
 //
@@ -1706,10 +1440,6 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
-  }
-  // Optional feedback icon
-  .form-control-feedback {
-    color: @text-color;
   }
 }
 
@@ -1753,35 +1483,16 @@
     line-height: @input-height;
   }
 
-  textarea&,
-  select[multiple]& {
+  textarea& {
     height: auto;
   }
 }
 
+
 // Reset
-/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 
-//
-// 1. Set default font family to sans-serif.
-// 2. Prevent iOS text size adjust after orientation change, without disabling
-//    user zoom.
-//
-
-html {
-  font-family: sans-serif; // 1
-  -ms-text-size-adjust: 100%; // 2
-  -webkit-text-size-adjust: 100%; // 2
-}
-
-//
-// Remove default margin.
-//
-
-body {
-  margin: 0;
-}
-
+// ==========================================================================
 // HTML5 display definitions
 // ==========================================================================
 
@@ -1805,16 +1516,13 @@ summary {
 }
 
 //
-// 1. Correct `inline-block` display not defined in IE 8/9.
-// 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+// Correct `inline-block` display not defined in IE 8/9.
 //
 
 audio,
 canvas,
-progress,
 video {
-  display: inline-block; // 1
-  vertical-align: baseline; // 2
+  display: inline-block;
 }
 
 //
@@ -1837,6 +1545,31 @@ template {
   display: none;
 }
 
+// ==========================================================================
+// Base
+// ==========================================================================
+
+//
+// 1. Set default font family to sans-serif.
+// 2. Prevent iOS text size adjust after orientation change, without disabling
+//    user zoom.
+//
+
+html {
+  font-family: sans-serif; // 1
+  -ms-text-size-adjust: 100%; // 2
+  -webkit-text-size-adjust: 100%; // 2
+}
+
+//
+// Remove default margin.
+//
+
+body {
+  margin: 0;
+}
+
+// ==========================================================================
 // Links
 // ==========================================================================
 
@@ -1849,6 +1582,14 @@ a {
 }
 
 //
+// Address `outline` inconsistency between Chrome and other browsers.
+//
+
+a:focus {
+  outline: thin dotted;
+}
+
+//
 // Improve readability when focused and also mouse hovered in all browsers.
 //
 
@@ -1857,8 +1598,19 @@ a:hover {
   outline: 0;
 }
 
-// Text-level semantics
 // ==========================================================================
+// Typography
+// ==========================================================================
+
+//
+// Address variable `h1` font-size and margin within `section` and `article`
+// contexts in Firefox 4+, Safari 5, and Chrome.
+//
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
 
 //
 // Address styling not present in IE 8/9, Safari 5, and Chrome.
@@ -1886,13 +1638,13 @@ dfn {
 }
 
 //
-// Address variable `h1` font-size and margin within `section` and `article`
-// contexts in Firefox 4+, Safari 5, and Chrome.
+// Address differences between Firefox and other browsers.
 //
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
 }
 
 //
@@ -1902,6 +1654,34 @@ h1 {
 mark {
   background: #ff0;
   color: #000;
+}
+
+//
+// Correct font family set oddly in Safari 5 and Chrome.
+//
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+//
+// Improve readability of pre-formatted text in all browsers.
+//
+
+pre {
+  white-space: pre-wrap;
+}
+
+//
+// Set consistent quote types.
+//
+
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 //
@@ -1932,6 +1712,7 @@ sub {
   bottom: -0.25em;
 }
 
+// ==========================================================================
 // Embedded content
 // ==========================================================================
 
@@ -1951,7 +1732,8 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-// Grouping content
+// ==========================================================================
+// Figures
 // ==========================================================================
 
 //
@@ -1959,77 +1741,63 @@ svg:not(:root) {
 //
 
 figure {
-  margin: 1em 40px;
+  margin: 0;
 }
 
-//
-// Address differences between Firefox and other browsers.
-//
-
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-//
-// Contain overflow in all browsers.
-//
-
-pre {
-  overflow: auto;
-}
-
-//
-// Address odd `em`-unit font size rendering in all browsers.
-//
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
+// ==========================================================================
 // Forms
 // ==========================================================================
 
 //
-// Known limitation: by default, Chrome and Safari on OS X allow very limited
-// styling of `select`, unless a `border` property is set.
+// Define consistent border, margin, and padding.
 //
 
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
 //
-// 1. Correct color not being inherited.
-//    Known issue: affects color of disabled elements.
-// 2. Correct font properties not being inherited.
+// 1. Correct `color` not being inherited in IE 8/9.
+// 2. Remove padding so people aren't caught out if they zero out fieldsets.
+//
+
+legend {
+  border: 0; // 1
+  padding: 0; // 2
+}
+
+//
+// 1. Correct font family not being inherited in all browsers.
+// 2. Correct font size not being inherited in all browsers.
 // 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
 //
 
 button,
 input,
-optgroup,
 select,
 textarea {
-  color: inherit; // 1
-  font: inherit; // 2
+  font-family: inherit; // 1
+  font-size: 100%; // 2
   margin: 0; // 3
 }
 
 //
-// Address `overflow` set to `hidden` in IE 8/9/10.
+// Address Firefox 4+ setting `line-height` on `input` using `!important` in
+// the UA stylesheet.
 //
 
-button {
-  overflow: visible;
+button,
+input {
+  line-height: normal;
 }
 
 //
 // Address inconsistent `text-transform` inheritance for `button` and `select`.
 // All other form control elements do not inherit `text-transform` values.
-// Correct `button` style inheritance in Firefox, IE 8+, and Opera
-// Correct `select` style inheritance in Firefox.
+// Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+// Correct `select` style inheritance in Firefox 4+ and Opera.
 //
 
 button,
@@ -2063,28 +1831,6 @@ html input[disabled] {
 }
 
 //
-// Remove inner padding and border in Firefox 4+.
-//
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-//
-// Address Firefox 4+ setting `line-height` on `input` using `!important` in
-// the UA stylesheet.
-//
-
-input {
-  line-height: normal;
-}
-
-//
-// It's recommended that you don't attempt to style these elements.
-// Firefox's implementation doesn't respect box-sizing, padding, or width.
-//
 // 1. Address box sizing set to `content-box` in IE 8/9/10.
 // 2. Remove excess padding in IE 8/9/10.
 //
@@ -2093,17 +1839,6 @@ input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box; // 1
   padding: 0; // 2
-}
-
-//
-// Fix the cursor style for Chrome's increment/decrement buttons. For certain
-// `font-size` values of the `input`, it causes the cursor style of the
-// decrement button to change from `default` to `text`.
-//
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
 }
 
 //
@@ -2120,9 +1855,8 @@ input[type="search"] {
 }
 
 //
-// Remove inner padding and search cancel button in Safari and Chrome on OS X.
-// Safari (but not Chrome) clips the cancel button when the search input has
-// padding (and `textfield` appearance).
+// Remove inner padding and search cancel button in Safari 5 and Chrome
+// on OS X.
 //
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -2131,42 +1865,26 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 //
-// Define consistent border, margin, and padding.
+// Remove inner padding and border in Firefox 4+.
 //
 
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 
 //
-// 1. Correct `color` not being inherited in IE 8/9.
-// 2. Remove padding so people aren't caught out if they zero out fieldsets.
-//
-
-legend {
-  border: 0; // 1
-  padding: 0; // 2
-}
-
-//
-// Remove default vertical scrollbar in IE 8/9.
+// 1. Remove default vertical scrollbar in IE 8/9.
+// 2. Improve readability and alignment in all browsers.
 //
 
 textarea {
-  overflow: auto;
+  overflow: auto; // 1
+  vertical-align: top; // 2
 }
 
-//
-// Don't inherit the `font-weight` (applied by a rule above).
-// NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
-//
-
-optgroup {
-  font-weight: bold;
-}
-
+// ==========================================================================
 // Tables
 // ==========================================================================
 
@@ -2177,11 +1895,6 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-td,
-th {
-  padding: 0;
 }
 
 //
@@ -2236,6 +1949,10 @@ th {
     max-width: 100% !important;
   }
 
+  @page {
+    margin: 2cm .5cm;
+  }
+
   p,
   h2,
   h3 {
@@ -2286,6 +2003,7 @@ th {
 
 }
 
+
 // Core CSS
 //
 // Scaffolding
@@ -2293,13 +2011,8 @@ th {
 
 
 // Reset the box-sizing
-//
-// Heads up! This reset may cause conflicts with some third-party widgets.
-// For recommendations on resolving such conflicts, see
-// http://getbootstrap.com/getting-started/#third-box-sizing
-* {
-  .box-sizing(border-box);
-}
+
+*,
 *:before,
 *:after {
   .box-sizing(border-box);
@@ -2347,16 +2060,6 @@ a {
   &:focus {
     .tab-focus();
   }
-}
-
-
-// Figures
-//
-// We reset this here because previously Normalize had no `figure` margins. This
-// ensures we don't break anyone's use of the element.
-
-figure {
-  margin: 0;
 }
 
 
@@ -2445,9 +2148,9 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3 {
+h1,
+h2,
+h3 {
   margin-top: @line-height-computed;
   margin-bottom: (@line-height-computed / 2);
 
@@ -2456,9 +2159,9 @@ h3, .h3 {
     font-size: 65%;
   }
 }
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h4,
+h5,
+h6 {
   margin-top: (@line-height-computed / 2);
   margin-bottom: (@line-height-computed / 2);
 
@@ -2485,7 +2188,7 @@ p {
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: floor((@font-size-base * 1.15));
+  font-size: floor(@font-size-base * 1.15);
   font-weight: 200;
   line-height: 1.4;
 
@@ -2505,53 +2208,45 @@ small,
 // Undo browser default styling
 cite    { font-style: normal; }
 
-// Alignment
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
-
-// Contextual colors
+// Contextual emphasis
 .text-muted {
   color: @text-muted;
 }
 .text-primary {
-  .text-emphasis-variant(@brand-primary);
-}
-.text-success {
-  .text-emphasis-variant(@state-success-text);
-}
-.text-info {
-  .text-emphasis-variant(@state-info-text);
+  color: @brand-primary;
+  &:hover {
+    color: darken(@brand-primary, 10%);
+  }
 }
 .text-warning {
-  .text-emphasis-variant(@state-warning-text);
+  color: @state-warning-text;
+  &:hover {
+    color: darken(@state-warning-text, 10%);
+  }
 }
 .text-danger {
-  .text-emphasis-variant(@state-danger-text);
+  color: @state-danger-text;
+  &:hover {
+    color: darken(@state-danger-text, 10%);
+  }
+}
+.text-success {
+  color: @state-success-text;
+  &:hover {
+    color: darken(@state-success-text, 10%);
+  }
+}
+.text-info {
+  color: @state-info-text;
+  &:hover {
+    color: darken(@state-info-text, 10%);
+  }
 }
 
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
-.bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff;
-  .bg-variant(@brand-primary);
-}
-.bg-success {
-  .bg-variant(@state-success-bg);
-}
-.bg-info {
-  .bg-variant(@state-info-bg);
-}
-.bg-warning {
-  .bg-variant(@state-warning-bg);
-}
-.bg-danger {
-  .bg-variant(@state-danger-bg);
-}
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
 
 
 // Page header
@@ -2589,12 +2284,15 @@ ol {
 // Inline turns list items into inline-block
 .list-inline {
   .list-unstyled();
-  margin-left: -5px;
 
   > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 }
 
@@ -2630,7 +2328,7 @@ dd {
     }
     dd {
       margin-left: @component-offset-horizontal;
-      &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+      .clearfix(); // Clear the floated `dt` if an empty `dd` is present
     }
   }
 }
@@ -2654,51 +2352,44 @@ abbr[data-original-title] {
 blockquote {
   padding: (@line-height-computed / 2) @line-height-computed;
   margin: 0 0 @line-height-computed;
-  font-size: @blockquote-font-size;
   border-left: 5px solid @blockquote-border-color;
-
-  p,
-  ul,
-  ol {
-    &:last-child {
-      margin-bottom: 0;
-    }
+  p {
+    font-size: (@font-size-base * 1.25);
+    font-weight: 300;
+    line-height: 1.25;
   }
-
-  // Note: Deprecated small and .small as of v3.1.0
-  // Context: https://github.com/twbs/bootstrap/issues/11660
-  footer,
+  p:last-child {
+    margin-bottom: 0;
+  }
   small,
   .small {
     display: block;
-    font-size: 80%; // back to default font-size
     line-height: @line-height-base;
     color: @blockquote-small-color;
-
     &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
+      content: '\2014 \00A0'; // EM DASH, NBSP
     }
   }
-}
 
-// Opposite alignment of blockquote
-//
-// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
-.blockquote-reverse,
-blockquote.pull-right {
-  padding-right: 15px;
-  padding-left: 0;
-  border-right: 5px solid @blockquote-border-color;
-  border-left: 0;
-  text-align: right;
-
-  // Account for citation
-  footer,
-  small,
-  .small {
-    &:before { content: ''; }
-    &:after {
-      content: '\00A0 \2014'; // nbsp, em dash
+  // Float right with text-align: right
+  &.pull-right {
+    padding-right: 15px;
+    padding-left: 0;
+    border-right: 5px solid @blockquote-border-color;
+    border-left: 0;
+    p,
+    small,
+    .small {
+      text-align: right;
+    }
+    small,
+    .small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014'; // NBSP, EM DASH
+      }
     }
   }
 }
@@ -2739,16 +2430,6 @@ code {
   border-radius: @border-radius-base;
 }
 
-// User input typically entered via keyboard
-kbd {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: @kbd-color;
-  background-color: @kbd-bg;
-  border-radius: @border-radius-small;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-}
-
 // Blocks of code
 pre {
   display: block;
@@ -2784,18 +2465,14 @@ pre {
 // Grid system
 // --------------------------------------------------
 
-
-// Container widths
-//
-// Set the container width, and override it for fixed navbars in media queries.
-
+// Set the container width, and override it for fixed navbars in media queries
 .container {
   .container-fixed();
 
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: @screen-sm) {
     width: @container-sm;
   }
-  @media (min-width: @screen-md-min) {
+  @media (min-width: @screen-md) {
     width: @container-md;
   }
   @media (min-width: @screen-lg-min) {
@@ -2803,30 +2480,12 @@ pre {
   }
 }
 
-
-// Fluid container
-//
-// Utilizes the mixin meant for fixed width containers, but without any defined
-// width for fluid, full width layouts.
-
-.container-fluid {
-  .container-fixed();
-}
-
-
-// Row
-//
-// Rows contain and clear the floats of your columns.
-
+// mobile first defaults
 .row {
   .make-row();
 }
 
-
-// Columns
-//
 // Common styles for small and large grid columns
-
 .make-grid-columns();
 
 
@@ -2835,7 +2494,11 @@ pre {
 // Columns, offsets, pushes, and pulls for extra small devices like
 // smartphones.
 
-.make-grid(xs);
+.make-grid-columns-float(xs);
+.make-grid(@grid-columns, xs, width);
+.make-grid(@grid-columns, xs, pull);
+.make-grid(@grid-columns, xs, push);
+.make-grid(@grid-columns, xs, offset);
 
 
 // Small grid
@@ -2844,7 +2507,11 @@ pre {
 // to tablets.
 
 @media (min-width: @screen-sm-min) {
-  .make-grid(sm);
+  .make-grid-columns-float(sm);
+  .make-grid(@grid-columns, sm, width);
+  .make-grid(@grid-columns, sm, pull);
+  .make-grid(@grid-columns, sm, push);
+  .make-grid(@grid-columns, sm, offset);
 }
 
 
@@ -2853,7 +2520,11 @@ pre {
 // Columns, offsets, pushes, and pulls for the desktop device range.
 
 @media (min-width: @screen-md-min) {
-  .make-grid(md);
+  .make-grid-columns-float(md);
+  .make-grid(@grid-columns, md, width);
+  .make-grid(@grid-columns, md, pull);
+  .make-grid(@grid-columns, md, push);
+  .make-grid(@grid-columns, md, offset);
 }
 
 
@@ -2862,8 +2533,13 @@ pre {
 // Columns, offsets, pushes, and pulls for the large desktop device range.
 
 @media (min-width: @screen-lg-min) {
-  .make-grid(lg);
+  .make-grid-columns-float(lg);
+  .make-grid(@grid-columns, lg, width);
+  .make-grid(@grid-columns, lg, pull);
+  .make-grid(@grid-columns, lg, push);
+  .make-grid(@grid-columns, lg, offset);
 }
+
 
 //
 // Tables
@@ -3008,7 +2684,6 @@ table {
   td,
   th {
     &[class*="col-"] {
-      position: static; // Prevent border hiding in Firefox and IE9/10 (see https://github.com/twbs/bootstrap/issues/11623)
       float: none;
       display: table-cell;
     }
@@ -3024,9 +2699,8 @@ table {
 // Generate the contextual variants
 .table-row-variant(active; @table-bg-active);
 .table-row-variant(success; @state-success-bg);
-.table-row-variant(info; @state-info-bg);
-.table-row-variant(warning; @state-warning-bg);
 .table-row-variant(danger; @state-danger-bg);
+.table-row-variant(warning; @state-warning-bg);
 
 
 // Responsive tables
@@ -3112,10 +2786,6 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
-  // Chrome and Firefox set a `min-width: -webkit-min-content;` on fieldsets,
-  // so we reset that to ensure it behaves more like a standard block element.
-  // See https://github.com/twbs/bootstrap/issues/12359.
-  min-width: 0;
 }
 
 legend {
@@ -3138,10 +2808,6 @@ label {
 
 
 // Normalize form controls
-//
-// While most of our form styles require extra classes, some basic normalization
-// is required to ensure optimum display with or without those classes to better
-// address browser inconsistencies.
 
 // Override content-box in Normalize (* isn't specific enough)
 input[type="search"] {
@@ -3156,15 +2822,9 @@ input[type="checkbox"] {
   line-height: normal;
 }
 
-// Set the height of file controls to match text inputs
+// Set the height of select and file controls to match text inputs
 input[type="file"] {
   display: block;
-}
-
-// Make range inputs behave like textual form controls
-input[type="range"] {
-  display: block;
-  width: 100%;
 }
 
 // Make multiple select elements height not fixed
@@ -3173,11 +2833,28 @@ select[size] {
   height: auto;
 }
 
-// Focus for file, radio, and checkbox
+// Fix optgroup Firefox bug per https://github.com/twbs/bootstrap/issues/7611
+select optgroup {
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
+// Focus for select, file, radio, and checkbox
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   .tab-focus();
+}
+
+// Fix for Chrome number input
+// Setting certain font-sizes causes the `I` bar to appear on hover of the bottom increment button.
+// See https://github.com/twbs/bootstrap/issues/8350 for more.
+input[type="number"] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    height: auto;
+  }
 }
 
 // Adjust output element
@@ -3187,6 +2864,7 @@ output {
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
+  vertical-align: middle;
 }
 
 
@@ -3220,6 +2898,7 @@ output {
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
+  vertical-align: middle;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
@@ -3231,47 +2910,26 @@ output {
   .form-control-focus();
 
   // Placeholder
+  //
+  // Placeholder text gets special styles because when browsers invalidate entire
+  // lines if it doesn't understand a selector/
   .placeholder();
 
   // Disabled and read-only inputs
-  //
-  // HTML5 says that controls under a fieldset > legend:first-child won't be
-  // disabled if the fieldset is disabled. Due to implementation difficulty, we
-  // don't honor that edge case; we style them as disabled anyway.
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
     cursor: not-allowed;
     background-color: @input-bg-disabled;
-    opacity: 1; // iOS fix for unreadable disabled content
   }
 
   // Reset height for `textarea`s
   textarea& {
     height: auto;
   }
-}
-
-
-// Search inputs in iOS
-//
-// This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
-// https://github.com/twbs/bootstrap/issues/11586.
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
-
-// Special styles for iOS date input
-//
-// In Mobile Safari, date inputs require a pixel line-height that matches the
-// given height of the input.
-
-input[type="date"] {
-  line-height: @input-height-base;
 }
 
 
@@ -3296,8 +2954,10 @@ input[type="date"] {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 20px;
+  vertical-align: middle;
   label {
     display: inline;
+    margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
   }
@@ -3345,12 +3005,7 @@ input[type="checkbox"],
   }
 }
 
-
 // Form control sizing
-//
-// Build on `.form-control` with modifier classes to decrease or increase the
-// height and font-size of form controls.
-
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
@@ -3364,37 +3019,17 @@ input[type="checkbox"],
 //
 // Apply contextual and semantic states to individual form controls.
 
-.has-feedback {
-  // Enable absolute positioning
-  position: relative;
-
-  // Ensure icons don't overlap text
-  .form-control {
-    padding-right: (@input-height-base * 1.25);
-  }
-
-  // Feedback icon (requires .glyphicon classes)
-  .form-control-feedback {
-    position: absolute;
-    top: (@line-height-computed + 5); // Height of the `label` and its margin
-    right: 0;
-    display: block;
-    width: @input-height-base;
-    height: @input-height-base;
-    line-height: @input-height-base;
-    text-align: center;
-  }
-}
-
-// Feedback states
-.has-success {
-  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
-}
+// Warning
 .has-warning {
   .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
+// Error
 .has-error {
   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+}
+// Success
+.has-success {
+  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
 }
 
 
@@ -3436,9 +3071,9 @@ input[type="checkbox"],
 .form-inline {
 
   // Kick in the inline
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: @screen-sm) {
     // Inline-block all the things for "inline"
-    .form-group {
+    .form-group  {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
@@ -3447,17 +3082,11 @@ input[type="checkbox"],
     // In navbar-form, allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
-      vertical-align: middle;
-    }
-    // Input groups need that 100% width though
-    .input-group > .form-control {
-      width: 100%;
     }
 
-    .control-label {
-      margin-bottom: 0;
-      vertical-align: middle;
+    // Override `width: 100%;` when not within a `.form-group`
+    select.form-control {
+      width: auto;
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
@@ -3469,20 +3098,11 @@ input[type="checkbox"],
       margin-top: 0;
       margin-bottom: 0;
       padding-left: 0;
-      vertical-align: middle;
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       float: none;
       margin-left: 0;
-    }
-
-    // Validation states
-    //
-    // Reposition the icon because it's now within a grid column and columns have
-    // `position: relative;` on them. Also accounts for the grid gutter padding.
-    .has-feedback .form-control-feedback {
-      top: 0;
     }
   }
 }
@@ -3509,7 +3129,7 @@ input[type="checkbox"],
   // and other content below items
   .radio,
   .checkbox {
-    min-height: (@line-height-computed + (@padding-base-vertical + 1));
+    min-height: @line-height-computed + (@padding-base-vertical + 1);
   }
 
   // Make form groups behave like rows
@@ -3526,15 +3146,6 @@ input[type="checkbox"],
     .control-label {
       text-align: right;
     }
-  }
-
-  // Validation states
-  //
-  // Reposition the icon because it's now within a grid column and columns have
-  // `position: relative;` on them. Also accounts for the grid gutter padding.
-  .has-feedback .form-control-feedback {
-    top: 0;
-    right: (@grid-gutter-width / 2);
   }
 }
 
@@ -3559,12 +3170,8 @@ input[type="checkbox"],
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
 
-  &,
-  &:active,
-  &.active {
-    &:focus {
-      .tab-focus();
-    }
+  &:focus {
+    .tab-focus();
   }
 
   &:hover,
@@ -3600,14 +3207,6 @@ input[type="checkbox"],
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }
-// Success appears as green
-.btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-}
 // Warning appears as orange
 .btn-warning {
   .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
@@ -3615,6 +3214,14 @@ input[type="checkbox"],
 // Danger and error appear as red
 .btn-danger {
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+// Success appears as green
+.btn-success {
+  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+// Info appears as blue-green
+.btn-info {
+  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
 }
 
 
@@ -3698,8 +3305,8 @@ input[type="button"] {
   }
 }
 
-// Components
 
+// Components
 //
 // Component animations
 // --------------------------------------------------
@@ -3746,7 +3353,7 @@ input[type="button"] {
   src: ~"url('@{icon-font-path}@{icon-font-name}.eot?#iefix') format('embedded-opentype')",
        ~"url('@{icon-font-path}@{icon-font-name}.woff') format('woff')",
        ~"url('@{icon-font-path}@{icon-font-name}.ttf') format('truetype')",
-       ~"url('@{icon-font-path}@{icon-font-name}.svg#@{icon-font-svg-id}') format('svg')";
+       ~"url('@{icon-font-path}@{icon-font-name}.svg#glyphicons-halflingsregular') format('svg')";
 }
 
 // Catchall baseclass
@@ -3760,6 +3367,10 @@ input[type="button"] {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &:empty {
+    width: 1em;
+  }
 }
 
 // Individual icons
@@ -4012,8 +3623,6 @@ input[type="button"] {
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right
-  //
-  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
   &.pull-right {
     right: 0;
     left: auto;
@@ -4094,25 +3703,6 @@ input[type="button"] {
   }
 }
 
-// Menu positioning
-//
-// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
-// menu with the parent.
-.dropdown-menu-right {
-  left: auto; // Reset the default from `.dropdown-menu`
-  right: 0;
-}
-// With v3, we enabled auto-flipping if you have a dropdown within a right
-// aligned nav component. To enable the undoing of that, we provide an override
-// to restore the default dropdown menu alignment.
-//
-// This is only for left-aligning a dropdown menu within a `.navbar-right` or
-// `.pull-right` nav component.
-.dropdown-menu-left {
-  left: 0;
-  right: auto;
-}
-
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -4129,7 +3719,7 @@ input[type="button"] {
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: (@zindex-dropdown - 10);
+  z-index: @zindex-dropdown - 10;
 }
 
 // Right aligned dropdowns
@@ -4167,15 +3757,11 @@ input[type="button"] {
 @media (min-width: @grid-float-breakpoint) {
   .navbar-right {
     .dropdown-menu {
-      .dropdown-menu-right();
-    }
-    // Necessary for overrides of the default right aligned menu.
-    // Will remove come v4 in all likelihood.
-    .dropdown-menu-left {
-      .dropdown-menu-left();
+      .pull-right > .dropdown-menu();
     }
   }
 }
+
 
 //
 // Button groups
@@ -4216,17 +3802,18 @@ input[type="button"] {
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -5px; // Offset the first child's margin
-  &:extend(.clearfix all);
+  .clearfix();
 
-  .btn-group,
-  .input-group {
+  .btn-group {
     float: left;
   }
+  // Space out series of button groups
   > .btn,
-  > .btn-group,
-  > .input-group {
-    margin-left: 5px;
+  > .btn-group {
+    + .btn,
+    + .btn-group {
+      margin-left: 5px;
+    }
   }
 }
 
@@ -4275,9 +3862,9 @@ input[type="button"] {
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-xs > .btn { &:extend(.btn-xs); }
-.btn-group-sm > .btn { &:extend(.btn-sm); }
-.btn-group-lg > .btn { &:extend(.btn-lg); }
+.btn-group-xs > .btn { .btn-xs(); }
+.btn-group-sm > .btn { .btn-sm(); }
+.btn-group-lg > .btn { .btn-lg(); }
 
 
 // Split button dropdowns
@@ -4335,7 +3922,7 @@ input[type="button"] {
 
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
-    &:extend(.clearfix all);
+    .clearfix();
     > .btn {
       float: none;
     }
@@ -4366,13 +3953,13 @@ input[type="button"] {
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group-vertical > .btn-group:first-child:not(:last-child) {
+.btn-group-vertical > .btn-group:first-child {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-bottom-radius(0);
   }
 }
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child > .btn:first-child {
   .border-top-radius(0);
 }
 
@@ -4423,16 +4010,6 @@ input[type="button"] {
   }
 
   .form-control {
-    // Ensure that the input is always above the *appended* addon button for
-    // proper border colors.
-    position: relative;
-    z-index: 2;
-
-    // IE9 fubars the placeholder attribute in text inputs and the arrows on
-    // select elements in input groups. To fix it, we float the input. Details:
-    // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
-    float: left;
-
     width: 100%;
     margin-bottom: 0;
   }
@@ -4506,10 +4083,8 @@ input[type="button"] {
 .input-group .form-control:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
 .input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
   .border-right-radius(0);
 }
 .input-group-addon:first-child {
@@ -4518,10 +4093,8 @@ input[type="button"] {
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
 .input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group-btn:first-child > .btn:not(:first-child) {
   .border-left-radius(0);
 }
 .input-group-addon:last-child {
@@ -4532,38 +4105,26 @@ input[type="button"] {
 // -------------------------
 .input-group-btn {
   position: relative;
-  // Jankily prevent input button groups from wrapping with `white-space` and
-  // `font-size` in combination with `inline-block` on buttons.
-  font-size: 0;
   white-space: nowrap;
 
-  // Negative margin for spacing, position for bringing hovered/focused/actived
-  // element above the siblings.
-  > .btn {
-    position: relative;
-    + .btn {
-      margin-left: -1px;
-    }
-    // Bring the "active" button to the front
-    &:hover,
-    &:focus,
-    &:active {
-      z-index: 2;
-    }
-  }
-
   // Negative margin to only have a 1px border between the two
-  &:first-child {
-    > .btn,
-    > .btn-group {
-      margin-right: -1px;
-    }
+  &:first-child > .btn {
+    margin-right: -1px;
   }
-  &:last-child {
-    > .btn,
-    > .btn-group {
-      margin-left: -1px;
-    }
+  &:last-child > .btn {
+    margin-left: -1px;
+  }
+}
+.input-group-btn > .btn {
+  position: relative;
+  // Jankily prevent input button groups from wrapping
+  + .btn {
+    margin-left: -4px;
+  }
+  // Bring the "active" button to the front
+  &:hover,
+  &:active {
+    z-index: 2;
   }
 }
 
@@ -4579,7 +4140,7 @@ input[type="button"] {
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  &:extend(.clearfix all);
+  .clearfix();
 
   > li {
     position: relative;
@@ -4660,7 +4221,7 @@ input[type="button"] {
       }
     }
 
-    // Active state, and its :hover to override normal :hover
+    // Active state, and it's :hover to override normal :hover
     &.active > a {
       &,
       &:hover,
@@ -4827,7 +4388,7 @@ input[type="button"] {
   border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
-  &:extend(.clearfix all);
+  .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
@@ -4841,7 +4402,7 @@ input[type="button"] {
 // styling of responsive aspects.
 
 .navbar-header {
-  &:extend(.clearfix all);
+  .clearfix();
 
   @media (min-width: @grid-float-breakpoint) {
     float: left;
@@ -4860,13 +4421,13 @@ input[type="button"] {
 // content for the user's viewport.
 
 .navbar-collapse {
-  max-height: @navbar-collapse-max-height;
+  max-height: 340px;
   overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
   padding-left:  @navbar-padding-horizontal;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-  &:extend(.clearfix all);
+  .clearfix();
   -webkit-overflow-scrolling: touch;
 
   &.in {
@@ -4905,17 +4466,14 @@ input[type="button"] {
 //
 // When a container is present, change the behavior of the header and collapse.
 
-.container,
-.container-fluid {
-  > .navbar-header,
-  > .navbar-collapse {
-    margin-right: -@navbar-padding-horizontal;
-    margin-left:  -@navbar-padding-horizontal;
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-right: -@navbar-padding-horizontal;
+  margin-left:  -@navbar-padding-horizontal;
 
-    @media (min-width: @grid-float-breakpoint) {
-      margin-right: 0;
-      margin-left:  0;
-    }
+  @media (min-width: @grid-float-breakpoint) {
+    margin-right: 0;
+    margin-left:  0;
   }
 }
 
@@ -4967,7 +4525,6 @@ input[type="button"] {
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  height: @navbar-height;
 
   &:hover,
   &:focus {
@@ -4975,8 +4532,7 @@ input[type="button"] {
   }
 
   @media (min-width: @grid-float-breakpoint) {
-    .navbar > .container &,
-    .navbar > .container-fluid & {
+    .navbar > .container & {
       margin-left: -@navbar-padding-horizontal;
     }
   }
@@ -4999,12 +4555,6 @@ input[type="button"] {
   border: 1px solid transparent;
   border-radius: @border-radius-base;
 
-  // We remove the `outline` here, but later compensate by attaching `:hover`
-  // styles to `:focus`.
-  &:focus {
-    outline: none;
-  }
-
   // Bars
   .icon-bar {
     display: block;
@@ -5024,7 +4574,7 @@ input[type="button"] {
 
 // Navbar nav links
 //
-// Builds on top of the `.nav` components with its own modifier class to make
+// Builds on top of the `.nav` components with it's own modifier class to make
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
@@ -5146,6 +4696,13 @@ input[type="button"] {
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   .border-bottom-radius(0);
+}
+
+// Right aligned menus need alt position
+.navbar-nav.pull-right > li > .dropdown-menu,
+.navbar-nav > li > .dropdown-menu.pull-right {
+  left: auto;
+  right: 0;
 }
 
 
@@ -5433,22 +4990,19 @@ input[type="button"] {
 
 
 .breadcrumb {
-  padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
+  padding: 8px 15px;
   margin-bottom: @line-height-computed;
   list-style: none;
   background-color: @breadcrumb-bg;
   border-radius: @border-radius-base;
-
   > li {
     display: inline-block;
-
     + li:before {
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
       color: @breadcrumb-color;
     }
   }
-
   > .active {
     color: @breadcrumb-active-color;
   }
@@ -5472,7 +5026,6 @@ input[type="button"] {
       padding: @padding-base-vertical @padding-base-horizontal;
       line-height: @line-height-base;
       text-decoration: none;
-      color: @pagination-color;
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
       margin-left: -1px;
@@ -5496,9 +5049,7 @@ input[type="button"] {
   > li > span {
     &:hover,
     &:focus {
-      color: @pagination-hover-color;
       background-color: @pagination-hover-bg;
-      border-color: @pagination-hover-border;
     }
   }
 
@@ -5510,7 +5061,7 @@ input[type="button"] {
       z-index: 2;
       color: @pagination-active-color;
       background-color: @pagination-active-bg;
-      border-color: @pagination-active-border;
+      border-color: @pagination-active-bg;
       cursor: default;
     }
   }
@@ -5523,8 +5074,8 @@ input[type="button"] {
     > a:hover,
     > a:focus {
       color: @pagination-disabled-color;
-      background-color: @pagination-disabled-bg;
-      border-color: @pagination-disabled-border;
+      background-color: @pagination-bg;
+      border-color: @pagination-border;
       cursor: not-allowed;
     }
   }
@@ -5553,22 +5104,22 @@ input[type="button"] {
   margin: @line-height-computed 0;
   list-style: none;
   text-align: center;
-  &:extend(.clearfix all);
+  .clearfix();
   li {
     display: inline;
     > a,
     > span {
       display: inline-block;
       padding: 5px 14px;
-      background-color: @pager-bg;
-      border: 1px solid @pager-border;
+      background-color: @pagination-bg;
+      border: 1px solid @pagination-border;
       border-radius: @pager-border-radius;
     }
 
     > a:hover,
     > a:focus {
       text-decoration: none;
-      background-color: @pager-hover-bg;
+      background-color: @pagination-hover-bg;
     }
   }
 
@@ -5592,7 +5143,7 @@ input[type="button"] {
     > a:focus,
     > span {
       color: @pager-disabled-color;
-      background-color: @pager-bg;
+      background-color: @pagination-bg;
       cursor: not-allowed;
     }
   }
@@ -5694,10 +5245,6 @@ input[type="button"] {
     position: relative;
     top: -1px;
   }
-  .btn-xs & {
-    top: 0;
-    padding: 1px 5px;
-  }
 }
 
 // Hover state, but only for links
@@ -5728,17 +5275,19 @@ a.list-group-item.active > .badge,
 .jumbotron {
   padding: @jumbotron-padding;
   margin-bottom: @jumbotron-padding;
+  font-size: @jumbotron-font-size;
+  font-weight: 200;
+  line-height: (@line-height-base * 1.5);
   color: @jumbotron-color;
   background-color: @jumbotron-bg;
 
   h1,
   .h1 {
+    line-height: 1;
     color: @jumbotron-heading-color;
   }
   p {
-    margin-bottom: (@jumbotron-padding / 2);
-    font-size: @jumbotron-font-size;
-    font-weight: 200;
+    line-height: 1.4;
   }
 
   .container & {
@@ -5783,7 +5332,7 @@ a.list-group-item.active > .badge,
 
   > img,
   a > img {
-    &:extend(.img-responsive);
+    .img-responsive();
     margin-left: auto;
     margin-right: auto;
   }
@@ -6012,21 +5561,17 @@ a.list-group-item.active > .badge,
 // List groups
 // --------------------------------------------------
 
-
 // Base class
 //
 // Easily usable on <ul>, <ol>, or <div>.
-
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
   margin-bottom: 20px;
   padding-left: 0; // reset padding because ul and ol
 }
 
-
 // Individual list items
-//
-// Use on `li`s or `div`s within the `.list-group` parent.
+// -------------------------
 
 .list-group-item {
   position: relative;
@@ -6055,12 +5600,7 @@ a.list-group-item.active > .badge,
   }
 }
 
-
 // Linked list items
-//
-// Use anchor elements instead of `li`s or `div`s to create linked list items.
-// Includes an extra `.active` modifier class for showing selected items.
-
 a.list-group-item {
   color: @list-group-link-color;
 
@@ -6089,26 +5629,13 @@ a.list-group-item {
       color: inherit;
     }
     .list-group-item-text {
-      color: @list-group-active-text-color;
+      color: lighten(@list-group-active-bg, 40%);
     }
   }
 }
 
-
-// Contextual variants
-//
-// Add modifier classes to change text and background color on individual items.
-// Organizationally, this must come after the `:hover` states.
-
-.list-group-item-variant(success; @state-success-bg; @state-success-text);
-.list-group-item-variant(info; @state-info-bg; @state-info-text);
-.list-group-item-variant(warning; @state-warning-bg; @state-warning-text);
-.list-group-item-variant(danger; @state-danger-bg; @state-danger-text);
-
-
 // Custom content options
-//
-// Extra classes for creating well-formatted content within `.list-group-item`s.
+// -------------------------
 
 .list-group-item-heading {
   margin-top: 0;
@@ -6135,39 +5662,8 @@ a.list-group-item {
 
 // Panel contents
 .panel-body {
-  padding: @panel-body-padding;
-  &:extend(.clearfix all);
-}
-
-// Optional heading
-.panel-heading {
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  .border-top-radius((@panel-border-radius - 1));
-
-  > .dropdown .dropdown-toggle {
-    color: inherit;
-  }
-}
-
-// Within heading, strip any `h*` tag of its default margins for spacing.
-.panel-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: ceil((@font-size-base * 1.125));
-  color: inherit;
-
-  > a {
-    color: inherit;
-  }
-}
-
-// Optional footer (stays gray in every modifier class)
-.panel-footer {
-  padding: 10px 15px;
-  background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius((@panel-border-radius - 1));
+  padding: 15px;
+  .clearfix();
 }
 
 
@@ -6182,21 +5678,14 @@ a.list-group-item {
 
     .list-group-item {
       border-width: 1px 0;
-      border-radius: 0;
-    }
 
-    // Add border top radius for first one
-    &:first-child {
-      .list-group-item:first-child {
-        border-top: 0;
-        .border-top-radius((@panel-border-radius - 1));
+      // Remove border radius for top one
+      &:first-child {
+        .border-top-radius(0);
       }
-    }
-    // Add border bottom radius for last one
-    &:last-child {
-      .list-group-item:last-child {
+      // But keep it for the last one
+      &:last-child {
         border-bottom: 0;
-        .border-bottom-radius((@panel-border-radius - 1));
       }
     }
   }
@@ -6219,50 +5708,12 @@ a.list-group-item {
   > .table-responsive > .table {
     margin-bottom: 0;
   }
-  // Add border top radius for first one
-  > .table:first-child,
-  > .table-responsive:first-child > .table:first-child {
-    .border-top-radius((@panel-border-radius - 1));
-
-    > thead:first-child,
-    > tbody:first-child {
-      > tr:first-child {
-        td:first-child,
-        th:first-child {
-          border-top-left-radius: (@panel-border-radius - 1);
-        }
-        td:last-child,
-        th:last-child {
-          border-top-right-radius: (@panel-border-radius - 1);
-        }
-      }
-    }
-  }
-  // Add border bottom radius for last one
-  > .table:last-child,
-  > .table-responsive:last-child > .table:last-child {
-    .border-bottom-radius((@panel-border-radius - 1));
-
-    > tbody:last-child,
-    > tfoot:last-child {
-      > tr:last-child {
-        td:first-child,
-        th:first-child {
-          border-bottom-left-radius: (@panel-border-radius - 1);
-        }
-        td:last-child,
-        th:last-child {
-          border-bottom-right-radius: (@panel-border-radius - 1);
-        }
-      }
-    }
-  }
   > .panel-body + .table,
   > .panel-body + .table-responsive {
     border-top: 1px solid @table-border-color;
   }
-  > .table > tbody:first-child > tr:first-child th,
-  > .table > tbody:first-child > tr:first-child td {
+  > .table > tbody:first-child th,
+  > .table > tbody:first-child td {
     border-top: 0;
   }
   > .table-bordered,
@@ -6280,22 +5731,9 @@ a.list-group-item {
         > td:last-child {
           border-right: 0;
         }
-      }
-    }
-    > thead,
-    > tbody {
-      > tr:first-child {
-        > td,
-        > th {
-          border-bottom: 0;
-        }
-      }
-    }
-    > tbody,
-    > tfoot {
-      > tr:last-child {
-        > td,
-        > th {
+
+        &:last-child > th,
+        &:last-child > td {
           border-bottom: 0;
         }
       }
@@ -6308,14 +5746,44 @@ a.list-group-item {
 }
 
 
+// Optional heading
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  .border-top-radius(@panel-border-radius - 1);
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+}
+
+// Within heading, strip any `h*` tag of it's default margins for spacing.
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
+  > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: 10px 15px;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius(@panel-border-radius - 1);
+}
+
+
 // Collapsable panels (aka, accordion)
 //
 // Wrap a series of panels in `.panel-group` to turn them into an accordion with
 // the help of our collapse JavaScript plugin.
 
 .panel-group {
-  margin-bottom: @line-height-computed;
-
   // Tighten up margin so it's only between panels
   .panel {
     margin-bottom: 0;
@@ -6351,14 +5819,14 @@ a.list-group-item {
 .panel-success {
   .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
 }
-.panel-info {
-  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
-}
 .panel-warning {
   .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
 }
 .panel-danger {
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+.panel-info {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
 }
 
 //
@@ -6372,7 +5840,7 @@ a.list-group-item {
   padding: 19px;
   margin-bottom: 20px;
   background-color: @well-bg;
-  border: 1px solid @well-border;
+  border: 1px solid darken(@well-bg, 7%);
   border-radius: @border-radius-base;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
   blockquote {
@@ -6425,8 +5893,8 @@ a.list-group-item {
   }
 }
 
-// Components w/ JavaScript
 
+// Components w/ JavaScript
 //
 // Modals
 // --------------------------------------------------
@@ -6451,12 +5919,7 @@ a.list-group-item {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal;
-  -webkit-overflow-scrolling: touch;
-
-  // Prevent Chrome on Windows from adding a focus outline. For details, see
-  // https://github.com/twbs/bootstrap/pull/10951.
-  outline: 0;
+  z-index: @zindex-modal-background;
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
@@ -6471,6 +5934,7 @@ a.list-group-item {
   position: relative;
   width: auto;
   margin: 10px;
+  z-index: (@zindex-modal-background + 10);
 }
 
 // Actual modal
@@ -6493,11 +5957,11 @@ a.list-group-item {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal-background;
+  z-index: (@zindex-modal-background - 10);
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
   &.fade { .opacity(0); }
-  &.in { .opacity(@modal-backdrop-opacity); }
+  &.in { .opacity(.5); }
 }
 
 // Modal header
@@ -6531,7 +5995,7 @@ a.list-group-item {
   padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
-  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+  .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
@@ -6549,22 +6013,16 @@ a.list-group-item {
 }
 
 // Scale up the modal
-@media (min-width: @screen-sm-min) {
-  // Automatically set modal's width for larger viewports
+@media screen and (min-width: @screen-sm-min) {
+
   .modal-dialog {
-    width: @modal-md;
+    width: 600px;
     margin: 30px auto;
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
 
-  // Modal sizes
-  .modal-sm { width: @modal-sm; }
-}
-
-@media (min-width: @screen-md-min) {
-  .modal-lg { width: @modal-lg; }
 }
 
 //
@@ -6582,7 +6040,7 @@ a.list-group-item {
   line-height: 1.4;
   .opacity(0);
 
-  &.in     { .opacity(@tooltip-opacity); }
+  &.in     { .opacity(.9); }
   &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
   &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
   &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
@@ -6688,10 +6146,10 @@ a.list-group-item {
   white-space: normal;
 
   // Offset the popover to account for the popover arrow
-  &.top     { margin-top: -@popover-arrow-width; }
-  &.right   { margin-left: @popover-arrow-width; }
-  &.bottom  { margin-top: @popover-arrow-width; }
-  &.left    { margin-left: -@popover-arrow-width; }
+  &.top     { margin-top: -10px; }
+  &.right   { margin-left: 10px; }
+  &.bottom  { margin-top: 10px; }
+  &.left    { margin-left: -10px; }
 }
 
 .popover-title {
@@ -6713,7 +6171,7 @@ a.list-group-item {
 //
 // .arrow is outer, .arrow:after is inner
 
-.popover > .arrow {
+.popover .arrow {
   &,
   &:after {
     position: absolute;
@@ -6724,16 +6182,16 @@ a.list-group-item {
     border-style: solid;
   }
 }
-.popover > .arrow {
+.popover .arrow {
   border-width: @popover-arrow-outer-width;
 }
-.popover > .arrow:after {
+.popover .arrow:after {
   border-width: @popover-arrow-width;
   content: "";
 }
 
 .popover {
-  &.top > .arrow {
+  &.top .arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-bottom-width: 0;
@@ -6748,7 +6206,7 @@ a.list-group-item {
       border-top-color: @popover-arrow-color;
     }
   }
-  &.right > .arrow {
+  &.right .arrow {
     top: 50%;
     left: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
@@ -6763,7 +6221,7 @@ a.list-group-item {
       border-right-color: @popover-arrow-color;
     }
   }
-  &.bottom > .arrow {
+  &.bottom .arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
     border-top-width: 0;
@@ -6779,7 +6237,7 @@ a.list-group-item {
     }
   }
 
-  &.left > .arrow {
+  &.left .arrow {
     top: 50%;
     right: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
@@ -6820,7 +6278,7 @@ a.list-group-item {
     // Account for jankitude on images
     > img,
     > a > img {
-      &:extend(.img-responsive);
+      .img-responsive();
       line-height: 1;
     }
   }
@@ -7005,8 +6463,8 @@ a.list-group-item {
 
   // Scale up the controls a smidge
   .carousel-control {
-    .glyphicon-chevron-left,
-    .glyphicon-chevron-right,
+    .glyphicons-chevron-left,
+    .glyphicons-chevron-right,
     .icon-prev,
     .icon-next {
       width: 30px;
@@ -7030,8 +6488,8 @@ a.list-group-item {
   }
 }
 
-// Utility classes
 
+// Utility classes
 //
 // Utility classes
 // --------------------------------------------------
@@ -7114,70 +6572,187 @@ a.list-group-item {
 
 
 // Visibility utilities
-.visible-xs,
-.visible-sm,
-.visible-md,
-.visible-lg {
-  .responsive-invisibility();
-}
 
 .visible-xs {
+  .responsive-invisibility();
   @media (max-width: @screen-xs-max) {
     .responsive-visibility();
   }
+  &.visible-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-visibility();
+    }
+  }
 }
 .visible-sm {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-visibility();
+    }
+  }
   @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .responsive-visibility();
   }
+  &.visible-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-visibility();
+    }
+  }
 }
 .visible-md {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-visibility();
+    }
+  }
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .responsive-visibility();
   }
+  &.visible-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-visibility();
+    }
+  }
 }
 .visible-lg {
+  .responsive-invisibility();
+  &.visible-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-visibility();
+    }
+  }
+  &.visible-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-visibility();
+    }
+  }
   @media (min-width: @screen-lg-min) {
     .responsive-visibility();
   }
 }
 
 .hidden-xs {
+  .responsive-visibility();
   @media (max-width: @screen-xs-max) {
     .responsive-invisibility();
   }
+  &.hidden-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-invisibility();
+    }
+  }
 }
 .hidden-sm {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
+  }
   @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .responsive-invisibility();
   }
+  &.hidden-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-invisibility();
+    }
+  }
 }
 .hidden-md {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-invisibility();
+    }
+  }
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .responsive-invisibility();
   }
+  &.hidden-lg {
+    @media (min-width: @screen-lg-min) {
+      .responsive-invisibility();
+    }
+  }
 }
 .hidden-lg {
+  .responsive-visibility();
+  &.hidden-xs {
+    @media (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-sm {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      .responsive-invisibility();
+    }
+  }
+  &.hidden-md {
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+      .responsive-invisibility();
+    }
+  }
   @media (min-width: @screen-lg-min) {
     .responsive-invisibility();
   }
 }
 
-
 // Print utilities
-//
-// Media queries are placed on the inside to be mixin-friendly.
-
 .visible-print {
   .responsive-invisibility();
-
-  @media print {
-    .responsive-visibility();
-  }
 }
 
-.hidden-print {
-  @media print {
+@media print {
+  .visible-print {
+    .responsive-visibility();
+  }
+  .hidden-print {
     .responsive-invisibility();
   }
 }
