@@ -1,4 +1,4 @@
-Twenty'em - Just another WordPress theme
+Twenty'em - Just another Twenty theme
 Copyright (C) 2012 RogerTM
 
 This program is free software; you can redistribute it and/or modify
@@ -20,49 +20,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 
 Thanks for using Twenty'em.
 
-IMPORTANT:
-THIS IS NOT AN OFFICIAL VERSION OF TWENTY'EM. This is a version for
-our friends and people who want to contribute testing the
-functionalities of this software. USE IT ON YOUR OWN RISK.
-
-If you find any bug or have a suggestion to make a better product,
-please let us know and send us a email to mail@twenty-em.com.
-
-FEATURES:
-
-Theme Options:
-Twenty'em presents some features which let you to
-configure the way the content of your site is displayed. You will can
-modify the Header, the Archive or posts list, Sidebars, etc. In
-addition you could enter your users URL's of a big list of social
-network sites which will be shown in menu mode.
-
-Widgets:
-Twenty'em has five widgets areas that you can use.
-
-Menus:
-Twenty'em offers three menus by default. A Top Menu, right on
-top of the site, Navigation Menu, which is the main one, just after
-the site header and a Footer Menu. Further the Social Network Menu,
-mentioned before.
-
-Responsive Design and Retina Display:
-Yes, Twenty'em is totally Responsive Design, it could be access from
-any mobile devise and the content will be seen in the right way. We
-have also create a big set of icons using the IcoMoon.io app, which
-you can use in your own liking. This make of Twenty'em a WordPress
-theme Ready to Retina Display.
-
-Plugins:
-We wish to give one step ahead of ours potential user. So, we
-have created a couple of functionalities to make the work easier to
-whom use this software.
-WP-PageNavi
-(http://www.wordpress.org/extend/plugins/wp-pagenavi/):
-Twenty'em is ready to use WP-PageNavi, you just need to install and
-configure the plugin from your admin panel.
-JetPack by WordPress.com
-(http://www.wordpress.org/extend/plugins/jetpack/):
-JetPack brings a long list of modules, we have make some modifications
-to support this modules, fundamentally to Infinite Scroll and Contact
-Form, this last one with some CSS.
+See /docs/readme.html for instructions (in spanish) on how to use Twenty'em

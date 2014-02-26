@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Twenty'em Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Twenty'em Docs">
+	<meta name="author" content="RogerTM">
+	<link href="../images/t-em-favicon.png" rel="shortcut icon">
+	<!-- Bootstrap -->
+	<link rel="stylesheet/less" href="../css/bootstrap/bootstrap.less">
+	<link href="../css/readme.css" rel="stylesheet">
+	<script src="../js/less.js"></script>
+</head>
+<body>
+<a class="sr-only" href="#content">Ir al contenido</a>
+<div id="docs-nav" class="navbar navbar-inverse navbar-fixed-top docs-nav" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="readme.html">Twenty'em Docs</a>
+		</div>
+	</div><!--/.nav-collapse -->
+</div>
+
+<div id="docs-header" class="docs-template">
+	<div class="container">
+		<h1>Just another Twenty theme</h1>
+		<p class="lead">Theming is Prose</p>
+	</div>
+</div>
+
+
+<div id="content" class="container">
+	<div class="row col-md-3">
+		<div class="docs-sidebar hidden-print" role="complementary">
+			<ul class="nav nav-docs">
+				<li><h4>Tabla de contenidos</h4></li>
+				<li><a href="#intro">Introducción</a></li>
+				<li><a href="#install">Instalación</a></li>
+				<li><a href="#options">Opciones</a>
+					<ul class="nav">
+						<li><a href="#overview">Vista Previa</a>
+							<ul class="nav">
+								<li><a href="#overview-options-general">Opciones Generales</a></li>
+								<li><a href="#overview-options-header">Opciones de Cabecera</a></li>
+								<li><a href="#overview-options-front-page">Opciones de Front Page</a></li>
+								<li><a href="#overview-options-archive">Opciones de Archivo</a></li>
+								<li><a href="#overview-options-layout">Opciones de Layout o disposición del contenido</a></li>
+								<li><a href="#overview-options-social-network">Opciones de Redes Sociales</a></li>
+								<li><a href="#overview-options-webmaster-tools">Opciones de Herramientas para Webmasters</a></li>
+							</ul>
+						</li>
+						<li><a href="#options-general">Opciones Generales</a>
+							<ul class="nav">
+								<li><a href="#og-paterns">Enlaces a Twenty'em.com y WordPress.org</a></li>
+								<li><a href="#og-featured-image">Imagen destacada en las entradas</a></li>
+								<li><a href="#og-releated-posts">Posts relacionados en las entradas</a></li>
+								<li><a href="#og-breadcrumb">Breadcrumb o Migas de Pan</a></li>
+								<li><a href="#og-comments">Separar los comentarios de los Pingbacks y los Trackbacks</a></li>
+								<li><a href="#og-favicon">Favicon URL</a></li>
+							</ul>
+						</li>
+						<li><a href="#options-header">Opciones de Cabecera</a>
+							<ul class="nav">
+								<li><a href="#oh-no-image">Sin imagen de cabecera</a></li>
+								<li><a href="#oh-header-image">Imagen de cabecera</a></li>
+								<li><a href="#oh-slider">Slider o Carrusel</a></li>
+								<li><a href="#oh-static-header">Cabecera Estática</a></li>
+							</ul>
+						</li>
+						<li><a href="#options-front-page">Opciones del Front Page</a>
+							<ul class="nav">
+								<li><a href="#ofp-jawfp">Página inicial de WordPress</a></li>
+								<li><a href="#ofp-text-widgets">Widgets de texto</a></li>
+							</ul>
+						</li>
+						<li><a href="#options-archive">Opciones de Archivo</a>
+							<ul class="nav">
+								<li><a href="#oa-content">El Contenido</a></li>
+								<li><a href="#oa-excerpt">El Resumen</a></li>
+								<li><a href="#oa-pagination">Paginado</a></li>
+							</ul>
+						</li>
+						<li><a href="#layout">Opciones de Layout o disposición del contenido</a></li>
+						<li><a href="#social-network">Opciones de Redes Sociales</a></li>
+						<li><a href="#webmaster-tools">Opciones de Herramientas para Webmasters</a></li>
+					</ul>
+				</li>
+				<li><a href="#backup">Respaldo de configuración</a>
+					<ul class="nav">
+						<li><a href="#backup-export">Exportar</a></li>
+						<li><a href="#backup-import">Importar</a></li>
+					</ul>
+				</li>
+				<li><a href="#shortcodes">Shortcodes</a>
+					<ul class="nav">
+						<li><a href="#shortcodes-alert">Shortcodes de Alerta</a></li>
+						<li><a href="#shortcodes-text">Shortcodes de Texto</a></li>
+						<li><a href="#shortcodes-icons">Shortcodes de Iconos</a></li>
+					</ul>
+				</li>
+				<li><a href="#templates">Plantillas de páginas</a>
+					<ul class="nav">
+						<li><a href="#template-blog-content">Blog Content (full posts)</a></li>
+						<li><a href="#template-blog-excerpt">Blog Excerpt (sumary)</a></li>
+						<li><a href="#template-archive">Archive</a></li>
+						<li><a href="#template-site-map">Site Map</a></li>
+						<li><a href="#template-ephemera-content">Ephemera Content (full post)</a></li>
+						<li><a href="#template-ephemera">Ephemera (summary)</a></li>
+						<li><a href="#template-image-gallery">Image Gallery</a></li>
+						<li><a href="#template-collapse">Collapsible Content</a></li>
+						<li><a href="#template-tour">Tour</a></li>
+					</ul>
+				</li>
+				<li><a href="#widgets">Widgets</a>
+					<ul class="nav">
+						<li><a href="#widget-recent-posts">Entradas Recientes [Twenty'em]</a></li>
+						<li><a href="#widget-popular-posts">Entradas Populares [Twenty'em]</a></li>
+						<li><a href="#widget-image-gallery">Galería de Imágenes [Twenty'em]</a></li>
+						<li><a href="#widget-recent-comments">Comentarios Recientes [Twenty'em]</a></li>
+					</ul>
+				</li>
+				<li><a href="#license">Licencia</a>
+					<ul class="nav">
+						<li><a href="#freedom">Libertad</a></li>
+						<li><a href="#gpl-v2">GPLv2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div><!-- /.row -->
+	
+	<div id="docs-content" class="col-md-9" role="main">
+		
+		<section>
+			<header class="page-header"><h1 id="intro">Introducción</h1></header>
+			<p>Twenty'em es un theme/framework para WordPress que, gracias a la gran cantidad de opciones que presenta, es ideal para crear Child Themes, además que este fue el objetivo de su realización desde un inicio.</p>
+			<p>Con Twenty'em usted podrá crear un sitio tan sencillo como un blog personal, hasta un complejo sitio web.</p>
+		</section>
+
+		<section>
+			<header class="page-header"><h1 id="install">Instalación</h1></header>
+			<p>Twenty'em se instala como cualquier otro theme de WordPress. Para ello usted debe descargar la última versión de este software, descompactar el archivo .zip y copiar su contenido en el directorio /wp-content/themes/ de su instalación de WordPress. O bien subirlo usando el instalador de themes de WordPress.</p>
+			<p>Una vez activado el theme, este le redirigirá automáticamente al panel de administración del mismo.</p>
+		</section>
+
+		<section>
+			<header class="page-header"><h1 id="options">Opciones</h1></header>
+			<p class="lead">Twenty'em presenta un amplio grupo de opciones que le permitirán configurar su sitio a su gusto.</p>
+			<p>A continuación detallamos todas y cada una de estas opciones para un mejor entendimiento de las mismas.</p>
+			
+			<h3 id="overview">Vista Previa</h3>
+				<h4 id="overview-options-general">Opciones Generales:</h4>
+				<p>Estas opciones son de carácter general para el sitio y todas están activas de manera predeterminada.</p>
+				<h4 id="overview-options-header">Opciones de Cabecera:</h4>
+				<p>Le permitirá configurar la cabecera de su sitio. Valor predeterminado “Sin imagen de cabecera”.</p>
+				<h4 id="overview-options-front-page">Opciones de Front Page:</h4>
+				<p>Le permitirá personalizar la página de inicio de su sitio. Valor predeterminado “Una página normal de WordPress”, mostrando un listado de sus últimas entradas.</p>
+				<h4 id="overview-options-archive">Opciones de Archivo:</h4>
+				<p>Define la manera en que los archivos de entradas son mostrados. Valor predeterminado “Todo el contenido de las entradas”.</p>
+				<h4 id="overview-options-layout">Opciones de Layout o disposición del contenido:</h4>
+				<p>Determina la manera en que su contenido es dispuesto. Valores predeterminados “Contenido a dos columnas (una barra lateral o sidebar), cuatro áreas de Widgets en el footer o pié de página y un ancho de 960 píxeles para el sitio en general”.</p>
+				<h4 id="overview-options-social-network">Opciones de Redes Sociales:</h4>
+				<p>Permite ingresar las direcciones URLs de sus perfiles en un numeroso grupo de redes sociales, a las que se podrá acceder mediante enlaces desde su sitio. Valores predeterminados “Todos vacíos”.</p>
+				<h4 id="overview-options-webmaster-tools">Opciones de Herramientas para Webmasters:</h4>
+				<p>Esta opción le permite ingresar los códigos de seguimiento estadísticos proveídos por los sistemas analíticos de Google y Bing.</p>
+			
+			<h3 id="options-general">Opciones Generales:</h3>
+			<p class="lead">Estas opciones son de carácter general para el sitio y todas están activas de manera predeterminada.</p>
+				<h4 id="og-paterns">Enlaces a Twenty'em.com y WordPress.org:</h4>
+				<p>Si activa esta opción, su sitio mostrará un enlace a Twenty'em.com y WordPress.org respectivamente. En caso contrario, estos enlaces se mantendrán ocultos, es decir, se le aplicará la clase css .hidden que su objetivo es ocultar elementos, pero se mantienen legibles para buscadores.</p>
+				<h4 id="og-featured-image">Imagen destacada en las entradas:</h4>
+				<p>Esta opción mostrará, encima del título de cada entrada, la imagen destacada asignada a cada una de ellas.</p>
+				<h4 id="og-releated-posts">Posts relacionados en las entradas:</h4>
+				<p>Útil para mostrar una lista de posts relacionados con la entrada actual. Estos posts restán relacionados por sus etiquetas.</p>
+				<h4 id="og-breadcrumb">Breadcrumb o Migas de Pan:</h4>
+				<p>Con esta opción activada se mostrará el camino que los usuarios sigan mientras navegan por su sitio. Ej: <code>Inicio / Categoría / Nombre de la noticia.</code></p>
+				<h4 id="og-comments">Separar los comentarios de los Pingbacks y los Trackbacks:</h4>
+				<p>Muestra los pingbacks y los trackbacks en una lista separada de los comentarios. Para que esta opción funcione correctamente, debe desactivar el paginado de comentarios en Ajustes > Comentarios</p>
+				<h4 id="og-favicon">Favicon URL:</h4>
+				<p>Esta opción le permite agregar un favicon para su sitio, para ello deberá subirlo usando el asistente de uploads de WordPress y guardar la URL de la imagen. Por defecto, esta opción guarda la URL del favicon de Twenty'em.com</p>
+		
+			<h3 id="options-header">Opciones de Cabecera</h3>
+			<p class="lead">Estas opciones le permitirán personalizar la cabecera de su sitio.</p>
+				<h4 id="oh-no-image">Sin imagen de cabecera:</h4>
+				<p>Esta opción está activada de manera predeterminada cuando el theme es activado por primera vez, que como si nombre indica, no mostrará nada, solamente el título del sitio y la descripción corta definida en Ajustes > Generales</p>
+				<h4 id="oh-header-image">Imagen de Cabecera:</h4>
+				<p>Esta opción le permite escoger una imagen para mostrar en la cabecera de su sitio. Puede cargarla desde su computadora o desde su librería multimedia. Para personalizar esta opción a su gusto, vaya a Apariencia > Cabecera. Además, puede activar la casilla Mostrar imagen destacada en entradas y páginas, que mostrará dicha imagen destacada en la cabecera del sitio.</p>
+				<h4 id="oh-slider">Slider o Carrusel:</h4>
+				<p>Esta opción mostrará un carrusel con las noticias albergadas bajo una categoría de su elección. La primera vez que active el theme, la categoría predeterminada para las entradas (Ajustes > Escritura) será la seleccionada en este caso.</p>
+				<h4 id="oh-static-header">Cabecera Estática:</h4>
+				<p>Útil opción para que los usuarios sepan de qué trata su sitio o para promocionar su producto insigne. Puede insertar una imagen previamente cargada en su librería multimedia (Medios > Librería Multimedia) y un encabezado con un pequeño texto o slogan que describa su sitio. Además, puede agregar un par de botones (primario y secundario) enlazados a una URL de su preferencia. También puede agregar iconos a estos botones, gracias a un extenso set que hemos escogido de IcoMoon.io</p>
+			
+			<h3 id="options-front-page">Opciones del Front Page:</h3>
+			<p class="lead">Opciones para personalizar la página de inicio de su sitio.</p>
+				<h4 id="ofp-jawfp">Página inicial de WordPress:</h4>
+				<p>O como preferimos en Twenty'em <em>Just another WordPress front page</em>. Mostrará su página de inicio según usted determine en Ajustes > Lectura.</p>
+				<h4 id="ofp-text-widgets">Widgets de texto:</h4>
+				<p>Cuatro áreas para textos destacados (una primaria y tres secundarias). Las mismas opciones para cada una de ellas: Encabezado, Contenido (permite HTML), un icono, Imagen previamente cargada en su librería multimedia (Medios > Librería Multimedia) y un botón enlazado a una URL de su elección.</p>
+
+			<h3 id="options-archive">Opciones de Archivo:</h3>
+			<p class="lead">Dos maneras sencillas de mostrar los archivos de entradas, todo el contenido de las entradas o el resumen de estas.</p>
+				<h4 id="oa-content">El Contenido:</h4>
+				<p>Si usted mantiene un blog personal, esta puede ser una interesante opción, mostrando todo el contenido de cada una de sus entradas.</p>
+				<h4 id="oa-excerpt">El Resumen:</h4>
+				<p>Mostrará el resumen de las entradas. Además, podrá manejar otras opciones como el largo, en palabras, del resumen, alineación de la imagen de cada entrada y sus dimensiones, mostrar las entradas dispuestas en columnas, etc.</p>
+				<h4 id="oa-pagination">Paginado:</h4>
+				<p>Esta opción es común para las dos anteriores, le permite escoger la manera en que el paginado de los archivos es mostrado.</p>
+				
+			<h3 id="layout">Opciones de Layout o disposición del contenido:</h3>
+			<p>Esta opción es bastante sencilla. Le permitirá decidir cuantas y dónde mostrar las barras laterales (sidebars) y las áreas de widgets en el pié de su sitio web. Cada una de estas áreas corresponde a un sidebar dinámico al que le podrá agregar widgets en Apariencia > Widgets.</p>
+			<p>En esta sección, además, podrá definir el ancho, en píxeles, de su sitio. Los valores por defecto en este caso son: mínimo 600px, predeterminado 960px y máximo 1600px.</p>
+		
+			<h3 id="social-network">Opciones de Redes Sociales:</h3>
+			<p>Permite ingresar las direcciones URLs de sus perfiles en un numeroso grupo de redes sociales, a las que se podrá acceder mediante enlaces desde su sitio. Valores predeterminados “Todos vacíos”.</p>
+			
+			<h3 id="webmaster-tools">Opciones de Herramientas para Webmasters:</h3>
+			<p>Esta opción le permite ingresar los códigos de seguimiento estadísticos proveídos por los sistemas analíticos de Google y Bing.</p>
+		</section>
+
+		<section>
+			<header class="page-header"><h1 id="backup">Respaldo de configuración</h1></header>
+			<p class="lead">Una vez configuradas las opciones que usted desee en el panel de administración de Twenty'em, entonces puede hacer un respaldo de las mismas usando nuestro Backup Manager.</p>
+			<p class="alert alert-warning"><strong>Nota:</strong> Este archivo solo contiene la configuración de su theme, no el contenido (entradas, páginas, etc.)</p>
+		
+			<h3 id="backup-export">Exportar:</h3>
+			<p>Cuando haga clic en el botón “Descargar archivo de exportación” Twenty'em generará un archivo .txt para que usted lo guarde en su ordenador. Este archivo contiene la configuración de su theme. Puede usarlo para restaurar su configuración en su sitio u otro que use Twenty'em.</p>
+			
+			<h3 id="backup-import">Importar:</h3>
+			<p>Si tiene un archivo que guarda la configuración de su theme, puede importarlo nuevamente a su sitio. Usando el botón “Examinar” y luego “Subir archivo e importar”.</p>
+			<p class="alert alert-warning"><strong>Nota:</strong> Solo archivos generados por nuestro Backup Manager podrán ser importados.</p>
+		</section>
+
+		<section>
+			<header class="page-header"><h1 id="shortcodes">Shortcodes</h1></header>
+			<p class="lead">Twenty’em le permite usar algunos shortcodes en el contenido de sus entradas y/o páginas. Los botones para estos macro códigos están disponibles en la pestaña “Texto” del editor de entradas.</p>
+			<p>A continuación exponemos una lista detallando estos shortcodes.</p>
+				<h4 id="shortcodes-alert">Shortcodes de Alerta:</h4>
+				<ul>
+					<li>De apertura y cierre: permiten otros shortcodes.</li>
+					<li>Comportamiento: <code>[$shorcode close="false"][/$shorcode]</code></li>
+					<li>Parámetro: <code>close</code>. Opcional. Valor predeterminado <code>“false”</code>. Posibles valores: <code>“false”</code>, <code>“true”</code>. Muestra un botón de cerrado.</li>
+					<li>Shortcodes:
+						<ul>
+							<li><code>[success close="false"][/success]</code></li>
+							<li><code>[info close="false"][/info]</code></li>
+							<li><code>[warning close="false"][/warning]</code></li>
+							<li><code>[error close="false"][/error]</code></li>
+						</ul>
+					</li>
+				</ul>
+				<h4 id="shortcodes-text">Shortcodes de Texto:</h4>
+				<ul>
+					<li>De apertura y cierre: permiten otros shortcodes.</li>
+					<li>Comportamiento: <code>[$shortcode text_align="" float=""][/$shorcode]</code></li>
+					<li>Parámetro: <code>text_align</code>. Opcional. Valor predeterminado: <code>“vacío”</code>. Posibles valores: <code>“left”</code>, “<code>right”</code>.</li>
+					<li>Shortcodes:
+						<ul>
+							<li><code>[icon class="" align="" size="default"]</code></li>
+						</ul>
+					</li>
+				</ul>
+				<h4 id="shortcodes-icons">Shortcodes de Iconos:</h4>
+				<ul>
+					<li>Autocerrado.</li>
+					<li>Comportamiento: <code>[icon class="" align="" size="default"]</code></li>
+					<li>Parámetro: <code>class</code>. Obligatorio. Valor predeterminado <code>“vacío”</code>. Posibles valores: <code>“icon-$icon_name”</code>. Usa una clase de icono de IcoMoon.</li>
+					<li>Parámetro: <code>align</code>. Valor predeterminado <code>“vacío”</code>. Posibles valores: <code>“left”</code>, “<code>right”</code>.</li>
+					<li>Parámetro: <code>size</code>. Opcional. Valor predeterminado <code>“default”</code>. Posibles valores: <code>"default"</code>, <code>"medium"</code>, <code>"large"</code>, <code>"xlarge"</code>, <code>"xxlarge"</code>, <code>"xxxlarge"</code>.</li>
+					<li>Shortcodes:
+						<ul>
+							<li><code>[icon class="" align="" size="default"]</code></li>
+						</ul>
+					</li>
+				</ul>
+		</section>
+		
+		<section>
+			<header class="page-header"><h1 id="templates">Plantillas de páginas:</h1></header>
+			<p class="lead">Twenty’em le brinda de manera predeterminada una serie de plantillas de páginas que le ayudarán a organizar y personalizar su contenido según las medidas de sus necesidades.</p>
+			<p>A continuación listamos y detallamos estas plantillas de páginas.</p>
+				<h4 id="template-blog-content">Blog Content (full posts):</h4>
+				<p>Mostrará el contenido íntegro de sus últimas entradas.</p>
+				<h4 id="template-blog-excerpt">Blog Excerpt (sumary):</h4>
+				<p>Mostrará el resumen de sus últimas entradas. La manera en que esté dispuesto el contenido en esta plantillas depende de la configuración en Twenty’em > Opciones de Archivos.</p>
+				<h4 id="template-archive">Archive:</h4>
+				<p>Esta plantilla mostrará un archivo referente al contenido de su sitio. Comenzando por las últimas 30 entradas, una lista de categorías, un archivo mensual y una nube de etiquetas.</p>
+				<h4 id="template-site-map">Site Map:</h4>
+				<p>Como su nombre indica, esta plantilla generará automáticamente un mapa de su sitio, iniciando por las páginas ordenadas de forma jerárquica, una lista de categorías y un archivo de entradas por categorías.</p>
+				<h4 id="template-ephemera-content">Ephemera Content (full post):</h4>
+				<p>Si usted usa formatos de posts como minientradas, videos, imágenes, citas, etc. en su sitio o blog, esta plantilla le será útil para mostrar este tipo de entrada, en este caso, desplegando todo su contenido.</p>
+				<h4 id="template-ephemera">Ephemera (summary):</h4>
+				<p>Al igual que la plantilla descrita anteriormente, esta mostrará los formatos de post, pero solo el título y un icono identificando el tipo de formato.</p>
+				<h4 id="template-image-gallery">Image Gallery:</h4>
+				<p>Esta plantilla mostrará una galería de todas las imágenes que existen en su sitio, pero solo las que están adjuntas a alguna entrada, proporcionando un enlace a dicha noticia.</p>
+				<h4 id="template-collapse">Collapsible Content:</h4>
+				<p>Una muy interesante manera de mostrar contenido de páginas relacionadas, creando una especie de acordeón que despliega y oculta el contenido. Para que esto funcione correctamente, solo debe crear una página y asignarle esta plantilla, el siguiente paso, es crear otras páginas que usen la plantilla por defecto, y asignarle como página superior, la que hemos creado anteriormente y que ya tiene asignada la plantilla Collapsible Content.</p>
+				<h4 id="template-tour">Tour:</h4>
+				<p>Otra muy interesante opción, que en esencia funciona como la anterior, salvo que la manera en que se muestra el contenido es mediante pestañas en la parte izquierda de la página.</p>
+				<p class="alert alert-warning"><strong>Nota:</strong> Esta plantilla no presenta barra lateral.</p>
+		</section>
+		
+		<section>
+			<header class="page-header"><h1 id="widgets">Widgets:</h1></header>
+			<p class="lead">Al usar Twenty'em en su proyecto, usted podrá usar los widgets que hemos creado en nuestro proyecto.</p>
+				<h4 id="widget-recent-posts">Entradas Recientes [Twenty'em]</h4>
+				<p>Este widget mostrará las últimas entradas en su sitio, usted podrá escoger el número de entradas a mostrar, además, como parámetro adicional, podrá escoger que se muestren solo las entradas que tienen imágenes asociadas, cosa que puede ser importante a la hora de respetar un diseño determinado.</p>
+				<h4 id="widget-popular-posts">Entradas Populares [Twenty'em]</h4>
+				<p>Este widget mostrará las entradas que más han sido comentadas por sus usuarios. Al igual que el widget descrito anteriormente, podrá definir la cantidad de entradas a mostrar y si desea solo mostrar las entradas que tienen imágenes asociadas. En este caso, podrá mostrar u ocultar la cantidad de comentarios en cada entrada.</p>
+				<h4 id="widget-image-gallery">Galería de Imágenes [Twenty'em]:</h4>
+				<p>Esta widget mostrará una galería de las imágenes que existen en su sitio, pero solo las que están adjuntas a alguna entrada, proporcionando un enlace a dicha noticia. Podrá determinar la cantidad a mostrar y cuantas columnas desea que tenga su galería.</p>
+				<h4 id="widget-recent-comments">Comentarios Recientes [Twenty'em]:</h4>
+				<p>Este widget mostrará los últimos comentarios en su sitio, mostrando una imagen asociada al usuario, en caso de que esté registrado en Gravatar.com, de lo contrario mostrará una imagen definida por usted en Ajustes > Comentarios > Avatares. Además, podrá mostrar u ocultar el nombre y/o URL del usuario.</p>
+		</section>
+		
+		<section>
+			<header class="page-header"><h1 id="license">Licencia</h1></header>
+			<p class="lead">Twenty'em es gratis y de código abierto y se distribuye bajo licencia GPLv2</p>
+				<h4 id="freedom">Libertad</h4>
+				<ol start="0">
+					<li>Usted tiene la libertad de usar este software para cualquier propósito.</li>
+					<li>Usted tiene acceso al código fuente, la libertad de ver cómo funciona, y la libertad de cambiarlo para que funcione de la manera que mejor le convenga.</li>
+					<li>Usted tiene la libertad de redistribuir copias del software original, así ayudar a la comunidad.</li>
+					<li>Usted tiene la libertad de redistribuir copias de las modificaciones hechas a este software. Así puede brindar a la comunidad los beneficios de sus cambios.</li>
+				</ol>
+				<h4 id="gpl-v2">GPLv2</h4>
+				<div class="license">
+					<p>This program is free software; you can redistribute it and/or modify
+					it under the terms of the GNU General Public License as published by
+					the Free Software Foundation; either version 2 of the License, or (at
+					your option) any later version.</p>
+					<p>This program is distributed in the hope that it will be useful, but
+					WITHOUT ANY WARRANTY; without even the implied warranty of
+					MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+					General Public License for more details.</p>
+					<p>You should have received a copy of the GNU General Public License
+					along with this program; if not, write to the Free Software
+					Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+					02110-1301, USA.</p>
+				</div>
+		</section>
+	</div>
+</div><!-- /.container -->
+
+	<footer id="docs-footer">
+		<div class="container">
+			<h2>Twenty'em</h2>
+		</div>
+	</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../../../wp-includes/js/jquery/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap/affix.js"></script>
+<script src="../js/bootstrap/scrollspy.js"></script>
+<script src="../js/scripts.readme.js"></script>
+</body>
+</html>

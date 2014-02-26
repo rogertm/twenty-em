@@ -1,4 +1,4 @@
-Twenty'em - Just another WordPress theme
+Twenty'em - Just another Twenty theme
 Copyright (C) 2012 RogerTM
 
 This program is free software; you can redistribute it and/or modify
