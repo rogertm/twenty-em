@@ -210,7 +210,7 @@ function t_em_social_network_options(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
+ * @global $t_em.
  *
  * @since Twenty'em 0.1
  */

@@ -1144,7 +1144,7 @@ function t_em_custom_template_content( $icon_class = '' ){
  * @param boolean $link Optional The image will be linkable or not. Default: true.
  *
  * @global $post
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @return text HTML content describing embedded figure
  *
@@ -1207,7 +1207,7 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
  * function is attached to the t_em_header_inside action hook.
  *
  * @global $post
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @since Twenty'em 0.1
  */
@@ -1241,7 +1241,7 @@ function t_em_header_options_set(){
  *
  * @link http://codex.wordpress.org/Post_Thumbnails
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @since Twenty'em 0.1
  */
@@ -1270,7 +1270,7 @@ function t_em_single_post_thumbnail(){
  * @link http://codex.wordpress.org/Function_Reference/the_excerpt
  * @link http://codex.wordpress.org/Function_Reference/the_content
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @since Twenty'em 0.1
  */
@@ -1300,7 +1300,7 @@ function t_em_post_archive_set(){
  * @uses t_em_social_network_options() See t_em_social_network_options() function
  * in /inc/theme-options.php file.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @return string HTML list of items
  *
@@ -1334,7 +1334,7 @@ function t_em_hook_user_social_network(){
  * Show related posts to the current single post if it's set by the user in "General Options" in
  * admin theme options page.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @return string HTML list of items
  *
@@ -1413,7 +1413,7 @@ function t_em_single_related_posts() {
  * Default: 'empty'.
  * @param string $h_tag Optional Header tag (h1, h2, h3, ...) for widget title. Default: 'empty'
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @return string HTML div boxes
  *
@@ -1496,7 +1496,7 @@ endif;
  *
  * @param string $section Required. The name of the section that Bootstrap CSS Classes are needed.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
+ * @global $t_em
  *
  * @return string CSS Class name
  *

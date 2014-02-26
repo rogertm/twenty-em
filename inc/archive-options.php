@@ -47,7 +47,7 @@ function t_em_archive_options(){
  * Extend setting for Archive Option in Twenty'em admin panel.
  * Referenced via t_em_archive_options() in /inc/archive-options.php.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
+ * @global $t_em.
  * @global $excerpt_options Returns an array of our archive excerpt options.
  * @global $archive_in_columns Returns a string value for archive columns.
  *
@@ -146,7 +146,7 @@ function t_em_excerpt_callback(){
  * Extend setting for Archive Pagination Option in Twenty'em admin panel.
  * Referenced via t_em_archive_options() in /inc/archive-options.php.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
+ * @global $t_em.
  * @global $archive_pagination Returns a string value for pagination.
  *
  * @since Twenty'em 1.0
@@ -187,7 +187,7 @@ function t_em_settings_archive_pagination(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
+ * @global $t_em.
  *
  * @since Twenty'em 0.1
  */

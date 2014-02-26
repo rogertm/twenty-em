@@ -130,7 +130,7 @@ function t_em_layout_width(){
  * @uses t_em_layout_width() Display a text box into Layout Options panel where you may enter
  * your theme width.
  *
- * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
+ * @global $t_em.
  *
  * @since Twenty'em 0.1
  */

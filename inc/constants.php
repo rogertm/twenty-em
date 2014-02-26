@@ -20,6 +20,8 @@
  */
 /**
  * $t_em. Array. Contains all the options store in the data base.
+ * See t_em_default_theme_options() in /inc/theme-options.php for a complete list of 'key' => 'value'
+ * pairs
  */
 $t_em = get_option( 't_em_theme_options' );
 /**
