@@ -287,13 +287,9 @@ ul.sub-menu li a{
 }
 #content figure,
 #content img {
-	margin: 10px auto 20px;
 	height: auto;
 	max-width: 100%;
 	width: auto;
-}
-#content figure img{
-	margin-bottom: 0;
 }
 #content .alignleft,
 #content img.alignleft {
