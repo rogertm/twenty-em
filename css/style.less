@@ -3,201 +3,488 @@
  */
 
 /** Import Bootstrap Less */
-@import "bootstrap.less";
+@import "bootstrap/bootstrap.less";
 
 /** Override the default Bootstrap font directory */
-@icon-font-path:	"wp-content/themes/twenty-em/fonts/";
+// Import the fonts
+// @font-face {
+//   font-family: 'Glyphicons Halflings';
+//   src: ~"url('fonts/glyphicons-halflings-regular.eot')";
+//   src: ~"url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype')",
+//        ~"url('fonts/glyphicons-halflings-regular.woff') format('woff')",
+//        ~"url('fonts/glyphicons-halflings-regular.ttf') format('truetype')",
+//        ~"url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')";
+// }
+// @icon-font-path:	"wp-content/themes/twenty-em/fonts/";
 
-/* Define theme colors */
-@white:				#fff;
-@light-blue:		#21759b;
-@light-red:			#d54e21;
-@base-gray:			#f7f7f7; /* Default background theme color */
-@light-gray:		#757575;
-@dark-gray:			#515151;
-@black:				#000000;
-
-/* Define borders radius */
-.border-radius ( @radius: 5px ){
-	border-radius: @radius;
-	-moz-border-radius: @radius;
-	-webkit-border-radius: @radius;
-}
-
-/* Define box shadows */
-.box-shadow ( @x: 0, @y: 0, @blur: 1px, @color: @black ){
-	box-shadow: @arguments;
-	-moz-box-shadow: @arguments;
-	-webkit-box-shadow: @arguments;
-}
-
-/* Define text shadows */
-.text-shadow ( @x: 0, @y: 0, @blur: 1px, @color: @black ){
-	text-shadow: @arguments;
-}
-
-
-/* =Global Elements
+/* =Variables
 -------------------------------------------------------------- */
-#site-title a:hover{
-	color: @dark-gray;
+
+/** Global values */
+
+// Links
+@t-em-link-color:		#21759b;
+@t-em-link-hover-color:	#d54e21;
+
+// Buttons
+@btn-t-em-inverse-color:	#fff;
+@btn-t-em-inverse-bg:		@gray-dark;
+@btn-t-em-inverse-border:	darken(@btn-t-em-inverse-bg, 5%);
+
+// Avatar Sizes
+@avatar-size-xs:	8px;
+@avatar-size-sm:	16px;
+@avatar-size-md:	64px;
+@avatar-size-lg:	96px;
+
+// Jumbotron button padding
+@jumbotron-btn-vertical-padding:	14px;
+@jumbotron-btn-horizontal-padding:	24px;
+
+/* =Component Mixins
+-------------------------------------------------------------- */
+
+// Heading
+.heading-small {
+	font-size: 65%;
+	color: @headings-small-color;
+}
+
+// Front Page
+.front-page-widget-caption{
+	color: @gray-dark;
+	padding: 9px;
+}
+
+// Buttons
+.btn-t-em-inverse {
+	.button-variant(@btn-t-em-inverse-color; @btn-t-em-inverse-bg; @btn-t-em-inverse-border);
 }
 
 /* =Structure
 -------------------------------------------------------------- */
 .wrapper {
-	background: @white;
+	background: @body-bg;
 }
-#top{
-	background: @black;
-	background-image: -moz-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -ms-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -webkit-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
-}
-#inner-top.wrapper{
-	background: transparent;
-}
-
-/* =Menus
--------------------------------------------------------------- */
-#top-menu ul ul li a{
-	background: lighten( @black, 10% );
-}
-#top-menu li a:hover,
-#top-menu ul ul li a:hover,
-#top-menu .current-menu-item > a{
-	background: @dark-gray !important;
-}
-#top-menu a{
-	color: @white;
-}
-
-#site-navigation .menu-header{
-	border-top: solid 1px darken( @base-gray, 10% );
-	border-bottom: solid 1px darken( @base-gray, 10% );
-}
-#site-navigation ul ul {
-	box-shadow: 0px 3px 3px fade( @black, 20% );
-	-moz-box-shadow: 0px 3px 3px fade( @black, 20% );
-	-webkit-box-shadow: 0px 3px 3px fade( @black, 20% );
-}
-.screen-menu{
-	background: @base-gray;
-	background-repeat: repeat-x;
-	background-image: -moz-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
-	background-image: -ms-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
-	background-image: -webkit-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
-	background-image: -o-linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
-	background-image: linear-gradient(top, lighten( @light-gray, 50% ), @base-gray);
-}
-
-/* =Slider
--------------------------------------------------------------- */
-#t-em-slider a{
-	color: @white;
-}
-.carousel-drivers{
-	background: @black;
-	background-image: -moz-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -ms-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -webkit-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: -o-linear-gradient(top, lighten( @black, 10% ), @black);
-	background-image: linear-gradient(top, lighten( @black, 10% ), @black);
-}
-.carousel-drivers *{
-	color: @dark-gray !important;
-}
-.carousel-drivers li:hover{
-	background-color: lighten( @light-gray, 20% );
-}
-.carousel-drivers span:hover{
-	color: lighten( @light-gray, 20% ) !important;
-}
-
-/* =Headers Tags
--------------------------------------------------------------- */
-.entry-meta,
-.entry-utility{
-	color: @light-gray;
-}
-.page-header,
-.page-title,
-.entry-title,
-.widget-title{
-	color: @dark-gray;
-}
-.widget-title{
-	border-bottom: solid 1px darken( @base-gray, 10% );
+.jumbotron .btn{
+	padding: @jumbotron-btn-vertical-padding @jumbotron-btn-horizontal-padding !important;
 }
 
 /* =Content
 -------------------------------------------------------------- */
-#author-avatar img{
-	border: solid 1px lighten( @dark-gray, 50% );
-	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
-	.border-radius;
+// Utilities
+.entry-meta,
+.entry-utility{
+	.small;
 }
-.sticky {
-	background: @base-gray;
-	border-top: 4px solid @dark-gray;
-	padding: 2% 3%;
-	.border-radius ( 3px );
+.entry-meta,
+.entry-utility,
+.entry-format{
+	.text-muted;
 }
-
-/* =Navigation
--------------------------------------------------------------- */
-.navigation .nav-previous a,
-.navigation .nav-next a,
-.navigation .page-numbers{
-	.border-radius;
-	border: solid 1px darken( @base-gray, 10% );
+.entry-format{
+	.pull-left;
+	width: 100%;
 }
-
-/* =Widget Areas
--------------------------------------------------------------- */
-#wp-calendar tbody {
-	color: lighten( @dark-gray, 20% );
+.author-info{
+	.well;
 }
-#wp-calendar caption,
-#wp-calendar thead th {
-	color: @dark-gray;
-}
-#wp-calendar tbody td {
-	background: @base-gray;
-	border: 1px solid @white;
+.social-network-menu a{
+	text-decoration: none;
 }
 
-/* =Forms
--------------------------------------------------------------- */
-#content .required{
-	color: @light-red;
+// Front Page text widgets
+#front-page-widget-two,
+#front-page-widget-three,
+#front-page-widget-four{
+	.thumbnail;
 }
-/* Bootstrap style for submit buttons (Also JetPack Plugin) */
-#commentform #submit,
-.contact-form.commentsblock input[type="submit"]{
-	background: @btn-primary-bg;
+#front-page-widget-one .btn{
 	.btn-primary;
-	.border-radius(4px);
+	.btn-lg;
+}
+#front-page-widget-two .btn,
+#front-page-widget-three .btn,
+#front-page-widget-four .btn{
+	.btn-default;
 }
 
+/* =Header
+-------------------------------------------------------------- */
+// Site Header
+#site-title{
+	.pull-left;
+}
+#site-description{
+	.pull-right;
+	.lead;
+}
+// Static Header
+#static-header-text .btn{
+	min-width: 75%;
+}
+#static-header-text .btn.primary-button{
+	.btn-primary;
+	.btn-lg;
+}
+#static-header-text .btn.secondary-button{
+	.btn-t-em-inverse;
+	.btn-lg;
+}
+
+// Bootstrap Slider Carousel
+#slider-carousel .carousel-caption{
+	background-color: rgba( 0, 0, 0, .25 );
+	padding: 10px 20px 40px;
+}
+#slider-carousel a{
+	color: #fff;
+}
+
+/* =Attachment Pages
+-------------------------------------------------------------- */
+.attachment .entry-content .entry-caption {
+	.lead;
+}
 
 /* =Images
 -------------------------------------------------------------- */
-#content figure img,
-.entry-content img,
-.comment-author img,
-.slider-thumbnail img,
-.widget img,
+#content .gallery img,
+#gallery .gallery-thumbnail,
 .avatar{
-	.border-radius ( 3px );
-	.box-shadow ( 0, 1px, 4px, darken( @base-gray, 10% ) );
+	.img-thumbnail;
+}
+.avatar{
+	height: @avatar-size-md !important;
+	width: @avatar-size-md !important;
+	.pull-left;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
-#footer-widget-area,
-#inner-site-info{
-	border-top: solid 1px darken( @base-gray, 10% );
+#colophon,
+#site-info{
+	border-top: solid 1px @gray-lighter;
+}
+
+/* =Typography
+-------------------------------------------------------------- */
+.page-header span,
+#comments-title span{
+	.heading-small;
+}
+.comment-author .says{
+	.small;
+	color: @headings-small-color;
+}
+#category-description{
+	.lead;
+}
+.widget-title{
+	border-bottom: solid 1px @page-header-border-color;
+}
+#content .gallery .gallery-caption,
+.comment-meta{
+	.small;
+}
+
+/* =Navbars
+-------------------------------------------------------------- */
+/** Commons elements for Twenty'em and Bootstrap Navbars */
+.nav.navbar-nav .sub-menu{
+	list-style: none;
+}
+.navbar-collapse{
+	max-height: none !important;
+}
+.navbar-collapse .nav > li:hover + li > a{
+		display: block;
+		width: 100%;
+	}
+.nav.navbar-nav li:hover ul{
+	font-size: @font-size-base;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	z-index: @zindex-dropdown;
+	float: left;
+	min-width: 180px;
+	padding: 5px 0;
+	margin: 0; // override default ul
+	list-style: none;
+	font-size: @font-size-base;
+	border-radius: 0 0 @border-radius-base @border-radius-base;
+	.box-shadow(0 6px 12px rgba(0,0,0,.175));
+	background-clip: padding-box;
+}
+.nav.navbar-nav ul ul{
+	left: 100% !important;
+	top: auto !important;
+	// Calculate the height of the parent item
+	margin-top: -( @line-height-base + @padding-base-vertical + @font-size-base ) * 1.75 !important;
+}
+.nav.navbar-nav .sub-menu li > a{
+	line-height: @line-height-base;
+	padding: @padding-base-vertical @padding-base-horizontal;
+	display: block;
+}
+
+/** Default Navbar style for Twenty'em */
+.navbar-t-em{
+	background-color: #fff;
+	border-color: @gray-lighter;
+	color: @gray-light;
+}
+.navbar-t-em .current-menu-item > a,
+.navbar-t-em .sub-menu .current-menu-item > a,
+.navbar-t-em .sub-menu .current-menu-item > a:hover,
+.navbar-t-em .sub-menu .current-menu-item > a:focus,
+.navbar-t-em .current-menu-item{
+	background-color: @gray-lighter !important;
+	color: @gray-dark !important;
+}
+.navbar-t-em li:hover ul{
+	background-color: @dropdown-bg;
+	border: 1px solid @dropdown-fallback-border; // IE8 fallback
+	border: 1px solid @dropdown-border;
+	border-color: @gray-lighter;
+}
+.navbar-t-em .sub-menu li > a{
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: @dropdown-link-hover-color;
+		background-color: @dropdown-link-hover-bg;
+	}
+}
+.navbar-t-em .sub-menu .current-menu-item > a{
+	&,
+	&:hover,
+	&:focus {
+		color: @dropdown-link-active-color;
+		text-decoration: none;
+		outline: 0;
+		background-color: @dropdown-link-active-bg;
+	}
+}
+.navbar-t-em .navbar-toggle{
+	border-color: @gray-light;
+}
+.navbar-t-em .navbar-toggle:hover{
+	background-color: @gray-lighter;
+}
+.navbar-t-em .navbar-toggle .icon-bar{
+	background-color: @gray-light;
+}
+
+/** Inverse Navbar style for Twenty'em */
+.navbar-t-em-inverse,
+.navbar-t-em-inverse .sub-menu{
+	background-color: @navbar-inverse-bg !important;
+	border-color: @navbar-inverse-border !important;
+	color: @gray-light;
+}
+.navbar-t-em-inverse a{
+	color: @gray-light;
+}
+.navbar-t-em-inverse .nav > li > a:hover,
+.navbar-t-em-inverse .nav > li > a:focus,
+.navbar-t-em-inverse .current-menu-item > a,
+.navbar-t-em-inverse .sub-menu li > a:hover,
+.navbar-t-em-inverse .sub-menu li > a:active,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a:hover,
+.navbar-t-em-inverse .sub-menu .current-menu-item > a:focus,
+.navbar-t-em-inverse .current-menu-item{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+.navbar-t-em-inverse li:hover ul{
+	background-color: @dropdown-bg;
+	border: 1px solid @dropdown-fallback-border; // IE8 fallback
+	border: 1px solid @dropdown-border;
+	border-color: @gray-lighter;
+}
+.navbar-t-em-inverse .sub-menu li > a{
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: @dropdown-link-hover-color;
+		background-color: @dropdown-link-hover-bg;
+	}
+}
+.navbar-t-em-inverse .sub-menu .current-menu-item > a{
+	&,
+	&:hover,
+	&:focus {
+		color: @dropdown-link-active-color;
+		text-decoration: none;
+		outline: 0;
+		background-color: @dropdown-link-active-bg;
+	}
+}
+.navbar-t-em-inverse .navbar-toggle{
+	border-color: @gray-dark;
+}
+.navbar-t-em-inverse .navbar-toggle:hover{
+	background-color: #000;
+}
+.navbar-t-em-inverse .navbar-toggle .icon-bar{
+	background-color: @gray-light;
+}
+
+// Site Navigation and Top Menu
+#top-menu .navbar,
+#site-navigation .navbar{
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+#top-menu .navbar{
+	margin-bottom: 0;
+}
+#site-navigation .navbar{
+	margin: 0 -15px;
+}
+
+/* =Pagination
+-------------------------------------------------------------- */
+// Site Navigation
+#site-navigation.site-pagination.pagi ul{
+	.pagination;
+}
+#site-navigation.site-pagination.pagi ul .page-numbers.current{
+	background-color: @pagination-active-bg;
+	border-color: @pagination-active-bg;
+	color: @pagination-active-color;
+}
+#site-navigation.site-pagination.pagi ul .page-numbers.dots{
+	background-color: #fff;
+}
+#site-navigation.site-pagination.navi ul,
+#comments-navigation.comments-pagination.navi ul,
+#attachment-navigation.attachment-pagination.navi ul{
+	.pager;
+}
+
+// Single Navigation
+#single-navigation.single-pagination.navi ul{
+	.nav;
+	.nav-pills;
+	.nav-justified;
+}
+
+/* =Comments
+-------------------------------------------------------------- */
+.commentlist .thread-even,
+.commentlist .thread-odd{
+	border-bottom: 1px solid @gray-lighter;
+}
+.commentlist .pingback,
+.commentlist .trackback,
+.commentlist small{
+	color: @gray-light;
+	.small;
+}
+.commentlist h5 small{
+	.heading-small;
+}
+
+/* =Forms
+-------------------------------------------------------------- */
+// Lets go for Jetpack Contact Form -> .contact-form.commentsblock
+
+#commentform .comment-form-author,
+#commentform .comment-form-email,
+#commentform .comment-form-url,
+#commentform .comment-form-comment,
+.contact-form.commentsblock div{
+	.form-group;
+}
+#commentform .comment-form-author input,
+#commentform .comment-form-email input,
+#commentform .comment-form-url input,
+#commentform .comment-form-comment textarea,
+.contact-form.commentsblock input,
+.contact-form.commentsblock textarea{
+	.form-control;
+}
+#commentform .comment-form-comment textarea,
+.contact-form.commentsblock textarea{
+	height: 100%;
+}
+#commentform .form-submit input,
+.contact-form.commentsblock .contact-submit input{
+	.btn;
+	.btn-primary;
+	.btn-lg;
+}
+.contact-form.commentsblock .contact-submit input{
+	height: auto;
+	width: auto;
+}
+
+// Comments
+.reply a{
+	.btn;
+	.btn-primary;
+	.btn-xs;
+}
+.comment-reply-title a{
+	.btn;
+	.btn-default;
+	.btn-xs;
+}
+
+/* =Widgets
+-------------------------------------------------------------- */
+// Calendar
+.widget_calendar table{
+	.table;
+}
+// RSS
+.widget_rss li .rss-date{
+	.small;
+}
+
+/* =Media Query
+-------------------------------------------------------------- */
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: @screen-xs-max) {
+	// Navbars
+	.nav.navbar-nav .sub-menu{
+		display: block !important;
+		margin-top: auto !important;
+		padding-top: 0 !important;
+		position: inherit !important;
+		top: 0 !important;
+		width: 100% !important;
+		border: 0 !important;
+		box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+	}
+	.nav.navbar-nav .sub-menu li a{
+		width: 100% !important;
+		padding-left: 30px !important;
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+		line-height: 20px !important;
+	}
+	.nav.navbar-nav li:hover ul{
+		position: inherit !important;
+		float: none !important;
+		padding-bottom: 0 !important;
+	}
+	.nav.navbar-nav ul ul ul{
+		padding-left: 15px !important;
+		width: 100% !important;
+	}
+
+	// Footer
+	#site-info *{
+		.text-center;
+	}
 }

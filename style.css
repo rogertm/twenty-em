@@ -142,14 +142,16 @@ noscript {
 }
 #site-title {
 	font-size: 63px;
+	margin: 0;
+	line-height: 1.5;
 }
 #site-title a {
 	text-decoration: none;
 }
 #site-description {
 	font-style: italic;
-	font-size: 20px;
-	margin-top: 45px;
+	margin-top: 50px;
+	line-height: 1;
 }
 
 /* Header Image */

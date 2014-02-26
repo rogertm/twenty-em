@@ -163,7 +163,7 @@ add_action( 'after_setup_theme', 't_em_theme_data' );
  *
  * @global $t_em_theme_options This var provide the main structure of our theme.
  * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of
- * "key => option" array.
+ * "key => value" array.
  *
  * @since Twenty'em 0.1
  */

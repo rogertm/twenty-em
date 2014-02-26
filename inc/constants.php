@@ -16,6 +16,11 @@
 ?>
 <?php
 /**
+ * $GLOBALS
+ */
+// $GLOBALS['t_em'] = get_option( 't_em_theme_options' );
+
+/**
  * Define Twenty'em CONSTANTS
  */
 
@@ -35,7 +40,7 @@ define ( 'T_EM_THEME_DIR_DOCS_URL',				get_template_directory_uri().'/docs' );
  * <script src="less.js" type="text/javascript"></script>
  * We use this constant for Less Style files
  */
-define ( 'T_EM_THEME_DIR_CSS_LESS_STYLE_URL',	get_template_directory_uri().'/css' );
+define ( 'T_EM_THEME_DIR_CSS_LESS_STYLE_URL',	get_stylesheet_directory_uri().'/css' );
 
 // Theme Includes Directory URL
 define ( 'T_EM_INC_DIR_URL',			get_template_directory_uri().'/inc' );

@@ -97,7 +97,7 @@ function t_em_theme_layout_width(){
 	global $t_em_theme_options;
 ?>
 <style type="text/css" media="all">
-	.wrapper.container{
+	.wrapper{
 		max-width: <?php echo $t_em_theme_options['layout_width']; ?>px !important;
 	}
 </style>
@@ -122,11 +122,30 @@ add_action( 't_em_head', 't_em_bootstrapped_head' );
  * rel="stylesheet/less", so, we need do it this way.
  */
 function t_em_enqueue_less_css(){
-	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL.'/style-theme.less' .'">'."\n";
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_LESS_STYLE_URL.'/style.less' .'">'."\n";
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
 add_action( 't_em_head', 't_em_enqueue_less_css' );
+
+/**
+ * BS Font Family
+ */
+function t_em_bs_fm(){
+?>
+	<style type="text/css">
+		@font-face {
+		  font-family: 'Glyphicons Halflings';
+		  src: ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.eot')" !important;
+		  src: ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype')",
+		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.woff') format('woff')",
+		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.ttf') format('truetype')",
+		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')" !important;
+		}
+	</style>
+<?php
+}
+add_action( 't_em_head', 't_em_bs_fm' );
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
