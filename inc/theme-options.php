@@ -118,47 +118,8 @@ if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 endif;
 
 /**
- * This function returns an array of theme's information stored in style.css file.
- * This function is attached to the after_setup_theme() action hook.
- *
- * @uses wp_get_theme() Gets a WP_Theme object for a theme.
- *
- * @global $t_em_theme_data When you set to global this var, you can access to this function for the
- * theme information stored in style.css file.
- * For example, if you want to know or display the theme name and version into a function:
- * <?php
- * function my_function(){
- * 	global $t_em_theme_data;
- * 	echo "My theme is:" . $t_em_theme_data['Name'] . "Version:" . $t_em_theme_data['Version'];
- * }
- * ?>
- *
- * @return array
- *
- * @since Twenty'em 0.1
- */
-function t_em_theme_data(){
-	global $t_em_theme_data;
-	$theme_data = wp_get_theme();
-	$t_em_theme_data = array (
-		'Name'			=> $theme_data->display( 'Name' ),
-		'ThemeURI'		=> esc_url( $theme_data->display( 'ThemeURI' ) ),
-		'Description'	=> $theme_data->display( 'Description' ),
-		'Author'		=> $theme_data->display( 'Author' ),
-		'AuthorURI'		=> esc_url( $theme_data->display( 'AuthorURI' ) ),
-		'Version'		=> $theme_data->display( 'Version' ),
-		'Template'		=> $theme_data->display( 'Template' ),
-		'Status'		=> $theme_data->display( 'Status' ),
-		'Tags'			=> $theme_data->display( 'Tags' ),
-		'TextDomain'	=> $theme_data->display( 'TextDomain' ),
-		'DomainPath'	=> $theme_data->display( 'DomainPath' ),
-	);
-}
-add_action( 'after_setup_theme', 't_em_theme_data' );
-
-/**
- * Return three variables we need to access to the database. Also check if something goes wrong
- * with the data base, in case of scratch, default set up will be loaded.
+ * Checks if something goes wrong with the data base, in case of scratch, default set up will be
+ * loaded.
  * This function is attached to the after_setup_theme() action hook.
  *
  * @global $t_em This var provide the main structure of our theme.
@@ -167,16 +128,14 @@ add_action( 'after_setup_theme', 't_em_theme_data' );
  *
  * @since Twenty'em 0.1
  */
-function t_em_set_globals(){
+function t_em_restore_from_scratch(){
 	global	$t_em;
-
-	$t_em = t_em_get_theme_options();
 
 	// If options are empties, we load default settings.
 	if ( empty( $t_em ) )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
 }
-add_action( 'after_setup_theme', 't_em_set_globals' );
+add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
 
 /**
  * Return the default options values for Twenty'em after the theme is loaded for first time. This
@@ -329,7 +288,7 @@ function t_em_thumbnail_sizes( $contex ){
 
 /**
  * Return the whole configuration for Theme Options stored in the data base.
- * Referenced via t_em_set_globals() in /inc/theme-options.php file.
+ * Referenced via t_em_restore_from_scratch() in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */

@@ -129,7 +129,7 @@ function t_em_front_page_witgets_callback(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 1.0
  */

@@ -16,9 +16,28 @@
 ?>
 <?php
 /**
- * $GLOBALS
+ * Define Twenty'em $GLOBALS
  */
-// $GLOBALS['t_em'] = get_option( 't_em_theme_options' );
+/**
+ * $t_em. Array. Contains all the options store in the data base.
+ */
+$t_em = get_option( 't_em_theme_options' );
+/**
+ * $t_em_theme_data. Array. Contains theme's information stored in style.css file.
+ */
+$t_em_theme_data = array (
+	'Name'			=> wp_get_theme()->display( 'Name' ),
+	'ThemeURI'		=> esc_url( wp_get_theme()->display( 'ThemeURI' ) ),
+	'Description'	=> wp_get_theme()->display( 'Description' ),
+	'Author'		=> wp_get_theme()->display( 'Author' ),
+	'AuthorURI'		=> esc_url( wp_get_theme()->display( 'AuthorURI' ) ),
+	'Version'		=> wp_get_theme()->display( 'Version' ),
+	'Template'		=> wp_get_theme()->display( 'Template' ),
+	'Status'		=> wp_get_theme()->display( 'Status' ),
+	'Tags'			=> wp_get_theme()->display( 'Tags' ),
+	'TextDomain'	=> wp_get_theme()->display( 'TextDomain' ),
+	'DomainPath'	=> wp_get_theme()->display( 'DomainPath' ),
+);
 
 /**
  * Define Twenty'em CONSTANTS

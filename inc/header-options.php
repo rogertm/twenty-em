@@ -58,7 +58,7 @@ function t_em_header_options(){
  * Extend setting for Header Image Option in Twenty'em admin panel.
  * Referenced via t_em_header_options().
  *
- * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
  *
  * @since Twenty'em 0.1
  */
@@ -84,7 +84,7 @@ function t_em_header_image_callback(){
  * Extend setting for Header Slider Option in Twenty'em admin panel.
  * Referenced via t_em_header_options().
  *
- * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file
  * @global $slider_layout Return an array with our slider's layout options.
  * @global $list_categories Havana, we have a list of categories... Should I say more?
  *
@@ -403,7 +403,7 @@ function t_em_static_header_callback(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_restore_from_scratch() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */

@@ -64,7 +64,7 @@ function t_em_stats_tracker_options(){
  * Referenced via t_em_register_webmaster_tools_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em_webmaster_tools_options See t_em_set_globals() function in /inc/theme-options.php
+ * @global $t_em_webmaster_tools_options See t_em_restore_from_scratch() function in /inc/theme-options.php
  * file.
  *
  * @since Twenty'em 0.1
@@ -91,7 +91,7 @@ function t_em_settings_engine_id(){
  * Render the Site Statistics Tracker Options setting field in admin panel.
  * Referenced via t_em_register_webmaster_tools_options_init(), add_settings_field() callback.
  *
- * @global $t_em_webmaster_tools_options See t_em_set_globals() function in /inc/theme-options.php
+ * @global $t_em_webmaster_tools_options See t_em_restore_from_scratch() function in /inc/theme-options.php
  * file.
  *
  * @since Twenty'em 0.1
