@@ -139,7 +139,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		<ul>
 		<?php  while ($recent_posts_args->have_posts()) : $recent_posts_args->the_post(); ?>
 		<li class="t-em-recent-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail thumbnail' ) ?>
+			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail' ) ?>
 			<div class="t-em-recent-post-content">
 				<a class="t-em-recent-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
 				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
@@ -323,7 +323,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		<?php  while ($popular_posts_args->have_posts()) : $popular_posts_args->the_post(); ?>
 
 		<li class="t-em-popular-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail thumbnail' ) ?>
+			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail' ) ?>
 			<div class="t-em-popular-post-content">
 				<a class="t-em-popular-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
 				<small><?php $comments_number = ( 1 == $instance['comment_count'] ) ? comments_number( '- 0 Comments', '- 1 Comment', '- % Comments' ) : null; ?></small>
@@ -419,6 +419,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 				width: auto;
 			}
 			.t-em-img-gallery-thumbnail img{
+				margin-bottom: 20px;
 				-webkit-border-radius: 3px;
 				-moz-border-radius: 3px;
 				border-radius: 3px;
@@ -529,7 +530,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
 					$span = 12 / $instance['columns'];
-					echo '<div class="col-md-'. $span .' thumbnail">';
+					echo '<div class="col-md-'. $span .'">';
 						t_em_featured_post_thumbnail( 500, 500, 't-em-img-gallery-thumbnail' );
 					echo '</div>';
 					$i++;
