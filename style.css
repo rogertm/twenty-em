@@ -204,6 +204,10 @@ ul.sub-menu li{
 ul.sub-menu li a{
 	width: 180px;
 }
+/* Social Network Menu */
+.social-icon a{
+	text-decoration: none !important;
+}
 /* If JetPack module Infinite Scroll is active */
 .infinite-scroll .navigation{
 	display: none !important;

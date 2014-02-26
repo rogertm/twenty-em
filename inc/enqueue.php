@@ -128,25 +128,6 @@ function t_em_enqueue_less_css(){
 add_action( 't_em_head', 't_em_enqueue_less_css' );
 
 /**
- * BS Font Family
- */
-function t_em_bs_fm(){
-?>
-	<style type="text/css">
-		@font-face {
-		  font-family: 'Glyphicons Halflings';
-		  src: ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.eot')" !important;
-		  src: ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype')",
-		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.woff') format('woff')",
-		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.ttf') format('truetype')",
-		       ~"url('<?php echo get_stylesheet_directory_uri(); ?>/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')" !important;
-		}
-	</style>
-<?php
-}
-add_action( 't_em_head', 't_em_bs_fm' );
-
-/**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
  */
 function t_em_enqueue_html5shiv(){

@@ -1314,7 +1314,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em[$social_network['name']] .'"><span>'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :

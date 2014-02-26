@@ -196,8 +196,8 @@ function t_em_social_network_options(){
 		'feed_set' => array (
 			'value' => '',
 			'name' => 'feed_set',
-			'label' => __( 'Feed or RSS URL', 't_em' ),
-			'item' => __( 'Feed / RSS', 't_em' ),
+			'label' => __( 'RSS Feed URL', 't_em' ),
+			'item' => __( 'RSS Feed', 't_em' ),
 			'class' => 'icon-feed',
 		),
 	);
