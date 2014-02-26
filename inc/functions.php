@@ -407,15 +407,15 @@ function t_em_admin_header_image() { ?>
 endif;
 
 /**
- * Set the post excerpt length depending of the $t_em_theme_options['excerpt_length'] value.
+ * Set the post excerpt length depending of the $t_em['excerpt_length'] value.
  * You don't need to override this value in a Child Theme, just because you can set this value from
  * the Twenty'em Framework interface.
  *
  * @since Twenty'em 1.0
  */
 function t_em_excerpt_length( $length ){
-	global $t_em_theme_options;
-	return $t_em_theme_options['excerpt_length'];
+	global $t_em;
+	return $t_em['excerpt_length'];
 }
 add_filter( 'excerpt_length', 't_em_excerpt_length' );
 
@@ -432,9 +432,9 @@ endif;
  * @since Twenty'em 0.1
  */
 function t_em_favicon(){
-	global $t_em_theme_options;
-	if ( '' != $t_em_theme_options['favicon_url'] ) :
-		echo '<link rel="shortcut icon" href="'. $t_em_theme_options['favicon_url'] .'" />'."\n";
+	global $t_em;
+	if ( '' != $t_em['favicon_url'] ) :
+		echo '<link rel="shortcut icon" href="'. $t_em['favicon_url'] .'" />'."\n";
 	endif;
 }
 add_action( 'wp_head', 't_em_favicon' );
@@ -533,10 +533,10 @@ add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
  * @since Twenty'em 0.1
  */
 function t_em_widgets_init() {
-	global $t_em_theme_options;
+	global $t_em;
 
 	// Sidebars Widgets Area
-	if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
+	if ( 'one-column' != $t_em['layout_set'] ) :
 		// Area 0, located at the top of the sidebar.
 		register_sidebar( array(
 			'name' => __( 'Main Sidebar Widget Area', 't_em' ),
@@ -549,7 +549,7 @@ function t_em_widgets_init() {
 		) );
 	endif;
 
-	if ( in_array( $t_em_theme_options['layout_set'],
+	if ( in_array( $t_em['layout_set'],
 			array ('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
 		) ) :
 		// Area 1, located at the top of the sidebar.
@@ -565,7 +565,7 @@ function t_em_widgets_init() {
 	endif;
 
 	// Footer Widgets Area
-	if ( $t_em_theme_options['footer_set'] != 'no-footer-widget' ) :
+	if ( $t_em['footer_set'] != 'no-footer-widget' ) :
 			// Area 2, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'First Footer Widget Area', 't_em' ),
@@ -577,7 +577,7 @@ function t_em_widgets_init() {
 				'after_title' => '</h3>',
 			) );
 
-		if ( in_array( $t_em_theme_options['footer_set'],
+		if ( in_array( $t_em['footer_set'],
 			array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 3, located in the footer. Empty by default.
@@ -592,7 +592,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em_theme_options['footer_set'],
+		if ( in_array( $t_em['footer_set'],
 			array ( 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 4, located in the footer. Empty by default.
@@ -607,7 +607,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em_theme_options['footer_set'],
+		if ( in_array( $t_em['footer_set'],
 			array ( 'four-footer-widget' )
 		 ) ) :
 			// Area 5, located in the footer. Empty by default.
@@ -951,14 +951,14 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_page_navi(){
-	global $wp_query, $t_em_theme_options;
+	global $wp_query, $t_em;
 	// Don't print empty markup if there's only one page.
 	if ( $wp_query->max_num_pages < 2 ) :
 		return;
 	endif;
 ?>
 <?php
-		if ( 'prev-next' == $t_em_theme_options['archive_pagination_set'] ) :
+		if ( 'prev-next' == $t_em['archive_pagination_set'] ) :
 ?>
 	<nav id="site-navigation" class="site-pagination navi">
 		<ul>
@@ -967,7 +967,7 @@ function t_em_page_navi(){
 		</ul>
 	</nav>
 <?php
-		elseif ( 'page-navi' == $t_em_theme_options['archive_pagination_set'] ) :
+		elseif ( 'page-navi' == $t_em['archive_pagination_set'] ) :
 ?>
 	<nav id="site-navigation" class="site-pagination pagi">
 <?php
@@ -1144,7 +1144,7 @@ function t_em_custom_template_content( $icon_class = '' ){
  * @param boolean $link Optional The image will be linkable or not. Default: true.
  *
  * @global $post
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @return text HTML content describing embedded figure
  *
@@ -1152,7 +1152,7 @@ function t_em_custom_template_content( $icon_class = '' ){
  */
 function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
 	global	$post,
-			$t_em_theme_options;
+			$t_em;
 
 	if ( has_post_thumbnail( $post->ID ) ) :
 		// Display featured image assigned to the post
@@ -1207,25 +1207,25 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
  * function is attached to the t_em_header_inside action hook.
  *
  * @global $post
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @since Twenty'em 0.1
  */
 function t_em_header_options_set(){
 	global	$post,
-			$t_em_theme_options;
+			$t_em;
 
-	if ( 'no-header-image' == $t_em_theme_options['header_set'] ) :
+	if ( 'no-header-image' == $t_em['header_set'] ) :
 		return;
-	elseif ( 'header-image' == $t_em_theme_options['header_set'] ) :
+	elseif ( 'header-image' == $t_em['header_set'] ) :
 		get_template_part( 'header', 'image' );
-	elseif ( 'slider' == $t_em_theme_options['header_set'] ) :
-		if ( 'slider-bootstrap-carousel' == $t_em_theme_options['slider_script'] ) :
+	elseif ( 'slider' == $t_em['header_set'] ) :
+		if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
 			get_template_part( 'header', 'slider' );
-		elseif ( 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
+		elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
 			get_template_part( 'header', 'nivo-slider' );
 		endif;
-	elseif ( 'static-header' == $t_em_theme_options['header_set'] ) :
+	elseif ( 'static-header' == $t_em['header_set'] ) :
 		get_template_part( 'header', 'static-header' );
 	endif;
 }
@@ -1241,13 +1241,13 @@ function t_em_header_options_set(){
  *
  * @link http://codex.wordpress.org/Post_Thumbnails
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @since Twenty'em 0.1
  */
 function t_em_single_post_thumbnail(){
-	global $t_em_theme_options;
-	$single_featured_img = $t_em_theme_options['single_featured_img'];
+	global $t_em;
+	$single_featured_img = $t_em['single_featured_img'];
 	if ( '1' == $single_featured_img && has_post_thumbnail() ) :
 ?>
 <figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
@@ -1270,17 +1270,17 @@ function t_em_single_post_thumbnail(){
  * @link http://codex.wordpress.org/Function_Reference/the_excerpt
  * @link http://codex.wordpress.org/Function_Reference/the_content
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @since Twenty'em 0.1
  */
 function t_em_post_archive_set(){
-	global $t_em_theme_options;
+	global $t_em;
 
-	if ( 'the-excerpt' == $t_em_theme_options['archive_set'] ) :
+	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $t_em_theme_options['excerpt_thumbnail_height'], $t_em_theme_options['excerpt_thumbnail_width'], 'featured-post-thumbnail', true ); ?>
+				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_height'], $t_em['excerpt_thumbnail_width'], 'featured-post-thumbnail', true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php
@@ -1300,21 +1300,21 @@ function t_em_post_archive_set(){
  * @uses t_em_social_network_options() See t_em_social_network_options() function
  * in /inc/theme-options.php file.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @return string HTML list of items
  *
  * @since Twenty'em 0.1
  */
 function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classes = '', $li_classes = '' ){
-	global 	$t_em_theme_options;
+	global 	$t_em;
 
 	$user_social_network = t_em_social_network_options();
 
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
-		if ( $t_em_theme_options[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item '. $li_classes .'"><a href="'. $t_em_theme_options[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em_theme_options[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
+		if ( $t_em[$social_network['name']] != '' ) :
+		$output_items .= '<li id="'.$social_network['name'].'" class="menu-item '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em[$social_network['name']] .'"><span class="hidden">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :
@@ -1334,15 +1334,15 @@ function t_em_hook_user_social_network(){
  * Show related posts to the current single post if it's set by the user in "General Options" in
  * admin theme options page.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @return string HTML list of items
  *
  * @since Twenty'em 0.1
  */
 function t_em_single_related_posts() {
-	global $t_em_theme_options;
-	if ( '1' == $t_em_theme_options['single_related_posts'] ) :
+	global $t_em;
+	if ( '1' == $t_em['single_related_posts'] ) :
 		global $wpdb, $post;
 
 		$now = current_time('mysql', 1);
@@ -1413,31 +1413,31 @@ function t_em_single_related_posts() {
  * Default: 'empty'.
  * @param string $h_tag Optional Header tag (h1, h2, h3, ...) for widget title. Default: 'empty'
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @return string HTML div boxes
  *
  * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '', $h_tag = '' ){
-	global $t_em_theme_options;
+	global $t_em;
 
-	if ( ! empty( $t_em_theme_options['headline_text_widget_'.$widget.''] ) || ! empty( $t_em_theme_options['content_text_widget_'.$widget.''] ) ) :
+	if ( ! empty( $t_em['headline_text_widget_'.$widget.''] ) || ! empty( $t_em['content_text_widget_'.$widget.''] ) ) :
 
-		$widget_icon_class	= ( $t_em_theme_options['icon_class_text_widget_'.$widget.''] ) ?
-			'<span class="'. $t_em_theme_options['icon_class_text_widget_'.$widget.''] .' font-icon"></span>' : '';
+		$widget_icon_class	= ( $t_em['icon_class_text_widget_'.$widget.''] ) ?
+			'<span class="'. $t_em['icon_class_text_widget_'.$widget.''] .' font-icon"></span>' : '';
 
-		$widget_headline	= ( $t_em_theme_options['headline_text_widget_'.$widget.''] ) ?
-			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em_theme_options['headline_text_widget_'.$widget.''] .'</'. $h_tag .'></header>' : '';
+		$widget_headline	= ( $t_em['headline_text_widget_'.$widget.''] ) ?
+			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_text_widget_'.$widget.''] .'</'. $h_tag .'></header>' : '';
 
-		$widget_content		= ( $t_em_theme_options['content_text_widget_'.$widget.''] ) ?
-			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em_theme_options['content_text_widget_'.$widget.''] ) ) .'</div>' : '';
+		$widget_content		= ( $t_em['content_text_widget_'.$widget.''] ) ?
+			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_text_widget_'.$widget.''] ) ) .'</div>' : '';
 
-		$widget_thumbnail_url	= ( $t_em_theme_options['thumbnail_src_text_widget_'.$widget.''] ) ?
-			'<img src="'. $t_em_theme_options['thumbnail_src_text_widget_'.$widget.''] .'" alt="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'" />' : '';
+		$widget_thumbnail_url	= ( $t_em['thumbnail_src_text_widget_'.$widget.''] ) ?
+			'<img src="'. $t_em['thumbnail_src_text_widget_'.$widget.''] .'" alt="'. $t_em['headline_text_widget_'.$widget.''] .'" />' : '';
 
-		$widget_link		= ( $t_em_theme_options['link_url_text_widget_'.$widget.''] ) ?
-			'<footer><a href="'. $t_em_theme_options['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em_theme_options['headline_text_widget_'.$widget.''] .'">
+		$widget_link		= ( $t_em['link_url_text_widget_'.$widget.''] ) ?
+			'<footer><a href="'. $t_em['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em['headline_text_widget_'.$widget.''] .'">
 			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
 
 		if ( $widget != 'one' ) :
@@ -1496,19 +1496,19 @@ endif;
  *
  * @param string $section Required. The name of the section that Bootstrap CSS Classes are needed.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file
  *
  * @return string CSS Class name
  *
  * @since Twenty'em 1.0
  */
 function t_em_add_bootstrap_class( $section ){
-	global $t_em_theme_options;
+	global $t_em;
 
 	$bootstrap_classes = '';
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
-	$layout_set = $t_em_theme_options['layout_set'];
+	$layout_set = $t_em['layout_set'];
 	$one_column = in_array( $layout_set, array( 'one-column' ) );
 	$two_column = in_array( $layout_set,
 						array( 'two-column-content-right',
@@ -1549,17 +1549,17 @@ function t_em_add_bootstrap_class( $section ){
 
 	// Archive columns
 	if ( 'archive-columns' == $section ) :
-		$cols = 12 / $t_em_theme_options['archive_in_columns'];
+		$cols = 12 / $t_em['archive_in_columns'];
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
 	/** Static Header Content and Image */
 	if ( 'static-header' == $section ) :
-		$static_header_img = ( ! empty ( $t_em_theme_options['static_header_img_src'] ) ) ? '1' : '0';
-		$static_header_content = ( ! empty ( $t_em_theme_options['static_header_headline'] )
-								|| ! empty ( $t_em_theme_options['static_header_content'] )
-								|| ! empty ( $t_em_theme_options['static_header_primary_button_text'] )
-								|| ! empty ( $t_em_theme_options['static_header_secondary_button_text'] )
+		$static_header_img = ( ! empty ( $t_em['static_header_img_src'] ) ) ? '1' : '0';
+		$static_header_content = ( ! empty ( $t_em['static_header_headline'] )
+								|| ! empty ( $t_em['static_header_content'] )
+								|| ! empty ( $t_em['static_header_primary_button_text'] )
+								|| ! empty ( $t_em['static_header_secondary_button_text'] )
 								) ? '1' : '0';
 		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
 		$cols = 12 / $total_static_header;
@@ -1568,8 +1568,8 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Static Header Buttons */
 	if ( 'static-header-button' == $section ) :
-		$static_header_primary_button = ( ! empty ( $t_em_theme_options['static_header_primary_button_text'] ) ) ? '1' : '0';
-		$static_header_secondary_button = ( ! empty ( $t_em_theme_options['static_header_secondary_button_text'] ) ) ? '1' : '0';
+		$static_header_primary_button = ( ! empty ( $t_em['static_header_primary_button_text'] ) ) ? '1' : '0';
+		$static_header_secondary_button = ( ! empty ( $t_em['static_header_secondary_button_text'] ) ) ? '1' : '0';
 		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
 		$cols = 12 / $total_static_header_button;
 		$bootstrap_classes = 'col-md-' . $cols;
@@ -1578,9 +1578,9 @@ function t_em_add_bootstrap_class( $section ){
 	/** Front Page Widgets Area */
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'featured-widget-area' == $section ) :
-		$widget_two		= ( ! empty ( $t_em_theme_options['headline_text_widget_two'] ) || ! empty ( $t_em_theme_options['content_text_widget_two'] ) ) ? '1' : '0' ;
-		$widget_three	= ( ! empty ( $t_em_theme_options['headline_text_widget_three'] ) || ! empty ( $t_em_theme_options['content_text_widget_three'] ) ) ? '1' : '0' ;
-		$widget_four	= ( ! empty ( $t_em_theme_options['headline_text_widget_four'] ) || ! empty ( $t_em_theme_options['content_text_widget_four'] ) ) ? '1' : '0' ;
+		$widget_two		= ( ! empty ( $t_em['headline_text_widget_two'] ) || ! empty ( $t_em['content_text_widget_two'] ) ) ? '1' : '0' ;
+		$widget_three	= ( ! empty ( $t_em['headline_text_widget_three'] ) || ! empty ( $t_em['content_text_widget_three'] ) ) ? '1' : '0' ;
+		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array ( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
 		$bootstrap_classes = 'col-md-' . $cols;
@@ -1588,14 +1588,14 @@ function t_em_add_bootstrap_class( $section ){
 
 	/** Footer Widgets Area */
 	if ( 'footer-widget-area' == $section ) :
-		$one_widget_footer = ( 'no-footer-widget' != $t_em_theme_options['footer_set'] ) ? '1' : '0';
-		$two_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
+		$one_widget_footer = ( 'no-footer-widget' != $t_em['footer_set'] ) ? '1' : '0';
+		$two_widget_footer = ( in_array( $t_em['footer_set'],
 								array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 							 ) ) ? '1' : '0';
-		$three_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
+		$three_widget_footer = ( in_array( $t_em['footer_set'],
 									array ( 'three-footer-widget', 'four-footer-widget' )
 								 ) ) ? '1' : '0';
-		$four_widget_footer = ( in_array( $t_em_theme_options['footer_set'],
+		$four_widget_footer = ( in_array( $t_em['footer_set'],
 									array ( 'four-footer-widget' )
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array ( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
@@ -1631,9 +1631,9 @@ function t_em_wrap_paragraph( $paragraph ){
  * Breadcrumb
  */
 function t_em_breadcrumb(){
-	global $t_em_theme_options;
+	global $t_em;
 
-	if ( '1' == $t_em_theme_options['breadcrumb_path'] ) :
+	if ( '1' == $t_em['breadcrumb_path'] ) :
 		global $post;
 
 		$query_obj = get_queried_object();
@@ -1907,8 +1907,8 @@ function t_em_copy_right(){
  * Display Twenty'em.com link at bottom of the page
  */
 function t_em_dot_com_link(){
-global $t_em_theme_options, $t_em_theme_data;
-$hidden_class = ( '0' == $t_em_theme_options['t_em_link'] ) ? 'hidden' : null;
+global $t_em, $t_em_theme_data;
+$hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 ?>
 	<div id="twenty-em-credit" class="text-center small col-md-12 <?php echo $hidden_class ?>">
 		<?php _e( 'Proudly powered by: ', 't_em' ); ?>

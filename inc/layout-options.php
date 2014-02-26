@@ -107,14 +107,14 @@ function t_em_footer_options(){
  * @since Twenty'em 0.1
  */
 function t_em_layout_width(){
-	global $t_em_theme_options;
+	global $t_em;
 
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend">';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
 	$layout_width .= 		'<span>'. sprintf( __( 'Enter the value you wish to be your site width. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>.', 't_em' ), T_EM_LAYOUT_WIDTH_DEFAULT_VALUE, T_EM_LAYOUT_WIDTH_MAX_VALUE, T_EM_LAYOUT_WIDTH_MIN_VALUE ) .'</span>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em_theme_options['layout_width'].'" /><span class="unit">px</span>';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em['layout_width'].'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
@@ -130,12 +130,12 @@ function t_em_layout_width(){
  * @uses t_em_layout_width() Display a text box into Layout Options panel where you may enter
  * your theme width.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */
 function t_em_settings_field_layout_set(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 <div class="image-radio-option-group">
 <p><strong><?php _e( 'Main Layout Setting', 't_em' ); ?></strong></p>
@@ -144,7 +144,7 @@ function t_em_settings_field_layout_set(){
 ?>
 	<div class="layout image-radio-option theme-layout">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em_theme_options['layout_set'], $layout['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em['layout_set'], $layout['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
 		</label>
 	</div>
@@ -159,7 +159,7 @@ function t_em_settings_field_layout_set(){
 ?>
 	<div class="footer image-radio-option theme-footer">
 		<label class="description">
-			<input type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em_theme_options['footer_set'], $footer['value'] ); ?> />
+			<input type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em['footer_set'], $footer['value'] ); ?> />
 			<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
 		</label>
 	</div>

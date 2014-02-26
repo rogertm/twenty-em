@@ -210,18 +210,18 @@ function t_em_social_network_options(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */
 function t_em_settings_field_socialnetwork_set(){
-	global $t_em_theme_options;
+	global $t_em;
 	foreach ( t_em_social_network_options() as $social ) :
 ?>
 	<div id="social-network-options" class="layout text-option social">
 		<label>
 			<span><?php echo $social['label'];?></span>
-			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em_theme_options[$social['name']] ); ?>" />
+			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em[$social['name']] ); ?>" />
 		</label>
 	</div>
 <?php

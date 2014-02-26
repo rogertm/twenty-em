@@ -21,7 +21,7 @@ get_header(); ?>
 			<?php
 				$i = 0;
 				while ( have_posts() ) : the_post();
-					if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
+					if ( 0 == $i % $t_em['archive_in_columns'] ) :
 						echo '</div>';
 						echo '<div class="row">';
 					endif;

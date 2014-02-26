@@ -134,7 +134,7 @@ function t_em_content_after(){
 /**
  * Fire the t_em_front_page_widgets_before, just after opening <section id="content"> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em_theme_options['front_page_set'] == 'widgets-front-page'.
+ * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
  */
@@ -145,7 +145,7 @@ function t_em_front_page_widgets_before(){
 /**
  * Fire the t_em_front_page_widgets_after, just before closing </section><!-- #content --> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em_theme_options['front_page_set'] == 'widgets-front-page'.
+ * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
  */
@@ -156,7 +156,7 @@ function t_em_front_page_widgets_after(){
 /**
  *	Fire the t_em_front_page_widgets_inside_before, just after opening <section id="featured-widget-area"> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em_theme_options['front_page_set'] == 'widgets-front-page'.
+ * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
  */
@@ -167,7 +167,7 @@ function t_em_front_page_widgets_inside_before(){
 /**
  * Fire the t_em_front_page_widgets_inside_after, just before closing <section> <!-- #featured-widget-area --> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em_theme_options['front_page_set'] == 'widgets-front-page'.
+ * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
  */

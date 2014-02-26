@@ -47,14 +47,14 @@ function t_em_archive_options(){
  * Extend setting for Archive Option in Twenty'em admin panel.
  * Referenced via t_em_archive_options() in /inc/archive-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  * @global $excerpt_options Returns an array of our archive excerpt options.
  * @global $archive_in_columns Returns a string value for archive columns.
  *
  * @since Twenty'em 0.1
  */
 function t_em_excerpt_callback(){
-	global	$t_em_theme_options,
+	global	$t_em,
 			$excerpt_options,
 			$archive_in_columns;
 
@@ -95,13 +95,13 @@ function t_em_excerpt_callback(){
 	$extend_excerpt .= '<div class="layout text-option excerpt-length">';
 	$extend_excerpt .=		'<label>';
 	$extend_excerpt .=			'<p>'. sprintf( __( 'The amount of words displayed in the excerpt. If empty, the default value will be <code>%1$s</code> words.', 't_em' ), '55' ) .'</p>';
-	$extend_excerpt .=			'<input type="number" name="t_em_theme_options[excerpt_length]" value="'.$t_em_theme_options['excerpt_length'].'" />';
+	$extend_excerpt .=			'<input type="number" name="t_em_theme_options[excerpt_length]" value="'.$t_em['excerpt_length'].'" />';
 	$extend_excerpt .=		'</label>';
 	$extend_excerpt .= '</div>';
 
 	$extend_excerpt .= '<div class="image-radio-option-group">';
 	foreach ( $excerpt_options as $excerpt ) :
-		$checked_option = checked( $t_em_theme_options['excerpt_set'], $excerpt['value'], false );
+		$checked_option = checked( $t_em['excerpt_set'], $excerpt['value'], false );
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt_set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
@@ -120,7 +120,7 @@ function t_em_excerpt_callback(){
 	foreach ( $thumb as $thumbnail ) :
 		$extend_excerpt .= 		'<div class="layout text-option thumbnail">';
 		$extend_excerpt .=			'<label><span>'. $thumbnail['label'] .'</span>';
-		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em_theme_options[$thumbnail['name']] ).'" /><span class="unit">px</span>';
+		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_excerpt .=			'</label>';
 		$extend_excerpt .=		'</div>';
 	endforeach;
@@ -129,7 +129,7 @@ function t_em_excerpt_callback(){
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
 	$extend_excerpt .=	'<p>'. __( 'Break Loop in columns (It may affect the thumbnail size)', 't_em' ) .'</p>';
 	foreach ( $archive_in_columns as $columns ) :
-		$checked_option = checked( $t_em_theme_options['archive_in_columns'], $columns['value'], false );
+		$checked_option = checked( $t_em['archive_in_columns'], $columns['value'], false );
 		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_in_columns]" value="'. esc_attr( $columns['value'] ) .'" '. $checked_option .'>';
@@ -146,13 +146,13 @@ function t_em_excerpt_callback(){
  * Extend setting for Archive Pagination Option in Twenty'em admin panel.
  * Referenced via t_em_archive_options() in /inc/archive-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  * @global $archive_pagination Returns a string value for pagination.
  *
  * @since Twenty'em 1.0
  */
 function t_em_settings_archive_pagination(){
-	global $t_em_theme_options, $archive_pagination;
+	global $t_em, $archive_pagination;
 
 	$archive_pagination = array (
 		'prev-next'	=> array(
@@ -169,7 +169,7 @@ function t_em_settings_archive_pagination(){
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
 	$extend_excerpt .=	'<p>'. __( 'Archive Pagination', 't_em' ) .'</p>';
 	foreach ( $archive_pagination as $pagination ) :
-		$checked_option = checked( $t_em_theme_options['archive_pagination_set'], $pagination['value'], false );
+		$checked_option = checked( $t_em['archive_pagination_set'], $pagination['value'], false );
 		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination_set]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
@@ -187,12 +187,12 @@ function t_em_settings_archive_pagination(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */
 function t_em_settings_field_archive_set(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 	<div id="archive-options">
 <?php
@@ -200,7 +200,7 @@ function t_em_settings_field_archive_set(){
 ?>
 		<div class="layout radio-option archive">
 			<label class="description">
-				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em_theme_options['archive_set'], $archive['value'] ); ?> />
+				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em['archive_set'], $archive['value'] ); ?> />
 				<span><?php echo $archive['label']; ?></span>
 			</label>
 		</div>
@@ -212,7 +212,7 @@ function t_em_settings_field_archive_set(){
 	 */
 	foreach ( t_em_archive_options() as $sub_archive ) :
 		if ( $sub_archive['extend'] != '' ) :
-		$selected_option = ( $t_em_theme_options['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
+		$selected_option = ( $t_em['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
 			<?php echo $sub_archive['extend']; ?>

@@ -70,7 +70,7 @@ function t_em_stats_tracker_options(){
  * @since Twenty'em 0.1
  */
 function t_em_settings_engine_id(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 		<p><strong><?php _e( 'Trackers ID numbers', 't_em' ); ?></strong></p>
 		<p><?php echo sprintf( __( '<strong>NOTE</strong>: Just the ID number, the <code>%1$s</code> tag is not needed', 't_em' ), '&lt;meta /&gt;' ); ?></p>
@@ -80,7 +80,7 @@ function t_em_settings_engine_id(){
 		<div class="layout text-option search-engine">
 			<label>
 				<span><?php echo $search_engine['label']; ?></span>
-				<input type="text" name="t_em_theme_options[<?php echo $search_engine['name']; ?>]" value="<?php echo esc_attr( $t_em_theme_options[$search_engine['name']] ) ?>" />
+				<input type="text" name="t_em_theme_options[<?php echo $search_engine['name']; ?>]" value="<?php echo esc_attr( $t_em[$search_engine['name']] ) ?>" />
 			</label>
 		</div>
 <?php
@@ -97,7 +97,7 @@ function t_em_settings_engine_id(){
  * @since Twenty'em 0.1
  */
 function t_em_settings_stats_tracker(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 		<p><strong><?php _e( 'Trackers Statistics Codes', 't_em' ); ?></strong></p>
 		<p><?php echo sprintf( __( '<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</code> tags are not needed', 't_em' ), '&lt;script type="text/javascript"&gt', '&lt;/script&gt' ); ?></p>
@@ -108,7 +108,7 @@ function t_em_settings_stats_tracker(){
 		<div class="layout textarea-option stat-tracker">
 			<label>
 				<span><?php echo $stat_tracker['label']; ?></span>
-				<textarea name="t_em_theme_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em_theme_options[$stat_tracker['name']] ) ?></textarea>
+				<textarea name="t_em_theme_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em[$stat_tracker['name']] ) ?></textarea>
 			</label>
 		</div>
 <?php
@@ -133,28 +133,28 @@ function t_em_settings_field_webmaster_tools_set(){
 
 
 function t_em_stats_header_tracker(){
-	global $t_em_theme_options;
+	global $t_em;
 
 	// Google Engine ID
-	if ( $t_em_theme_options['google_id'] )
-		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em_theme_options['google_id'] ) . '" />' . "\n";
+	if ( $t_em['google_id'] )
+		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
 
 	// Bing Engine ID
-	if ( $t_em_theme_options['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em_theme_options['bing_id'] ) . '" />' . "\n";
+	if ( $t_em['bing_id'] )
+		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
 
 	// Header Stats Tracker
-	if ( $t_em_theme_options['stats_tracker_header_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em_theme_options['stats_tracker_header_tag'] ) . '</script>' . "\n";
+	if ( $t_em['stats_tracker_header_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 't_em_stats_header_tracker' );
 
 function t_em_stats_body_tracker(){
-	global $t_em_theme_options;
+	global $t_em;
 
 	// Body Stats Tracker
-	if ( $t_em_theme_options['stats_tracker_body_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em_theme_options['stats_tracker_body_tag'] ) . '</script>' . "\n";
+	if ( $t_em['stats_tracker_body_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
 }
 add_action( 'wp_footer', 't_em_stats_body_tracker' );
 ?>

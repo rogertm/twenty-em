@@ -77,7 +77,7 @@ function t_em_front_page_jawpfp_callback(){
  * @since Twenty'em 1.0
  */
 function t_em_front_page_witgets_callback(){
-	global 	$t_em_theme_options;
+	global 	$t_em;
 
 	$front_page_widgets = array (
 		'text_widget_one' => array (
@@ -103,19 +103,19 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= '<div id="' . $widget['name'] . '" class="layout text-option front-page">';
 		$extend_front_page .= 	'<p>' . $widget['label'] . '</p>';
 		$extend_front_page .= 	'<label><span>' . __( 'Headline', 't_em' ) .'</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . $t_em_theme_options['headline_'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . $t_em['headline_'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Content', 't_em' ) .'</span>';
-		$extend_front_page .= 		'<textarea name="t_em_theme_options[content_' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . $t_em_theme_options['content_'.$widget['name']] . '</textarea>';
+		$extend_front_page .= 		'<textarea name="t_em_theme_options[content_' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . $t_em['content_'.$widget['name']] . '</textarea>';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</span>';
-		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon_class_' . $widget['name'] . ']" value="' . $t_em_theme_options['icon_class_'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[icon_class_' . $widget['name'] . ']" value="' . $t_em['icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
-		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em_theme_options['thumbnail_src_'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em['thumbnail_src_'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Link URL', 't_em' ) . '</span>';
-		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[link_url_' . $widget['name'] . ']" value="' . $t_em_theme_options['link_url_'.$widget['name']] . '" />';
+		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[link_url_' . $widget['name'] . ']" value="' . $t_em['link_url_'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= '</div>';
 	endforeach;
@@ -129,12 +129,12 @@ function t_em_front_page_witgets_callback(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_front_page_options_set(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 	<div id="front-page-options">
 <?php
@@ -142,7 +142,7 @@ function t_em_settings_field_front_page_options_set(){
 ?>
 		<div class="layout radio-option front-page">
 			<label class="description">
-				<input type="radio" name="t_em_theme_options[front_page_set]" class="head-radio-option" value="<?php echo esc_attr( $front_page['value'] ); ?>" <?php checked( $t_em_theme_options['front_page_set'], $front_page['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[front_page_set]" class="head-radio-option" value="<?php echo esc_attr( $front_page['value'] ); ?>" <?php checked( $t_em['front_page_set'], $front_page['value'] ); ?> />
 				<span><?php echo $front_page['label']; ?></span>
 			</label>
 		</div>
@@ -151,7 +151,7 @@ function t_em_settings_field_front_page_options_set(){
 
 	foreach ( t_em_front_page_options() as $sub_front_page ) :
 		if ( $sub_front_page['extend'] != '' ) :
-		$selected_option = ( $t_em_theme_options['front_page_set'] == $sub_front_page['value'] ) ? 'selected-option' : '';
+		$selected_option = ( $t_em['front_page_set'] == $sub_front_page['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_front_page['value'] ?>" class="sub-layout front-page-extend <?php echo "$selected_option"; ?>">
 			<?php echo $sub_front_page['extend']; ?>

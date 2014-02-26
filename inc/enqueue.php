@@ -19,7 +19,7 @@
  * Register Style Sheet and Javascript to beautify the Twenty'em theme
  */
 function t_em_enqueue_styles_and_scripts(){
-	global	$t_em_theme_options,
+	global	$t_em,
 			$t_em_tools_box_options,
 			$t_em_theme_data;
 
@@ -42,19 +42,19 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_enqueue_script( 'modernizr' );
 
 	// Register and enqueue Twitter Bootstrap JS Plugins
-	if ( 'slider' == $t_em_theme_options['header_set'] ) :
-		if ( 'slider-bootstrap-carousel' == $t_em_theme_options['slider_script'] ) :
+	if ( 'slider' == $t_em['header_set'] ) :
+		if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
 			wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/carousel.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 			wp_enqueue_script( 'bootstrap-carousel' );
 			wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
 			wp_enqueue_script( 'bootstrap-carousel-script' );
 
-		elseif ( 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
+		elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
 
 			wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 			wp_enqueue_style( 'style-nivo-slider' );
-			wp_register_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em_theme_options['nivo_style'].'/'.$t_em_theme_options['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
-			wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em_theme_options['nivo_style'].'' );
+			wp_register_style( 'style-nivo-slider-theme-'.$t_em['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em['nivo_style'].'/'.$t_em['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
+			wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em['nivo_style'].'' );
 			wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS_URL.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 			wp_enqueue_script( 'nivo-slider' );
 			wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS_URL.'/style-slider.css', array(), $t_em_theme_data['Version'], 'all' );
@@ -94,11 +94,11 @@ add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
  * Get the theme width set in theme options
  */
 function t_em_theme_layout_width(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 <style type="text/css" media="all">
 	.wrapper{
-		max-width: <?php echo $t_em_theme_options['layout_width']; ?>px !important;
+		max-width: <?php echo $t_em['layout_width']; ?>px !important;
 	}
 </style>
 <?php
@@ -175,21 +175,21 @@ add_action( 't_em_head', 't_em_enqueue_icomoon' );
  * Nivo Slider Options
  */
 function t_em_nivo_slider_options(){
-	global $t_em_theme_options;
-	if ( 'slider' == $t_em_theme_options['header_set'] && 'slider-nivo-slider' == $t_em_theme_options['slider_script'] ) :
-		$effect = $t_em_theme_options['nivo_effect'];
-		$pause_time = $t_em_theme_options['nivo_manual_advance'] == '1' ? 0 : $t_em_theme_options['nivo_pause_time'];
+	global $t_em;
+	if ( 'slider' == $t_em['header_set'] && 'slider-nivo-slider' == $t_em['slider_script'] ) :
+		$effect = $t_em['nivo_effect'];
+		$pause_time = $t_em['nivo_manual_advance'] == '1' ? 0 : $t_em['nivo_pause_time'];
 ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function($){
 		$('#slider').nivoSlider({
 			effect: 		<?php echo "'$effect'"; ?>,
-			animSpeed: 		<?php echo $t_em_theme_options['nivo_anim_speed']; ?>,
+			animSpeed: 		<?php echo $t_em['nivo_anim_speed']; ?>,
 			pauseTime: 		<?php echo $pause_time; ?>,
-			pauseOnHover: 	<?php echo $t_em_theme_options['nivo_pause_on_hover']; ?>,
-			manualAdvance: 	<?php echo $t_em_theme_options['nivo_manual_advance']; ?>, // Disable pause time!!!
-			directionNav: 	<?php echo $t_em_theme_options['nivo_direction_nav']; ?>,
-			controlNav: 	<?php echo $t_em_theme_options['nivo_control_nav']; ?>,
+			pauseOnHover: 	<?php echo $t_em['nivo_pause_on_hover']; ?>,
+			manualAdvance: 	<?php echo $t_em['nivo_manual_advance']; ?>, // Disable pause time!!!
+			directionNav: 	<?php echo $t_em['nivo_direction_nav']; ?>,
+			controlNav: 	<?php echo $t_em['nivo_control_nav']; ?>,
 			prevText: 		'<span class="icon-circleleft"></span>',
 			nextText: 		'<span class="icon-circleright"></span>',
 		});

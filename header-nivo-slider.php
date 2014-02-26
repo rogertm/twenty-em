@@ -4,12 +4,12 @@
  * for the Nivo SLider jQuery Plugin
  */
 global	$post,
-		$t_em_theme_options;
+		$t_em;
 
-if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $t_em_theme_options['slider_home_only'] ) :
+if ( ( '1' == $t_em['slider_home_only'] && is_home() ) || '0' == $t_em['slider_home_only'] ) :
 
 	// We pass to the query only posts with images attached
-	$cat_posts = get_posts( array( 'category' => $t_em_theme_options['slider_category'], 'posts_per_page' => 99 ) );
+	$cat_posts = get_posts( array( 'category' => $t_em['slider_category'], 'posts_per_page' => 99 ) );
 	$i = 1;
 	$p = array();
 	foreach ( $cat_posts as $cp ) :
@@ -20,7 +20,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 		endif;
 	endforeach;
 	$tp = count( $p );
-	$lp = $tp - $t_em_theme_options['slider_number'];
+	$lp = $tp - $t_em['slider_number'];
 	while ( $i <= $lp ) :
 		array_pop( $p );
 		$i++;
@@ -29,7 +29,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 
 	$args = array (
 		'post_type'			=> 'post',
-		'cat'				=> $t_em_theme_options['slider_category'],
+		'cat'				=> $t_em['slider_category'],
 		'post__in'			=> $p,
 		'posts_per_page'	=> $tp,
 		'orderby'			=> 'date',
@@ -38,7 +38,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 	query_posts ( $args );
 		?>
 		<section id="nivo-slider" class="container">
-			<div class="slider-wrapper theme-<?php echo $t_em_theme_options['nivo_style']; ?> wrapper row">
+			<div class="slider-wrapper theme-<?php echo $t_em['nivo_style']; ?> wrapper row">
 				<div class="ribbon"></div>
 				<div id="slider" class="nivoSlider">
 			<?php
@@ -57,7 +57,7 @@ if ( ( '1' == $t_em_theme_options['slider_home_only'] && is_home() ) || '0' == $
 					endif;
 						?>
 						<a href="<?php the_permalink(); ?>" rel="bookmark">
-							<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em_theme_options['layout_width'].'&amp;h='.$t_em_theme_options['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+							<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
 						</a>
 						<?php
 				endwhile;

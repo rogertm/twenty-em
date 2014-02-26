@@ -14,7 +14,7 @@
 
 get_header(); ?>
 <?php
-if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
+if ( 'wp-front-page' == $t_em['front_page_set'] ) :
 ?>
 			<section id="main-content" class="<?php echo t_em_add_bootstrap_class('main-content'); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
@@ -53,7 +53,7 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 <?php
 			$i = 0;
 			while ( have_posts() ) : the_post();
-				if ( 0 == $i % $t_em_theme_options['archive_in_columns'] ) :
+				if ( 0 == $i % $t_em['archive_in_columns'] ) :
 					echo '</div>';
 					echo '<div class="row">';
 				endif;
@@ -74,7 +74,7 @@ if ( 'wp-front-page' == $t_em_theme_options['front_page_set'] ) :
 			</section><!-- #main-content -->
 			<?php get_sidebar( 'alt' ); ?>
 <?php
-elseif ( 'widgets-front-page' == $t_em_theme_options['front_page_set'] ) :
+elseif ( 'widgets-front-page' == $t_em['front_page_set'] ) :
 ?>
 			<section id="main-content">
 				<section id="content" role="main">

@@ -161,19 +161,19 @@ add_action( 'after_setup_theme', 't_em_theme_data' );
  * with the data base, in case of scratch, default set up will be loaded.
  * This function is attached to the after_setup_theme() action hook.
  *
- * @global $t_em_theme_options This var provide the main structure of our theme.
+ * @global $t_em This var provide the main structure of our theme.
  * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of
  * "key => value" array.
  *
  * @since Twenty'em 0.1
  */
 function t_em_set_globals(){
-	global	$t_em_theme_options;
+	global	$t_em;
 
-	$t_em_theme_options = t_em_get_theme_options();
+	$t_em = t_em_get_theme_options();
 
 	// If options are empties, we load default settings.
-	if ( empty( $t_em_theme_options ) )
+	if ( empty( $t_em ) )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
 }
 add_action( 'after_setup_theme', 't_em_set_globals' );
@@ -350,8 +350,8 @@ function t_em_get_theme_options(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_page(){
-	global $t_em_theme_options;
-	$t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em_theme_options );
+	global $t_em;
+	$t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -637,12 +637,12 @@ function t_em_theme_options_validate( $input ){
  * @since Twenty'em 0.1
  */
 function t_em_layout_classes( $existing_classes ){
-	global $t_em_theme_options;
-	$layout_set = $t_em_theme_options['layout_set'];
-	$static_header_set = $t_em_theme_options['static_header_text'];
+	global $t_em;
+	$layout_set = $t_em['layout_set'];
+	$static_header_set = $t_em['static_header_text'];
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enogh
-	if ( $t_em_theme_options['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
+	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
 		$classes = array ( 'one-column' );
 	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
 		$classes = array ( 'two-column' );
@@ -673,7 +673,7 @@ function t_em_layout_classes( $existing_classes ){
 	else
 		$classes[] = $layout_set;
 
-	$classes[] = $t_em_theme_options['slider_text'];
+	$classes[] = $t_em['slider_text'];
 
 	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
 
@@ -687,9 +687,9 @@ add_filter( 'body_class', 't_em_layout_classes' );
  * @since Twenty'em 0.1
  */
 function t_em_archive_classes( $existing_classes ){
-	global $t_em_theme_options;
-	$archive_set = $t_em_theme_options['archive_set'];
-	$excerpt_set = $t_em_theme_options['excerpt_set'];
+	global $t_em;
+	$archive_set = $t_em['archive_set'];
+	$excerpt_set = $t_em['excerpt_set'];
 
 	if ( 'the-excerpt' == $archive_set ) :
 		if ( 'thumbnail-left' == $excerpt_set ) :

@@ -32,8 +32,8 @@ if ( have_comments() ) :
 	number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 	?></h2>
 <?php
-	global $t_em_theme_options;
-	if ( '1' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
+	global $t_em;
+	if ( '1' == $t_em['separate_comments_pings_tracks'] ) :
 
 		if ( ! empty($comments_by_type['comment']) ) :
 ?>
@@ -70,7 +70,7 @@ if ( have_comments() ) :
 <?php
 		endif; // !empty($comments_by_type['pings'])
 
-	else : // ( '0' == $t_em_theme_options['separate_comments_pings_tracks'] ) :
+	else : // ( '0' == $t_em['separate_comments_pings_tracks'] ) :
 
 		t_em_comments_list_before();
 ?>
@@ -81,7 +81,7 @@ if ( have_comments() ) :
 
 		t_em_comments_list_after();
 
-	endif; // '1' == $t_em_theme_options['separate_comments_pings_tracks']
+	endif; // '1' == $t_em['separate_comments_pings_tracks']
 
 	if ( ! comments_open() ) :
 ?>

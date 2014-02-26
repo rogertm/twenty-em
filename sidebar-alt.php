@@ -6,9 +6,9 @@
  * @subpackage Twenty'em
  * @since Twenty'em 0.1
  */
-global $t_em_theme_options;
+global $t_em;
 
-if ( in_array( $t_em_theme_options['layout_set'], array(
+if ( in_array( $t_em['layout_set'], array(
 	'three-column-content-left',
 	'three-column-content-right',
 	'three-column-content-middle' ) ) ) :

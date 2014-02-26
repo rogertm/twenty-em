@@ -7,9 +7,9 @@
  * @since Twenty'em 0.1
  */
 
-global $t_em_theme_options;
+global $t_em;
 
-if ( 'one-column' != $t_em_theme_options['layout_set'] ) :
+if ( 'one-column' != $t_em['layout_set'] ) :
 ?>
 
 		<section id="sidebar" class="widget-area <?php echo t_em_add_bootstrap_class( 'sidebar' ); ?>" role="complementary">

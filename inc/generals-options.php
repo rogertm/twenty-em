@@ -62,17 +62,17 @@ function t_em_general_options(){
  * @since Twenty'em 1.0
  */
 function t_em_general_options_favicon(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 	<div class="sub-layout text-option general">
 		<label class="description single-option">
 			<span>
 				<?php echo sprintf( __( '<a href="%1$s" target="_blank">Favicon URL</a>', 't_em' ), admin_url( 'upload.php' ) ); ?>
-			<?php if ( '' != $t_em_theme_options['favicon_url'] ) : ?>
-					<p><?php _e( 'Current favicon:', 't_em' ) ?>&nbsp;<img src="<?php echo $t_em_theme_options['favicon_url'] ?>" width="16" height="16" /></p>
+			<?php if ( '' != $t_em['favicon_url'] ) : ?>
+					<p><?php _e( 'Current favicon:', 't_em' ) ?>&nbsp;<img src="<?php echo $t_em['favicon_url'] ?>" width="16" height="16" /></p>
 			<?php endif; ?>
 			</span>
-			<input type="url" class="regular-text" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em_theme_options['favicon_url'] ?>" />
+			<input type="url" class="regular-text" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em['favicon_url'] ?>" />
 		</label>
 	</div>
 <?php
@@ -83,12 +83,12 @@ function t_em_general_options_favicon(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /inc/theme-options.php.
  *
- * @global $t_em_theme_options See t_em_set_globals() function in /inc/theme-options.php file.
+ * @global $t_em See t_em_set_globals() function in /inc/theme-options.php file.
  *
  * @since Twenty'em 0.1
  */
 function t_em_settings_field_general_options_set(){
-	global $t_em_theme_options;
+	global $t_em;
 ?>
 	<div id="general-options">
 <?php
@@ -97,7 +97,7 @@ function t_em_settings_field_general_options_set(){
 		<div class="layout checkbox-option general">
 			<label class="description single-option">
 				<span><?php echo $general['label']; ?></span>
-				<?php $checked_option = checked( $t_em_theme_options[$general['name']], '1', false ); ?>
+				<?php $checked_option = checked( $t_em[$general['name']], '1', false ); ?>
 				<input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
 				<p><span><?php echo $general['sublabel'] ?></span></p>
 			</label>
