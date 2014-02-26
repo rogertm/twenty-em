@@ -77,7 +77,9 @@ endif;
 
 if ( ! function_exists( 't_em_hook_action_page_navi' ) ) :
 	function t_em_hook_action_page_navi(){
-		add_action( 't_em_content_after', 't_em_page_navi' );
+		if ( ! is_404() ) :
+			add_action( 't_em_content_after', 't_em_page_navi' );
+		endif;
 	}
 endif;
 
