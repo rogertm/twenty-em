@@ -123,8 +123,8 @@ endif;
  * This function is attached to the after_setup_theme() action hook.
  *
  * @global $t_em This var provide the main structure of our theme.
- * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of
- * "key => value" array.
+ * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of "key => value"
+ * array.
  *
  * @since Twenty'em 0.1
  */

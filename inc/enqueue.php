@@ -20,7 +20,6 @@
  */
 function t_em_enqueue_styles_and_scripts(){
 	global	$t_em,
-			$t_em_tools_box_options,
 			$t_em_theme_data;
 
 	// Load default style sheet style.css
