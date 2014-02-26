@@ -53,6 +53,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		.t-em-recent-post-thumbnail{
 			float: left;
 			margin-right: 2.5641%;
+			margin-bottom: 0 !important;
 		}
 		.t-em-recent-post-thumbnail img{
 			-webkit-border-radius: 3px;
@@ -138,7 +139,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		<ul>
 		<?php  while ($recent_posts_args->have_posts()) : $recent_posts_args->the_post(); ?>
 		<li class="t-em-recent-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail' ) ?>
+			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail thumbnail' ) ?>
 			<div class="t-em-recent-post-content">
 				<a class="t-em-recent-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
 				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
@@ -230,6 +231,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 			.t-em-popular-post-thumbnail{
 				float: left;
 				margin-right: 2.5641%;
+				margin-bottom: 0 !important;
 			}
 			.t-em-popular-post-thumbnail img{
 				-webkit-border-radius: 3px;
@@ -321,7 +323,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		<?php  while ($popular_posts_args->have_posts()) : $popular_posts_args->the_post(); ?>
 
 		<li class="t-em-popular-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail' ) ?>
+			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail thumbnail' ) ?>
 			<div class="t-em-popular-post-content">
 				<a class="t-em-popular-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
 				<small><?php $comments_number = ( 1 == $instance['comment_count'] ) ? comments_number( '- 0 Comments', '- 1 Comment', '- % Comments' ) : null; ?></small>
