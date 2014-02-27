@@ -18,6 +18,7 @@
 /**
  * Define Twenty'em $GLOBALS
  */
+
 /**
  * $t_em. Array. Contains all the options store in the data base.
  * See t_em_default_theme_options() in /inc/theme-options.php for a complete list of 'key' => 'value'
@@ -46,25 +47,25 @@ $t_em_theme_data = array (
  */
 
 // Twenty'em Version
-define ( 'T_EM_FRAMEWORK_NAME',		'Twenty’em' );
-define ( 'T_EM_FRAMEWORK_VERSION',	'1.0' );
+define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 
 // Theme Directory URL
-define ( 'T_EM_THEME_DIR_URL',					get_template_directory_uri() );
-define ( 'T_EM_THEME_DIR_CSS_URL',				get_template_directory_uri().'/css' );
-define ( 'T_EM_THEME_DIR_IMG_URL',				get_template_directory_uri().'/images' );
-define ( 'T_EM_THEME_DIR_JS_URL',				get_template_directory_uri().'/js' );
-define ( 'T_EM_THEME_DIR_DOCS_URL',				get_template_directory_uri().'/docs' );
+define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
+define ( 'T_EM_THEME_DIR_CSS_URL',										get_template_directory_uri().'/css' );
+define ( 'T_EM_THEME_DIR_IMG_URL',										get_template_directory_uri().'/images' );
+define ( 'T_EM_THEME_DIR_JS_URL',										get_template_directory_uri().'/js' );
+define ( 'T_EM_THEME_DIR_DOCS_URL',										get_template_directory_uri().'/docs' );
 
 // Theme Includes Directory URL
-define ( 'T_EM_INC_DIR_URL',			get_template_directory_uri().'/inc' );
-define ( 'T_EM_INC_DIR_CSS_URL',		get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_INC_DIR_IMG_URL',		get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_INC_DIR_JS_URL',			get_template_directory_uri().'/inc/js' );
+define ( 'T_EM_INC_DIR_URL',											get_template_directory_uri().'/inc' );
+define ( 'T_EM_INC_DIR_CSS_URL',										get_template_directory_uri().'/inc/css' );
+define ( 'T_EM_INC_DIR_IMG_URL',										get_template_directory_uri().'/inc/images' );
+define ( 'T_EM_INC_DIR_JS_URL',											get_template_directory_uri().'/inc/js' );
 
 // Some direct path we need
-define ( 'T_EM_INC_DIR_PATH',			get_template_directory().'/inc' );
-define ( 'T_EM_THEME_DIR_LANG_PATH',	get_template_directory().'/languages' );
+define ( 'T_EM_INC_DIR_PATH',											get_template_directory().'/inc' );
+define ( 'T_EM_THEME_DIR_LANG_PATH',									get_template_directory().'/languages' );
 
 /**
  * Register default values through constants
