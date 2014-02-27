@@ -15,7 +15,7 @@ global $t_em;
 	 *
 	 * If none of the sidebars have widgets, then let's bail early.
 	 */
-	if ( (   ! is_active_sidebar( 'first-footer-widget-area'  )
+	if ( ( ! is_active_sidebar( 'first-footer-widget-area'  )
 		&& ! is_active_sidebar( 'second-footer-widget-area' )
 		&& ! is_active_sidebar( 'third-footer-widget-area'  )
 		&& ! is_active_sidebar( 'fourth-footer-widget-area' )

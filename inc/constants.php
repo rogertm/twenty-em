@@ -56,13 +56,6 @@ define ( 'T_EM_THEME_DIR_IMG_URL',				get_template_directory_uri().'/images' );
 define ( 'T_EM_THEME_DIR_JS_URL',				get_template_directory_uri().'/js' );
 define ( 'T_EM_THEME_DIR_DOCS_URL',				get_template_directory_uri().'/docs' );
 
-/** Because of Less enqueue way can't be overwritten from a Child Theme:
- * <link rel="stylesheet/less" type="text/css" href="styles.less">
- * <script src="less.js" type="text/javascript"></script>
- * We use this constant for Less Style files
- */
-define ( 'T_EM_THEME_DIR_CSS_LESS_STYLE_URL',	get_stylesheet_directory_uri().'/css' );
-
 // Theme Includes Directory URL
 define ( 'T_EM_INC_DIR_URL',			get_template_directory_uri().'/inc' );
 define ( 'T_EM_INC_DIR_CSS_URL',		get_template_directory_uri().'/inc/css' );
