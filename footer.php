@@ -23,11 +23,13 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-		<div id="site-info" class="wrapper container">
-			<div id="inner-site-info" class="row">
-				<?php t_em_site_info(); ?>
-			</div><!-- .row -->
-		</div><!-- #site-info .container -->
+		<div id="site-info">
+			<div id="inner-site-info" class="wrapper container">
+				<div class="row">
+					<?php t_em_site_info(); ?>
+				</div><!-- .row -->
+			</div><!-- .wrapper .container -->
+		</div><!-- #site-info -->
 		<?php t_em_footer_after(); ?>
 	</footer><!-- #footer -->
 

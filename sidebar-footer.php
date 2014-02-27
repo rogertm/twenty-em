@@ -24,9 +24,10 @@ global $t_em;
 		return;
 	// If we get this far, we have widgets. Let do this.
 ?>
-		<div id="colophon" class="wrapper container">
+		<div id="colophon">
 
-			<section id="footer-widget-area" class="row" role="complementary">
+			<section id="footer-widget-area" class="wrapper container" role="complementary">
+				<div class="row">
 				<?php t_em_sidebar_footer_before(); ?>
 
 <?php if ( is_active_sidebar( 'first-footer-widget-area' )
@@ -60,6 +61,7 @@ global $t_em;
 					</aside><!-- #fourth .widget-area -->
 <?php endif; ?>
 				<?php t_em_sidebar_footer_after(); ?>
-			</section><!-- #footer-widget-area .container -->
+				</div><!-- .row -->
+			</section><!-- #footer-widget-area .wrapper .container -->
 
 	</div><!-- #colophon -->
