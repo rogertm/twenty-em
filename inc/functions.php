@@ -1803,7 +1803,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					'theme_location'	=> 'top-menu',
 					'container_id'		=> 'site-top-menu',
 					'container_class'	=> 'collapse navbar-collapse navbar-right',
-					'menu_class'		=> 'nav navbar-nav',
+					'menu_class'		=> 'nav navbar-nav menu',
 					'depth'				=> 0 ) );
 				?>
 			</div>
@@ -1834,7 +1834,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 					'theme_location'	=> 'navigation-menu',
 					'container_id'		=> 'site-navigation-menu',
 					'container_class'	=> 'collapse navbar-collapse',
-					'menu_class'		=> 'nav navbar-nav',
+					'menu_class'		=> 'nav navbar-nav menu',
 					'depth'				=> 0 ) );
 				?>
 			</nav>
@@ -1854,7 +1854,7 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 		'container'			=> 'nav',
 		'container_id'		=> 'footer-menu',
 		'container_class'	=> 'col-md-10 col-xs-12 pull-right',
-		'menu_class'		=> 'list-inline text-right',
+		'menu_class'		=> 'list-inline text-right menu',
 		'depth'				=> 1, ) );
 endif;
 }
