@@ -43,7 +43,7 @@ get_header(); ?>
 						<header class="panel-heading">
 							<h4 class="panel-title">
 								<a href="#collapse-<?php echo $page->ID ?>" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-box">
-									<?php echo $page->post_title; ?><span class="icon-arrow-down font-icon pull-right"></span>
+									<?php echo $page->post_title; ?><span class="icomoon-arrow-down icomoon pull-right"></span>
 								</a>
 							</h4>
 						</header>
@@ -52,7 +52,7 @@ get_header(); ?>
 								<?php echo $content; ?>
 							</div><!-- .accordion-inner -->
 							<footer class="entry-utility">
-								<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icon-edit font-icon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
+								<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
 							</footer>
 						</div><!-- #collapse-## .entry-content -->
 					</article><!-- .panel panel-default -->

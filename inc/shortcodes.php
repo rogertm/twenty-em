@@ -159,9 +159,9 @@ function t_em_shortcode_quote( $atts, $content = null ){
 	endif;
 
 	if ( esc_attr( $float ) == 'left' ) :
-		$class_float = 'pull-left span6';
+		$class_float = 'pull-left col-md-6';
 	elseif ( esc_attr( $float ) == 'right' ) :
-		$class_float = 'pull-right span6';
+		$class_float = 'pull-right col-md-6';
 	else :
 		$class_float = '';
 	endif;
@@ -195,7 +195,7 @@ function t_em_shortcode_icomoon_icon( $atts ){
 	$class_size = ( ! empty( $size ) ) ? 'icon-'. esc_attr( $size ) : '';
 	$class_align = ( ! empty( $align ) ) ? 'pull-'. esc_attr( $align ) : '';
 
-	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' font-icon"></span>';
+	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' icomoon"></span>';
 }
 add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
 ?>

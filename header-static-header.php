@@ -37,7 +37,7 @@ if ( ( '1' == $t_em['static_header_home_only'] && is_home() ) || '0' == $t_em['s
 					<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
 						class="btn primary-button">
-							<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?>"></span>
+							<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
 							<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></a>
 					</div>
 <?php endif; ?>
@@ -46,7 +46,7 @@ if ( ( '1' == $t_em['static_header_home_only'] && is_home() ) || '0' == $t_em['s
 					<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
 						title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
 						class="btn secondary-button">
-							<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?>"></span>
+							<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
 							<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></a>
 					</div>
 <?php endif; ?>

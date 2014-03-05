@@ -104,30 +104,30 @@ noscript {
 
 /* =Iconography
 -------------------------------------------------------------- */
-.font-icon:before{
+.icomoon:before{
 	margin: 0 3px;
 }
-.font-icon.icon-default{
+.icomoon.icon-default{
 	font-size: 14px;
 	margin: 0 3px 3px;
 }
-.font-icon.icon-medium{
+.icomoon.icon-medium{
 	font-size: 28px;
 	margin: 0 5px 5px;
 }
-.font-icon.icon-large{
+.icomoon.icon-large{
 	font-size: 56px;
 	margin: 0 8px 8px;
 }
-.font-icon.icon-xlarge{
+.icomoon.icon-xlarge{
 	font-size: 112px;
 	margin: 0 10px 10px;
 }
-.font-icon.icon-xxlarge{
+.icomoon.icon-xxlarge{
 	font-size: 168px;
 	margin: 0 15px 15px;
 }
-.font-icon.icon-xxxlarge{
+.icomoon.icon-xxxlarge{
 	font-size: 252px;
 	margin: 0 20px 20px;
 }
@@ -230,11 +230,11 @@ ul.sub-menu li a{
 .entry-utility span{
 	margin-right: 10px;
 }
-.entry-meta span.font-icon,
-.entry-utility span.font-icon{
+.entry-meta span.icomoon,
+.entry-utility span.icomoon{
 	margin-right: 0;
 }
-.single-attachment .entry-meta span.font-icon{
+.single-attachment .entry-meta span.icomoon{
 	margin-right: 0;
 }
 .entry-content,

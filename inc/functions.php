@@ -635,16 +635,16 @@ function t_em_posted_in() {
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
-		echo '<span class="icon-folder-open font-icon"></span><span class="categories-links">'. $categories_list .'</span>';
+		echo '<span class="icomoon-folder-open icomoon"></span><span class="categories-links">'. $categories_list .'</span>';
 	endif;
 
 	// Translators: used between list items, there is a space after the comma.
 	$tags_list = get_the_tag_list( '', __( ', ', 't_em' ) );
 	if ( $tags_list ) :
-		echo '<span class="icon-tags font-icon"></span><span class="tags-links">'. $tags_list .'</span>';
+		echo '<span class="icomoon-tags icomoon"></span><span class="tags-links">'. $tags_list .'</span>';
 	endif;
 
-	$post_url = sprintf( '<span class="icon-link font-icon"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>',
+	$post_url = sprintf( '<span class="icomoon-link icomoon"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>',
 					get_permalink(),
 					sprintf( __( 'Permalink to %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
 					__( 'Permalink', 't_em' )
@@ -672,7 +672,7 @@ if ( ! function_exists( 't_em_edit_post_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_edit_post_link(){
-	edit_post_link( __( 'Edit', 't_em' ), '<span class="icon-edit font-icon"></span><span class="edit-link">', '</span>' );
+	edit_post_link( __( 'Edit', 't_em' ), '<span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span>' );
 }
 endif; // function t_em_edit_post_link()
 
@@ -683,7 +683,7 @@ if ( ! function_exists( 't_em_comments_link' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_comments_link(){
-	echo '<span class="icon-comments font-icon"></span>';
+	echo '<span class="icomoon-comments icomoon"></span>';
 	echo '<span class="comment-link">';
 	comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) );
 	echo '</span>';
@@ -729,7 +729,7 @@ if ( ! function_exists( 't_em_post_author' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_post_author(){
-	$post_author = sprintf( '<span class="icon-user font-icon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+	$post_author = sprintf( '<span class="icomoon-user icomoon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author() ) ),
 				get_the_author()
@@ -745,7 +745,7 @@ if ( ! function_exists( 't_em_post_date' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_post_date(){
-	$post_date = sprintf( '<span class="icon-time font-icon"></span><span class="post-date">
+	$post_date = sprintf( '<span class="icomoon-time icomoon"></span><span class="post-date">
 		<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 					esc_url( get_permalink() ),
 					esc_attr( sprintf( __( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ) ),
@@ -828,7 +828,7 @@ function t_em_comment( $comment, $args, $depth ) {
 				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small>
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 				</div><!-- .comment-meta .commentmetadata -->
 			</header><!-- comment-heading -->
 			<div class="comment-body"><?php comment_text(); ?></div>
@@ -861,14 +861,14 @@ function t_em_comment_pingback_trackback( $comment ) {
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
+		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
+		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 	endswitch;
@@ -892,14 +892,14 @@ function t_em_comment_all( $comment, $args, $depth ){
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
+		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small></h5>
+		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
@@ -921,7 +921,7 @@ function t_em_comment_all( $comment, $args, $depth ){
 				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icon-edit font-icon"></span>' ); ?></small>
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 				</div><!-- .comment-meta .commentmetadata -->
 			</header><!-- comment-heading -->
 			<div class="comment-body"><?php comment_text(); ?></div>
@@ -962,8 +962,8 @@ function t_em_page_navi(){
 ?>
 	<nav id="site-navigation" class="site-pagination navi">
 		<ul>
-			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icon-double-angle-left"></span> Older posts', 't_em' ) ); ?></li>
-			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></li>
+			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older posts', 't_em' ) ); ?></li>
+			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
 		</ul>
 	</nav>
 <?php
@@ -996,8 +996,8 @@ function t_em_page_navi(){
 				'mid_size'	=> 2,
 				'type'		=> 'list',
 				'add_args'	=> array_map( 'urlencode', $query_args ),
-				'prev_text'	=> __( '<span class="meta-nav icon-double-angle-left"></span> Newer posts', 't_em' ),
-				'next_text'	=> __( 'Older posts <span class="meta-nav icon-double-angle-right"></span>', 't_em' ),
+				'prev_text'	=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
+				'next_text'	=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
 			) );
 			if ( $links ) :
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
@@ -1110,7 +1110,7 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
  */
 function t_em_custom_template_content( $icon_class = '' ){
 	$template_data = get_page( get_the_ID() );
-	$span_icon_class = ( $icon_class ) ? '<span class="'. $icon_class .' font-icon"></span>' : '';
+	$span_icon_class = ( $icon_class ) ? '<span class="'. $icon_class .' icomoon"></span>' : '';
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
 		<header>
@@ -1314,7 +1314,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' font-icon" title="'. $t_em[$social_network['name']] .'"><span>'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' icomoon" title="'. $t_em[$social_network['name']] .'"><span>'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( !empty( $output_items ) ) :
@@ -1425,7 +1425,7 @@ function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '',
 	if ( ! empty( $t_em['headline_text_widget_'.$widget.''] ) || ! empty( $t_em['content_text_widget_'.$widget.''] ) ) :
 
 		$widget_icon_class	= ( $t_em['icon_class_text_widget_'.$widget.''] ) ?
-			'<span class="'. $t_em['icon_class_text_widget_'.$widget.''] .' font-icon"></span>' : '';
+			'<span class="'. $t_em['icon_class_text_widget_'.$widget.''] .' icomoon"></span>' : '';
 
 		$widget_headline	= ( $t_em['headline_text_widget_'.$widget.''] ) ?
 			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_text_widget_'.$widget.''] .'</'. $h_tag .'></header>' : '';
@@ -1438,7 +1438,7 @@ function t_em_front_page_widgets( $widget, $wrapper_class = '', $btn_class = '',
 
 		$widget_link		= ( $t_em['link_url_text_widget_'.$widget.''] ) ?
 			'<footer><a href="'. $t_em['link_url_text_widget_'.$widget.''] .'" class="'. $btn_class .'" title="'. $t_em['headline_text_widget_'.$widget.''] .'">
-			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icon-double-angle-right"></span></a></footer>' : '';
+			'. __( 'Continue reading', 't_em' ) .'&nbsp;<span class="icomoon-double-angle-right icomoon"></span></a></footer>' : '';
 
 		if ( $widget != 'one' ) :
 			$widget_wrapper		= '<div class="'. t_em_add_bootstrap_class( 'featured-widget-area' ) .'">';
@@ -1761,7 +1761,7 @@ function t_em_breadcrumb(){
 function t_em_javascript_required(){
 ?>
 <!--[if lte IE 8 ]>
-<noscript><strong><span class="icon-warning font-icon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript><strong><span class="icomoon-warning icomoon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 <?php
 }
@@ -1866,8 +1866,8 @@ function t_em_single_navigation(){
 ?>
 	<nav id="single-navigation" class="single-pagination navi" role="navigation">
 		<ul>
-			<li class="previous"><?php previous_post_link( '%link', '<span class="meta-nav icon-double-angle-left"></span> %title' ); ?></li>
-			<li class="next"><?php next_post_link( '%link', '%title <span class="meta-nav icon-double-angle-right"></span>' ); ?></li>
+			<li class="previous"><?php previous_post_link( '%link', '<span class="meta-nav icomoon-double-angle-left icomoon"></span> %title' ); ?></li>
+			<li class="next"><?php next_post_link( '%link', '%title <span class="meta-nav icomoon-double-angle-right icomoon"></span>' ); ?></li>
 		</ul>
 	</nav><!-- #nav-above -->
 <?php
@@ -1882,8 +1882,8 @@ if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 	<nav id="comments-navigation" class="comments-pagination navi" role="navigation">
 		<ul>
-			<li class="previous"><?php previous_comments_link( __( '<span class="meta-nav icon-double-angle-left"></span> Older Comments', 't_em' ) ); ?></li>
-			<li class="next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav icon-double-angle-right"></span>', 't_em' ) ); ?></li>
+			<li class="previous"><?php previous_comments_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older Comments', 't_em' ) ); ?></li>
+			<li class="next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
 		</ul>
 	</nav>
 <?php

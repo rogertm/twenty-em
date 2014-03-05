@@ -60,39 +60,39 @@ if ( have_posts() ) :
 		$icon_format = get_post_format();
 		switch ( $icon_format ) :
 			case 'aside':
-				$icon = 'icon-circle';
+				$icon = 'icomoon-circle';
 				$format = __( 'Aside', 't_em' );
 				break;
 			case 'audio':
-				$icon = 'icon-volume-high';
+				$icon = 'icomoon-volume-high';
 				$format = __( 'Audio', 't_em' );
 				break;
 			case 'chat':
-				$icon = 'icon-chat';
+				$icon = 'icomoon-chat';
 				$format = __( 'Chat', 't_em' );
 				break;
 			case 'gallery':
-				$icon = 'icon-pictures';
+				$icon = 'icomoon-pictures';
 				$format = __( 'Gallery', 't_em' );
 				break;
 			case 'image':
-				$icon = 'icon-picture';
+				$icon = 'icomoon-picture';
 				$format = __( 'Image', 't_em' );
 				break;
 			case 'link':
-				$icon = 'icon-link';
+				$icon = 'icomoon-link';
 				$format = __( 'Link', 't_em' );
 				break;
 			case 'quote':
-				$icon = 'icon-quote-left';
+				$icon = 'icomoon-quote-left';
 				$format = __( 'Quote', 't_em' );
 				break;
 			case 'status':
-				$icon = 'icon-smiley';
+				$icon = 'icomoon-smiley';
 				$format = __( 'Status', 't_em' );
 				break;
 			case 'video':
-				$icon = 'icon-facetime-video';
+				$icon = 'icomoon-facetime-video';
 				$format = __( 'Video', 't_em' );
 				break;
 		endswitch;
@@ -100,7 +100,7 @@ if ( have_posts() ) :
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 						<header class="entry-header">
-							<span class="entry-format"><span class="<?php echo $icon; ?> font-icon"></span><?php echo $format; ?></span>
+							<span class="entry-format"><span class="<?php echo $icon; ?> icomoon"></span><?php echo $format; ?></span>
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 							<span class="entry-meta">
 								<?php t_em_posted_on(); ?>

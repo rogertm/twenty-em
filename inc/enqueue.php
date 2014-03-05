@@ -61,10 +61,6 @@ function t_em_enqueue_styles_and_scripts(){
 		endif;
 	endif;
 
-	// Load IcoMoon set if is set by the user
-	wp_register_style( 'icomoon-style', T_EM_THEME_DIR_CSS_URL . '/icomoon-style.css', array(), $t_em_theme_data['Version'], 'all' );
-	wp_enqueue_style( 'icomoon-style' );
-
 	// Load required Bootstrap js files for custom templates
 	if ( is_page_template( 'template-collapsible-content.php' ) ) :
 		// Register and enqueue bootstrap-collapse.js plugin
@@ -170,8 +166,8 @@ function t_em_nivo_slider_options(){
 			manualAdvance: 	<?php echo $t_em['nivo_manual_advance']; ?>, // Disable pause time!!!
 			directionNav: 	<?php echo $t_em['nivo_direction_nav']; ?>,
 			controlNav: 	<?php echo $t_em['nivo_control_nav']; ?>,
-			prevText: 		'<span class="icon-circleleft"></span>',
-			nextText: 		'<span class="icon-circleright"></span>',
+			prevText: 		'<span class="icomoon control-prev"></span>',
+			nextText: 		'<span class="icomoon control-next"></span>',
 		});
 	});
 	</script>
