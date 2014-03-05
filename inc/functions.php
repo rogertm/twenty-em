@@ -1320,14 +1320,14 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
 		$output = '<ul class="menu '. $ul_classes .'">' . $output_items . '</ul>';
-		$output = '<nav id="'. $nav_id .'-social-network-menu" class="'. $nav_classes .'">' . $output . '</nav>';
+		$output = '<nav id="'. $nav_id .'-social-network-menu" class="social-network-menu '. $nav_classes .'">' . $output . '</nav>';
 	else :
 		$output = '';
 	endif;
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 't-em', 'social-network-menu pull-right col-md-10 col-xs-12', 'list-inline text-right' );
+	t_em_user_social_network( 't-em', 'pull-right col-md-10 col-xs-12', 'list-inline text-right' );
 }
 
 /**
