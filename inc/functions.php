@@ -1319,7 +1319,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	endforeach;
 	if ( !empty( $output_items ) ) :
 		// We are sure to not display empties <nav><ul>...</ul></nav> tags.
-		$output = '<ul class="menu '. $ul_classes .'">' . $output_items . '</ul>';
+		$output = '<ul class="'. $ul_classes .'">' . $output_items . '</ul>';
 		$output = '<nav id="'. $nav_id .'-social-network-menu" class="social-network-menu '. $nav_classes .'">' . $output . '</nav>';
 	else :
 		$output = '';
