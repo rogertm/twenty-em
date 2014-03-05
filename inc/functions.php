@@ -1327,7 +1327,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	echo $output;
 }
 function t_em_hook_user_social_network(){
-	t_em_user_social_network( 't-em', 'pull-right col-md-10 col-xs-12', 'list-inline text-right' );
+	t_em_user_social_network( 't-em', 'pull-right col-md-10 col-xs-12', 'text-right' );
 }
 
 /**
