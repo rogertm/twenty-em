@@ -55,14 +55,6 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 			margin-right: 2.5641%;
 			margin-bottom: 0 !important;
 		}
-		.t-em-recent-post-thumbnail img{
-			-webkit-border-radius: 3px;
-			-moz-border-radius: 3px;
-			border-radius: 3px;
-			-webkit-box-shadow: 0 1px 4px #dedede;
-			-moz-box-shadow: 0 1px 4px #dedede;
-			box-shadow: 0 1px 4px #dedede;
-		}
 		.t-em-recent-post-thumbnail figcaption{
 			display: none;
 		}
@@ -232,14 +224,6 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 				float: left;
 				margin-right: 2.5641%;
 				margin-bottom: 0 !important;
-			}
-			.t-em-popular-post-thumbnail img{
-				-webkit-border-radius: 3px;
-				-moz-border-radius: 3px;
-				border-radius: 3px;
-				-webkit-box-shadow: 0 1px 4px #dedede;
-				-moz-box-shadow: 0 1px 4px #dedede;
-				box-shadow: 0 1px 4px #dedede;
 			}
 			.t-em-popular-post-thumbnail figcaption{
 				display: none;
@@ -420,12 +404,6 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 			}
 			.t-em-img-gallery-thumbnail img{
 				margin-bottom: 20px;
-				-webkit-border-radius: 3px;
-				-moz-border-radius: 3px;
-				border-radius: 3px;
-				-webkit-box-shadow: 0 1px 4px #dedede;
-				-moz-box-shadow: 0 1px 4px #dedede;
-				box-shadow: 0 1px 4px #dedede;
 			}
 			.t-em-img-gallery-thumbnail figcaption{
 				display: none;

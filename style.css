@@ -319,21 +319,11 @@ ul.sub-menu li a{
 #content .wp-smiley {
 	margin: 0;
 }
-#content .gallery {
-	margin: 0 auto 20px;
-}
 #content .gallery img{
-	margin-bottom: 10px;
+	border: 0;
 }
 #content .gallery-item a{
 	display: block;
-}
-#content .gallery-item a,
-#content .gallery-caption{
-	width: 90%;
-}
-#content .gallery dl {
-	margin: 0;
 }
 #content .gallery br+br {
 	display: none;
@@ -361,7 +351,6 @@ ul.sub-menu li a{
 	/* Whatever you want */
 }
 .avatar {
-	border: solid 1px;
 	display: block;
 	margin: 5px !important;
 }

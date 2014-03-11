@@ -17,8 +17,7 @@ if ( ( '1' == $t_em['static_header_home_only'] && is_home() ) || '0' == $t_em['s
 				<figure>
 					<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
 						alt="<?php echo $t_em['static_header_headline']; ?>"
-						title="<?php echo $t_em['static_header_headline']; ?>"
-						class="img-rounded img-thumbnail">
+						title="<?php echo $t_em['static_header_headline']; ?>">
 				</figure>
 			</div><!-- #static-header-image -->
 <?php endif; ?>
