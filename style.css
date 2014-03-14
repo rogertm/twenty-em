@@ -381,9 +381,6 @@ ul.sub-menu li a{
 
 /* =Forms
 -------------------------------------------------------------- */
-#searchform{
-	padding: 5px;
-}
 #commentform .form-allowed-tags code{
 	white-space: pre-wrap;
 }

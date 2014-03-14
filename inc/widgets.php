@@ -152,7 +152,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['thumbnail'] = ! empty( $new_instance['thumbnail'] ) ? 1 : 0;
@@ -329,7 +329,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['thumbnail'] = ! empty( $new_instance['thumbnail'] ) ? 1 : 0;
@@ -530,7 +530,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['columns'] = (int) $new_instance['columns'];
@@ -672,7 +672,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = absint( $new_instance['number'] );
 		$instance['author_name_url'] = ! empty( $new_instance['author_name_url'] ) ? 1 : 0;
@@ -703,6 +703,104 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 }
 
 /**
+ * FeedBurner_Subscribe widget class
+ *
+ * @since Twenty'em 1.0
+ */
+class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
+
+	function __construct(){
+		$widget_ops = array('classname' => 't_em_widget_feed_burner_subscribe', 'description' => __( 'Subscribe via FeedBurner', 't_em') );
+		parent::__construct('t_em_widget_feed_burner_subscribe', sprintf( __( 'Subscribe via FeedBurner %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
+		$this->alt_option_name = 't_em_widget_feed_burner_subscribe';
+	}
+
+	function widget( $args, $instance ){
+		$cache = wp_cache_get( 't_em_widget_feed_burner_subscribe', 'widget' );
+
+		if ( ! is_array( $cache ) )
+			$cache = array();
+
+		if ( ! isset( $args['widget_id'] ) )
+			$args['widget_id'] = $this->id;
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) :
+			echo $cache[ $args['widget_id'] ];
+			return;
+		endif;
+
+		ob_start();
+		extract( $args );
+
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Subscribe via FeedBurner', 't_em' ) : $instance['title'], $instance, $this->id_base );
+		$feedburner_uri = ( ! empty( $instance['feedburner_uri'] ) ) ? $instance['feedburner_uri'] : null;
+		$feedburner_description = ( ! empty( $instance['feedburner_description'] ) ) ? $instance['feedburner_description'] : null;
+		$feedburner_placeholder = ( ! empty( $instance['feedburner_placeholder'] ) ) ? $instance['feedburner_placeholder'] : __( 'Subscribe...', 't_em' );
+		$feedburner_action = 'http://feedburner.google.com/fb/a/mailverify';
+
+		echo $before_widget;
+		if ( $title ) echo $before_title . $title . $after_title;
+?>
+		<form class="form-inline feedburner-subscribe" action="<?php echo $feedburner_action; ?>" method="post" target="popupwindow" onsubmit="window.open('<?php echo $feedburner_action; ?>?uri=<?php echo $feedburner_uri; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+			<?php if ( $feedburner_description ) : ?>
+				<p><?php echo $feedburner_description; ?></p>
+			<?php endif; ?>
+			<div class="form-group">
+				<label class="sr-only" for="email-address"><?php _e( 'Email address', 't_em' ); ?></label>
+				<input id="email-address" class="form-control" type="email" name="email" placeholder="<?php echo $feedburner_placeholder; ?>" required>
+			</div>
+			<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
+			<input type="hidden" name="loc" value="en_US"/>
+			<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>"><span class="icomoon-envelope icomoon"></span></button>
+		</form>
+<?php
+		echo $after_widget;
+
+		$cache[ $args['widget_id'] ] = ob_get_flush();
+		wp_cache_set( 't_em_widget_feed_burner_subscribe', $cache, 'widget' );
+	}
+
+	function update( $new_instance, $old_instance ){
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['feedburner_uri'] = strip_tags( $new_instance['feedburner_uri'] );
+		$instance['feedburner_description'] = strip_tags( $new_instance['feedburner_description'] );
+		$instance['feedburner_placeholder'] = strip_tags( $new_instance['feedburner_placeholder'] );
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset( $alloptions['t_em_widget_feed_burner_subscribe'] ) )
+			delete_option( 't_em_widget_feed_burner_subscribe' );
+
+		return $instance;
+	}
+
+	function flush_widget_cache(){
+		wp_cache_delete( 't_em_widget_feed_burner_subscribe', 'widget' );
+	}
+
+	function form( $instance ){
+		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : null;
+		$feedburner_uri = isset( $instance['feedburner_uri'] ) ? esc_attr( $instance['feedburner_uri'] ) : null;
+		$feedburner_description = isset( $instance['feedburner_description'] ) ? esc_attr( $instance['feedburner_description'] ) : null;
+		$feedburner_placeholder = isset( $instance['feedburner_placeholder'] ) ? esc_attr( $instance['feedburner_placeholder'] ) : null;
+?>
+		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('feedburner_uri') ?>"><?php _e( 'Your FeedBurner URI (required)', 't_em' ) ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_uri'); ?>" name="<?php echo $this->get_field_name('feedburner_uri'); ?>" type="text" value="<?php echo $feedburner_uri; ?>" required /></p>
+
+		<p><label for="<?php echo $this->get_field_id('feedburner_description') ?>"><?php _e( 'Short text inviting users to subscribe...', 't_em' ) ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_description'); ?>" name="<?php echo $this->get_field_name('feedburner_description'); ?>" type="text" value="<?php echo $feedburner_description; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('feedburner_placeholder') ?>"><?php _e( 'Form placeholder', 't_em' ) ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_placeholder'); ?>" name="<?php echo $this->get_field_name('feedburner_placeholder'); ?>" type="text" value="<?php echo $feedburner_placeholder; ?>" /></p>
+<?php
+	}
+}
+
+/**
  * Register widgets
  */
 function t_em_register_widgets() {
@@ -710,6 +808,7 @@ function t_em_register_widgets() {
 	register_widget( 'Twenty_Em_Widget_Image_Gallery' );
 	register_widget( 'Twenty_Em_Widget_Recent_Posts' );
 	register_widget( 'Twenty_Em_Widget_Recent_Comments' );
+	register_widget( 'Twenty_Em_Widget_Feed_Burner_Subscribe' );
 }
 add_action( 'widgets_init', 't_em_register_widgets' );
 ?>
