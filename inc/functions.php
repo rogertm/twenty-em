@@ -764,7 +764,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
  */
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
-	<div id="author-info-<?php echo get_the_author(); ?>" class="author-info media">
+	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
 		<?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
@@ -777,7 +777,7 @@ function t_em_author_meta(){
 			</div><!-- #author-link	-->
 		<?php endif; ?>
 		</div><!-- #author-description -->
-	</div><!-- #entry-author-info -->
+	</div><!-- .author-info -->
 <?php
 	endif;
 }
@@ -1102,19 +1102,16 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
  * 			// Rest of your Custom Loop
  * 			...
  *
- * @param string $icon_class IcoMoon icon class
- *
  * @link docs/icomoon.html For a full list of icons
  *
  * @since Twenty'em 1.0
  */
-function t_em_custom_template_content( $icon_class = '' ){
+function t_em_custom_template_content(){
 	$template_data = get_page( get_the_ID() );
-	$span_icon_class = ( $icon_class ) ? '<span class="'. $icon_class .' icomoon"></span>' : '';
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
 		<header>
-			<h1 class="page-header"><?php echo $span_icon_class ?><?php echo $template_data->post_title; ?></h1>
+			<h1 class="page-header"><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php
 	if ( have_posts() ) :

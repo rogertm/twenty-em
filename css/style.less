@@ -87,7 +87,7 @@
 	.pull-left;
 	width: 100%;
 }
-.author-info{
+.author-info.author-archive{
 	.well;
 }
 
@@ -156,9 +156,11 @@
 /* =Images
 -------------------------------------------------------------- */
 .avatar{
-	height: @avatar-size-md !important;
-	width: @avatar-size-md !important;
+	.square(@avatar-size-md) !important;
 	.pull-left;
+}
+.author-info.contributor .avatar{
+	.square(@avatar-size-lg) !important;
 }
 
 /* =Footer
@@ -447,6 +449,16 @@
 	.btn;
 	.btn-default;
 	.btn-xs;
+}
+
+/* =Templates
+-------------------------------------------------------------- */
+.contributor .contributor-posts-link{
+	.btn;
+	.btn-default;
+}
+.contributor .contributor-posts-link .icomoon{
+	.icomoon-book;
 }
 
 /* =Widgets
