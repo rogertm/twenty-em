@@ -66,7 +66,7 @@ if ( ( '1' == $t_em['slider_home_only'] && is_home() ) || '0' == $t_em['slider_h
 						<h3 class="entry-title">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 						</h3>
-						<div class="hidden-xs hidden-sm"><?php the_excerpt(); ?></div>
+						<div class="entry-summary hidden-xs hidden-sm"><?php the_excerpt(); ?></div>
 					</div>
 				</div><!-- .item -->
 <?php
