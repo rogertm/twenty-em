@@ -39,9 +39,6 @@ Supports Thumbs: true
 	border:0;
 	border-radius: 2px;
 }
-.theme-t-em .nivo-controlNav a.active {
-	color: #d54e21;
-}
 .theme-t-em .nivo-directionNav{
 	font-size: 2em;
 }
