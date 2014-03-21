@@ -11,7 +11,7 @@ get_header(); ?>
 
 		<section id="main-content">
 			<section id="content" role="main">
-				<?php t_em_content_before(); ?>
+				<?php t_em_notfound_before(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
 					<h1 class="entry-title page-header"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>

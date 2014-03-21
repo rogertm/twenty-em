@@ -109,7 +109,7 @@ function t_em_main_after(){
 /**
  * Fire the t_em_content_before action, just after opening <section id="content"> tag
  *
- * @files 404.php, archive.php, attachment.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, attachment.php, author.php, category.php, date.php, front-page.php
  * home.php, index.php, pahe.php, search.php, single.php, tag.php, taxonomy.php,
  * taqxonomy-$taxonomy-$term.php, template-$template_name.php
  * @since Twenty'em 1.0
@@ -121,7 +121,7 @@ function t_em_content_before(){
 /**
  * Fire the t_em_content_after action, just before closing </section><!-- #content --> tag
  *
- * @files 404.php, archive.php, attachment.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, attachment.php, author.php, category.php, date.php, front-page.php
  * home.php, index.php, pahe.php, search.php, single.php, tag.php, taxonomy.php,
  * taqxonomy-$taxonomy-$term.php, template-$template_name.php
  * @since Twenty'em 1.0
@@ -375,6 +375,26 @@ function t_em_footer_before(){
  */
 function t_em_footer_after(){
 	do_action( 't_em_footer_after' );
+}
+
+/**
+ * Fire the t_em_notfound_before action, just after opening the <section id="content"> tag
+ *
+ * @file 404.php
+ * @since Twenty'em 1.0
+ */
+function t_em_notfound_before(){
+	do_action( 't_em_notfound_before' );
+}
+
+/**
+ * Fire the t_em_notfound_aftre action, just before closing the </section><!-- #content --> tag
+ *
+ * @file 404.php
+ * @since Twenty'em 1.0
+ */
+function t_em_notfound_aftre(){
+	do_action( 't_em_notfound_aftre' );
 }
 
 /**
