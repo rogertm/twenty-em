@@ -368,7 +368,7 @@ ul.sub-menu li a{
 }
 .commentlist .pingback,
 .commentlist .trackback {
-	padding-bottom: 10px;
+	padding: 10px 0;
 }
 .commentlist .pingback p,
 .commentlist .trackback p{

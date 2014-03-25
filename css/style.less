@@ -32,7 +32,9 @@
 @avatar-size-xs:	8px;
 @avatar-size-sm:	16px;
 @avatar-size-md:	64px;
-@avatar-size-lg:	96px;
+@avatar-size-lg:	128px;
+@avatar-size-xlg:	256px;
+@avatar-size-xxlg:	512px;
 
 // Jumbotron button padding
 @jumbotron-btn-vertical-padding:	14px;
@@ -154,6 +156,7 @@
 .author-info.author-archive .avatar{
 	.square(@avatar-size-md) !important;
 	.pull-left;
+	margin: 0 20px 0 0 !important;
 }
 
 /* =Footer
@@ -446,7 +449,8 @@
 
 /* =Templates
 -------------------------------------------------------------- */
-.contributor .contributor-posts-link{
+.contributor .contributor-posts-link,
+.contributor .contributor-url{
 	.btn;
 	.btn-default;
 }
@@ -455,6 +459,9 @@
 }
 .contributor .contributor-posts-link .icomoon{
 	.icomoon-book;
+}
+.contributor .contributor-url .icomoon{
+	.icomoon-home-2;
 }
 
 /* =Widgets

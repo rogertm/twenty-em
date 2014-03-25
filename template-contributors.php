@@ -46,15 +46,25 @@ get_header(); ?>
 ?>
 				<div id="contributor-<?php echo get_the_author_meta( 'user_login', $contributor ); ?>" class="author-info contributor media">
 					<div class="pull-left media-object contributor-avatar">
-						<?php echo get_avatar( $contributor ); ?>
+					<?php t_em_get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?>
 					</div>
 					<div class="media-body">
 						<h4 class="media-heading contributor-name"><?php echo get_the_author_meta( 'display_name', $contributor ); ?></h4>
 						<p class="contributor-bio"><?php echo get_the_author_meta( 'description', $contributor ) ?></p>
-					<a class="contributor-posts-link" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
-						<span class="icomoon"></span>
-						<?php printf( _n( '%d Article', '%d Articles', $post_count, 't_em' ), $post_count ); ?>
-					</a>
+						<a class="contributor-posts-link" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
+							<span class="icomoon"></span>
+							<?php printf( _n( '%d Article', '%d Articles', $post_count, 't_em' ), $post_count ); ?>
+						</a>
+					<?php
+					if ( get_the_author_meta( 'user_url', $contributor ) ) :
+					?>
+						<a class="contributor-url" href="<?php echo get_the_author_meta( 'user_url', $contributor ); ?>">
+							<span class="icomoon"></span>
+							<?php _e( 'Visit web site', 't_em' ); ?>
+						</a>
+					<?php
+					endif;
+					?>
 					</div>
 				</div>
 <?php

@@ -109,19 +109,28 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.less">'."\n";
 }
-add_action( 't_em_head', 't_em_bootstrapped_head' );
+add_action( 't_em_head', 't_em_bootstrapped_head', 15 );
 
 /**
- * The "rel" element in the html returned by the function wp_enqueue_style()
- * is just like rel="stylesheet". LESS needs something else like
- * rel="stylesheet/less", so, we need do it this way.
+ * Enqueue LESS Style for the theme
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_enqueue_less_css(){
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL.'/style.less' .'">'."\n";
-	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 
 }
-add_action( 't_em_head', 't_em_enqueue_less_css' );
+add_action( 't_em_head', 't_em_enqueue_less_css', 20 );
+
+/**
+ * Enqueue LESS Javascript for the theme
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_enqueue_less_js(){
+	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
+}
+add_action( 't_em_head', 't_em_enqueue_less_js', 30 );
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.

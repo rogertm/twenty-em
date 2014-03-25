@@ -437,7 +437,7 @@ function t_em_favicon(){
 		echo '<link rel="shortcut icon" href="'. $t_em['favicon_url'] .'" />'."\n";
 	endif;
 }
-add_action( 'wp_head', 't_em_favicon' );
+add_action( 't_em_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
 
 /**
@@ -625,6 +625,58 @@ function t_em_widgets_init() {
 }
 add_action( 'widgets_init', 't_em_widgets_init' );
 
+/**
+ * Add custom avatar option to users edit screen. This function is attached to the show_user_profile()
+ * and the edit_user_profile() action hooks
+ *
+ * @param $user_id int A user ID
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_add_custom_avatar_url( $user_id ){
+	global $user_id;
+?>
+	<h3><?php _e( 'Custom avatar', 't_em' ); ?></h3>
+	<table class="form-table">
+		<tbody>
+			<tr>
+				<th><label for="custom_avatar_url"><?php _e( 'Avatar url', 't_em' ); ?></label></th>
+				<td>
+				<?php
+				$custom_avatar_url = get_user_meta( $user_id, 'custom_avatar_url', true );
+				if ( $custom_avatar_url ) :
+				?>
+					<p><img src="<?php echo $custom_avatar_url ?>" width="150" height="150"></p>
+				<?php
+				endif;
+				?>
+					<input id="custom_avatar_url" class="regular-text code" type="url" name="custom_avatar_url" value="<?php echo $custom_avatar_url; ?>"></td>
+			</tr>
+		</tbody>
+	</table>
+<?php
+}
+add_action( 'show_user_profile', 't_em_add_custom_avatar_url' );
+add_action( 'edit_user_profile', 't_em_add_custom_avatar_url' );
+
+/**
+ * Save data for custom avatar option in users edit screen. This function is attached to the
+ * personal_options_update() and edit_user_profile_update() actions hooks
+ *
+ * @param $user_id int A user ID
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_update_custom_avatar_url( $user_id ){
+	global $user_id;
+	if ( current_user_can( 'edit_users', $user_id ) ) :
+		update_user_meta( $user_id, 'custom_avatar_url', $_POST['custom_avatar_url'] );
+	endif;
+}
+add_action( 'personal_options_update', 't_em_update_custom_avatar_url' );
+add_action( 'edit_user_profile_update', 't_em_update_custom_avatar_url' );
+
+
 if ( ! function_exists( 't_em_posted_in' ) ) :
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
@@ -756,6 +808,39 @@ function t_em_post_date(){
 }
 endif; // function t_em_post_date()
 
+if ( ! function_exists( 't_em_get_avatar' ) ) :
+/**
+ * Retrieve the custom avatar for a user if provided in the WordPress profile page. If not the
+ * default avatar from gravatar.com will be displayed
+ *
+ * @param int $user_id Required User ID
+ * @param int|string|object Required $id_or_email A user ID,  email address, or comment object
+ * @param int $size Size of the avatar image
+ * @param string $default URL to a default image to use if no avatar is available
+ * @param string $alt Alternative text to use in image tag. Defaults to blank
+ *
+ * @return string <img> tag for the user's avatar
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ){
+	if ( is_numeric( $id_or_email ) ) :
+		$user = get_user_by( 'id', $id_or_email );
+	else :
+		$user = get_user_by( 'email', $id_or_email );
+	endif;
+	$custom_avatar_url = get_user_meta( $user->ID, 'custom_avatar_url', true );
+
+	if ( $custom_avatar_url ) :
+?>
+	<img src="<?php echo $custom_avatar_url ?>" class="avatar" alt="<?php echo $alt; ?>" width="<?php echo $size; ?>" height="<?php echo $size; ?>">
+<?php
+	else :
+		echo get_avatar( $id_or_email, $size, $default = '', $alt );
+	endif;
+}
+endif; // function t_em_get_avatar()
+
 if ( ! function_exists( 't_em_author_meta' ) ) :
 /**
  * If a user has filled out their description, show a bio on their entries.
@@ -765,7 +850,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
-		<?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
+		<?php echo t_em_get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
 			<?php the_author_meta( 'description' ); ?>
@@ -813,29 +898,31 @@ function t_em_comment( $comment, $args, $depth ) {
 	switch ( $comment->comment_type ) :
 		case '' :
 	?>
-	<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
-			<?php echo get_avatar( $comment, '', '', get_comment_author() ); ?>
-			<header class="comment-header media-heading">
-				<div class="comment-author vcard">
-					<?php printf( __( '<h5>%1$s <span class="says">says:</span></h5>', 't_em' ), get_comment_author_link() ); ?>
-				</div><!-- .comment-author .vcard -->
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
-					<br />
-				<?php endif; ?>
+	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
+		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
+			<div class="pull-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
+			<div class="media-body">
+				<header class="comment-header media-heading">
+					<div class="comment-author vcard">
+						<?php printf( __( '<cite class="fn">%1$s <span class="says">says:</span></cite>', 't_em' ), get_comment_author_link() ); ?>
+					</div><!-- .comment-author .vcard -->
+					<?php if ( $comment->comment_approved == '0' ) : ?>
+						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
+						<br />
+					<?php endif; ?>
 
-				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<?php
-						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-				</div><!-- .comment-meta .commentmetadata -->
-			</header><!-- comment-heading -->
-			<div class="comment-body"><?php comment_text(); ?></div>
+					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+						<?php
+							/* translators: 1: date, 2: time */
+							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
+					</div><!-- .comment-meta .commentmetadata -->
+				</header><!-- comment-heading -->
+				<div class="comment-body"><?php comment_text(); ?></div>
 
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
+				<div class="reply">
+					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				</div><!-- .reply -->
+			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
 
 	<?php
@@ -861,14 +948,14 @@ function t_em_comment_pingback_trackback( $comment ) {
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
+		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
+		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 	endswitch;
@@ -892,14 +979,14 @@ function t_em_comment_all( $comment, $args, $depth ){
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
+		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<h5><?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></h5>
+		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
@@ -907,28 +994,30 @@ function t_em_comment_all( $comment, $args, $depth ){
 		global $post;
 	?>
 	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
-		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap media-body">
-			<?php echo get_avatar( $comment, '', '', get_comment_author() ); ?>
-			<header class="comment-header media-heading">
-				<div class="comment-author vcard">
-					<?php printf( __( '<h5>%1$s <span class="says">says:</span></h5>', 't_em' ), get_comment_author_link() ); ?>
-				</div><!-- .comment-author .vcard -->
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
-					<br />
-				<?php endif; ?>
+		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
+			<div class="pull-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
+			<div class="media-body">
+				<header class="comment-header media-heading">
+					<div class="comment-author vcard">
+						<?php printf( __( '<cite class="fn">%1$s</cite> <span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
+					</div><!-- .comment-author .vcard -->
+					<?php if ( $comment->comment_approved == '0' ) : ?>
+						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
+						<br />
+					<?php endif; ?>
 
-				<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<?php
-						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-				</div><!-- .comment-meta .commentmetadata -->
-			</header><!-- comment-heading -->
-			<div class="comment-body"><?php comment_text(); ?></div>
+					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+						<?php
+							/* translators: 1: date, 2: time */
+							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
+					</div><!-- .comment-meta .commentmetadata -->
+				</header><!-- comment-heading -->
+				<div class="comment-body"><?php comment_text(); ?></div>
 
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
+				<div class="reply">
+					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				</div><!-- .reply -->
+			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
 
 	<?php
