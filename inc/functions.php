@@ -627,7 +627,8 @@ add_action( 'widgets_init', 't_em_widgets_init' );
 
 /**
  * Add custom avatar option to users edit screen. This function is attached to the show_user_profile()
- * and the edit_user_profile() action hooks
+ * and the edit_user_profile() action hooks.
+ * Only users with upload_files capabilities will access to this option
  *
  * @param $user_id int A user ID
  *
@@ -656,12 +657,15 @@ function t_em_add_custom_avatar_url( $user_id ){
 	</table>
 <?php
 }
-add_action( 'show_user_profile', 't_em_add_custom_avatar_url' );
-add_action( 'edit_user_profile', 't_em_add_custom_avatar_url' );
+if ( current_user_can( 'upload_files' ) ) :
+	add_action( 'show_user_profile', 't_em_add_custom_avatar_url' );
+	add_action( 'edit_user_profile', 't_em_add_custom_avatar_url' );
+endif;
 
 /**
  * Save data for custom avatar option in users edit screen. This function is attached to the
- * personal_options_update() and edit_user_profile_update() actions hooks
+ * personal_options_update() and edit_user_profile_update() actions hooks.
+ * Only users with upload_files capabilities will access to this option
  *
  * @param $user_id int A user ID
  *
@@ -673,8 +677,10 @@ function t_em_update_custom_avatar_url( $user_id ){
 		update_user_meta( $user_id, 'custom_avatar_url', $_POST['custom_avatar_url'] );
 	endif;
 }
-add_action( 'personal_options_update', 't_em_update_custom_avatar_url' );
-add_action( 'edit_user_profile_update', 't_em_update_custom_avatar_url' );
+if ( current_user_can( 'upload_files' ) ) :
+	add_action( 'personal_options_update', 't_em_update_custom_avatar_url' );
+	add_action( 'edit_user_profile_update', 't_em_update_custom_avatar_url' );
+endif;
 
 
 if ( ! function_exists( 't_em_posted_in' ) ) :
