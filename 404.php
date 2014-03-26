@@ -21,7 +21,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
 
-				<?php t_em_content_after(); ?>
+				<?php t_em_notfound_after(); ?>
 			</section><!-- #content -->
 			<script type="text/javascript">
 				// focus on search field after it has loaded

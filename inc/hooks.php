@@ -388,13 +388,13 @@ function t_em_notfound_before(){
 }
 
 /**
- * Fire the t_em_notfound_aftre action, just before closing the </section><!-- #content --> tag
+ * Fire the t_em_notfound_after action, just before closing the </section><!-- #content --> tag
  *
  * @file 404.php
  * @since Twenty'em 1.0
  */
-function t_em_notfound_aftre(){
-	do_action( 't_em_notfound_aftre' );
+function t_em_notfound_after(){
+	do_action( 't_em_notfound_after' );
 }
 
 /**
