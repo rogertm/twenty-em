@@ -33,6 +33,9 @@ noscript {
 #content{
 	padding-left: 0;
 }
+.one-column #content{
+	padding-right: 0;
+}
 #main-content{
 	padding: 0;
 }
