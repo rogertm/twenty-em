@@ -218,7 +218,6 @@ ul.sub-menu li a{
 
 /* =Content
 -------------------------------------------------------------- */
-
 #inner-main {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -259,6 +258,9 @@ ul.sub-menu li a{
 }
 .page-link a:active,
 .page-link a:hover {
+}
+.more-link{
+	display: table;
 }
 
 /* =Content Layout

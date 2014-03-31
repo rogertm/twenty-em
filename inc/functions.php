@@ -492,7 +492,7 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return '<a href="'. get_permalink() . '" class="more-link clearfix">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
+	return '<a href="'. get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
 }
 
 /**
@@ -855,7 +855,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_author_meta(){
-	if ( get_the_author_meta( 'description' ) && is_single() ) : // If a user has filled out their description, show a bio on their entries  ?>
+	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
 		<?php echo t_em_get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
@@ -874,7 +874,6 @@ function t_em_author_meta(){
 	endif;
 }
 endif;
-add_action( 't_em_post_content_after', 't_em_author_meta' );
 
 if ( ! function_exists( 't_em_category_description' ) ) :
 /**
