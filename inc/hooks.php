@@ -137,6 +137,7 @@ function t_em_content_after(){
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
+ * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets_before(){
 	do_action( 't_em_front_page_widgets_before' );
@@ -148,17 +149,19 @@ function t_em_front_page_widgets_before(){
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
+ * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets_after(){
 	do_action( 't_em_front_page_widgets_after' );
 }
 
 /**
- *	Fire the t_em_front_page_widgets_inside_before, just after opening <section id="featured-widget-area"> tag.
+ * Fire the t_em_front_page_widgets_inside_before, just after opening <section id="featured-widget-area"> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
+ * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets_inside_before(){
 	do_action( 't_em_front_page_widgets_inside_before' );
@@ -170,6 +173,7 @@ function t_em_front_page_widgets_inside_before(){
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
  * @file front-page.php
+ * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets_inside_after(){
 	do_action( 't_em_front_page_widgets_inside_after' );
@@ -216,6 +220,26 @@ function t_em_post_inside_after(){
 }
 
 /**
+ * Fire the t_em_post_content_before action, just before opening <div class="entry-content"> tag
+ *
+ * @file single.php, functions.php (via t_em_post_archive_set())
+ * @since Twenty'em 1.0
+ */
+function t_em_post_content_before(){
+	do_action( 't_em_post_content_before' );
+}
+
+/**
+ * Fire the t_em_post_content_after action, just after closing </div><!-- .entry-content --> tag
+ *
+ * @file single.php, functions.php (via t_em_post_archive_set())
+ * @since Twenty'em 1.0
+ */
+function t_em_post_content_after(){
+	do_action( 't_em_post_content_after' );
+}
+
+/**
  * Fire the t_em_page_before action, just before opening <article id="post-##"> tag
  *
  * @files page.php, template-one-column.php, template-collapsible-content.php
@@ -253,6 +277,26 @@ function t_em_page_inside_before(){
  */
 function t_em_page_inside_after(){
 	do_action( 't_em_page_inside_after' );
+}
+
+/**
+ * Fire the t_em_page_content_before action, just before opening <div class="entry-content"> tag
+ *
+ * @file page.php
+ * @since Twenty'em 1.0
+ */
+function t_em_page_content_before(){
+	do_action( 't_em_page_content_before' );
+}
+
+/**
+ * Fire the t_em_page_content_after action, just after closing </div><!-- .entry-content --> tag
+ *
+ * @file page.php
+ * @since Twenty'em 1.0
+ */
+function t_em_page_content_after(){
+	do_action( 't_em_page_content_after' );
 }
 
 /**

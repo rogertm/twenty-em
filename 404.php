@@ -23,10 +23,6 @@ get_header(); ?>
 
 				<?php t_em_notfound_after(); ?>
 			</section><!-- #content -->
-			<script type="text/javascript">
-				// focus on search field after it has loaded
-				document.getElementById('s') && document.getElementById('s').focus();
-			</script>
 		</section><!-- #main-content -->
 
 <?php get_footer(); ?>

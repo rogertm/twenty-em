@@ -850,11 +850,12 @@ endif; // function t_em_get_avatar()
 if ( ! function_exists( 't_em_author_meta' ) ) :
 /**
  * If a user has filled out their description, show a bio on their entries.
+ * This function is attached to the t_em_post_content_after() action hook
  *
  * @since Twenty'em 1.0
  */
 function t_em_author_meta(){
-	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
+	if ( get_the_author_meta( 'description' ) && is_single() ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
 		<?php echo t_em_get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
@@ -873,6 +874,7 @@ function t_em_author_meta(){
 	endif;
 }
 endif;
+add_action( 't_em_post_content_after', 't_em_author_meta' );
 
 if ( ! function_exists( 't_em_category_description' ) ) :
 /**
@@ -1369,6 +1371,8 @@ function t_em_single_post_thumbnail(){
 function t_em_post_archive_set(){
 	global $t_em;
 
+	t_em_post_content_before();
+
 	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
@@ -1384,6 +1388,8 @@ function t_em_post_archive_set(){
 			</div><!-- .entry-content -->
 <?php
 	endif;
+
+	t_em_post_content_after();
 }
 
 /**

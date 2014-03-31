@@ -32,10 +32,15 @@ get_header(); ?>
 				<?php } ?>
 			</header>
 
+			<?php t_em_page_content_before(); ?>
+
 			<div class="entry-content">
 				<?php the_content(); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
+
+			<?php t_em_page_content_after(); ?>
+
 			<footer class="entry-utility">
 				<?php t_em_edit_post_link(); ?>
 			</footer>
