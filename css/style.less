@@ -20,8 +20,10 @@
 
 /* =Variables
 -------------------------------------------------------------- */
-
 /** Global values */
+
+// Typography
+@site-title-size:	floor( @font-size-h1 * 1.8 ); // ~64px
 
 // Buttons
 @btn-t-em-inverse-color:	#fff;
@@ -109,11 +111,7 @@
 -------------------------------------------------------------- */
 // Site Header
 #site-title{
-	.pull-left;
-}
-#site-description{
-	.pull-right;
-	.lead;
+	font-size: @site-title-size;
 }
 // Static Header
 #static-header-text .btn{

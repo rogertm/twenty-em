@@ -153,8 +153,7 @@ noscript {
 }
 #site-description {
 	font-style: italic;
-	margin-top: 50px;
-	line-height: 1;
+	margin: 0;
 }
 
 /* Header Image */
