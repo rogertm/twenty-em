@@ -475,6 +475,22 @@
 
 /* =Media Query
 -------------------------------------------------------------- */
+/* Medium devices (less than 992px) */
+@media (max-width: @screen-sm-max) {
+	#content{
+		padding-right: 0;
+	}
+	.two-column-content-right #content,
+	.three-column-content-right #content,
+	.three-column-content-middle #content{
+		padding-left: 0;
+	}
+	.three-column-content-right #main-content,
+	.three-column-content-right #content,
+	.three-column-content-middle #main-content{
+		float: none;
+	}
+}
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: @screen-xs-max) {
 	// Navbars
