@@ -222,7 +222,7 @@ function t_em_post_inside_after(){
 /**
  * Fire the t_em_post_content_before action, just before opening <div class="entry-content"> tag
  *
- * @file single.php, functions.php (via t_em_post_archive_set())
+ * @file single.php
  * @since Twenty'em 1.0
  */
 function t_em_post_content_before(){
@@ -232,7 +232,7 @@ function t_em_post_content_before(){
 /**
  * Fire the t_em_post_content_after action, just after closing </div><!-- .entry-content --> tag
  *
- * @file single.php, functions.php (via t_em_post_archive_set())
+ * @file single.php
  * @since Twenty'em 1.0
  */
 function t_em_post_content_after(){

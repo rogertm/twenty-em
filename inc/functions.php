@@ -874,6 +874,7 @@ function t_em_author_meta(){
 	endif;
 }
 endif;
+add_action( 't_em_post_content_after', 't_em_author_meta' );
 
 if ( ! function_exists( 't_em_category_description' ) ) :
 /**
@@ -1370,8 +1371,6 @@ function t_em_single_post_thumbnail(){
 function t_em_post_archive_set(){
 	global $t_em;
 
-	t_em_post_content_before();
-
 	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
@@ -1387,8 +1386,6 @@ function t_em_post_archive_set(){
 			</div><!-- .entry-content -->
 <?php
 	endif;
-
-	t_em_post_content_after();
 }
 
 /**

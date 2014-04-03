@@ -36,8 +36,6 @@ get_header(); ?>
 
 			<?php t_em_post_content_after(); ?>
 
-			<?php t_em_author_meta(); ?>
-
 			<footer class="entry-utility">
 				<?php t_em_posted_in(); ?>
 				<?php t_em_edit_post_link(); ?>
