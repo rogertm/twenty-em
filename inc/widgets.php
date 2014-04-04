@@ -26,9 +26,9 @@
 class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 't_em_recents_news', 'description' => __( 'Display the most Recent Posts on your site, including thumbnail and excerpt', 't_em' ) );
-		parent::__construct('t_em_recents_news', sprintf( __( 'Recent Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
-		$this->alt_option_name = 't_em_recents_news';
+		$widget_ops = array('classname' => 't_em_widget_recent_posts', 'description' => __( 'Display the most Recent Posts on your site, including thumbnail and excerpt', 't_em' ) );
+		parent::__construct('t_em_widget_recent_posts', sprintf( __( '%1$s Recent Posts', 't_em' ), '[T&#8217;em]' ), $widget_ops);
+		$this->alt_option_name = 't_em_widget_recent_posts';
 
 		if ( is_active_widget( false, false, $this->id_base ) )
 			add_action( 'wp_head', array( $this, 't_em_recent_posts_style' ) );
@@ -159,8 +159,8 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['t_em_recents_news']) )
-			delete_option('t_em_recents_news');
+		if ( isset($alloptions['t_em_widget_recent_posts']) )
+			delete_option('t_em_widget_recent_posts');
 
 		return $instance;
 	}
@@ -170,6 +170,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 	}
 
 	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'thumbnail' => false, 'title' => '' ) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 		$thumbnail = isset( $instance['thumbnail'] ) ? (bool) $instance['thumbnail'] : false;
@@ -197,7 +198,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 't_em_popular_posts', 'description' => __( 'The most Popular Posts on your site', 't_em') );
-		parent::__construct('t_em_popular_posts', sprintf( __( 'Popular Posts %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_popular_posts', sprintf( __( '%1$s Popular Posts', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_popular_posts';
 
 		if ( is_active_widget( false, false, $this->id_base ) )
@@ -348,6 +349,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 	}
 
 	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'thumbnail' => false, 'comment_count' => false, 'title' => '' ) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 		$thumbnail = isset( $instance['thumbnail'] ) ? (bool) $instance['thumbnail'] : false;
@@ -377,7 +379,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array( 'classname' => 't_em_image_gallery', 'description' => __( 'Display all images on your site attached to a post', 't_em' ) );
-		parent::__construct('t_em_image_gallery', sprintf( __( 'Image Gallery %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_image_gallery', sprintf( __( '%1$s Image Gallery', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_image_gallery';
 
 		if ( is_active_widget(false, false, $this->id_base) )
@@ -548,6 +550,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 	}
 
 	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'columns' => 2, 'title' => '' ) );
 		$title = isset( $instance['title']) ? esc_attr($instance['title'] ) : '';
 		$number = isset( $instance['number']) ? absint($instance['number'] ) : get_option( 'posts_per_page' );
 		$columns = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 2;
@@ -578,7 +581,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 't_em_recent_comments', 'description' => __( 'The most recent comments', 't_em' ) );
-		parent::__construct('t_em_recent_comments', sprintf( __('Recent Comments %1$s'), '[Twenty&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_recent_comments', sprintf( __('%1$s Recent Comments'), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recent_comments';
 
 		if ( is_active_widget(false, false, $this->id_base) )
@@ -686,6 +689,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 	}
 
 	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'author_name_url' => false, 'title' => '' ) );
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : get_option( 'posts_per_page' );
 		$author_name_url = isset( $instance['author_name_url'] ) ? (bool) $instance['author_name_url'] : false;
@@ -711,7 +715,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 
 	function __construct(){
 		$widget_ops = array('classname' => 't_em_widget_feed_burner_subscribe', 'description' => __( 'Subscribe via FeedBurner', 't_em') );
-		parent::__construct('t_em_widget_feed_burner_subscribe', sprintf( __( 'Subscribe via FeedBurner %1$s', 't_em' ), '[Twenty&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_widget_feed_burner_subscribe', sprintf( __( '%1$s Subscribe via FeedBurner', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_widget_feed_burner_subscribe';
 	}
 
@@ -780,6 +784,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 	}
 
 	function form( $instance ){
+		$instance = wp_parse_args( (array) $instance, array( 'feedburner_uri' => null, 'feedburner_description' => null, 'feedburner_placeholder' => null, 'title' => '' ) );
 		$title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : null;
 		$feedburner_uri = isset( $instance['feedburner_uri'] ) ? esc_attr( $instance['feedburner_uri'] ) : null;
 		$feedburner_description = isset( $instance['feedburner_description'] ) ? esc_attr( $instance['feedburner_description'] ) : null;
@@ -801,6 +806,134 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 }
 
 /**
+ * Contributors widget class
+ *
+ * @since Twenty'em 1.0
+ */
+class Twenty_Em_Widget_Contributors extends WP_Widget{
+
+	function __construct(){
+		$widget_ops= array( 'classname' => 't_em_widget_contributors', 'description' => __( 'A list of your site&#8217;s contributors', 't_em' ) );
+		parent::__construct( 't_em_widget_contributors', sprintf( __( '%1$s Contributors', 't_em' ), '[T&#8217;em]' ), $widget_ops );
+	}
+
+	function widget( $args, $instance ){
+		$cache = wp_cache_get( 't_em_widget_contributors', 'widget' );
+
+		if ( ! is_array( $cache ) )
+			$cache = array();
+
+		if ( ! isset( $args['widget_id'] ) )
+			$args['widget_id'] = $this->id;
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+			echo $cache[ $args['widget_id'] ];
+			return;
+		}
+
+		ob_start();
+		extract( $args );
+
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Contributors', 't_em' ) : $instance['title'], $instance, $this->id_base );
+		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
+			$number = get_option( 'posts_per_page' );
+		$orderby = empty( $instance['orderby'] ) ? 'display_name' : $instance['orderby'];
+		$order = empty( $instance['order'] ) ? 'ASC' : $instance['order'];
+		$exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
+
+		$user_fields = array(
+			'fields'	=> 'ID',
+			'number'	=> $number,
+			'orderby'	=> $orderby,
+			'order'		=> $order,
+			'exclude'	=> $exclude,
+			'who'		=> 'authors',
+			);
+		$contributors = get_users( $user_fields );
+
+		echo $before_widget;
+		if ( $title ) echo $before_title . $title . $after_title;
+?>
+		<ul>
+<?php
+		foreach ( $contributors as $contributor ) :
+			$post_count = count_user_posts( $contributor );
+			// Jump over users that has not published a post
+			if( ! $post_count )
+				continue;
+?>
+			<li><a href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
+				<?php echo get_the_author_meta( 'display_name', $contributor ); ?></a></li>
+<?php
+		endforeach;
+?>
+		</ul>
+<?php
+		echo $after_widget;
+
+		$cache[$args['widget_id']] = ob_get_flush();
+		wp_cache_set('t_em_widget_contributors', $cache, 'widget');
+	}
+
+	function update( $new_instance, $old_instance ){
+		$instance = array();
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['number'] = (int) $new_instance['number'];
+		if ( in_array( $new_instance['orderby'], array( 'display_name', 'post_count', 'ID' ) ) ) :
+			$instance['orderby'] = $new_instance['orderby'];
+		else :
+			$instance['orderby'] = 'display_name';
+		endif;
+		if ( in_array( $new_instance['order'], array( 'ASC', 'DESC' ) ) ) :
+			$instance['order'] = $new_instance['order'];
+		else :
+			$instance['order'] = 'ASC';
+		endif;
+		$instance['exclude'] = strip_tags( $new_instance['exclude'] );
+
+		return $instance;
+	}
+
+	function flush_widget_cache() {
+		wp_cache_delete('t_em_widget_contributors', 'widget');
+	}
+
+	function form( $instance ){
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'orderby' => 'display_name', 'order' => 'ASC', 'exclude' => '', 'title' => '' ) );
+		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
+		$exclude = esc_attr( $instance['exclude'] );
+?>
+		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title', 't_em' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id('orderby') ?>"><?php _e( 'Order by', 't_em' ); ?></label>
+			<select name="<?php echo $this->get_field_name('orderby') ?>" id="<?php echo $this->get_field_id('orderby'); ?>" class="widefat">
+				<option value="display_name" <?php selected( $instance['orderby'], 'display_name' ) ?>><?php _e( 'User Name', 't_em' ) ?></option>
+				<option value="post_count" <?php selected( $instance['orderby'], 'post_count' ) ?>><?php _e( 'Post Count', 't_em' ) ?></option>
+				<option value="ID" <?php selected( $instance['orderby'], 'ID' ) ?>><?php _e( 'User ID', 't_em' ) ?></option>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('order') ?>"><?php _e( 'Order', 't_em' ); ?></label>
+			<select name="<?php echo $this->get_field_name('order') ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
+				<option value="ASC" <?php selected( $instance['order'], 'ASC' ) ?>><?php _e( 'Ascending', 't_em' ) ?></option>
+				<option value="DESC" <?php selected( $instance['order'], 'DESC' ) ?>><?php _e( 'Descending', 't_em' ) ?></option>
+			</select>
+		</p>
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of users to show:', 't_em' ); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
+			<br />
+			<small><?php _e( 'Users IDs, separated by commas.' ); ?></small>
+		</p>
+<?php
+	}
+
+}
+
+/**
  * Register widgets
  */
 function t_em_register_widgets() {
@@ -809,6 +942,7 @@ function t_em_register_widgets() {
 	register_widget( 'Twenty_Em_Widget_Recent_Posts' );
 	register_widget( 'Twenty_Em_Widget_Recent_Comments' );
 	register_widget( 'Twenty_Em_Widget_Feed_Burner_Subscribe' );
+	register_widget( 'Twenty_Em_Widget_Contributors' );
 }
 add_action( 'widgets_init', 't_em_register_widgets' );
 ?>
