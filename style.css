@@ -421,6 +421,15 @@ ul.sub-menu li a{
 .widget_rss li .rsswidget{
 	display: block;
 }
+/* Twenty'em Widgets */
+.t-em-recent-post-wrapper,
+.t-em-popular-post-wrapper{
+	margin-top: 20px !important;
+}
+.t-em-recent-post-wrapper .t-em-recent-post-title,
+.t-em-popular-post-wrapper .t-em-popular-post-title{
+	font-weight: bold;
+}
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */

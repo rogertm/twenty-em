@@ -30,39 +30,9 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		parent::__construct('t_em_widget_recent_posts', sprintf( __( '%1$s Recent Posts', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_widget_recent_posts';
 
-		if ( is_active_widget( false, false, $this->id_base ) )
-			add_action( 'wp_head', array( $this, 't_em_recent_posts_style' ) );
-
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
-	}
-
-	function t_em_recent_posts_style(){
-?>
-	<style type="text/css">
-		.t-em-recent-post-wrapper{
-			margin-top: 10px !important;
-			clear: both;
-			overflow: hidden;
-			padding: 5px 0 5px 5px;
-		}
-		.t-em-recent-post-title{
-			font-weight: bold;
-		}
-		.t-em-recent-post-thumbnail{
-			float: left;
-			margin-right: 2.5641%;
-			margin-bottom: 0 !important;
-		}
-		.t-em-recent-post-thumbnail figcaption{
-			display: none;
-		}
-		.t-em-recent-post-thumbnail + .t-em-recent-post-content{
-			margin-left: 110px;
-		}
-	</style>
-<?php
 	}
 
 	function widget($args, $instance) {
@@ -128,12 +98,12 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<ul>
-		<?php  while ($recent_posts_args->have_posts()) : $recent_posts_args->the_post(); ?>
-		<li class="t-em-recent-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail' ) ?>
-			<div class="t-em-recent-post-content">
-				<a class="t-em-recent-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+		<ul class="media-list">
+		<?php while ($recent_posts_args->have_posts()) : $recent_posts_args->the_post(); ?>
+		<li class="t-em-recent-post-wrapper media">
+			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail media-object' ) ?></div>
+			<div class="t-em-recent-post-content media-body">
+				<a class="t-em-recent-post-title media-heading" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
 				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
 				<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
@@ -201,39 +171,9 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		parent::__construct('t_em_popular_posts', sprintf( __( '%1$s Popular Posts', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_popular_posts';
 
-		if ( is_active_widget( false, false, $this->id_base ) )
-			add_action( 'wp_head', array( $this, 't_em_popular_posts_style' ) );
-
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
-	}
-
-	function t_em_popular_posts_style(){
-?>
-		<style type="text/css">
-			.t-em-popular-post-wrapper{
-				margin-top: 10px !important;
-				clear: both;
-				overflow: hidden;
-				padding: 5px 0 5px 5px;
-			}
-			.t-em-popular-post-title{
-				font-weight: bold;
-			}
-			.t-em-popular-post-thumbnail{
-				float: left;
-				margin-right: 2.5641%;
-				margin-bottom: 0 !important;
-			}
-			.t-em-popular-post-thumbnail figcaption{
-				display: none;
-			}
-			.t-em-popular-post-thumbnail + .t-em-popular-post-content{
-				margin-left: 110px;
-			}
-		</style>
-<?php
 	}
 
 	function widget($args, $instance) {
@@ -304,14 +244,16 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<ul>
-		<?php  while ($popular_posts_args->have_posts()) : $popular_posts_args->the_post(); ?>
+		<ul class="media-list">
+		<?php while ($popular_posts_args->have_posts()) : $popular_posts_args->the_post(); ?>
 
-		<li class="t-em-popular-post-wrapper">
-			<?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail' ) ?>
-			<div class="t-em-popular-post-content">
-				<a class="t-em-popular-post-title" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+		<li class="t-em-popular-post-wrapper media">
+			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail media-object' ) ?></div>
+			<div class="t-em-popular-post-content media-body">
+				<a class="t-em-popular-post-title media-heading" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+			<?php if ( $instance['comment_count'] == 1 ) : ?>
 				<small><?php $comments_number = ( 1 == $instance['comment_count'] ) ? comments_number( '- 0 Comments', '- 1 Comment', '- % Comments' ) : null; ?></small>
+			<?php endif; ?>
 				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
 				<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
@@ -575,7 +517,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 /**
  * Recent_Comments widget class
  *
- * @since 2.8.0
+ * @since Twenty'em 1.0
  */
 class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 
@@ -584,40 +526,9 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		parent::__construct('t_em_recent_comments', sprintf( __('%1$s Recent Comments'), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recent_comments';
 
-		if ( is_active_widget(false, false, $this->id_base) )
-			add_action( 'wp_head', array($this, 't_em_recent_comments_style') );
-
 		add_action( 'comment_post', array($this, 'flush_widget_cache') );
 		add_action( 'edit_comment', array($this, 'flush_widget_cache') );
 		add_action( 'transition_comment_status', array($this, 'flush_widget_cache') );
-	}
-
-	function t_em_recent_comments_style() {
-?>
-	<style type="text/css">
-		.t-em-recent-comments{
-			margin-top: 10px !important;
-			clear: both;
-			overflow: hidden;
-			padding: 5px 0 5px 5px;
-		}
-		.t-em-recent-comments figure{
-			display: inline;
-			float: left;
-			margin-right: 5px;
-		}
-		.t-em-recent-comments .avatar{
-			display: inline-block;
-			width: 64px !important;
-			height: 64px !important;
-		}
-		.t-em-recent-comments a{
-			display:inline !important;
-			padding:0 !important;
-			margin:0 !important;
-		}
-	</style>
-<?php
 	}
 
 	function flush_widget_cache() {
@@ -641,7 +552,6 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		}
 
  		extract($args, EXTR_SKIP);
- 		$output = '';
 
 		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments' );
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -650,27 +560,40 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
  			$number = get_option( 'posts_per_page' );
 
 		$comments = get_comments( apply_filters( 'widget_comments_args', array( 'number' => $number, 'status' => 'approve', 'post_status' => 'publish', 'type' => 'comment' ) ) );
-		$output .= $before_widget;
+		echo $before_widget;
 		if ( $title )
-			$output .= $before_title . $title . $after_title;
-
-		$output .= '<ul id="t-em-recent-comments">';
+			echo $before_title . $title . $after_title;
+?>
+		<ul class="media-list">
+<?php
 		if ( $comments ) {
 			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
 			$post_ids = array_unique( wp_list_pluck( $comments, 'comment_post_ID' ) );
 			_prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
 
 			foreach ( (array) $comments as $comment) {
-				$comment_author_avatar = '<figure title="'. get_comment_author() .'">'. get_avatar( get_the_author_meta( 'ID' ), 64 ) .'</figure>';
-				$comment_author_link = ( 1 == $instance['author_name_url'] ) ? get_comment_author_link() : null;
-				$output .=  '<li class="t-em-recent-comments">' . /* translators: comments widget: 1: comment author, 2: post link */ sprintf(_x('%1$s on %2$s', 'widgets'), $comment_author_avatar . $comment_author_link, '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_the_title($comment->comment_post_ID) . '</a>') . '</li>';
+				$comment_author_link = ( 1 == $instance['author_name_url'] ) ? get_comment_author_link() . _x( ' on ', 't_em', 'Recent Comment Widget' ) : null;
+?>
+			<li class="t-em-recent-comments media">
+			<?php if ( 1 == $instance['avatar'] ) : ?>
+				<div class="pull-left">
+					<figure class="media-object" title="<?php echo get_comment_author(); ?>"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></figure>
+				</div>
+			<?php endif; ?>
+				<div class="media-body">
+					<?php echo $comment_author_link; ?>
+					<a href="<?php echo esc_url( get_comment_link($comment->comment_ID) ); ?>"><?php echo get_the_title($comment->comment_post_ID); ?></a>
+				</div>
+			</li>
+<?php
 			}
  		}
-		$output .= '</ul>';
-		$output .= $after_widget;
+?>
+		</ul>
+<?php
+		echo $after_widget;
 
-		echo $output;
-		$cache[$args['widget_id']] = $output;
+		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_recent_comments', $cache, 'widget');
 	}
 
@@ -679,6 +602,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = absint( $new_instance['number'] );
 		$instance['author_name_url'] = ! empty( $new_instance['author_name_url'] ) ? 1 : 0;
+		$instance['avatar'] = ! empty( $new_instance['avatar'] ) ? 1 : 0;
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -693,6 +617,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : get_option( 'posts_per_page' );
 		$author_name_url = isset( $instance['author_name_url'] ) ? (bool) $instance['author_name_url'] : false;
+		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : true;
 ?>
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -701,7 +626,10 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'author_name_url' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'author_name_url' ) ?>" <?php checked( $author_name_url ) ?>>
-		<label for="<?php echo $this->get_field_id( 'author_name_url' ) ?>"><?php _e( 'Show author name/url', 't_em' ) ?></label></p>
+		<label for="<?php echo $this->get_field_id( 'author_name_url' ) ?>"><?php _e( 'Show author name/url', 't_em' ) ?></label><br />
+
+		<input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
+		<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>
 <?php
 	}
 }
@@ -854,7 +782,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		echo $before_widget;
 		if ( $title ) echo $before_title . $title . $after_title;
 ?>
-		<ul>
+		<ul class="media-list">
 <?php
 		foreach ( $contributors as $contributor ) :
 			$post_count = count_user_posts( $contributor );
@@ -862,8 +790,21 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			if( ! $post_count )
 				continue;
 ?>
-			<li><a href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
-				<?php echo get_the_author_meta( 'display_name', $contributor ); ?></a></li>
+			<li class="t-em-contributor-wrapper media">
+<?php
+			if ( 1 == $instance['avatar'] ) :
+?>
+				<div class="pull-left">
+					<div class="media-object"><?php t_em_get_avatar( $contributor, '96', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
+				</div>
+<?php
+			endif;
+?>
+				<div class="t-em-contributor-name media-body">
+					<a href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
+					<?php echo get_the_author_meta( 'display_name', $contributor ); ?></a>
+				</div>
+			</li>
 <?php
 		endforeach;
 ?>
@@ -879,6 +820,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
+		$instance['avatar'] = ! empty( $new_instance['avatar'] ) ? 1 : 0;
 		if ( in_array( $new_instance['orderby'], array( 'display_name', 'post_count', 'ID' ) ) ) :
 			$instance['orderby'] = $new_instance['orderby'];
 		else :
@@ -902,6 +844,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'orderby' => 'display_name', 'order' => 'ASC', 'exclude' => '', 'title' => '' ) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
+		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : false;
 		$exclude = esc_attr( $instance['exclude'] );
 ?>
 		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title', 't_em' ); ?></label>
@@ -928,6 +871,8 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			<br />
 			<small><?php _e( 'Users IDs, separated by commas.' ); ?></small>
 		</p>
+		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
+		<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>
 <?php
 	}
 
