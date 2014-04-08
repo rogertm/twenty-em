@@ -324,71 +324,9 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		parent::__construct('t_em_image_gallery', sprintf( __( '%1$s Image Gallery', 't_em' ), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_image_gallery';
 
-		if ( is_active_widget(false, false, $this->id_base) )
-			add_action( 'wp_head', array($this, 't_em_gallery_style') );
-
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
-	}
-
-	function t_em_gallery_style(){
-?>
-		<style type="text/css">
-			.row.t-em-img-gallery-row-wrapper{
-				margin: 0;
-			}
-			.t-em-img-gallery-row-wrapper{
-				margin-top: 15px;
-			}
-			figure.t-em-img-gallery-thumbnail,
-			.t-em-img-gallery-thumbnail img{
-				max-width: 100%;
-				width: auto;
-			}
-			.t-em-img-gallery-thumbnail img{
-				margin-bottom: 20px;
-			}
-			.t-em-img-gallery-thumbnail figcaption{
-				display: none;
-			}
-			.t-em-img-gallery-row-wrapper .col-md-6.thumbnail{
-				margin: 0 2.5% 2.5%;
-				max-width: 45%;
-			}
-			.t-em-img-gallery-row-wrapper .col-md-4.thumbnail{
-				margin: 0 1.5% 1.5%;
-				max-width: 30%;
-			}
-		@media( max-width: 767px ){
-				.t-em-img-gallery-row-wrapper{
-					margin: 1% 0 auto 0;
-				}
-				.t-em-img-gallery-thumbnail img{
-					margin-left: 3%;
-					width: 97%;
-				}
-				.t-em-img-gallery-thumbnail img:first-child{
-					margin-left: 0;
-				}
-				/** Fix one columns widget, displayed in two columns */
-				.t-em-img-gallery-row-wrapper.t-em-one-column-gallery{
-					float: left;
-					width: 50%;
-				}
-				/** Fix two columns widget */
-				.t-em-img-gallery-row-wrapper > div.col-md-6{
-					float: left;
-					width: 50%;
-				}
-				/** Fix three columns widget */
-				.t-em-img-gallery-row-wrapper > div.col-md-4{
-					float: left;
-					width: 33%;
-				}
-			}
-		</style>
-<?php
 	}
 
 	function widget($args, $instance) {
@@ -452,8 +390,8 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
 					$span = 12 / $instance['columns'];
-					echo '<div class="col-md-'. $span .'">';
-						t_em_featured_post_thumbnail( 500, 500, 't-em-img-gallery-thumbnail' );
+					echo '<div class="col-xs-'. $span .' col-md-'. $span .'">';
+						t_em_featured_post_thumbnail( 768, 768, 't-em-img-gallery-thumbnail' );
 					echo '</div>';
 					$i++;
 				endwhile;
@@ -613,7 +551,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'author_name_url' => false, 'title' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'author_name_url' => false, 'avatar' => true, 'title' => '' ) );
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : get_option( 'posts_per_page' );
 		$author_name_url = isset( $instance['author_name_url'] ) ? (bool) $instance['author_name_url'] : false;
@@ -841,7 +779,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 	}
 
 	function form( $instance ){
-		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'orderby' => 'display_name', 'order' => 'ASC', 'exclude' => '', 'title' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'number' => get_option( 'posts_per_page' ), 'orderby' => 'display_name', 'order' => 'ASC', 'exclude' => '', 'avatar' => false, 'title' => '' ) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : false;

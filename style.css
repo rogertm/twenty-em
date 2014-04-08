@@ -430,6 +430,14 @@ ul.sub-menu li a{
 .t-em-popular-post-wrapper .t-em-popular-post-title{
 	font-weight: bold;
 }
+figure.t-em-img-gallery-thumbnail,
+.t-em-img-gallery-thumbnail img{
+	max-width: 100%;
+	width: auto;
+}
+.t-em-img-gallery-thumbnail img{
+	margin-bottom: 20px;
+}
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
