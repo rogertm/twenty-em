@@ -150,7 +150,7 @@ function t_em_theme_backup(){
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php echo wp_get_theme() . ' ' . __( 'Backup', 't_em' ); ?></h2>
+		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . __( 'Backup', 't_em' ); ?></h2>
 		<section id="export-settings">
 			<h3><?php _e( 'Export Settings', 't_em' ); ?></h3>
 			<?php t_em_backup_notice(); ?>
