@@ -874,7 +874,6 @@ function t_em_author_meta(){
 	endif;
 }
 endif;
-add_action( 't_em_post_content_after', 't_em_author_meta' );
 
 if ( ! function_exists( 't_em_category_description' ) ) :
 /**
@@ -1468,27 +1467,20 @@ function t_em_single_related_posts() {
 		$all_posts = get_posts( $related_post_args );
 		if ( ! empty( $all_posts ) ) :
 ?>
-			<h3><?php _e( 'Related Posts', 't_em' ); ?></h3>
-			<ul>
-<?php
-			foreach( $all_posts as $post ) :
-				setup_postdata( $post );
-?>
+		<section id="related-posts">
+			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
+			<ul class="related-posts-list">
+		<?php foreach( $all_posts as $post ) : setup_postdata( $post ); ?>
 				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-<?php
-			endforeach;
-		wp_reset_query();
-?>
+		<?php endforeach; wp_reset_query(); ?>
 			</ul>
+		<?php else : ?>
+			<h3 class="related-posts-title"><?php _e( 'No Related Posts', 't_em' ); ?></h3>
+<?php 	endif; ?>
+		</section>
 <?php
-		else :
-?>
-			<h3><?php _e( 'No Related Posts', 't_em' ); ?></h3>
-<?php
-		endif;
 	endif;
 }
-add_action( 't_em_post_after', 't_em_single_related_posts' );
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
