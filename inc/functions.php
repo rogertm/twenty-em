@@ -1427,6 +1427,7 @@ function t_em_hook_user_social_network(){
 /**
  * Show related posts to the current single post if it's set by the user in "General Options" in
  * admin theme options page.
+ * This function is attached to the t_em_post_after() action hook.
  *
  * @global $t_em
  *
@@ -1437,60 +1438,57 @@ function t_em_hook_user_social_network(){
 function t_em_single_related_posts() {
 	global $t_em;
 	if ( '1' == $t_em['single_related_posts'] ) :
-		global $wpdb, $post;
+		global $post;
+		$category_terms = get_the_terms( $post->ID, 'category' );
+		$tag_terms = get_the_terms( $post->ID, 'post_tag' );
 
-		$now = current_time('mysql', 1);
-		$tags = wp_get_post_tags($post->ID);
+		$limit = 9;
+		$post_category_terms = array();
+		$post_tag_terms = array();
 
-		// If there are no tags, nothing happen
-		if ( ! empty($tags) ) :
+		if ( $category_terms ) :
+			foreach ( $category_terms as $cat_term ) :
+				array_push($post_category_terms, $cat_term->term_id);
+			endforeach;
+		endif;
+		if ( $tag_terms ) :
+			foreach ( $tag_terms as $tag_term ) :
+				array_push($post_tag_terms, $tag_term->term_id);
+			endforeach;
+		endif;
 
-			$taglist = "'" . $tags[0]->term_id. "'";
+		$related_post_args = array(
+				'posts_per_page'	=> $limit,
+				'category__in'		=> $post_category_terms,
+				'tag__in'			=> $post_tag_terms,
+				'post__not_in'		=> array( $post->ID ),
+				'post_status'		=> 'publish',
+			);
 
-			$tagcount = count($tags);
-			if ($tagcount > 1) :
-				for ($i = 1; $i < $tagcount; $i++) :
-					$taglist = $taglist . ", '" . $tags[$i]->term_id . "'";
-				endfor;
-			endif;
-
-			$query = "SELECT ID, post_title, post_date, comment_count, count(object_id) as cnt
-					  FROM $wpdb->term_taxonomy, $wpdb->term_relationships, $wpdb->posts
-					  WHERE taxonomy ='post_tag'
-					  AND $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->term_relationships.term_taxonomy_id
-					  AND object_id = ID
-					  AND (term_id IN ($taglist))
-					  AND ID != $post->ID
-					  AND post_status = 'publish'
-					  AND post_date_gmt < '$now'
-					  GROUP BY object_id
-					  ORDER BY cnt DESC, post_date_gmt DESC
-					  LIMIT 9;";
-
-			$related_posts = $wpdb->get_results($query);
-
-			if ( empty( $related_posts ) ) :
-				$output = '<h3 id="related-posts-title">'. __( 'No Related Posts', 't_em' ) .'</h3>';
-			else :
-				$output = '';
-				foreach ($related_posts as $related_post ) :
-					$output .= '<li>';
-					$output .= '<a href="'.get_permalink($related_post->ID).'" id="related-post-'.$related_post->ID.'" title="'.$related_post->post_title.'">';
-					$output .= wptexturize($related_post->post_title);
-					$output .= '</a>';
-					$output .= '</li>';
-				endforeach;
-
-				$output = '<ul class="related-posts-list">'.$output.'</ul>';
-				$output = '<h3 id="related-posts-title">'. __( 'Related Posts:', 't_em' ) .'</h3>'.$output;
-				$output = '<section id="related-posts">'.$output.'</section>';
-			endif;
-
-			echo $output;
-
+		$all_posts = get_posts( $related_post_args );
+		if ( ! empty( $all_posts ) ) :
+?>
+			<h3><?php _e( 'Related Posts', 't_em' ); ?></h3>
+			<ul>
+<?php
+			foreach( $all_posts as $post ) :
+				setup_postdata( $post );
+?>
+				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+<?php
+			endforeach;
+		wp_reset_query();
+?>
+			</ul>
+<?php
+		else :
+?>
+			<h3><?php _e( 'No Related Posts', 't_em' ); ?></h3>
+<?php
 		endif;
 	endif;
 }
+add_action( 't_em_post_after', 't_em_single_related_posts' );
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
@@ -1883,7 +1881,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 ?>
 	<div id="top-menu" role="navigation">
 		<nav class="navbar navbar-t-em-inverse">
-			<div class="container">
+			<div class="wrapper container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
