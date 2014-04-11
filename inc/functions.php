@@ -1457,24 +1457,34 @@ function t_em_single_related_posts() {
 		endif;
 
 		$related_post_args = array(
-				'posts_per_page'	=> $limit,
-				'category__in'		=> $post_category_terms,
-				'tag__in'			=> $post_tag_terms,
-				'post__not_in'		=> array( $post->ID ),
-				'post_status'		=> 'publish',
-			);
-
+			'posts_per_page'	=> $limit,
+			'post__not_in'		=> array( $post->ID ),
+			'post_status'		=> 'publish',
+			'tax_query'			=> array(
+				'relation'		=> 'OR',
+				array(
+					'taxonomy'	=> 'category',
+					'field'		=> 'id',
+					'terms'		=> $post_category_terms,
+				),
+				array(
+					'taxonomy'	=> 'post_tag',
+					'field'		=> 'id',
+					'terms'		=> $post_tag_terms,
+				),
+			),
+		);
 		$all_posts = get_posts( $related_post_args );
-		if ( ! empty( $all_posts ) ) :
 ?>
 		<section id="related-posts">
+<?php 	if ( ! empty( $all_posts ) ) : ?>
 			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
 			<ul class="related-posts-list">
 		<?php foreach( $all_posts as $post ) : setup_postdata( $post ); ?>
 				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
-		<?php else : ?>
+<?php 	else : ?>
 			<h3 class="related-posts-title"><?php _e( 'No Related Posts', 't_em' ); ?></h3>
 <?php 	endif; ?>
 		</section>
