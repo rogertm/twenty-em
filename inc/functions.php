@@ -1091,7 +1091,6 @@ function t_em_page_navi(){
 				'end_size'	=> 1,
 				'mid_size'	=> 2,
 				'type'		=> 'list',
-				'add_args'	=> array_map( 'urlencode', $query_args ),
 				'prev_text'	=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
 				'next_text'	=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
 			) );
