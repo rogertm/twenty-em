@@ -461,7 +461,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 't_em_recent_comments', 'description' => __( 'The most recent comments', 't_em' ) );
-		parent::__construct('t_em_recent_comments', sprintf( __('%1$s Recent Comments'), '[T&#8217;em]' ), $widget_ops);
+		parent::__construct('t_em_recent_comments', sprintf( __('%1$s Recent Comments', 't_em'), '[T&#8217;em]' ), $widget_ops);
 		$this->alt_option_name = 't_em_recent_comments';
 
 		add_action( 'comment_post', array($this, 'flush_widget_cache') );
@@ -491,7 +491,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 
  		extract($args, EXTR_SKIP);
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 't_em' );
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : get_option( 'posts_per_page' );
 		if ( ! $number )
@@ -557,10 +557,10 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		$author_name_url = isset( $instance['author_name_url'] ) ? (bool) $instance['author_name_url'] : false;
 		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : true;
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 't_em' ); ?></label>
 		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'author_name_url' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'author_name_url' ) ?>" <?php checked( $author_name_url ) ?>>
@@ -805,9 +805,9 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of users to show:', 't_em' ); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 		<p>
-			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
+			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:', 't_em' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Users IDs, separated by commas.' ); ?></small>
+			<small><?php _e( 'Users IDs, separated by commas.', 't_em' ); ?></small>
 		</p>
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
 		<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>

@@ -161,7 +161,7 @@ function t_em_settings_archive_pagination(){
 		),
 		'page-navi'	=> array(
 			'value'	=> 'page-navi',
-			'label'	=> __( 'Display a paginated list of links <code>« Newer 1 … 3 4 5 6 7 … 9 Older »</code>', 't_em' ),
+			'label'	=> __( 'Display a paginated list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 &hellip; 9 Older &raquo;</code>', 't_em' ),
 		),
 	);
 

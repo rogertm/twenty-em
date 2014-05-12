@@ -47,7 +47,7 @@ $t_em_theme_data = array (
  */
 
 // Twenty'em Version
-define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
+define ( 'T_EM_FRAMEWORK_NAME',											'Twenty&#8217;em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 
