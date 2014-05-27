@@ -13,80 +13,22 @@
  */
 
 get_header(); ?>
-<?php
-if ( 'wp-front-page' == $t_em['front_page_set'] ) :
-?>
 			<section id="main-content" class="<?php echo t_em_add_bootstrap_class('main-content'); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-				<?php t_em_content_before(); ?>
-<?php
-	// If our front page is a static page, we load it
-	$front_page = get_option( 'show_on_front' ) ;
-	if ( 'page' == $front_page ) :
-
-		if ( have_posts() ) :
-			while ( have_posts() ) :
-				the_post();
-?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<header>
-						<?php if ( is_front_page() ) : ?>
-							<h2 class="page-header"><?php the_title(); ?></h2>
-						<?php else : ?>
-							<h1 class="page-header"><?php the_title(); ?></h1>
-						<?php endif; ?>
-						</header>
-						<div class="entry-content">
-							<?php the_content(); ?>
-							<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
-							<?php t_em_edit_post_link(); ?>
-						</div><!-- .entry-content -->
-					</article><!-- #post-## -->
-<?php
-			endwhile;
-		endif; // have_posts()
-	// Else, we display a list of post
-	else :
-		if ( have_posts() ) :
-?>
-			<div class="row">
-<?php
-			$i = 0;
-			while ( have_posts() ) : the_post();
-				if ( 0 == $i % $t_em['archive_in_columns'] ) :
-					echo '</div>';
-					echo '<div class="row">';
-				endif;
-				get_template_part( 'content', get_post_format() );
-				$i++;
-			endwhile;
-		?>
-			</div><!-- .row -->
-		<?php
-		else :
-			get_template_part( 'content', 'none' );
-		endif;
-	endif;
-?>
-					<?php t_em_content_after(); ?>
+<?php if ( 'wp-front-page' == $t_em['front_page_set'] ) :
+					t_em_hook_content_before();
+					t_em_hook_wp_front_page();
+					t_em_hook_content_after(); ?>
 				</section><!-- #content -->
-				<?php get_sidebar(); // We display the sidebar just in an ordinary WordPress front page ?>
+				<?php get_sidebar(); ?>
 			</section><!-- #main-content -->
 			<?php get_sidebar( 'alt' ); ?>
-<?php
-elseif ( 'widgets-front-page' == $t_em['front_page_set'] ) :
-?>
-			<section id="main-content">
-				<section id="content" role="main">
-					<?php t_em_front_page_widgets_before(); ?>
-					<section id="featured-widget-area">
-						<?php t_em_front_page_widgets_inside_before(); ?>
-						<?php t_em_display_front_page_widgets(); ?>
-						<?php t_em_front_page_widgets_inside_after(); ?>
-					</section><!-- #featured-widget-area -->
-					<?php t_em_front_page_widgets_after(); ?>
+<?php elseif ( 'widgets-front-page' == $t_em['front_page_set'] ) :
+					t_em_hook_custom_front_page_before();
+					t_em_hook_custom_front_page();
+					t_em_hook_custom_front_page_after(); ?>
 				</section><!-- #content -->
-			</section><!-- #main-content-->
+			</section><!-- #main-content -->
 <?php endif; ?>
 
 <?php get_footer(); ?>

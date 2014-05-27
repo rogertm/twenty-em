@@ -71,14 +71,13 @@ function t_em_front_page_jawpfp_callback(){
 }
 
 /**
- * Extend setting for Front Page Text Widgets in Twenty'em admin panel
- * Reference via t_em_front_page_options()
+ * Return an array of Front Page Text Widgets Options for Twenty'em admin panel.
  *
- * @since Twenty'em 1.0
+ * @return array
+ *
+ * @since Twenty'em 0.1
  */
-function t_em_front_page_witgets_callback(){
-	global 	$t_em;
-
+function t_em_front_page_widgets_options(){
 	$front_page_widgets = array (
 		'text_widget_one' => array (
 			'name'			=> 'text_widget_one',
@@ -98,8 +97,20 @@ function t_em_front_page_witgets_callback(){
 		),
 	);
 
+	return apply_filters( 't_em_front_page_widgets_options', $front_page_widgets );
+}
+
+/**
+ * Extend setting for Front Page Text Widgets in Twenty'em admin panel
+ * Reference via t_em_front_page_options()
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_front_page_witgets_callback(){
+	global 	$t_em;
+
 	$extend_front_page = '';
-	foreach ( $front_page_widgets as $widget ) :
+	foreach ( t_em_front_page_widgets_options() as $widget ) :
 		$extend_front_page .= '<div id="' . $widget['name'] . '" class="layout text-option front-page">';
 		$extend_front_page .= 	'<p>' . $widget['label'] . '</p>';
 		$extend_front_page .= 	'<label><span>' . __( 'Headline', 't_em' ) .'</span>';
@@ -113,6 +124,9 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
 		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em['thumbnail_src_'.$widget['name']] . '" />';
+		$extend_front_page .= 	'</label>';
+		$extend_front_page .= 	'<label><span>' . __( 'Link button text', 't_em' ) . '</span>';
+		$extend_front_page .= 		'<input type="text" class="regular-text" name="t_em_theme_options[link_button_text_' . $widget['name'] . ']" value="' . $t_em['link_button_text_'.$widget['name']] . '" />';
 		$extend_front_page .= 	'</label>';
 		$extend_front_page .= 	'<label><span>' . __( 'Link URL', 't_em' ) . '</span>';
 		$extend_front_page .= 		'<input type="url" class="regular-text" name="t_em_theme_options[link_url_' . $widget['name'] . ']" value="' . $t_em['link_url_'.$widget['name']] . '" />';

@@ -47,7 +47,7 @@ $t_em_theme_data = array (
  */
 
 // Twenty'em Version
-define ( 'T_EM_FRAMEWORK_NAME',											'Twenty&#8217;em' );
+define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 
@@ -92,4 +92,6 @@ if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE' ) )				define( 'T_EM_NIVO_A
 if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE', 1000 );
 if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE', 100 );
 
+if ( ! defined( 'T_EM_HEADER_IMAGE_WIDTH' ) )							define( 'T_EM_HEADER_IMAGE_WIDTH', 1600 );
+if ( ! defined( 'T_EM_HEADER_IMAGE_HEIGHT' ) )							define( 'T_EM_HEADER_IMAGE_HEIGHT', 560 );
 ?>

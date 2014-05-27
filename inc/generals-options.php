@@ -26,28 +26,33 @@ function t_em_general_options(){
 	$general_options = array (
 		't_em_link'				=> array (
 			'name'			=> 't_em_link',
-			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site?', 't_em' ), 'http://twenty-em.com' ),
+			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), 'http://twenty-em.com' ),
 			'sublabel'		=> '',
 		),
 		'single_featured_img'	=> array (
 			'name'			=> 'single_featured_img',
-			'label'			=> __( 'When a single post is displayed, show featured image on top of the post?', 't_em' ),
+			'label'			=> __( 'Show featured image on top of the post when a single post is displayed', 't_em' ),
 			'sublabel'		=> '',
 		),
 		'single_related_posts'	=> array (
 			'name'			=> 'single_related_posts',
-			'label'			=> __( 'When a single post is displayed, show related posts?', 't_em' ),
+			'label'			=> __( 'When a single post is displayed, show related posts', 't_em' ),
 			'sublabel'		=> '',
 		),
 		'breadcrumb_path'		=> array (
 			'name'			=> 'breadcrumb_path',
-			'label'			=> __( 'Display a breadcrumb path?', 't_em' ),
+			'label'			=> __( 'Display a breadcrumb path', 't_em' ),
 			'sublabel'		=> '',
 		),
 		'separate_comments_pings_tracks'	=> array (
 			'name'			=> 'separate_comments_pings_tracks',
-			'label'			=> __( 'Separate comments from pingbacks and trackbacks?', 't_em' ),
+			'label'			=> __( 'Separate comments from pingbacks and trackbacks', 't_em' ),
 			'sublabel'		=> sprintf( __( 'For a best performances of this option, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ), admin_url( 'options-discussion.php#page_comments' ) ),
+		),
+		'custom_avatar'		=> array (
+			'name'			=> 'custom_avatar',
+			'label'			=> __( 'Enable custom avatar', 't_em' ),
+			'sublabel'		=> '',
 		),
 	);
 

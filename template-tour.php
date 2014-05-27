@@ -18,9 +18,7 @@ get_header(); ?>
 
 		<section id="main-content">
 			<section id="content" role="main">
-				<?php t_em_content_before(); ?>
-
-				<?php t_em_template_content(); ?>
+				<?php t_em_hook_content_before(); ?>
 <?php
 	// Display all child pages of current page.
 	$args = array (
@@ -68,7 +66,7 @@ get_header(); ?>
 					</div><!-- .tab-content -->
 				</div><!-- .tabbable .tabs-left -->
 
-				<?php t_em_content_after(); ?>
+				<?php t_em_hook_content_after(); ?>
 			</section><!-- #content -->
 		</section>
 

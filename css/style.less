@@ -53,8 +53,8 @@
 
 // Front Page
 .front-page-widget-caption{
-	color: @gray-dark;
-	padding: 9px;
+	// color: @gray-dark;
+	// padding: 9px;
 }
 
 // Buttons
@@ -86,21 +86,34 @@
 .entry-format{
 	.pull-left;
 	width: 100%;
+	margin: 15px 0 10px;
 }
 .author-info.author-archive{
 	.well;
 }
 
 // Front Page text widgets
-#front-page-widget-two,
-#front-page-widget-three,
-#front-page-widget-four{
-	.thumbnail;
+#front-page-widget-one{
+	.jumbotron;
+}
+#front-page-widget-one header{
+	font-size: (@font-size-base * 4.5);
 }
 #front-page-widget-one .btn{
 	.btn-primary;
 	.btn-lg;
 }
+#front-page-widget-two,
+#front-page-widget-three,
+#front-page-widget-four{
+	.thumbnail;
+}
+#front-page-widget-two header,
+#front-page-widget-three header,
+#front-page-widget-four header{
+	.h3;
+}
+
 #front-page-widget-two .btn,
 #front-page-widget-three .btn,
 #front-page-widget-four .btn{
@@ -174,7 +187,7 @@
 	.small;
 	color: @headings-small-color;
 }
-#category-description{
+#term-description{
 	.lead;
 }
 .widget-title{
@@ -450,6 +463,9 @@
 
 /* =Templates
 -------------------------------------------------------------- */
+.custom-template-content .entry-content{
+	.lead;
+}
 .contributor .contributor-posts-link,
 .contributor .contributor-url{
 	.btn;

@@ -1,7 +1,7 @@
 /**
  * Theme Name:	Twenty’em
  * Theme URI:	http://twenty-em.com/
- * Description:	A HTML5 & CSS3 WordPress theme/framework for developers. Great for Child Themes's creation
+ * Description:	A HTML5 &amp; CSS3 WordPress theme/framework for developers. Great for Child Twenty’em creation
  * Author:		RogerTM
  * Author URI:	http://blog.rogertm.com/
  * Version:		1.0-Beta
@@ -143,11 +143,6 @@ noscript {
 #branding{
 	padding-bottom: 20px;
 }
-#site-title {
-	font-size: 63px;
-	margin: 0;
-	line-height: 1.5;
-}
 #site-title a {
 	text-decoration: none;
 }
@@ -260,6 +255,14 @@ ul.sub-menu li a{
 }
 .more-link{
 	display: table;
+}
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
 }
 
 /* =Content Layout

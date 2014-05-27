@@ -55,6 +55,7 @@ function t_em_theme_options_help(){
 						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Separate comments from pingbacks and trackbacks</strong>: Display pingbacks and trackbacks in a different list at the end of all comments. For this option works properly, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ),
 								 admin_url( 'options-discussion.php#page_comments' ) ) . '</li>' .
+						'<li>' . __( '<strong>Custom avatar</strong>: Add custom avatar option to users edit screen', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s" target="_blank">Upload</a> and/or select from your <a href="%2$s" target="_blank">Media Library</a> a favicon to your site.', 't_em' ),
 								 admin_url( 'media-new.php' ),
 								 admin_url( 'upload.php' ) ) . '</li>' .

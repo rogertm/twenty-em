@@ -7,23 +7,21 @@
  * @since Twenty'em 0.1
  */
 ?>
-
+		<?php t_em_hook_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_add_bootstrap_class( 'archive-columns' ) ); ?>>
+			<?php t_em_hook_post_inside_before(); ?>
 			<header class="entry-header">
-				<?php if ( is_sticky() ) : ?>
-					<span class="entry-format"><span class="icomoon-pin icomoon"></span><?php _e( 'Featured', 't_em' ); ?></span>
-				<?php endif; ?>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 				<span class="entry-meta">
 					<?php t_em_posted_on(); ?>
 				</span><!-- .entry-meta -->
 			</header>
-
 			<?php t_em_post_archive_set(); ?>
-
 			<footer class="entry-utility">
 				<?php t_em_posted_in(); ?>
 				<?php t_em_comments_link(); ?>
 				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
+			<?php t_em_hook_post_inside_after(); ?>
 		</article><!-- #post-## -->
+		<?php t_em_hook_post_after(); ?>

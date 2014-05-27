@@ -27,7 +27,6 @@ require_once( T_EM_INC_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
 require_once( T_EM_INC_DIR_PATH . '/help.php' );
 require_once( T_EM_INC_DIR_PATH . '/hooks.php' );
-require_once( T_EM_INC_DIR_PATH . '/hooks-actions.php' );
 
 
 /**
@@ -156,6 +155,7 @@ function t_em_default_theme_options(){
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
 		'separate_comments_pings_tracks'				=> '1',
+		'custom_avatar'									=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
@@ -193,21 +193,25 @@ function t_em_default_theme_options(){
 		'content_text_widget_one'						=> '',
 		'icon_class_text_widget_one'					=> '',
 		'thumbnail_src_text_widget_one'					=> '',
+		'link_button_text_text_widget_one'				=> '',
 		'link_url_text_widget_one'						=> '',
 		'headline_text_widget_two'						=> '',
 		'content_text_widget_two'						=> '',
 		'icon_class_text_widget_two'					=> '',
 		'thumbnail_src_text_widget_two'					=> '',
+		'link_button_text_text_widget_two'				=> '',
 		'link_url_text_widget_two'						=> '',
 		'headline_text_widget_three'					=> '',
 		'content_text_widget_three'						=> '',
 		'icon_class_text_widget_three'					=> '',
 		'thumbnail_src_text_widget_three'				=> '',
+		'link_button_text_text_widget_three'			=> '',
 		'link_url_text_widget_three'					=> '',
 		'headline_text_widget_four'						=> '',
 		'content_text_widget_four'						=> '',
 		'icon_class_text_widget_four'					=> '',
 		'thumbnail_src_text_widget_four'				=> '',
+		'link_button_text_text_widget_four'				=> '',
 		'link_url_text_widget_four'						=> '',
 		// Archive Options
 		'archive_set'									=> 'the-content',
@@ -258,35 +262,6 @@ function t_em_default_theme_options(){
 }
 
 /**
- * Return Width and Height text boxes for thumbnails in forms
- *
- * @param string $contex Require In which form ($contex) you want to use this function.
- * Example: You have a new slider plugin, and you want set Width and Height for yours thumbnail in
- * slideshow. So, you may call this function like this: $thumb = t_em_thumbnail_sizes( 'slideshow' );
- * See t_em_excerpt_callback() in /inc/archive-options.php file
- *
- * @return array
- *
- * @since Twenty'em 0.1
- */
-function t_em_thumbnail_sizes( $contex ){
-	$thumbnail_sizes = array (
-		'excerpt_thumbnail_width' => array(
-			'value' => '',
-			'name' => $contex . '_thumbnail_width',
-			'label' => __( 'Width', 't_em' ),
-		),
-		'excerpt_thumbnail_height' => array(
-			'value' => '',
-			'name' => $contex . '_thumbnail_height',
-			'label' => __( 'Height', 't_em' ),
-		),
-	);
-
-	return $thumbnail_sizes;
-}
-
-/**
  * Return the whole configuration for Theme Options stored in the data base.
  * Referenced via t_em_restore_from_scratch() in /inc/theme-options.php file.
  *
@@ -323,7 +298,6 @@ function t_em_theme_options_page(){
 				submit_button();
 			?>
 		</form>
-	<?php // endif; ?>
 	</div><!-- .wrap -->
 <?php
 }
@@ -348,6 +322,7 @@ function t_em_theme_options_validate( $input ){
 			'single_related_posts',
 			'breadcrumb_path',
 			'separate_comments_pings_tracks',
+			'custom_avatar',
 			'header_featured_image',
 			'slider_home_only',
 			'bootstrap_carousel_pause',
@@ -556,6 +531,10 @@ function t_em_theme_options_validate( $input ){
 			'static_header_primary_button_icon_class',
 			'static_header_secondary_button_text',
 			'static_header_secondary_button_icon_class',
+			'link_button_text_text_widget_one',
+			'link_button_text_text_widget_two',
+			'link_button_text_text_widget_three',
+			'link_button_text_text_widget_four',
 		) as $text_field ) :
 			$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
 		endforeach;
@@ -589,85 +568,6 @@ function t_em_theme_options_validate( $input ){
 		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );
 	endif;
 }
-
-/**
- * Add Twenty'em layout clases to the array of boddy clases
- *
- * @since Twenty'em 0.1
- */
-function t_em_layout_classes( $existing_classes ){
-	global $t_em;
-	$layout_set = $t_em['layout_set'];
-	$static_header_set = $t_em['static_header_text'];
-
-	// In front page and 'front-page-set => widgets-front-page' one column is enogh
-	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
-		$classes = array ( 'one-column' );
-	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
-		$classes = array ( 'two-column' );
-	elseif ( in_array( $layout_set, array( 'three-column-content-left', 'three-column-content-right', 'three-column-content-middle' ) ) ) :
-		$classes = array ( 'three-column' );
-	else :
-		$classes = array ( 'one-column' );
-	endif;
-
-	if ( 'static-header-text-right' == $static_header_set )
-		$static_header_classes = 'static-header-text-right';
-	elseif ( 'static-header-text-left' == $static_header_set )
-		$static_header_classes = 'static-header-text-left';
-	else
-		$static_header_classes = '';
-		$classes[] = $static_header_classes;
-
-	if ( 'two-column-content-left' == $layout_set )
-		$classes[] = 'two-column-content-left';
-	elseif ( 'two-column-content-right' == $layout_set )
-		$classes[] = 'two-column-content-right';
-	elseif ( 'three-column-content-left' == $layout_set )
-		$classes[] = 'three-column-content-left';
-	elseif ( 'three-column-content-right' == $layout_set )
-		$classes[] = 'three-column-content-right';
-	elseif ( 'three-column-content-middle' == $layout_set )
-		$classes[] = 'three-column-content-middle';
-	else
-		$classes[] = $layout_set;
-
-	$classes[] = $t_em['slider_text'];
-
-	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
-
-	return array_merge( $existing_classes, $classes );
-}
-add_filter( 'body_class', 't_em_layout_classes' );
-
-/**
- * Add Twenty'em archive classes to the array of posts classes
- *
- * @since Twenty'em 0.1
- */
-function t_em_archive_classes( $existing_classes ){
-	global $t_em;
-	$archive_set = $t_em['archive_set'];
-	$excerpt_set = $t_em['excerpt_set'];
-
-	if ( 'the-excerpt' == $archive_set ) :
-		if ( 'thumbnail-left' == $excerpt_set ) :
-			$classes[] = 'thumbnail-left';
-		elseif ( 'thumbnail-right' == $excerpt_set ) :
-			$classes[] = 'thumbnail-right';
-		else :
-			$classes[] = 'thumbnail-center';
-		endif;
-		$classes[] = 'excerpt-post';
-	else :
-		$classes[] = 'full-post';
-	endif;
-
-	$classes = apply_filters( 't_em_archive_classes', $classes, $archive_set );
-
-	return array_merge( $existing_classes, $classes );
-}
-add_filter( 'post_class', 't_em_archive_classes' );
 
 /**
  * Useful to generate an error code number when $input is totally null xD
