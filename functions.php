@@ -1387,7 +1387,7 @@ function t_em_header_options_set(){
 			t_em_static_header();
 	endif;
 }
-add_action( 't_em_hook_header_after', 't_em_header_options_set', 9 );
+add_action( 't_em_hook_header_after', 't_em_header_options_set', 5 );
 
 if ( ! function_exists( 't_em_header_image' ) ) :
 /**
