@@ -43,13 +43,13 @@ function t_em_enqueue_styles_and_scripts(){
 	// Register and enqueue Twitter Bootstrap JS Plugins
 	if ( 'slider' == $t_em['header_set'] ) :
 		if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
+			wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+			wp_enqueue_script( 'bootstrap-transition' );
 			wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/carousel.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 			wp_enqueue_script( 'bootstrap-carousel' );
 			wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
 			wp_enqueue_script( 'bootstrap-carousel-script' );
-
 		elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
-
 			wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
 			wp_enqueue_style( 'style-nivo-slider' );
 			wp_register_style( 'style-nivo-slider-theme-'.$t_em['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em['nivo_style'].'/'.$t_em['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
