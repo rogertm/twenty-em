@@ -1438,6 +1438,7 @@ if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
  */
 function t_em_slider_bootstrap_carousel(){
 	global	$post, $t_em;
+	$tmp_post = $post;
 	$slider_posts = get_posts( t_em_slider_query_args() );
 	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
@@ -1472,7 +1473,7 @@ function t_em_slider_bootstrap_carousel(){
 						<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
 					</div>
 				</div><!-- .item -->
-<?php 		endforeach; ?>
+<?php 		endforeach; $post = $tmp_post; ?>
 			</div><!-- .carousel-inner -->
 			<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
@@ -1522,6 +1523,7 @@ function t_em_slider_nivo_slider(){
 					<?php
 			endwhile;
 		endif;
+		wp_reset_query();
 		?>
 			</div><!-- #slider .nivoSlider -->
 		<?php

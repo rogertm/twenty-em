@@ -72,9 +72,9 @@ function t_em_layout_classes( $existing_classes ){
 	$layout_set = $t_em['layout_set'];
 	$static_header_set = $t_em['static_header_text'];
 
-	// In front page and 'front-page-set => widgets-front-page' one column is enogh
+	// In front page and 'front-page-set => widgets-front-page' one column is enough
 	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
-		$classes = array ( 'one-column' );
+		$classes = array ( 'one-column widgets-front-page' );
 	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
 		$classes = array ( 'two-column' );
 	elseif ( in_array( $layout_set, array( 'three-column-content-left', 'three-column-content-right', 'three-column-content-middle' ) ) ) :
