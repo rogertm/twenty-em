@@ -456,6 +456,7 @@ function t_em_page_menu_args( $args ) {
 }
 add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 
+if ( function_exists( 't_em_continue_reading_link' ) ) :
 /**
  * Returns a "Continue Reading" link for excerpts
  *
@@ -466,6 +467,7 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 function t_em_continue_reading_link() {
 	return '<a href="'. get_permalink() . '" class="more-link">' . __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) . '</a>';
 }
+endif;
 
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis
