@@ -1913,11 +1913,11 @@ function t_em_front_page_widgets(){
 
 		if ( $t_em['primary_button_link_'.$widget['name']] || $t_em['secondary_button_link_'.$widget['name']] ) :
 				$primary_button_link_url = ( $t_em['primary_button_link_'.$widget['name'].''] ) ?
-					'<a href="'. $t_em['primary_button_link_'.$widget['name'].''] .'" class="btn primary-button" title="'. $t_em['headline_'.$widget['name'].''] .'">
+					'<a href="'. $t_em['primary_button_link_'.$widget['name'].''] .'" class="btn primary-button" title="'. $primary_link_text .'">
 					<span class="'.$primary_link_icon_class.' icomoon"></span>'. $primary_link_text .'</a>' : null;
 
 				$secondary_button_link_url = ( $t_em['secondary_button_link_'.$widget['name'].''] ) ?
-					'<a href="'. $t_em['secondary_button_link_'.$widget['name'].''] .'" class="btn secondary-button" title="'. $t_em['headline_'.$widget['name'].''] .'">
+					'<a href="'. $t_em['secondary_button_link_'.$widget['name'].''] .'" class="btn secondary-button" title="'. $secondary_link_text .'">
 					<span class="'.$secondary_link_icon_class.' icomoon"></span>'. $secondary_link_text .'</a>' : null;
 
 			$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
