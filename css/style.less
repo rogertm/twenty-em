@@ -51,12 +51,6 @@
 	color: @headings-small-color;
 }
 
-// Front Page
-.front-page-widget-caption{
-	// color: @gray-dark;
-	// padding: 9px;
-}
-
 // Buttons
 .btn-t-em-inverse {
 	.button-variant(@btn-t-em-inverse-color; @btn-t-em-inverse-bg; @btn-t-em-inverse-border);
@@ -99,8 +93,12 @@
 #front-page-widget-one header{
 	font-size: (@font-size-base * 4.5);
 }
-#front-page-widget-one .btn{
+#front-page-widget-one .btn.primary-button{
 	.btn-primary;
+	.btn-lg;
+}
+#front-page-widget-one .btn.secondary-button{
+	.btn-t-em-inverse;
 	.btn-lg;
 }
 #front-page-widget-two,
@@ -113,10 +111,14 @@
 #front-page-widget-four header{
 	.h3;
 }
-
-#front-page-widget-two .btn,
-#front-page-widget-three .btn,
-#front-page-widget-four .btn{
+#front-page-widget-two .btn.primary-button,
+#front-page-widget-three .btn.primary-button,
+#front-page-widget-four .btn.primary-button{
+	.btn-primary;
+}
+#front-page-widget-two .btn.secondary-button,
+#front-page-widget-three .btn.secondary-button,
+#front-page-widget-four .btn.secondary-button{
 	.btn-default;
 }
 

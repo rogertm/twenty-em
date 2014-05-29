@@ -1894,8 +1894,8 @@ function t_em_front_page_widgets(){
 
 	foreach ( t_em_front_page_widgets_options() as $widget ) :
 		if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
-		$widget_icon_class	= ( $t_em['icon_class_'.$widget['name'].''] ) ?
-			'<span class="'. $t_em['icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
+		$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
+			'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
 
 		$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
 			'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. $t_em['headline_'.$widget['name'].''] .'" />' : '';
@@ -1906,11 +1906,18 @@ function t_em_front_page_widgets(){
 		$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
 			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
 
-		$widget_link_text	= ( $t_em['link_button_text_'.$widget['name'].''] ) ? $t_em['link_button_text_'.$widget['name'].''] : null;
+		$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
+		$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
+		$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
+		$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
 
-		$widget_link		= ( $t_em['link_url_'.$widget['name'].''] ) ?
-			'<footer><a href="'. $t_em['link_url_'.$widget['name'].''] .'" class="btn" title="'. $t_em['headline_'.$widget['name'].''] .'">
-			'. $widget_link_text .'</a></footer>' : '';
+		$widget_link		= ( $t_em['primary_button_link_'.$widget['name'].''] ) ?
+			'<footer>
+				<a href="'. $t_em['primary_button_link_'.$widget['name'].''] .'" class="btn primary-button" title="'. $t_em['headline_'.$widget['name'].''] .'">
+			<span class="'.$primary_link_icon_class.' icomoon"></span>'. $primary_link_text .'</a>
+				<a href="'. $t_em['secondary_button_link_'.$widget['name'].''] .'" class="btn secondary-button" title="'. $t_em['headline_'.$widget['name'].''] .'">
+			<span class="'.$secondary_link_icon_class.' icomoon"></span>'. $secondary_link_text .'</a>
+			</footer>' : '';
 
 		// First widget is a Jumbotron
 		$widget_cols = ( $widget['name'] != 'text_widget_one' ) ? t_em_add_bootstrap_class( 'featured-widget-area' ) : 'col-md-12';
