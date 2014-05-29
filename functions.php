@@ -456,7 +456,7 @@ function t_em_page_menu_args( $args ) {
 }
 add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
 
-if ( function_exists( 't_em_continue_reading_link' ) ) :
+if ( ! function_exists( 't_em_continue_reading_link' ) ) :
 /**
  * Returns a "Continue Reading" link for excerpts
  *
