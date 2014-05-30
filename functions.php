@@ -1891,7 +1891,6 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  */
 function t_em_front_page_widgets(){
 	global $t_em;
-
 	foreach ( t_em_front_page_widgets_options() as $widget ) :
 		if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
 		$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
@@ -1907,18 +1906,20 @@ function t_em_front_page_widgets(){
 			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
 
 		$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
-		$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
 		$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
+		$primary_button_link 		= ( $t_em['primary_button_link_'.$widget['name']] ) ? $t_em['primary_button_link_'.$widget['name']] : null;
+		$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
 		$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
+		$secondary_button_link 		= ( $t_em['secondary_button_link_'.$widget['name']] ) ? $t_em['secondary_button_link_'.$widget['name']] : null;
 
-		if ( $t_em['primary_button_link_'.$widget['name']] || $t_em['secondary_button_link_'.$widget['name']] ) :
-				$primary_button_link_url = ( $t_em['primary_button_link_'.$widget['name'].''] ) ?
-					'<a href="'. $t_em['primary_button_link_'.$widget['name'].''] .'" class="btn primary-button" title="'. $primary_link_text .'">
-					<span class="'.$primary_link_icon_class.' icomoon"></span>'. $primary_link_text .'</a>' : null;
+		if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
+				$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
+					'<a href="'. $primary_button_link .'" class="btn primary-button" title="'. $primary_link_text .'">
+					<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
-				$secondary_button_link_url = ( $t_em['secondary_button_link_'.$widget['name'].''] ) ?
-					'<a href="'. $t_em['secondary_button_link_'.$widget['name'].''] .'" class="btn secondary-button" title="'. $secondary_link_text .'">
-					<span class="'.$secondary_link_icon_class.' icomoon"></span>'. $secondary_link_text .'</a>' : null;
+				$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
+					'<a href="'. $secondary_button_link .'" class="btn secondary-button" title="'. $secondary_link_text .'">
+					<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
 			$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
 		else :
@@ -1927,17 +1928,16 @@ function t_em_front_page_widgets(){
 
 		// First widget is a Jumbotron
 		$widget_cols = ( $widget['name'] != 'text_widget_one' ) ? t_em_add_bootstrap_class( 'featured-widget-area' ) : 'col-md-12';
-
 ?>
 		<div class="<?php echo $widget_cols; ?>">
-		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
-			<?php echo $widget_thumbnail_url; ?>
-			<div class="front-page-widget-caption caption">
-			<?php	echo $widget_headline;
-					echo $widget_content;
-					echo $widget_footer; ?>
+			<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
+				<?php echo $widget_thumbnail_url; ?>
+				<div class="front-page-widget-caption caption">
+				<?php	echo $widget_headline;
+						echo $widget_content;
+						echo $widget_footer; ?>
+				</div>
 			</div>
-		</div>
 		</div>
 <?php
 		endif;
