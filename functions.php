@@ -1569,31 +1569,31 @@ function t_em_static_header(){
 				</div><!-- #static-header-image -->
 <?php endif; ?>
 
-<?php if ( ! empty ( $t_em['static_header_headline'] )
-		|| ! empty ( $t_em['static_header_content'] )
-		|| ! empty ( $t_em['static_header_primary_button_text'] )
-		|| ! empty ( $t_em['static_header_secondary_button_text'] )
+<?php if ( $t_em['static_header_headline']
+		|| $t_em['static_header_content']
+		|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
+		|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
 	) : ?>
 				<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 					<h2><?php echo $t_em['static_header_headline']; ?></h2>
 					<div class="lead"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
 					<div class="actions">
-<?php if ( ! empty ( $t_em['static_header_primary_button_text'] ) ) : ?>
+<?php if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
 						<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 						<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
 							title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
 							class="btn primary-button">
 								<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
-								<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></a>
+								<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span></a>
 						</div>
 <?php endif; ?>
-<?php if ( ! empty ( $t_em['static_header_secondary_button_text'] ) ) : ?>
+<?php if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
 						<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
 						<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
 							title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
 							class="btn secondary-button">
 								<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
-								<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></a>
+								<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span></a>
 						</div>
 <?php endif; ?>
 					</div><!-- .actions -->
