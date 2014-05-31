@@ -222,6 +222,10 @@ ul.sub-menu li a{
 .entry-title a{
 	display: inline-block;
 }
+.entry-meta div,
+.entry-utility div{
+	display: inline;
+}
 .entry-meta span,
 .entry-utility span{
 	margin-right: 10px;
