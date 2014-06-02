@@ -1184,7 +1184,7 @@ function t_em_page_navi(){
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
 				$total_pages = $wp_query->max_num_pages;
 ?>
-				<span class="pages page-numbers sr-only"><?php echo sprintf( __( 'Page %1$s of %2$s', 't_em' ), $current_page, $total_pages ); ?></span>
+				<span class="pages page-numbers"><?php echo sprintf( __( 'Page %1$s of %2$s', 't_em' ), $current_page, $total_pages ); ?></span>
 				<?php echo $links; ?>
 <?php
 			endif;
