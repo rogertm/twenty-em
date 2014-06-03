@@ -615,13 +615,15 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 			<?php if ( $feedburner_description ) : ?>
 				<p><?php echo $feedburner_description; ?></p>
 			<?php endif; ?>
-			<div class="form-group">
+			<div class="input-group">
 				<label class="sr-only" for="email-address"><?php _e( 'Email address', 't_em' ); ?></label>
 				<input id="email-address" class="form-control" type="email" name="email" placeholder="<?php echo $feedburner_placeholder; ?>" required>
+				<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
+				<input type="hidden" name="loc" value="en_US"/>
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>"><span class="icomoon-envelope icomoon"></span></button>
+				</span>
 			</div>
-			<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
-			<input type="hidden" name="loc" value="en_US"/>
-			<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>"><span class="icomoon-envelope icomoon"></span></button>
 		</form>
 <?php
 		echo $after_widget;
