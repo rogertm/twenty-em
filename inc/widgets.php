@@ -605,7 +605,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Subscribe via FeedBurner', 't_em' ) : $instance['title'], $instance, $this->id_base );
 		$feedburner_uri = ( ! empty( $instance['feedburner_uri'] ) ) ? $instance['feedburner_uri'] : null;
 		$feedburner_description = ( ! empty( $instance['feedburner_description'] ) ) ? $instance['feedburner_description'] : null;
-		$feedburner_placeholder = ( ! empty( $instance['feedburner_placeholder'] ) ) ? $instance['feedburner_placeholder'] : __( 'Subscribe...', 't_em' );
+		$feedburner_placeholder = ( ! empty( $instance['feedburner_placeholder'] ) ) ? $instance['feedburner_placeholder'] : __( 'Subscribe', 't_em' );
 		$feedburner_action = 'http://feedburner.google.com/fb/a/mailverify';
 
 		echo $before_widget;
@@ -621,7 +621,10 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 				<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
 				<input type="hidden" name="loc" value="en_US"/>
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>"><span class="icomoon-envelope icomoon"></span></button>
+					<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>">
+						<span class="icomoon-envelope icomoon"></span>
+						<span class="label-btn"><?php echo $feedburner_placeholder; ?></span>
+					</button>
 				</span>
 			</div>
 		</form>

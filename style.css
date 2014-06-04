@@ -100,39 +100,11 @@ noscript {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-#twenty-em-credit{
-	padding-top: 20px;
-	font-style: italic;
-}
 
 /* =Iconography
 -------------------------------------------------------------- */
 .icomoon:before{
 	margin: 0 3px;
-}
-.icomoon.icon-default{
-	font-size: 14px;
-	margin: 0 3px 3px;
-}
-.icomoon.icon-medium{
-	font-size: 28px;
-	margin: 0 5px 5px;
-}
-.icomoon.icon-large{
-	font-size: 56px;
-	margin: 0 8px 8px;
-}
-.icomoon.icon-xlarge{
-	font-size: 112px;
-	margin: 0 10px 10px;
-}
-.icomoon.icon-xxlarge{
-	font-size: 168px;
-	margin: 0 15px 15px;
-}
-.icomoon.icon-xxxlarge{
-	font-size: 252px;
-	margin: 0 20px 20px;
 }
 
 /* =Header
@@ -158,19 +130,16 @@ noscript {
 }
 
 /* Static Header */
-#static-header .jumbotron{
-	margin-bottom: 0;
-	padding-top: 50px;
-	padding-bottom: 75px;
+#static-header{
+	margin-bottom: 0 !important;
+	background-color: #fff !important;
 }
 #static-header img{
 	padding: 0;
 	max-width: 100%;
 }
 #static-header .btn{
-	min-width: 85%;
 	margin-bottom: 20px;
-	overflow: hidden;
 }
 .static-header-text-left #static-header-text{
 	float: left;

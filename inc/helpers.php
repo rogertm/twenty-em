@@ -298,15 +298,6 @@ function t_em_add_bootstrap_class( $section ){
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
-	/** Static Header Buttons */
-	if ( 'static-header-button' == $section ) :
-		$static_header_primary_button = ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ? '1' : '0';
-		$static_header_secondary_button = ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ? '1' : '0';
-		$total_static_header_button = array_sum( array ( $static_header_primary_button, $static_header_secondary_button ) );
-		$cols = 12 / $total_static_header_button;
-		$bootstrap_classes = 'col-md-' . $cols;
-	endif;
-
 	/** Front Page Widgets Area */
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'featured-widget-area' == $section ) :

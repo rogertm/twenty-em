@@ -56,6 +56,32 @@
 	.button-variant(@btn-t-em-inverse-color; @btn-t-em-inverse-bg; @btn-t-em-inverse-border);
 }
 
+// Iconography
+.icomoon.icon-default{
+	font-size: 14px;
+	margin: 0 3px 3px;
+}
+.icomoon.icon-medium{
+	font-size: 28px;
+	margin: 0 5px 5px;
+}
+.icomoon.icon-large{
+	font-size: 56px;
+	margin: 0 8px 8px;
+}
+.icomoon.icon-xlarge{
+	font-size: 112px;
+	margin: 0 10px 10px;
+}
+.icomoon.icon-xxlarge{
+	font-size: 168px;
+	margin: 0 15px 15px;
+}
+.icomoon.icon-xxxlarge{
+	font-size: 252px;
+	margin: 0 20px 20px;
+}
+
 /* =Structure
 -------------------------------------------------------------- */
 .wrapper {
@@ -129,8 +155,8 @@
 	font-size: @site-title-size;
 }
 // Static Header
-#static-header-text .btn{
-	min-width: 75%;
+#static-header{
+	.jumbotron;
 }
 #static-header-text .btn.primary-button{
 	.btn-primary;
@@ -177,6 +203,10 @@
 #colophon .wrapper.container,
 #site-info .wrapper.container{
 	border-top: solid 1px @gray-lighter;
+}
+#twenty-em-credit{
+	.text-center;
+	.small;
 }
 
 /* =Typography
@@ -422,6 +452,10 @@
 
 /* =Forms
 -------------------------------------------------------------- */
+.label-btn{
+	.hidden;
+}
+
 // Lets go for Jetpack Contact Form -> .contact-form.commentsblock
 
 #commentform .comment-form-author,

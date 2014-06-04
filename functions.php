@@ -1444,9 +1444,10 @@ function t_em_slider_bootstrap_carousel(){
 	global	$post, $t_em;
 	$tmp_post = $post;
 	$slider_posts = get_posts( t_em_slider_query_args() );
+	$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
-	<section id="slider-carousel" data-ride="carousel" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide <?php echo $t_em['slider_text'] ?>">
+	<section id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide <?php echo $t_em['slider_text'] ?>">
 <?php 	if ( $slider_posts ) : ?>
 <?php 		$tp = count( $slider_posts ) ?>
 			<ol class="carousel-indicators">
@@ -1558,17 +1559,15 @@ if ( ! function_exists( 't_em_static_header' ) ) :
 function t_em_static_header(){
 	global $t_em;
 ?>
-	<section id="static-header" role="info">
-		<div class="wrapper container jumbotron">
-			<div class="row text-center">
+	<section id="static-header" class="wrapper container" role="info">
 <?php if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
-				<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
-					<figure>
-						<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
-							alt="<?php echo $t_em['static_header_headline']; ?>"
-							title="<?php echo $t_em['static_header_headline']; ?>">
-					</figure>
-				</div><!-- #static-header-image -->
+		<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+			<figure>
+				<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
+					alt="<?php echo $t_em['static_header_headline']; ?>"
+					title="<?php echo $t_em['static_header_headline']; ?>">
+			</figure>
+		</div><!-- #static-header-image -->
 <?php endif; ?>
 
 <?php if ( $t_em['static_header_headline']
@@ -1576,33 +1575,29 @@ function t_em_static_header(){
 		|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
 		|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
 	) : ?>
-				<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
-					<h2><?php echo $t_em['static_header_headline']; ?></h2>
-					<div class="lead"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
-					<div class="actions">
+		<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+			<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
+			<div class="lead"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
+			<footer class="actions">
 <?php if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
-						<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
-						<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
-							title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
-							class="btn primary-button">
-								<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
-								<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span></a>
-						</div>
+				<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
+					title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
+					class="btn primary-button">
+						<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
+						<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span>
+					</a>
 <?php endif; ?>
 <?php if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
-						<div class="<?php echo t_em_add_bootstrap_class( 'static-header-button' ); ?>">
-						<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
-							title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
-							class="btn secondary-button">
-								<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
-								<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span></a>
-						</div>
+				<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
+					title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
+					class="btn secondary-button">
+						<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
+						<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span>
+					</a>
 <?php endif; ?>
-					</div><!-- .actions -->
-				</div><!-- #static-header-text -->
+			</footer><!-- .actions -->
+		</div><!-- #static-header-text -->
 <?php endif; ?>
-			</div><!-- .row .text-center -->
-		</div><!-- -->
 	</section><!-- #static-header .container -->
 <?php
 }
@@ -1775,9 +1770,9 @@ endif;
  * @since Twenty'em 1.0
  */
 function t_em_display_user_social_network(){
-	t_em_user_social_network( 't-em', 'pull-right col-md-10 col-xs-12', 'text-right' );
+	t_em_user_social_network( 't-em', '', 'text-right' );
 }
-add_action( 't_em_hook_site_info', 't_em_display_user_social_network', 11 );
+add_action( 't_em_hook_site_info_right', 't_em_display_user_social_network' );
 
 if ( ! function_exists( 't_em_loop' ) ) :
 /**
@@ -2209,7 +2204,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 		</nav>
 	</div>
 <?php
-	add_action( 't_em_hook_footer', 't_em_navbar_js_script' );
+	add_action( 't_em_hook_foot', 't_em_navbar_js_script' );
 endif;
 }
 add_action( 't_em_hook_header_before', 't_em_top_menu' );
@@ -2242,7 +2237,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 		</div>
 	</div>
 <?php
-	add_action( 't_em_hook_footer', 't_em_navbar_js_script' );
+	add_action( 't_em_hook_foot', 't_em_navbar_js_script' );
 endif;
 }
 add_action( 't_em_hook_header_after', 't_em_navigation_menu' );
@@ -2256,12 +2251,12 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 		'theme_location'	=> 'footer-menu',
 		'container'			=> 'nav',
 		'container_id'		=> 'footer-menu',
-		'container_class'	=> 'col-md-10 col-xs-12 pull-right',
+		'container_class'	=> '',
 		'menu_class'		=> 'list-inline text-right menu',
 		'depth'				=> 1, ) );
 endif;
 }
-add_action( 't_em_hook_site_info', 't_em_footer_menu', 12 );
+add_action( 't_em_hook_site_info_right', 't_em_footer_menu', 15 );
 
 /**
  * Single post navigation. This function is attached to the t_em_hook_post_after action hook.
@@ -2278,7 +2273,7 @@ function t_em_single_navigation(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_post_after', 't_em_single_navigation', 9 );
+add_action( 't_em_hook_post_after', 't_em_single_navigation', 5 );
 
 /**
  * Comments navigation.
@@ -2304,14 +2299,14 @@ add_action( 't_em_hook_comments_list_after', 't_em_comments_pagination' );
  */
 function t_em_copy_right(){
 ?>
-	<div id="copyright" class="col-md-2 col-xs-12 pull-left">
+	<div id="copyright">
 		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<?php bloginfo( 'name' ); ?>
 		</a>
 	</div><!-- #copyright -->
 <?php
 }
-add_action( 't_em_hook_site_info', 't_em_copy_right' );
+add_action( 't_em_hook_site_info_left', 't_em_copy_right' );
 
 /**
  * Display Twenty'em.com link at bottom of the page. This function is attached to the t_em_hook_site_info
@@ -2321,7 +2316,7 @@ function t_em_dot_com_link(){
 global $t_em, $t_em_theme_data;
 $hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 ?>
-	<div id="twenty-em-credit" class="text-center small col-md-12 <?php echo $hidden_class ?>">
+	<div id="twenty-em-credit" class="<?php echo $hidden_class ?>">
 		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
 		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
 			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
@@ -2335,5 +2330,5 @@ $hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 	</div>
 <?php
 }
-add_action( 't_em_hook_site_info', 't_em_dot_com_link', 13 );
+add_action( 't_em_hook_site_info_after', 't_em_dot_com_link' );
 ?>

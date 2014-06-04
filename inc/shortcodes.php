@@ -54,7 +54,7 @@ function t_em_shortcode_alert_success( $atts, $content = null ){
 		), $atts ) );
 	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	if ( $close ) :
-		add_action( 't_em_hook_footer', 't_em_shortcode_alert_bs_script' );
+		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -78,7 +78,7 @@ function t_em_shortcode_alert_warning( $atts, $content = null ){
 		), $atts ) );
 	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	if ( $close ) :
-		add_action( 't_em_hook_footer', 't_em_shortcode_alert_bs_script' );
+		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -102,7 +102,7 @@ function t_em_shortcode_alert_info( $atts, $content = null ){
 		), $atts ) );
 	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	if ( $close ) :
-		add_action( 't_em_hook_footer', 't_em_shortcode_alert_bs_script' );
+		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -126,7 +126,7 @@ function t_em_shortcode_alert_error( $atts, $content = null ){
 		), $atts ) );
 	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	if ( $close ) :
-		add_action( 't_em_hook_footer', 't_em_shortcode_alert_bs_script' );
+		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }

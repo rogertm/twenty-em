@@ -366,13 +366,43 @@ function t_em_hook_sidebar_footer_after(){
 }
 
 /**
- * Fire the t_em_hook_site_info action, just after opening the <div id="inner-site-info"> tag
+ * Fire the t_em_hook_site_info_before action, just after opening the <div id="site-info-before"> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
  */
-function t_em_hook_site_info(){
-	do_action( 't_em_hook_site_info' );
+function t_em_hook_site_info_before(){
+	do_action( 't_em_hook_site_info_before' );
+}
+
+/**
+ * Fire the t_em_hook_site_info_after action, just after opening the <div id="site-info-after"> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_hook_site_info_after(){
+	do_action( 't_em_hook_site_info_after' );
+}
+
+/**
+ * Fire the t_em_hook_site_info_left action, just after opening the <div id="site-info-left"> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_hook_site_info_left(){
+	do_action( 't_em_hook_site_info_left' );
+}
+
+/**
+ * Fire the t_em_hook_site_info_right action, just after opening the <div id="site-info-right"> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_hook_site_info_right(){
+	do_action( 't_em_hook_site_info_right' );
 }
 
 /**
@@ -396,12 +426,12 @@ function t_em_hook_footer_after(){
 }
 
 /**
- * Fire the t_em_hook_footer action, just before closing the </body> tag
+ * Fire the t_em_hook_foot action, just before closing the </body> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
  */
-function t_em_hook_footer(){
-	do_action( 't_em_hook_footer' );
+function t_em_hook_foot(){
+	do_action( 't_em_hook_foot' );
 }
 ?>

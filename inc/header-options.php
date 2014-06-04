@@ -212,8 +212,16 @@ function t_em_slider_callback(){
 		$extend_slider .=	'<div class="sub-extend">';
 		$extend_slider .=		'<p>' . __( 'Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.', 't_em' ) . '</p>';
 		$extend_slider .=		'<label class="description">';
-		$extend_slider .=			__( 'Pause it?', 't_em' );
+		$extend_slider .=			__( 'Pause', 't_em' );
 		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[bootstrap_carousel_pause]" value="1" '. $checked_option .'>';
+		$extend_slider .=		'</label>';
+		$extend_slider .=	'</div>';
+		$checked_option = checked( $t_em['bootstrap_carousel_wrap'], '1', false );
+		$extend_slider .=	'<div class="sub-extend">';
+		$extend_slider .=		'<p>' . __( 'Whether the carousel should cycle continuously or have hard stops.', 't_em' ) . '</p>';
+		$extend_slider .=		'<label class="description">';
+		$extend_slider .=			__( 'Wrap', 't_em' );
+		$extend_slider .=			'<input type="checkbox" name="t_em_theme_options[bootstrap_carousel_wrap]" value="1" '. $checked_option .'>';
 		$extend_slider .=		'</label>';
 		$extend_slider .=	'</div>';
 		$extend_slider .= '</div><!-- .sub-extend -->';

@@ -26,7 +26,18 @@
 		<div id="site-info">
 			<div id="inner-site-info" class="wrapper container">
 				<div class="row">
-					<?php t_em_hook_site_info(); ?>
+					<div id="site-info-before" class="col-md-12">
+						<?php t_em_hook_site_info_before(); ?>
+					</div>
+					<div id="site-info-left" class="col-md-6">
+						<?php t_em_hook_site_info_left(); ?>
+					</div>
+					<div id="site-info-right" class="col-md-6">
+						<?php t_em_hook_site_info_right(); ?>
+					</div>
+					<div id="site-info-after" class="col-md-12">
+						<?php t_em_hook_site_info_after(); ?>
+					</div>
 				</div><!-- .row -->
 			</div><!-- .wrapper .container -->
 		</div><!-- #site-info -->
@@ -35,7 +46,7 @@
 
 </div><!-- #wrap -->
 
-<?php t_em_hook_footer(); ?>
+<?php t_em_hook_foot(); ?>
 <?php
 	/* Always have wp_footer() just before the closing </body>
 	 * tag of your theme, or you will break many plugins, which
