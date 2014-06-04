@@ -1024,7 +1024,7 @@ function t_em_comment( $comment, $args, $depth ) {
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
-
+	</li>
 	<?php
 			break;
 	endswitch;
@@ -1080,14 +1080,14 @@ function t_em_comment_all( $comment, $args, $depth ){
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-		<div class="comment-body"><?php comment_text(); ?></div>
+		<div class="comment-body"><?php comment_text(); ?></div></li>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-		<div class="comment-body"><?php comment_text(); ?></div>
+		<div class="comment-body"><?php comment_text(); ?></div></li>
 	<?php
 			break;
 		default :
@@ -1119,7 +1119,7 @@ function t_em_comment_all( $comment, $args, $depth ){
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
-
+	</li>
 	<?php
 		break;
 	endswitch;
@@ -1188,10 +1188,10 @@ function t_em_page_navi(){
 				<?php echo $links; ?>
 <?php
 			endif;
-		endif;
 ?>
 	</nav>
 <?php
+		endif;
 }
 add_action( 't_em_hook_content_after', 't_em_page_navi' );
 
