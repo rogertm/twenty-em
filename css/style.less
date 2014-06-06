@@ -232,32 +232,27 @@
 
 /* =Navbars
 -------------------------------------------------------------- */
-/** Commons elements for Twenty'em and Bootstrap Navbars */
-.nav.navbar-nav .sub-menu{
-	list-style: none;
+// Commons elements
+.nav.navbar .submenu{
+	.dropdown-menu;
 }
-.navbar-collapse{
-	max-height: none !important;
-}
-.navbar-collapse .nav > li:hover + li > a{
-		display: block;
-		width: 100%;
+.nav.navbar-nav li{
+	&:hover ul{
+		font-size: @font-size-base;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		z-index: @zindex-dropdown;
+		float: left;
+		min-width: 180px;
+		padding: 5px 0;
+		margin: 0; // override default ul
+		list-style: none;
+		font-size: @font-size-base;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
+		.box-shadow(0 6px 12px rgba(0,0,0,.175));
+		background-clip: padding-box;
 	}
-.nav.navbar-nav li:hover ul{
-	font-size: @font-size-base;
-	position: absolute;
-	top: 50px;
-	left: 0;
-	z-index: @zindex-dropdown;
-	float: left;
-	min-width: 180px;
-	padding: 5px 0;
-	margin: 0; // override default ul
-	list-style: none;
-	font-size: @font-size-base;
-	border-radius: 0 0 @border-radius-base @border-radius-base;
-	.box-shadow(0 6px 12px rgba(0,0,0,.175));
-	background-clip: padding-box;
 }
 .nav.navbar-nav ul ul{
 	left: 100% !important;
@@ -271,27 +266,25 @@
 	display: block;
 }
 
-/** Default Navbar style for Twenty'em */
-.navbar-t-em{
+// Site Navigation
+#site-navigation .navbar{
+	.navbar-default;
+}
+#site-navigation .sub-menu{
 	background-color: #fff;
-	border-color: @gray-lighter;
+	border: solid 1px @gray-lighter;
 	color: @gray-light;
 }
-.navbar-t-em .current-menu-item > a,
-.navbar-t-em .sub-menu .current-menu-item > a,
-.navbar-t-em .sub-menu .current-menu-item > a:hover,
-.navbar-t-em .sub-menu .current-menu-item > a:focus,
-.navbar-t-em .current-menu-item{
+#site-navigation .navbar a:hover,
+#site-navigation .navbar .current-menu-item > a,
+#site-navigation .navbar .sub-menu .current-menu-item > a,
+#site-navigation .navbar .sub-menu .current-menu-item > a:hover,
+#site-navigation .navbar .sub-menu .current-menu-item > a:focus,
+#site-navigation .navbar .current-menu-item{
 	background-color: @gray-lighter !important;
 	color: @gray-dark !important;
 }
-.navbar-t-em li:hover ul{
-	background-color: @dropdown-bg;
-	border: 1px solid @dropdown-fallback-border; // IE8 fallback
-	border: 1px solid @dropdown-border;
-	border-color: @gray-lighter;
-}
-.navbar-t-em .sub-menu li > a{
+#site-navigation .navbar .sub-menu li > a{
 	&:hover,
 	&:focus {
 		text-decoration: none;
@@ -299,99 +292,40 @@
 		background-color: @dropdown-link-hover-bg;
 	}
 }
-.navbar-t-em .sub-menu .current-menu-item > a{
-	&,
-	&:hover,
-	&:focus {
-		color: @dropdown-link-active-color;
-		text-decoration: none;
-		outline: 0;
-		background-color: @dropdown-link-active-bg;
-	}
-}
-.navbar-t-em .navbar-toggle{
-	border-color: @gray-light;
-}
-.navbar-t-em .navbar-toggle:hover{
-	background-color: @gray-lighter;
-}
-.navbar-t-em .navbar-toggle .icon-bar{
-	background-color: @gray-light;
-}
 
-/** Inverse Navbar style for Twenty'em */
-.navbar-t-em-inverse,
-.navbar-t-em-inverse .sub-menu{
-	background-color: @navbar-inverse-bg !important;
-	border-color: @navbar-inverse-border !important;
-	color: @gray-light;
+// Top Navigation
+#top-menu{
+	background-color: @gray-darker;
 }
-.navbar-t-em-inverse .wrapper{
-	background-color: transparent !important;
+#top-menu .navbar{
+	.navbar-inverse;
+	.navbar-static-top;
+	margin-bottom: 0;
 }
-.navbar-t-em-inverse a{
-	color: @gray-light;
+#top-menu .wrapper.container{
+	background-color: transparent;
 }
-.navbar-t-em-inverse .nav > li > a:hover,
-.navbar-t-em-inverse .nav > li > a:focus,
-.navbar-t-em-inverse .current-menu-item > a,
-.navbar-t-em-inverse .sub-menu li > a:hover,
-.navbar-t-em-inverse .sub-menu li > a:active,
-.navbar-t-em-inverse .sub-menu .current-menu-item > a,
-.navbar-t-em-inverse .sub-menu .current-menu-item > a:hover,
-.navbar-t-em-inverse .sub-menu .current-menu-item > a:focus,
-.navbar-t-em-inverse .current-menu-item{
+#top-menu .sub-menu{
+	background-color: @navbar-inverse-bg;
+	border: solid 1px @navbar-inverse-border;
+}
+#top-menu .navbar a:hover,
+#top-menu .navbar .current-menu-item > a,
+#top-menu .navbar .sub-menu .current-menu-item > a,
+#top-menu .navbar .sub-menu .current-menu-item > a:hover,
+#top-menu .navbar .sub-menu .current-menu-item > a:focus,
+#top-menu .navbar .current-menu-item{
 	background-color: #000 !important;
 	color: #fff !important;
 }
-.navbar-t-em-inverse li:hover ul{
-	background-color: @dropdown-bg;
-	border: 1px solid @dropdown-fallback-border; // IE8 fallback
-	border: 1px solid @dropdown-border;
-	border-color: @gray-lighter;
-}
-.navbar-t-em-inverse .sub-menu li > a{
+#top-menu .navbar .sub-menu li > a{
+	color: @gray-light;
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		color: @dropdown-link-hover-color;
-		background-color: @dropdown-link-hover-bg;
+		color: #fff;
+		background-color: #000;
 	}
-}
-.navbar-t-em-inverse .sub-menu .current-menu-item > a{
-	&,
-	&:hover,
-	&:focus {
-		color: @dropdown-link-active-color;
-		text-decoration: none;
-		outline: 0;
-		background-color: @dropdown-link-active-bg;
-	}
-}
-.navbar-t-em-inverse .navbar-toggle{
-	border-color: @gray-dark;
-}
-.navbar-t-em-inverse .navbar-toggle:hover{
-	background-color: #000;
-}
-.navbar-t-em-inverse .navbar-toggle .icon-bar{
-	background-color: @gray-light;
-}
-
-// Site Navigation and Top Menu
-#top-menu .navbar,
-#site-navigation .navbar{
-	border-left: 0;
-	border-right: 0;
-	border-radius: 0;
-	-moz-border-radius: 0;
-	-webkit-border-radius: 0;
-}
-#top-menu .navbar{
-	margin-bottom: 0;
-}
-#site-navigation .navbar{
-	margin: 0 -15px;
 }
 
 /* =Menu
@@ -590,6 +524,13 @@
 	.nav.navbar-nav ul ul ul{
 		padding-left: 15px !important;
 		width: 100% !important;
+	}
+	#site-navigation .navbar .sub-menu li > a{
+		color: @navbar-default-link-color;
+		background-color: @navbar-default-bg;
+		&:hover{
+			color: @navbar-default-link-hover-color;
+		}
 	}
 
 	// Footer

@@ -2182,8 +2182,8 @@ function t_em_top_menu(){
 if ( has_nav_menu( 'top-menu' ) ) :
 ?>
 	<div id="top-menu" role="navigation">
-		<nav class="navbar navbar-t-em-inverse">
-			<div class="wrapper container">
+		<div class="wrapper container">
+			<nav class="navbar">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
@@ -2200,8 +2200,8 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					'menu_class'		=> 'nav navbar-nav menu',
 					'depth'				=> 0 ) );
 				?>
-			</div>
-		</nav>
+			</nav>
+		</div>
 	</div>
 <?php
 	add_action( 't_em_hook_foot', 't_em_navbar_js_script' );
@@ -2216,7 +2216,7 @@ function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
 		<div class="wrapper container">
-			<nav class="navbar navbar-t-em">
+			<nav class="navbar">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-navigation-menu">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
