@@ -44,8 +44,8 @@ Supports Thumbs: true
 }
 .theme-t-em .nivo-directionNav a {
 	display:block;
-	/*width:auto;*/
-	/*height:auto;*/
+	width:auto;
+	height:auto;
 	border:0;
 	text-decoration: none;
 	color: #fff;
