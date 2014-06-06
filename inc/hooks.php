@@ -56,14 +56,25 @@ function t_em_hook_header_inside_before(){
 }
 
 /**
- * Fire the t_em_hook_header_inside action, just after opening <div id="branding"><div class="branding-inner">
+ * Fire the t_em_hook_header_inside_left action, just after opening <div id="branding"><div class="branding-inner">
  * tag
  *
  * @file header.php
  * @since Twenty'em 1.0
  */
-function t_em_hook_header_inside(){
-	do_action( 't_em_hook_header_inside' );
+function t_em_hook_header_inside_left(){
+	do_action( 't_em_hook_header_inside_left' );
+}
+
+/**
+ * Fire the t_em_hook_header_inside_right action, just after opening <div id="branding"><div class="branding-inner">
+ * tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0
+ */
+function t_em_hook_header_inside_right(){
+	do_action( 't_em_hook_header_inside_right' );
 }
 
 /**

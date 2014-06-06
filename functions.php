@@ -1359,7 +1359,7 @@ endif;
 
 /**
  * Display header set depending of the activated "Header Options" in admin theme option page. This
- * function is attached to the t_em_hook_header_inside action hook.
+ * function is attached to the t_em_hook_header_after action hook.
  *
  * @global $t_em
  *
@@ -2160,7 +2160,7 @@ add_action( 't_em_hook_top', 't_em_javascript_required' );
 
 /**
  * Heading Site Title.
- * This function is attached to the t_em_hook_header_inside() action hook.
+ * This function is attached to the t_em_hook_header_inside_left() action hook.
  */
 function t_em_heading_site_title(){
 ?>
@@ -2173,7 +2173,7 @@ function t_em_heading_site_title(){
 	</hgroup>
 <?php
 }
-add_action( 't_em_hook_header_inside', 't_em_heading_site_title' );
+add_action( 't_em_hook_header_inside_left', 't_em_heading_site_title' );
 
 /**
  * Top menu. This function is attached to the t_em_hook_header_before() action hook
@@ -2210,7 +2210,7 @@ endif;
 add_action( 't_em_hook_header_before', 't_em_top_menu' );
 
 /**
- * Navigation Menu. This function is attached to the t_em_hook_header_inside action hook
+ * Navigation Menu. This function is attached to the t_em_hook_header_after action hook
  */
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>

@@ -44,8 +44,8 @@ Supports Thumbs: true
 }
 .theme-t-em .nivo-directionNav a {
 	display:block;
-	width:auto;
-	height:auto;
+	/*width:auto;*/
+	/*height:auto;*/
 	border:0;
 	text-decoration: none;
 	color: #fff;
@@ -102,6 +102,9 @@ Supports Thumbs: true
 	display: block;
 	width: 120px;
 	height: auto;
+}
+.theme-t-em .nivo-box{
+	z-index: -5;
 }
 
 /* =Custom Styles
