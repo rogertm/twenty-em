@@ -130,15 +130,15 @@ noscript {
 }
 
 /* Static Header */
-#static-header{
+#static-header-inner{
 	margin-bottom: 0 !important;
 	background-color: #fff !important;
 }
-#static-header img{
+#static-header-inner img{
 	padding: 0;
 	max-width: 100%;
 }
-#static-header .btn{
+#static-header-inner .btn{
 	margin-bottom: 20px;
 }
 .static-header-text-left #static-header-text{

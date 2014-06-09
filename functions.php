@@ -1404,9 +1404,10 @@ function t_em_header_image(){
 		$header_image_width = get_theme_support( 'custom-header', 'width' );
 		$header_image_height = get_theme_support( 'custom-header', 'height' );
 ?>
-	<section id="header-image" class="wrapper container">
-		<div class="row">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<section id="header-image">
+		<div  class="wrapper container">
+			<div class="row">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
 		// Check if the user choose to display featured image in single posts and pages
 		if ( '1' == $t_em['header_featured_image'] &&
@@ -1421,11 +1422,12 @@ function t_em_header_image(){
 			$header_image_width = get_custom_header()->width;
 			$header_image_height = get_custom_header()->height;
 ?>
-			<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
+					<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
 <?php
 		endif;
 ?>
-		</a>
+				</a>
+			</div>
 		</div>
 	</section><!-- #header-image -->
 <?php
@@ -1447,7 +1449,8 @@ function t_em_slider_bootstrap_carousel(){
 	$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
-	<section id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide <?php echo $t_em['slider_text'] ?>">
+	<section id="header-carousel">
+		<div id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide <?php echo $t_em['slider_text'] ?>">
 <?php 	if ( $slider_posts ) : ?>
 <?php 		$tp = count( $slider_posts ) ?>
 			<ol class="carousel-indicators">
@@ -1487,6 +1490,7 @@ function t_em_slider_bootstrap_carousel(){
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 <?php 	endif; ?>
+		</div>
 	</section><!-- #slider-carousel -->
 <?php
 }
@@ -1503,51 +1507,53 @@ function t_em_slider_nivo_slider(){
 	global $post, $t_em;
 	query_posts ( t_em_slider_query_args() );
 ?>
-	<section id="nivo-slider" class="container">
-		<div class="slider-wrapper theme-<?php echo $t_em['nivo_style']; ?> wrapper row">
-			<div class="ribbon"></div>
-			<div id="slider" class="nivoSlider">
-		<?php
-		if ( have_posts() ) :
-			while ( have_posts() ) : the_post();
-				// Display the thumbnails
-				if ( has_post_thumbnail( $post->ID ) ) :
-					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-					$image_src = $image_url[0];
-				else :
-					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-					$total_images = count( $images );
-					$image = array_shift( $images );
-					$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
-						$image_src = $image_url[0];
-				endif;
-					?>
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
-					</a>
-					<?php
-			endwhile;
-		endif;
-		wp_reset_query();
-		?>
-			</div><!-- #slider .nivoSlider -->
-		<?php
-		if ( have_posts() ) :
-			while ( have_posts() ) : the_post();
-			?>
-			<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
-				<h2 class="entry-title">
-					<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
-				</h2>
-				<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
-			</div>
+	<section id="header-carousel">
+		<div id="nivo-slider" class="wrapper container">
+			<div class="slider-wrapper theme-<?php echo $t_em['nivo_style']; ?> wrapper row">
+				<div class="ribbon"></div>
+				<div id="slider" class="nivoSlider">
 			<?php
-			endwhile;
+			if ( have_posts() ) :
+				while ( have_posts() ) : the_post();
+					// Display the thumbnails
+					if ( has_post_thumbnail( $post->ID ) ) :
+						$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+						$image_src = $image_url[0];
+					else :
+						$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+						$total_images = count( $images );
+						$image = array_shift( $images );
+						$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
+							$image_src = $image_url[0];
+					endif;
+						?>
+						<a href="<?php the_permalink(); ?>" rel="bookmark">
+							<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+						</a>
+						<?php
+				endwhile;
+			endif;
 			wp_reset_query();
-		endif;
-		?>
-		</div><!-- .slider-wrapper .theme-$theme -->
-	</section><!-- #nivo-slider -->
+			?>
+				</div><!-- #slider .nivoSlider -->
+			<?php
+			if ( have_posts() ) :
+				while ( have_posts() ) : the_post();
+				?>
+				<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
+					<h2 class="entry-title">
+						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
+					</h2>
+					<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
+				</div>
+				<?php
+				endwhile;
+				wp_reset_query();
+			endif;
+			?>
+			</div><!-- .slider-wrapper .theme-$theme -->
+		</div><!-- #nivo-slider -->
+	</section>
 <?php
 }
 endif;
@@ -1559,7 +1565,8 @@ if ( ! function_exists( 't_em_static_header' ) ) :
 function t_em_static_header(){
 	global $t_em;
 ?>
-	<section id="static-header" class="wrapper container" role="info">
+	<section id="static-header" role="info">
+		<div id="static-header-inner" class="wrapper container">
 <?php if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
 		<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 			<figure>
@@ -1598,6 +1605,7 @@ function t_em_static_header(){
 			</footer><!-- .actions -->
 		</div><!-- #static-header-text -->
 <?php endif; ?>
+		</div>
 	</section><!-- #static-header .container -->
 <?php
 }
