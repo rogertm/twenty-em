@@ -2047,7 +2047,8 @@ function t_em_breadcrumb(){
 		$attachment_parent_link = ( is_attachment() ) ? '<li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
 		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<li><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></li><li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
 ?>
-		<lo id="you-are-here" class="breadcrumb col-xs-12">
+		<div id="you-are-here">
+			<lo class="breadcrumb col-xs-12">
 <?php
 		if ( is_front_page() ) :
 			echo $current_before . $home_name . $current_after;
@@ -2151,7 +2152,8 @@ function t_em_breadcrumb(){
 			echo $current_before . __( 'Page ', 't_em' ) .  get_query_var( 'paged' ) . $current_after;
 		endif;
 ?>
-		</lo><!-- .breadcrumb -->
+			</lo><!-- .breadcrumb -->
+		</div><!-- #you-are-here -->
 <?php
 	endif;
 }
