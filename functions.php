@@ -2036,24 +2036,23 @@ function t_em_breadcrumb(){
 
 		$query_obj = get_queried_object();
 		$home_name = __( 'Home', 't_em' );
-		$divider = '<span class="divider"> / </span>';
-		$current_before = '<span class="active">';
-		$current_after = '</span>';
-		$home_link = '<span><a href="'. home_url() .'">'. $home_name .'</a></span>'. $divider . ' ';
-		$year_link = ( is_year() || is_month() || is_day() ) ? '<span><a href="'. get_year_link( get_the_time( 'Y' ) ) .'">'. get_the_time( 'Y' ) .'</a></span>' : null;
-		$month_link = ( is_year() || is_month() || is_day() ) ? '<span><a href="'. get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) .'">'. get_the_time( 'F' ) .'</a></span>' : null;
+		$current_before = '<li class="active">';
+		$current_after = '</li>';
+		$home_link = '<li><a href="'. home_url() .'">'. $home_name .'</a></li>';
+		$year_link = ( is_year() || is_month() || is_day() ) ? '<li><a href="'. get_year_link( get_the_time( 'Y' ) ) .'">'. get_the_time( 'Y' ) .'</a></li>' : null;
+		$month_link = ( is_year() || is_month() || is_day() ) ? '<li><a href="'. get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) .'">'. get_the_time( 'F' ) .'</a></li>' : null;
 		$post_type_obj = ( is_single() ) ? get_post_type_object( $post->post_type ) : null;
 		$parent_post_type_obj = ( is_single() ) ? get_post_type_object( get_post_type( $post->post_parent ) ) : null;
-		$post_type_archive_link = ( is_single() && empty( $post_type_obj->hierarchical ) ) ? '<span><a href="'. get_post_type_archive_link( $post->post_type ) .'">'. $post_type_obj->label .'</a></span>' . $divider : null;
-		$attachment_parent_link = ( is_attachment() ) ? '<span><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></span>' . $divider : null;
-		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<span><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></span>' . $divider . '<span><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></span>' . $divider : null;
+		$post_type_archive_link = ( is_single() && empty( $post_type_obj->hierarchical ) ) ? '<li><a href="'. get_post_type_archive_link( $post->post_type ) .'">'. $post_type_obj->label .'</a></li>' : null;
+		$attachment_parent_link = ( is_attachment() ) ? '<li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
+		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<li><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></li><li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
 ?>
-		<div id="you-are-here" class="breadcrumb">
+		<lo id="you-are-here" class="breadcrumb col-xs-12">
 <?php
 		if ( is_front_page() ) :
 			echo $current_before . $home_name . $current_after;
 			if ( get_option( 'show_on_front' ) == 'page' ) :
-				echo $divider . $current_before . get_the_title() . $current_after;
+				echo $current_before . get_the_title() . $current_after;
 			endif;
 		elseif ( ! is_front_page() ) :
 			echo $home_link;
@@ -2066,8 +2065,12 @@ function t_em_breadcrumb(){
 			$cat_id = $query_obj->term_id;
 			$current_cat = get_cat_name( $cat_id );
 			$parent_cat = $query_obj->parent;
-			if ( $parent_cat != 0 )
-				echo get_category_parents( $parent_cat, true, $divider );
+			if ( $parent_cat != 0 ) :
+				$ancient_cats = get_ancestors( $cat_id, 'category' );
+				foreach ( array_reverse( $ancient_cats ) as $cat ) :
+					echo '<li><a href="'. get_category_link( $cat ) .'">' . get_cat_name( $cat ) . '</a></li>';
+				endforeach;
+			endif;
 			echo $current_before . $current_cat . $current_after;
 		endif;
 		if ( is_tag() ) :
@@ -2084,10 +2087,10 @@ function t_em_breadcrumb(){
 		endif;
 
 		if ( is_day() ) :
-			echo $year_link . $divider . $month_link . $divider . $current_before . get_the_time( 'd' ) . $current_after;
+			echo $year_link . $month_link . $current_before . get_the_time( 'd' ) . $current_after;
 		endif;
 		if ( is_month() ) :
-			echo $year_link . $divider . $current_before . get_the_time( 'F' ) . $current_after;
+			echo $year_link . $current_before . get_the_time( 'F' ) . $current_after;
 		endif;
 		if ( is_year() ) :
 			echo $current_before . get_the_time( 'Y' ) . $current_after;
@@ -2112,11 +2115,11 @@ function t_em_breadcrumb(){
 				$breadcrumb_page = array();
 				while ( $parent_id ) :
 					$parent_page = get_page( $parent_id );
-					$breadcrumb_page[] = '<a href="'. get_permalink( $parent_page->ID ) .'">'. get_the_title( $parent_page->ID ) .'</a>';
+					$breadcrumb_page[] = '<li><a href="'. get_permalink( $parent_page->ID ) .'">'. get_the_title( $parent_page->ID ) .'</a></li>';
 					$parent_id = $parent_page->post_parent;
 				endwhile;
 				foreach ( array_reverse( $breadcrumb_page ) as $crumb_page ) :
-					echo $crumb_page . $divider;
+					echo $crumb_page;
 				endforeach;
 			endif;
 			echo $current_before . get_the_title() . $current_after;
@@ -2125,7 +2128,7 @@ function t_em_breadcrumb(){
 		if ( is_single() && ! is_attachment() ) :
 			if ( $post->post_type == 'post' ) :
 				$post_cat = get_the_category();
-				echo get_category_parents( $post_cat[0], true, $divider ) . $current_before . get_the_title() . $current_after;
+				echo '<li>' . get_category_parents( $post_cat[0], true, '' ) . '</li>' . $current_before . get_the_title() . $current_after;
 			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
 			endif;
@@ -2135,7 +2138,7 @@ function t_em_breadcrumb(){
 		if ( is_attachment() && ! is_page() ) :
 			$parent_cat = ( get_post_type( $post->post_parent ) == 'post' ) ? get_the_category( $post->post_parent ) : null;
 			if ( $parent_cat ) :
-				$attachtment_post_parent_link = get_category_parents( $parent_cat[0], true, $divider ) . $attachment_parent_link;
+				$attachtment_post_parent_link = '<li>' . get_category_parents( $parent_cat[0], true, '' ) . '</li>' . $attachment_parent_link;
 			elseif ( ! in_array( get_post_type( $post->post_parent ), array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				$attachtment_post_parent_link = $attachment_post_type_parent_link;
 			else :
@@ -2145,10 +2148,10 @@ function t_em_breadcrumb(){
 		endif;
 
 		if ( get_query_var( 'paged' ) > '1' ) :
-			echo $divider . $current_before . __( 'Page ', 't_em' ) .  get_query_var( 'paged' ) . $current_after;
+			echo $current_before . __( 'Page ', 't_em' ) .  get_query_var( 'paged' ) . $current_after;
 		endif;
 ?>
-		</div><!-- .breadcrumb -->
+		</lo><!-- .breadcrumb -->
 <?php
 	endif;
 }
