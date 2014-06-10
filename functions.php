@@ -1583,7 +1583,9 @@ function t_em_static_header(){
 		|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
 	) : ?>
 		<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+<?php if ( $t_em['static_header_headline'] ) : ?>
 			<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
+<?php endif; ?>
 <?php if ( $t_em['static_header_content'] ) : ?>
 			<div class="static-header-content"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
 <?php endif; ?>
