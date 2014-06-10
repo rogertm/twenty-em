@@ -1584,7 +1584,9 @@ function t_em_static_header(){
 	) : ?>
 		<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 			<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
-			<div class="lead"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
+<?php if ( $t_em['static_header_content'] ) : ?>
+			<div class="static-header-content"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
+<?php endif; ?>
 			<footer class="actions">
 <?php if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
 				<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
