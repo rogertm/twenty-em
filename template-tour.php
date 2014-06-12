@@ -38,7 +38,7 @@ get_header(); ?>
 			$content = apply_filters( 'the_content', $content );
 ?>
 						<li><a href="#tab-<?php echo $page->ID; ?>" data-toggle="tab">
-							<h4><?php echo $page->post_title; ?></h4>
+							<?php echo $page->post_title; ?>
 						</a></li>
 <?php
 	endforeach;
