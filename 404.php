@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-		<section id="main-content">
-			<section id="content" role="main">
+		<section id="main-content" class="col-md-12">
+			<section id="content" role="main" class="col-md-12">
 				<?php t_em_hook_content_before(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
