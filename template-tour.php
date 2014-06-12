@@ -16,8 +16,8 @@
 
 get_header(); ?>
 
-		<section id="main-content">
-			<section id="content" role="main">
+		<section id="main-content" class="col-md-12">
+			<section id="content" role="main" class="col-md-12">
 				<?php t_em_hook_content_before(); ?>
 <?php
 	// Display all child pages of current page.
