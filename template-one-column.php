@@ -14,8 +14,8 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="col-md-12">
-			<section id="content" role="main" class="col-md-12">
+		<section id="main-content" class="one-column <?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
+			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
 			<?php t_em_hook_content_before(); ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
