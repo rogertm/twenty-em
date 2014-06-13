@@ -25,112 +25,71 @@
 function t_em_quickttags_buttons(){
 ?>
 	<script type="text/javascript">
-		QTags.addButton( 'sc_success', 'success', '[success close="false"]', '[/success]', '', '', 121 );
-		QTags.addButton( 'sc_info', 'info', '[info close="false"]', '[/info]', '', '', 122 );
-		QTags.addButton( 'sc_warning', 'warning', '[warning close="false"]', '[/warning]', '', '', 123 );
-		QTags.addButton( 'sc_error', 'error', '[error close="false"]', '[/error]', '', '', 124 );
-		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" float=""]', '[/quote]', '', '', 125 );
-		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size="default"]', '', '', '', 126 );
+		QTags.addButton( 'sc_button', 'button', '[button link="" style="default" size="" new_window="false"]', '[/button]', '', '', 122 );
+		QTags.addButton( 'sc_alert', 'alert', '[alert style="" close="false"]', '[/alert]', '', '', 122 );
+		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" float=""]', '[/quote]', '', '', 123 );
+		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size="default"]', '', '', '', 124 );
 	</script>
 <?php
 }
 add_action( 'admin_print_footer_scripts', 't_em_quickttags_buttons' );
 
 /**
- * Shortcode [success]
- * Enclosing
- * Behavior: [success close="false"][/success]
- * Options:
- * 0. close. Optional. Default value "false" Display a close button
- *
- * @link http://codex.wordpress.org/Shortcode_API
- *
- * @since Twenty'em 1.0
- */
-function t_em_shortcode_alert_success( $atts, $content = null ){
-	extract( shortcode_atts( array (
-			'class' => 'alert alert-success',
-			'close' => 'false',
-		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
-	if ( $close ) :
-		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
-	endif;
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
-}
-add_shortcode( 'success', 't_em_shortcode_alert_success' );
-
-/**
- * Shortcode [warning]
- * Enclosing
- * Behavior: [warning close="false"][/warning]
- * Options:
- * 0. close. Optional. Default value "false" Display a close button
- *
- * @link http://codex.wordpress.org/Shortcode_API
- *
- * @since Twenty'em 1.0
- */
-function t_em_shortcode_alert_warning( $atts, $content = null ){
-	extract( shortcode_atts( array (
-			'class' => 'alert alert-warning',
-			'close' => 'false',
-		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
-	if ( $close ) :
-		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
-	endif;
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
-}
-add_shortcode( 'warning', 't_em_shortcode_alert_warning' );
-
-/**
- * Shortcode [info]
+ * Shortcode [button]
  * Enclosing. Permit other shortcodes.
- * Behavior: [info close="false"][/info]
+ * Behavior: [button link="" style="default" size=""]Button Text[/button]
  * Options:
- * 0. close. Optional. Default value "false" Display a close button
+ * 0. link. Required. Default value "empty". Possibles value: button link (e.g http://twenty-em.com/)
+ * 1. style. Optional. Default value "default". Possibles values: "default", "primary", "success",
+ * "info", "warning", "danger", "link", "custom_class"
+ * 2. new_window. Optional, Default value "false". Possibles values "false", "true". (open link in new window)
+ * 3. size. Optional. Default value "empty". Possibles values: "btn-lg", "btn-sm", "btn-xs", "custom_class"
  *
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  */
-function t_em_shortcode_alert_info( $atts, $content = null ){
+function t_em_shortcode_button( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-info',
-			'close' => 'false',
+			'link'			=> '',
+			'style'			=> 'default',
+			'new_window'	=> 'false',
+			'size'			=> '',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
-	if ( $close ) :
-		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
-	endif;
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
+	$link		= ( esc_url( $link ) ) ? esc_url( $link ) : null;
+	$style		= ( esc_attr( $style ) ) ? esc_attr( $style ) : null;
+	$new_window	= ( esc_attr( $new_window ) == 'true' ) ? '_blank' : null;
+	$size		= ( esc_attr( $size ) ) ? esc_attr( $size ) : null;
+	return '<a href="'. esc_url( $link ) .'" class="btn btn-'. $style .' '. $size .'" target="'. esc_attr( $new_window ) .'">'. do_shortcode( $content ) .'</a>';
 }
-add_shortcode( 'info', 't_em_shortcode_alert_info' );
+add_shortcode( 'button', 't_em_shortcode_button' );
 
 /**
- * Shortcode [error]
+ * Shortcode [alert]
  * Enclosing. Permit other shortcodes.
- * Behavior: [error close="false"][/error]
+ * Behavior: [alert style="" close="false"][/alert]
  * Options:
- * 0. close. Optional. Default value "false" Display a close button
+ * 0. style. Optional (but recommended). Default value "empty". Possibles values "success", "info",
+ * "warning", "danger", "custom_class"
+ * 1. close. Optional. Default value "false" Display a close button
  *
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  */
-function t_em_shortcode_alert_error( $atts, $content = null ){
+function t_em_shortcode_alert( $atts, $content = null ){
 	extract( shortcode_atts( array (
-			'class' => 'alert alert-danger',
+			'style' => '',
 			'close' => 'false',
 		), $atts ) );
-	$close_button = (  esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
+	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
 		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
-	return '<div class="'. esc_attr( $class ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
+	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
-add_shortcode( 'error', 't_em_shortcode_alert_error' );
+add_shortcode( 'alert', 't_em_shortcode_alert' );
 
 /**
  * Shortcode [quote]
@@ -175,7 +134,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * Self-closing
  * Behavior [icon class="" align="" size="default"]
  * Options:
- * 0. icon_class. Required. Default value "empty". Possibles values "icon-$icon_name". Display a
+ * 0. icon_class. Required. Default value "empty". Possibles values "icomoon-$icon_name". Display a
  * IcoMoon icon
  * 1. align. Optional. Default value "empty". Possibles values "left", "right". Icon alignment.
  * 2. size. Optional. Default value "default". Possibles values "default", "medium", "large",
@@ -192,8 +151,8 @@ function t_em_shortcode_icomoon_icon( $atts ){
 			'align' => '',
 			'size' => 'default',
 		), $atts ) );
-	$class_size = ( ! empty( $size ) ) ? 'icon-'. esc_attr( $size ) : '';
-	$class_align = ( ! empty( $align ) ) ? 'pull-'. esc_attr( $align ) : '';
+	$class_size = ( ! empty( $size ) ) ? 'icon-'. esc_attr( $size ) : null;
+	$class_align = ( ! empty( $align ) ) ? 'pull-'. esc_attr( $align ) : null;
 
 	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' icomoon"></span>';
 }
