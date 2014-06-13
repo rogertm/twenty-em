@@ -1268,7 +1268,7 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
  * @since Twenty'em 1.0
  */
 function t_em_custom_template_content(){
-	if ( is_page_template() ) :
+	if ( is_page_template() && get_post_meta( get_the_ID(), '_wp_page_template', true ) != 'template-one-column.php' ) :
 	$template_data = get_page( get_the_ID() );
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
@@ -1276,7 +1276,7 @@ function t_em_custom_template_content(){
 			<h1 class="page-header"><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php if ( $template_data->post_content ) : ?>
-			<div class="entry-content"><?php echo $template_data->post_content; ?></div>
+			<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
 <?php endif; ?>
 		<footer class="entry-utility">
 			<?php t_em_edit_post_link(); ?>
