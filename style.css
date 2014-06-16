@@ -314,9 +314,8 @@ ul.sub-menu li a{
 }
 
 /* Template Image Gallery */
-#gallery .gallery-thumbnail{
+.custom-template-gallery .gallery-thumbnail{
 	margin: 15px 15px 5px 0;
-	width: 100px;
 }
 
 /* =Comments

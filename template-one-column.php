@@ -24,7 +24,9 @@ get_header(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<?php t_em_hook_post_inside_before(); ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<header>
+					<h1 class="page-header"><?php the_title(); ?></h1>
+				</header>
 				<div class="entry-content">
 					<?php the_content(); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>

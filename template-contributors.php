@@ -25,7 +25,7 @@ get_header(); ?>
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 				<?php t_em_hook_content_before(); ?>
 
-				<section id="contributors">
+				<div id="contributors-<?php echo get_the_ID(); ?>" class="custom-template custom-template-contributors">
 				<?php
 				$args = array(
 						'fields'	=> 'ID',
@@ -69,7 +69,7 @@ get_header(); ?>
 				endforeach;
 				?>
 
-				</section><!-- #contributors -->
+				</div><!-- #contributors-## -->
 				<?php t_em_hook_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

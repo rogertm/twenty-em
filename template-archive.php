@@ -25,8 +25,7 @@ get_header(); ?>
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_hook_content_before(); ?>
 
-				<article id="archive">
-
+				<div id="archive-<?php echo get_the_ID(); ?>" class="custom-template custom-template-archive">
 <?php
 /**
  * Start the archive page. Displays the latest $limit posts, list of categories, monthly
@@ -80,7 +79,7 @@ if ( have_posts() ) :
 					<h3 id="archive-tag-cloud"><?php _e( 'Tag Cloud', 't_em' ); ?></h3>
 					<div><?php wp_tag_cloud( array ( 'number' => '0' ) ); ?></div>
 
-				</article><!-- #archive -->
+				</div><!-- #archive-## -->
 				<?php t_em_hook_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

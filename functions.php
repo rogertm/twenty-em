@@ -826,10 +826,12 @@ function t_em_header_archive_author_meta(){
 		if ( have_posts() ) :
 			the_post();
 ?>
+	<div id="featured-header-author-<?php echo get_the_author_meta( 'user_login' ) ?>" class="featured-header featured-header-author">
 		<header>
 			<h1 class="page-header author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<span><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
 		</header>
 		<?php t_em_author_meta(); ?>
+	</div><!-- .featured-header -->
 <?php
 		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 		 * we can run the loop properly, in full.
@@ -860,11 +862,13 @@ if ( ! function_exists( 't_em_term_description' ) ) :
 function t_em_term_description(){
 	if ( is_category() ) :
 		$term_description = category_description();
+		$term_id = get_term_by( 'name', single_cat_title( '', false ), 'category' );
 	elseif ( is_tag() ) :
 		$term_description = tag_description();
+		$term_id = get_term_by( 'name', single_tag_title( '', false ), 'post_tag' );
 	endif;
 	if ( ! empty( $term_description ) ) :
-		echo '<div id="term-description" class="archive-meta">' . $term_description . '</div>';
+		echo '<div id="term-description-'. $term_id->term_id .'" class="archive-meta term-description">' . $term_description . '</div>';
 	endif;
 }
 endif;
@@ -880,7 +884,9 @@ function t_em_header_archive_category(){
 		/* Queue the first post, that way we know if category is not empty
 		 * We reset this later so we can run the loop properly with a call to rewind_posts().
 		 */
-		if ( have_posts() ) : the_post(); ?>
+		if ( have_posts() ) : the_post();
+		$category_id = get_term_by( 'name', single_tag_title( '', false ), 'category' ); ?>
+	<div id="featured-header-category-<?php echo $category_id->term_id; ?>" class="featured-header featured-header-category">
 		<header>
 			<h1 class="page-header">
 				<?php printf( __( 'Category Archives: %s', 't_em' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
@@ -889,7 +895,9 @@ function t_em_header_archive_category(){
 <?php 	t_em_term_description();
 		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 		 * we can run the loop properly, in full.
-		 */
+		 */ ?>
+	</div><!-- .featured-header -->
+<?php
 		rewind_posts(); endif;
 	endif;
 }
@@ -906,7 +914,9 @@ function t_em_header_archive_tag(){
 		/* Queue the first post, that way we know if category is not empty
 		 * We reset this later so we can run the loop properly with a call to rewind_posts().
 		 */
-		if ( have_posts() ) : the_post(); ?>
+		if ( have_posts() ) : the_post();
+		$tag_id = get_term_by( 'name', single_tag_title( '', false ), 'post_tag' ); ?>
+	<div id="featured-header-tag-<?php echo $tag_id->term_id ?>" class="featured-header featured-header-tag">
 		<header>
 			<h1 class="page-header">
 				<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?>
@@ -915,7 +925,9 @@ function t_em_header_archive_tag(){
 <?php 	t_em_term_description();
 		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 		 * we can run the loop properly, in full.
-		 */
+		 */ ?>
+	</div><!-- .featured-header -->
+<?php
 		rewind_posts(); endif;
 	endif;
 }
@@ -932,22 +944,27 @@ function t_em_header_archive_date(){
 		/* Queue the first post, that way we know what date we're dealing with (if that is the case).
 		 * We reset this later so we can run the loop properly with a call to rewind_posts().
 		 */
-		if ( have_posts() ) : the_post(); ?>
+		if ( have_posts() ) : the_post();
+			if ( is_day() ) :
+				$date_archive = sprintf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
+				$archive_id = 'daily';
+			elseif ( is_month() ) :
+				$date_archive = sprintf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
+				$archive_id = 'monthly';
+			elseif ( is_year() ) :
+				$date_archive = sprintf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
+				$archive_id = 'yearly';
+			else :
+				$date_archive = __( 'Blog Archives', 't_em' );
+				$archive_id = 'archive';
+			endif; ?>
+	<div id="featured-header-<?php echo $archive_id; ?>" class="featured-header featured-header-date">
 		<header>
 			<h1 class="page-header">
-			<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
-			else :
-				_e( 'Blog Archives', 't_em' );
-			endif;
-			?>
+			<?php echo $date_archive; ?>
 			</h1>
 		</header>
+	</div><!-- .featured-header -->
 		<?php
 		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 		 * we can run the loop properly, in full.
@@ -970,9 +987,11 @@ function t_em_header_archive_search(){
 		 * We reset this later so we can run the loop properly with a call to rewind_posts().
 		 */
 		if ( have_posts() ) : the_post(); ?>
+		<div id="featured-header-search" class="featured-header featured-header-search">
 			<header>
 				<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header>
+		</div><!-- .featured-header -->
 <?php
 		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
 		 * we can run the loop properly, in full.
@@ -1271,17 +1290,17 @@ function t_em_custom_template_content(){
 	if ( is_page_template() && get_post_meta( get_the_ID(), '_wp_page_template', true ) != 'template-one-column.php' ) :
 	$template_data = get_page( get_the_ID() );
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'custom-template-content' ); ?>>
+	<div id="featured-header-template-<?php the_ID(); ?>" <?php post_class( 'featured-header featured-header-template custom-template-content' ); ?>>
 		<header>
 			<h1 class="page-header"><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php if ( $template_data->post_content ) : ?>
-			<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
+		<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
 <?php endif; ?>
 		<footer class="entry-utility">
 			<?php t_em_edit_post_link(); ?>
 		</footer>
-	</article>
+	</div><!-- .featured-header -->
 <?php
 	endif;
 }

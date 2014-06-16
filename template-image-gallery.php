@@ -25,7 +25,7 @@ get_header(); ?>
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_hook_content_before(); ?>
 
-				<article id="gallery">
+				<div id="gallery-<?php echo get_the_ID(); ?>" class="custom-template custom-template-gallery">
 
 
 <?php
@@ -68,7 +68,7 @@ wp_reset_query();
 ?>
 
 
-				</article><!-- #gallery -->
+				</div><!-- #gallery-## -->
 				<?php t_em_hook_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

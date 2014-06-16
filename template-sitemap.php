@@ -25,7 +25,7 @@ get_header(); ?>
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 			<?php t_em_hook_content_before(); ?>
 
-				<article id="sitemap">
+				<div id="sitemap-<?php echo get_the_ID(); ?>" class="custom-template custom-template-sitemap">
 
 
 					<?php
@@ -70,7 +70,7 @@ get_header(); ?>
 					?>
 
 
-				</article><!-- #sitemap -->
+				</div><!-- #sitemap-## -->
 				<?php t_em_hook_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
