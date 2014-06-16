@@ -934,6 +934,35 @@ function t_em_header_archive_tag(){
 add_action( 't_em_hook_content_before', 't_em_header_archive_tag', 15 );
 
 /**
+ * Display Custom Post Type header tag and description in custom post type archives.
+ * This function is attached to the t_em_hook_content_before action hook
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_header_archive_post_type_archive(){
+	if ( is_post_type_archive() ) :
+		$post_type_obj = get_post_type_object( get_post_type() );
+		$post_type_name = ( $post_type_obj->labels->name ) ? $post_type_obj->labels->name : get_post_type();
+?>
+	<div id="featured-header-post-type-<?php echo get_post_type(); ?>" class="featured-header featured-header-post-type">
+		<pre class="col-md-12"><?php print_r($post_type_obj) ?></pre>
+		<header>
+			<h1 class="page-header">
+				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<span>' . $post_type_name . '</span>' ); ?>
+			</h1>
+		</header>
+<?php 	if ( $post_type_obj->labels->description ) : ?>
+		<div id="post-type-description-<?php echo get_post_type(); ?>" class="post-type-description">
+		<?php echo $post_type_obj->labels->description ?>
+		</div>
+<?php 	endif; ?>
+	</div><!-- .featured-header -->
+<?php
+	endif;
+}
+add_action( 't_em_hook_content_before', 't_em_header_archive_post_type_archive', 15 );
+
+/**
  * Display Date header tag in date archives.
  * This function is attached to the t_em_hook_content_before action hook
  *
