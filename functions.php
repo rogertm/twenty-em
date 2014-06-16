@@ -950,11 +950,6 @@ function t_em_header_archive_post_type_archive(){
 				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<span>' . $post_type_name . '</span>' ); ?>
 			</h1>
 		</header>
-<?php 	if ( $post_type_obj->labels->description ) : ?>
-		<div id="post-type-description-<?php echo get_post_type(); ?>" class="post-type-description">
-		<?php echo $post_type_obj->labels->description ?>
-		</div>
-<?php 	endif; ?>
 	</div><!-- .featured-header -->
 <?php
 	endif;
