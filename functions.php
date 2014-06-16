@@ -945,7 +945,6 @@ function t_em_header_archive_post_type_archive(){
 		$post_type_name = ( $post_type_obj->labels->name ) ? $post_type_obj->labels->name : get_post_type();
 ?>
 	<div id="featured-header-post-type-<?php echo get_post_type(); ?>" class="featured-header featured-header-post-type">
-		<pre class="col-md-12"><?php print_r($post_type_obj) ?></pre>
 		<header>
 			<h1 class="page-header">
 				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<span>' . $post_type_name . '</span>' ); ?>
