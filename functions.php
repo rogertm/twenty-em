@@ -718,10 +718,12 @@ if ( ! function_exists( 't_em_post_author' ) ) :
  * @since Twenty'em 0.1
  */
 function t_em_post_author(){
+	global $post;
+	$author_id = $post->post_author;
 	$post_author = sprintf( '<div class="entry-author"><span class="icomoon-user icomoon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span></div>',
-				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author() ) ),
-				get_the_author()
+				esc_url( get_author_posts_url( $author_id ) ),
+				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author_meta( 'display_name', $author_id ) ) ),
+				get_the_author_meta( 'display_name', $author_id )
 			);
 	echo $post_author;
 }
