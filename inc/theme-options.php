@@ -94,7 +94,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/t-em-favicon.png', '2.25031992' );
+	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
 	$theme_backup_page	= add_submenu_page( 'twenty-em-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'twenty-em-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -156,7 +156,7 @@ function t_em_default_theme_options(){
 		'breadcrumb_path'								=> '1',
 		'separate_comments_pings_tracks'				=> '1',
 		'custom_avatar'									=> '1',
-		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/t-em-favicon.png',
+		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
 		'header_featured_image'							=> '1',

@@ -191,12 +191,11 @@ if ( ! function_exists( 't_em_support_custom_header' ) ) :
 function t_em_support_custom_header(){
 	$custom_header_support = array (
 		'default-text-color'		=> '333',
-		'default-image'				=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header.jpg',
 		'width'						=> apply_filters( 't_em_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
 		'height'					=> apply_filters( 't_em_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
 		'flex-width'				=> true,
 		'flex-height'				=> true,
-		'random-default'			=> false,
+		'random-default'			=> true,
 		'uploads'					=> true,
 		'wp-head-callback'			=> 't_em_header_style',
 		'admin-head-callback'		=> 't_em_admin_header_style',
@@ -333,10 +332,35 @@ if ( ! function_exists( 't_em_support_custom_header_image' ) ) :
  */
 function t_em_support_custom_header_image(){
 	register_default_headers( array(
-		'twenty-em'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header.jpg',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/twenty-em-header-thumbnail.jpg',
-			'description'	=> __( 'Twenty&#8217;em. Theming is prose', 't_em' ),
+		'aqua'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua-thumbnail.png',
+			'description'	=> _x( 'Aqua', 'header image description', 't_em' ),
+		),
+		'fire'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/fire.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/fire-thumbnail.png',
+			'description'	=> _x( 'Fire', 'header image description', 't_em' ),
+		),
+		'grass'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/grass.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/grass-thumbnail.png',
+			'description'	=> _x( 'Grass', 'header image description', 't_em' ),
+		),
+		'lime'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/lime.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/lime-thumbnail.png',
+			'description'	=> _x( 'Lime', 'header image description', 't_em' ),
+		),
+		'ocean'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/ocean.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/ocean-thumbnail.png',
+			'description'	=> _x( 'Ocean', 'header image description', 't_em' ),
+		),
+		'tulip'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/tulip.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/tulip-thumbnail.png',
+			'description'	=> _x( 'Tulip', 'header image description', 't_em' ),
 		),
 	) );
 }
