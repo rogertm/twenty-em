@@ -357,10 +357,10 @@ function t_em_support_custom_header_image(){
 			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/ocean-thumbnail.png',
 			'description'	=> _x( 'Ocean', 'header image description', 't_em' ),
 		),
-		'tulip'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/tulip.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/tulip-thumbnail.png',
-			'description'	=> _x( 'Tulip', 'header image description', 't_em' ),
+		'purple'	=> array(
+			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/purple.png',
+			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/purple-thumbnail.png',
+			'description'	=> _x( 'Purple', 'header image description', 't_em' ),
 		),
 	) );
 }
