@@ -2203,7 +2203,15 @@ function t_em_breadcrumb(){
 				$post_cat = get_the_category();
 				echo '<li>' . get_category_parents( $post_cat[0], true, '' ) . '</li>' . $current_before . get_the_title() . $current_after;
 			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
-				echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
+				if ( is_post_type_hierarchical( get_post_type() ) ) :
+					$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
+					foreach ( $ancestors as $ancestor ) :
+						echo '<li><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>';
+					endforeach;
+					echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
+				else :
+					echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
+				endif;
 			endif;
 		endif;
 
