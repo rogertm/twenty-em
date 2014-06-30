@@ -38,11 +38,11 @@ if ( have_comments() ) :
 		if ( ! empty($comments_by_type['comment']) ) :
 ?>
 			<div id="comment-count" class="lead"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></div>
-			<?php t_em_hook_comments_list_before(); ?>
+			<?php t_em_action_comments_list_before(); ?>
 			<ul class="commentlist media-list">
 				<?php wp_list_comments( array( 'callback' => 't_em_comment' ) ); ?>
 			</ul>
-			<?php t_em_hook_comments_list_after(); ?>
+			<?php t_em_action_comments_list_after(); ?>
 <?php
 		else : // If there are no responds type comments
 ?>
@@ -72,14 +72,14 @@ if ( have_comments() ) :
 
 	else : // ( '0' == $t_em['separate_comments_pings_tracks'] ) :
 
-		t_em_hook_comments_list_before();
+		t_em_action_comments_list_before();
 ?>
 		<ul class="commentlist media-list">
 		<?php wp_list_comments( array( 'callback' => 't_em_comment_all' ) ); ?>
 		</ul>
 <?php
 
-		t_em_hook_comments_list_after();
+		t_em_action_comments_list_after();
 
 	endif; // '1' == $t_em['separate_comments_pings_tracks']
 

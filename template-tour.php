@@ -18,7 +18,7 @@ get_header(); ?>
 
 		<section id="main-content" class="one-column <?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
-				<?php t_em_hook_content_before(); ?>
+				<?php t_em_action_content_before(); ?>
 				<div id="tour-<?php echo get_the_ID(); ?>" class="custom-template custom-template-tour">
 <?php
 	// Display all child pages of current page.
@@ -67,7 +67,7 @@ get_header(); ?>
 						</div><!-- .tab-content -->
 					</div><!-- .tabbable .tabs-left -->
 				</div><!-- #tour-## -->
-				<?php t_em_hook_content_after(); ?>
+				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 		</section>
 

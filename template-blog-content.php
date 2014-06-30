@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-			<?php t_em_hook_content_before(); ?>
+			<?php t_em_action_content_before(); ?>
 
 <?php
 // Query for Custom Loop
@@ -38,9 +38,9 @@ if ( have_posts() ) :
 // Start the Custom Loop
 	while ( have_posts() ) : the_post();
 ?>
-		<?php t_em_hook_post_before(); ?>
+		<?php t_em_action_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php t_em_hook_post_inside_before(); ?>
+			<?php t_em_action_post_inside_before(); ?>
 			<header class="entry-header">
 				<?php if ( is_sticky() ) : ?>
 					<span class="entry-format"><span class="icomoon-pin icomoon"></span><?php _e( 'Featured', 't_em' ); ?></span>
@@ -61,16 +61,16 @@ if ( have_posts() ) :
 				<?php t_em_comments_link(); ?>
 				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
-			<?php t_em_hook_post_inside_after(); ?>
+			<?php t_em_action_post_inside_after(); ?>
 		</article><!-- #post-## -->
-		<?php t_em_hook_post_after(); ?>
+		<?php t_em_action_post_after(); ?>
 <?php
 	endwhile;
 else :
 	get_template_part( 'content', 'none' );
 endif;
 ?>
-				<?php t_em_hook_content_after(); ?>
+				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

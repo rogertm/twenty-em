@@ -18,7 +18,7 @@ get_header(); ?>
 
 		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
-				<?php t_em_hook_content_before(); ?>
+				<?php t_em_action_content_before(); ?>
 				<div id="collapsible-<?php echo get_the_ID(); ?>" class="custom-template custom-template-collapsible-content">
 <?php
 	// Display all child pages of the current page.
@@ -59,7 +59,7 @@ get_header(); ?>
 ?>
 					</div><!-- #accordion-box .panel-group -->
 				</div><!-- #collapsible-## -->
-				<?php t_em_hook_content_after(); ?>
+				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 		</section><!-- #main-content -->

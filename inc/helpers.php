@@ -31,7 +31,7 @@ function t_em_theme_version(){
 	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
 	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
 }
-add_action( 't_em_hook_head', 't_em_theme_version' );
+add_action( 't_em_action_head', 't_em_theme_version' );
 
 /**
  * Return Width and Height text boxes for thumbnails in forms

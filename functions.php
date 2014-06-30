@@ -4,10 +4,7 @@
  * Load the theme engine files
  */
 require( get_template_directory() . '/inc/constants.php' );
-require( get_template_directory() . '/inc/enqueue.php' );
-require( get_template_directory() . '/inc/helpers.php' );
 require( get_template_directory() . '/inc/theme-options.php' );
-require( get_template_directory() . '/inc/widgets.php' );
 
 /** That's all. Start editing here. Happy Theming! */
 
@@ -433,7 +430,7 @@ function t_em_favicon(){
 		echo '<link rel="shortcut icon" href="'. $t_em['favicon_url'] .'" />'."\n";
 	endif;
 }
-add_action( 't_em_hook_head', 't_em_favicon' );
+add_action( 't_em_action_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
 
 /**
@@ -839,7 +836,7 @@ endif;
 
 /**
  * Display Author header tag and meta in author archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -866,18 +863,18 @@ function t_em_header_archive_author_meta(){
 		endif;
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_author_meta', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_author_meta', 15 );
 
 /**
  * Display Author meta in single post.
- * This function is attached to the t_em_hook_post_content_after action hook
+ * This function is attached to the t_em_action_post_content_after action hook
  *
  * @since Twenty'em 1.0
  */
 function t_em_single_author_meta(){
 	if ( is_single() ) return t_em_author_meta();
 }
-add_action( 't_em_hook_post_content_after', 't_em_single_author_meta' );
+add_action( 't_em_action_post_content_after', 't_em_single_author_meta' );
 
 if ( ! function_exists( 't_em_term_description' ) ) :
 /**
@@ -901,7 +898,7 @@ endif;
 
 /**
  * Display Category header tag and description in category archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -927,11 +924,11 @@ function t_em_header_archive_category(){
 		rewind_posts(); endif;
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_category', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_category', 15 );
 
 /**
  * Display Tag header tag and description in tag archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -957,11 +954,11 @@ function t_em_header_archive_tag(){
 		rewind_posts(); endif;
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_tag', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_tag', 15 );
 
 /**
  * Display Custom Post Type header tag and description in custom post type archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -980,11 +977,11 @@ function t_em_header_archive_post_type_archive(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_post_type_archive', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_post_type_archive', 15 );
 
 /**
  * Display Date header tag in date archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -1021,11 +1018,11 @@ function t_em_header_archive_date(){
 		rewind_posts(); endif;
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_date', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_date', 15 );
 
 /**
  * Display Search header tag in search archives.
- * This function is attached to the t_em_hook_content_before action hook
+ * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
@@ -1048,7 +1045,7 @@ function t_em_header_archive_search(){
 		rewind_posts(); endif;
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_header_archive_search', 15 );
+add_action( 't_em_action_content_before', 't_em_header_archive_search', 15 );
 
 if ( ! function_exists( 't_em_comment' ) ) :
 /**
@@ -1196,7 +1193,7 @@ endif;
 
 /**
  * Display navigation to next/previous pages when applicable.
- * This function is attached to the t_em_hook_content_after() action hook
+ * This function is attached to the t_em_action_content_after() action hook
  *
  * @since Twenty'em 1.0
  */
@@ -1261,7 +1258,7 @@ function t_em_page_navi(){
 <?php
 		endif;
 }
-add_action( 't_em_hook_content_after', 't_em_page_navi' );
+add_action( 't_em_action_content_after', 't_em_page_navi' );
 
 /**
  * Customize theme comments fields with HTML5 form elements. Adds support for
@@ -1331,7 +1328,7 @@ add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
 /**
  * Display Page title and content for custom pages templates. This function is attached to the
- * t_em_hook_content_before action hook.
+ * t_em_action_content_before action hook.
  *
  * @since Twenty'em 1.0
  */
@@ -1353,7 +1350,7 @@ function t_em_custom_template_content(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_custom_template_content', 15 );
+add_action( 't_em_action_content_before', 't_em_custom_template_content', 15 );
 
 if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
 /**
@@ -1427,7 +1424,7 @@ endif;
 
 /**
  * Display header set depending of the activated "Header Options" in admin theme option page. This
- * function is attached to the t_em_hook_header_after action hook.
+ * function is attached to the t_em_action_header_after action hook.
  *
  * @global $t_em
  *
@@ -1459,7 +1456,7 @@ function t_em_header_options_set(){
 			t_em_static_header();
 	endif;
 }
-add_action( 't_em_hook_header_after', 't_em_header_options_set', 5 );
+add_action( 't_em_action_header_after', 't_em_header_options_set', 5 );
 
 if ( ! function_exists( 't_em_header_image' ) ) :
 /**
@@ -1685,7 +1682,7 @@ endif;
 
 /**
  * Display featured post thumbnail on top of a single post if it is set by the user in
- * "General Options" in the admin options page. This function is attached to the t_em_hook_post_inside_before()
+ * "General Options" in the admin options page. This function is attached to the t_em_action_post_inside_before()
  * action hook.
  *
  * @uses has_post_thumbnail() Returns a boolean if a post has a Featured Image
@@ -1709,7 +1706,7 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_post_inside_before', 't_em_single_post_thumbnail' );
+add_action( 't_em_action_post_inside_before', 't_em_single_post_thumbnail' );
 
 if ( ! function_exists( 't_em_post_archive_set' ) ) :
 /**
@@ -1730,7 +1727,7 @@ if ( ! function_exists( 't_em_post_archive_set' ) ) :
 function t_em_post_archive_set(){
 	global $t_em;
 
-	t_em_hook_post_content_before();
+	t_em_action_post_content_before();
 	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
@@ -1746,7 +1743,7 @@ function t_em_post_archive_set(){
 			</div><!-- .entry-content -->
 <?php
 	endif;
-	t_em_hook_post_content_after();
+	t_em_action_post_content_after();
 }
 endif;
 
@@ -1801,7 +1798,7 @@ function t_em_post_format(){
 		echo '<div class="entry-format"><span class="icomoon-pin icomoon"></span><span class="post-format">'. __( 'Featured', 't_em' ) .'</span></div>';
 	endif;
 }
-add_action( 't_em_hook_post_inside_before', 't_em_post_format' );
+add_action( 't_em_action_post_inside_before', 't_em_post_format' );
 
 if ( ! function_exists( 't_em_user_social_network' ) ) :
 /**
@@ -1845,14 +1842,14 @@ endif;
 
 /**
  * Display user social network.
- * This function is attached to the t_em_hook_site_info action hook.
+ * This function is attached to the t_em_action_site_info action hook.
  *
  * @since Twenty'em 1.0
  */
 function t_em_display_user_social_network(){
 	t_em_user_social_network( 't-em', '', 'text-right' );
 }
-add_action( 't_em_hook_site_info_right', 't_em_display_user_social_network' );
+add_action( 't_em_action_site_info_right', 't_em_display_user_social_network' );
 
 if ( ! function_exists( 't_em_loop' ) ) :
 /**
@@ -1886,7 +1883,7 @@ endif;
 /**
  * Show related posts to the current single post if it's set by the user in "General Options" in
  * admin theme options page.
- * This function is attached to the t_em_hook_post_after() action hook.
+ * This function is attached to the t_em_action_post_after() action hook.
  *
  * @global $t_em
  *
@@ -1951,7 +1948,7 @@ function t_em_single_related_posts() {
 <?php
 	endif;
 }
-add_action( 't_em_hook_post_after', 't_em_single_related_posts' );
+add_action( 't_em_action_post_after', 't_em_single_related_posts' );
 
 if ( ! function_exists( 't_em_front_page_widgets' ) ) :
 /**
@@ -2024,24 +2021,24 @@ endif;
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
- * admin panel. This function is attached to the t_em_hook_custom_front_page action hook.
+ * admin panel. This function is attached to the t_em_action_custom_front_page action hook.
  */
 function t_em_display_front_page_widgets(){
 	global $t_em;
 	if ( 'widgets-front-page' == $t_em['front_page_set'] ) : ?>
 	<section id="featured-widget-area" class="row">
-		<?php t_em_hook_custom_front_page_inside_before(); ?>
+		<?php t_em_action_custom_front_page_inside_before(); ?>
 		<?php t_em_front_page_widgets(); ?>
-		<?php t_em_hook_custom_front_page_inside_after(); ?>
+		<?php t_em_action_custom_front_page_inside_after(); ?>
 	</section><!-- #featured-widget-area -->
 <?php
 	endif;
 }
-add_action( 't_em_hook_custom_front_page', 't_em_display_front_page_widgets' );
+add_action( 't_em_action_custom_front_page', 't_em_display_front_page_widgets' );
 
 /**
  * Show Just Another WordPress Front Page if it's is set by the user in "Front Page Options" in
- * admin panel. This function is attached to the t_em_hook_wp_front_page action hook.
+ * admin panel. This function is attached to the t_em_action_wp_front_page action hook.
  */
 function t_em_jawp_front_page(){
 	global $t_em;
@@ -2088,11 +2085,11 @@ function t_em_jawp_front_page(){
 		endif;
 	endif;
 }
-add_action( 't_em_hook_wp_front_page', 't_em_jawp_front_page' );
+add_action( 't_em_action_wp_front_page', 't_em_jawp_front_page' );
 
 /**
  * Show breadcrumb path if it's enable by the user in 'General Options' in admin panel.
- * This function is attached to the t_em_hook_content_before() action hook.
+ * This function is attached to the t_em_action_content_before() action hook.
  *
  * @global $t_em
  *
@@ -2237,10 +2234,10 @@ function t_em_breadcrumb(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_content_before', 't_em_breadcrumb', 5 );
+add_action( 't_em_action_content_before', 't_em_breadcrumb', 5 );
 
 /**
- * Javascript required. This function is attached to the t_em_hook_top() action hook
+ * Javascript required. This function is attached to the t_em_action_top() action hook
  */
 function t_em_javascript_required(){
 ?>
@@ -2249,11 +2246,11 @@ function t_em_javascript_required(){
 <![endif]-->
 <?php
 }
-add_action( 't_em_hook_top', 't_em_javascript_required' );
+add_action( 't_em_action_top', 't_em_javascript_required' );
 
 /**
  * Heading Site Title.
- * This function is attached to the t_em_hook_header_inside_left() action hook.
+ * This function is attached to the t_em_action_header_inside_left() action hook.
  */
 function t_em_heading_site_title(){
 ?>
@@ -2266,10 +2263,10 @@ function t_em_heading_site_title(){
 	</hgroup>
 <?php
 }
-add_action( 't_em_hook_header_inside_left', 't_em_heading_site_title' );
+add_action( 't_em_action_header_inside_left', 't_em_heading_site_title' );
 
 /**
- * Top menu. This function is attached to the t_em_hook_header_before() action hook
+ * Top menu. This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
 if ( has_nav_menu( 'top-menu' ) ) :
@@ -2297,13 +2294,13 @@ if ( has_nav_menu( 'top-menu' ) ) :
 		</div>
 	</div>
 <?php
-	add_action( 't_em_hook_foot', 't_em_navbar_js_script' );
+	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
 endif;
 }
-add_action( 't_em_hook_header_before', 't_em_top_menu' );
+add_action( 't_em_action_header_before', 't_em_top_menu' );
 
 /**
- * Navigation Menu. This function is attached to the t_em_hook_header_after action hook
+ * Navigation Menu. This function is attached to the t_em_action_header_after action hook
  */
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
@@ -2330,10 +2327,10 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 		</div>
 	</div>
 <?php
-	add_action( 't_em_hook_foot', 't_em_navbar_js_script' );
+	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
 endif;
 }
-add_action( 't_em_hook_header_after', 't_em_navigation_menu' );
+add_action( 't_em_action_header_after', 't_em_navigation_menu' );
 
 /**
  * The Footer Menu, if it's active by the user we display it, else, we get nothing
@@ -2349,10 +2346,10 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 		'depth'				=> 1, ) );
 endif;
 }
-add_action( 't_em_hook_site_info_right', 't_em_footer_menu', 15 );
+add_action( 't_em_action_site_info_right', 't_em_footer_menu', 15 );
 
 /**
- * Single post navigation. This function is attached to the t_em_hook_post_after action hook.
+ * Single post navigation. This function is attached to the t_em_action_post_after action hook.
  */
 function t_em_single_navigation(){
 	if ( is_single() ) :
@@ -2366,11 +2363,11 @@ function t_em_single_navigation(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_post_after', 't_em_single_navigation', 5 );
+add_action( 't_em_action_post_after', 't_em_single_navigation', 5 );
 
 /**
  * Comments navigation.
- * This function is attached to the t_em_hook_comments_list_before and t_em_hook_comments_list_after action hooks
+ * This function is attached to the t_em_action_comments_list_before and t_em_action_comments_list_after action hooks
  */
 function t_em_comments_pagination(){
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
@@ -2384,11 +2381,11 @@ if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 <?php
 endif;
 }
-add_action( 't_em_hook_comments_list_before', 't_em_comments_pagination' );
-add_action( 't_em_hook_comments_list_after', 't_em_comments_pagination' );
+add_action( 't_em_action_comments_list_before', 't_em_comments_pagination' );
+add_action( 't_em_action_comments_list_after', 't_em_comments_pagination' );
 
 /**
- * Copy Right. This function is attached to the t_em_hook_site_info action hook.
+ * Copy Right. This function is attached to the t_em_action_site_info action hook.
  */
 function t_em_copy_right(){
 ?>
@@ -2399,10 +2396,10 @@ function t_em_copy_right(){
 	</div><!-- #copyright -->
 <?php
 }
-add_action( 't_em_hook_site_info_left', 't_em_copy_right' );
+add_action( 't_em_action_site_info_left', 't_em_copy_right' );
 
 /**
- * Display Twenty'em.com link at bottom of the page. This function is attached to the t_em_hook_site_info
+ * Display Twenty'em.com link at bottom of the page. This function is attached to the t_em_action_site_info
  * action hook.
  */
 function t_em_dot_com_link(){
@@ -2423,5 +2420,5 @@ $hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 	</div>
 <?php
 }
-add_action( 't_em_hook_site_info_after', 't_em_dot_com_link' );
+add_action( 't_em_action_site_info_after', 't_em_dot_com_link' );
 ?>

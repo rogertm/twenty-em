@@ -109,7 +109,7 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.less">'."\n";
 }
-add_action( 't_em_hook_head', 't_em_bootstrapped_head', 15 );
+add_action( 't_em_action_head', 't_em_bootstrapped_head', 15 );
 
 /**
  * Enqueue LESS Style for the theme
@@ -120,7 +120,7 @@ function t_em_enqueue_less_css(){
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL.'/style.less' .'">'."\n";
 
 }
-add_action( 't_em_hook_head', 't_em_enqueue_less_css', 20 );
+add_action( 't_em_action_head', 't_em_enqueue_less_css', 20 );
 
 /**
  * Enqueue LESS Javascript for the theme
@@ -130,7 +130,7 @@ add_action( 't_em_hook_head', 't_em_enqueue_less_css', 20 );
 function t_em_enqueue_less_js(){
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
 }
-add_action( 't_em_hook_head', 't_em_enqueue_less_js', 30 );
+add_action( 't_em_action_head', 't_em_enqueue_less_js', 30 );
 
 /**
  * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
@@ -142,7 +142,7 @@ function t_em_enqueue_html5_js(){
 	<![endif]-->
 <?php
 }
-add_action( 't_em_hook_head', 't_em_enqueue_html5_js' );
+add_action( 't_em_action_head', 't_em_enqueue_html5_js' );
 
 /**
  * Loads IcoMoon javascript supports to IE 7 and IE 6... Asco!
@@ -154,7 +154,7 @@ function t_em_enqueue_icomoon(){
 	<![endif]-->
 <?php
 }
-add_action( 't_em_hook_head', 't_em_enqueue_icomoon' );
+add_action( 't_em_action_head', 't_em_enqueue_icomoon' );
 
 /**
  * Nivo Slider Options
@@ -183,7 +183,7 @@ function t_em_nivo_slider_options(){
 <?php
 	endif;
 }
-add_action( 't_em_hook_head', 't_em_nivo_slider_options' );
+add_action( 't_em_action_head', 't_em_nivo_slider_options' );
 
 /**
  * Register and enqueue Bootstrap Alert js plugin for close alert blocks

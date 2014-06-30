@@ -24,9 +24,12 @@ require_once( T_EM_INC_DIR_PATH . '/layout-options.php' );
 require_once( T_EM_INC_DIR_PATH . '/social-network-options.php' );
 require_once( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
 require_once( T_EM_INC_DIR_PATH . '/theme-backup.php' );
+require_once( T_EM_INC_DIR_PATH . '/enqueue.php' );
+require_once( T_EM_INC_DIR_PATH . '/helpers.php' );
 require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
+require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
 require_once( T_EM_INC_DIR_PATH . '/help.php' );
-require_once( T_EM_INC_DIR_PATH . '/hooks.php' );
+require_once( T_EM_INC_DIR_PATH . '/actions.php' );
 
 
 /**

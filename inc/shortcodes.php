@@ -85,7 +85,7 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
-		add_action( 't_em_hook_foot', 't_em_shortcode_alert_bs_script' );
+		add_action( 't_em_action_foot', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }

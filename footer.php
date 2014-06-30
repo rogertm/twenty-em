@@ -11,12 +11,12 @@
  */
 ?>
 		</div><!-- #inner-main .row -->
-		<?php t_em_hook_main_after(); ?>
+		<?php t_em_action_main_after(); ?>
 	</div><!-- #main .container -->
 
 
 	<footer id="footer" role="contentinfo">
-		<?php t_em_hook_footer_before(); ?>
+		<?php t_em_action_footer_before(); ?>
 <?php
 	/* A sidebar in the footer? Yep. You can customize
 	 * your footer with four columns of widgets.
@@ -27,26 +27,26 @@
 			<div id="inner-site-info" class="wrapper container">
 				<div class="row">
 					<div id="site-info-before" class="col-md-12">
-						<?php t_em_hook_site_info_before(); ?>
+						<?php t_em_action_site_info_before(); ?>
 					</div>
 					<div id="site-info-left" class="col-md-6">
-						<?php t_em_hook_site_info_left(); ?>
+						<?php t_em_action_site_info_left(); ?>
 					</div>
 					<div id="site-info-right" class="col-md-6">
-						<?php t_em_hook_site_info_right(); ?>
+						<?php t_em_action_site_info_right(); ?>
 					</div>
 					<div id="site-info-after" class="col-md-12">
-						<?php t_em_hook_site_info_after(); ?>
+						<?php t_em_action_site_info_after(); ?>
 					</div>
 				</div><!-- .row -->
 			</div><!-- .wrapper .container -->
 		</div><!-- #site-info -->
-		<?php t_em_hook_footer_after(); ?>
+		<?php t_em_action_footer_after(); ?>
 	</footer><!-- #footer -->
 
 </div><!-- #wrap -->
 
-<?php t_em_hook_foot(); ?>
+<?php t_em_action_foot(); ?>
 <?php
 	/* Always have wp_footer() just before the closing </body>
 	 * tag of your theme, or you will break many plugins, which

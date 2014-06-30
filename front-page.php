@@ -16,17 +16,17 @@ get_header(); ?>
 			<section id="main-content" class="<?php echo t_em_add_bootstrap_class('main-content'); ?>">
 				<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 <?php if ( 'wp-front-page' == $t_em['front_page_set'] ) :
-					t_em_hook_content_before();
-					t_em_hook_wp_front_page();
-					t_em_hook_content_after(); ?>
+					t_em_action_content_before();
+					t_em_action_wp_front_page();
+					t_em_action_content_after(); ?>
 				</section><!-- #content -->
 				<?php get_sidebar(); ?>
 			</section><!-- #main-content -->
 			<?php get_sidebar( 'alt' ); ?>
 <?php elseif ( 'widgets-front-page' == $t_em['front_page_set'] ) :
-					t_em_hook_custom_front_page_before();
-					t_em_hook_custom_front_page();
-					t_em_hook_custom_front_page_after(); ?>
+					t_em_action_custom_front_page_before();
+					t_em_action_custom_front_page();
+					t_em_action_custom_front_page_after(); ?>
 				</section><!-- #content -->
 			</section><!-- #main-content -->
 <?php endif; ?>

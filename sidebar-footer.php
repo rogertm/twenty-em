@@ -28,7 +28,7 @@ global $t_em;
 
 			<section id="footer-widget-area" class="wrapper container" role="complementary">
 				<div class="row widget-area">
-				<?php t_em_hook_sidebar_footer_before(); ?>
+				<?php t_em_action_sidebar_footer_before(); ?>
 
 <?php if ( is_active_sidebar( 'first-footer-widget-area' )
 			&& 'no-footer-widget' != $t_em['footer_set'] ) : ?>
@@ -60,7 +60,7 @@ global $t_em;
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
 					</aside><!-- #fourth .widget-area -->
 <?php endif; ?>
-				<?php t_em_hook_sidebar_footer_after(); ?>
+				<?php t_em_action_sidebar_footer_after(); ?>
 				</div><!-- .row -->
 			</section><!-- #footer-widget-area .wrapper .container -->
 
