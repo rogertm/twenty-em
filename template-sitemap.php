@@ -66,7 +66,7 @@ get_header(); ?>
 							</li>
 						</ul>
 					<?php
-						endforeach;
+						endforeach; wp_reset_postdata();
 					endforeach;
 					?>
 				</div><!-- #sitemap-## -->

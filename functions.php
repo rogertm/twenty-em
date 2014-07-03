@@ -1509,7 +1509,6 @@ if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
  */
 function t_em_slider_bootstrap_carousel(){
 	global	$post, $t_em;
-	$tmp_post = $post;
 	$slider_posts = get_posts( t_em_slider_query_args() );
 	$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
@@ -1546,7 +1545,7 @@ function t_em_slider_bootstrap_carousel(){
 						<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
 					</div>
 				</div><!-- .item -->
-<?php 		endforeach; $post = $tmp_post; ?>
+<?php 		endforeach; wp_reset_postdata(); ?>
 			</div><!-- .carousel-inner -->
 			<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
@@ -1592,7 +1591,7 @@ function t_em_slider_nivo_slider(){
 					<a href="<?php the_permalink(); ?>" rel="bookmark">
 						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
 					</a>
-<?php		endforeach; ?>
+<?php		endforeach; wp_reset_postdata(); ?>
 				</div><!-- #slider .nivoSlider -->
 <?php		foreach ( $slider_posts as $post ) : setup_postdata( $post ); ?>
 				<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
@@ -1601,7 +1600,7 @@ function t_em_slider_nivo_slider(){
 					</h2>
 					<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
 				</div>
-<?php		endforeach; ?>
+<?php		endforeach; wp_reset_postdata(); ?>
 			</div><!-- .slider-wrapper .theme-$theme -->
 		</div><!-- #nivo-slider -->
 	</section>
