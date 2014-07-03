@@ -46,30 +46,29 @@ get_header(); ?>
 
 					<?php
 					/** Displaying posts per category
-					 * @link http://codex.wordpress.org/Template_Tags/wp_list_categories
+					 * @link http://codex.wordpress.org/Function_Reference/get_categories
 					 */
 					?>
 					<h3 id="sitemap-posts-per-categories"><?php _e( 'Posts per categories', 't_em' ); ?></h3>
 					<?php
 					$cats = get_categories();
 					foreach ( $cats as $cat ) :
-						query_posts( array ( 'cat' => $cat->cat_ID ) );
 					?>
 					<h4><?php echo $cat->cat_name ?></h4>
+					<?php
+						$posts_per_cat = get_posts( array( 'category' => $cat->cat_ID ) );
+						foreach ( $posts_per_cat as $post ) : setup_postdata( $post );
+					 ?>
 						<ul>
-					<?php while ( have_posts() ) : the_post(); ?>
 							<li>
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 								<small> - <?php comments_number( '0 Comments', '1 Comment', '% Comments' ); ?></small>
 							</li>
-
-					<?php endwhile; wp_reset_query(); ?>
 						</ul>
 					<?php
+						endforeach;
 					endforeach;
 					?>
-
-
 				</div><!-- #sitemap-## -->
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->

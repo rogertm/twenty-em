@@ -1570,52 +1570,38 @@ if ( ! function_exists( 't_em_slider_nivo_slider' ) ) :
  */
 function t_em_slider_nivo_slider(){
 	global $post, $t_em;
-	query_posts ( t_em_slider_query_args() );
+	$slider_posts = get_posts( t_em_slider_query_args() );
 ?>
 	<section id="header-carousel">
 		<div id="nivo-slider" class="wrapper container">
 			<div class="slider-wrapper theme-<?php echo $t_em['nivo_style']; ?> wrapper row">
 				<div class="ribbon"></div>
 				<div id="slider" class="nivoSlider">
-			<?php
-			if ( have_posts() ) :
-				while ( have_posts() ) : the_post();
-					// Display the thumbnails
-					if ( has_post_thumbnail( $post->ID ) ) :
-						$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+<?php		foreach ( $slider_posts as $post ) : setup_postdata( $post );
+				// Display the thumbnails
+				if ( has_post_thumbnail( $post->ID ) ) :
+					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+					$image_src = $image_url[0];
+				else :
+					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+					$total_images = count( $images );
+					$image = array_shift( $images );
+					$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
 						$image_src = $image_url[0];
-					else :
-						$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-						$total_images = count( $images );
-						$image = array_shift( $images );
-						$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
-							$image_src = $image_url[0];
-					endif;
-						?>
-						<a href="<?php the_permalink(); ?>" rel="bookmark">
-							<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
-						</a>
-						<?php
-				endwhile;
-			endif;
-			wp_reset_query();
-			?>
+				endif; ?>
+					<a href="<?php the_permalink(); ?>" rel="bookmark">
+						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
+					</a>
+<?php		endforeach; ?>
 				</div><!-- #slider .nivoSlider -->
-			<?php
-			if ( have_posts() ) :
-				while ( have_posts() ) : the_post();
-				?>
+<?php		foreach ( $slider_posts as $post ) : setup_postdata( $post ); ?>
 				<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
 					<h2 class="entry-title">
 						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
 					</h2>
 					<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
 				</div>
-				<?php
-				endwhile;
-				wp_reset_query();
-			endif;
-			?>
+<?php		endforeach; ?>
 			</div><!-- .slider-wrapper .theme-$theme -->
 		</div><!-- #nivo-slider -->
 	</section>
@@ -2198,7 +2184,11 @@ function t_em_breadcrumb(){
 		if ( is_single() && ! is_attachment() ) :
 			if ( $post->post_type == 'post' ) :
 				$post_cat = get_the_category();
-				echo '<li>' . get_category_parents( $post_cat[0], true, '' ) . '</li>' . $current_before . get_the_title() . $current_after;
+				foreach ( $post_cat as $cat ) :
+					echo '<li><a href="'. get_category_link( $cat->term_id ) .'">'. $cat->cat_name .'</a></li>';
+				endforeach;
+				echo $current_before . get_the_title() . $current_after;
+				// echo '<li>' . get_category_parents( $post_cat[0], true, '' ) . '</li>' . $current_before . get_the_title() . $current_after;
 			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				if ( is_post_type_hierarchical( get_post_type() ) ) :
 					$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
