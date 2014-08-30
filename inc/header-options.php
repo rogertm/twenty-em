@@ -70,7 +70,7 @@ function t_em_header_image_callback(){
 		$checked_option = checked( $t_em['header_featured_image'], '1', false );
 		$extend_header .= '<figure><img src="'.get_header_image().'" width="500"></figure>';
 		$extend_header .= '<label class="description">';
-		$extend_header .=	 __( 'Display featured image in single posts and pages? ', 't_em' );
+		$extend_header .=	 __( 'Display featured image in single posts and pages ', 't_em' );
 		$extend_header .=	'<input type="checkbox" name="t_em_theme_options[header_featured_image]" value="1" '. $checked_option .' />';
 		$extend_header .= '</label>';
 	else :
