@@ -611,7 +611,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		echo $before_widget;
 		if ( $title ) echo $before_title . $title . $after_title;
 ?>
-		<form class="form-inline feedburner-subscribe" action="<?php echo $feedburner_action; ?>" method="post" target="popupwindow" onsubmit="window.open('<?php echo $feedburner_action; ?>?uri=<?php echo $feedburner_uri; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+		<form class="feedburner-subscribe" action="<?php echo $feedburner_action; ?>" method="post" target="popupwindow" onsubmit="window.open('<?php echo $feedburner_action; ?>?uri=<?php echo $feedburner_uri; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
 			<?php if ( $feedburner_description ) : ?>
 				<p><?php echo $feedburner_description; ?></p>
 			<?php endif; ?>

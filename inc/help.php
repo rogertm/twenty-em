@@ -26,7 +26,7 @@ function t_em_theme_options_help(){
 	$screen = get_current_screen();
 
 	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:', 't_em' ),
-					'http://twenty-em.com/',
+					T_EM_SITE,
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
@@ -92,7 +92,7 @@ function t_em_theme_options_help(){
 						'<ul>' .
 							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s" target="_blank">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
-							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s" target="_blank">icon class</a>, image (previously uploaded to your <a href="%2$s" target="_blank">Media Library</a>) and a button linked to the URL you like.', 't_em' ),
+							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s" target="_blank">icon class</a>, image (previously uploaded to your <a href="%2$s" target="_blank">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
 									 T_EM_THEME_DIR_DOCS_URL . '/icomoon.html',
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
@@ -104,10 +104,11 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$archive_help =	'<p>' . __( '<strong>Archive Options</strong>: Two simple ways to show your posts archive: The Content or The Excerpt.', 't_em' ) . '</p>' .
+	$archive_help =	'<p>' . __( '<strong>Archive Options</strong>: Two simple ways to show your posts archive: The Content or The Excerpt. Besides two pagination options', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . __( '<strong>The Content</strong>: If you are running <em>Just another WordPress Blog</em>, this could be a great option, showing the whole content of your posts when an archive is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your posts, also let you manage some other options, like excerpt length, thumbnail alignment and thumbnail Width and Height.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Archive Pagination</strong>: Two ways to display your pagination. Simple: <code>Older</code> and <code>Newer</code> posts links. Or Paginated: list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 &hellip; 9 Older &raquo;</code>', 't_em' ) . '</li>' .
 					'<ul>';
 
 	$screen->add_help_tab( array(
@@ -139,7 +140,10 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$webmastertools_help = '<p>' . __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your Search Engines ID&#8217;s provided by Google and/or Bing, and Statistics Tracker codes from the system you like.', 't_em' ) . '</p>';
+	$webmastertools_help = '<p>' . sprintf( __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your meta key "content" value provided by <a href="%1$s" target="_blank">Google Webmaster Tools</a>, <a href="%2$s" target="_blank">Bing Webmaster Center</a> and <a href="%3$s" target="_blank">Pinterest Site Verification</a>, and Statistics Tracker codes from the system you like.', 't_em' ),
+								'https://www.google.com/webmasters/tools/',
+								'http://www.bing.com/webmaster/',
+								'https://pinterest.com/website/verify/' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title' => __( 'Webmaster Tools Options', 't_em' ),
@@ -150,9 +154,9 @@ function t_em_theme_options_help(){
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						'http://twenty-em.com/' ) . '</p>' .
+						T_EM_SITE ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR_DOCS_URL . '/readme.html' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }
@@ -178,9 +182,9 @@ function t_em_theme_backup_help(){
 
 	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						'http://twenty-em.com/' ) . '</p>' .
+						T_EM_SITE ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Reademe</a>', 't_em' ), T_EM_THEME_DIR_URL . '/readme.txt' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar );
 }

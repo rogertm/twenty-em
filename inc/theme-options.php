@@ -271,6 +271,7 @@ function t_em_default_theme_options(){
 		// Search Engines ID and Tracker Options
 		'google_id'										=> '',
 		'bing_id'										=> '',
+		'pinterest_id'									=> '',
 		'stats_tracker_header_tag'						=> '',
 		'stats_tracker_body_tag'						=> '',
 	);
@@ -302,7 +303,7 @@ function t_em_get_theme_options(){
  */
 function t_em_theme_options_page(){
 	global $t_em;
-	$t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
+	// $t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -588,11 +589,24 @@ function t_em_theme_options_validate( $input ){
 			$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
 		endforeach;
 
-		// Validate all text (trackers) options
-		$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '<meta name="google-site-verification"', '<meta name="msvalidate.01"', 'content="', '"', '/>', '\t', '\n', '\r', ' ' );
+		// Validate all Verification Services
 		foreach ( array (
 			'google_id',
 			'bing_id',
+			'pinterest_id',
+		) as $content_key ) :
+			$pattern = '/content=["\']?([^"\' ]*)["\' ]/is';
+			preg_match( $pattern, $input[$content_key], $match );
+			if ( $match ) :
+				$input[$content_key] = trim( htmlentities( $match[1] ) );
+			else :
+				$input[$content_key] = trim( htmlentities( $input[$content_key] ) );
+			endif;
+		endforeach;
+
+		// Validate all textarea (trackers) options
+		$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '\t', '\n', '\r', ' ' );
+		foreach ( array (
 			'stats_tracker_header_tag',
 			'stats_tracker_body_tag',
 		) as $text_tracker ) :

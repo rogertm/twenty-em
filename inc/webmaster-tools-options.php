@@ -24,13 +24,17 @@
  */
 function t_em_search_engines_id_options(){
 	$engines_options = array (
-		'google_id'	=> array(
-			'label'	=> __( 'Google ID number', 't_em' ),
-			'name'	=> 'google_id',
+		'google_id'		=> array(
+			'label'		=> __( 'Google Webmaster Tools', 't_em' ),
+			'name'		=> 'google_id',
 		),
-		'bing_id'	=> array(
-			'label'	=> __( 'Bing ID number', 't_em' ),
-			'name'	=> 'bing_id',
+		'bing_id'		=> array(
+			'label'		=> __( 'Bing Webmaster Center', 't_em' ),
+			'name'		=> 'bing_id',
+		),
+		'pinterest_id'	=> array(
+			'label'		=> __( 'Pinterest Site Verification', 't_em' ),
+			'name'		=> 'pinterest_id',
 		),
 	);
 
@@ -142,6 +146,10 @@ function t_em_stats_header_tracker(){
 	// Bing Engine ID
 	if ( $t_em['bing_id'] )
 		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
+
+	// Pinterest Engine ID
+	if ( $t_em['pinterest_id'] )
+		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
 
 	// Header Stats Tracker
 	if ( $t_em['stats_tracker_header_tag'] )

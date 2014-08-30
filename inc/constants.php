@@ -46,6 +46,9 @@ $t_em_theme_data = array (
  * Define Twenty'em CONSTANTS
  */
 
+// Twenty'em Site
+define ( 'T_EM_SITE',													'http://twenty-em.com' );
+
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
