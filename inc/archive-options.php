@@ -143,17 +143,9 @@ function t_em_excerpt_callback(){
 }
 
 /**
- * Extend setting for Archive Pagination Option in Twenty'em admin panel.
- * Referenced via t_em_archive_options() in /inc/archive-options.php.
- *
- * @global $t_em.
- * @global $archive_pagination Returns a string value for pagination.
- *
- * @since Twenty'em 1.0
+ * Archive Pagination Options
  */
-function t_em_settings_archive_pagination(){
-	global $t_em, $archive_pagination;
-
+function t_em_archive_pagination_options(){
 	$archive_pagination = array (
 		'prev-next'	=> array(
 			'value'	=> 'prev-next',
@@ -165,10 +157,25 @@ function t_em_settings_archive_pagination(){
 		),
 	);
 
+	return apply_filters( 't_em_archive_pagination_options', $archive_pagination );
+}
+
+/**
+ * Extend setting for Archive Pagination Option in Twenty'em admin panel.
+ * Referenced via t_em_archive_options() in /inc/archive-options.php.
+ *
+ * @global $t_em.
+ * @global $archive_pagination Returns a string value for pagination.
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_settings_archive_pagination(){
+	global $t_em;
+
 	$extend_excerpt = '';
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
 	$extend_excerpt .=	'<p>'. __( 'Archive Pagination', 't_em' ) .'</p>';
-	foreach ( $archive_pagination as $pagination ) :
+	foreach ( t_em_archive_pagination_options() as $pagination ) :
 		$checked_option = checked( $t_em['archive_pagination_set'], $pagination['value'], false );
 		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination">';
 		$extend_excerpt .=		'<label class="description">';

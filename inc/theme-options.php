@@ -115,7 +115,7 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
  */
 if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) :
 	add_option( 't_em_theme_options', t_em_default_theme_options() );
-	wp_redirect( 'admin.php?page=twenty-em-options' );
+	wp_redirect( admin_url( 'admin.php?page=twenty-em-options' ) );
 	exit;
 endif;
 
@@ -132,7 +132,6 @@ endif;
  */
 function t_em_restore_from_scratch(){
 	global	$t_em;
-
 	// If options are empties, we load default settings.
 	if ( empty( $t_em ) )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
@@ -212,6 +211,7 @@ function t_em_default_theme_options(){
 		'primary_button_icon_class_text_widget_two'		=> '',
 		'secondary_button_text_text_widget_two'			=> '',
 		'secondary_button_link_text_widget_two'			=> '',
+		'secondary_button_icon_class_text_widget_two'	=> '',
 		'headline_text_widget_three'					=> '',
 		'content_text_widget_three'						=> '',
 		'headline_icon_class_text_widget_three'			=> '',
@@ -221,6 +221,7 @@ function t_em_default_theme_options(){
 		'primary_button_icon_class_text_widget_three'	=> '',
 		'secondary_button_text_text_widget_three'		=> '',
 		'secondary_button_link_text_widget_three'		=> '',
+		'secondary_button_icon_class_text_widget_three'	=> '',
 		'headline_text_widget_four'						=> '',
 		'content_text_widget_four'						=> '',
 		'headline_icon_class_text_widget_four'			=> '',
@@ -230,6 +231,7 @@ function t_em_default_theme_options(){
 		'primary_button_icon_class_text_widget_four'	=> '',
 		'secondary_button_text_text_widget_four'		=> '',
 		'secondary_button_link_text_widget_four'		=> '',
+		'secondary_button_icon_class_text_widget_four'	=> '',
 		// Archive Options
 		'archive_set'									=> 'the-content',
 		'excerpt_length'								=> '55',
@@ -280,16 +282,6 @@ function t_em_default_theme_options(){
 }
 
 /**
- * Return the whole configuration for Theme Options stored in the data base.
- * Referenced via t_em_restore_from_scratch() in /inc/theme-options.php file.
- *
- * @since Twenty'em 0.1
- */
-function t_em_get_theme_options(){
-	return get_option( 't_em_theme_options', t_em_default_theme_options() );
-}
-
-/**
  * Finally a Options Page is displayed.
  * Referenced via t_em_theme_options_admin_page(), add_menu_page() callback
  *
@@ -303,19 +295,51 @@ function t_em_get_theme_options(){
  */
 function t_em_theme_options_page(){
 	global $t_em;
-	// $t_em_options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS ?></h2>
-		<?php settings_errors( 't-em-update' ); ?>
-		<form id="t-em-setting" method="post" action="options.php">
+		<?php if ( empty( $t_em ) ) : ?>
+		<div class="error">
+			<p><?php echo t_em_theme_explode(); ?></p>
+		</div>
+		<?php else : ?>
 			<?php
-				settings_fields( 't_em_options' );
-				do_settings_sections( 'twenty-em-options' );
-				submit_button();
+			// Check for updates!
+			if ( $t_em['framework_version'] < T_EM_FRAMEWORK_VERSION ) :
+				$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
+				$options_update = array_merge( $options_diff, $t_em );
 			?>
-		</form>
+			<div class="updated">
+			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
+				<p><?php echo sprintf( __( 'Thank you for updating to <strong>Twenty&#8217;em Version %1$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%2$s">backup your setting</a>.' ),
+								T_EM_FRAMEWORK_VERSION,
+								admin_url( 'admin.php?page=twenty-em-backup' ) ); ?></p>
+			<?php 	elseif ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) : ?>
+				<p><?php echo sprintf( __( 'Update completed. Back to <a href="%1$s">Theme Options</a> screen', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ) ) ?></p>
+			<?php 	endif; ?>
+			</div><!-- .updated -->
+
+			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
+			<a href="<?php echo admin_url( 'admin.php?page=twenty-em-options&amp;update-twenty-em=true' ) ?>" class="button button-hero button-primary">
+				<?php echo sprintf( __( 'Update to Version %1$s', 't_em' ), T_EM_FRAMEWORK_VERSION ); ?>
+			</a>
+			<?php 	endif; ?>
+			<?php 	if ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) :
+						update_option( 't_em_theme_options', $options_update );
+					endif;
+			?>
+			<?php else : ?>
+			<?php settings_errors( 't-em-update' ); ?>
+			<form id="t-em-setting" method="post" action="options.php">
+				<?php
+					settings_fields( 't_em_options' );
+					do_settings_sections( 'twenty-em-options' );
+					submit_button();
+				?>
+			</form>
+			<?php endif; ?>
+		<?php endif; ?>
 	</div><!-- .wrap -->
 <?php
 }
@@ -327,7 +351,8 @@ function t_em_theme_options_page(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
-	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout, $archive_in_columns, $archive_pagination;
+	// VER TODAS ESTAS VARIABLES GLOBALES Y CONVERTIRLAS EN FUNCIONES
+	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout, $archive_in_columns;
 	if ( $input != null ) :
 
 		// CONSTANTS
@@ -366,7 +391,7 @@ function t_em_theme_options_validate( $input ){
 				'set'		=> 'slider_text',
 				'callback'	=> $slider_layout,
 			),
-			'slider-options'	=> array (
+			'slider-script-options'	=> array (
 				'set'		=> 'slider_script',
 				'callback'	=> $slider_script,
 			),
@@ -378,13 +403,13 @@ function t_em_theme_options_validate( $input ){
 				'set'		=> 'archive_set',
 				'callback'	=> t_em_archive_options(),
 			),
-			'archive-options'	=> array (
+			'archive-columns-options'	=> array (
 				'set'		=> 'archive_in_columns',
 				'callback'	=> $archive_in_columns,
 			),
-			'archive-options'	=> array (
-				'set'		=> 'archive_pagination',
-				'callback'	=> $archive_pagination,
+			'archive-pagination-options'	=> array (
+				'set'		=> 'archive_pagination_set',
+				'callback'	=> t_em_archive_pagination_options(),
 			),
 			'excerpt-options'	=> array (
 				'set'		=> 'excerpt_set',
@@ -630,5 +655,12 @@ function t_em_theme_options_validate( $input ){
  */
 function t_em_rand_error_code(){
 	return sprintf( __( 'Oops! An error has occurred. Error ID: %1$s', 't_em' ), md5( rand() ) );
+}
+
+/**
+ * Idem...
+ */
+function t_em_theme_explode(){
+	return sprintf( __( 'Oops! Your theme explode... Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
 }
 ?>

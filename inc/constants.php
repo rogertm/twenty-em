@@ -51,7 +51,7 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.1' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 
 // Theme Directory URL
