@@ -150,7 +150,8 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
 function t_em_default_theme_options(){
 	$default_theme_options = array (
 		// Twenty'em Version
-		'framework_version'								=> T_EM_FRAMEWORK_VERSION,
+		't_em_framework_version'						=> T_EM_FRAMEWORK_VERSION,
+		't_em_db_version'								=> T_EM_DB_VERSION,
 		// Generals Options
 		't_em_link'										=> '1',
 		'single_featured_img'							=> '1',
@@ -294,19 +295,19 @@ function t_em_default_theme_options(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_page(){
-	global $t_em;
+	global $t_em, $wp_db_version;
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
 		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS ?></h2>
 		<?php if ( empty( $t_em ) ) : ?>
 		<div class="error">
-			<p><?php echo t_em_theme_explode(); ?></p>
+			<p><?php t_em_theme_explode(); ?></p>
 		</div>
 		<?php else : ?>
 			<?php
 			// Check for updates!
-			if ( $t_em['framework_version'] < T_EM_FRAMEWORK_VERSION ) :
+			if ( $t_em['t_em_db_version'] < T_EM_DB_VERSION ) :
 				$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 				$options_update = array_merge( $options_diff, $t_em );
 			?>
@@ -351,12 +352,11 @@ function t_em_theme_options_page(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_validate( $input ){
-	// VER TODAS ESTAS VARIABLES GLOBALES Y CONVERTIRLAS EN FUNCIONES
-	global $excerpt_options, $slider_layout, $slider_script, $nivo_effect, $list_categories, $static_header_layout, $archive_in_columns;
 	if ( $input != null ) :
 
 		// CONSTANTS
-		$input['framework_version'] = T_EM_FRAMEWORK_VERSION;
+		$input['t_em_framework_version'] = T_EM_FRAMEWORK_VERSION;
+		$input['t_em_db_version'] = T_EM_DB_VERSION;
 
 		// All the checkbox are either 0 or 1
 		foreach ( array(
@@ -389,15 +389,19 @@ function t_em_theme_options_validate( $input ){
 			),
 			'slider-options'	=> array (
 				'set'		=> 'slider_text',
-				'callback'	=> $slider_layout,
+				'callback'	=> t_em_slider_layout_options(),
 			),
 			'slider-script-options'	=> array (
 				'set'		=> 'slider_script',
-				'callback'	=> $slider_script,
+				'callback'	=> t_em_slider_script_options(),
+			),
+			'nivo-style-options'	=> array (
+				'set'		=> 'nivo_style',
+				'callback'	=> t_em_nivo_slider_styles_options(),
 			),
 			'static-header-options'	=> array (
 				'set'		=> 'static_header_text',
-				'callback'	=> $static_header_layout,
+				'callback'	=> t_em_static_header_layout_options(),
 			),
 			'archive-options'	=> array (
 				'set'		=> 'archive_set',
@@ -405,7 +409,7 @@ function t_em_theme_options_validate( $input ){
 			),
 			'archive-columns-options'	=> array (
 				'set'		=> 'archive_in_columns',
-				'callback'	=> $archive_in_columns,
+				'callback'	=> t_em_archive_in_columns(),
 			),
 			'archive-pagination-options'	=> array (
 				'set'		=> 'archive_pagination_set',
@@ -413,7 +417,7 @@ function t_em_theme_options_validate( $input ){
 			),
 			'excerpt-options'	=> array (
 				'set'		=> 'excerpt_set',
-				'callback'	=> $excerpt_options,
+				'callback'	=> t_em_excerpt_options(),
 			),
 			'layout-options'	=> array (
 				'set'		=> 'layout_set',
@@ -548,11 +552,11 @@ function t_em_theme_options_validate( $input ){
 		$select_options = array (
 			'slider-cat'	=> array (
 				'set'		=> 'slider_category',
-				'callback'	=> $list_categories,
+				'callback'	=> t_em_list_categories(),
 			),
 			'nivo-effect'	=> array (
 				'set'		=> 'nivo_effect',
-				'callback'	=> $nivo_effect,
+				'callback'	=> t_em_nivo_slider_effetc_options(),
 			),
 		);
 		foreach ( $select_options as $select ) :
@@ -654,13 +658,13 @@ function t_em_theme_options_validate( $input ){
  * @since Twenty'em 1.0
  */
 function t_em_rand_error_code(){
-	return sprintf( __( 'Oops! An error has occurred. Error ID: %1$s', 't_em' ), md5( rand() ) );
+	echo sprintf( __( 'Oops! An error has occurred. Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
 }
 
 /**
  * Idem...
  */
 function t_em_theme_explode(){
-	return sprintf( __( 'Oops! Your theme explode... Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
+	echo sprintf( __( 'Oops! Your theme explode... Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
 }
 ?>

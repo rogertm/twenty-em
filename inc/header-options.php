@@ -22,6 +22,7 @@
  * 1. Header image (header-image) defined in t_em_support_custom_header_image() function in
  * /inc/functions.php
  * 2. Slider (slider) displaying featured posts of such category
+ * 3. Static Header (static-header) displaying a custom header
  *
  * @return array
  *
@@ -81,22 +82,9 @@ function t_em_header_image_callback(){
 }
 
 /**
- * Extend setting for Header Slider Option in Twenty'em admin panel.
- * Referenced via t_em_header_options().
- *
- * @global $t_em
- * @global $slider_layout Return an array with our slider's layout options.
- * @global $list_categories Havana, we have a list of categories... Should I say more?
- *
- * @since Twenty'em 0.1
+ * Returns an array with our slider's layout options.
  */
-function t_em_slider_callback(){
-	global	$t_em,
-			$slider_layout,
-			$slider_script,
-			$nivo_effect,
-			$list_categories;
-
+function t_em_slider_layout_options(){
 	$slider_layout = array (
 		'slider-text-center' => array (
 			'value' => 'slider-text-center',
@@ -115,6 +103,13 @@ function t_em_slider_callback(){
 		),
 	);
 
+	return apply_filters( 't_em_slider_layout_options', $slider_layout );
+}
+
+/**
+ * Returns an array with our slider's script options.
+ */
+function t_em_slider_script_options(){
 	$slider_script = array (
 		'slider-bootstrap-carousel' => array (
 			'value' => 'slider-bootstrap-carousel',
@@ -126,37 +121,87 @@ function t_em_slider_callback(){
 		),
 	);
 
-	/**
-	 * Twenty'em uses Nivo SLider jQuery Plugin by default, and we create our own style. If you want
-	 * add your own style, just add a new key like this:
-	 * 'style-your-style'	=> array (
-	 * 		'value'	=> 'your-style',
-	 * 		'label'	=> __( 'My own Style', 't_em' ),
-	 * ),
-	 * Do not forget to save all your stuff in /css/nivo-slider/themes/your-style/your-style.css
-	 */
-	$slider_style = array (
-		'style-t-em'	=> array (
+	return apply_filters( 't_em_slider_script_options', $slider_script );
+}
+
+/**
+ * Twenty'em uses Nivo SLider jQuery Plugin by default, and we create our own style. If you want
+ * add your own style, just add a new key like this:
+ * 'style-your-style'	=> array (
+ * 		'value'	=> 'your-style',
+ * 		'label'	=> __( 'My own Style', 't_em' ),
+ * ),
+ * Do not forget to save all your stuff in /css/nivo-slider/themes/your-style/your-style.css
+ */
+function t_em_nivo_slider_styles_options(){
+	$nivo_slider_style = array (
+		't-em'	=> array (
 			'value'	=> 't-em',
 			'label'	=> __( 'Twenty&#8217;em', 't_em' ),
 		),
-		'style-default'	=> array (
+		'default'	=> array (
 			'value'	=> 'default',
 			'label'	=> __( 'Nivo Default', 't_em' ),
 		),
-		'style-dark'	=> array (
+		'dark'	=> array (
 			'value'	=> 'dark',
 			'label'	=> __( 'Nivo Dark', 't_em' ),
 		),
-		'style-light'	=> array (
+		'light'	=> array (
 			'value'	=> 'light',
 			'label'	=> __( 'Nivo Light', 't_em' ),
 		),
-		'style-bar'	=> array (
+		'bar'	=> array (
 			'value'	=> 'bar',
 			'label'	=> __( 'Nivo Bar', 't_em' ),
 		),
 	);
+
+	return apply_filters( 't_em_nivo_slider_styles_options', $nivo_slider_style );
+}
+
+/**
+ * Returns an array with our slider's script options.
+ */
+function t_em_nivo_slider_effetc_options(){
+	$nivo_effects = array (
+					'random',
+					'sliceDownRight',
+					'sliceDownLeft',
+					'sliceUpRight',
+					'sliceUpLeft',
+					'sliceUpDown',
+					'sliceUpDownLeft',
+					'fold',
+					'fade',
+					'boxRandom',
+					'boxRain',
+					'boxRainReverse',
+					'boxRainGrow',
+					'boxRainGrowReverse' );
+
+	return apply_filters( 't_em_nivo_slider_effetc_options', $nivo_effects );
+}
+
+/**
+ * Returns an array of category objects
+ *
+ * Hook this returned filter to display in your slider options some different taxonomies
+ */
+function t_em_list_categories(){
+	return apply_filters( 't_em_list_categories', get_categories() );
+}
+
+/**
+ * Extend setting for Header Slider Option in Twenty'em admin panel.
+ * Referenced via t_em_header_options().
+ *
+ * @global $t_em
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_slider_callback(){
+	global	$t_em;
 
 	$extend_slider = '';
 
@@ -169,7 +214,7 @@ function t_em_slider_callback(){
 
 	// Display images options
 	$extend_slider .= '<div class="image-radio-option-group sub-extend">';
-	foreach ( $slider_layout as $layout ) :
+	foreach ( t_em_slider_layout_options() as $layout ) :
 		$checked_option = checked( $t_em['slider_text'], $layout['value'], false );
 		$extend_slider .=	'<div class="layout image-radio-option slider-layout">';
 		$extend_slider .=		'<label class="description">';
@@ -186,7 +231,7 @@ function t_em_slider_callback(){
 	$extend_slider .= '<div id="slider-scripts-options">';
 	$extend_slider .= '<div class="text-radio-option-group sub-extend">';
 	$extend_slider .= '<p>'. __( 'Select your slider script', 't_em' ) .'</p>';
-	foreach ( $slider_script as $script ) :
+	foreach ( t_em_slider_script_options() as $script ) :
 		$checked_option = checked( $t_em['slider_script'], $script['value'], false );
 		$extend_slider .=	'<div class="layout text-radio-option slider-script">';
 		$extend_slider .=		'<label class="description">';
@@ -231,7 +276,7 @@ function t_em_slider_callback(){
 		$extend_slider .= '<div id="slider-nivo-slider" class="slider-script-extend text-option '. $selected_script .'">';
 		$extend_slider .= 	'<div class="sub-extend">';
 		$extend_slider .= 	'<p>' . __( 'Select your slider style.', 't_em' ) . '</p>';
-		foreach ($slider_style as $style) :
+		foreach (t_em_nivo_slider_styles_options() as $style) :
 			$checked_option = checked( $t_em['nivo_style'], $style['value'], false );
 			$extend_slider .=	'<div class="layout radio-option">';
 			$extend_slider .=		'<label class="description">';
@@ -241,13 +286,12 @@ function t_em_slider_callback(){
 			$extend_slider .=	'</div>';
 		endforeach;
 		$extend_slider .= 	'</div><!-- .sub-extend -->';
-		$nivo_effect = array ( 'random', 'sliceDownRight', 'sliceDownLeft', 'sliceUpRight', 'sliceUpLeft', 'sliceUpDown', 'sliceUpDownLeft', 'fold', 'fade', 'boxRandom', 'boxRain', 'boxRainReverse', 'boxRainGrow', 'boxRainGrowReverse' );
 		$extend_slider .=	'<div class="sub-extend">';
 		$extend_slider .=		'<p>'. __( 'Select your slider effect', 't_em' ) .'</p>';
 		$extend_slider .=		'<label class="description">';
 		$extend_slider .=			'<span>' . __( 'Effect', 't_em' ) . '</span>';
 		$extend_slider .=			'<select name="t_em_theme_options[nivo_effect]">';
-		foreach ( $nivo_effect as $effect ) :
+		foreach ( t_em_nivo_slider_effetc_options() as $effect ) :
 			$selected_option = selected( $t_em['nivo_effect'], $effect, false );
 			$extend_slider .=		'<option value="'. $effect .'" '. $selected_option .'>'. $effect .'</option>';
 		endforeach;
@@ -303,13 +347,11 @@ function t_em_slider_callback(){
 	$extend_slider .=		'</div>';
 	$extend_slider .= '</div><!-- .sub-extend -->';
 
-	// Display a select list of categories
-	$list_categories = get_categories();
 	$extend_slider .= '<div class="sub-extend text-option">';
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<span>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</span>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider_category]">';
-	foreach ( $list_categories as $slider_category ) :
+	foreach ( t_em_list_categories() as $slider_category ) :
 		$selected_option = selected( $t_em['slider_category'], $slider_category->term_id, false );
 		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
@@ -331,14 +373,9 @@ function t_em_slider_callback(){
 }
 
 /**
- * Extend setting for Header Slider Option in Twenty'em admin panel.
- * Referenced via t_em_header_options().
- *
+ * Returns an array with our static header layout options.
  */
-function t_em_static_header_callback(){
-	global $t_em,
-			$static_header_layout;
-
+function t_em_static_header_layout_options(){
 	$static_header_layout = array (
 		'static-header-text-right' => array (
 			'value' => 'static-header-text-right',
@@ -352,6 +389,16 @@ function t_em_static_header_callback(){
 		),
 	);
 
+	return apply_filters( 't_em_static_header_layout_options', $static_header_layout );
+}
+
+/**
+ * Extend setting for Header Slider Option in Twenty'em admin panel.
+ * Referenced via t_em_header_options().
+ */
+function t_em_static_header_callback(){
+	global $t_em;
+
 	$extend_static_header = '';
 
 	// Show Static Header only at home page?
@@ -362,7 +409,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .= '</label>';
 
 	$extend_static_header .= '<div class="image-radio-option-group">';
-	foreach ( $static_header_layout as $static_header ) :
+	foreach ( t_em_static_header_layout_options() as $static_header ) :
 		$checked_option = checked( $t_em['static_header_text'], $static_header['value'], false );
 		$extend_static_header .=	'<div class="layout image-radio-option static-header-layout">';
 		$extend_static_header .=		'<label class="description">';

@@ -44,20 +44,9 @@ function t_em_archive_options(){
 }
 
 /**
- * Extend setting for Archive Option in Twenty'em admin panel.
- * Referenced via t_em_archive_options() in /inc/archive-options.php.
- *
- * @global $t_em.
- * @global $excerpt_options Returns an array of our archive excerpt options.
- * @global $archive_in_columns Returns a string value for archive columns.
- *
- * @since Twenty'em 0.1
+ * Returns an array of our archive excerpt options.
  */
-function t_em_excerpt_callback(){
-	global	$t_em,
-			$excerpt_options,
-			$archive_in_columns;
-
+function t_em_excerpt_options(){
 	$excerpt_options = array (
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -76,6 +65,13 @@ function t_em_excerpt_callback(){
 		),
 	);
 
+	return apply_filters( 't_em_excerpt_options', $excerpt_options );
+}
+
+/**
+ * Returns an array of our archive columns options.
+ */
+function t_em_archive_in_columns(){
 	$archive_in_columns = array (
 		'1'	=> array(
 			'value'	=> 1,
@@ -91,6 +87,20 @@ function t_em_excerpt_callback(){
 		),
 	);
 
+	return apply_filters( 't_em_archive_in_columns', $archive_in_columns );
+}
+
+/**
+ * Extend setting for Archive Option in Twenty'em admin panel.
+ * Referenced via t_em_archive_options() in /inc/archive-options.php.
+ *
+ * @global $t_em.
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_excerpt_callback(){
+	global $t_em;
+
 	$extend_excerpt = '';
 	$extend_excerpt .= '<div class="layout text-option excerpt-length">';
 	$extend_excerpt .=		'<label>';
@@ -100,7 +110,7 @@ function t_em_excerpt_callback(){
 	$extend_excerpt .= '</div>';
 
 	$extend_excerpt .= '<div class="image-radio-option-group">';
-	foreach ( $excerpt_options as $excerpt ) :
+	foreach ( t_em_excerpt_options() as $excerpt ) :
 		$checked_option = checked( $t_em['excerpt_set'], $excerpt['value'], false );
 		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
 		$extend_excerpt .=		'<label class="description">';
@@ -128,7 +138,7 @@ function t_em_excerpt_callback(){
 
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
 	$extend_excerpt .=	'<p>'. __( 'Break Loop in columns (It may affect the thumbnail size)', 't_em' ) .'</p>';
-	foreach ( $archive_in_columns as $columns ) :
+	foreach ( t_em_archive_in_columns() as $columns ) :
 		$checked_option = checked( $t_em['archive_in_columns'], $columns['value'], false );
 		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
 		$extend_excerpt .=		'<label class="description">';
