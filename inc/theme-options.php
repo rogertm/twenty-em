@@ -313,8 +313,9 @@ function t_em_theme_options_page(){
 			?>
 			<div class="updated">
 			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
-				<p><?php echo sprintf( __( 'Thank you for updating to <strong>Twenty&#8217;em Version %1$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%2$s">backup your setting</a>.' ),
+				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.' ),
 								T_EM_FRAMEWORK_VERSION,
+								T_EM_DB_VERSION,
 								admin_url( 'admin.php?page=twenty-em-backup' ) ); ?></p>
 			<?php 	elseif ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) : ?>
 				<p><?php echo sprintf( __( 'Update completed. Back to <a href="%1$s">Theme Options</a> screen', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ) ) ?></p>
@@ -323,7 +324,7 @@ function t_em_theme_options_page(){
 
 			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
 			<a href="<?php echo admin_url( 'admin.php?page=twenty-em-options&amp;update-twenty-em=true' ) ?>" class="button button-hero button-primary">
-				<?php echo sprintf( __( 'Update to Version %1$s', 't_em' ), T_EM_FRAMEWORK_VERSION ); ?>
+				<?php _e( 'Update Twenty&#8217;em', 't_em' ); ?>
 			</a>
 			<?php 	endif; ?>
 			<?php 	if ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) :

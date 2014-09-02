@@ -3,8 +3,8 @@
  * WARNING: Do not edit this lines.
  * Load the theme engine files
  */
-require( get_template_directory() . '/inc/constants.php' );
-require( get_template_directory() . '/inc/theme-options.php' );
+require_once( get_template_directory() . '/inc/constants.php' );
+require_once( get_template_directory() . '/inc/theme-options.php' );
 
 /** That's all. Start editing here. Happy Theming! */
 
