@@ -53,7 +53,7 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20140902' ); // In date format YYmmdd
+define ( 'T_EM_DB_VERSION',												'20140902' ); // In date format Ymd
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );

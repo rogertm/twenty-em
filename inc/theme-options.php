@@ -295,7 +295,7 @@ function t_em_default_theme_options(){
  * @since Twenty'em 0.1
  */
 function t_em_theme_options_page(){
-	global $t_em, $wp_db_version;
+	global $t_em;
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -304,34 +304,33 @@ function t_em_theme_options_page(){
 		<div class="error">
 			<p><?php t_em_theme_explode(); ?></p>
 		</div>
-		<?php else : ?>
-			<?php
+		<?php elseif ( $t_em['t_em_db_version'] < T_EM_DB_VERSION ) :
 			// Check for updates!
-			if ( $t_em['t_em_db_version'] < T_EM_DB_VERSION ) :
-				$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
-				$options_update = array_merge( $options_diff, $t_em );
-			?>
+			$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
+			$options_update = array_merge( $options_diff, $t_em );
+		?>
+			<pre><?php print_r( $options_update ) ?></pre>
 			<div class="updated">
-			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
+		<?php 		if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
 				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.' ),
 								T_EM_FRAMEWORK_VERSION,
 								T_EM_DB_VERSION,
 								admin_url( 'admin.php?page=twenty-em-backup' ) ); ?></p>
-			<?php 	elseif ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) : ?>
+		<?php 		elseif ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) : ?>
 				<p><?php echo sprintf( __( 'Update completed. Back to <a href="%1$s">Theme Options</a> screen', 't_em' ), admin_url( 'admin.php?page=twenty-em-options' ) ) ?></p>
-			<?php 	endif; ?>
+		<?php 		endif; ?>
 			</div><!-- .updated -->
 
-			<?php 	if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
+		<?php 		if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
 			<a href="<?php echo admin_url( 'admin.php?page=twenty-em-options&amp;update-twenty-em=true' ) ?>" class="button button-hero button-primary">
 				<?php _e( 'Update Twenty&#8217;em', 't_em' ); ?>
 			</a>
-			<?php 	endif; ?>
-			<?php 	if ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) :
+		<?php 		endif; ?>
+		<?php 		if ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) :
 						update_option( 't_em_theme_options', $options_update );
 					endif;
-			?>
-			<?php else : ?>
+		?>
+		<?php else : ?>
 			<?php settings_errors( 't-em-update' ); ?>
 			<form id="t-em-setting" method="post" action="options.php">
 				<?php
@@ -340,7 +339,6 @@ function t_em_theme_options_page(){
 					submit_button();
 				?>
 			</form>
-			<?php endif; ?>
 		<?php endif; ?>
 	</div><!-- .wrap -->
 <?php

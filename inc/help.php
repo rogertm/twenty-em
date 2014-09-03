@@ -152,13 +152,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						T_EM_SITE ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
-
-	$screen->set_help_sidebar( $sidebar );
+	$screen->set_help_sidebar( t_em_theme_sidebar_help() );
 }
 
 /**
@@ -180,12 +174,19 @@ function t_em_theme_backup_help(){
 		)
 	);
 
-	$sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
+	$screen->set_help_sidebar( t_em_theme_sidebar_help() );
+}
+
+/**
+ * Sidebar for Contextual Help
+ */
+function t_em_theme_sidebar_help(){
+	$help_sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						T_EM_SITE ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
 
-	$screen->set_help_sidebar( $sidebar );
+	return $help_sidebar;
 }
 ?>
