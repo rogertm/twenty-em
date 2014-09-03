@@ -551,7 +551,7 @@ function t_em_theme_options_validate( $input ){
 		$select_options = array (
 			'slider-cat'	=> array (
 				'set'		=> 'slider_category',
-				'callback'	=> t_em_list_categories(),
+				'callback'	=> t_em_slider_list_taxonomies(),
 			),
 			'nivo-effect'	=> array (
 				'set'		=> 'nivo_effect',

@@ -188,8 +188,8 @@ function t_em_nivo_slider_effetc_options(){
  *
  * Hook this returned filter to display in your slider options some different taxonomies
  */
-function t_em_list_categories(){
-	return apply_filters( 't_em_list_categories', get_categories() );
+function t_em_slider_list_taxonomies(){
+	return apply_filters( 't_em_slider_list_taxonomies', get_categories() );
 }
 
 /**
@@ -351,7 +351,7 @@ function t_em_slider_callback(){
 	$extend_slider .=	'<label class="description">';
 	$extend_slider .= 		'<span>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</span>';
 	$extend_slider .= 		'<select name="t_em_theme_options[slider_category]">';
-	foreach ( t_em_list_categories() as $slider_category ) :
+	foreach ( t_em_slider_list_taxonomies() as $slider_category ) :
 		$selected_option = selected( $t_em['slider_category'], $slider_category->term_id, false );
 		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
