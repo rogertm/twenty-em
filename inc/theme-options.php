@@ -309,7 +309,6 @@ function t_em_theme_options_page(){
 			$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 			$options_update = array_merge( $options_diff, $t_em );
 		?>
-			<pre><?php print_r( $options_update ) ?></pre>
 			<div class="updated">
 		<?php 		if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
 				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.' ),
