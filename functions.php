@@ -698,10 +698,9 @@ function t_em_comments_link(){
 }
 endif; // function t_em_comments_link()
 
-/** DOCUMENTAR CORRECTAMENTE **********************************************************************/
 if ( ! function_exists( 't_em_attachment_meta' ) ) :
 /**
- * Prints author, date and metadata for attached files in attachment.php
+ * Prints author, date and metadata for attached files
  *
  * @since Twenty'em 0.1
  */
@@ -1190,6 +1189,15 @@ function t_em_comment_all( $comment, $args, $depth ){
 	endswitch;
 }
 endif;
+
+/**
+ * Display comments template
+ */
+function t_em_comments_template(){
+	if ( is_singular() || ( comments_open() || get_comments_number() ) )
+		return comments_template( '', true );
+}
+add_action( 't_em_action_content_after', 't_em_comments_template', 15 );
 
 /**
  * Display navigation to next/previous pages when applicable.

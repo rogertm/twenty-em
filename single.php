@@ -47,8 +47,6 @@ get_header(); ?>
 
 <?php endwhile; // end of the loop. ?>
 
-		<?php comments_template( '', true ); ?>
-
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
