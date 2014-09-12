@@ -126,7 +126,7 @@ if ( ! function_exists( 't_em_support_post_thumbnails' ) ) :
 function t_em_support_post_thumbnails(){
 	add_theme_support( 'post-thumbnails' );
 }
-endif;
+endif; // function t_em_support_post_thumbnails()
 
 if ( ! function_exists( 't_em_support_automatic_feed_links' ) ) :
 /**
@@ -138,7 +138,7 @@ if ( ! function_exists( 't_em_support_automatic_feed_links' ) ) :
 function t_em_support_automatic_feed_links(){
 	add_theme_support( 'automatic-feed-links' );
 }
-endif;
+endif; // function t_em_support_automatic_feed_links()
 
 if ( ! function_exists( 't_em_support_post_formats' ) ) :
 /**
@@ -150,7 +150,7 @@ if ( ! function_exists( 't_em_support_post_formats' ) ) :
 function t_em_support_post_formats(){
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
 }
-endif;
+endif; // function t_em_support_post_formats()
 
 if ( ! function_exists( 't_em_support_add_editor_style' ) ) :
 /**
@@ -163,7 +163,7 @@ if ( ! function_exists( 't_em_support_add_editor_style' ) ) :
 function t_em_support_add_editor_style(){
 	add_editor_style( 'css/editor-style.css' );
 }
-endif;
+endif; // function t_em_support_add_editor_style()
 
 if ( ! function_exists( 't_em_support_custom_background' ) ) :
 /**
@@ -176,7 +176,7 @@ function t_em_support_custom_background(){
 	$args = array ( 'default-color' => 'fff' );
 	add_theme_support( 'custom-background', $args );
 }
-endif;
+endif; // function t_em_support_custom_background()
 
 if ( ! function_exists( 't_em_support_custom_header' ) ) :
 /**
@@ -200,7 +200,7 @@ function t_em_support_custom_header(){
 	);
 	add_theme_support( 'custom-header', $custom_header_support );
 }
-endif;
+endif; // function t_em_support_custom_header()
 
 if ( ! function_exists( 't_em_header_style' ) ) :
 /**
@@ -243,7 +243,7 @@ function t_em_header_style(){
 	</style>
 <?php
 }
-endif;
+endif; // function t_em_header_style()
 
 if ( ! function_exists( 't_em_admin_header_style' ) ) :
 /**
@@ -252,7 +252,7 @@ if ( ! function_exists( 't_em_admin_header_style' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_admin_header_style() {
+function t_em_admin_header_style(){
 	global $custom_header_support;
 ?>
 	<style type="text/css">
@@ -294,7 +294,7 @@ function t_em_admin_header_style() {
 	</style>
 <?php
 }
-endif;
+endif; // function t_em_admin_header_style()
 
 if ( ! function_exists( 't_em_admin_header_image' ) ) :
 /**
@@ -303,7 +303,7 @@ if ( ! function_exists( 't_em_admin_header_image' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_admin_header_image() { ?>
+function t_em_admin_header_image(){ ?>
 	<div id="headimg">
 		<?php
 		$color = get_header_textcolor();
@@ -318,7 +318,7 @@ function t_em_admin_header_image() { ?>
 	</div>
 <?php
 }
-endif;
+endif; // function t_em_admin_header_image()
 
 if ( ! function_exists( 't_em_support_custom_header_image' ) ) :
 /**
@@ -361,7 +361,7 @@ function t_em_support_custom_header_image(){
 		),
 	) );
 }
-endif;
+endif; // function t_em_support_custom_header_image()
 
 if ( ! function_exists( 't_em_register_nav_menus' ) ) :
 /**
@@ -378,7 +378,7 @@ function t_em_register_nav_menus(){
 		)
 	);
 }
-endif;
+endif; // function t_em_register_nav_menus()
 
 if ( ! function_exists( 't_em_support_jp_infinite_scroll' ) ) :
 /**
@@ -397,7 +397,7 @@ function t_em_support_jp_infinite_scroll(){
 	);
 	add_theme_support( 'infinite-scroll', $jp_infinite_scroll );
 }
-endif;
+endif; // function t_em_support_jp_infinite_scroll()
 
 /**
  * Set the post excerpt length depending of the $t_em['excerpt_length'] value.
@@ -419,8 +419,10 @@ if ( ! isset( $content_width ) ) :
 	$content_width = 640;
 endif;
 
+if ( ! function_exists( 't_em_favicon' ) ) :
 /**
- * Add favicon to our site, admin dashboard included
+ * Pluggable Function: Add favicon to our site, admin dashboard included
+ * this function is attached to t_em_action_head() and admin_head() action hooks
  *
  * @since Twenty'em 0.1
  */
@@ -430,11 +432,13 @@ function t_em_favicon(){
 		echo '<link rel="shortcut icon" href="'. $t_em['favicon_url'] .'" />'."\n";
 	endif;
 }
+endif; // function t_em_favicon()
 add_action( 't_em_action_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
 
+if ( ! function_exists( 't_em_site_title' ) ) :
 /**
- * Creates a nicely formatted and more specific title element text
+ * Pluggable Function: Creates a nicely formatted and more specific title element text
  * for output in head of document, based on current view.
  *
  * @param string $title Default title text for current view.
@@ -464,6 +468,7 @@ function t_em_site_title( $title, $sep ) {
 
 	return $title;
 }
+endif; // function t_em_site_title()
 add_filter( 'wp_title', 't_em_site_title', 10, 2 );
 
 /**
@@ -490,9 +495,10 @@ function t_em_continue_reading_link() {
 }
 endif;
 
+if ( ! function_exists( 't_em_auto_excerpt_more' ) ) :
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis
- * and t_em_continue_reading_link().
+ * Pluggable Function: Replaces "[...]" (appended to automatically generated excerpts) with an
+ * ellipsis and t_em_continue_reading_link().
  *
  * @since Twenty'em 0.1
  *
@@ -501,10 +507,12 @@ endif;
 function t_em_auto_excerpt_more( $more ) {
 	return ' &hellip;' . t_em_continue_reading_link();
 }
+endif; // function t_em_auto_excerpt_more()
 add_filter( 'excerpt_more', 't_em_auto_excerpt_more' );
 
+if ( ! function_exists( 't_em_custom_excerpt_more' ) ) :
 /**
- * Adds a pretty "Continue Reading" link to custom post excerpts.
+ * Pluggable Function: Adds a pretty "Continue Reading" link to custom post excerpts.
  *
  * @since Twenty'em 0.1
  *
@@ -516,6 +524,7 @@ function t_em_custom_excerpt_more( $output ) {
 	}
 	return $output;
 }
+endif; // function t_em_custom_excerpt_more()
 add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 
 /**
@@ -633,11 +642,12 @@ add_action( 'widgets_init', 't_em_remove_recent_comments_style' );
 
 if ( ! function_exists( 't_em_posted_in' ) ) :
 /**
- * Prints HTML with meta information for the current post (category, tags and permalink).
+ * Pluggable Function: Prints HTML with meta information for the current post (category, tags and
+ * permalink).
  *
  * @since Twenty'em 0.1
  */
-function t_em_posted_in() {
+function t_em_posted_in(){
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
@@ -661,7 +671,7 @@ endif; // function t_em_posted_in()
 
 if ( ! function_exists( 't_em_posted_on' ) ) :
 /**
- * Prints HTML with meta information for the current post—date/time and author.
+ * Pluggable Function: Prints HTML with meta information for the current post—date/time and author.
  *
  * @since Twenty'em 0.1
  */
@@ -673,7 +683,7 @@ endif; // function t_em_posted_on()
 
 if ( ! function_exists( 't_em_edit_post_link' ) ) :
 /**
- * Prints HTML with edit post link
+ * Pluggable Function: Prints HTML with edit post link
  *
  * @since Twenty'em 0.1
  */
@@ -684,7 +694,7 @@ endif; // function t_em_edit_post_link()
 
 if ( ! function_exists( 't_em_comments_link' ) ) :
 /**
- * Prints HTML with leave comment link
+ * Pluggable Function: Prints HTML with leave comment link
  *
  * @since Twenty'em 0.1
  */
@@ -700,7 +710,7 @@ endif; // function t_em_comments_link()
 
 if ( ! function_exists( 't_em_attachment_meta' ) ) :
 /**
- * Prints author, date and metadata for attached files
+ * Pluggable Function: Prints author, date and metadata for attached files
  *
  * @since Twenty'em 0.1
  */
@@ -733,7 +743,7 @@ endif; // function t_em_attachment_meta()
 
 if ( ! function_exists( 't_em_post_author' ) ) :
 /**
- * Prints HTML with author posts link
+ * Pluggable Function: Prints HTML with author posts link
  *
  * @since Twenty'em 0.1
  */
@@ -751,7 +761,7 @@ endif; // function t_em_post_author()
 
 if ( ! function_exists( 't_em_post_date' ) ) :
 /**
- * Prints HTML with post date link
+ * Pluggable Function: Prints HTML with post date link
  *
  * @since Twenty'em 0.1
  */
@@ -769,9 +779,9 @@ endif; // function t_em_post_date()
 
 if ( ! function_exists( 't_em_get_avatar' ) ) :
 /**
- * Retrieve the custom avatar for a user if is enable custom avatar option in 'General Options' in
- * admin panel and provided in the WordPress profile page. If not the default avatar from
- * gravatar.com will be displayed.
+ * Pluggable Function: Retrieve the custom avatar for a user if is enable custom avatar option in
+ * 'General Options' in admin panel and provided in the WordPress profile page. If not the default
+ * avatar from gravatar.com will be displayed.
  *
  * @param int $user_id Required User ID
  * @param int|string|object Required $id_or_email A user ID,  email address, or comment object
@@ -808,7 +818,7 @@ endif; // function t_em_get_avatar()
 
 if ( ! function_exists( 't_em_author_meta' ) ) :
 /**
- * If a user has filled out their description, show a bio on their entries.
+ * Pluggable Function: If a user has filled out their description, show a bio on their entries.
  *
  * @since Twenty'em 1.0
  */
@@ -831,10 +841,11 @@ function t_em_author_meta(){
 <?php
 	endif;
 }
-endif;
+endif; // function t_em_author_meta()
 
+if ( ! function_exists( 't_em_header_archive_author_meta' ) ) :
 /**
- * Display Author header tag and meta in author archives.
+ * Pluggable Function: Display Author header tag and meta in author archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -862,6 +873,7 @@ function t_em_header_archive_author_meta(){
 		endif;
 	endif;
 }
+endif; // function t_em_header_archive_author_meta()
 add_action( 't_em_action_content_before', 't_em_header_archive_author_meta', 15 );
 
 /**
@@ -877,7 +889,7 @@ add_action( 't_em_action_post_content_after', 't_em_single_author_meta' );
 
 if ( ! function_exists( 't_em_term_description' ) ) :
 /**
- * Display the category or tag description.
+ * Pluggable Function: Display the category or tag description.
  *
  * @since Twenty'em 1.0
  */
@@ -893,10 +905,11 @@ function t_em_term_description(){
 		echo '<div id="term-description-'. $term_id->term_id .'" class="archive-meta term-description">' . $term_description . '</div>';
 	endif;
 }
-endif;
+endif; // function t_em_term_description()
 
+if ( ! function_exists( 't_em_header_archive_category' ) ) :
 /**
- * Display Category header tag and description in category archives.
+ * Pluggable Function: Display Category header tag and description in category archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -923,10 +936,12 @@ function t_em_header_archive_category(){
 		rewind_posts(); endif;
 	endif;
 }
+endif; // function t_em_header_archive_category()
 add_action( 't_em_action_content_before', 't_em_header_archive_category', 15 );
 
+if ( ! function_exists( 't_em_header_archive_tag' ) ) :
 /**
- * Display Tag header tag and description in tag archives.
+ * Pluggable Function: Display Tag header tag and description in tag archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -953,10 +968,12 @@ function t_em_header_archive_tag(){
 		rewind_posts(); endif;
 	endif;
 }
+endif; // function t_em_header_archive_tag()
 add_action( 't_em_action_content_before', 't_em_header_archive_tag', 15 );
 
+if ( ! function_exists( 't_em_header_archive_post_type_archive' ) ) :
 /**
- * Display Custom Post Type header tag and description in custom post type archives.
+ * Pluggable Function: Display Custom Post Type header tag and description in custom post type archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -976,10 +993,12 @@ function t_em_header_archive_post_type_archive(){
 <?php
 	endif;
 }
+endif; // function t_em_header_archive_post_type_archive()
 add_action( 't_em_action_content_before', 't_em_header_archive_post_type_archive', 15 );
 
+if ( ! function_exists( 't_em_header_archive_date' ) ) :
 /**
- * Display Date header tag in date archives.
+ * Pluggable Function: Display Date header tag in date archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -1017,10 +1036,12 @@ function t_em_header_archive_date(){
 		rewind_posts(); endif;
 	endif;
 }
+endif; // function t_em_header_archive_date()
 add_action( 't_em_action_content_before', 't_em_header_archive_date', 15 );
 
+if ( ! function_exists( 't_em_header_archive_search' ) ) :
 /**
- * Display Search header tag in search archives.
+ * Pluggable Function: Display Search header tag in search archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
@@ -1044,11 +1065,12 @@ function t_em_header_archive_search(){
 		rewind_posts(); endif;
 	endif;
 }
+endif; // function t_em_header_archive_search()
 add_action( 't_em_action_content_before', 't_em_header_archive_search', 15 );
 
 if ( ! function_exists( 't_em_comment' ) ) :
 /**
- * Template for comments.
+ * Pluggable Function: Template for comments.
  *
  * To override this walker in a child theme without modifying the comments template
  * simply create your own t_em_comment(), and that function will be used instead.
@@ -1097,7 +1119,7 @@ endif; // function t_em_comment()
 
 if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
 /**
- * Template for pingbacks and trackbacks.
+ * Pluggable Function: Template for pingbacks and trackbacks.
  *
  * To override this walker in a child theme without modifying the comments template
  * simply create your own t_em_comment_pingback_trackback(), and that function will be used instead.
@@ -1128,7 +1150,7 @@ endif; // function t_em_comment_pingback_trackback()
 
 if ( ! function_exists( 't_em_comment_all' ) ) :
 /**
- * Template for comments, pingbacks and trackbacks
+ * Pluggable Function: Template for comments, pingbacks and trackbacks
  *
  * To override this walker in a child theme without modifying the comments template
  * simply create your own t_em_comment_pingback_trackback(), and that function will be used instead.
@@ -1188,19 +1210,25 @@ function t_em_comment_all( $comment, $args, $depth ){
 		break;
 	endswitch;
 }
-endif;
+endif; // function t_em_comment_all()
 
+if ( ! function_exists( 't_em_comments_template' ) ) :
 /**
- * Display comments template
+ * Pluggable Function: Display comments template
+ * This function is attached to the t_em_action_content_after() action hook
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_comments_template(){
 	if ( is_singular() || ( comments_open() || get_comments_number() ) )
 		return comments_template( '', true );
 }
+endif; // function t_em_comments_template()
 add_action( 't_em_action_content_after', 't_em_comments_template', 15 );
 
+if ( ! function_exists( 't_em_page_navi' ) ) :
 /**
- * Display navigation to next/previous pages when applicable.
+ * Pluggable Function: Display navigation to next/previous pages when applicable.
  * This function is attached to the t_em_action_content_after() action hook
  *
  * @since Twenty'em 1.0
@@ -1266,6 +1294,7 @@ function t_em_page_navi(){
 <?php
 		endif;
 }
+endif; // function t_em_page_navi()
 add_action( 't_em_action_content_after', 't_em_page_navi' );
 
 /**
@@ -1334,9 +1363,10 @@ function t_em_img_caption_shortcode($val, $attr, $content = null) {
 }
 add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
+if ( ! function_exists( 't_em_custom_template_content' ) ) :
 /**
- * Display Page title and content for custom pages templates. This function is attached to the
- * t_em_action_content_before action hook.
+ * Pluggable Function: Display Page title and content for custom pages templates.
+ * This function is attached to the t_em_action_content_before action hook.
  *
  * @since Twenty'em 1.0
  */
@@ -1358,12 +1388,13 @@ function t_em_custom_template_content(){
 <?php
 	endif;
 }
+endif; // function t_em_custom_template_content()
 add_action( 't_em_action_content_before', 't_em_custom_template_content', 15 );
 
 if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
 /**
- * Display featured image in posts archives when "Display the Excerpt" option is activated in admin
- * theme option page.
+ * Pluggable Function: Display featured image in posts archives when "Display the Excerpt" option is
+ * activated in admin theme option page.
  *
  * @param int $height Require Thumbnail height.
  * @param int $width Require Thumbnail width.
@@ -1428,11 +1459,12 @@ function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = t
 		endif;
 	endif;
 }
-endif;
+endif; // function t_em_featured_post_thumbnail()
 
+if ( ! function_exists( 't_em_header_options_set' ) ) :
 /**
- * Display header set depending of the activated "Header Options" in admin theme option page. This
- * function is attached to the t_em_action_header_after action hook.
+ * Pluggable Function: Display header set depending of the activated "Header Options" in admin theme
+ * option page. This function is attached to the t_em_action_header_after action hook.
  *
  * @global $t_em
  *
@@ -1464,11 +1496,12 @@ function t_em_header_options_set(){
 			t_em_static_header();
 	endif;
 }
+endif; // function t_em_header_options_set()
 add_action( 't_em_action_header_after', 't_em_header_options_set', 5 );
 
 if ( ! function_exists( 't_em_header_image' ) ) :
 /**
- * Display header image if it's set by the user in 'Header Options' admin panel
+ * Pluggable Function: Display header image if it's set by the user in 'Header Options' admin panel
  */
 function t_em_header_image(){
 	global $post, $t_em;
@@ -1506,12 +1539,12 @@ function t_em_header_image(){
 <?php
 	endif;
 }
-endif;
+endif; // function t_em_header_image()
 
 if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
 /**
- * Display Bootstrap carousel of featured posts if it's set by the user in 'Header Options > Slider'
- * admin panel
+ * Pluggable Function: Display Bootstrap carousel of featured posts if it's set by the user in
+ * 'Header Options > Slider' admin panel
  *
  * @uses t_em_slider_query_args()
  */
@@ -1566,12 +1599,12 @@ function t_em_slider_bootstrap_carousel(){
 	</section><!-- #slider-carousel -->
 <?php
 }
-endif;
+endif; // function t_em_slider_bootstrap_carousel()
 
 if ( ! function_exists( 't_em_slider_nivo_slider' ) ) :
 /**
- * Display Nivo Slider carousel of featured posts if it's set by the user in 'Header Options > Slider'
- * admin panel
+ * Pluggable Function: Display Nivo Slider carousel of featured posts if it's set by the user in
+ * 'Header Options > Slider' admin panel
  *
  * @uses t_em_slider_query_args()
  */
@@ -1614,11 +1647,12 @@ function t_em_slider_nivo_slider(){
 	</section>
 <?php
 }
-endif;
+endif; // function t_em_slider_nivo_slider()
 
 if ( ! function_exists( 't_em_static_header' ) ) :
 /**
- * Display Static Header if it's set by the user in 'Header Options > Static Header' admin panel
+ * Pluggable Function: Display Static Header if it's set by the user in
+ * 'Header Options > Static Header' admin panel
  */
 function t_em_static_header(){
 	global $t_em;
@@ -1671,12 +1705,13 @@ function t_em_static_header(){
 	</section><!-- #static-header .container -->
 <?php
 }
-endif;
+endif; // function t_em_static_header()
 
+if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 /**
- * Display featured post thumbnail on top of a single post if it is set by the user in
- * "General Options" in the admin options page. This function is attached to the t_em_action_post_inside_before()
- * action hook.
+ * Pluggable Function: Display featured post thumbnail on top of a single post if it is set by the
+ * user in "General Options" in the admin options page. This function is attached to the
+ * t_em_action_post_inside_before() action hook.
  *
  * @uses has_post_thumbnail() Returns a boolean if a post has a Featured Image
  * @uses the_post_thumbnail() Display the Featured Image for the current post, as set in that
@@ -1699,12 +1734,13 @@ function t_em_single_post_thumbnail(){
 <?php
 	endif;
 }
+endif; // function t_em_single_post_thumbnail()
 add_action( 't_em_action_post_inside_before', 't_em_single_post_thumbnail' );
 
 if ( ! function_exists( 't_em_post_archive_set' ) ) :
 /**
- * Display posts archive in excerpt or content form. Set in "Archive Options" in admin
- * theme option page.
+ * Pluggable Function: Display posts archive in excerpt or content form. Set in "Archive Options"
+ * in admin theme option page.
  *
  * @uses t_em_featured_post_thumbnail() Display featured image in posts archives.
  * @uses the_excerpt() Displays the excerpt of the current post with the "..." text at the end.
@@ -1738,10 +1774,12 @@ function t_em_post_archive_set(){
 	endif;
 	t_em_action_post_content_after();
 }
-endif;
+endif; // function t_em_post_archive_set()
 
+if ( ! function_exists( 't_em_post_format' ) ) :
 /**
- * Display the post format of each post
+ * Pluggable Function: Display the post format of each post
+ * This function is attached to the t_em_action_post_inside_before() action hook.
  *
  * @since Twenty'em 1.0
  */
@@ -1791,11 +1829,12 @@ function t_em_post_format(){
 		echo '<div class="entry-format"><span class="icomoon-pin icomoon"></span><span class="post-format">'. __( 'Featured', 't_em' ) .'</span></div>';
 	endif;
 }
+endif; // function t_em_post_format()
 add_action( 't_em_action_post_inside_before', 't_em_post_format' );
 
 if ( ! function_exists( 't_em_user_social_network' ) ) :
 /**
- * User social network set in "Social Network Options" in the admin theme options.
+ * Pluggable Function: User social network set in "Social Network Options" in the admin theme options.
  *
  * @param string $nav_id Required. HTML 'id' attribute of the navigation section
  * @param string $nav_classes Optional. HTML 'class' attribute of the <nav>...</nav> tag section (usually a Bootstrap class)
@@ -1831,7 +1870,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	endif;
 	echo $output;
 }
-endif;
+endif; // function t_em_user_social_network()
 
 /**
  * Display user social network.
@@ -1846,7 +1885,7 @@ add_action( 't_em_action_site_info_right', 't_em_display_user_social_network' );
 
 if ( ! function_exists( 't_em_loop' ) ) :
 /**
- * The Twenty'em Loop
+ * Pluggable Function: The Twenty'em Loop
  *
  * @since Twenty'em 1.0
  */
@@ -1871,11 +1910,12 @@ function t_em_loop(){
 		get_template_part( 'content', 'none' );
 	endif;
 }
-endif;
+endif; // function t_em_loop()
 
+if ( ! function_exists( 't_em_single_related_posts' ) ) :
 /**
- * Show related posts to the current single post if it's set by the user in "General Options" in
- * admin theme options page.
+ * Pluggable Function: Show related posts to the current single post if it's set by the user in
+ * "General Options" in admin theme options page.
  * This function is attached to the t_em_action_post_after() action hook.
  *
  * @global $t_em
@@ -1884,7 +1924,7 @@ endif;
  *
  * @since Twenty'em 0.1
  */
-function t_em_single_related_posts() {
+function t_em_single_related_posts(){
 	global $t_em;
 	if ( is_single() && '1' == $t_em['single_related_posts'] ) :
 		global $post;
@@ -1941,12 +1981,13 @@ function t_em_single_related_posts() {
 <?php
 	endif;
 }
+endif; // function t_em_single_related_posts()
 add_action( 't_em_action_post_after', 't_em_single_related_posts' );
 
 if ( ! function_exists( 't_em_front_page_widgets' ) ) :
 /**
- * Render Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
- * admin panel.
+ * Pluggable Function: Render Featured Text Widgets in front page if it's is set by the user in
+ * "Front Page Options" in admin panel.
  *
  * @global $t_em
  *
@@ -2010,7 +2051,7 @@ function t_em_front_page_widgets(){
 		endif;
 	endforeach;
 }
-endif;
+endif; // function t_em_front_page_widgets()
 
 /**
  * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
@@ -2029,9 +2070,11 @@ function t_em_display_front_page_widgets(){
 }
 add_action( 't_em_action_custom_front_page', 't_em_display_front_page_widgets' );
 
+if ( ! function_exists( 't_em_jawp_front_page' ) ) :
 /**
- * Show Just Another WordPress Front Page if it's is set by the user in "Front Page Options" in
- * admin panel. This function is attached to the t_em_action_wp_front_page action hook.
+ * Pluggable Function: Show Just Another WordPress Front Page if it's is set by the user in
+ * "Front Page Options" in admin panel.
+ * This function is attached to the t_em_action_wp_front_page action hook.
  */
 function t_em_jawp_front_page(){
 	global $t_em;
@@ -2078,10 +2121,12 @@ function t_em_jawp_front_page(){
 		endif;
 	endif;
 }
+endif; // function t_em_jawp_front_page()
 add_action( 't_em_action_wp_front_page', 't_em_jawp_front_page' );
 
+if ( ! function_exists( 't_em_breadcrumb' ) ) :
 /**
- * Show breadcrumb path if it's enable by the user in 'General Options' in admin panel.
+ * Pluggable Function: Show breadcrumb path if it's enable by the user in 'General Options' in admin panel.
  * This function is attached to the t_em_action_content_before() action hook.
  *
  * @global $t_em
@@ -2231,22 +2276,26 @@ function t_em_breadcrumb(){
 <?php
 	endif;
 }
+endif; // function t_em_breadcrumb()
 add_action( 't_em_action_content_before', 't_em_breadcrumb', 5 );
 
+if ( ! function_exists( 't_em_javascript_required' ) ) :
 /**
- * Javascript required. This function is attached to the t_em_action_top() action hook
+ * Pluggable Function: Javascript required. This function is attached to the t_em_action_top() action hook
  */
 function t_em_javascript_required(){
 ?>
 <!--[if lte IE 8 ]>
-<noscript><strong><span class="icomoon-warning icomoon"></span><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
+<noscript><strong><?php _e( 'JavaScript is required for this website to be displayed correctly.<br /> Please enable JavaScript before continuing...', 't_em' ); ?></strong></noscript>
 <![endif]-->
 <?php
 }
+endif; // function t_em_javascript_required()
 add_action( 't_em_action_top', 't_em_javascript_required' );
 
+if ( ! function_exists( 't_em_heading_site_title' ) ) :
 /**
- * Heading Site Title.
+ * Pluggable Function: Heading Site Title.
  * This function is attached to the t_em_action_header_inside_left() action hook.
  */
 function t_em_heading_site_title(){
@@ -2260,10 +2309,13 @@ function t_em_heading_site_title(){
 	</hgroup>
 <?php
 }
+endif; // function t_em_heading_site_title()
 add_action( 't_em_action_header_inside_left', 't_em_heading_site_title' );
 
+if ( ! function_exists( 't_em_top_menu' ) ) :
 /**
- * Top menu. This function is attached to the t_em_action_header_before() action hook
+ * Pluggable Function: Top menu.
+ * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
 if ( has_nav_menu( 'top-menu' ) ) :
@@ -2294,10 +2346,13 @@ if ( has_nav_menu( 'top-menu' ) ) :
 	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
 endif;
 }
+endif; // function t_em_top_menu()
 add_action( 't_em_action_header_before', 't_em_top_menu' );
 
+if ( ! function_exists( 't_em_navigation_menu' ) ) :
 /**
- * Navigation Menu. This function is attached to the t_em_action_header_after action hook
+ * Pluggable Function: Navigation Menu.
+ * This function is attached to the t_em_action_header_after action hook
  */
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
@@ -2327,10 +2382,13 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
 endif;
 }
+endif; // function t_em_navigation_menu()
 add_action( 't_em_action_header_after', 't_em_navigation_menu' );
 
+if ( ! function_exists( 't_em_footer_menu' ) ) :
 /**
- * The Footer Menu, if it's active by the user we display it, else, we get nothing
+ * Pluggable Function: The Footer Menu, if it's active by the user we display it, else, we get nothing
+ * This function is attached to the t_em_action_site_info_right() action hook
  */
 function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
@@ -2343,10 +2401,13 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 		'depth'				=> 1, ) );
 endif;
 }
+endif; // function t_em_footer_menu()
 add_action( 't_em_action_site_info_right', 't_em_footer_menu', 15 );
 
+if ( ! function_exists( 't_em_single_navigation' ) ) :
 /**
- * Single post navigation. This function is attached to the t_em_action_post_after action hook.
+ * Pluggable Function: Single post navigation.
+ * This function is attached to the t_em_action_post_after action hook.
  */
 function t_em_single_navigation(){
 	if ( is_single() ) :
@@ -2360,10 +2421,12 @@ function t_em_single_navigation(){
 <?php
 	endif;
 }
+endif; // function t_em_single_navigation()
 add_action( 't_em_action_post_after', 't_em_single_navigation', 5 );
 
+if ( ! function_exists( 't_em_comments_pagination' ) ) :
 /**
- * Comments navigation.
+ * Pluggable Function: Comments navigation.
  * This function is attached to the t_em_action_comments_list_before and t_em_action_comments_list_after action hooks
  */
 function t_em_comments_pagination(){
@@ -2378,11 +2441,14 @@ if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 <?php
 endif;
 }
+endif; // function t_em_comments_pagination()
 add_action( 't_em_action_comments_list_before', 't_em_comments_pagination' );
 add_action( 't_em_action_comments_list_after', 't_em_comments_pagination' );
 
+if ( ! function_exists( 't_em_copy_right' ) ) :
 /**
- * Copy Right. This function is attached to the t_em_action_site_info action hook.
+ * Pluggable Function: Copy Right.
+ * This function is attached to the t_em_action_site_info action hook.
  */
 function t_em_copy_right(){
 ?>
@@ -2393,6 +2459,7 @@ function t_em_copy_right(){
 	</div><!-- #copyright -->
 <?php
 }
+endif; // function t_em_copy_right()
 add_action( 't_em_action_site_info_left', 't_em_copy_right' );
 
 /**
