@@ -1220,11 +1220,16 @@ if ( ! function_exists( 't_em_comments_template' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_comments_template(){
-	if ( is_singular() || ( comments_open() || get_comments_number() ) )
-		return comments_template( '', true );
+	global $t_em;
+	if ( comments_open() || get_comments_number() ) :
+		if ( ( is_single() )
+			|| ( is_page() && $t_em['single_page_comments'] == true ) ) :
+			return comments_template( '', true );
+		endif;
+	endif;
 }
 endif; // function t_em_comments_template()
-add_action( 't_em_action_content_after', 't_em_comments_template', 15 );
+add_action( 't_em_action_content_after', 't_em_comments_template' );
 
 if ( ! function_exists( 't_em_page_navi' ) ) :
 /**

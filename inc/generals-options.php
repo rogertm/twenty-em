@@ -47,7 +47,12 @@ function t_em_general_options(){
 		'separate_comments_pings_tracks'	=> array (
 			'name'			=> 'separate_comments_pings_tracks',
 			'label'			=> __( 'Separate comments from pingbacks and trackbacks', 't_em' ),
-			'sublabel'		=> sprintf( __( 'For a best performances of this option, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ), admin_url( 'options-discussion.php#page_comments' ) ),
+			'sublabel'		=> sprintf( __( 'For a best performances of this option, please deactivate your <a href="%1$s">comments pagination</a>.', 't_em' ), admin_url( 'options-discussion.php#page_comments' ) ),
+		),
+		'single_page_comments'	=> array (
+			'name'			=> 'single_page_comments',
+			'label'			=> __( 'Enable comments in single pages', 't_em' ),
+			'sublabel'		=> sprintf( __( 'If true, be sure to <a href="%1$s">allow people to post comments on new articles</a>.', 't_em' ), admin_url( 'options-discussion.php#default_comment_status' ) ),
 		),
 		'custom_avatar'		=> array (
 			'name'			=> 'custom_avatar',

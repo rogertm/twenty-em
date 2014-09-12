@@ -158,6 +158,7 @@ function t_em_default_theme_options(){
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
 		'separate_comments_pings_tracks'				=> '1',
+		'single_page_comments'							=> '1',
 		'custom_avatar'									=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
@@ -363,6 +364,7 @@ function t_em_theme_options_validate( $input ){
 			'single_related_posts',
 			'breadcrumb_path',
 			'separate_comments_pings_tracks',
+			'single_page_comments',
 			'custom_avatar',
 			'header_featured_image',
 			'slider_home_only',
