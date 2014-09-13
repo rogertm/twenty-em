@@ -25,7 +25,7 @@ function t_em_theme_options_help(){
 
 	$screen = get_current_screen();
 
-	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework" target="_blank">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:', 't_em' ),
+	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:', 't_em' ),
 					T_EM_SITE,
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
@@ -53,10 +53,12 @@ function t_em_theme_options_help(){
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Separate comments from pingbacks and trackbacks</strong>: Display pingbacks and trackbacks in a different list at the end of all comments. For this option works properly, please deactivate your <a href="%1$s" target="_blank">comments pagination</a>.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Separate comments from pingbacks and trackbacks</strong>: Display pingbacks and trackbacks in a different list at the end of all comments. For this option works properly, please deactivate your <a href="%1$s">comments pagination</a>.', 't_em' ),
 								 admin_url( 'options-discussion.php#page_comments' ) ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Enable comments in single pages</strong>: This option lets you allow comments in single pages. If true, the option <a href="%1$s">Allow people to post comments on new articles</a> in <strong>Default article settings</strong> must be true too.', 't_em' ),
+								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
 						'<li>' . __( '<strong>Custom avatar</strong>: Add custom avatar option to users edit screen', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s" target="_blank">Upload</a> and/or select from your <a href="%2$s" target="_blank">Media Library</a> a favicon to your site.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s">Upload</a> and/or select from your <a href="%2$s">Media Library</a> a favicon to your site.', 't_em' ),
 								 admin_url( 'media-new.php' ),
 								 admin_url( 'upload.php' ) ) . '</li>' .
 					'</ul>';
@@ -71,12 +73,12 @@ function t_em_theme_options_help(){
 	$header_help =	'<p>' . __( '<strong>Header Options</strong>: With this options you are able to configure your header site section.', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . __( '<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline.', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s" target="_blank">Header Settings</a> to customize this section. In addition you may active the checkbox "<strong>Display featured image in single posts and pages</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s">Header Settings</a> to customize this section. In addition you may active the checkbox "<strong>Display featured image in single posts and pages</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
 								 admin_url( 'themes.php?page=custom-header' ) ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s" target="_blank">Writing Settings</a> to manage your default category.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
-						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s" target="_blank">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s" target="_blank">icons</a> to these buttons.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s">icons</a> to these buttons.', 't_em' ),
 								 admin_url( 'upload.php' ),
 								 T_EM_THEME_DIR_DOCS_URL . '/icomoon.html' ) . '</li>' .
 					'</ul>';
@@ -90,9 +92,9 @@ function t_em_theme_options_help(){
 
 	$front_page_help =	'<p>' . __( '<strong>Front Page Options</strong>: With this options you are able to configure your front page.', 't_em' ) . '</p>' .
 						'<ul>' .
-							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s" target="_blank">Reading Settings</a> options.', 't_em' ),
+							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
-							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s" target="_blank">icon class</a>, image (previously uploaded to your <a href="%2$s" target="_blank">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
+							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s">icon class</a>, image (previously uploaded to your <a href="%2$s">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
 									 T_EM_THEME_DIR_DOCS_URL . '/icomoon.html',
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
@@ -140,7 +142,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$webmastertools_help = '<p>' . sprintf( __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your meta key "content" value provided by <a href="%1$s" target="_blank">Google Webmaster Tools</a>, <a href="%2$s" target="_blank">Bing Webmaster Center</a> and <a href="%3$s" target="_blank">Pinterest Site Verification</a>, and Statistics Tracker codes from the system you like.', 't_em' ),
+	$webmastertools_help = '<p>' . sprintf( __( '<strong>Webmaster Tools Options</strong>: In this section you should enter your meta key "content" value provided by <a href="%1$s">Google Webmaster Tools</a>, <a href="%2$s">Bing Webmaster Center</a> and <a href="%3$s">Pinterest Site Verification</a>, and Statistics Tracker codes from the system you like.', 't_em' ),
 								'https://www.google.com/webmasters/tools/',
 								'http://www.bing.com/webmaster/',
 								'https://pinterest.com/website/verify/' ) . '</p>';
@@ -182,10 +184,10 @@ function t_em_theme_backup_help(){
  */
 function t_em_theme_sidebar_help(){
 	$help_sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
+				'<p>' . sprintf( __( '<a href="%1$s">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
 						T_EM_SITE ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s" target="_blank">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
 
 	return $help_sidebar;
 }
