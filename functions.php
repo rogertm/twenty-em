@@ -1489,9 +1489,9 @@ function t_em_header_options_set(){
 		&& ( ( '1' == $t_em['slider_home_only'] && is_home() )
 		|| ( '0' == $t_em['slider_home_only'] ) ) ) :
 			if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
-				t_em_slider_bootstrap_carousel();
+				t_em_slider_bootstrap_carousel( t_em_slider_query_args() );
 			elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
-				t_em_slider_nivo_slider();
+				t_em_slider_nivo_slider( t_em_slider_query_args() );
 			endif;
 	elseif ( ( 'static-header' == $t_em['header_set'] )
 		&& ( ( '1' == $t_em['static_header_home_only'] && is_home() )
@@ -1549,11 +1549,11 @@ if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
  * Pluggable Function: Display Bootstrap carousel of featured posts if it's set by the user in
  * 'Header Options > Slider' admin panel
  *
- * @uses t_em_slider_query_args()
+ * @param $args array Query arguments
  */
-function t_em_slider_bootstrap_carousel(){
+function t_em_slider_bootstrap_carousel( $args ){
 	global	$post, $t_em;
-	$slider_posts = get_posts( t_em_slider_query_args() );
+	$slider_posts = get_posts( $args );
 	$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
@@ -1609,11 +1609,11 @@ if ( ! function_exists( 't_em_slider_nivo_slider' ) ) :
  * Pluggable Function: Display Nivo Slider carousel of featured posts if it's set by the user in
  * 'Header Options > Slider' admin panel
  *
- * @uses t_em_slider_query_args()
+ * @param $args array Query arguments
  */
-function t_em_slider_nivo_slider(){
+function t_em_slider_nivo_slider( $args ){
 	global $post, $t_em;
-	$slider_posts = get_posts( t_em_slider_query_args() );
+	$slider_posts = get_posts( $args );
 ?>
 	<section id="header-carousel">
 		<div id="nivo-slider" class="wrapper container">
