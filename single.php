@@ -21,7 +21,6 @@ get_header(); ?>
 			<?php t_em_action_post_inside_before(); ?>
 			<header>
 				<h1 class="page-header"><?php the_title(); ?></h1>
-
 				<span class="entry-meta">
 					<?php t_em_posted_on(); ?>
 				</span><!-- .entry-meta -->
@@ -38,6 +37,7 @@ get_header(); ?>
 
 			<footer class="entry-utility">
 				<?php t_em_posted_in(); ?>
+				<?php t_em_comments_link(); ?>
 				<?php t_em_edit_post_link(); ?>
 			</footer><!-- .entry-utility -->
 
@@ -47,6 +47,7 @@ get_header(); ?>
 
 <?php endwhile; // end of the loop. ?>
 
+				<?php t_em_comments_template(); ?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

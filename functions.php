@@ -1215,7 +1215,6 @@ endif; // function t_em_comment_all()
 if ( ! function_exists( 't_em_comments_template' ) ) :
 /**
  * Pluggable Function: Display comments template
- * This function is attached to the t_em_action_content_after() action hook
  *
  * @since Twenty'em 1.0
  */
@@ -1229,7 +1228,6 @@ function t_em_comments_template(){
 	endif;
 }
 endif; // function t_em_comments_template()
-add_action( 't_em_action_content_after', 't_em_comments_template' );
 
 if ( ! function_exists( 't_em_page_navi' ) ) :
 /**
@@ -2092,11 +2090,7 @@ function t_em_jawp_front_page(){
 					the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header>
-					<?php if ( is_front_page() ) : ?>
 						<h2 class="page-header"><?php the_title(); ?></h2>
-					<?php else : ?>
-						<h1 class="page-header"><?php the_title(); ?></h1>
-					<?php endif; ?>
 					</header>
 					<div class="entry-content">
 						<?php the_content(); ?>
@@ -2108,21 +2102,7 @@ function t_em_jawp_front_page(){
 			endif;
 		// Else, we display a list of post
 		else :
-			if ( have_posts() ) : ?>
-			<div class="row">
-<?php 			$i = 0;
-				while ( have_posts() ) : the_post();
-					if ( 0 == $i % $t_em['archive_in_columns'] ) :
-						echo '</div>';
-						echo '<div class="row">';
-					endif;
-					get_template_part( 'content', get_post_format() );
-					$i++;
-				endwhile; ?>
-				</div><!-- .row -->
-<?php 		else :
-				get_template_part( 'content', 'none' );
-			endif;
+			t_em_loop();
 		endif;
 	endif;
 }

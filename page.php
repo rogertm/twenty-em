@@ -25,11 +25,7 @@ get_header(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<header>
-				<?php if ( is_front_page() ) { ?>
-					<h2 class="page-header"><?php the_title(); ?></h2>
-				<?php } else { ?>
-					<h1 class="page-header"><?php the_title(); ?></h1>
-				<?php } ?>
+				<h1 class="page-header"><?php the_title(); ?></h1>
 			</header>
 
 			<?php t_em_action_post_content_before(); ?>
@@ -50,6 +46,8 @@ get_header(); ?>
 		<?php t_em_action_post_after() ?>
 
 <?php endwhile; ?>
+
+				<?php t_em_comments_template(); ?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
