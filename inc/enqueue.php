@@ -62,7 +62,7 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Load required Bootstrap js files for custom templates
-	if ( is_page_template( 'template-collapsible-content.php' ) ) :
+	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) ) :
 		// Register and enqueue bootstrap-collapse.js plugin
 		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'bootstrap-transition' );
@@ -70,7 +70,7 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'bootstrap-collapse' );
 	endif;
 
-	if ( is_page_template( 'template-tour.php' ) ) :
+	if ( is_page_template( 'page-templates/template-tour.php' ) ) :
 		// Register and enqueue bootstrap-tabs.js plugin and custom css for tabs
 		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'bootstrap-transition' );
@@ -107,7 +107,7 @@ function t_em_theme_layout_width(){
  */
 function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.less">'."\n";
+	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.min.less">'."\n";
 }
 add_action( 't_em_action_head', 't_em_bootstrapped_head', 15 );
 
