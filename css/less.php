@@ -19,3 +19,7 @@
 $file_path = 'css/less.php';
 ?>
 @icon-font-path:	"<?php echo str_replace( $file_path, '', $_SERVER['PHP_SELF'] ); ?>fonts/";
+
+// IcoMoon vars
+@icomoon-font-name:		"icomoon";
+@icomoon-font-svg-id:	"icomoon_regular";
