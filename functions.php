@@ -1374,7 +1374,7 @@ if ( ! function_exists( 't_em_custom_template_content' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_custom_template_content(){
-	if ( is_page_template() && get_post_meta( get_the_ID(), '_wp_page_template', true ) != 'template-one-column.php' ) :
+	if ( is_page_template() && get_post_meta( get_the_ID(), '_wp_page_template', true ) != 'page-templates/template-one-column.php' ) :
 	$template_data = get_page( get_the_ID() );
 ?>
 	<div id="featured-header-template-<?php the_ID(); ?>" <?php post_class( 'featured-header featured-header-template custom-template-content' ); ?>>
