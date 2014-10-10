@@ -1401,8 +1401,9 @@ if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
  *
  * @param int $height Require Thumbnail height.
  * @param int $width Require Thumbnail width.
- * @param string $class Optional CSS class.
  * @param boolean $link Optional The image will be linkable or not. Default: true.
+ * @param string $class Optional CSS class.
+ * @param int $post_id Optional. Post ID. Default is ID of the global $post.
  *
  * @global $post
  * @global $t_em
@@ -1411,54 +1412,44 @@ if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_featured_post_thumbnail( $height, $width, $class = null, $link = true ){
-	global	$post,
-			$t_em;
+function t_em_featured_post_thumbnail( $height, $width, $link = true, $class = null, $post_id = 0 ){
+	global $t_em;
 
-	if ( has_post_thumbnail( $post->ID ) ) :
+	$post_id = absint( $post_id );
+	if ( ! $post_id )
+		$post_id = get_the_ID();
+
+	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" title="'.  get_the_title( $post_id ) .'" rel="bookmark">' : null;
+	$close_link = ( $link ) ? '</a>' : null;
+
+	if ( has_post_thumbnail( $post_id ) ) :
 		// Display featured image assigned to the post
-		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
 		$image_src = $image_url[0];
-		if ( $link ) :
+		echo $open_link;
 		?>
-			<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-		<?php
-		endif;
-		?>
-			<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
-				<figcaption><?php the_title(); ?></figcaption>
+			<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( get_the_title( $post_id ) ); ?>"/>
+				<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 			</figure>
 		<?php
-		if ( $link ) :
-		?>
-			</a>
-		<?php
-		endif;
+		echo $close_link;
 	else :
 		// Display the first image uploaded/attached to the post
-		$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+		$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
 		$total_images = count( $images );
 		$image = array_shift( $images );
 		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : '';
 		if ( $total_images >= 1 ) :
 			$image_src = $image_url[0];
-			if ( $link ) :
+			echo $open_link;
 			?>
-				<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-			<?php
-			endif;
-			?>
-				<figure id="post-attachment-<?php the_ID(); ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( the_title_attribute( 'echo=0' ) ); ?>"/>
-					<figcaption><?php the_title(); ?></figcaption>
+				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( get_the_title( $post_id ) ); ?>"/>
+					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 				</figure>
 			<?php
-			if ( $link ) :
-			?>
-				</a>
-			<?php
-			endif;
+			echo $close_link;
 		endif;
 	endif;
 }
@@ -1763,7 +1754,7 @@ function t_em_post_archive_set(){
 	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_height'], $t_em['excerpt_thumbnail_width'], 'featured-post-thumbnail', true ); ?>
+				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_height'], $t_em['excerpt_thumbnail_width'], true, 'featured-post-thumbnail' ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php

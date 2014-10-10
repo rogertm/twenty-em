@@ -77,45 +77,41 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 				endwhile;
 				$tp = count( $p );
 
-				$recent_posts_args = new WP_Query( array (
-												'posts_per_page' => $tp,
-												'post__in' => $p,
-												'no_found_rows' => true,
-												'post_status' => 'publish',
-												'ignore_sticky_posts' => true
-												)
-											);
+				$recent_posts_args = array(
+							'posts_per_page' => $tp,
+							'post__in' => $p,
+							'no_found_rows' => true,
+							'post_status' => 'publish',
+							'ignore_sticky_posts' => true
+						);
 			else :
-				$recent_posts_args = new WP_Query( array (
-												'posts_per_page' => $number,
-												'no_found_rows' => true,
-												'post_status' => 'publish',
-												'ignore_sticky_posts' => true
-												)
-											);
+				$recent_posts_args = array(
+							'posts_per_page' => $number,
+							'no_found_rows' => true,
+							'post_status' => 'publish',
+							'ignore_sticky_posts' => true
+						);
 			endif;
-		if ($recent_posts_args->have_posts()) :
+			$recent_posts = get_posts( $recent_posts_args );
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<ul class="media-list">
-		<?php while ($recent_posts_args->have_posts()) : $recent_posts_args->the_post(); ?>
+		<?php foreach ( $recent_posts as $post ) : setup_postdata( $post ); ?>
 		<li class="t-em-recent-post-wrapper media">
-			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, 't-em-recent-post-thumbnail media-object' ) ?></div>
+			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, true, 't-em-recent-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-recent-post-content media-body">
-				<a class="t-em-recent-post-title media-heading" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
-				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
+				<a class="t-em-recent-post-title media-heading" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
 				<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
 		</li>
-		<?php endwhile; ?>
+		<?php endforeach; ?>
 		</ul>
 		<?php echo $after_widget; ?>
 <?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
-
-		endif;
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_recent_posts', $cache, 'widget');
@@ -218,54 +214,50 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 				endwhile;
 				$tp = count( $p );
 
-				$popular_posts_args = new WP_Query( array (
-												'posts_per_page' => $tp,
-												'post__in' => $p,
-												'no_found_rows' => true,
-												'post_status' => 'publish',
-												'ignore_sticky_posts' => true,
-												'orderby' => 'comment_count',
-												'order' => 'DESC'
-												)
-											);
+				$popular_posts_args = array(
+										'posts_per_page' => $tp,
+										'post__in' => $p,
+										'no_found_rows' => true,
+										'post_status' => 'publish',
+										'ignore_sticky_posts' => true,
+										'orderby' => 'comment_count',
+										'order' => 'DESC'
+									);
 			else :
-				$popular_posts_args = new WP_Query( array (
-												'posts_per_page' => $number,
-												'no_found_rows' => true,
-												'post_status' => 'publish',
-												'ignore_sticky_posts' => true,
-												'orderby' => 'comment_count',
-												'order' => 'DESC'
-												)
-											);
+				$popular_posts_args = array(
+										'posts_per_page' => $number,
+										'no_found_rows' => true,
+										'post_status' => 'publish',
+										'ignore_sticky_posts' => true,
+										'orderby' => 'comment_count',
+										'order' => 'DESC'
+									);
 			endif;
 
-		if ($popular_posts_args->have_posts()) :
+			$popular_posts = get_posts( $popular_posts_args );
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<ul class="media-list">
-		<?php while ($popular_posts_args->have_posts()) : $popular_posts_args->the_post(); ?>
+		<?php foreach ( $popular_posts as $post ) : setup_postdata( $post ); ?>
 
 		<li class="t-em-popular-post-wrapper media">
-			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, 't-em-popular-post-thumbnail media-object' ) ?></div>
+			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, true, 't-em-popular-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-popular-post-content media-body">
-				<a class="t-em-popular-post-title media-heading" href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
+				<a class="t-em-popular-post-title media-heading" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
 			<?php if ( $instance['comment_count'] == 1 ) : ?>
 				<small><?php $comments_number = ( 1 == $instance['comment_count'] ) ? comments_number( '- 0 Comments', '- 1 Comment', '- % Comments' ) : null; ?></small>
 			<?php endif; ?>
-				<?php $widget_trim_word = apply_filters( 'the_content', get_the_content() ); ?>
+				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
 				<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
 		</li>
-		<?php endwhile; ?>
+		<?php endforeach; ?>
 		</ul>
 		<?php echo $after_widget; ?>
 <?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
-
-		endif;
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_popular_posts', $cache, 'widget');
@@ -369,21 +361,19 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 			endwhile;
 			$tp = count( $p );
 
-			$gallery_args = new WP_Query( array (
-							'post_type'			=> 'post',
-							'post__in'			=> $p,
-							'posts_per_page'	=> $tp,
-							)
-						);
-		if ($gallery_args->have_posts()) :
+			$gallery_args = array(
+								'post_type'			=> 'post',
+								'post__in'			=> $p,
+								'posts_per_page'	=> $tp,
+							);
+			$gallery_posts = get_posts( $gallery_args );
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<div class="row">
 <?php
-			if ( $gallery_args->have_posts() ) :
 				$i = 0;
-				while ($gallery_args->have_posts()) : $gallery_args->the_post();
+				foreach ( $gallery_posts as $post ) : setup_postdata( $post );
 					if ( 0 == $i % $instance['columns'] ) :
 						$one_column_gallery = ( 1 == $instance['columns'] ) ? 't-em-one-column-gallery' : null;
 						echo '</div>';
@@ -391,21 +381,16 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 					endif;
 					$span = 12 / $instance['columns'];
 					echo '<div class="col-xs-'. $span .' col-md-'. $span .'">';
-						t_em_featured_post_thumbnail( 768, 768, 't-em-img-gallery-thumbnail' );
+						t_em_featured_post_thumbnail( 768, 768, true, 't-em-img-gallery-thumbnail', $post->ID );
 					echo '</div>';
 					$i++;
-				endwhile;
+				endforeach;
 ?>
 		</div><!-- .row -->
-<?php
-			endif;
-?>
 		<?php echo $after_widget; ?>
 <?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
-
-		endif;
 
 		$cache[$args['widget_id']] = ob_get_flush();
 		wp_cache_set('t_em_widget_image_gallery', $cache, 'widget');
