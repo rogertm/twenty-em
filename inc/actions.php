@@ -377,6 +377,26 @@ function t_em_action_sidebar_footer_after(){
 }
 
 /**
+ * Fire the t_em_action_colophon_before action, just after opening the <div id="colophon"> tag
+ *
+ * @file sidebar-footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_action_colophon_before(){
+	do_action( 't_em_action_colophon_before' );
+}
+
+/**
+ * Fire the t_em_action_colophon_after action, just before closing the </div><!-- #colophon --> tag
+ *
+ * @file sidebar-footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_action_colophon_after(){
+	do_action( 't_em_action_colophon_after' );
+}
+
+/**
  * Fire the t_em_action_site_info_before action, just after opening the <div id="site-info-before"> tag
  *
  * @file footer.php
