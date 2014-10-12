@@ -1399,8 +1399,8 @@ if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
  * Pluggable Function: Display featured image in posts archives when "Display the Excerpt" option is
  * activated in admin theme option page.
  *
- * @param int $height Require Thumbnail height.
  * @param int $width Require Thumbnail width.
+ * @param int $height Require Thumbnail height.
  * @param boolean $link Optional The image will be linkable or not. Default: true.
  * @param string $class Optional CSS class.
  * @param int $post_id Optional. Post ID. Default is ID of the global $post.
@@ -1412,7 +1412,7 @@ if ( ! function_exists( 't_em_featured_post_thumbnail' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_featured_post_thumbnail( $height, $width, $link = true, $class = null, $post_id = 0 ){
+function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = null, $post_id = 0 ){
 	global $t_em;
 
 	$post_id = absint( $post_id );
