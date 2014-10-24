@@ -900,6 +900,10 @@ function t_em_term_description(){
 	elseif ( is_tag() ) :
 		$term_description = tag_description();
 		$term_id = get_term_by( 'name', single_tag_title( '', false ), 'post_tag' );
+	elseif ( is_tax() ) :
+		$query_obj = get_queried_object();
+		$term_description = $query_obj->description;
+		$term_id = get_term_by( 'term_taxonomy_id', $query_obj->term_id, $query_obj->taxonomy );
 	endif;
 	if ( ! empty( $term_description ) ) :
 		echo '<div id="term-description-'. $term_id->term_id .'" class="archive-meta term-description">' . $term_description . '</div>';
@@ -907,69 +911,39 @@ function t_em_term_description(){
 }
 endif; // function t_em_term_description()
 
-if ( ! function_exists( 't_em_header_archive_category' ) ) :
+if ( ! function_exists( 't_em_header_archive_taxonomy' ) ) :
 /**
- * Pluggable Function: Display Category header tag and description in category archives.
+ * Pluggable Function: Display Taxonomy header tag and description in taxonomies archives.
  * This function is attached to the t_em_action_content_before action hook
  *
  * @since Twenty'em 1.0
  */
-function t_em_header_archive_category(){
-	if ( is_category() ) :
-		/* Queue the first post, that way we know if category is not empty
+function t_em_header_archive_taxonomy(){
+	if ( is_category() || is_tag() || is_tax() ) :
+		/* Queue the first post, that way we know if taxonomy is not empty
 		 * We reset this later so we can run the loop properly with a call to rewind_posts().
 		 */
 		if ( have_posts() ) : the_post();
-		$category_id = get_term_by( 'name', single_tag_title( '', false ), 'category' ); ?>
-	<div id="featured-header-category-<?php echo $category_id->term_id; ?>" class="featured-header featured-header-category">
+			$query_obj = get_queried_object();
+			$labels = get_taxonomy( $query_obj->taxonomy );
+			$classes = 'featured-header-'. $query_obj->taxonomy . ' ' . $query_obj->taxonomy.'-'.$query_obj->slug;
+		?>
+	<div id="featured-header-taxonomy-<?php echo $query_obj->term_id ?>" class="featured-header <?php echo $classes; ?>">
 		<header>
 			<h1 class="page-header">
-				<?php printf( __( 'Category Archives: %s', 't_em' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
+				<?php printf( __( '%1$s Archives: %2$s', 't_em' ), $labels->labels->singular_name, '<span>' . single_term_title( '', false ) . '</span>' ); ?>
 			</h1>
 		</header>
-<?php 	t_em_term_description();
-		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
-		 * we can run the loop properly, in full.
-		 */ ?>
+<?php 	t_em_term_description(); ?>
 	</div><!-- .featured-header -->
-<?php
-		rewind_posts(); endif;
-	endif;
-}
-endif; // function t_em_header_archive_category()
-add_action( 't_em_action_content_before', 't_em_header_archive_category', 15 );
-
-if ( ! function_exists( 't_em_header_archive_tag' ) ) :
-/**
- * Pluggable Function: Display Tag header tag and description in tag archives.
- * This function is attached to the t_em_action_content_before action hook
- *
- * @since Twenty'em 1.0
- */
-function t_em_header_archive_tag(){
-	if ( is_tag() ) :
-		/* Queue the first post, that way we know if category is not empty
-		 * We reset this later so we can run the loop properly with a call to rewind_posts().
+<?php   /* Since we called the_post() above, we need to rewind the loop back to the beginning that way
+		 * we can run the loop properly, in full.
 		 */
-		if ( have_posts() ) : the_post();
-		$tag_id = get_term_by( 'name', single_tag_title( '', false ), 'post_tag' ); ?>
-	<div id="featured-header-tag-<?php echo $tag_id->term_id ?>" class="featured-header featured-header-tag">
-		<header>
-			<h1 class="page-header">
-				<?php printf( __( 'Tag Archives: %s', 't_em' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?>
-			</h1>
-		</header>
-<?php 	t_em_term_description();
-		/* Since we called the_post() above, we need to rewind the loop back to the beginning that way
-		 * we can run the loop properly, in full.
-		 */ ?>
-	</div><!-- .featured-header -->
-<?php
 		rewind_posts(); endif;
 	endif;
 }
-endif; // function t_em_header_archive_tag()
-add_action( 't_em_action_content_before', 't_em_header_archive_tag', 15 );
+endif; // function t_em_header_archive_taxonomy()
+add_action( 't_em_action_content_before', 't_em_header_archive_taxonomy', 15 );
 
 if ( ! function_exists( 't_em_header_archive_post_type_archive' ) ) :
 /**
