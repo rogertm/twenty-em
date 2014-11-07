@@ -312,7 +312,7 @@ function t_em_theme_options_page(){
 		?>
 			<div class="updated">
 		<?php 		if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
-				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.' ),
+				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.', 't_em' ),
 								T_EM_FRAMEWORK_VERSION,
 								T_EM_DB_VERSION,
 								admin_url( 'admin.php?page=twenty-em-backup' ) ); ?></p>
@@ -642,7 +642,7 @@ function t_em_theme_options_validate( $input ){
 			$input[$text_tracker] = trim( htmlentities( str_replace( $dirty_tracker, '', $input[$text_tracker] ) ) );
 		endforeach;
 
-		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.' ), home_url() ), 'updated' );
+		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.', 't_em' ), home_url() ), 'updated' );
 
 		return $input;
 	else :
