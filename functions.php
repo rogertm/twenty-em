@@ -2413,24 +2413,28 @@ endif; // function t_em_copy_right()
 add_action( 't_em_action_site_info_left', 't_em_copy_right' );
 
 /**
- * Display Twenty'em.com link at bottom of the page. This function is attached to the t_em_action_site_info
- * action hook.
+ * Display WordPress.org and Twenty'em.com link at bottom of the page. This function is attached to
+ * the t_em_action_site_info action hook.
  */
 function t_em_dot_com_link(){
 global $t_em, $t_em_theme_data;
 $hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 ?>
 	<div id="twenty-em-credit" class="<?php echo $hidden_class ?>">
-		<?php _e( 'Proudly powered by: ', 't_em' ); ?>
-		<a href="<?php esc_url( _e('http://wordpress.org/', 't_em') ); ?>"
-			title="<?php esc_attr_e('Semantic Personal Publishing Platform', 't_em'); ?>" rel="generator">
-			<?php _e('WordPress', 't_em'); ?></a>
-		<?php _e( 'and', 't_em' ); ?>
-		<a href="<?php esc_url( _e( 'http://twenty-em.com/', 't_em' ) ) ?>"
-			title="<?php esc_attr_e( 'Theming is Prose', 't_em' ); ?>" rel="generator">
-			<?php esc_attr_e( __( 'Twenty&#8217;em', 't_em' ) ) ?></a>.
-		<?php _e( 'Theme name: ', 't_em' ); ?><a href="<?php echo $t_em_theme_data['ThemeURI']; ?>" title="<?php printf( __( 'Version: %s', 't_em' ), $t_em_theme_data['Version'] ); ?>"><?php echo $t_em_theme_data['Name']; ?></a>
-		<?php _e( 'by: ', 't_em' ); ?><?php echo $t_em_theme_data['Author']; ?>
+<?php
+	printf( __( 'Proudly powered by: <a href="%1$s" title="%2$s">%3$s</a> and <a href="%4$s" title="%5$s">%6$s</a>. Theme Name: <a href="%7$s" title="Version %8$s">%9$s</a> by: %10$s', 't_em' ),
+		'http://wordpress.org/',
+		'Semantic Personal Publishing Platform',
+		'WordPress',
+		T_EM_SITE,
+		'Theming is Prose',
+		T_EM_FRAMEWORK_NAME,
+		$t_em_theme_data['ThemeURI'],
+		$t_em_theme_data['Version'],
+		$t_em_theme_data['Name'],
+		$t_em_theme_data['Author']
+	);
+?>
 	</div>
 <?php
 }
