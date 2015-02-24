@@ -107,7 +107,7 @@ function t_em_theme_layout_width(){
  */
 function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-	echo '<link rel="stylesheet/less" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.min.less">'."\n";
+	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.less">'."\n";
 }
 add_action( 't_em_action_head', 't_em_bootstrapped_head', 15 );
 
