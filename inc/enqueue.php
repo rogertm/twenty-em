@@ -128,7 +128,7 @@ add_action( 't_em_action_head', 't_em_enqueue_less_css', 20 );
  * @since Twenty'em 1.0
  */
 function t_em_enqueue_less_js(){
-	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'"></script>'."\n";
+	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'" type="text/javascript"></script>'."\n";
 }
 add_action( 't_em_action_head', 't_em_enqueue_less_js', 30 );
 
