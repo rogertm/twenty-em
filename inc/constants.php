@@ -61,7 +61,6 @@ define ( 'T_EM_THEME_DIR_CSS_URL',										get_template_directory_uri().'/css' 
 define ( 'T_EM_THEME_DIR_IMG_URL',										get_template_directory_uri().'/images' );
 define ( 'T_EM_THEME_DIR_JS_URL',										get_template_directory_uri().'/js' );
 define ( 'T_EM_THEME_DIR_FONTS_URL',									get_template_directory_uri().'/fonts' );
-define ( 'T_EM_THEME_DIR_DOCS_URL',										get_template_directory_uri().'/docs' );
 
 // Theme Includes Directory URL
 define ( 'T_EM_INC_DIR_URL',											get_template_directory_uri().'/inc' );
