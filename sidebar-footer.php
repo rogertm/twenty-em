@@ -39,7 +39,7 @@
 
 			<?php if ( is_active_sidebar( 'second-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
-						array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
+						array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
 					<aside id="second" class="<?php echo t_em_add_bootstrap_class( 'footer-widget-area' ); ?>">
 						<?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
 					</aside><!-- #second .widget-area -->
@@ -47,7 +47,7 @@
 
 			<?php if ( is_active_sidebar( 'third-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
-						array ( 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
+						array( 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
 					<aside id="third" class="<?php echo t_em_add_bootstrap_class( 'footer-widget-area' ); ?>">
 						<?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
 					</aside><!-- #third .widget-area -->
@@ -55,7 +55,7 @@
 
 			<?php if ( is_active_sidebar( 'fourth-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
-						array ( 'four-footer-widget' ) ) ) : ?>
+						array( 'four-footer-widget' ) ) ) : ?>
 					<aside id="fourth" class="<?php echo t_em_add_bootstrap_class( 'footer-widget-area' ); ?>">
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
 					</aside><!-- #fourth .widget-area -->

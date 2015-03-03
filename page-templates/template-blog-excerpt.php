@@ -26,7 +26,7 @@ get_header(); ?>
 				<?php t_em_action_content_before(); ?>
 				<?php
 				// Query for Custom Loop
-				$args = array ( 'post_type' => 'post',
+				$args = array( 'post_type' => 'post',
 								'posts_per_page' => get_option( 'posts_per_page' ),
 								'paged' => get_query_var( 'paged' ),
 						);

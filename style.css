@@ -179,10 +179,6 @@ ul.sub-menu li a{
 .social-icon a{
 	text-decoration: none !important;
 }
-/* If JetPack module Infinite Scroll is active */
-.infinite-scroll .navigation{
-	display: none !important;
-}
 
 /* =Content
 -------------------------------------------------------------- */
@@ -421,6 +417,9 @@ figure.t-em-img-gallery-thumbnail,
 
 /* =Featured Widget Area
 -------------------------------------------------------------- */
+.home.one-column #content{
+	padding: 0;
+}
 .front-page-widget{
 	margin-bottom: 50px !important;
 }

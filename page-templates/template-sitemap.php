@@ -42,7 +42,7 @@ get_header(); ?>
 					 */
 					?>
 					<h3 id="sitemap-categories"><?php _e( 'Categories', 't_em' ); ?></h3>
-					<ul><?php wp_list_categories( array ( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
+					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
 					/** Displaying posts per category

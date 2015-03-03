@@ -42,23 +42,12 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Register and enqueue Twitter Bootstrap JS Plugins
 	if ( 'slider' == $t_em['header_set'] ) :
-		if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
-			wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-			wp_enqueue_script( 'bootstrap-transition' );
-			wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/carousel.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-			wp_enqueue_script( 'bootstrap-carousel' );
-			wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
-			wp_enqueue_script( 'bootstrap-carousel-script' );
-		elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
-			wp_register_style( 'style-nivo-slider', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/nivo-slider.css', array(), $t_em_theme_data['Version'], 'all' );
-			wp_enqueue_style( 'style-nivo-slider' );
-			wp_register_style( 'style-nivo-slider-theme-'.$t_em['nivo_style'].'', T_EM_THEME_DIR_CSS_URL . '/nivo-slider/themes/'.$t_em['nivo_style'].'/'.$t_em['nivo_style'].'.css', array(), $t_em_theme_data['Version'], $media = 'all' );
-			wp_enqueue_style( 'style-nivo-slider-theme-'.$t_em['nivo_style'].'' );
-			wp_register_script( 'nivo-slider', T_EM_THEME_DIR_JS_URL.'/jquery.nivo.slider.pack.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-			wp_enqueue_script( 'nivo-slider' );
-			wp_register_style( 'style-slider', T_EM_THEME_DIR_CSS_URL.'/style-slider.css', array(), $t_em_theme_data['Version'], 'all' );
-			wp_enqueue_style( 'style-slider' );
-		endif;
+		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'bootstrap-transition' );
+		wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/carousel.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+		wp_enqueue_script( 'bootstrap-carousel' );
+		wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
+		wp_enqueue_script( 'bootstrap-carousel-script' );
 	endif;
 
 	// Load required Bootstrap js files for custom templates
@@ -109,7 +98,7 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.min.less">'."\n";
 }
-add_action( 't_em_action_head', 't_em_bootstrapped_head', 15 );
+add_action( 'wp_head', 't_em_bootstrapped_head', 15 );
 
 /**
  * Enqueue LESS Style for the theme
@@ -120,7 +109,7 @@ function t_em_enqueue_less_css(){
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL.'/style.less' .'">'."\n";
 
 }
-add_action( 't_em_action_head', 't_em_enqueue_less_css', 20 );
+add_action( 'wp_head', 't_em_enqueue_less_css', 20 );
 
 /**
  * Enqueue LESS Javascript for the theme
@@ -130,19 +119,7 @@ add_action( 't_em_action_head', 't_em_enqueue_less_css', 20 );
 function t_em_enqueue_less_js(){
 	echo '<script src="'. T_EM_THEME_DIR_JS_URL.'/less.js'.'" type="text/javascript"></script>'."\n";
 }
-add_action( 't_em_action_head', 't_em_enqueue_less_js', 30 );
-
-/**
- * Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions.
- */
-function t_em_enqueue_html5_js(){
-?>
-	<!--[if lt IE 9]>
-	<script src="<?php echo T_EM_THEME_DIR_JS_URL; ?>/html5.js" type="text/javascript"></script>
-	<![endif]-->
-<?php
-}
-add_action( 't_em_action_head', 't_em_enqueue_html5_js' );
+add_action( 'wp_head', 't_em_enqueue_less_js', 30 );
 
 /**
  * Loads IcoMoon javascript supports to IE 7 and IE 6... Asco!
@@ -154,36 +131,7 @@ function t_em_enqueue_icomoon(){
 	<![endif]-->
 <?php
 }
-add_action( 't_em_action_head', 't_em_enqueue_icomoon' );
-
-/**
- * Nivo Slider Options
- */
-function t_em_nivo_slider_options(){
-	global $t_em;
-	if ( 'slider' == $t_em['header_set'] && 'slider-nivo-slider' == $t_em['slider_script'] ) :
-		$effect = $t_em['nivo_effect'];
-		$pause_time = $t_em['nivo_manual_advance'] == '1' ? 0 : $t_em['nivo_pause_time'];
-?>
-	<script type="text/javascript">
-	jQuery(document).ready(function($){
-		$('#slider').nivoSlider({
-			effect: 		<?php echo "'$effect'"; ?>,
-			animSpeed: 		<?php echo $t_em['nivo_anim_speed']; ?>,
-			pauseTime: 		<?php echo $pause_time; ?>,
-			pauseOnHover: 	<?php echo $t_em['nivo_pause_on_hover']; ?>,
-			manualAdvance: 	<?php echo $t_em['nivo_manual_advance']; ?>, // Disable pause time!!!
-			directionNav: 	<?php echo $t_em['nivo_direction_nav']; ?>,
-			controlNav: 	<?php echo $t_em['nivo_control_nav']; ?>,
-			prevText: 		'<span class="icomoon control-prev"></span>',
-			nextText: 		'<span class="icomoon control-next"></span>',
-		});
-	});
-	</script>
-<?php
-	endif;
-}
-add_action( 't_em_action_head', 't_em_nivo_slider_options' );
+add_action( 'wp_head', 't_em_enqueue_icomoon' );
 
 /**
  * Register and enqueue Bootstrap Alert js plugin for close alert blocks

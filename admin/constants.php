@@ -28,7 +28,7 @@ $t_em = get_option( 't_em_theme_options' );
 /**
  * $t_em_theme_data. Array. Contains theme's information stored in style.css file.
  */
-$t_em_theme_data = array (
+$t_em_theme_data = array(
 	'Name'			=> wp_get_theme()->display( 'Name' ),
 	'ThemeURI'		=> esc_url( wp_get_theme()->display( 'ThemeURI' ) ),
 	'Description'	=> wp_get_theme()->display( 'Description' ),
@@ -53,7 +53,15 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty&#8217;em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20140912' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20150302' ); // In date format Ymd
+
+// Admin Directory Path
+define ( 'T_EM_ADMIN_DIR_PATH',											get_template_directory().'/admin' );
+
+// Admin Directory URL
+define ( 'T_EM_ADMIN_DIR_CSS_URL',										get_template_directory_uri().'/admin/css' );
+define ( 'T_EM_ADMIN_DIR_IMG_URL',										get_template_directory_uri().'/admin/images' );
+define ( 'T_EM_ADMIN_DIR_JS_URL',										get_template_directory_uri().'/admin/js' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
@@ -64,9 +72,6 @@ define ( 'T_EM_THEME_DIR_FONTS_URL',									get_template_directory_uri().'/font
 
 // Theme Includes Directory URL
 define ( 'T_EM_INC_DIR_URL',											get_template_directory_uri().'/inc' );
-define ( 'T_EM_INC_DIR_CSS_URL',										get_template_directory_uri().'/inc/css' );
-define ( 'T_EM_INC_DIR_IMG_URL',										get_template_directory_uri().'/inc/images' );
-define ( 'T_EM_INC_DIR_JS_URL',											get_template_directory_uri().'/inc/js' );
 
 // Some direct path we need
 define ( 'T_EM_INC_DIR_PATH',											get_template_directory().'/inc' );
@@ -86,14 +91,6 @@ if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )						define( 'T_EM_LAYOUT_WIDT
 if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE' ) )	define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE', 5000 );
 if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE' ) )		define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE', 10000 );
 if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE' ) )		define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE', 1000 );
-
-if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE' ) )				define( 'T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE', 5000 );
-if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_MAX_VALUE' ) )					define( 'T_EM_NIVO_PAUSE_TIME_MAX_VALUE', 10000 );
-if ( ! defined( 'T_EM_NIVO_PAUSE_TIME_MIN_VALUE' ) )					define( 'T_EM_NIVO_PAUSE_TIME_MIN_VALUE', 1000 );
-
-if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE' ) )				define( 'T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE', 500 );
-if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MAX_VALUE', 1000 );
-if ( ! defined( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE' ) )					define( 'T_EM_NIVO_ANIM_SPEED_MIN_VALUE', 100 );
 
 if ( ! defined( 'T_EM_HEADER_IMAGE_WIDTH' ) )							define( 'T_EM_HEADER_IMAGE_WIDTH', 1600 );
 if ( ! defined( 'T_EM_HEADER_IMAGE_HEIGHT' ) )							define( 'T_EM_HEADER_IMAGE_HEIGHT', 560 );

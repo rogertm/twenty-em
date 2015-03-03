@@ -16,16 +16,6 @@
 ?>
 <?php
 /**
- * Fire the t_em_action_head action, just before </head> tag.
- *
- * @file header.php
- * @since Twenty'em 1.0
- */
-function t_em_action_head(){
-	do_action( 't_em_action_head' );
-}
-
-/**
  * Fire the t_em_action_top action, just after opening <body> tag
  *
  * @file header.php
@@ -454,15 +444,5 @@ function t_em_action_footer_before(){
  */
 function t_em_action_footer_after(){
 	do_action( 't_em_action_footer_after' );
-}
-
-/**
- * Fire the t_em_action_foot action, just before closing the </body> tag
- *
- * @file footer.php
- * @since Twenty'em 1.0
- */
-function t_em_action_foot(){
-	do_action( 't_em_action_foot' );
 }
 ?>

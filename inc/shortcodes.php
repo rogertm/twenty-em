@@ -52,7 +52,7 @@ add_action( 'admin_print_footer_scripts', 't_em_quickttags_buttons' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_button( $atts, $content = null ){
-	extract( shortcode_atts( array (
+	extract( shortcode_atts( array(
 			'link'			=> '',
 			'style'			=> 'default',
 			'new_window'	=> 'false',
@@ -80,14 +80,14 @@ add_shortcode( 'button', 't_em_shortcode_button' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_alert( $atts, $content = null ){
-	extract( shortcode_atts( array (
+	extract( shortcode_atts( array(
 			'style' => '',
 			'close' => 'false',
 		), $atts ) );
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
-		add_action( 't_em_action_foot', 't_em_shortcode_alert_bs_script' );
+		add_action( 'wp_footer', 't_em_shortcode_alert_bs_script' );
 	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -107,7 +107,7 @@ add_shortcode( 'alert', 't_em_shortcode_alert' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_quote( $atts, $content = null ){
-	extract( shortcode_atts( array (
+	extract( shortcode_atts( array(
 			'text_align' => '',
 			'float' => '',
 		), $atts ) );
@@ -148,7 +148,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_icomoon_icon( $atts ){
-	extract( shortcode_atts( array (
+	extract( shortcode_atts( array(
 			'class' => '',
 			'align' => '',
 			'size' => 'default',

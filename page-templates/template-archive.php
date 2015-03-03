@@ -34,7 +34,7 @@ get_header(); ?>
 
 // Displaying the latest $limit posts
 $limit = '30';
-$args = array ( 'post_type' => 'post',
+$args = array( 'post_type' => 'post',
 				'showposts' => $limit,
 		);
 ?>
@@ -61,7 +61,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h3 id="archive-categories"><?php _e( 'Categories', 't_em' ); ?></h3>
-					<ul><?php wp_list_categories( array ( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
+					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
 					/** Displaying the monthly archive
@@ -69,7 +69,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h3 id="archive-monthly-archive"><?php _e( 'Monthly Archives', 't_em' ) ?></h3>
-					<ul><?php wp_get_archives( array ( 'show_post_count' => true ) ); ?></ul>
+					<ul><?php wp_get_archives( array( 'show_post_count' => true ) ); ?></ul>
 
 					<?php
 					/** And now, the Tag Cloud!
@@ -77,7 +77,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h3 id="archive-tag-cloud"><?php _e( 'Tag Cloud', 't_em' ); ?></h3>
-					<div><?php wp_tag_cloud( array ( 'number' => '0' ) ); ?></div>
+					<div><?php wp_tag_cloud( array( 'number' => '0' ) ); ?></div>
 
 				</div><!-- #archive-## -->
 				<?php t_em_action_content_after(); ?>

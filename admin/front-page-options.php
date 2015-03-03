@@ -26,13 +26,13 @@
  * @since Twenty'em 1.0
  */
 function t_em_front_page_options(){
-	$front_page_options = array (
-		'wp-front-page' => array (
+	$front_page_options = array(
+		'wp-front-page' => array(
 			'value'			=> 'wp-front-page',
 			'label'			=> __( 'Just another WordPress front page', 't_em' ),
 			'extend'		=> t_em_front_page_jawpfp_callback(),
 		),
-		'widgets-front-page' => array (
+		'widgets-front-page' => array(
 			'value'			=> 'widgets-front-page',
 			'label'			=> __( 'Text Widgets', 't_em' ),
 			'extend'		=> t_em_front_page_witgets_callback(),
@@ -78,20 +78,20 @@ function t_em_front_page_jawpfp_callback(){
  * @since Twenty'em 0.1
  */
 function t_em_front_page_widgets_options(){
-	$front_page_widgets = array (
-		'text_widget_one' => array (
+	$front_page_widgets = array(
+		'text_widget_one' => array(
 			'name'			=> 'text_widget_one',
 			'label'			=> __( 'First home page text area', 't_em' ),
 		),
-		'text_widget_two' => array (
+		'text_widget_two' => array(
 			'name'			=> 'text_widget_two',
 			'label'			=> __( 'Second home page text area', 't_em' ),
 		),
-		'text_widget_three' => array (
+		'text_widget_three' => array(
 			'name'			=> 'text_widget_three',
 			'label'			=> __( 'Third home page text area', 't_em' ),
 		),
-		'text_widget_four' => array (
+		'text_widget_four' => array(
 			'name'			=> 'text_widget_four',
 			'label'			=> __( 'Fourth home page text area', 't_em' ),
 		),

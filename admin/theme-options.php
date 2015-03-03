@@ -16,20 +16,20 @@
 ?>
 <?php
 // First of all we call this files we need to complete the Twenty'em engine.
-require_once( T_EM_INC_DIR_PATH . '/generals-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/header-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/front-page-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/archive-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/layout-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/social-network-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/webmaster-tools-options.php' );
-require_once( T_EM_INC_DIR_PATH . '/theme-backup.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/generals-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/header-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/front-page-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/archive-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/layout-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/social-network-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/webmaster-tools-options.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/theme-backup.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/actions.php' );
+require_once( T_EM_ADMIN_DIR_PATH . '/help.php' );
 require_once( T_EM_INC_DIR_PATH . '/enqueue.php' );
 require_once( T_EM_INC_DIR_PATH . '/helpers.php' );
 require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
 require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
-require_once( T_EM_INC_DIR_PATH . '/help.php' );
-require_once( T_EM_INC_DIR_PATH . '/actions.php' );
 
 
 /**
@@ -43,9 +43,9 @@ require_once( T_EM_INC_DIR_PATH . '/actions.php' );
 function t_em_admin_styles_and_scripts(){
 	// Check the theme version right from the style sheet
 	global $t_em_theme_data;
-	wp_register_style( 'style-admin-t-em', T_EM_INC_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'style-admin-t-em', T_EM_ADMIN_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'style-admin-t-em' );
-	wp_register_script( 'script-admin-t-em', T_EM_INC_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'script-admin-t-em', T_EM_ADMIN_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'script-admin-t-em' );
 }
 if ( $_SERVER['QUERY_STRING'] == ( 'page=twenty-em-options' || 'page=twenty-em-backup' ) ) :
@@ -97,7 +97,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_INC_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
+	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_ADMIN_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
 	$theme_backup_page	= add_submenu_page( 'twenty-em-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'twenty-em-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -148,7 +148,7 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
  * @since Twenty'em 0.1
  */
 function t_em_default_theme_options(){
-	$default_theme_options = array (
+	$default_theme_options = array(
 		// Twenty'em Version
 		't_em_framework_version'						=> T_EM_FRAMEWORK_VERSION,
 		't_em_db_version'								=> T_EM_DB_VERSION,
@@ -167,20 +167,10 @@ function t_em_default_theme_options(){
 		'slider_home_only'								=> '0',
 		'slider_category'								=> get_option( 'default_category' ),
 		'slider_number'									=> get_option( 'posts_per_page' ),
-		'slider_text'									=> 'slider-text-center',
 		'slider_height'									=> T_EM_SLIDER_DEFAULT_HEIGHT,
-		'slider_script'									=> 'slider-bootstrap-carousel',
 		'bootstrap_carousel_interval'					=> T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE,
 		'bootstrap_carousel_pause'						=> '1',
 		'bootstrap_carousel_wrap'						=> '1',
-		'nivo_style'									=> 't-em',
-		'nivo_effect'									=> 'random',
-		'nivo_pause_time'								=> T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE,
-		'nivo_anim_speed'								=> T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE,
-		'nivo_pause_on_hover'							=> '1',
-		'nivo_direction_nav'							=> '1',
-		'nivo_control_nav'								=> '1',
-		'nivo_manual_advance'							=> '0',
 		'static_header_home_only'						=> '0',
 		'static_header_text'							=> 'static-header-text-right',
 		'static_header_headline'						=> '',
@@ -370,10 +360,6 @@ function t_em_theme_options_validate( $input ){
 			'slider_home_only',
 			'bootstrap_carousel_pause',
 			'bootstrap_carousel_wrap',
-			'nivo_pause_on_hover',
-			'nivo_direction_nav',
-			'nivo_control_nav',
-			'nivo_manual_advance',
 			'static_header_home_only',
 		) as $checkbox ) :
 			if ( !isset( $input[$checkbox] ) )
@@ -383,47 +369,35 @@ function t_em_theme_options_validate( $input ){
 
 		// Validate all radio options
 		$radio_options = array(
-			'header-options'	=> array (
+			'header-options'	=> array(
 				'set'		=> 'header_set',
 				'callback'	=> t_em_header_options(),
 			),
-			'slider-options'	=> array (
-				'set'		=> 'slider_text',
-				'callback'	=> t_em_slider_layout_options(),
-			),
-			'slider-script-options'	=> array (
-				'set'		=> 'slider_script',
-				'callback'	=> t_em_slider_script_options(),
-			),
-			'nivo-style-options'	=> array (
-				'set'		=> 'nivo_style',
-				'callback'	=> t_em_nivo_slider_styles_options(),
-			),
-			'static-header-options'	=> array (
+			'static-header-options'	=> array(
 				'set'		=> 'static_header_text',
 				'callback'	=> t_em_static_header_layout_options(),
 			),
-			'archive-options'	=> array (
+			'archive-options'	=> array(
 				'set'		=> 'archive_set',
 				'callback'	=> t_em_archive_options(),
 			),
-			'archive-columns-options'	=> array (
+			'archive-columns-options'	=> array(
 				'set'		=> 'archive_in_columns',
 				'callback'	=> t_em_archive_in_columns(),
 			),
-			'archive-pagination-options'	=> array (
+			'archive-pagination-options'	=> array(
 				'set'		=> 'archive_pagination_set',
 				'callback'	=> t_em_archive_pagination_options(),
 			),
-			'excerpt-options'	=> array (
+			'excerpt-options'	=> array(
 				'set'		=> 'excerpt_set',
 				'callback'	=> t_em_excerpt_options(),
 			),
-			'layout-options'	=> array (
+			'layout-options'	=> array(
 				'set'		=> 'layout_set',
 				'callback'	=> t_em_layout_options(),
 			),
-			'footer-options'	=> array (
+			'footer-options'	=> array(
 				'set'		=> 'footer_set',
 				'callback'	=> t_em_footer_options(),
 			),
@@ -484,25 +458,10 @@ function t_em_theme_options_validate( $input ){
 			$input['bootstrap_carousel_interval'] = $input['bootstrap_carousel_interval'];
 		endif;
 
-		// Nivo Slider Pause Time
-		if ( ( $input['nivo_pause_time'] < T_EM_NIVO_PAUSE_TIME_MIN_VALUE || $input['nivo_pause_time'] > T_EM_NIVO_PAUSE_TIME_MAX_VALUE ) || empty( $input['nivo_pause_time'] ) || ! is_numeric( $input['nivo_pause_time'] ) ) :
-			$input['nivo_pause_time'] = T_EM_NIVO_PAUSE_TIME_DEFAULT_VALUE;
-		else :
-			$input['nivo_pause_time'] = $input['nivo_pause_time'];
-		endif;
-
-		// Nivo Slider Animation Speed
-		if ( ( $input['nivo_anim_speed'] < T_EM_NIVO_ANIM_SPEED_MIN_VALUE || $input['nivo_anim_speed'] > T_EM_NIVO_ANIM_SPEED_MAX_VALUE ) || empty( $input['nivo_anim_speed'] ) || ! is_numeric( $input['nivo_anim_speed'] ) ) :
-			$input['nivo_anim_speed'] = T_EM_NIVO_ANIM_SPEED_DEFAULT_VALUE;
-		else :
-			$input['nivo_anim_speed'] = $input['nivo_anim_speed'];
-		endif;
-		foreach( array (
+		foreach( array(
 			'slider_height',
 			'slider_number',
 			'bootstrap_carousel_interval',
-			'nivo_pause_time',
-			'nivo_anim_speed',
 			'excerpt_thumbnail_width',
 			'excerpt_thumbnail_height',
 			'layout_width',
@@ -511,7 +470,7 @@ function t_em_theme_options_validate( $input ){
 		endforeach;
 
 		// Validate all url (input[type="url"]) options
-		foreach ( array (
+		foreach ( array(
 			'favicon_url',
 			'twitter_set',
 			'facebook_set',
@@ -549,14 +508,10 @@ function t_em_theme_options_validate( $input ){
 		endforeach;
 
 		// Validate all select list options
-		$select_options = array (
-			'slider-cat'	=> array (
+		$select_options = array(
+			'slider-cat'	=> array(
 				'set'		=> 'slider_category',
 				'callback'	=> t_em_slider_list_taxonomies(),
-			),
-			'nivo-effect'	=> array (
-				'set'		=> 'nivo_effect',
-				'callback'	=> t_em_nivo_slider_effetc_options(),
 			),
 		);
 		foreach ( $select_options as $select ) :
@@ -565,7 +520,7 @@ function t_em_theme_options_validate( $input ){
 		endforeach;
 
 		// Validate all text field options
-		foreach ( array (
+		foreach ( array(
 			'static_header_headline',
 			'static_header_primary_button_text',
 			'static_header_primary_button_icon_class',
@@ -608,7 +563,7 @@ function t_em_theme_options_validate( $input ){
 		endforeach;
 
 		// Validate all textarea options
-		foreach ( array (
+		foreach ( array(
 			'content_text_widget_one',
 			'content_text_widget_two',
 			'content_text_widget_three',
@@ -619,7 +574,7 @@ function t_em_theme_options_validate( $input ){
 		endforeach;
 
 		// Validate all Verification Services
-		foreach ( array (
+		foreach ( array(
 			'google_id',
 			'bing_id',
 			'pinterest_id',
@@ -635,7 +590,7 @@ function t_em_theme_options_validate( $input ){
 
 		// Validate all textarea (trackers) options
 		$dirty_tracker = array( '<script type="text/javascript">', '<script>', '</script>', '\t', '\n', '\r', ' ' );
-		foreach ( array (
+		foreach ( array(
 			'stats_tracker_header_tag',
 			'stats_tracker_body_tag',
 		) as $text_tracker ) :

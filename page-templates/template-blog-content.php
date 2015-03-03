@@ -27,7 +27,7 @@ get_header(); ?>
 
 <?php
 // Query for Custom Loop
-$args = array ( 'post_type' => 'post',
+$args = array( 'post_type' => 'post',
 				'posts_per_page' => get_option( 'posts_per_page' ),
 				'paged' => get_query_var( 'paged' )
 		);

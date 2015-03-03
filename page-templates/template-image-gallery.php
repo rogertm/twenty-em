@@ -31,7 +31,7 @@ get_header(); ?>
 <?php
 // Query for custom Loop
 
-$args = array ( 'post_type' => 'attachment',
+$args = array( 'post_type' => 'attachment',
 				'post_status' => 'inherit',
 				'posts_per_page' => -1,
 		);

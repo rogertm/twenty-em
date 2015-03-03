@@ -31,7 +31,7 @@ function t_em_theme_version(){
 	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
 	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
 }
-add_action( 't_em_action_head', 't_em_theme_version' );
+add_action( 'wp_head', 't_em_theme_version' );
 
 /**
  * Return Width and Height text boxes for thumbnails in forms
@@ -46,7 +46,7 @@ add_action( 't_em_action_head', 't_em_theme_version' );
  * @since Twenty'em 0.1
  */
 function t_em_thumbnail_sizes( $contex ){
-	$thumbnail_sizes = array (
+	$thumbnail_sizes = array(
 		'excerpt_thumbnail_width' => array(
 			'value' => '',
 			'name' => $contex . '_thumbnail_width',
@@ -74,13 +74,13 @@ function t_em_layout_classes( $existing_classes ){
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enough
 	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
-		$classes = array ( 'one-column widgets-front-page' );
+		$classes = array( 'one-column widgets-front-page' );
 	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
-		$classes = array ( 'two-column' );
+		$classes = array( 'two-column' );
 	elseif ( in_array( $layout_set, array( 'three-column-content-left', 'three-column-content-right', 'three-column-content-middle' ) ) ) :
-		$classes = array ( 'three-column' );
+		$classes = array( 'three-column' );
 	else :
-		$classes = array ( 'one-column' );
+		$classes = array( 'one-column' );
 	endif;
 
 	if ( 'static-header-text-right' == $static_header_set )
@@ -104,7 +104,7 @@ function t_em_layout_classes( $existing_classes ){
 	else
 		$classes[] = $layout_set;
 
-	$classes[] = $t_em['slider_text'];
+	// $classes[] = $t_em['slider_text'];
 
 	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
 
@@ -247,9 +247,9 @@ function t_em_add_bootstrap_class( $section ){
 							   'three-column-content-middle' ) );
 
 	// #main-content and three-column or ( two-column or one-column )
-	if ( 'main-content' == $section && $three_column ) :
+	if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
 		$bootstrap_classes = 'col-md-9';
-	elseif ( 'main-content' == $section && ( $two_column || $one_column ) ) :
+	elseif ( 'main-content' == $section && ( $two_column || $one_column || ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' && $three_column ) ) ) :
 		$bootstrap_classes = 'col-md-12';
 	endif;
 	// #content and three-column or one-column
@@ -297,7 +297,7 @@ function t_em_add_bootstrap_class( $section ){
 								|| ! empty ( $t_em['static_header_primary_button_text'] )
 								|| ! empty ( $t_em['static_header_secondary_button_text'] )
 								) ? '1' : '0';
-		$total_static_header = array_sum( array ( $static_header_img, $static_header_content ) );
+		$total_static_header = array_sum( array( $static_header_img, $static_header_content ) );
 		$cols = 12 / $total_static_header;
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
@@ -308,7 +308,7 @@ function t_em_add_bootstrap_class( $section ){
 		$widget_two		= ( ! empty ( $t_em['headline_text_widget_two'] ) || ! empty ( $t_em['content_text_widget_two'] ) ) ? '1' : '0' ;
 		$widget_three	= ( ! empty ( $t_em['headline_text_widget_three'] ) || ! empty ( $t_em['content_text_widget_three'] ) ) ? '1' : '0' ;
 		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
-		$total_widgets = array_sum( array ( $widget_two, $widget_three, $widget_four ) );
+		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
@@ -317,15 +317,15 @@ function t_em_add_bootstrap_class( $section ){
 	if ( 'footer-widget-area' == $section ) :
 		$one_widget_footer = ( 'no-footer-widget' != $t_em['footer_set'] ) ? '1' : '0';
 		$two_widget_footer = ( in_array( $t_em['footer_set'],
-								array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+								array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 							 ) ) ? '1' : '0';
 		$three_widget_footer = ( in_array( $t_em['footer_set'],
-									array ( 'three-footer-widget', 'four-footer-widget' )
+									array( 'three-footer-widget', 'four-footer-widget' )
 								 ) ) ? '1' : '0';
 		$four_widget_footer = ( in_array( $t_em['footer_set'],
-									array ( 'four-footer-widget' )
+									array( 'four-footer-widget' )
 								 ) ) ? '1' : '0';
-		$total_widgets = array_sum( array ( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
+		$total_widgets = array_sum( array( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
 		$cols = 12 / $total_widgets;
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
@@ -360,7 +360,7 @@ function t_em_slider_query_args(){
 	endwhile;
 	$tp = count( $p );
 
-	$args = array (
+	$args = array(
 		'post_type'			=> 'post',
 		'cat'				=> $t_em['slider_category'],
 		'post__in'			=> $p,

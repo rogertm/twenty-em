@@ -3,8 +3,8 @@
  * WARNING: Do not edit this lines.
  * Load the theme engine files
  */
-require_once( get_template_directory() . '/inc/constants.php' );
-require_once( get_template_directory() . '/inc/theme-options.php' );
+require_once( get_template_directory() . '/admin/constants.php' );
+require_once( get_template_directory() . '/admin/theme-options.php' );
 
 /** That's all. Start editing here. Happy Theming! */
 
@@ -63,7 +63,7 @@ require_once( get_template_directory() . '/inc/theme-options.php' );
  * Sets up theme defaults and registers the various WordPress features that Twenty'em supports.
  *
  * @uses add_theme_support() To add support for thumbnails, automatic feed links, post formats,
- * custom background, custom header and JetPack Infinite Scroll.
+ * custom background, custom header.
  * All this functions are treat as pluggable, so they can be override in Child Themes.
  *
  * @link http://codex.wordpress.org/Theme_Features Visit for full documentation about Theme Features
@@ -74,119 +74,23 @@ require_once( get_template_directory() . '/inc/theme-options.php' );
  */
 function t_em_setup(){
 
-	// Adds support featured image (pluggable function).
-	t_em_support_post_thumbnails();
+	// Adds support featured image.
+	add_theme_support( 'post-thumbnails' );
 
-	// Adds RSS feed links to <head> for posts and comments (pluggable function).
-	t_em_support_automatic_feed_links();
+	// Adds RSS feed links to <head> for posts and comments.
+	add_theme_support( 'automatic-feed-links' );
 
 	// Adds support for variety of post formats.
-	t_em_support_post_formats();
+	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
 
-	// This theme styles the visual editor with editor-style.css to match the theme style (pluggable function).
-	t_em_support_add_editor_style();
+	// Adds support for custom background
+	add_theme_support( 'custom-background', array( 'default-color' => 'fff' ) );
 
-	// Adds support for custom background (pluggable function).
-	t_em_support_custom_background();
+	// This theme styles the visual editor with editor-style.css to match the theme style
+	add_editor_style( 'css/editor-style.css' );
 
 	// Adds support for custom header text (pluggable function).
-	t_em_support_custom_header();
-
-	// Adds support for custom header image (pluggable function).
-	t_em_support_custom_header_image();
-
-	// This theme also support JetPack Infinite Scroll (pluggable function).
-	t_em_support_jp_infinite_scroll();
-
-	// This theme uses navigation menus in three locations (pluggable function).
-	t_em_register_nav_menus();
-
-	/* Make Twenty'em available for translation.
-	 * Translations can be added to the lang/ directory.
-	 * If you're building a theme based on Twenty'em, use a find and replace to change 't_em'
-	 * to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG_PATH );
-	$locale = get_locale();
-	$locale_file = T_EM_THEME_DIR_LANG_PATH . "/$locale.php";
-	if ( is_readable( $locale_file ) ) :
-		require_once( $locale_file );
-	endif;
-
-}
-add_action( 'after_setup_theme', 't_em_setup' );
-
-if ( ! function_exists( 't_em_support_post_thumbnails' ) ) :
-/**
- * Pluggable Function: Adds theme support for post thumbnails
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_support_post_thumbnails(){
-	add_theme_support( 'post-thumbnails' );
-}
-endif; // function t_em_support_post_thumbnails()
-
-if ( ! function_exists( 't_em_support_automatic_feed_links' ) ) :
-/**
- * Pluggable Function: Adds RSS feed links to <head> for posts and comments.
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_support_automatic_feed_links(){
-	add_theme_support( 'automatic-feed-links' );
-}
-endif; // function t_em_support_automatic_feed_links()
-
-if ( ! function_exists( 't_em_support_post_formats' ) ) :
-/**
- * Pluggable Function: Adds support for variety of post formats.
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_support_post_formats(){
-	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image', 'video', 'audio' ) );
-}
-endif; // function t_em_support_post_formats()
-
-if ( ! function_exists( 't_em_support_add_editor_style' ) ) :
-/**
- * Pluggable Function: This theme styles the visual editor with editor-style.css to match the theme
- * style.
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_support_add_editor_style(){
-	add_editor_style( 'css/editor-style.css' );
-}
-endif; // function t_em_support_add_editor_style()
-
-if ( ! function_exists( 't_em_support_custom_background' ) ) :
-/**
- * Pluggable Function: Adds theme support for custom background.
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 0.1
- */
-function t_em_support_custom_background(){
-	$args = array ( 'default-color' => 'fff' );
-	add_theme_support( 'custom-background', $args );
-}
-endif; // function t_em_support_custom_background()
-
-if ( ! function_exists( 't_em_support_custom_header' ) ) :
-/**
- * Pluggable Function: Adds theme support for custom header image
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 0.1
- */
-function t_em_support_custom_header(){
-	$custom_header_support = array (
+	$custom_header_support = array(
 		'default-text-color'		=> '333',
 		'width'						=> apply_filters( 't_em_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
 		'height'					=> apply_filters( 't_em_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
@@ -199,8 +103,41 @@ function t_em_support_custom_header(){
 		'admin-preview-callback'	=> 't_em_admin_header_image',
 	);
 	add_theme_support( 'custom-header', $custom_header_support );
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
+	// Adds support for custom header image (pluggable function).
+	t_em_support_custom_header_image();
+
+	// This theme uses navigation menus in three locations. Woew!
+	register_nav_menus ( array(
+		'top-menu'			=> __('Top Menu', 't_em'),
+		'navigation-menu'	=> __('Navigation Menu', 't_em'),
+		'footer-menu'		=> __('Footer Menu', 't_em'),
+		)
+	);
+
+	/* Make Twenty'em available for translation.
+	 * Translations can be added to the language/ directory.
+	 * If you're building a theme based on Twenty'em, use a find and replace to change 't_em'
+	 * to the name of your theme in all the template files.
+	 */
+	load_theme_textdomain( 't_em', T_EM_THEME_DIR_LANG_PATH );
+
 }
-endif; // function t_em_support_custom_header()
+add_action( 'after_setup_theme', 't_em_setup' );
 
 if ( ! function_exists( 't_em_header_style' ) ) :
 /**
@@ -363,42 +300,6 @@ function t_em_support_custom_header_image(){
 }
 endif; // function t_em_support_custom_header_image()
 
-if ( ! function_exists( 't_em_register_nav_menus' ) ) :
-/**
- * Pluggable Function: This theme uses navigation menus in three locations. Woew!
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_register_nav_menus(){
-	register_nav_menus ( array (
-		'top-menu'			=> __('Top Menu', 't_em'),
-		'navigation-menu'	=> __('Navigation Menu', 't_em'),
-		'footer-menu'		=> __('Footer Menu', 't_em'),
-		)
-	);
-}
-endif; // function t_em_register_nav_menus()
-
-if ( ! function_exists( 't_em_support_jp_infinite_scroll' ) ) :
-/**
- * Pluggable Function: Adds theme support for JetPack Infinite Scroll
- *
- * @link http://jetpack.me/support/infinite-scroll/
- *
- * @since Twenty'em 0.1
- */
-function t_em_support_jp_infinite_scroll(){
-	$jp_infinite_scroll = array(
-		'container'			=> 'content',
-		'footer'			=> 'footer',
-		'type'				=> 'click',
-		'footer_widgets'	=> true,
-	);
-	add_theme_support( 'infinite-scroll', $jp_infinite_scroll );
-}
-endif; // function t_em_support_jp_infinite_scroll()
-
 /**
  * Set the post excerpt length depending of the $t_em['excerpt_length'] value.
  * You don't need to override this value in a Child Theme, just because you can set this value from
@@ -422,7 +323,7 @@ endif;
 if ( ! function_exists( 't_em_favicon' ) ) :
 /**
  * Pluggable Function: Add favicon to our site, admin dashboard included
- * this function is attached to t_em_action_head() and admin_head() action hooks
+ * this function is attached to wp_head() and admin_head() action hooks
  *
  * @since Twenty'em 0.1
  */
@@ -433,43 +334,8 @@ function t_em_favicon(){
 	endif;
 }
 endif; // function t_em_favicon()
-add_action( 't_em_action_head', 't_em_favicon' );
+add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
-
-if ( ! function_exists( 't_em_site_title' ) ) :
-/**
- * Pluggable Function: Creates a nicely formatted and more specific title element text
- * for output in head of document, based on current view.
- *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
- *
- * @return string Filtered title.
- *
- * @since Twenty'em 0.1
- */
-function t_em_site_title( $title, $sep ) {
-	global $paged, $page;
-
-	if ( is_feed() )
-		return $title;
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 't_em' ), max( $paged, $page ) );
-
-	return $title;
-}
-endif; // function t_em_site_title()
-add_filter( 'wp_title', 't_em_site_title', 10, 2 );
 
 /**
  * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback.
@@ -554,7 +420,7 @@ function t_em_widgets_init() {
 	endif;
 
 	if ( in_array( $t_em['layout_set'],
-			array ('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
+			array('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
 		) ) :
 		// Area 1, located at the top of the sidebar.
 		register_sidebar( array(
@@ -582,7 +448,7 @@ function t_em_widgets_init() {
 			) );
 
 		if ( in_array( $t_em['footer_set'],
-			array ( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+			array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 3, located in the footer. Empty by default.
 			register_sidebar( array(
@@ -597,7 +463,7 @@ function t_em_widgets_init() {
 		endif;
 
 		if ( in_array( $t_em['footer_set'],
-			array ( 'three-footer-widget', 'four-footer-widget' )
+			array( 'three-footer-widget', 'four-footer-widget' )
 		 ) ) :
 			// Area 4, located in the footer. Empty by default.
 			register_sidebar( array(
@@ -612,7 +478,7 @@ function t_em_widgets_init() {
 		endif;
 
 		if ( in_array( $t_em['footer_set'],
-			array ( 'four-footer-widget' )
+			array( 'four-footer-widget' )
 		 ) ) :
 			// Area 5, located in the footer. Empty by default.
 			register_sidebar( array(
@@ -1084,7 +950,6 @@ function t_em_comment( $comment, $args, $depth ) {
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
-	</li>
 	<?php
 			break;
 	endswitch;
@@ -1102,7 +967,7 @@ if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
  *
  * @since Twenty'em 0.1
  */
-function t_em_comment_pingback_trackback( $comment ) {
+function t_em_comment_pingback_trackback( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -1118,6 +983,7 @@ function t_em_comment_pingback_trackback( $comment ) {
 		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
+		break;
 	endswitch;
 }
 endif; // function t_em_comment_pingback_trackback()
@@ -1140,18 +1006,17 @@ function t_em_comment_all( $comment, $args, $depth ){
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-		<div class="comment-body"><?php comment_text(); ?></div></li>
+		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-		<div class="comment-body"><?php comment_text(); ?></div></li>
+		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		default :
-		global $post;
 	?>
 	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
@@ -1179,7 +1044,6 @@ function t_em_comment_all( $comment, $args, $depth ){
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
 		</div><!-- #comment-## .comment-wrap -->
-	</li>
 	<?php
 		break;
 	endswitch;
@@ -1220,7 +1084,7 @@ function t_em_page_navi(){
 <?php
 		if ( 'prev-next' == $t_em['archive_pagination_set'] ) :
 ?>
-	<nav id="site-navigation" class="site-pagination navi">
+	<nav id="site-pagination" class="site-pagination navi">
 		<ul>
 			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older posts', 't_em' ) ); ?></li>
 			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
@@ -1229,7 +1093,7 @@ function t_em_page_navi(){
 <?php
 		elseif ( 'page-navi' == $t_em['archive_pagination_set'] ) :
 ?>
-	<nav id="site-navigation" class="site-pagination pagi">
+	<nav id="site-pagination" class="site-pagination pagi">
 <?php
 			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
@@ -1275,39 +1139,28 @@ endif; // function t_em_page_navi()
 add_action( 't_em_action_content_after', 't_em_page_navi' );
 
 /**
- * Customize theme comments fields with HTML5 form elements. Adds support for
- * placeholder, required, type="email" and type="url".
+ * Retrieve protected post password form content. This function is attached to the the_password_form
+ * filter
  *
- * @since Twenty'em 0.1
+ * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
+ * @return string HTML content for password form for password protected post.
  */
-function t_em_comment_form_fields() {
-	$commenter = wp_get_current_commenter();
-	$req = get_option('require_name_email');
-	$aria_req = ( $req ? " aria-required='true' " : "" );
-	$fields =  array(
-		'author' => '<p class="comment-form-author"><label for="author">' . __( 'Name', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
-					'<input id="author" class="input-xlarge" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" ' . $aria_req . ' placeholder = "'. __( 'What can we call you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . '/></p>',
-		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email', 't_em' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
-					'<input id="email" class="input-xlarge" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" ' . $aria_req . ' placeholder="'. __( 'How can we reach you?', 't_em' ) .'"' . ( $req ? ' required' : '' ) . ' /></p>',
-		'url'	 => '<p class="comment-form-url"><label for="url">' . __( 'Website', 't_em' ) . '</label>' .
-					'<input id="url" class="input-xlarge" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="'. __( 'Have you got a website?', 't_em' ) .'" /><p>'
-	);
-	return $fields;
+function t_em_the_password_form(){
+	global $post;
+	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
+	$output = 	'<form class="" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+					<div class="form-group">
+						<p>' . __( 'This content is password protected. To view it please enter your password below:', 't_em' ) . '</p>
+						<label for="'. $label .'">'. __( 'Password', 't_em' ) .'</label>
+						<input id="' . $label . '" type="password" class="form-control" name="post_password">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit" name="Submit" title="' . esc_attr__( 'Submit', 't_em' ) . '">'. esc_attr__( 'Submit', 't_em' ) .'</button>
+						</span>
+					</div>
+				</form>';
+	return $output;
 }
-add_filter('comment_form_default_fields', 't_em_comment_form_fields');
-
-/**
- * Customize theme comments textarea with HTML5 form elements. Adds support for placeholder
- * and aria required.
- *
- * @since Twenty'em 0.1
- */
-function t_em_comment_form_textarea() {
-	$comment_area = '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 't_em' ) . '</label>' .
-					'<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder="'. __( 'What&#8217;s on your mind?', 't_em' ) .'"></textarea>';
-	return $comment_area;
-}
-add_filter('comment_form_field_comment', 't_em_comment_form_textarea');
+add_filter( 'the_password_form', 't_em_the_password_form' );
 
 /**
  * Filter to replace the [caption] shortcode text with HTML5 compliant code
@@ -1403,7 +1256,7 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 		echo $open_link;
 		?>
 			<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( get_the_title( $post_id ) ); ?>"/>
+				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
 				<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 			</figure>
 		<?php
@@ -1419,7 +1272,7 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 			echo $open_link;
 			?>
 				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo esc_attr__( get_the_title( $post_id ) ); ?>"/>
+					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
 					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 				</figure>
 			<?php
@@ -1438,7 +1291,6 @@ if ( ! function_exists( 't_em_header_options_set' ) ) :
  *
  * @uses t_em_header_image()
  * @uses t_em_slider_bootstrap_carousel()
- * @uses t_em_slider_nivo_slider()
  * @uses t_em_static_header()
  *
  * @since Twenty'em 0.1
@@ -1453,11 +1305,7 @@ function t_em_header_options_set(){
 	elseif ( ( 'slider' == $t_em['header_set'] )
 		&& ( ( '1' == $t_em['slider_home_only'] && is_home() )
 		|| ( '0' == $t_em['slider_home_only'] ) ) ) :
-			if ( 'slider-bootstrap-carousel' == $t_em['slider_script'] ) :
-				t_em_slider_bootstrap_carousel( t_em_slider_query_args() );
-			elseif ( 'slider-nivo-slider' == $t_em['slider_script'] ) :
-				t_em_slider_nivo_slider( t_em_slider_query_args() );
-			endif;
+			t_em_slider_bootstrap_carousel( t_em_slider_query_args() );
 	elseif ( ( 'static-header' == $t_em['header_set'] )
 		&& ( ( '1' == $t_em['static_header_home_only'] && is_home() )
 		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
@@ -1568,54 +1416,6 @@ function t_em_slider_bootstrap_carousel( $args ){
 <?php
 }
 endif; // function t_em_slider_bootstrap_carousel()
-
-if ( ! function_exists( 't_em_slider_nivo_slider' ) ) :
-/**
- * Pluggable Function: Display Nivo Slider carousel of featured posts if it's set by the user in
- * 'Header Options > Slider' admin panel
- *
- * @param $args array Query arguments
- */
-function t_em_slider_nivo_slider( $args ){
-	global $post, $t_em;
-	$slider_posts = get_posts( $args );
-?>
-	<section id="header-carousel">
-		<div id="nivo-slider" class="wrapper container">
-			<div class="slider-wrapper theme-<?php echo $t_em['nivo_style']; ?> wrapper row">
-				<div class="ribbon"></div>
-				<div id="slider" class="nivoSlider">
-<?php		foreach ( $slider_posts as $post ) : setup_postdata( $post );
-				// Display the thumbnails
-				if ( has_post_thumbnail( $post->ID ) ) :
-					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-					$image_src = $image_url[0];
-				else :
-					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-					$total_images = count( $images );
-					$image = array_shift( $images );
-					$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
-						$image_src = $image_url[0];
-				endif; ?>
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" title="#<?php echo $post->post_name ?>-<?php echo $post->ID; ?>"/>
-					</a>
-<?php		endforeach; wp_reset_postdata(); ?>
-				</div><!-- #slider .nivoSlider -->
-<?php		foreach ( $slider_posts as $post ) : setup_postdata( $post ); ?>
-				<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="nivo-html-caption nivo-post">
-					<h2 class="entry-title">
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
-					</h2>
-					<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
-				</div>
-<?php		endforeach; wp_reset_postdata(); ?>
-			</div><!-- .slider-wrapper .theme-$theme -->
-		</div><!-- #nivo-slider -->
-	</section>
-<?php
-}
-endif; // function t_em_slider_nivo_slider()
 
 if ( ! function_exists( 't_em_static_header' ) ) :
 /**
@@ -2293,7 +2093,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 		</div>
 	</div>
 <?php
-	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
+	add_action( 'wp_footer', 't_em_navbar_js_script' );
 endif;
 }
 endif; // function t_em_top_menu()
@@ -2329,7 +2129,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 		</div>
 	</div>
 <?php
-	add_action( 't_em_action_foot', 't_em_navbar_js_script' );
+	add_action( 'wp_footer', 't_em_navbar_js_script' );
 endif;
 }
 endif; // function t_em_navigation_menu()

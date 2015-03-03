@@ -23,7 +23,7 @@
  * @since Twenty'em 0.1
  */
 function t_em_search_engines_id_options(){
-	$engines_options = array (
+	$engines_options = array(
 		'google_id'		=> array(
 			'label'		=> __( 'Google Webmaster Tools', 't_em' ),
 			'name'		=> 'google_id',
@@ -49,12 +49,12 @@ function t_em_search_engines_id_options(){
  * @since Twenty'em 0.1
  */
 function t_em_stats_tracker_options(){
-	$tracker_options = array (
-		'stats_tracker_header_tag'	=> array (
+	$tracker_options = array(
+		'stats_tracker_header_tag'	=> array(
 			'label'		=> __( 'Site Statistics Tracker (into <code>&lt;header&gt;</code> ...<code>&lt;/header&gt;</code> tags)', 't_em' ),
 			'name'		=> 'stats_tracker_header_tag',
 		),
-		'stats_tracker_body_tag'	=> array (
+		'stats_tracker_body_tag'	=> array(
 			'label'		=> __( 'Site Statistics Tracker (Before close <code>&lt;/body&gt;</code> tag)', 't_em' ),
 			'name'		=> 'stats_tracker_body_tag',
 		),

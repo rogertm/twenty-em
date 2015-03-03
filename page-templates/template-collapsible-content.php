@@ -22,7 +22,7 @@ get_header(); ?>
 				<div id="collapsible-<?php echo get_the_ID(); ?>" class="custom-template custom-template-collapsible-content">
 <?php
 	// Display all child pages of the current page.
-	$args = array (
+	$args = array(
 		'sort_column'	=> 'menu_order',
 		'sort_order'	=> 'ASC',
 		'child_of'		=> $post->ID,

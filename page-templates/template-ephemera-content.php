@@ -26,13 +26,13 @@ get_header(); ?>
 			<?php t_em_action_content_before(); ?>
 			<?php
 			// Query for the Custom Loop
-			$args = array (
-					'tax_query' => array (
-						array (
+			$args = array(
+					'tax_query' => array(
+						array(
 							'operator'	=> 'IN',
 							'taxonomy'	=> 'post_format',
 							'field'		=> 'slug',
-							'terms'		=> array (	'post-format-aside',
+							'terms'		=> array(	'post-format-aside',
 													'post-format-audio',
 													'post-format-chat',
 													'post-format-gallery',

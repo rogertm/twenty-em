@@ -27,13 +27,13 @@
  * @since Twenty'em 0.1
  */
 function t_em_archive_options(){
-	$archive_options = array (
-		'the-content' => array (
+	$archive_options = array(
+		'the-content' => array(
 			'value' => 'the-content',
 			'label' => __( 'Display the content', 't_em' ),
 			'extend' => '',
 		),
-		'the-excerpt' => array (
+		'the-excerpt' => array(
 			'value' => 'the-excerpt',
 			'label' => __( 'Display the excerpt', 't_em' ),
 			'extend' => t_em_excerpt_callback(),
@@ -47,21 +47,21 @@ function t_em_archive_options(){
  * Returns an array of our archive excerpt options.
  */
 function t_em_excerpt_options(){
-	$excerpt_options = array (
+	$excerpt_options = array(
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
 			'label' => __( 'Thumbnail on left', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/thumbnail-left.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-left.png',
 		),
 		'thumbnail-right' => array(
 			'value' => 'thumbnail-right',
 			'label' => __( 'Thumbnail on right', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/thumbnail-right.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-right.png',
 		),
 		'thumbnail-center' => array(
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/thumbnail-center.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-center.png',
 		),
 	);
 
@@ -72,7 +72,7 @@ function t_em_excerpt_options(){
  * Returns an array of our archive columns options.
  */
 function t_em_archive_in_columns(){
-	$archive_in_columns = array (
+	$archive_in_columns = array(
 		'1'	=> array(
 			'value'	=> 1,
 			'label'	=> __( 'One column', 't_em' ),
@@ -156,7 +156,7 @@ function t_em_excerpt_callback(){
  * Archive Pagination Options
  */
 function t_em_archive_pagination_options(){
-	$archive_pagination = array (
+	$archive_pagination = array(
 		'prev-next'	=> array(
 			'value'	=> 'prev-next',
 			'label'	=> __( 'Display <code>Newer</code> and <code>Older</code> posts links', 't_em' ),

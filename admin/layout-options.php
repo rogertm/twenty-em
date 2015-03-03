@@ -27,36 +27,36 @@
  * @since Twenty'em 0.1
  */
 function t_em_layout_options(){
-	$layout_options = array (
+	$layout_options = array(
 		'two-column-content-left' => array(
 			'value' => 'two-column-content-left',
 			'label' => __( 'Two columns. Content on left', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/two-column-content-left.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/two-column-content-left.png',
 		),
 		'two-column-content-right' => array(
 			'value' => 'two-column-content-right',
 			'label' => __( 'Two columns. Content on right', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/two-column-content-right.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/two-column-content-right.png',
 		),
 		'three-column-content-left' => array(
 			'value' => 'three-column-content-left',
 			'label' => __( 'Three columns. Content on left', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/three-column-content-left.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/three-column-content-left.png',
 		),
 		'three-column-content-right' => array(
 			'value' => 'three-column-content-right',
 			'label' => __( 'Three columns. Content on right', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/three-column-content-right.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/three-column-content-right.png',
 		),
 		'three-column-content-middle' => array(
 			'value' => 'three-column-content-middle',
 			'label' => __( 'Three columns. Content in the middle', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/three-column-content-middle.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/three-column-content-middle.png',
 		),
 		'one-column' => array(
 			'value' => 'one-column',
 			'label' => __( 'One column, no sidebar', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/one-column.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/one-column.png',
 		),
 	);
 
@@ -67,31 +67,31 @@ function t_em_layout_options(){
  * Footer Widgets Options
  */
 function t_em_footer_options(){
-	$footer_options = array (
+	$footer_options = array(
 		'four-footer-widget' => array(
 			'value' => 'four-footer-widget',
 			'label' => __( 'Four footer widget', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/footer-widgets-four.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/footer-widgets-four.png',
 		),
 		'three-footer-widget' => array(
 			'value' => 'three-footer-widget',
 			'label' => __( 'Three footer widget', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/footer-widgets-three.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/footer-widgets-three.png',
 		),
 		'two-footer-widget' => array(
 			'value' => 'two-footer-widget',
 			'label' => __( 'Two footer widget', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/footer-widgets-two.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/footer-widgets-two.png',
 		),
 		'one-footer-widget' => array(
 			'value' => 'one-footer-widget',
 			'label' => __( 'One footer widget', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/footer-widgets-one.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/footer-widgets-one.png',
 		),
 		'no-footer-widget' => array(
 			'value' => 'no-footer-widget',
 			'label' => __( 'No footer widgets', 't_em' ),
-			'thumbnail' => T_EM_INC_DIR_IMG_URL . '/footer-widgets-none.png',
+			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/footer-widgets-none.png',
 		),
 	);
 
