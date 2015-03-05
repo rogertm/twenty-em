@@ -36,8 +36,7 @@ if ( have_comments() ) :
 
 		if ( ! empty( $comments_by_type['comment'] ) ) :
 ?>
-			<!-- <div id="comment-count" class="lead"><?php echo count( $wp_query->comments_by_type['comment'] ); ?> <?php _e('Comments', 't_em'); ?></div> -->
-			<div id="comment-count" class="lead"><?php printf( __( '%s Comments', 't_em' ), count( $wp_query->comments_by_type['comment'] ) ) ?></div>
+			<div id="comment-count" class="lead"><?php printf( _n( '1 Comment', '%1$s Comments', count( $wp_query->comments_by_type['comment'] ), 't_em' ), count( $wp_query->comments_by_type['comment'] ) ) ?></div>
 			<?php t_em_action_comments_list_before(); ?>
 			<ul class="commentlist media-list">
 				<?php wp_list_comments( array( 'type' => 'comment', 'callback' => 't_em_comment' ) ); ?>
