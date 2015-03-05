@@ -3,8 +3,8 @@
  * WARNING: Do not edit this lines.
  * Load the theme engine files
  */
-require_once( get_template_directory() . '/admin/constants.php' );
-require_once( get_template_directory() . '/admin/theme-options.php' );
+require_once( get_template_directory() . '/engine/constants.php' );
+require_once( get_template_directory() . '/engine/theme-options.php' );
 
 /** That's all. Start editing here. Happy Theming! */
 
@@ -1161,37 +1161,6 @@ function t_em_the_password_form(){
 	return $output;
 }
 add_filter( 'the_password_form', 't_em_the_password_form' );
-
-/**
- * Filter to replace the [caption] shortcode text with HTML5 compliant code
- *
- * @return string HTML content describing embedded figure
- *
- * @since Twenty'em 0.1
- **/
-function t_em_img_caption_shortcode($val, $attr, $content = null) {
-	extract(shortcode_atts(array(
-		'id'	=> '',
-		'align'	=> '',
-		'width'	=> '',
-		'caption' => ''
-	), $attr));
-
-	if ( 1 > (int) $width || empty($caption) )
-		return $val;
-
-	$capid = '';
-	if ( $id ) {
-		$id = esc_attr($id);
-		$capid = 'id="figcaption_'. $id . '" ';
-		$id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
-	}
-
-	return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: '
-	. (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption ' . $capid
-	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
-}
-add_filter('img_caption_shortcode', 't_em_img_caption_shortcode', 10, 3);
 
 if ( ! function_exists( 't_em_custom_template_content' ) ) :
 /**

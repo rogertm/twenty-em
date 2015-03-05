@@ -16,16 +16,16 @@
 ?>
 <?php
 // First of all we call this files we need to complete the Twenty'em engine.
-require_once( T_EM_ADMIN_DIR_PATH . '/generals-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/header-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/front-page-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/archive-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/layout-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/social-network-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/webmaster-tools-options.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/theme-backup.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/actions.php' );
-require_once( T_EM_ADMIN_DIR_PATH . '/help.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/generals-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/header-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/front-page-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/archive-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/layout-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/social-network-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/webmaster-tools-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
 require_once( T_EM_INC_DIR_PATH . '/enqueue.php' );
 require_once( T_EM_INC_DIR_PATH . '/helpers.php' );
 require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
@@ -43,9 +43,9 @@ require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
 function t_em_admin_styles_and_scripts(){
 	// Check the theme version right from the style sheet
 	global $t_em_theme_data;
-	wp_register_style( 'style-admin-t-em', T_EM_ADMIN_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'style-admin-t-em' );
-	wp_register_script( 'script-admin-t-em', T_EM_ADMIN_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+	wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'script-admin-t-em' );
 }
 if ( $_SERVER['QUERY_STRING'] == ( 'page=twenty-em-options' || 'page=twenty-em-backup' ) ) :
@@ -97,7 +97,7 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_ADMIN_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
+	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_ENGINE_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
 	$theme_backup_page	= add_submenu_page( 'twenty-em-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'twenty-em-backup', 't_em_theme_backup' );
 
 	// We call our help screens
@@ -302,7 +302,8 @@ function t_em_theme_options_page(){
 		?>
 			<div class="updated">
 		<?php 		if ( ! isset( $_GET['update-twenty-em'] ) ) : ?>
-				<p><?php echo sprintf( __( 'Thank you for updating <strong>Twenty&#8217;em</strong>. Currently running <strong>Framework Version %1$s</strong> and <strong>Database Version %2$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%3$s">backup your setting</a>.', 't_em' ),
+				<p><?php echo sprintf( __( 'Thank you for updating <strong>%1$s</strong>. Currently running <strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</strong>. Before to continue, you need to update your database setting. For more security, please, <a href="%4$s">backup your setting</a>.', 't_em' ),
+								T_EM_FRAMEWORK_NAME,
 								T_EM_FRAMEWORK_VERSION,
 								T_EM_DB_VERSION,
 								admin_url( 'admin.php?page=twenty-em-backup' ) ); ?></p>

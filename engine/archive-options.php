@@ -51,17 +51,17 @@ function t_em_excerpt_options(){
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
 			'label' => __( 'Thumbnail on left', 't_em' ),
-			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-left.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-left.png',
 		),
 		'thumbnail-right' => array(
 			'value' => 'thumbnail-right',
 			'label' => __( 'Thumbnail on right', 't_em' ),
-			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-right.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-right.png',
 		),
 		'thumbnail-center' => array(
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
-			'thumbnail' => T_EM_ADMIN_DIR_IMG_URL . '/thumbnail-center.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-center.png',
 		),
 	);
 

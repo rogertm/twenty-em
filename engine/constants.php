@@ -53,15 +53,15 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty&#8217;em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20150302' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20150305' ); // In date format Ymd
 
 // Admin Directory Path
-define ( 'T_EM_ADMIN_DIR_PATH',											get_template_directory().'/admin' );
+define ( 'T_EM_ENGINE_DIR_PATH',										get_template_directory().'/engine' );
 
 // Admin Directory URL
-define ( 'T_EM_ADMIN_DIR_CSS_URL',										get_template_directory_uri().'/admin/css' );
-define ( 'T_EM_ADMIN_DIR_IMG_URL',										get_template_directory_uri().'/admin/images' );
-define ( 'T_EM_ADMIN_DIR_JS_URL',										get_template_directory_uri().'/admin/js' );
+define ( 'T_EM_ENGINE_DIR_CSS_URL',										get_template_directory_uri().'/engine/css' );
+define ( 'T_EM_ENGINE_DIR_IMG_URL',										get_template_directory_uri().'/engine/images' );
+define ( 'T_EM_ENGINE_DIR_JS_URL',										get_template_directory_uri().'/engine/js' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );

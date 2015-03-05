@@ -181,12 +181,12 @@ function t_em_static_header_layout_options(){
 		'static-header-text-right' => array(
 			'value' => 'static-header-text-right',
 			'label' => __( 'Static header text on right', 't_em' ),
-			'title' => T_EM_ADMIN_DIR_IMG_URL . '/slider-text-right.png',
+			'title' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-right.png',
 		),
 		'static-header-text-left' => array(
 			'value' => 'static-header-text-left',
 			'label' => __( 'Static header text on left', 't_em' ),
-			'title' => T_EM_ADMIN_DIR_IMG_URL . '/slider-text-left.png',
+			'title' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-left.png',
 		),
 	);
 
