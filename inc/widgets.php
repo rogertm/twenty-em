@@ -245,8 +245,11 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 			<div class="pull-left"><?php t_em_featured_post_thumbnail( 100, 100, true, 't-em-popular-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-popular-post-content media-body">
 				<a class="t-em-popular-post-title media-heading" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
-			<?php if ( $instance['comment_count'] == 1 ) : ?>
-				<small><?php $comments_number = ( 1 == $instance['comment_count'] ) ? comments_number( '- 0 Comments', '- 1 Comment', '- % Comments' ) : null; ?></small>
+			<?php if ( $instance['comment_count'] == 1 ) :
+					$total_comments = wp_count_comments( $post->ID );
+					$comments_number = sprintf( _n( '- 0 Comments', '- %1$s Comments', $total_comments->total_comments, 't_em' ), $total_comments->total_comments );
+			?>
+				<small><?php echo $comments_number; ?></small>
 			<?php endif; ?>
 				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
 				<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
