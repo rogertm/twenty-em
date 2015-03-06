@@ -1959,9 +1959,9 @@ function t_em_breadcrumb(){
 					echo '<li><a href="'. get_category_link( $cat->term_id ) .'">'. $cat->cat_name .'</a></li>';
 				endforeach;
 				echo $current_before . get_the_title() . $current_after;
-				// echo '<li>' . get_category_parents( $post_cat[0], true, '' ) . '</li>' . $current_before . get_the_title() . $current_after;
 			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				if ( is_post_type_hierarchical( get_post_type() ) ) :
+					echo '<li><a href="'. get_post_type_archive_link( get_post_type() ) .'">'. $post_type_obj->label .'</a></li>';
 					$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
 					foreach ( $ancestors as $ancestor ) :
 						echo '<li><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>';

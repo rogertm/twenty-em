@@ -143,7 +143,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * "xlarge", "xxlarge", "xxxlarge". Icon size
  *
  * @link http://codex.wordpress.org/Shortcode_API
- * @link ../docs/icomoon.html For a full list of icon classes.
+ * @link ../fonts/icomoon.html For a full list of icon classes.
  *
  * @since Twenty'em 1.0
  */
