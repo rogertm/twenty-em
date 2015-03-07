@@ -91,6 +91,35 @@ function t_em_archive_in_columns(){
 }
 
 /**
+ * Render Width and Height text boxes for thumbnails in forms
+ *
+ * @param string $contex Require In which form ($contex) you want to use this function.
+ * Example: You have a new slider plugin, and you want set Width and Height for yours thumbnail in
+ * slideshow. So, you may call this function like this: $thumb = t_em_thumbnail_sizes( 'slideshow' );
+ * See t_em_excerpt_callback() in /inc/archive-options.php file
+ *
+ * @return array
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_thumbnail_sizes( $contex ){
+	$thumbnail_sizes = array(
+		'excerpt_thumbnail_width' => array(
+			'value' => '',
+			'name' => $contex . '_thumbnail_width',
+			'label' => __( 'Width', 't_em' ),
+		),
+		'excerpt_thumbnail_height' => array(
+			'value' => '',
+			'name' => $contex . '_thumbnail_height',
+			'label' => __( 'Height', 't_em' ),
+		),
+	);
+
+	return $thumbnail_sizes;
+}
+
+/**
  * Extend setting for Archive Option in Twenty'em admin panel.
  * Referenced via t_em_archive_options() in /inc/archive-options.php.
  *
