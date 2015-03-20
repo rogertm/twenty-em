@@ -68,7 +68,7 @@ function t_em_action_header_inside_right(){
 }
 
 /**
- * Fire the t_em_action_header_inside_after action, just before closing </section><!-- #masthead --> tag
+ * Fire the t_em_action_header_inside_after action, just before closing </div><!-- #branding .wrapper .container --> tag
  *
  * @file header.php
  * @since Twenty'em 1.0
@@ -98,7 +98,7 @@ function t_em_action_main_before(){
 }
 
 /**
- * Fire the t_em_action_main_after action, just before closing </div><!-- #main .container --> tag
+ * Fire the t_em_action_main_after action, just before closing </div><!-- #main --> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
@@ -168,36 +168,11 @@ function t_em_action_content_before(){
  *
  * @files archive.php, attachment.php, author.php, category.php, date.php, front-page.php
  * home.php, index.php, pahe.php, search.php, single.php, tag.php, taxonomy.php,
- * taqxonomy-$taxonomy-$term.php, template-$template_name.php
+ * taxonomy-$taxonomy-$term.php, template-$template_name.php
  * @since Twenty'em 1.0
  */
 function t_em_action_content_after(){
 	do_action( 't_em_action_content_after' );
-}
-
-
-/**
- * Fire the t_em_action_front_page_widgets_before, just after opening <section id="content"> tag.
- * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em['front_page_set'] == 'widgets-front-page'.
- *
- * @file front-page.php
- * @since Twenty'em 1.0
- */
-function t_em_action_front_page_widgets_before(){
-	do_action( 't_em_action_front_page_widgets_before' );
-}
-
-/**
- * Fire the t_em_action_front_page_widgets_after, just before closing </section><!-- #content --> tag.
- * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
- * $t_em['front_page_set'] == 'widgets-front-page'.
- *
- * @file front-page.php
- * @since Twenty'em 1.0
- */
-function t_em_action_front_page_widgets_after(){
-	do_action( 't_em_action_front_page_widgets_after' );
 }
 
 /**

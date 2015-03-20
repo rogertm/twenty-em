@@ -50,15 +50,16 @@ $t_em_theme_data = array(
 define ( 'T_EM_SITE',													'http://twenty-em.com' );
 
 // Twenty'em Version
-define ( 'T_EM_FRAMEWORK_NAME',											'Twenty&#8217;em' );
+define ( 'T_EM_FRAMEWORK_NAME',											'Twenty’em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20150305' ); // In date format Ymd
 
-// Admin Directory Path
+// Engine Directory Path
 define ( 'T_EM_ENGINE_DIR_PATH',										get_template_directory().'/engine' );
 
-// Admin Directory URL
+// Engine Directory URL
+define ( 'T_EM_ENGINE_DIR_URL',											get_template_directory_uri().'/engine' );
 define ( 'T_EM_ENGINE_DIR_CSS_URL',										get_template_directory_uri().'/engine/css' );
 define ( 'T_EM_ENGINE_DIR_IMG_URL',										get_template_directory_uri().'/engine/images' );
 define ( 'T_EM_ENGINE_DIR_JS_URL',										get_template_directory_uri().'/engine/js' );
@@ -80,13 +81,13 @@ define ( 'T_EM_THEME_DIR_LANG_PATH',									get_template_directory().'/language
 /**
  * Register default values through constants
  */
-if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )						define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );
-if ( ! defined( 'T_EM_SLIDER_MAX_HEIGHT' ) )							define( 'T_EM_SLIDER_MAX_HEIGHT', 500 );
-if ( ! defined( 'T_EM_SLIDER_MIN_HEIGHT' ) )							define( 'T_EM_SLIDER_MIN_HEIGHT', 200 );
-
 if ( ! defined( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE' ) )					define( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE', 960 );
 if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1170 );
 if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MIN_VALUE', 600 );
+
+if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )						define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );
+if ( ! defined( 'T_EM_SLIDER_MAX_HEIGHT' ) )							define( 'T_EM_SLIDER_MAX_HEIGHT', 500 );
+if ( ! defined( 'T_EM_SLIDER_MIN_HEIGHT' ) )							define( 'T_EM_SLIDER_MIN_HEIGHT', 200 );
 
 if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE' ) )	define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE', 5000 );
 if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE' ) )		define( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE', 10000 );

@@ -516,8 +516,13 @@ endif;
  *
  * @since Twenty'em 0.1
  */
-function t_em_theme_version(){
+function t_em_theme_metadata(){
 	global $t_em_theme_data;
+	printf( __( '<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->', 't_em' ),
+				T_EM_FRAMEWORK_NAME,
+				T_EM_FRAMEWORK_VERSION,
+				T_EM_FRAMEWORK_VERSION_STATUS,
+				T_EM_SITE ); echo "\n";
 	echo '<meta name="framework-name" content="' . T_EM_FRAMEWORK_NAME . '">' . "\n";
 	echo '<meta name="framework-version" content="' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS . '">' . "\n";
 	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
@@ -526,8 +531,9 @@ function t_em_theme_version(){
 	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
 	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
 	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
+	printf( __( '<!-- / %1$s WordPress theme/framework -->', 't_em' ), T_EM_FRAMEWORK_NAME ); echo "\n";
 }
-add_action( 'wp_head', 't_em_theme_version' );
+add_action( 'wp_head', 't_em_theme_metadata' );
 
 if ( ! function_exists( 't_em_favicon' ) ) :
 /**
@@ -545,6 +551,34 @@ function t_em_favicon(){
 endif; // function t_em_favicon()
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
+
+/**
+ * Webmasters Tools and Tracking Codes
+ */
+function t_em_stats_header_tracker(){
+	global $t_em;
+	// Google Engine ID
+	if ( $t_em['google_id'] )
+		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
+	// Bing Engine ID
+	if ( $t_em['bing_id'] )
+		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
+	// Pinterest Engine ID
+	if ( $t_em['pinterest_id'] )
+		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
+	// Header Stats Tracker
+	if ( $t_em['stats_tracker_header_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 't_em_stats_header_tracker' );
+
+function t_em_stats_body_tracker(){
+	global $t_em;
+	// Body Stats Tracker
+	if ( $t_em['stats_tracker_body_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
+}
+add_action( 'wp_footer', 't_em_stats_body_tracker' );
 
 /**
  * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback.
@@ -2434,10 +2468,10 @@ add_action( 't_em_action_site_info_left', 't_em_copy_right' );
  * the t_em_action_site_info action hook.
  */
 function t_em_dot_com_link(){
-global $t_em, $t_em_theme_data;
-$hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
+	global $t_em, $t_em_theme_data;
+	if ( '1' == $t_em['t_em_link'] ) :
 ?>
-	<div id="twenty-em-credit" class="<?php echo $hidden_class ?>">
+	<div id="twenty-em-credit">
 <?php
 	printf( __( 'Proudly powered by: <a href="%1$s" title="%2$s">%3$s</a> and <a href="%4$s" title="%5$s">%6$s</a>. Theme Name: <a href="%7$s" title="Version %8$s">%9$s</a> by: %10$s', 't_em' ),
 		'http://wordpress.org/',
@@ -2454,6 +2488,7 @@ $hidden_class = ( '0' == $t_em['t_em_link'] ) ? 'hidden' : null;
 ?>
 	</div>
 <?php
+	endif;
 }
 add_action( 't_em_action_site_info_after', 't_em_dot_com_link' );
 

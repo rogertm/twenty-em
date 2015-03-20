@@ -95,7 +95,7 @@ function t_em_settings_engine_id(){
  * Render the Site Statistics Tracker Options setting field in admin panel.
  * Referenced via t_em_register_webmaster_tools_options_init(), add_settings_field() callback.
  *
- * @global $t_em_webmaster_tools_options See t_em_restore_from_scratch() function in /inc/theme-options.php
+ * @uses t_em_restore_from_scratch() function in /inc/theme-options.php
  * file.
  *
  * @since Twenty'em 0.1
@@ -134,35 +134,4 @@ function t_em_settings_field_webmaster_tools_set(){
 	</div>
 <?php
 }
-
-
-function t_em_stats_header_tracker(){
-	global $t_em;
-
-	// Google Engine ID
-	if ( $t_em['google_id'] )
-		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
-
-	// Bing Engine ID
-	if ( $t_em['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
-
-	// Pinterest Engine ID
-	if ( $t_em['pinterest_id'] )
-		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
-
-	// Header Stats Tracker
-	if ( $t_em['stats_tracker_header_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 't_em_stats_header_tracker' );
-
-function t_em_stats_body_tracker(){
-	global $t_em;
-
-	// Body Stats Tracker
-	if ( $t_em['stats_tracker_body_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
-}
-add_action( 'wp_footer', 't_em_stats_body_tracker' );
 ?>
