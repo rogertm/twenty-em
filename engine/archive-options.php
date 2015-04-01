@@ -40,7 +40,7 @@ function t_em_archive_options(){
 		),
 	);
 
-	return apply_filters( 't_em_archive_options', $archive_options );
+	return apply_filters( 't_em_filter_archive_options', $archive_options );
 }
 
 /**
@@ -65,7 +65,7 @@ function t_em_excerpt_options(){
 		),
 	);
 
-	return apply_filters( 't_em_excerpt_options', $excerpt_options );
+	return apply_filters( 't_em_filter_excerpt_options', $excerpt_options );
 }
 
 /**
@@ -87,7 +87,7 @@ function t_em_archive_in_columns(){
 		),
 	);
 
-	return apply_filters( 't_em_archive_in_columns', $archive_in_columns );
+	return apply_filters( 't_em_filter_archive_in_columns', $archive_in_columns );
 }
 
 /**
@@ -196,7 +196,7 @@ function t_em_archive_pagination_options(){
 		),
 	);
 
-	return apply_filters( 't_em_archive_pagination_options', $archive_pagination );
+	return apply_filters( 't_em_filter_archive_pagination_options', $archive_pagination );
 }
 
 /**

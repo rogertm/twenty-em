@@ -269,7 +269,7 @@ function t_em_default_theme_options(){
 		'stats_tracker_body_tag'						=> '',
 	);
 
-	return apply_filters( 't_em_default_theme_options', $default_theme_options );
+	return apply_filters( 't_em_filter_default_theme_options', $default_theme_options );
 }
 
 /**

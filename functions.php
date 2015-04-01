@@ -92,8 +92,8 @@ function t_em_setup(){
 	// Adds support for custom header text (pluggable function).
 	$custom_header_support = array(
 		'default-text-color'		=> '333',
-		'width'						=> apply_filters( 't_em_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
-		'height'					=> apply_filters( 't_em_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
+		'width'						=> apply_filters( 't_em_filter_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
+		'height'					=> apply_filters( 't_em_filter_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
 		'flex-width'				=> true,
 		'flex-height'				=> true,
 		'random-default'			=> true,
@@ -119,7 +119,7 @@ function t_em_setup(){
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 	// Adds support for custom header image (pluggable function).
-	t_em_support_custom_header_image();
+	t_em_support_custom_header_images();
 
 	// This theme uses navigation menus in three locations. Woew!
 	register_nav_menus ( array(
@@ -257,15 +257,15 @@ function t_em_admin_header_image(){ ?>
 }
 endif; // function t_em_admin_header_image()
 
-if ( ! function_exists( 't_em_support_custom_header_image' ) ) :
+if ( ! function_exists( 't_em_support_custom_header_images' ) ) :
 /**
  * Pluggable Function:  Default custom headers packaged with the theme.
  * Referenced via t_em_setup().
  *
  * @since Twenty'em 0.1
  */
-function t_em_support_custom_header_image(){
-	register_default_headers( array(
+function t_em_support_custom_header_images(){
+	$headers = array(
 		'aqua'	=> array(
 			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua.png',
 			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua-thumbnail.png',
@@ -276,29 +276,20 @@ function t_em_support_custom_header_image(){
 			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/fire-thumbnail.png',
 			'description'	=> _x( 'Fire', 'header image description', 't_em' ),
 		),
-		'grass'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/grass.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/grass-thumbnail.png',
-			'description'	=> _x( 'Grass', 'header image description', 't_em' ),
-		),
 		'lime'	=> array(
 			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/lime.png',
 			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/lime-thumbnail.png',
 			'description'	=> _x( 'Lime', 'header image description', 't_em' ),
-		),
-		'ocean'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/ocean.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/ocean-thumbnail.png',
-			'description'	=> _x( 'Ocean', 'header image description', 't_em' ),
 		),
 		'purple'	=> array(
 			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/purple.png',
 			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/purple-thumbnail.png',
 			'description'	=> _x( 'Purple', 'header image description', 't_em' ),
 		),
-	) );
+	);
+	return apply_filters( 't_em_filter_custom_header_images', register_default_headers( $headers ) );
 }
-endif; // function t_em_support_custom_header_image()
+endif; // function t_em_support_custom_header_images()
 
 /**
  * Add Twenty'em layout clases to the array of boddy clases
@@ -342,7 +333,7 @@ function t_em_layout_classes( $existing_classes ){
 	else
 		$classes[] = $layout_set;
 
-	$classes = apply_filters( 't_em_layout_classes', $classes, $layout_set );
+	$classes = apply_filters( 't_em_filter_layout_classes', $classes, $layout_set );
 
 	return array_merge( $existing_classes, $classes );
 }
@@ -371,7 +362,7 @@ function t_em_archive_classes( $existing_classes ){
 		$classes[] = 'full-post';
 	endif;
 
-	$classes = apply_filters( 't_em_archive_classes', $classes, $archive_set );
+	$classes = apply_filters( 't_em_filter_archive_classes', $classes, $archive_set );
 
 	return array_merge( $existing_classes, $classes );
 }
@@ -488,7 +479,7 @@ function t_em_add_bootstrap_class( $section ){
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
-	return $bootstrap_classes;
+	return apply_filters( 't_em_filter_bootstrap_classes', $bootstrap_classes );
 }
 
 /**
@@ -511,30 +502,6 @@ if ( ! isset( $content_width ) ) :
 	$content_width = 640;
 endif;
 
-/**
- * Render some Theme and Framework Data as meta description.
- *
- * @since Twenty'em 0.1
- */
-function t_em_theme_metadata(){
-	global $t_em_theme_data;
-	printf( __( '<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->', 't_em' ),
-				T_EM_FRAMEWORK_NAME,
-				T_EM_FRAMEWORK_VERSION,
-				T_EM_FRAMEWORK_VERSION_STATUS,
-				T_EM_SITE ); echo "\n";
-	echo '<meta name="framework-name" content="' . T_EM_FRAMEWORK_NAME . '">' . "\n";
-	echo '<meta name="framework-version" content="' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS . '">' . "\n";
-	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
-	echo '<meta name="theme-version" content="' . $t_em_theme_data['Version'] . '">' . "\n";
-	echo '<meta name="theme-uri" content="' . $t_em_theme_data['ThemeURI'] . '">' . "\n";
-	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
-	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
-	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
-	printf( __( '<!-- / %1$s WordPress theme/framework -->', 't_em' ), T_EM_FRAMEWORK_NAME ); echo "\n";
-}
-add_action( 'wp_head', 't_em_theme_metadata' );
-
 if ( ! function_exists( 't_em_favicon' ) ) :
 /**
  * Pluggable Function: Add favicon to our site, admin dashboard included
@@ -551,34 +518,6 @@ function t_em_favicon(){
 endif; // function t_em_favicon()
 add_action( 'wp_head', 't_em_favicon' );
 add_action( 'admin_head', 't_em_favicon' );
-
-/**
- * Webmasters Tools and Tracking Codes
- */
-function t_em_stats_header_tracker(){
-	global $t_em;
-	// Google Engine ID
-	if ( $t_em['google_id'] )
-		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
-	// Bing Engine ID
-	if ( $t_em['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
-	// Pinterest Engine ID
-	if ( $t_em['pinterest_id'] )
-		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
-	// Header Stats Tracker
-	if ( $t_em['stats_tracker_header_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 't_em_stats_header_tracker' );
-
-function t_em_stats_body_tracker(){
-	global $t_em;
-	// Body Stats Tracker
-	if ( $t_em['stats_tracker_body_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
-}
-add_action( 'wp_footer', 't_em_stats_body_tracker' );
 
 /**
  * Twenty'em shows a home link in wp_page_menu(), wp_nav_menu() fallback.
@@ -1665,7 +1604,7 @@ function t_em_slider_query_args(){
 		'order'				=> 'DESC',
 	);
 
-	return $args;
+	return apply_filters( 't_em_filter_slider_query_args', $args );
 }
 
 if ( ! function_exists( 't_em_static_header' ) ) :
@@ -1950,7 +1889,7 @@ function t_em_single_related_posts(){
 		$category_terms = get_the_terms( $post->ID, 'category' );
 		$tag_terms = get_the_terms( $post->ID, 'post_tag' );
 
-		$limit = 9;
+		$limit = apply_filters( 't_em_filter_single_limit_related_posts', 9 );
 		$post_category_terms = array();
 		$post_tag_terms = array();
 
@@ -2211,7 +2150,7 @@ function t_em_breadcrumb(){
 		endif;
 
 		if ( is_search() ) :
-			echo $current_before . get_search_query() . $current_after;
+			echo $current_before . sprintf( __( 'Search: %s', 't_em' ), get_search_query() ) . $current_after;
 		endif;
 		if ( is_404() ) :
 			echo $current_before . __( 'Error 404', 't_em' ) . $current_after;
@@ -2269,7 +2208,7 @@ function t_em_breadcrumb(){
 		endif;
 
 		if ( get_query_var( 'paged' ) > '1' ) :
-			echo $current_before . __( 'Page ', 't_em' ) .  get_query_var( 'paged' ) . $current_after;
+			echo $current_before . sprintf( __( 'Page %s', 't_em' ), get_query_var( 'paged' ) ) . $current_after;
 		endif;
 ?>
 			</lo><!-- .breadcrumb -->
@@ -2331,7 +2270,7 @@ if ( has_nav_menu( 'top-menu' ) ) :
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<div class="navbar-brand visible-xs"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
 					'theme_location'	=> 'top-menu',
@@ -2367,7 +2306,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<div class="navbar-brand visible-xs"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
 					'theme_location'	=> 'navigation-menu',
@@ -2491,6 +2430,58 @@ function t_em_dot_com_link(){
 	endif;
 }
 add_action( 't_em_action_site_info_after', 't_em_dot_com_link' );
+
+/**
+ * Render some Theme and Framework Data as meta description.
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_theme_metadata(){
+	global $t_em_theme_data;
+	printf( __( '<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->', 't_em' ),
+				T_EM_FRAMEWORK_NAME,
+				T_EM_FRAMEWORK_VERSION,
+				T_EM_FRAMEWORK_VERSION_STATUS,
+				T_EM_SITE ); echo "\n";
+	echo '<meta name="framework-name" content="' . T_EM_FRAMEWORK_NAME . '">' . "\n";
+	echo '<meta name="framework-version" content="' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS . '">' . "\n";
+	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
+	echo '<meta name="theme-version" content="' . $t_em_theme_data['Version'] . '">' . "\n";
+	echo '<meta name="theme-uri" content="' . $t_em_theme_data['ThemeURI'] . '">' . "\n";
+	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
+	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
+	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
+	printf( __( '<!-- / %1$s WordPress theme/framework -->', 't_em' ), T_EM_FRAMEWORK_NAME ); echo "\n";
+}
+add_action( 'wp_head', 't_em_theme_metadata' );
+
+/**
+ * Webmasters Tools and Tracking Codes
+ */
+function t_em_stats_header_tracker(){
+	global $t_em;
+	// Google Engine ID
+	if ( $t_em['google_id'] )
+		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
+	// Bing Engine ID
+	if ( $t_em['bing_id'] )
+		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
+	// Pinterest Engine ID
+	if ( $t_em['pinterest_id'] )
+		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
+	// Header Stats Tracker
+	if ( $t_em['stats_tracker_header_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 't_em_stats_header_tracker' );
+
+function t_em_stats_body_tracker(){
+	global $t_em;
+	// Body Stats Tracker
+	if ( $t_em['stats_tracker_body_tag'] )
+		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
+}
+add_action( 'wp_footer', 't_em_stats_body_tracker' );
 
 /**
  * Wrap paragraphs into <p> ...</p> tags, and clean empty lines

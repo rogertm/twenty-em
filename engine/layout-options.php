@@ -60,7 +60,7 @@ function t_em_layout_options(){
 		),
 	);
 
-	return apply_filters( 't_em_layout_options', $layout_options );
+	return apply_filters( 't_em_filter_layout_options', $layout_options );
 }
 
 /**
@@ -95,7 +95,7 @@ function t_em_footer_options(){
 		),
 	);
 
-	return apply_filters( 't_em_footer_options', $footer_options );
+	return apply_filters( 't_em_filter_footer_options', $footer_options );
 }
 
 /**

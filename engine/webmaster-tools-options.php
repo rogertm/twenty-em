@@ -38,7 +38,7 @@ function t_em_search_engines_id_options(){
 		),
 	);
 
-	return apply_filters( 't_em_search_engines_options', $engines_options );
+	return apply_filters( 't_em_filter_search_engines_options', $engines_options );
 }
 
 /**
@@ -60,7 +60,7 @@ function t_em_stats_tracker_options(){
 		),
 	);
 
-	return apply_filters( 't_em_stats_tracker_options', $tracker_options );
+	return apply_filters( 't_em_filter_stats_tracker_options', $tracker_options );
 }
 
 /**

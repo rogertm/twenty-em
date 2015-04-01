@@ -154,9 +154,9 @@ function t_em_action_custom_front_page_inside_after(){
 /**
  * Fire the t_em_action_content_before action, just after opening <section id="content"> tag
  *
- * @files archive.php, attachment.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, author.php, category.php, date.php, front-page.php
  * home.php, index.php, page.php, search.php, single.php, tag.php, taxonomy.php,
- * taqxonomy-$taxonomy-$term.php, template-$template_name.php
+ * taxonomy-post_format.php, page-templates/template-$template_name.php
  * @since Twenty'em 1.0
  */
 function t_em_action_content_before(){
@@ -166,9 +166,9 @@ function t_em_action_content_before(){
 /**
  * Fire the t_em_action_content_after action, just before closing </section><!-- #content --> tag
  *
- * @files archive.php, attachment.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, author.php, category.php, date.php, front-page.php
  * home.php, index.php, pahe.php, search.php, single.php, tag.php, taxonomy.php,
- * taxonomy-$taxonomy-$term.php, template-$template_name.php
+ * taxonomy-post_format.php, page-templates/template-$template_name.php
  * @since Twenty'em 1.0
  */
 function t_em_action_content_after(){
@@ -176,7 +176,7 @@ function t_em_action_content_after(){
 }
 
 /**
- * Fire the t_em_action_custom_front_page_before, just after opening <section id="featured-widget-area"> tag.
+ * Fire the t_em_action_custom_front_page_before, just after opening <section id="content"> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
@@ -188,7 +188,7 @@ function t_em_action_custom_front_page_before(){
 }
 
 /**
- * Fire the t_em_action_custom_front_page_after, just before closing <section> <!-- #featured-widget-area --> tag.
+ * Fire the t_em_action_custom_front_page_after, just before closing <section> <!-- #content --> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *

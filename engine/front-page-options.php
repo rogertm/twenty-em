@@ -39,7 +39,7 @@ function t_em_front_page_options(){
 		),
 	);
 
-	return apply_filters( 't_em_front_page_options', $front_page_options );
+	return apply_filters( 't_em_filter_front_page_options', $front_page_options );
 }
 
 /**
@@ -97,7 +97,7 @@ function t_em_front_page_widgets_options(){
 		),
 	);
 
-	return apply_filters( 't_em_front_page_widgets_options', $front_page_widgets );
+	return apply_filters( 't_em_filter_front_page_widgets_options', $front_page_widgets );
 }
 
 /**

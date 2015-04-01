@@ -52,7 +52,7 @@ function t_em_header_options(){
 		),
 	);
 
-	return apply_filters( 't_em_header_options', $header_options );
+	return apply_filters( 't_em_filter_header_options', $header_options );
 }
 
 /**
@@ -78,7 +78,7 @@ function t_em_header_image_callback(){
 		$extend_header .= '<p>'. __( 'Oops! No image choosen yet', 't_em' ) .'</p>';
 	endif;
 
-	return apply_filters( 't_em_header_image_callback', $extend_header );
+	return apply_filters( 't_em_filter_header_image_callback', $extend_header );
 }
 
 /**
@@ -87,7 +87,7 @@ function t_em_header_image_callback(){
  * Hook this returned filter to display in your slider options some different taxonomies
  */
 function t_em_slider_list_taxonomies(){
-	return apply_filters( 't_em_slider_list_taxonomies', get_categories() );
+	return apply_filters( 't_em_filter_slider_list_taxonomies', get_categories() );
 }
 
 /**
@@ -190,7 +190,7 @@ function t_em_static_header_layout_options(){
 		),
 	);
 
-	return apply_filters( 't_em_static_header_layout_options', $static_header_layout );
+	return apply_filters( 't_em_filter_static_header_layout_options', $static_header_layout );
 }
 
 /**
