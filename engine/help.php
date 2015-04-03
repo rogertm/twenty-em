@@ -25,8 +25,9 @@ function t_em_theme_options_help(){
 
 	$screen = get_current_screen();
 
-	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="Twenty&#8217;em Framework">Twenty&#8217;em Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%2$s</strong>, provides the following options:', 't_em' ),
+	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
 					T_EM_SITE,
+					T_EM_FRAMEWORK_NAME,
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
@@ -49,7 +50,7 @@ function t_em_theme_options_help(){
 
 	$general_help =	'<p>' . __( '<strong>General Options</strong>: By checking the check boxes below, you may enable or not this options.<br />Note: All of then are check by default.', 't_em' ) . '</p>' .
 					'<ul>' .
-						'<li>' . __( '<strong>Twenty&#8217;em.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and Twenty&#8217;em.com will be displayed in your site footer area.', 't_em' ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>%1$s.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and %1$s.com will be displayed in your site footer area.', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</li>' .
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
@@ -154,6 +155,21 @@ function t_em_theme_options_help(){
 		)
 	);
 
+	$debug_help = '<p>' . __( '<strong>Little Debug Information</strong>:', 't_em' ) . '</p>' .
+					'<ul>' .
+						'<li>' . sprintf( __( '<strong>Framework Name</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Version</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Status</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION_STATUS ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Data Base Version</strong>: <code>%s</code>', 't_em' ), T_EM_DB_VERSION ) . '</li>' .
+					'<ul>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Little Debug Info', 't_em' ),
+		'id' => 'debug-help',
+		'content' => $debug_help,
+		)
+	);
+
 	$screen->set_help_sidebar( t_em_theme_sidebar_help() );
 }
 
@@ -163,9 +179,9 @@ function t_em_theme_options_help(){
 function t_em_theme_backup_help(){
 	$screen = get_current_screen();
 
-	$help =	'<p>' . __( '<strong>Twenty&#8217;em Backup Manager</strong>', 't_em' ) . '</p>' .
-			'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>Twenty&#8217;em Backup Manager</strong> should be imported. ', 't_em' ),
-			admin_url( 'admin.php?page=twenty-em-options' ) ) . '</p>' .
+	$help =	'<p>' . sprintf( __( '<strong>%1$s Backup Manager</strong>', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
+			'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>%2$s Backup Manager</strong> should be imported. ', 't_em' ),
+							admin_url( 'admin.php?page=twenty-em-options' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
 			'<p>' . sprintf( __( 'Please note that this manager only backs up your settings, not your content, to backup your content use the <a href="%1$s">WordPress Export Tool</a>.', 't_em' ),
 			admin_url( 'export.php' ) ) . '</p>';
 
@@ -184,8 +200,8 @@ function t_em_theme_backup_help(){
  */
 function t_em_theme_sidebar_help(){
 	$help_sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Visit Twenty&#8217;em home page</a><br />', 't_em' ),
-						T_EM_SITE ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Visit %2$s home page</a><br />', 't_em' ),
+						T_EM_SITE, T_EM_FRAMEWORK_NAME ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
 

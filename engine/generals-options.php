@@ -26,7 +26,7 @@ function t_em_general_options(){
 	$general_options = array(
 		't_em_link'				=> array(
 			'name'			=> 't_em_link',
-			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">Twenty&#8217;em.com</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), 'http://twenty-em.com' ),
+			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">%2$s</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), T_EM_SITE, T_EM_FRAMEWORK_NAME ),
 			'sublabel'		=> '',
 		),
 		'single_featured_img'	=> array(

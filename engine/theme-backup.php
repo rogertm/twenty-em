@@ -154,8 +154,8 @@ function t_em_theme_backup(){
 		<section id="export-settings">
 			<h3><?php _e( 'Export Settings', 't_em' ); ?></h3>
 			<?php t_em_backup_notice(); ?>
-			<p><?php _e( 'When you click in the button below <strong>Twenty&#8217;em Framework</strong> will create an TXT file for you to save in your computer.', 't_em' ); ?></p>
-			<p><?php _e( 'This file contain all your theme configuration. You can use it to restore your setting in this site or to easily setup another site based on <strong>Twenty&#8217;em Framework</strong>.', 't_em' ); ?></p>
+			<p><?php printf( __( 'When you click in the button below <strong>%s Framework</strong> will create an TXT file for you to save in your computer.', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
+			<p><?php printf( __( 'This file contain all your theme configuration. You can use it to restore your setting in this site or to easily setup another site based on <strong>%s Framework</strong>.', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
 			<form action="options.php" method="post">
 				<?php wp_nonce_field( 't_em_backup_export', 't_em_backup_export_nonce_time' ); ?>
 				<?php submit_button( __( 'Download export file', 't_em' ) ); ?>
@@ -165,7 +165,7 @@ function t_em_theme_backup(){
 
 		<section id="import-settings">
 			<h3><?php _e( 'Import Settings', 't_em' ); ?></h3>
-			<p><?php _e( 'If you have your settings in a backup file in your computer, <strong>Twenty&#8217;em Framework</strong> can import those settings into this site', 't_em' ); ?></p>
+			<p><?php printf( __( 'If you have your settings in a backup file in your computer, <strong>%s Framework</strong> can import those settings into this site', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
 			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=twenty-em-backup&import=true' ); ?>" method="post">
 				<?php wp_nonce_field( 't_em_backup_import', 't_em_backup_import_nonce_time' ); ?>
 				<label>
