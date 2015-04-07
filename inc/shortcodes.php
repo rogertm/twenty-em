@@ -29,7 +29,7 @@ function t_em_quickttags_buttons(){
 		QTags.addButton( 'sc_button', 'button', '[button link="" style="default" size="" new_window="false"]', '[/button]', '', '', 122 );
 		QTags.addButton( 'sc_alert', 'alert', '[alert style="" close="false"]', '[/alert]', '', '', 122 );
 		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" float=""]', '[/quote]', '', '', 123 );
-		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size="default"]', '', '', '', 124 );
+		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size=""]', '', '', '', 124 );
 	</script>
 <?php
 	endif;
@@ -87,7 +87,8 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
-		add_action( 'wp_footer', 't_em_shortcode_alert_bs_script' );
+		$scrip_alert = t_em_register_bootstrap_plugin( 'alert.js', false );
+		add_action( 'wp_enqueue_scripts', "$scrip_alert" );
 	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -134,13 +135,12 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
 /**
  * Shortcode [icon]
  * Self-closing
- * Behavior [icon class="" align="" size="default"]
+ * Behavior [icon class="" align="" size=""]
  * Options:
  * 0. icon_class. Required. Default value "empty". Possibles values "icomoon-$icon_name". Display a
  * IcoMoon icon
  * 1. align. Optional. Default value "empty". Possibles values "left", "right". Icon alignment.
- * 2. size. Optional. Default value "default". Possibles values "default", "medium", "large",
- * "xlarge", "xxlarge", "xxxlarge". Icon size
+ * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
  * @link http://codex.wordpress.org/Shortcode_API
  * @link ../fonts/icomoon.html For a full list of icon classes.
@@ -151,9 +151,9 @@ function t_em_shortcode_icomoon_icon( $atts ){
 	extract( shortcode_atts( array(
 			'class' => '',
 			'align' => '',
-			'size' => 'default',
+			'size' => 'icon-sm',
 		), $atts ) );
-	$class_size = ( ! empty( $size ) ) ? 'icon-'. esc_attr( $size ) : null;
+	$class_size = ( ! empty( $size ) ) ? esc_attr( $size ) : null;
 	$class_align = ( ! empty( $align ) ) ? 'pull-'. esc_attr( $align ) : null;
 
 	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' icomoon"></span>';

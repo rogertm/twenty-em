@@ -40,31 +40,21 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_register_script( 'modernizr', T_EM_THEME_DIR_JS_URL.'/modernizr.js', array(), $t_em_theme_data['Version'], false );
 	wp_enqueue_script( 'modernizr' );
 
-	// Register and enqueue Twitter Bootstrap JS Plugins
+	// Register Carousel Twitter Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
-		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'bootstrap-transition' );
-		wp_register_script( 'bootstrap-carousel', T_EM_THEME_DIR_JS_URL.'/bootstrap/carousel.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'bootstrap-carousel' );
-		wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery', 'bootstrap-carousel' ), $t_em_theme_data['Version'], false );
+		t_em_register_bootstrap_plugin( 'carousel.js' );
+		wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.jquery.slider.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'bootstrap-carousel-script' );
 	endif;
 
-	// Load required Bootstrap js files for custom templates
-	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) ) :
-		// Register and enqueue bootstrap-collapse.js plugin
-		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'bootstrap-transition' );
-		wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/collapse.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'bootstrap-collapse' );
+	// Register Collapse Twitter Bootstrap Plugins when needed
+	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) || ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) ) :
+		t_em_register_bootstrap_plugin( 'collapse.js' );
 	endif;
 
+	// Register Tab Twitter Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-tour.php' ) ) :
-		// Register and enqueue bootstrap-tabs.js plugin and custom css for tabs
-		wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'bootstrap-transition' );
-		wp_register_script( 'bootstrap-tabs', T_EM_THEME_DIR_JS_URL . '/bootstrap/tab.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'bootstrap-tabs' );
+		t_em_register_bootstrap_plugin( 'tab.js' );
 		wp_register_script( 'script-tourable', T_EM_THEME_DIR_JS_URL . '/script.tourable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'script-tourable' );
 		wp_register_style( 'bootstrap-tabs', T_EM_THEME_DIR_CSS_URL . '/style-bs-tabs.css', array(), $t_em_theme_data['Version'], 'all' );
@@ -134,22 +124,21 @@ function t_em_enqueue_icomoon(){
 add_action( 'wp_head', 't_em_enqueue_icomoon' );
 
 /**
- * Register and enqueue Bootstrap Alert js plugin for close alert blocks
+ * Register and Enqueue Bootstrap jQuery Plugins
+ *
+ * @param $plugin Required. String. Plugin name and extension (IE: transition.js or transition.min.js)
+ * @param $transition Optional. Bool. Enqueue transition.js Bootstrap plugin for simple transition effects
+ * @param $in_footer Optional. Bool. If true, the script is placed before the </body> end tag
  */
-function t_em_shortcode_alert_bs_script(){
+function t_em_register_bootstrap_plugin( $plugin, $transition = true, $in_footer = false ){
 	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-alert', T_EM_THEME_DIR_JS_URL . '/bootstrap/alert.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-alert' );
-}
-
-/**
- * Register and enqueue Bootstrap Collapse js plugin for navbars
- */
-function t_em_navbar_js_script(){
-	global $t_em_theme_data;
-	wp_register_script( 'bootstrap-transition', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-transition' );
-	wp_register_script( 'bootstrap-collapse', T_EM_THEME_DIR_JS_URL . '/bootstrap/collapse.js', array( 'jquery', 'bootstrap-transition' ), $t_em_theme_data['Version'], true );
-	wp_enqueue_script( 'bootstrap-collapse' );
+	// All Bootstrap plugins depends of jQuery
+	$deps = array( 'jquery' );
+	if ( $transition ) :
+		array_push( $deps, 'transition.js' );
+		wp_register_script( 'transition.js', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array(), $t_em_theme_data['Version'], $in_footer );
+	endif;
+	wp_register_script( $plugin, T_EM_THEME_DIR_JS_URL.'/bootstrap/'.$plugin, $deps, $t_em_theme_data['Version'], $in_footer );
+	wp_enqueue_script( $plugin );
 }
 ?>

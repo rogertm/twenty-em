@@ -278,7 +278,6 @@ function t_em_theme_options_page(){
 	global $t_em;
 ?>
 	<div class="wrap">
-		<?php screen_icon(); ?>
 		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS ?></h2>
 		<?php if ( empty( $t_em ) ) : ?>
 		<div class="error">
@@ -619,7 +618,7 @@ function t_em_theme_explode(){
  * Clone of capital_P_dangit() WordPress function
  */
 function t_em_twenty_em_formating( $twenty_em ) {
-	return str_replace( array( ' Twenty’em', 'Twenty&#8217;em' ), 'Twenty\'em', $twenty_em );
+	return str_replace( array( ' Twenty’em', 'Twenty&#8217;em', 'Twenty&#039;em' ), 'Twenty\'em', $twenty_em );
 }
 add_filter( 'the_content', 't_em_twenty_em_formating' );
 add_filter( 'the_title', 't_em_twenty_em_formating' );

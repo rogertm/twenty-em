@@ -15,7 +15,6 @@
 
 /** Import Bootstrap Less */
 @import "bootstrap/bootstrap.min.less";
-@import "less.php";
 @import "icomoon.less";
 
 /* =Variables
@@ -35,8 +34,7 @@
 @avatar-size-sm:	16px;
 @avatar-size-md:	64px;
 @avatar-size-lg:	128px;
-@avatar-size-xlg:	256px;
-@avatar-size-xxlg:	512px;
+@avatar-size-hg:	256px;
 
 // Jumbotron button padding
 @jumbotron-btn-vertical-padding:	14px;
@@ -57,29 +55,25 @@
 }
 
 // Iconography
-.icomoon.icon-default{
+.icomoon.icon-xs{
 	font-size: 14px;
 	margin: 0 3px 3px;
 }
-.icomoon.icon-medium{
+.icomoon.icon-sm{
 	font-size: 28px;
 	margin: 0 5px 5px;
 }
-.icomoon.icon-large{
+.icomoon.icon-md{
 	font-size: 56px;
 	margin: 0 8px 8px;
 }
-.icomoon.icon-xlarge{
+.icomoon.icon-lg{
 	font-size: 112px;
 	margin: 0 10px 10px;
 }
-.icomoon.icon-xxlarge{
+.icomoon.icon-hg{
 	font-size: 168px;
 	margin: 0 15px 15px;
-}
-.icomoon.icon-xxxlarge{
-	font-size: 252px;
-	margin: 0 20px 20px;
 }
 
 /* =Structure
@@ -445,7 +439,7 @@
 	.square(@avatar-size-lg) !important;
 }
 .contributor .contributor-posts-link .icomoon{
-	.icomoon-book;
+	.icomoon-pencil;
 }
 .contributor .contributor-url .icomoon{
 	.icomoon-home-2;

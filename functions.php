@@ -2283,7 +2283,6 @@ if ( has_nav_menu( 'top-menu' ) ) :
 		</div>
 	</div>
 <?php
-	add_action( 'wp_footer', 't_em_navbar_js_script' );
 endif;
 }
 endif; // function t_em_top_menu()
@@ -2319,7 +2318,6 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 		</div>
 	</div>
 <?php
-	add_action( 'wp_footer', 't_em_navbar_js_script' );
 endif;
 }
 endif; // function t_em_navigation_menu()
