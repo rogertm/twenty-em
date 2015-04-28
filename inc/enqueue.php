@@ -86,7 +86,7 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.min.less">'."\n";
 }
-// add_action( 'wp_head', 't_em_bootstrapped_head', 15 );
+add_action( 'wp_head', 't_em_bootstrapped_head', 15 );
 
 /**
  * Enqueue LESS Style for the theme
