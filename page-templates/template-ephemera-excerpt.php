@@ -87,7 +87,7 @@ if ( have_posts() ) :
 				$format = __( 'Quote', 't_em' );
 				break;
 			case 'status':
-				$icon = 'icomoon-smiley';
+				$icon = 'icomoon-comment';
 				$format = __( 'Status', 't_em' );
 				break;
 			case 'video':

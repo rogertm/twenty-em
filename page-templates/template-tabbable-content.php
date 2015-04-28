@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Tour
+ * Template Name: Tabbable Content
  *
  * The template for displaying all child pages of the current page in accordion style.
  *
@@ -16,8 +16,8 @@
 
 get_header(); ?>
 
-		<section id="main-content" class="one-column <?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
-			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class( 'content-one-column' ); ?>">
+		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
+			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class( 'content' ); ?>">
 				<?php t_em_action_content_before(); ?>
 				<div id="tour-<?php echo get_the_ID(); ?>" class="custom-template custom-template-tour">
 <?php
@@ -29,8 +29,8 @@ get_header(); ?>
 	);
 	$child_pages = get_pages( $args );
 ?>
-					<div id="tourable" class="tabbable tabs-left">
-						<ul id="tourable-list" class="nav nav-tabs">
+					<div id="tabbable-<?php the_ID() ?>">
+						<ul id="tabbable-list" class="nav nav-tabs">
 <?php
 	foreach ( $child_pages as $page ) :
 		$content = $page->post_content;
@@ -45,7 +45,7 @@ get_header(); ?>
 	endforeach;
 ?>
 						</ul>
-						<div id="tourable-content" class="tab-content">
+						<div id="tabbable-content" class="tab-content">
 <?php
 	foreach ( $child_pages as $page ) :
 		$content = $page->post_content;
@@ -66,9 +66,11 @@ get_header(); ?>
 ?>
 						</div><!-- .tab-content -->
 					</div><!-- .tabbable .tabs-left -->
-				</div><!-- #tour-## -->
+				</div><!-- #tabbable-## -->
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
-		</section>
+			<?php get_sidebar(); ?>
+		</section><!-- #main-content -->
+		<?php get_sidebar( 'alt' ); ?>
 
 <?php get_footer(); ?>

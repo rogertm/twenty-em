@@ -201,7 +201,7 @@ function t_em_admin_header_style(){
 		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 	#headimg h1 {
-		font-size: 64px;
+		font-size: 36px;
 		margin-bottom: 10px;
 		margin-top: 20px;
 		font-weight: 500;
@@ -210,8 +210,7 @@ function t_em_admin_header_style(){
 		text-decoration: none;
 	}
 	#desc {
-		font-size: 24px;
-		font-style: italic;
+		font-size: 18px;
 		margin-bottom: 20px;
 	}
 	<?php
@@ -299,7 +298,6 @@ endif; // function t_em_support_custom_header_images()
 function t_em_layout_classes( $existing_classes ){
 	global $t_em;
 	$layout_set = $t_em['layout_set'];
-	$static_header_set = $t_em['static_header_text'];
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enough
 	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
@@ -311,14 +309,6 @@ function t_em_layout_classes( $existing_classes ){
 	else :
 		$classes = array( 'one-column' );
 	endif;
-
-	if ( 'static-header-text-right' == $static_header_set )
-		$static_header_classes = 'static-header-text-right';
-	elseif ( 'static-header-text-left' == $static_header_set )
-		$static_header_classes = 'static-header-text-left';
-	else
-		$static_header_classes = '';
-		$classes[] = $static_header_classes;
 
 	if ( 'two-column-content-left' == $layout_set )
 		$classes[] = 'two-column-content-left';
@@ -349,7 +339,7 @@ function t_em_archive_classes( $existing_classes ){
 	$archive_set = $t_em['archive_set'];
 	$excerpt_set = $t_em['excerpt_set'];
 
-	if ( 'the-excerpt' == $archive_set ) :
+	if ( 'the-excerpt' == $archive_set && ! is_single() ) :
 		if ( 'thumbnail-left' == $excerpt_set ) :
 			$classes[] = 'thumbnail-left';
 		elseif ( 'thumbnail-right' == $excerpt_set ) :
@@ -553,7 +543,7 @@ if ( ! function_exists( 't_em_auto_excerpt_more' ) ) :
  * @return string An ellipsis
  */
 function t_em_auto_excerpt_more( $more ) {
-	return ' &hellip;' . t_em_continue_reading_link();
+	return ' &hellip; ' . t_em_continue_reading_link();
 }
 endif; // function t_em_auto_excerpt_more()
 add_filter( 'excerpt_more', 't_em_auto_excerpt_more' );
@@ -909,7 +899,7 @@ function t_em_header_archive_author_meta(){
 ?>
 	<div id="featured-header-author-<?php echo get_the_author_meta( 'user_login' ) ?>" class="featured-header featured-header-author">
 		<header>
-			<h1 class="page-header author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<span><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
+			<h1 class="page-header author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<small><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></small>" ); ?></h1>
 		</header>
 		<?php t_em_author_meta(); ?>
 	</div><!-- .featured-header -->
@@ -979,7 +969,7 @@ function t_em_header_archive_taxonomy(){
 	<div id="featured-header-taxonomy-<?php echo $query_obj->term_id ?>" class="featured-header <?php echo $classes; ?>">
 		<header>
 			<h1 class="page-header">
-				<?php printf( __( '%1$s Archives: %2$s', 't_em' ), $labels->labels->singular_name, '<span>' . single_term_title( '', false ) . '</span>' ); ?>
+				<?php printf( __( '%1$s Archives: %2$s', 't_em' ), $labels->labels->singular_name, '<small>' . single_term_title( '', false ) . '</small>' ); ?>
 			</h1>
 		</header>
 <?php 	t_em_term_description(); ?>
@@ -1008,7 +998,7 @@ function t_em_header_archive_post_type_archive(){
 	<div id="featured-header-post-type-<?php echo get_post_type(); ?>" class="featured-header featured-header-post-type">
 		<header>
 			<h1 class="page-header">
-				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<span>' . $post_type_name . '</span>' ); ?>
+				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<small>' . $post_type_name . '</small>' ); ?>
 			</h1>
 		</header>
 	</div><!-- .featured-header -->
@@ -1032,13 +1022,13 @@ function t_em_header_archive_date(){
 		 */
 		if ( have_posts() ) : the_post();
 			if ( is_day() ) :
-				$date_archive = sprintf( __( 'Daily Archives: <span>%s</span>', 't_em' ), get_the_date() );
+				$date_archive = sprintf( __( 'Daily Archives: <small>%s</small>', 't_em' ), get_the_date() );
 				$archive_id = 'daily';
 			elseif ( is_month() ) :
-				$date_archive = sprintf( __( 'Monthly Archives: <span>%s</span>', 't_em' ), get_the_date('F Y') );
+				$date_archive = sprintf( __( 'Monthly Archives: <small>%s</small>', 't_em' ), get_the_date('F Y') );
 				$archive_id = 'monthly';
 			elseif ( is_year() ) :
-				$date_archive = sprintf( __( 'Yearly Archives: <span>%s</span>', 't_em' ), get_the_date('Y') );
+				$date_archive = sprintf( __( 'Yearly Archives: <small>%s</small>', 't_em' ), get_the_date('Y') );
 				$archive_id = 'yearly';
 			else :
 				$date_archive = __( 'Blog Archives', 't_em' );
@@ -1077,7 +1067,7 @@ function t_em_header_archive_search(){
 		if ( have_posts() ) : the_post(); ?>
 		<div id="featured-header-search" class="featured-header featured-header-search">
 			<header>
-				<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<small>' . get_search_query() . '</small>' ); ?></h1>
 			</header>
 		</div><!-- .featured-header -->
 <?php
@@ -1108,22 +1098,23 @@ function t_em_comment( $comment, $args, $depth ) {
 	?>
 	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-			<div class="pull-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
+			<div class="media-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
 			<div class="media-body">
 				<header class="comment-header media-heading">
 					<div class="comment-author vcard">
-						<?php printf( __( '<cite class="fn">%1$s <span class="says">says:</span></cite>', 't_em' ), get_comment_author_link() ); ?>
+						<?php printf( __( '<b class="fn">%1$s</b><span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
 					</div><!-- .comment-author .vcard -->
 					<?php if ( $comment->comment_approved == '0' ) : ?>
 						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
 						<br />
 					<?php endif; ?>
 
-					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<time class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<?php
 							/* translators: 1: date, 2: time */
-							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-					</div><!-- .comment-meta .commentmetadata -->
+							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a>
+					</time><!-- .comment-meta .commentmetadata -->
+					<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 				</header><!-- comment-heading -->
 				<div class="comment-body"><?php comment_text(); ?></div>
 
@@ -1202,22 +1193,23 @@ function t_em_comment_all( $comment, $args, $depth ){
 	?>
 	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
 		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-			<div class="pull-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
+			<div class="media-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
 			<div class="media-body">
 				<header class="comment-header media-heading">
 					<div class="comment-author vcard">
-						<?php printf( __( '<cite class="fn">%1$s</cite> <span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
+						<?php printf( __( '<b class="fn">%1$s</b> <span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
 					</div><!-- .comment-author .vcard -->
 					<?php if ( $comment->comment_approved == '0' ) : ?>
 						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
 						<br />
 					<?php endif; ?>
 
-					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<time class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<?php
 							/* translators: 1: date, 2: time */
-							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-					</div><!-- .comment-meta .commentmetadata -->
+							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a>
+					</time><!-- .comment-meta .commentmetadata -->
+					<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
 				</header><!-- comment-heading -->
 				<div class="comment-body"><?php comment_text(); ?></div>
 
@@ -1266,7 +1258,7 @@ function t_em_page_navi(){
 <?php
 		if ( 'prev-next' == $t_em['archive_pagination_set'] ) :
 ?>
-	<nav id="site-pagination" class="site-pagination navi">
+	<nav id="site-pagination" class="navi">
 		<ul>
 			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older posts', 't_em' ) ); ?></li>
 			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
@@ -1275,7 +1267,7 @@ function t_em_page_navi(){
 <?php
 		elseif ( 'page-navi' == $t_em['archive_pagination_set'] ) :
 ?>
-	<nav id="site-pagination" class="site-pagination pagi">
+	<nav id="site-pagination" class="pagi">
 <?php
 			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
@@ -1615,7 +1607,7 @@ if ( ! function_exists( 't_em_static_header' ) ) :
 function t_em_static_header(){
 	global $t_em;
 ?>
-	<section id="static-header" role="info">
+	<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
 		<div id="static-header-inner" class="wrapper container">
 <?php if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
 		<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
@@ -1726,7 +1718,16 @@ function t_em_post_archive_set(){
 ?>
 			<div class="entry-content">
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
+				<?php
+					wp_link_pages( array(
+						'before'		=> '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 't_em' ) . '</span>',
+						'after'			=> '</div>',
+						'link_before'	=> '<span>',
+						'link_after'	=> '</span>',
+						'pagelink'		=> '<span class="sr-only">' . __( 'Page', 't_em' ) . ' </span>%',
+						'separator'		=> '<span class="sr-only">, </span>',
+					) );
+				?>
 			</div><!-- .entry-content -->
 <?php
 	endif;
@@ -1774,7 +1775,7 @@ function t_em_post_format(){
 			break;
 		case 'status' :
 			$format = __( 'Status', 't_em' );
-			$icomoon_class = 'icomoon-smiley';
+			$icomoon_class = 'icomoon-comment';
 			break;
 		case 'video' :
 			$format = __( 'Video', 't_em' );
@@ -1816,7 +1817,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' icomoon" title="'. $t_em[$social_network['name']] .'"><span>'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' icomoon" title="'. $t_em[$social_network['name']] .'"><span class="network-label">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( ! empty( $output_items ) ) :
@@ -1965,8 +1966,10 @@ function t_em_front_page_widgets(){
 		$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
 			'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. $t_em['headline_'.$widget['name'].''] .'" />' : '';
 
+		$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
+
 		$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
-			'<header>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</header>' : '';
+			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
 
 		$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
 			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
@@ -2245,7 +2248,7 @@ function t_em_heading_site_title(){
 		<<?php echo $heading_tag; ?> id="site-title">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</<?php echo $heading_tag; ?>>
-		<h3 id="site-description"><?php bloginfo( 'description' ); ?></h3>
+		<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 	</hgroup>
 <?php
 }
@@ -2350,7 +2353,7 @@ if ( ! function_exists( 't_em_single_navigation' ) ) :
 function t_em_single_navigation(){
 	if ( is_single() ) :
 ?>
-	<nav id="single-navigation" class="single-pagination navi" role="navigation">
+	<nav id="single-navigation" class="navi" role="navigation">
 		<ul>
 			<li class="previous"><?php previous_post_link( '%link', '<span class="meta-nav icomoon-double-angle-left icomoon"></span> %title' ); ?></li>
 			<li class="next"><?php next_post_link( '%link', '%title <span class="meta-nav icomoon-double-angle-right icomoon"></span>' ); ?></li>
@@ -2370,7 +2373,7 @@ if ( ! function_exists( 't_em_comments_pagination' ) ) :
 function t_em_comments_pagination(){
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
-	<nav id="comments-navigation" class="comments-pagination navi" role="navigation">
+	<nav id="comments-navigation" class="navi" role="navigation">
 		<ul>
 			<li class="previous"><?php previous_comments_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older Comments', 't_em' ) ); ?></li>
 			<li class="next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>

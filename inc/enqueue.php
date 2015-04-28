@@ -53,12 +53,10 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Register Tab Twitter Bootstrap Plugins when needed
-	if ( is_page_template( 'page-templates/template-tour.php' ) ) :
+	if ( is_page_template( 'page-templates/template-tabbable-content.php' ) ) :
 		t_em_register_bootstrap_plugin( 'tab.js' );
-		wp_register_script( 'script-tourable', T_EM_THEME_DIR_JS_URL . '/script.tourable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-		wp_enqueue_script( 'script-tourable' );
-		wp_register_style( 'bootstrap-tabs', T_EM_THEME_DIR_CSS_URL . '/style-bs-tabs.css', array(), $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'bootstrap-tabs' );
+		wp_register_script( 'script-tabbable', T_EM_THEME_DIR_JS_URL . '/script.tabbable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_enqueue_script( 'script-tabbable' );
 	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
@@ -88,7 +86,7 @@ function t_em_bootstrapped_head(){
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
 	echo '<link rel="stylesheet/less" type="text/css" href="'. T_EM_THEME_DIR_CSS_URL .'/bootstrap/bootstrap.min.less">'."\n";
 }
-add_action( 'wp_head', 't_em_bootstrapped_head', 15 );
+// add_action( 'wp_head', 't_em_bootstrapped_head', 15 );
 
 /**
  * Enqueue LESS Style for the theme

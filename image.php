@@ -76,7 +76,7 @@ get_header(); ?>
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 
-					<div id="attachment-navigation" class="attachment-pagination navi">
+					<div id="attachment-navigation" class="navi">
 						<ul>
 							<li class="previous"><?php previous_image_link( false ); ?></li>
 							<li class="next"><?php next_image_link( false ); ?></li>

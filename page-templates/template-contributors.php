@@ -43,7 +43,7 @@ get_header(); ?>
 						continue;
 ?>
 				<div id="contributor-<?php echo get_the_author_meta( 'user_login', $contributor ); ?>" class="author-info contributor media">
-					<div class="pull-left media-object contributor-avatar">
+					<div class="media-left media-object contributor-avatar">
 					<?php t_em_get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?>
 					</div>
 					<div class="media-body">

@@ -1,0 +1,200 @@
+/**
+ * Twenty'em LESS Variables and Mixins.
+ *
+ * @file			style.less
+ * @package			WordPress
+ * @subpackage		Twenty'em
+ * @author			RogerTM
+ * @copyright		2012
+ * @license			license.txt
+ * @version			0.1
+ * @filesource		wp-content/themes/twenty-em/css/style-scheme.less
+ * @link			http://lesscss.org
+ * @since			Twenty'em 1.0
+ */
+
+/** Import Bootstrap Less */
+@import "bootstrap/bootstrap.min.less";
+@import "icomoon.less";
+
+/* =Variables
+------------------------------------------------------------------------------------------------- */
+/** Global values */
+
+// Iconography
+@icon-size-xs:			@font-size-base;
+@icon-size-sm:			floor((@icon-size-xs * 2));
+@icon-size-md:			floor((@icon-size-sm * 2));
+@icon-size-lg:			floor((@icon-size-md * 2));
+@icon-size-hg:			floor((@icon-size-lg * 2));
+
+// Buttons
+@btn-inverse-color:		#fff;
+@btn-inverse-bg:		@gray-dark;
+@btn-inverse-border:	darken(@btn-inverse-bg, 5%);
+
+// Avatar Sizes
+@avatar-size-xs:		16px;
+@avatar-size-sm:		floor((@avatar-size-xs * 2));
+@avatar-size-md:		floor((@avatar-size-sm * 2));
+@avatar-size-lg:		floor((@avatar-size-md * 2));
+@avatar-size-hg:		floor((@avatar-size-lg * 2));
+
+// Jumbotron button padding
+@jumbotron-btn-vertical-padding:	14px;
+@jumbotron-btn-horizontal-padding:	24px;
+
+// Navbar
+@sub-menu-width:		180px;
+
+// Images
+@image-padding:			15px;
+@image-margin:			15px;
+
+/* =Component Mixins
+------------------------------------------------------------------------------------------------- */
+// Heading
+.widget-header{
+	padding-bottom: ((@line-height-computed / 2) - 2);
+	margin: @line-height-computed 0 (@line-height-computed / 2);
+	border-bottom: 1px solid @page-header-border-color;
+}
+
+// Buttons
+// Brings back to you the old .btn-inverse from Bootstrap 2.3.2 :)
+.btn-inverse {
+	.button-variant(@btn-inverse-color; @btn-inverse-bg; @btn-inverse-border);
+}
+.btn-block + .btn-block{
+	margin-top: 5px;
+}
+
+// Iconography
+.icomoon{
+	.icon-xs{
+		font-size: @icon-size-xs;
+		margin: 0 3px 3px;
+	}
+	.icon-sm{
+		font-size: @icon-size-sm;
+		margin: 0 5px 5px;
+	}
+	.icon-md{
+		font-size: @icon-size-md;
+		margin: 0 8px 8px;
+	}
+	.icon-lg{
+		font-size: @icon-size-lg;
+		margin: 0 10px 10px;
+	}
+	.icon-hg{
+		font-size: @icon-size-hg;
+		margin: 0 15px 15px;
+	}
+}
+
+/* =Navbars
+------------------------------------------------------------------------------------------------- */
+// Sub menu commons. Starts in ul.sub-menu
+.nav-sub-menu{
+	li{
+		> a{
+			line-height: @line-height-base;
+			padding: @padding-base-vertical @padding-base-horizontal;
+			display: block;
+			&:hover,
+			&:focus{
+				text-decoration: none;
+			}
+		}
+	}
+	// Small devices (tablets, 768px and up)
+	@media (min-width: @screen-sm-min){
+		ul{
+			left: 100%;
+			top: auto;
+			// Calculate the height of the parent item
+			margin-top: -( @line-height-base + @padding-base-vertical + @font-size-base ) * 1.75 !important;
+		}
+		position: absolute;
+		font-size: @font-size-base;
+		top: 50px;
+		left: 0;
+		z-index: @zindex-dropdown;
+		float: left;
+		min-width: @sub-menu-width;
+		padding: 5px 0;
+		margin: 0; // override default ul
+		list-style: none;
+		font-size: @font-size-base;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
+		.box-shadow(0 6px 12px rgba(0,0,0,.175));
+		background-clip: padding-box;
+	}
+	// Extra small devices (phones, less than 768px)
+	@media (max-width: @screen-xs-max){
+		display: block;
+		margin-top: auto;
+		padding-top: 0;
+		position: inherit;
+		top: 0;
+		width: 100%;
+		border: 0;
+		box-shadow: none;
+		li{
+			a{
+				width: 100%;
+				padding-left: 30px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				line-height: 20px;
+			}
+		}
+	}
+}
+// .default-sub-menu and .inverse-sub-menu start in ul.sub-menu
+.default-sub-menu{
+	.nav-sub-menu;
+	background-color: #fff;
+	border: solid 1px @gray-lighter;
+	color: @gray-light;
+	.current-menu-item{
+		> a{
+			&:hover,
+			&:focus{
+				background-color: @gray-lighter;
+				color: @gray-dark;
+			}
+		}
+	}
+	@media (max-width: @screen-xs-max){
+		li{
+			> a{
+				color: @navbar-default-link-color;
+				background-color: @navbar-default-bg;
+				&:hover{
+					color: @navbar-default-link-hover-color;
+				}
+			}
+		}
+	}
+}
+.inverse-sub-menu{
+	.nav-sub-menu;
+	background-color: @navbar-inverse-bg;
+	border: solid 1px @navbar-inverse-border;
+	li{
+		> a{
+			color: @gray-light;
+		}
+	}
+	.current-menu-item{
+		> a{
+			&:hover,
+			&:focus{
+				background-color: #000;
+				color: #fff;
+			}
+		}
+	}
+}
