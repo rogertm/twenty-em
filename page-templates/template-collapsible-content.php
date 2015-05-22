@@ -19,7 +19,7 @@ get_header(); ?>
 		<section id="main-content" class="<?php echo t_em_add_bootstrap_class( 'main-content' ); ?>">
 			<section id="content" role="main" class="<?php echo t_em_add_bootstrap_class('content'); ?>">
 				<?php t_em_action_content_before(); ?>
-				<div id="collapsible-<?php echo get_the_ID(); ?>" class="custom-template custom-template-collapsible-content">
+				<div id="collapsible-<?php echo get_the_ID(); ?>" class="custom-template custom-template-collapsible-content" role="tablist">
 <?php
 	// Display all child pages of the current page.
 	$args = array(

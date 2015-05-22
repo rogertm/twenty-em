@@ -470,6 +470,34 @@ img{
 #you-are-here{
 	.clearfix;
 }
+// Shortcodes
+.columns{
+	margin-bottom: (@line-height-computed / 2);
+	&.cols-2{
+		.columns(2);
+	}
+	&.cols-3{
+		.columns(3);
+	}
+	&.cols-4{
+		.columns(4);
+	}
+	&.cols-5{
+		.columns(5);
+	}
+	&.cols-6{
+		.columns(6);
+	}
+}
+.well{
+	p:last-child{
+		margin-bottom: 0;
+	}
+}
+.btn-group{
+	margin-top: (@line-height-computed / 2);
+	margin-bottom: (@line-height-computed / 2);
+}
 
 /* =Comments
 ------------------------------------------------------------------------------------------------- */

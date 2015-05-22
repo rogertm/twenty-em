@@ -65,7 +65,6 @@ get_header(); ?>
 				</header>
 				<div class="entry-content">
 					<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
-					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 				</div><!-- .entry-content -->
 				<footer class="entry-utility">
 					<?php t_em_posted_in() ?>

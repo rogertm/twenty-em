@@ -32,16 +32,6 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<?php the_content(); ?>
-				<?php
-					wp_link_pages( array(
-						'before'		=> '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 't_em' ) . '</span>',
-						'after'			=> '</div>',
-						'link_before'	=> '<span>',
-						'link_after'	=> '</span>',
-						'pagelink'		=> '<span class="sr-only">' . __( 'Page', 't_em' ) . ' </span>%',
-						'separator'		=> '<span class="sr-only">, </span>',
-					) );
-				?>
 			</div><!-- .entry-content -->
 
 			<?php t_em_action_post_content_after(); ?>

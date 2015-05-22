@@ -565,6 +565,31 @@ function t_em_custom_excerpt_more( $output ) {
 endif; // function t_em_custom_excerpt_more()
 add_filter( 'get_the_excerpt', 't_em_custom_excerpt_more' );
 
+if ( ! function_exists( 't_em_single_link_pages' ) ) :
+/**
+ * Displays page-links for paginated posts (When include the <!--nextpage--> quicktag one or more
+ * times ).
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_single_link_pages( $content ){
+	$args = array(
+		'before'		=> '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 't_em' ) . '</span>',
+		'after'			=> '</div>',
+		'link_before'	=> '<span>',
+		'link_after'	=> '</span>',
+		'pagelink'		=> '<span class="sr-only">' . __( 'Page', 't_em' ) . ' </span>%',
+		'separator'		=> '<span class="sr-only">, </span>',
+		'echo'			=> 0,
+	);
+
+	$content = $content . wp_link_pages( $args );
+
+	return apply_filters( 't_em_filter_single_link_pages', $content );
+}
+endif; // function t_em_single_link_pages()
+add_filter( 'the_content', 't_em_single_link_pages' );
+
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  * This function is attached to the widgets_init hook.
@@ -1718,16 +1743,6 @@ function t_em_post_archive_set(){
 ?>
 			<div class="entry-content">
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
-				<?php
-					wp_link_pages( array(
-						'before'		=> '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 't_em' ) . '</span>',
-						'after'			=> '</div>',
-						'link_before'	=> '<span>',
-						'link_after'	=> '</span>',
-						'pagelink'		=> '<span class="sr-only">' . __( 'Page', 't_em' ) . ' </span>%',
-						'separator'		=> '<span class="sr-only">, </span>',
-					) );
-				?>
 			</div><!-- .entry-content -->
 <?php
 	endif;
@@ -2052,7 +2067,6 @@ function t_em_jawp_front_page(){
 					</header>
 					<div class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 't_em' ), 'after' => '</div>' ) ); ?>
 						<?php t_em_edit_post_link(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-## -->
