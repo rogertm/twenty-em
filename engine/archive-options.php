@@ -26,17 +26,17 @@
  *
  * @since Twenty'em 0.1
  */
-function t_em_archive_options(){
+function t_em_archive_options( $archive_options = '' ){
 	$archive_options = array(
 		'the-content' => array(
 			'value' => 'the-content',
 			'label' => __( 'Display the content', 't_em' ),
-			'extend' => '',
+			'callback' => __( '<p>The whole content of each post</p>', 't_em' ),
 		),
 		'the-excerpt' => array(
 			'value' => 'the-excerpt',
 			'label' => __( 'Display the excerpt', 't_em' ),
-			'extend' => t_em_excerpt_callback(),
+			'callback' => t_em_excerpt_callback(),
 		),
 	);
 
@@ -46,7 +46,7 @@ function t_em_archive_options(){
 /**
  * Returns an array of our archive excerpt options.
  */
-function t_em_excerpt_options(){
+function t_em_excerpt_options( $excerpt_options = '' ){
 	$excerpt_options = array(
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
@@ -71,7 +71,7 @@ function t_em_excerpt_options(){
 /**
  * Returns an array of our archive columns options.
  */
-function t_em_archive_in_columns(){
+function t_em_archive_in_columns( $archive_in_columns = '' ){
 	$archive_in_columns = array(
 		'1'	=> array(
 			'value'	=> 1,
@@ -131,33 +131,40 @@ function t_em_excerpt_callback(){
 	global $t_em;
 
 	$extend_excerpt = '';
-	$extend_excerpt .= '<div class="layout text-option excerpt-length">';
-	$extend_excerpt .=		'<label>';
-	$extend_excerpt .=			'<p>'. sprintf( __( 'The amount of words displayed in the excerpt. If empty, the default value will be <code>%1$s</code> words.', 't_em' ), '55' ) .'</p>';
-	$extend_excerpt .=			'<input type="number" name="t_em_theme_options[excerpt_length]" value="'.$t_em['excerpt_length'].'" />';
-	$extend_excerpt .=		'</label>';
+	$extend_excerpt .= '<div class="sub-extend option-group">';
+	$extend_excerpt .= 		'<header>'. __( 'Excerpt Length' ) .'</header>';
+	$extend_excerpt .= 		'<div class="layout text-option excerpt-length">';
+	$extend_excerpt .=				'<label>';
+	$extend_excerpt .=					'<p>'. sprintf( __( 'The amount of words displayed in the excerpt. If empty, the default value will be <code>%1$s</code> words.', 't_em' ), '55' ) .'</p>';
+	$extend_excerpt .=					'<input type="number" name="t_em_theme_options[excerpt_length]" value="'.$t_em['excerpt_length'].'" />';
+	$extend_excerpt .=				'</label>';
+	$extend_excerpt .= 		'</div>';
 	$extend_excerpt .= '</div>';
 
-	$extend_excerpt .= '<div class="image-radio-option-group">';
+	$extend_excerpt .= '<div class="sub-extend option-group">';
+	$extend_excerpt .= 		'<header>'. __( 'Thumbnail Alignment', 't_em' ) .'</header>';
+	$extend_excerpt .= 		'<div class="image-radio-option-group">';
 	foreach ( t_em_excerpt_options() as $excerpt ) :
-		$checked_option = checked( $t_em['excerpt_set'], $excerpt['value'], false );
-		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt">';
+		$active_option = ( $t_em['excerpt_set'] == $excerpt['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt '. $active_option .'">';
 		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[excerpt_set]" value="'.esc_attr( $excerpt['value'] ).'" '.$checked_option.' />';
+		$extend_excerpt .=			'<input class="input-image-radio-option" type="radio" name="t_em_theme_options[excerpt_set]" value="'.esc_attr( $excerpt['value'] ).'" '. checked( $t_em['excerpt_set'], $excerpt['value'], false ) .' />';
 		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" alt="" /><p>'.$excerpt['label'].'</p></span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;
+	$extend_excerpt .= 		'</div>';
 	$extend_excerpt .= '</div>';
 
-	$extend_excerpt .= '<div class="sub-extend">';
+	$extend_excerpt .= '<div class="sub-extend option-group">';
 	$thumb = t_em_thumbnail_sizes( 'excerpt' );
-	$extend_excerpt .= '<p>'. sprintf( __( 'Set thumbnail <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default thumbnail sizes (<code>%2$s</code> x <code>%3$s</code>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
+	$extend_excerpt .= 		'<header>'. __( 'Thumbnail Dimensions', 't_em' ) .'</header>';
+	$extend_excerpt .= 		'<p>'. sprintf( __( 'Set thumbnail <strong>width</strong> and <strong>height</strong> in pixels. If empty, will be used the default thumbnail sizes (<code>%2$s</code> x <code>%3$s</code>) set at your <a href="%1$s" target="_blank">Media Settings</a> options.', 't_em' ),
 		admin_url( 'options-media.php' ),
 		get_option( 'thumbnail_size_w' ),
 		get_option( 'thumbnail_size_h' ) ) .'</p>';
 	foreach ( $thumb as $thumbnail ) :
-		$extend_excerpt .= 		'<div class="layout text-option thumbnail">';
+		$extend_excerpt .= 		'<div class="layout text-option thumbnail option-single">';
 		$extend_excerpt .=			'<label><span>'. $thumbnail['label'] .'</span>';
 		$extend_excerpt .=				'<input type="number" name="t_em_theme_options['.$thumbnail['name'].']" value="'.esc_attr( $t_em[$thumbnail['name']] ).'" /><span class="unit">px</span>';
 		$extend_excerpt .=			'</label>';
@@ -165,11 +172,12 @@ function t_em_excerpt_callback(){
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
 
-	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
-	$extend_excerpt .=	'<p>'. __( 'Break Loop in columns (It may affect the thumbnail size)', 't_em' ) .'</p>';
+	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group option-group">';
+	$extend_excerpt .= 		'<header>'. __( 'Columns', 't_em' ) .'</header>';
+	$extend_excerpt .=		'<p>'. __( 'Break Loop in columns (It may affect the thumbnail size)', 't_em' ) .'</p>';
 	foreach ( t_em_archive_in_columns() as $columns ) :
 		$checked_option = checked( $t_em['archive_in_columns'], $columns['value'], false );
-		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns">';
+		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-in-columns option-single">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_in_columns]" value="'. esc_attr( $columns['value'] ) .'" '. $checked_option .'>';
 		$extend_excerpt .=			'<span>'. $columns['label'] .'</span>';
@@ -184,7 +192,7 @@ function t_em_excerpt_callback(){
 /**
  * Archive Pagination Options
  */
-function t_em_archive_pagination_options(){
+function t_em_archive_pagination_options( $archive_pagination = '' ){
 	$archive_pagination = array(
 		'prev-next'	=> array(
 			'value'	=> 'prev-next',
@@ -212,11 +220,11 @@ function t_em_settings_archive_pagination(){
 	global $t_em;
 
 	$extend_excerpt = '';
-	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group">';
-	$extend_excerpt .=	'<p>'. __( 'Archive Pagination', 't_em' ) .'</p>';
+	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group option-group">';
+	$extend_excerpt .=	'<header>'. __( 'Archive Pagination', 't_em' ) .'</header>';
 	foreach ( t_em_archive_pagination_options() as $pagination ) :
 		$checked_option = checked( $t_em['archive_pagination_set'], $pagination['value'], false );
-		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination">';
+		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination option-single">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination_set]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
 		$extend_excerpt .=			'<span>'. $pagination['label'] .'</span>';
@@ -225,8 +233,9 @@ function t_em_settings_archive_pagination(){
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
 
-	return $extend_excerpt;
+	echo $extend_excerpt;
 }
+add_action( 't_em_admin_action_archive_options_after', 't_em_settings_archive_pagination' );
 
 /**
  * Render the Archive setting field in admin panel.
@@ -240,35 +249,41 @@ function t_em_settings_archive_pagination(){
 function t_em_settings_field_archive_set(){
 	global $t_em;
 ?>
-	<div id="archive-options">
+	<div id="archive-options" class="tabs">
+		<?php do_action( 't_em_admin_action_archive_options_before' ); ?>
+		<ul>
 <?php
 	foreach ( t_em_archive_options() as $archive ) :
+		$active_option = ( $t_em['archive_set'] == $archive['value'] ) ? 'ui-tabs-active' : '';
 ?>
-		<div class="layout radio-option archive">
-			<label class="description">
+		<li class="<?php echo $active_option ?>">
+			<a href="#<?php echo $archive['value'] ?>" class="tab-heading">
 				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em['archive_set'], $archive['value'] ); ?> />
-				<span><?php echo $archive['label']; ?></span>
-			</label>
-		</div>
+				<?php echo $archive['label']; ?>
+			</a>
+		</li>
 <?php
 	endforeach;
-
-	/* If our 'extend' key brings something, then we display our callback function.
+?>
+		</ul>
+<?php
+	/* If our 'callback' key brings something, then we display our callback function.
 	 * Let's go for the_excerpt().
 	 */
 	foreach ( t_em_archive_options() as $sub_archive ) :
-		if ( $sub_archive['extend'] != '' ) :
+		if ( $sub_archive['callback'] != '' ) :
 		$selected_option = ( $t_em['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
-			<?php echo $sub_archive['extend']; ?>
+			<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_before' ); ?>
+			<?php echo $sub_archive['callback']; ?>
+			<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_after' ); ?>
 		</div>
 <?php
 		endif;
 	endforeach;
-
-	echo t_em_settings_archive_pagination();
 ?>
+		<?php do_action( 't_em_admin_action_archive_options_after' ); ?>
 	</div><!-- #archive-options -->
 <?php
 }

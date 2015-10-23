@@ -22,11 +22,11 @@
  *
  * @since Twenty'em 0.1
  */
-function t_em_general_options(){
+function t_em_general_options( $general_options = '' ){
 	$general_options = array(
 		't_em_link'				=> array(
 			'name'			=> 't_em_link',
-			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">%2$s</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), T_EM_SITE, T_EM_FRAMEWORK_NAME ),
+			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">%2$s</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), T_EM_SITE .'/?page-request=home&amp;ver='.T_EM_FRAMEWORK_VERSION, T_EM_FRAMEWORK_NAME ),
 			'sublabel'		=> '',
 		),
 		'single_featured_img'	=> array(
@@ -53,6 +53,11 @@ function t_em_general_options(){
 			'name'			=> 'single_page_comments',
 			'label'			=> __( 'Enable comments in single pages', 't_em' ),
 			'sublabel'		=> sprintf( __( 'If true, be sure to <a href="%1$s">allow people to post comments on new articles</a>.', 't_em' ), admin_url( 'options-discussion.php#default_comment_status' ) ),
+		),
+		'shortcode_buttoms'		=> array(
+			'name'			=> 'shortcode_buttoms',
+			'label'			=> __( 'Enable shortcodes buttons', 't_em' ),
+			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor' ),
 		),
 		'custom_avatar'		=> array(
 			'name'			=> 'custom_avatar',
@@ -144,6 +149,7 @@ function t_em_general_options_favicon(){
 	</div>
 <?php
 }
+add_action( 't_em_admin_action_general_options_after', 't_em_general_options_favicon' );
 
 /**
  * Render the General Options setting field in admin panel.
@@ -159,19 +165,20 @@ function t_em_settings_field_general_options_set(){
 ?>
 	<div id="general-options">
 <?php
+	do_action( 't_em_admin_action_general_options_before' );
 	foreach( t_em_general_options() as $general ) :
 ?>
 		<div class="layout checkbox-option general">
 			<label class="description single-option">
-				<span><?php echo $general['label']; ?></span>
 				<?php $checked_option = checked( $t_em[$general['name']], '1', false ); ?>
-				<input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
-				<p><span><?php echo $general['sublabel'] ?></span></p>
+				<p><input type="checkbox" name="t_em_theme_options[<?php echo $general['name'] ?>]" value="1" <?php echo $checked_option; ?> >
+				<?php echo $general['label']; ?></p>
+				<p class="description"><?php echo $general['sublabel'] ?></p>
 			</label>
 		</div>
 <?php
 	endforeach;
-	t_em_general_options_favicon();
+	do_action( 't_em_admin_action_general_options_after' );
 ?>
 	</div><!-- #general-options -->
 <?php

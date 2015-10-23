@@ -23,7 +23,7 @@
  *
  * @since Twenty'em 0.1
  */
-function t_em_social_network_options(){
+function t_em_social_network_options( $socialnetwork_options = '' ){
 	$socialnetwork_options = array(
 		'twitter_set' => array(
 			'value' => '',
@@ -216,15 +216,26 @@ function t_em_social_network_options(){
  */
 function t_em_settings_field_socialnetwork_set(){
 	global $t_em;
+?>
+	<div id="social-network-options">
+		<?php do_action( 't_em_admin_action_social_network_options_before' ); ?>
+		<div class="sub-extend option-group">
+			<header><?php _e( 'Social Links', 't_em' ); ?></header>
+<?php
 	foreach ( t_em_social_network_options() as $social ) :
 ?>
-	<div id="social-network-options" class="layout text-option social">
-		<label>
-			<span><?php echo $social['label'];?></span>
-			<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em[$social['name']] ); ?>" />
-		</label>
-	</div>
+		<div id="social-network-options" class="layout text-option social option-single">
+			<label>
+				<span><?php echo $social['label'];?></span>
+				<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em[$social['name']] ); ?>" />
+			</label>
+		</div>
 <?php
-	endforeach;
+		endforeach;
+?>
+		</div>
+		<?php do_action( 't_em_admin_action_social_network_options_after' ); ?>
+	</div><!-- #social-network-options -->
+<?php
 }
 ?>

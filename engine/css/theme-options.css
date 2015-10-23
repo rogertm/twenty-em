@@ -23,28 +23,28 @@
 #t-em-setting th,
 #t-em-setting td{
 	display: block;
-	width: 99%;
+	width: auto;
 	overflow: hidden;
 }
 #t-em-setting td{
 	border-right: solid 1px;
 	border-bottom: solid 1px;
 	border-left: solid 1px;
-	border-color: #ddd;
-	padding: 8px 0 8px 10px !important;
+	border-color: #dfdfdf;
+	background: #fff;
+	padding: 10px 10px 11px 14px;
 	border-radius: 0 0 3px 3px;
 }
 #t-em-setting th{
-	background: #f9f9f9; /* Show a solid color for older browsers */
-	background: -moz-linear-gradient(center top, #f9f9f9, #ececec);
-	background: -o-linear-gradient(top, #f9f9f9, #ececec);
-	background: -webkit-gradient(linear, center top, from(#f9f9f9), to(#ececec)); /* older webkit syntax */
-	background: -webkit-linear-gradient(top, #f9f9f9, #ececec);
-	border:solid 1px #ddd;
+	background: #f5f5f5;
+	border:solid 1px #dfdfdf;
 	font-size: 1em;
-	padding: 7px 0 7px 10px;
+	padding: 10px 10px 11px 14px;
 	cursor: pointer;
 	border-radius: 3px;
+}
+#t-em-setting th:hover{
+	border-color: #999;
 }
 #t-em-setting .empty-option{
 	height: .5em;
@@ -89,18 +89,15 @@
 }
 #t-em-setting .sub-extend{
 	clear: both;
-	margin: 10px 0 0;
+	/*margin: 10px 0 0;*/
 	overflow: hidden;
 }
 #t-em-setting .text-option.thumbnail{
 	display: inline-block;
 	margin-right: 15px;
 }
-#t-em-setting .selected-option{
-	display: block !important;
-}
 #t-em-setting figure{
-	margin: 0;
+	margin: 10px 0;
 }
 #t-em-setting .social{
 	display: inline-block;
@@ -119,7 +116,166 @@
 	float: left;
 	margin: 0 2% 30px 0;
 }
+
+/**************************************************************************************************/
+.ui-accordion .ui-accordion-header {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	margin-top: 2px;
+	padding: .5em .5em .5em .7em;
+	min-height: 0;
+}
+.ui-accordion .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-noicons {
+	padding-left: .7em;
+}
+.ui-accordion .ui-accordion-icons .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	position: absolute;
+	left: .5em;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-accordion .ui-accordion-content {
+	padding: 1em 2.2em;
+	border-top: 0;
+	overflow: auto;
+}
+
+.ui-tabs {
+	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	padding: .2em;
+}
+.ui-tabs .ui-tabs-nav {
+	margin: 0;
+	padding: .2em .2em 0;
+	border-bottom: solid 3px #dfdfdf;
+	overflow: hidden;
+}
+.ui-tabs .ui-tabs-nav li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .2em -1px 0;
+	background: #f5f5f5;
+	padding: 0;
+	white-space: nowrap;
+	border-top: 3px solid #fff;
+}
+.ui-tabs .ui-tabs-nav li:hover{
+	border-top: 3px solid #dfdfdf;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	background: #dfdfdf;
+	border-top: 3px solid #0073AA;
+}
+.ui-tabs .ui-tabs-nav li .ui-tabs-anchor:before{
+	font-family: "dashicons";
+	content: "\f147";
+	font-size: 0.8em;
+	line-height: 1em;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	border: solid 2px #dfdfdf;
+	color: #f5f5f5;
+	border-radius: 3px;
+	background: #fff;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor:before{
+	font-family: "dashicons";
+	content: "\f147";
+	border: solid 2px #0073AA;
+	color: #0073AA;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	float: left;
+	padding: .8em 1.5em;
+	text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+	cursor: text;
+}
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+	cursor: pointer;
+}
+.ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em 0;
+	background: none;
+}
+
+/**
+ * New setting
+ */
+
+#t-em-setting .panel-body *{
+	transition: all 250ms ease 0s;
+}
+
+#t-em-setting .alert{
+	border-left: 4px solid;
+	padding: 10px;
+	margin-bottom: 15px;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	background: none repeat scroll 0% 0% #f7f7f7;
+}
+#t-em-setting .alert-notice{
+	border-left-color: #7AD03A;
+}
+#t-em-setting .alert-critical{
+	border-left-color: #DD3D36;
+}
+#t-em-setting .option-group header{
+	font-weight: bold;
+}
+#t-em-setting .option-group:not(:last-child){
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+#t-em-setting #widgets-front-page .option-group:last-child,
+#t-em-setting #the-excerpt .option-group:last-child{
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+#t-em-setting .head-radio-option,
+#t-em-setting .input-image-radio-option{
+	display: none;
+}
+#t-em-setting .radio-image img{
+	padding: 3px;
+	border: 3px solid #f7f7f7;
+	border-radius: 3px;
+}
+#t-em-setting .radio-image:hover img{
+	border-color: #dfdfdf;
+}
+#t-em-setting .radio-image:active img,
+#t-em-setting .radio-image-active:hover img,
+#t-em-setting .radio-image-active img{
+	border-color: #0073AA;
+}
+#t-em-setting #widgets-front-page{
+	-webkit-columns: 2;
+	   -moz-columns: 2;
+	        columns: 2;
+}
 #t-em-setting .headline{
-	max-width: 99% !important;
-	height: 30px;
+	padding: 3px 8px;
+	font-size: 1.3em;
+	line-height: 100%;
+	height: 1.7em;
+	outline: 0px none;
+	width: 99%;
 }

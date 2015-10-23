@@ -26,7 +26,7 @@ function t_em_theme_options_help(){
 	$screen = get_current_screen();
 
 	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
-					T_EM_SITE,
+					T_EM_SITE .'/?page-request=home&amp;ver='.T_EM_FRAMEWORK_VERSION,
 					T_EM_FRAMEWORK_NAME,
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
@@ -37,7 +37,7 @@ function t_em_theme_options_help(){
 				'<li>' . sprintf( __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: <code>%1$spx</code>.', 't_em' ),
 						 T_EM_LAYOUT_WIDTH_DEFAULT_VALUE ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) .
+				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 			'</ul>' .
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
@@ -58,6 +58,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-discussion.php#page_comments' ) ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Enable comments in single pages</strong>: This option lets you allow comments in single pages. If true, the option <a href="%1$s">Allow people to post comments on new articles</a> in <strong>Default article settings</strong> must be true too.', 't_em' ),
 								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
+						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes allways will be enable', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Custom avatar</strong>: Add custom avatar option to users edit screen', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s">Upload</a> and/or select from your <a href="%2$s">Media Library</a> a favicon to your site.', 't_em' ),
 								 admin_url( 'media-new.php' ),
@@ -75,7 +76,7 @@ function t_em_theme_options_help(){
 					'<ul>' .
 						'<li>' . __( '<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline.', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s">Header Settings</a> to customize this section. In addition you may active the checkbox "<strong>Display featured image in single posts and pages</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
-								 admin_url( 'themes.php?page=custom-header' ) ) . '</li>' .
+								 admin_url( 'customize.php?autofocus[control]=header_image' ) ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
@@ -112,7 +113,7 @@ function t_em_theme_options_help(){
 						'<li>' . __( '<strong>The Content</strong>: If you are running <em>Just another WordPress Blog</em>, this could be a great option, showing the whole content of your posts when an archive is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your posts, also let you manage some other options, like excerpt length, thumbnail alignment and thumbnail Width and Height.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Archive Pagination</strong>: Two ways to display your pagination. Simple: <code>Older</code> and <code>Newer</code> posts links. Or Paginated: list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 &hellip; 9 Older &raquo;</code>', 't_em' ) . '</li>' .
-					'<ul>';
+					'</ul>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Archive Options', 't_em' ),
@@ -161,7 +162,7 @@ function t_em_theme_options_help(){
 						'<li>' . sprintf( __( '<strong>Version</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Status</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION_STATUS ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Data Base Version</strong>: <code>%s</code>', 't_em' ), T_EM_DB_VERSION ) . '</li>' .
-					'<ul>';
+					'</ul>';
 
 	$screen->add_help_tab( array(
 		'title' => __( 'Little Debug Info', 't_em' ),
@@ -200,10 +201,14 @@ function t_em_theme_backup_help(){
  */
 function t_em_theme_sidebar_help(){
 	$help_sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Visit %2$s home page</a><br />', 't_em' ),
-						T_EM_SITE, T_EM_FRAMEWORK_NAME ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_THEME_DIR_URL . '/license.txt' ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_SITE . '/docs' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s">Visit %2$s home page</a>', 't_em' ),
+						T_EM_SITE .'/?page-request=home&amp;ver=' . T_EM_FRAMEWORK_VERSION, T_EM_FRAMEWORK_NAME ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_SITE . '/?page-request=license&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_SITE . '/?page-request=docs&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Change Log</a>', 't_em' ), T_EM_SITE . '/?page-request=log&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">News</a>', 't_em' ), T_EM_SITE . '/?page-request=blog&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Feedback</a>', 't_em' ), T_EM_SITE . '/?page-request=contact&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Share your Testimony</a>', 't_em' ), T_EM_SITE . '/?page-request=testimonials&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>';
 
 	return $help_sidebar;
 }

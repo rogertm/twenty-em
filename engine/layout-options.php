@@ -26,7 +26,7 @@
  *
  * @since Twenty'em 0.1
  */
-function t_em_layout_options(){
+function t_em_layout_options( $layout_options = '' ){
 	$layout_options = array(
 		'two-column-content-left' => array(
 			'value' => 'two-column-content-left',
@@ -66,7 +66,7 @@ function t_em_layout_options(){
 /**
  * Footer Widgets Options
  */
-function t_em_footer_options(){
+function t_em_footer_options( $footer_options = '' ){
 	$footer_options = array(
 		'four-footer-widget' => array(
 			'value' => 'four-footer-widget',
@@ -110,17 +110,19 @@ function t_em_layout_width(){
 	global $t_em;
 
 	$layout_width = '';
-	$layout_width .= '<div class="sub-extend">';
+	$layout_width .= '<div class="sub-extend option-group">';
+	$layout_width .= 	'<header>'. __( 'Layout Width', 't_em' ) .'</header>';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
 	$layout_width .= 		'<span>'. sprintf( __( 'Enter the value you wish to be your site width. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>.', 't_em' ), T_EM_LAYOUT_WIDTH_DEFAULT_VALUE, T_EM_LAYOUT_WIDTH_MAX_VALUE, T_EM_LAYOUT_WIDTH_MIN_VALUE ) .'</span>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em['layout_width'].'" /><span class="unit">px</span>';
+	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em['layout_width'].'" max="'. T_EM_LAYOUT_WIDTH_MAX_VALUE .'" min="'. T_EM_LAYOUT_WIDTH_MIN_VALUE .'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
 
-	return $layout_width;
+	echo $layout_width;
 }
+add_action( 't_em_admin_action_layout_options_after', 't_em_layout_width' );
 
 /**
  * Render the Layout setting field in admin panel.
@@ -137,37 +139,47 @@ function t_em_layout_width(){
 function t_em_settings_field_layout_set(){
 	global $t_em;
 ?>
-<div class="image-radio-option-group">
-<p><strong><?php _e( 'Main Layout Setting', 't_em' ); ?></strong></p>
+	<div id="layout-options">
+		<?php do_action( 't_em_admin_action_layout_options_before' ); ?>
+		<div class="sub-extend option-group">
+			<header><?php _e( 'Main Layout Setting', 't_em' ); ?></header>
+			<div class="image-radio-option-group">
 <?php
-	foreach ( t_em_layout_options() as $layout ) :
+			foreach ( t_em_layout_options() as $layout ) :
+				$active_option = ( $t_em['layout_set'] == $layout['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 ?>
-	<div class="layout image-radio-option theme-layout">
-		<label class="description">
-			<input type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em['layout_set'], $layout['value'] ); ?> />
-			<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
-		</label>
-	</div>
+				<div class="layout image-radio-option theme-layout <?php echo $active_option ?>">
+					<label class="description">
+						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em['layout_set'], $layout['value'] ); ?> />
+						<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
+					</label>
+				</div>
 <?php
-	endforeach;
+			endforeach;
 ?>
-</div>
-<div class="image-radio-option-group">
-<p><strong><?php _e( 'Footer Widgets Area Setting', 't_em' ); ?></strong></p>
+			</div>
+		</div>
+
+		<div class="sub-extend option-group">
+			<header><?php _e( 'Footer Widgets Area Setting', 't_em' ); ?></header>
+			<div class="image-radio-option-group">
 <?php
-	foreach ( t_em_footer_options() as $footer ) :
+			foreach ( t_em_footer_options() as $footer ) :
+				$active_option = ( $t_em['footer_set'] == $footer['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 ?>
-	<div class="footer image-radio-option theme-footer">
-		<label class="description">
-			<input type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em['footer_set'], $footer['value'] ); ?> />
-			<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
-		</label>
-	</div>
+				<div class="footer image-radio-option theme-footer <?php echo $active_option ?>">
+					<label class="description">
+						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em['footer_set'], $footer['value'] ); ?> />
+						<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
+					</label>
+				</div>
 <?php
-	endforeach;
+			endforeach;
 ?>
-</div>
+			</div>
+		</div>
+		<?php do_action( 't_em_admin_action_layout_options_after' ); ?>
+	</div><!-- #layout-options -->
 <?php
-	echo t_em_layout_width();
 }
 ?>

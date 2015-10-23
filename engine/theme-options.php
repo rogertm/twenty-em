@@ -40,16 +40,19 @@ require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
  * @since Twenty'em 0.1
  */
 function t_em_admin_styles_and_scripts(){
-	// Check the theme version right from the style sheet
-	global $t_em_theme_data;
-	wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
-	wp_enqueue_style( 'style-admin-t-em' );
-	wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-	wp_enqueue_script( 'script-admin-t-em' );
+	$screen = get_current_screen();
+	if ( $screen->id == 'toplevel_page_twenty-em-options' ):
+		// Check the theme version right from the style sheet
+		global $t_em_theme_data;
+		wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'style-admin-t-em' );
+		wp_enqueue_script( 'jquery-ui-accordion' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+		wp_enqueue_script( 'script-admin-t-em' );
+	endif;
 }
-if ( $_SERVER['QUERY_STRING'] == ( 'page=twenty-em-options' || 'page=twenty-em-backup' ) ) :
-	add_action( 'admin_init', 't_em_admin_styles_and_scripts' );
-endif;
+add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts', 0 );
 
 /**
  * Register the form setting for our t_em_theme_options array.
@@ -68,16 +71,18 @@ function t_em_register_setting_options_init(){
 	register_setting( 't_em_options', 't_em_theme_options', 't_em_theme_options_validate' );
 
 	// Register our settings field group
-	add_settings_section( 'general', '', '__return_false', 'twenty-em-options' );
+	add_settings_section( 'twenty-em-section', '', '__return_false', 'twenty-em-options' );
 
 	// Register our individual settings fields
-	add_settings_field( 't_em_general_set',			__( 'General Options', 't_em' ),			't_em_settings_field_general_options_set',		'twenty-em-options',	'general' );
-	add_settings_field( 't_em_header_set',			__( 'Header Options', 't_em' ),				't_em_settings_field_header_set',				'twenty-em-options',	'general' );
-	add_settings_field( 't_em_front_page_set',		__( 'Front Page Options', 't_em' ),			't_em_settings_field_front_page_options_set',	'twenty-em-options',	'general' );
-	add_settings_field( 't_em_archive_set',			__( 'Archive Options', 't_em' ),			't_em_settings_field_archive_set',				'twenty-em-options',	'general' );
-	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'twenty-em-options',	'general' );
-	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'twenty-em-options',	'general' );
-	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'twenty-em-options', 	'general' );
+	add_settings_field( 't_em_general_set',			__( 'General Options', 't_em' ),			't_em_settings_field_general_options_set',		'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_header_set',			__( 'Header Options', 't_em' ),				't_em_settings_field_header_set',				'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_front_page_set',		__( 'Front Page Options', 't_em' ),			't_em_settings_field_front_page_options_set',	'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_archive_set',			__( 'Archive Options', 't_em' ),			't_em_settings_field_archive_set',				'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'twenty-em-options', 	'twenty-em-section' );
+
+	do_action( 't_em_admin_action_add_settings_field' );
 }
 add_action( 'admin_init', 't_em_register_setting_options_init' );
 
@@ -136,7 +141,7 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
  *
  * @since Twenty'em 0.1
  */
-function t_em_default_theme_options(){
+function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
 		// Twenty'em Version
 		't_em_framework_version'						=> T_EM_FRAMEWORK_VERSION,
@@ -148,6 +153,7 @@ function t_em_default_theme_options(){
 		'breadcrumb_path'								=> '1',
 		'separate_comments_pings_tracks'				=> '1',
 		'single_page_comments'							=> '1',
+		'shortcode_buttoms'								=> '1',
 		'custom_avatar'									=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
@@ -344,6 +350,7 @@ function t_em_theme_options_validate( $input ){
 			'breadcrumb_path',
 			'separate_comments_pings_tracks',
 			'single_page_comments',
+			'shortcode_buttoms',
 			'custom_avatar',
 			'header_featured_image',
 			'slider_home_only',
@@ -588,7 +595,7 @@ function t_em_theme_options_validate( $input ){
 
 		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.', 't_em' ), home_url() ), 'updated' );
 
-		return $input;
+		return apply_filters( 't_em_filter_theme_options_validate', $input );
 	else :
 		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );
 	endif;
