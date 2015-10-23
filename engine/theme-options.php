@@ -618,18 +618,4 @@ function t_em_rand_error_code(){
 function t_em_theme_explode(){
 	echo sprintf( __( 'Oops! Your theme explode... Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
 }
-
-/**
- * Formating Twenty’em and Twenty&#8217;em into Twenty\'em
- *
- * Clone of capital_P_dangit() WordPress function
- */
-function t_em_twenty_em_formating( $twenty_em ) {
-	return str_replace( array( ' Twenty’em', 'Twenty&#8217;em', 'Twenty&#039;em' ), 'Twenty\'em', $twenty_em );
-}
-add_filter( 'the_content', 't_em_twenty_em_formating' );
-add_filter( 'the_title', 't_em_twenty_em_formating' );
-add_filter( 'wp_title', 't_em_twenty_em_formating' );
-add_filter( 'the_excerpt', 't_em_twenty_em_formating' );
-add_filter( 'comment_text', 't_em_twenty_em_formating' );
 ?>

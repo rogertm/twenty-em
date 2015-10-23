@@ -1310,16 +1310,20 @@ function t_em_page_navi(){
 			$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
 
 			$links = paginate_links( array(
-				'base'		=> $pagenum_link,
-				'format'	=> $format,
-				'total'		=> $wp_query->max_num_pages,
-				'current'	=> $paged,
-				'end_size'	=> 1,
-				'mid_size'	=> 2,
-				'type'		=> 'list',
-				'add_args'	=> array_map( 'urlencode', $query_args ),
-				'prev_text'	=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
-				'next_text'	=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
+				'base'					=> $pagenum_link,
+				'format'				=> $format,
+				'total'					=> $wp_query->max_num_pages,
+				'current'				=> $paged,
+				'add_args'				=> array_map( 'urlencode', $query_args ),
+				'prev_text'				=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
+				'next_text'				=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
+				'end_size'				=> apply_filters( 't_em_filter_paginate_links_end_size', 1 ),
+				'mid_size'				=> apply_filters( 't_em_filter_paginate_links_mid_size', 2 ),
+				'type'					=> apply_filters( 't_em_filter_paginate_links_type', 'list' ),
+				'prev_next'				=> apply_filters( 't_em_filter_paginate_links_prev_next', true ),
+				'add_fragment'			=> apply_filters( 't_em_filter_paginate_links_prev_next', null ),
+				'before_page_number'	=> apply_filters( 't_em_filter_paginate_links_before_page_number', null ),
+				'after_page_number'		=> apply_filters( 't_em_filter_paginate_links_after_page_number', null ),
 			) );
 			if ( $links ) :
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
@@ -1700,8 +1704,7 @@ if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
  */
 function t_em_single_post_thumbnail(){
 	global $t_em;
-	$single_featured_img = $t_em['single_featured_img'];
-	if ( is_single() && '1' == $single_featured_img && has_post_thumbnail() ) :
+	if ( is_single() && '1' == $t_em['single_featured_img'] && has_post_thumbnail() ) :
 ?>
 <figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
 <?php the_post_thumbnail(); ?>
@@ -2290,11 +2293,13 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
-					'theme_location'	=> 'top-menu',
-					'container_id'		=> 'site-top-menu',
-					'container_class'	=> 'collapse navbar-collapse navbar-right',
-					'menu_class'		=> 'nav navbar-nav menu',
-					'depth'				=> 0 ) );
+							'theme_location'	=> 'top-menu',
+							'container_id'		=> 'site-top-menu',
+							'container_class'	=> 'collapse navbar-collapse navbar-right',
+							'menu_class'		=> 'nav navbar-nav menu',
+							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 0 ),
+						)
+					);
 				?>
 			</nav>
 		</div>
@@ -2325,11 +2330,13 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
-					'theme_location'	=> 'navigation-menu',
-					'container_id'		=> 'site-navigation-menu',
-					'container_class'	=> 'collapse navbar-collapse',
-					'menu_class'		=> 'nav navbar-nav menu',
-					'depth'				=> 0 ) );
+							'theme_location'	=> 'navigation-menu',
+							'container_id'		=> 'site-navigation-menu',
+							'container_class'	=> 'collapse navbar-collapse',
+							'menu_class'		=> 'nav navbar-nav menu',
+							'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 0 ),
+						)
+					);
 				?>
 			</nav>
 		</div>
@@ -2408,7 +2415,7 @@ if ( ! function_exists( 't_em_copy_right' ) ) :
 function t_em_copy_right(){
 ?>
 	<div id="copyright">
-		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>" rel="home">
 			<?php bloginfo( 'name' ); ?>
 		</a>
 	</div><!-- #copyright -->
@@ -2429,7 +2436,7 @@ function t_em_dot_com_link(){
 <?php
 	printf( __( 'Proudly powered by: <a href="%1$s" title="%2$s">%3$s</a> and <a href="%4$s" title="%5$s">%6$s</a>. Theme Name: <a href="%7$s" title="Version %8$s">%9$s</a> by: %10$s', 't_em' ),
 		'http://wordpress.org/',
-		'Semantic Personal Publishing Platform',
+		'State-of-the-art semantic personal publishing platform.',
 		'WordPress',
 		T_EM_SITE,
 		'Theming is Prose',
