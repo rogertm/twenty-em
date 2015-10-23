@@ -66,7 +66,7 @@ function t_em_general_options( $general_options = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_general_options', $general_options );
+	return apply_filters( 't_em_admin_filter_general_options', $general_options );
 }
 
 /**

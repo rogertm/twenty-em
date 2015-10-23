@@ -202,7 +202,7 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_social_network_options', $socialnetwork_options );
+	return apply_filters( 't_em_admin_filter_social_network_options', $socialnetwork_options );
 }
 
 /**

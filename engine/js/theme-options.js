@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 
 	// Active Tabs
 	$('.tabs .tab-heading').click(function(){
-		$(this).children('input').attr({
+		$(this).children('input:radio').attr({
 			'checked':'checked'
 		});
 	});

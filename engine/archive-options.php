@@ -31,16 +31,16 @@ function t_em_archive_options( $archive_options = '' ){
 		'the-content' => array(
 			'value' => 'the-content',
 			'label' => __( 'Display the content', 't_em' ),
-			'callback' => __( '<p>The whole content of each post</p>', 't_em' ),
+			'callback' => apply_filters( 't_em_admin_filter_archive_options_the_content', true ) ? __( '<p>The whole content of each post</p>', 't_em' ) : null,
 		),
 		'the-excerpt' => array(
 			'value' => 'the-excerpt',
 			'label' => __( 'Display the excerpt', 't_em' ),
-			'callback' => t_em_excerpt_callback(),
+			'callback' => apply_filters( 't_em_admin_filter_archive_options_the_excerpt', true ) ? t_em_excerpt_callback() : null,
 		),
 	);
 
-	return apply_filters( 't_em_filter_archive_options', $archive_options );
+	return apply_filters( 't_em_admin_filter_archive_options', $archive_options );
 }
 
 /**
@@ -65,7 +65,7 @@ function t_em_excerpt_options( $excerpt_options = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_excerpt_options', $excerpt_options );
+	return apply_filters( 't_em_admin_filter_excerpt_options', $excerpt_options );
 }
 
 /**
@@ -87,7 +87,7 @@ function t_em_archive_in_columns( $archive_in_columns = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_archive_in_columns', $archive_in_columns );
+	return apply_filters( 't_em_admin_filter_archive_in_columns', $archive_in_columns );
 }
 
 /**
@@ -204,7 +204,7 @@ function t_em_archive_pagination_options( $archive_pagination = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_archive_pagination_options', $archive_pagination );
+	return apply_filters( 't_em_admin_filter_archive_pagination_options', $archive_pagination );
 }
 
 /**
@@ -248,21 +248,35 @@ add_action( 't_em_admin_action_archive_options_after', 't_em_settings_archive_pa
  */
 function t_em_settings_field_archive_set(){
 	global $t_em;
+
+	// Check for a new default value if any option is set to false
+	$archive_value = array();
+	foreach ( t_em_archive_options() as $archive ) :
+		if ( $archive['callback'] ) :
+			array_push( $archive_value, $archive['value'] );
+		endif;
+	endforeach;
+	$default_checked = ( ! in_array( $t_em['header_set'], $archive_value ) ) ? $archive_value[0] : null;
 ?>
 	<div id="archive-options" class="tabs">
 		<?php do_action( 't_em_admin_action_archive_options_before' ); ?>
 		<ul>
 <?php
 	foreach ( t_em_archive_options() as $archive ) :
-		$active_option = ( $t_em['archive_set'] == $archive['value'] ) ? 'ui-tabs-active' : '';
+		if ( $archive['callback'] ) :
+			$active_option = ( $t_em['archive_set'] == $archive['value'] ) ? 'ui-tabs-active' : '';
+			$checked = ( $default_checked == $archive['value'] )
+							? $checked = 'checked="checked"'
+							: checked( $t_em['header_set'], $archive['value'], false );
 ?>
 		<li class="<?php echo $active_option ?>">
 			<a href="#<?php echo $archive['value'] ?>" class="tab-heading">
-				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php checked( $t_em['archive_set'], $archive['value'] ); ?> />
+				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php echo $checked; ?> />
 				<?php echo $archive['label']; ?>
 			</a>
 		</li>
 <?php
+		endif;
 	endforeach;
 ?>
 		</ul>

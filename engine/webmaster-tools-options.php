@@ -38,7 +38,7 @@ function t_em_search_engines_id_options( $engines_options = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_search_engines_options', $engines_options );
+	return apply_filters( 't_em_admin_filter_search_engines_options', $engines_options );
 }
 
 /**
@@ -60,71 +60,7 @@ function t_em_stats_tracker_options( $tracker_options = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_stats_tracker_options', $tracker_options );
-}
-
-/**
- * Render the Search Engine ID Options setting field in admin panel.
- * Referenced via t_em_register_webmaster_tools_options_init(), add_settings_field() callback in
- * /inc/theme-options.php.
- *
- * @global $t_em_webmaster_tools_options See t_em_restore_from_scratch() function in /inc/theme-options.php
- * file.
- *
- * @since Twenty'em 0.1
- */
-function t_em_settings_engine_id(){
-	global $t_em;
-?>
-	<div class="sub-extend option-group">
-		<header><?php _e( 'Trackers ID numbers', 't_em' ); ?></header>
-		<p class="alert alert-critical"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the ID number, the <code>%1$s</code> tag is not needed', 't_em' ), '&lt;meta /&gt;' ); ?></p>
-<?php
-	foreach ( t_em_search_engines_id_options() as $search_engine ) :
-?>
-		<div class="layout text-option search-engine">
-			<label>
-				<span><?php echo $search_engine['label']; ?></span>
-				<input class="headline regular-text" type="text" name="t_em_theme_options[<?php echo $search_engine['name']; ?>]" value="<?php echo esc_attr( $t_em[$search_engine['name']] ) ?>" />
-			</label>
-		</div>
-<?php
-	endforeach;
-?>
-	</div>
-<?php
-}
-
-/**
- * Render the Site Statistics Tracker Options setting field in admin panel.
- * Referenced via t_em_register_webmaster_tools_options_init(), add_settings_field() callback.
- *
- * @uses t_em_restore_from_scratch() function in /inc/theme-options.php
- * file.
- *
- * @since Twenty'em 0.1
- */
-function t_em_settings_stats_tracker(){
-	global $t_em;
-?>
-	<div class="sub-extend option-group">
-		<header><?php _e( 'Trackers Statistics Codes', 't_em' ); ?></header>
-		<p class="alert alert-critical"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</code> tags are not needed', 't_em' ), '&lt;script type="text/javascript"&gt', '&lt;/script&gt' ); ?></p>
-
-<?php
-	foreach ( t_em_stats_tracker_options() as $stat_tracker ) :
-?>
-		<div class="layout textarea-option stat-tracker option-single">
-			<label>
-				<span><?php echo $stat_tracker['label']; ?></span>
-				<p><textarea name="t_em_theme_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em[$stat_tracker['name']] ) ?></textarea></p>
-			</label>
-		</div>
-<?php
-	endforeach;
-?>
-	</div>
-<?php
+	return apply_filters( 't_em_admin_filter_stats_tracker_options', $tracker_options );
 }
 
 /**

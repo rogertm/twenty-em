@@ -33,26 +33,26 @@ function t_em_header_options( $header_options = '' ){
 		'no-header-image' => array(
 			'value' => 'no-header-image',
 			'label' => __( 'No header image', 't_em' ),
-			'callback' => __( '<p>No image, only Site Title and Tagline</p>', 't_em' ),
+			'callback' => ( apply_filters( 't_em_admin_filter_header_options_no_header_image', true ) ) ? __( '<p>No image, only Site Title and Tagline</p>', 't_em' ) : null,
 		),
 		'header-image' => array(
 			'value' => 'header-image',
 			'label' => __( 'Header image', 't_em' ),
-			'callback' => t_em_header_image_callback(),
+			'callback' => ( apply_filters( 't_em_admin_filter_header_options_header_image', true ) ) ? t_em_header_image_callback() : null,
 		),
 		'slider' => array(
 			'value' => 'slider',
 			'label' => __( 'Slider', 't_em' ),
-			'callback' => t_em_slider_callback(),
+			'callback' => ( apply_filters( 't_em_admin_filter_header_options_slider', true ) ) ? t_em_slider_callback() : null,
 		),
 		'static-header' => array(
 			'value' => 'static-header',
 			'label' => __( 'Static Header', 't_em' ),
-			'callback' => t_em_static_header_callback(),
+			'callback' => ( apply_filters( 't_em_admin_filter_header_options_static_header', true ) ) ? t_em_static_header_callback() : null,
 		),
 	);
 
-	return apply_filters( 't_em_filter_header_options', $header_options );
+	return apply_filters( 't_em_admin_filter_header_options', $header_options );
 }
 
 /**
@@ -95,7 +95,7 @@ function t_em_header_image_callback(){
  * Hook this returned filter to display in your slider options some different taxonomies
  */
 function t_em_slider_list_taxonomies(){
-	return apply_filters( 't_em_filter_slider_list_taxonomies', get_categories() );
+	return apply_filters( 't_em_admin_filter_slider_list_taxonomies', get_categories() );
 }
 
 /**
@@ -215,7 +215,7 @@ function t_em_static_header_layout_options( $static_header_layout = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_static_header_layout_options', $static_header_layout );
+	return apply_filters( 't_em_admin_filter_static_header_layout_options', $static_header_layout );
 }
 
 /**
@@ -301,21 +301,35 @@ function t_em_static_header_callback(){
  */
 function t_em_settings_field_header_set(){
 	global $t_em;
+
+	// If any option is set to false, check the first available option from t_em_header_options()
+	$header_value = array();
+	foreach ( t_em_header_options() as $header ) :
+		if ( $header['callback'] ) :
+			array_push( $header_value, $header['value'] );
+		endif;
+	endforeach;
+	$default_checked = ( ! in_array( $t_em['header_set'], $header_value ) ) ? $header_value[0] : null;
 ?>
 	<div id="header-options" class="tabs">
 		<?php do_action( 't_em_admin_action_header_options_before' ); ?>
 		<ul>
 <?php
 	foreach ( t_em_header_options() as $header ) :
-		$active_option = ( $t_em['header_set'] == $header['value'] ) ? 'ui-tabs-active' : '';
+		if ( $header['callback'] ) :
+			$active_option = ( $t_em['header_set'] == $header['value'] ) ? 'ui-tabs-active' : '';
+			$checked = ( $default_checked == $header['value'] )
+							? $checked = 'checked="checked"'
+							: checked( $t_em['header_set'], $header['value'], false );
 ?>
 		<li class="<?php echo $active_option ?>">
 			<a href="#<?php echo $header['value'] ?>" class="tab-heading">
-				<input type="radio" name="t_em_theme_options[header_set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php checked( $t_em['header_set'], $header['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[header_set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php echo $checked; ?> />
 				<?php echo $header['label']; ?>
 			</a>
 		</li>
 <?php
+		endif;
 	endforeach;
 ?>
 		</ul>
@@ -325,7 +339,7 @@ function t_em_settings_field_header_set(){
 	 * Header Image or Slider, that's the question.
 	 */
 	foreach ( t_em_header_options() as $sub_header ) :
-		if ( $sub_header['callback'] != '' ) :
+		if ( $sub_header['callback'] ) :
 ?>
 		<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend">
 			<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_before' ); ?>

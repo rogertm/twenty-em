@@ -30,16 +30,16 @@ function t_em_front_page_options(){
 		'wp-front-page' => array(
 			'value'			=> 'wp-front-page',
 			'label'			=> __( 'Just another WordPress front page', 't_em' ),
-			'callback'		=> t_em_front_page_jawpfp_callback(),
+			'callback'		=> ( apply_filters( 't_em_admin_filter_front_page_options_wp_front_page', true ) ) ? t_em_front_page_jawpfp_callback() : null,
 		),
 		'widgets-front-page' => array(
 			'value'			=> 'widgets-front-page',
 			'label'			=> __( 'Text Widgets', 't_em' ),
-			'callback'		=> t_em_front_page_witgets_callback(),
+			'callback'		=> ( apply_filters( 't_em_admin_filter_front_page_options_widgets_from_page', true ) ) ? t_em_front_page_witgets_callback() : null,
 		),
 	);
 
-	return apply_filters( 't_em_filter_front_page_options', $front_page_options );
+	return apply_filters( 't_em_admin_filter_front_page_options', $front_page_options );
 }
 
 /**
@@ -97,7 +97,7 @@ function t_em_front_page_widgets_options( $front_page_widgets = '' ){
 		),
 	);
 
-	return apply_filters( 't_em_filter_front_page_widgets_options', $front_page_widgets );
+	return apply_filters( 't_em_admin_filter_front_page_widgets_options', $front_page_widgets );
 }
 
 /**
@@ -165,27 +165,41 @@ function t_em_front_page_witgets_callback(){
  */
 function t_em_settings_field_front_page_options_set(){
 	global $t_em;
+
+	// Check for a new default value if any option is set to false
+	$front_page_value = array();
+	foreach ( t_em_front_page_options() as $front_page ) :
+		if ( $front_page['callback'] ) :
+			array_push( $front_page_value, $front_page['value'] );
+		endif;
+	endforeach;
+	$default_checked = ( ! in_array( $t_em['header_set'], $front_page_value ) ) ? $front_page_value[0] : null;
 ?>
 	<div id="front-page-options" class="tabs">
 		<?php do_action( 't_em_admin_action_from_page_options_before' ); ?>
 		<ul>
 <?php
 	foreach ( t_em_front_page_options() as $front_page ) :
-		$active_option = ( $t_em['front_page_set'] == $front_page['value'] ) ? 'ui-tabs-active' : '';
+		if ( $front_page['callback'] ) :
+			$active_option = ( $t_em['front_page_set'] == $front_page['value'] ) ? 'ui-tabs-active' : '';
+			$checked = ( $default_checked == $front_page['value'] )
+							? $checked = 'checked="checked"'
+							: checked( $t_em['header_set'], $front_page['value'], false );
 ?>
 		<li class="<?php echo $active_option ?>">
 			<a href="#<?php echo $front_page['value']; ?>" class="tab-heading">
-				<input type="radio" name="t_em_theme_options[front_page_set]" class="head-radio-option" value="<?php echo esc_attr( $front_page['value'] ); ?>" <?php checked( $t_em['front_page_set'], $front_page['value'] ); ?> />
+				<input type="radio" name="t_em_theme_options[front_page_set]" class="head-radio-option" value="<?php echo esc_attr( $front_page['value'] ); ?>" <?php echo $checked; ?> />
 				<?php echo $front_page['label']; ?>
 			</a>
 		</li>
 <?php
+		endif;
 	endforeach;
 ?>
 		</ul>
 <?php
 	foreach ( t_em_front_page_options() as $sub_front_page ) :
-		if ( $sub_front_page['callback'] != '' ) :
+		if ( $sub_front_page['callback'] ) :
 		$selected_option = ( $t_em['front_page_set'] == $sub_front_page['value'] ) ? 'selected-option' : '';
 ?>
 		<div id="<?php echo $sub_front_page['value'] ?>" class="sub-layout front-page-extend">

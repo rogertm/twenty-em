@@ -1321,7 +1321,7 @@ function t_em_page_navi(){
 				'mid_size'				=> apply_filters( 't_em_filter_paginate_links_mid_size', 2 ),
 				'type'					=> apply_filters( 't_em_filter_paginate_links_type', 'list' ),
 				'prev_next'				=> apply_filters( 't_em_filter_paginate_links_prev_next', true ),
-				'add_fragment'			=> apply_filters( 't_em_filter_paginate_links_prev_next', null ),
+				'add_fragment'			=> apply_filters( 't_em_filter_paginate_links_add_fragment', null ),
 				'before_page_number'	=> apply_filters( 't_em_filter_paginate_links_before_page_number', null ),
 				'after_page_number'		=> apply_filters( 't_em_filter_paginate_links_after_page_number', null ),
 			) );

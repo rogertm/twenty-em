@@ -48,11 +48,11 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_style( 'style-admin-t-em' );
 		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-admin-t-em' );
 	endif;
 }
-add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts', 0 );
+add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts', -999 );
 
 /**
  * Register the form setting for our t_em_theme_options array.
@@ -265,7 +265,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'stats_tracker_body_tag'						=> '',
 	);
 
-	return apply_filters( 't_em_filter_default_theme_options', $default_theme_options );
+	return apply_filters( 't_em_admin_filter_default_theme_options', $default_theme_options );
 }
 
 /**
@@ -372,6 +372,10 @@ function t_em_theme_options_validate( $input ){
 			'static-header-options'	=> array(
 				'set'		=> 'static_header_text',
 				'callback'	=> t_em_static_header_layout_options(),
+			),
+			'front-page-options'	=> array(
+				'set'		=> 'front_page_set',
+				'callback'	=> t_em_front_page_options(),
 			),
 			'archive-options'	=> array(
 				'set'		=> 'archive_set',
@@ -595,7 +599,7 @@ function t_em_theme_options_validate( $input ){
 
 		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.', 't_em' ), home_url() ), 'updated' );
 
-		return apply_filters( 't_em_filter_theme_options_validate', $input );
+		return apply_filters( 't_em_admin_filter_theme_options_validate', $input );
 	else :
 		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );
 	endif;
