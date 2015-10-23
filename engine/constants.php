@@ -53,7 +53,7 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20150403' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20151022' ); // In date format Ymd
 
 // Engine Directory Path
 define ( 'T_EM_ENGINE_DIR_PATH',										get_template_directory().'/engine' );
