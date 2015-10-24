@@ -1454,80 +1454,50 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 }
 endif; // function t_em_featured_post_thumbnail()
 
-if ( ! function_exists( 't_em_header_options_set' ) ) :
-/**
- * Pluggable Function: Display header set depending of the activated "Header Options" in admin theme
- * option page. This function is attached to the t_em_action_header_after action hook.
- *
- * @global $t_em
- *
- * @uses t_em_header_image()
- * @uses t_em_slider_bootstrap_carousel()
- * @uses t_em_static_header()
- *
- * @since Twenty'em 0.1
- */
-function t_em_header_options_set(){
-	global $t_em;
-
-	if ( 'no-header-image' == $t_em['header_set'] ) :
-		return;
-	elseif ( 'header-image' == $t_em['header_set'] ) :
-		t_em_header_image();
-	elseif ( ( 'slider' == $t_em['header_set'] )
-		&& ( ( '1' == $t_em['slider_home_only'] && is_home() )
-		|| ( '0' == $t_em['slider_home_only'] ) ) ) :
-			t_em_slider_bootstrap_carousel( t_em_slider_query_args() );
-	elseif ( ( 'static-header' == $t_em['header_set'] )
-		&& ( ( '1' == $t_em['static_header_home_only'] && is_home() )
-		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
-			t_em_static_header();
-	endif;
-}
-endif; // function t_em_header_options_set()
-add_action( 't_em_action_header_after', 't_em_header_options_set', 5 );
-
 if ( ! function_exists( 't_em_header_image' ) ) :
 /**
  * Pluggable Function: Display header image if it's set by the user in 'Header Options' admin panel
  */
 function t_em_header_image(){
 	global $post, $t_em;
-	$header_image = get_header_image();
-	if ( $header_image ) :
-		$header_image_width = get_theme_support( 'custom-header', 'width' );
-		$header_image_height = get_theme_support( 'custom-header', 'height' );
+	if ( 'header-image' == $t_em['header_set'] ) :
+		$header_image = get_header_image();
+		if ( $header_image ) :
+			$header_image_width = get_theme_support( 'custom-header', 'width' );
+			$header_image_height = get_theme_support( 'custom-header', 'height' );
 ?>
-	<section id="header-image">
-		<div  class="wrapper container">
-			<div class="row">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<section id="header-image">
+			<div  class="wrapper container">
+				<div class="row">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
-		// Check if the user choose to display featured image in single posts and pages
-		if ( '1' == $t_em['header_featured_image'] &&
-			// Check if this is a post or page and there is a thumbnail to show
-			is_singular() && has_post_thumbnail( $post->ID ) &&
-				( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
-				$image[1] >= $header_image_width ) :
-				// Havana, we have a new header image :P
-				// If the user set to true to display featured image in posts and page, then display it
-				echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-		else :
-			$header_image_width = get_custom_header()->width;
-			$header_image_height = get_custom_header()->height;
+			// Check if the user choose to display featured image in single posts and pages
+			if ( '1' == $t_em['header_featured_image'] &&
+				// Check if this is a post or page and there is a thumbnail to show
+				is_singular() && has_post_thumbnail( $post->ID ) &&
+					( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
+					$image[1] >= $header_image_width ) :
+					// Havana, we have a new header image :P
+					// If the user set to true to display featured image in posts and page, then display it
+					echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
+			else :
+				$header_image_width = get_custom_header()->width;
+				$header_image_height = get_custom_header()->height;
 ?>
-					<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
+						<img src="<?php header_image() ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
+<?php
+			endif;
+?>
+					</a>
+				</div>
+			</div>
+		</section><!-- #header-image -->
 <?php
 		endif;
-?>
-				</a>
-			</div>
-		</div>
-	</section><!-- #header-image -->
-<?php
 	endif;
 }
 endif; // function t_em_header_image()
+add_action( 't_em_action_header_after', 't_em_header_image', 5 );
 
 if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
 /**
@@ -1538,56 +1508,64 @@ if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
  */
 function t_em_slider_bootstrap_carousel( $args ){
 	global	$post, $t_em;
-	$slider_posts = get_posts( $args );
-	$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
-	$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
+	if ( ( 'slider' == $t_em['header_set'] )
+		&& ( ( '1' == $t_em['slider_home_only'] && is_home() )
+		|| ( '0' == $t_em['slider_home_only'] ) ) ) :
+
+		if ( ! $args ) $args = t_em_slider_query_args();
+
+		$slider_posts = get_posts( $args );
+		$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
+		$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
-	<section id="header-carousel">
-		<div id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide">
+		<section id="header-carousel">
+			<div id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide">
 <?php 	if ( $slider_posts ) : ?>
-<?php 		$tp = count( $slider_posts ) ?>
-			<ol class="carousel-indicators">
-		<?php $s = 0; while ( $s < $tp ) : ?>
-				<li data-target="#slider-carousel" data-slide-to="<?php echo $s ?>"></li>
-		<?php $s++; endwhile; ?>
-			</ol><!-- .carousel-indicators -->
-			<div class="carousel-inner">
-<?php 		foreach ( $slider_posts as $post ) : setup_postdata( $post );
-				if ( has_post_thumbnail( $post->ID ) ) :
-					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-					$image_src = $image_url[0];
-				else :
-					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-					$total_images = count( $images );
-					$image = array_shift( $images );
-					$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
+<?php 			$tp = count( $slider_posts ) ?>
+				<ol class="carousel-indicators">
+			<?php $s = 0; while ( $s < $tp ) : ?>
+					<li data-target="#slider-carousel" data-slide-to="<?php echo $s ?>"></li>
+			<?php $s++; endwhile; ?>
+				</ol><!-- .carousel-indicators -->
+				<div class="carousel-inner">
+<?php 			foreach ( $slider_posts as $post ) : setup_postdata( $post );
+					if ( has_post_thumbnail( $post->ID ) ) :
+						$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 						$image_src = $image_url[0];
-				endif; ?>
-				<div class="item">
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" />
-					</a>
-					<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
-						<h3 class="entry-title">
-							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
-						</h3>
-						<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
-					</div>
-				</div><!-- .item -->
-<?php 		endforeach; wp_reset_postdata(); ?>
-			</div><!-- .carousel-inner -->
-			<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a class="right carousel-control" href="#slider-carousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
+					else :
+						$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+						$total_images = count( $images );
+						$image = array_shift( $images );
+						$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
+							$image_src = $image_url[0];
+					endif; ?>
+					<div class="item">
+						<a href="<?php the_permalink(); ?>" rel="bookmark">
+							<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" />
+						</a>
+						<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
+							<h3 class="entry-title">
+								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
+							</h3>
+							<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
+						</div>
+					</div><!-- .item -->
+<?php 			endforeach; wp_reset_postdata(); ?>
+				</div><!-- .carousel-inner -->
+				<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#slider-carousel" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
 <?php 	endif; ?>
 		</div>
 	</section><!-- #slider-carousel -->
 <?php
+	endif;
 }
 endif; // function t_em_slider_bootstrap_carousel()
+add_action( 't_em_action_header_after', 't_em_slider_bootstrap_carousel', 5 );
 
 /**
  * Return arguments for slider query. Only post with images attached to it will be displayed
@@ -1635,56 +1613,61 @@ if ( ! function_exists( 't_em_static_header' ) ) :
  */
 function t_em_static_header(){
 	global $t_em;
+	if ( ( 'static-header' == $t_em['header_set'] )
+		&& ( ( '1' == $t_em['static_header_home_only'] && is_home() )
+		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
 ?>
-	<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
-		<div id="static-header-inner" class="wrapper container">
-<?php if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
-		<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
-			<figure>
-				<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
-					alt="<?php echo $t_em['static_header_headline']; ?>"
-					title="<?php echo $t_em['static_header_headline']; ?>">
-			</figure>
-		</div><!-- #static-header-image -->
-<?php endif; ?>
+		<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
+			<div id="static-header-inner" class="wrapper container">
+<?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
+			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+				<figure>
+					<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
+						alt="<?php echo $t_em['static_header_headline']; ?>"
+						title="<?php echo $t_em['static_header_headline']; ?>">
+				</figure>
+			</div><!-- #static-header-image -->
+<?php 	endif; ?>
 
-<?php if ( $t_em['static_header_headline']
-		|| $t_em['static_header_content']
-		|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
-		|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
-	) : ?>
-		<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
-<?php if ( $t_em['static_header_headline'] ) : ?>
-			<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
-<?php endif; ?>
-<?php if ( $t_em['static_header_content'] ) : ?>
-			<div class="static-header-content"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
-<?php endif; ?>
-			<footer class="actions">
-<?php if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
-				<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
-					title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
-					class="btn primary-button">
-						<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
-						<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span>
-					</a>
-<?php endif; ?>
-<?php if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
-				<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
-					title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
-					class="btn secondary-button">
-						<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
-						<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span>
-					</a>
-<?php endif; ?>
-			</footer><!-- .actions -->
-		</div><!-- #static-header-text -->
-<?php endif; ?>
-		</div>
-	</section><!-- #static-header .container -->
+<?php 	if ( $t_em['static_header_headline']
+			|| $t_em['static_header_content']
+			|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
+			|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
+		) : ?>
+			<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+<?php 	if ( $t_em['static_header_headline'] ) : ?>
+				<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
+<?php 	endif; ?>
+<?php 	if ( $t_em['static_header_content'] ) : ?>
+				<div class="static-header-content"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
+<?php 	endif; ?>
+				<footer class="actions">
+<?php 	if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
+					<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
+						title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
+						class="btn primary-button">
+							<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
+							<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span>
+						</a>
+<?php 	endif; ?>
+<?php 	if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
+					<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
+						title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
+						class="btn secondary-button">
+							<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
+							<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span>
+						</a>
+<?php 	endif; ?>
+				</footer><!-- .actions -->
+			</div><!-- #static-header-text -->
+<?php 	endif; ?>
+			</div>
+		</section><!-- #static-header .container -->
 <?php
+	endif;
 }
 endif; // function t_em_static_header()
+add_action( 't_em_action_header_after', 't_em_static_header', 5 );
 
 if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 /**
