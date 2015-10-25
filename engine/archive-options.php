@@ -72,6 +72,7 @@ function t_em_excerpt_options( $excerpt_options = '' ){
  * Returns an array of our archive columns options.
  */
 function t_em_archive_in_columns( $archive_in_columns = '' ){
+	global $t_em;
 	$archive_in_columns = array(
 		'1'	=> array(
 			'value'	=> 1,
@@ -256,47 +257,50 @@ function t_em_settings_field_archive_set(){
 			array_push( $archive_value, $archive['value'] );
 		endif;
 	endforeach;
-	$default_checked = ( ! in_array( $t_em['header_set'], $archive_value ) ) ? $archive_value[0] : null;
+	$default_checked = ( count( $archive_value ) > 0 && ! in_array( $t_em['archive_set'], $archive_value ) ) ? $archive_value[0] : null;
 ?>
 	<div id="archive-options" class="tabs">
 		<?php do_action( 't_em_admin_action_archive_options_before' ); ?>
-		<ul>
+		<?php if ( count( $archive_value ) == 0 ) : ?>
+				<p class="alert alert-critical"><?php _e( '<strong>Oops!</strong> No options available for this setting...', 't_em' ); ?></p>
+		<?php else : ?>
+					<ul>
 <?php
-	foreach ( t_em_archive_options() as $archive ) :
-		if ( $archive['callback'] ) :
-			$active_option = ( $t_em['archive_set'] == $archive['value'] ) ? 'ui-tabs-active' : '';
-			$checked = ( $default_checked == $archive['value'] )
-							? $checked = 'checked="checked"'
-							: checked( $t_em['header_set'], $archive['value'], false );
+				foreach ( t_em_archive_options() as $archive ) :
+					if ( $archive['callback'] ) :
+						$active_option = ( $t_em['archive_set'] == $archive['value'] ) ? 'ui-tabs-active' : '';
+						$checked = ( $default_checked == $archive['value'] )
+										? $checked = 'checked="checked"'
+										: checked( $t_em['archive_set'], $archive['value'], false );
 ?>
-		<li class="<?php echo $active_option ?>">
-			<a href="#<?php echo $archive['value'] ?>" class="tab-heading">
-				<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php echo $checked; ?> />
-				<?php echo $archive['label']; ?>
-			</a>
-		</li>
+					<li class="<?php echo $active_option ?>">
+						<a href="#<?php echo $archive['value'] ?>" class="tab-heading">
+							<input type="radio" class="head-radio-option" name="t_em_theme_options[archive_set]" value="<?php echo esc_attr( $archive['value'] ); ?>" <?php echo $checked; ?> />
+							<?php echo $archive['label']; ?>
+						</a>
+					</li>
 <?php
-		endif;
-	endforeach;
+					endif;
+				endforeach;
 ?>
-		</ul>
+					</ul>
 <?php
-	/* If our 'callback' key brings something, then we display our callback function.
-	 * Let's go for the_excerpt().
-	 */
-	foreach ( t_em_archive_options() as $sub_archive ) :
-		if ( $sub_archive['callback'] != '' ) :
-		$selected_option = ( $t_em['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
+				/* If our 'callback' key brings something, then we display our callback function.
+				 * Let's go for the_excerpt().
+				 */
+				foreach ( t_em_archive_options() as $sub_archive ) :
+					if ( $sub_archive['callback'] != '' ) :
+					$selected_option = ( $t_em['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
-		<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
-			<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_before' ); ?>
-			<?php echo $sub_archive['callback']; ?>
-			<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_after' ); ?>
-		</div>
+					<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
+						<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_before' ); ?>
+						<?php echo $sub_archive['callback']; ?>
+						<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_after' ); ?>
+					</div>
 <?php
-		endif;
-	endforeach;
-?>
+					endif;
+				endforeach;
+			endif; ?>
 		<?php do_action( 't_em_admin_action_archive_options_after' ); ?>
 	</div><!-- #archive-options -->
 <?php

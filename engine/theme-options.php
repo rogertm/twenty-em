@@ -158,6 +158,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
+		'header_featured_image_home_only'				=> '0',
 		'header_featured_image'							=> '1',
 		'slider_home_only'								=> '0',
 		'slider_category'								=> get_option( 'default_category' ),
@@ -352,6 +353,7 @@ function t_em_theme_options_validate( $input ){
 			'single_page_comments',
 			'shortcode_buttoms',
 			'custom_avatar',
+			'header_featured_image_home_only',
 			'header_featured_image',
 			'slider_home_only',
 			'bootstrap_carousel_pause',
@@ -408,6 +410,18 @@ function t_em_theme_options_validate( $input ){
 			if ( ! array_key_exists( $input[$radio['set']], $radio['callback'] ) )
 				$input[$radio['set']] = null;
 		endforeach;
+
+		// Reset the columns
+		if ( $input['archive_set'] == 'the-content' ) :
+			$input['archive_in_columns'] = '1';
+		endif;
+
+		// Reset front page options
+		if ( $input['front_page_set'] == 'widgets-front-page' ) :
+			update_option( 'show_on_front', 'posts' );
+			update_option( 'page_on_front', '0' );
+			update_option( 'page_for_posts', '0' );
+		endif;
 
 		// Validate all int (input[type="number"]) options
 
@@ -504,7 +518,7 @@ function t_em_theme_options_validate( $input ){
 			'static_header_primary_button_link',
 			'static_header_secondary_button_link',
 		) as $url ) :
-			$input[$url] = esc_url_raw( $input[$url] );
+			$input[$url] = ( isset( $input[$url] ) ) ? esc_url_raw( $input[$url] ) : '';
 		endforeach;
 
 		// Validate all select list options
@@ -559,7 +573,7 @@ function t_em_theme_options_validate( $input ){
 			'primary_button_text_text_widget_four',
 			'secondary_button_text_text_widget_four',
 		) as $text_field ) :
-			$input[$text_field] = trim( esc_textarea( $input[$text_field] ) );
+			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( esc_textarea( $input[$text_field] ) ) : '';
 		endforeach;
 
 		// Validate all textarea options
@@ -570,7 +584,7 @@ function t_em_theme_options_validate( $input ){
 			'content_text_widget_four',
 			'static_header_content',
 		) as $textarea ) :
-			$input[$textarea] = trim( esc_textarea( $input[$textarea] ) );
+			$input[$textarea] = ( isset( $input[$textarea] ) ) ? trim( esc_textarea( $input[$textarea] ) ) : '';
 		endforeach;
 
 		// Validate all Verification Services

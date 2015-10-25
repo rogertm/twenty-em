@@ -69,17 +69,27 @@ function t_em_header_image_callback(){
 	$extend_header = '';
 	$extend_header .= '<p class="alert alert-notice">'. sprintf( __( 'You can manage your header image option in the <a href="%1$s" target="_blank">Theme Customizer</a> screen.', 't_em' ), admin_url( 'customize.php?autofocus[control]=header_image' ) ) .'</p>';
 	if ( get_header_image() ) :
-		$checked_option = checked( $t_em['header_featured_image'], '1', false );
 		$extend_header .= '<div class="sub-extend option-group">';
 		$extend_header .= 	'<figure><img src="'.get_header_image().'" width="500"></figure>';
 		$extend_header .= 	'<header>'. __( 'Options', 't_em' ). '</header>';
 		$extend_header .= 	'<div class="sub-extend option-single">';
-		$extend_header .= 		'<p>';
-		$extend_header .= 			'<label class="description">';
+		$extend_header .= 		'<label class="description">';
+		$extend_header .= 			'<p>';
+		$checked_option = checked( $t_em['header_featured_image_home_only'], '1', false );
+		$extend_header .=				'<input type="checkbox" name="t_em_theme_options[header_featured_image_home_only]" value="1" '. $checked_option .' />';
+		$extend_header .=				__( 'Show header image only at home page ', 't_em' );
+		$extend_header .= 			'</p>';
+		$extend_header .= 			'<p class="description">'. __( 'This unable the option below', 't_em' ) .'</p>';
+		$extend_header .= 		'</label>';
+		$extend_header .= 	'</div>';
+		$extend_header .= 	'<div class="sub-extend option-single">';
+		$extend_header .= 		'<label class="description">';
+		$extend_header .= 			'<p>';
+		$checked_option = checked( $t_em['header_featured_image'], '1', false );
 		$extend_header .=				'<input type="checkbox" name="t_em_theme_options[header_featured_image]" value="1" '. $checked_option .' />';
 		$extend_header .=				__( 'Display featured image in single posts and pages ', 't_em' );
-		$extend_header .= 			'</label>';
-		$extend_header .= 		'</p>';
+		$extend_header .= 			'</p>';
+		$extend_header .= 		'</label>';
 		$extend_header .= 	'</div>';
 		$extend_header .= '</div>';
 	else :
@@ -174,8 +184,8 @@ function t_em_slider_callback(){
 	$extend_slider .= 			'<span>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</span>';
 	$extend_slider .= 			'<select name="t_em_theme_options[slider_category]">';
 	foreach ( t_em_slider_list_taxonomies() as $slider_category ) :
-			$selected_option = selected( $t_em['slider_category'], $slider_category->term_id, false );
-			$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
+		$selected_option = selected( ( isset( $t_em['slider_category'] ) ) ? $t_em['slider_category'] : get_option( 'default_category' ), $slider_category->term_id, false );
+		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
 	$extend_slider .= 			'</select>';
 	$extend_slider .=		'</label>';
@@ -309,47 +319,50 @@ function t_em_settings_field_header_set(){
 			array_push( $header_value, $header['value'] );
 		endif;
 	endforeach;
-	$default_checked = ( ! in_array( $t_em['header_set'], $header_value ) ) ? $header_value[0] : null;
+	$default_checked = ( count( $header_value ) > 0 && ! in_array( $t_em['header_set'], $header_value ) ) ? $header_value[0] : null;
 ?>
 	<div id="header-options" class="tabs">
 		<?php do_action( 't_em_admin_action_header_options_before' ); ?>
-		<ul>
+		<?php if ( count( $header_value ) == 0 ) : ?>
+				<p class="alert alert-critical"><?php _e( '<strong>Oops!</strong> No options available for this setting...', 't_em' ); ?></p>
+		<?php else : ?>
+					<ul>
 <?php
-	foreach ( t_em_header_options() as $header ) :
-		if ( $header['callback'] ) :
-			$active_option = ( $t_em['header_set'] == $header['value'] ) ? 'ui-tabs-active' : '';
-			$checked = ( $default_checked == $header['value'] )
-							? $checked = 'checked="checked"'
-							: checked( $t_em['header_set'], $header['value'], false );
+				foreach ( t_em_header_options() as $header ) :
+					if ( $header['callback'] ) :
+						$active_option = ( $t_em['header_set'] == $header['value'] ) ? 'ui-tabs-active' : '';
+						$checked = ( $default_checked == $header['value'] )
+										? $checked = 'checked="checked"'
+										: checked( $t_em['header_set'], $header['value'], false );
 ?>
-		<li class="<?php echo $active_option ?>">
-			<a href="#<?php echo $header['value'] ?>" class="tab-heading">
-				<input type="radio" name="t_em_theme_options[header_set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php echo $checked; ?> />
-				<?php echo $header['label']; ?>
-			</a>
-		</li>
+					<li class="<?php echo $active_option ?>">
+						<a href="#<?php echo $header['value'] ?>" class="tab-heading">
+							<input type="radio" name="t_em_theme_options[header_set]" class="head-radio-option" value="<?php echo esc_attr( $header['value'] ); ?>" <?php echo $checked; ?> />
+							<?php echo $header['label']; ?>
+						</a>
+					</li>
 <?php
-		endif;
-	endforeach;
+					endif;
+				endforeach;
 ?>
-		</ul>
+					</ul>
 <?php
 
-	/* If our 'callback' key brings something, then we display our callback function.
-	 * Header Image or Slider, that's the question.
-	 */
-	foreach ( t_em_header_options() as $sub_header ) :
-		if ( $sub_header['callback'] ) :
+				/* If our 'callback' key brings something, then we display our callback function.
+				 * Header Image or Slider, that's the question.
+				 */
+				foreach ( t_em_header_options() as $sub_header ) :
+					if ( $sub_header['callback'] ) :
 ?>
-		<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend">
-			<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_before' ); ?>
-			<?php echo $sub_header['callback']; ?>
-			<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_after' ); ?>
-		</div>
+					<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend">
+						<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_before' ); ?>
+						<?php echo $sub_header['callback']; ?>
+						<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_after' ); ?>
+					</div>
 <?php
-		endif;
-	endforeach;
-?>
+					endif;
+				endforeach;
+			endif; ?>
 		<?php do_action( 't_em_admin_action_header_options_after' ); ?>
 	</div><!-- #header-options -->
 <?php

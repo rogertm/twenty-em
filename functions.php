@@ -1460,7 +1460,10 @@ if ( ! function_exists( 't_em_header_image' ) ) :
  */
 function t_em_header_image(){
 	global $post, $t_em;
-	if ( 'header-image' == $t_em['header_set'] ) :
+	if ( ( 'header-image' == $t_em['header_set'] )
+		&& ( ( '1' == $t_em['header_featured_image_home_only'] && is_home() )
+		|| ( '0' == $t_em['header_featured_image_home_only'] ) ) ) :
+
 		$header_image = get_header_image();
 		if ( $header_image ) :
 			$header_image_width = get_theme_support( 'custom-header', 'width' );
@@ -1949,123 +1952,98 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  * Pluggable Function: Render Featured Text Widgets in front page if it's is set by the user in
  * "Front Page Options" in admin panel.
  *
+ * This function is directly call from custom-front-page.php template
+ *
  * @global $t_em
  *
  * @uses t_em_front_page_widgets_options()
  *
- * @return string HTML div boxes
+ * @return string HTML
  *
  * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets(){
 	global $t_em;
-	foreach ( t_em_front_page_widgets_options() as $widget ) :
-		if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
-		$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
-			'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
+	if ( 'widgets-front-page' == $t_em['front_page_set'] ) :
+		t_em_action_custom_front_page_before(); ?>
+		<section id="featured-widget-area" class="row">
+			<?php t_em_action_custom_front_page_inside_before(); ?>
 
-		$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-			'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. $t_em['headline_'.$widget['name'].''] .'" />' : '';
+<?php
+		foreach ( t_em_front_page_widgets_options() as $widget ) :
+			if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
+			$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
+				'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
 
-		$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
+			$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
+				'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. $t_em['headline_'.$widget['name'].''] .'" />' : '';
 
-		$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
-			'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
+			$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
 
-		$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
-			'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
+			$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
+				'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
 
-		$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
-		$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
-		$primary_button_link 		= ( $t_em['primary_button_link_'.$widget['name']] ) ? $t_em['primary_button_link_'.$widget['name']] : null;
-		$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
-		$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
-		$secondary_button_link 		= ( $t_em['secondary_button_link_'.$widget['name']] ) ? $t_em['secondary_button_link_'.$widget['name']] : null;
+			$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
+				'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
 
-		if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
-				$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
-					'<a href="'. $primary_button_link .'" class="btn primary-button" title="'. $primary_link_text .'">
-					<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
+			$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
+			$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
+			$primary_button_link 		= ( $t_em['primary_button_link_'.$widget['name']] ) ? $t_em['primary_button_link_'.$widget['name']] : null;
+			$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
+			$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
+			$secondary_button_link 		= ( $t_em['secondary_button_link_'.$widget['name']] ) ? $t_em['secondary_button_link_'.$widget['name']] : null;
 
-				$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
-					'<a href="'. $secondary_button_link .'" class="btn secondary-button" title="'. $secondary_link_text .'">
-					<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
+			if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
+					$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
+						'<a href="'. $primary_button_link .'" class="btn primary-button" title="'. $primary_link_text .'">
+						<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
-			$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
-		else :
-			$widget_footer = null;
-		endif;
+					$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
+						'<a href="'. $secondary_button_link .'" class="btn secondary-button" title="'. $secondary_link_text .'">
+						<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
-		// First widget is a Jumbotron
-		$widget_cols = ( $widget['name'] != 'text_widget_one' ) ? t_em_add_bootstrap_class( 'featured-widget-area' ) : 'col-md-12';
+				$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
+			else :
+				$widget_footer = null;
+			endif;
+
+			// First widget is a Jumbotron
+			$widget_cols = ( $widget['name'] != 'text_widget_one' ) ? t_em_add_bootstrap_class( 'featured-widget-area' ) : 'col-md-12';
 ?>
-		<div class="<?php echo $widget_cols; ?>">
-			<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
-				<?php echo $widget_thumbnail_url; ?>
-				<div class="front-page-widget-caption caption">
-				<?php	echo $widget_headline;
-						echo $widget_content;
-						echo $widget_footer; ?>
+			<div class="<?php echo $widget_cols; ?>">
+				<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
+					<?php echo $widget_thumbnail_url; ?>
+					<div class="front-page-widget-caption caption">
+					<?php	echo $widget_headline;
+							echo $widget_content;
+							echo $widget_footer; ?>
+					</div>
 				</div>
 			</div>
-		</div>
 <?php
-		endif;
-	endforeach;
+			endif;
+		endforeach;
+?>
+
+			<?php t_em_action_custom_front_page_inside_after(); ?>
+		</section><!-- #featured-widget-area -->
+<?php
+		t_em_action_custom_front_page_after();
+	endif;
 }
 endif; // function t_em_front_page_widgets()
 
 /**
- * Show Featured Text Widgets in front page if it's is set by the user in "Front Page Options" in
- * admin panel. This function is attached to the t_em_action_custom_front_page action hook.
+ * Load custom template for Custom Front Page (Text Widgets) option in admin panel
  */
-function t_em_display_front_page_widgets(){
+function t_em_load_custom_front_page( $home_template = '' ){
 	global $t_em;
-	if ( 'widgets-front-page' == $t_em['front_page_set'] ) : ?>
-	<section id="featured-widget-area" class="row">
-		<?php t_em_action_custom_front_page_inside_before(); ?>
-		<?php t_em_front_page_widgets(); ?>
-		<?php t_em_action_custom_front_page_inside_after(); ?>
-	</section><!-- #featured-widget-area -->
-<?php
+	if ( 'widgets-front-page' == $t_em['front_page_set'] ) :
+		$home_template = locate_template( 'custom-front-page.php' );
 	endif;
+	return $home_template;
 }
-add_action( 't_em_action_custom_front_page', 't_em_display_front_page_widgets' );
-
-if ( ! function_exists( 't_em_jawp_front_page' ) ) :
-/**
- * Pluggable Function: Show Just Another WordPress Front Page if it's is set by the user in
- * "Front Page Options" in admin panel.
- * This function is attached to the t_em_action_wp_front_page action hook.
- */
-function t_em_jawp_front_page(){
-	global $t_em;
-	if ( 'wp-front-page' == $t_em['front_page_set'] ) :
-		// If our front page is a static page, we load it
-		$front_page = get_option( 'show_on_front' ) ;
-		if ( 'page' == $front_page ) :
-			if ( have_posts() ) :
-				while ( have_posts() ) :
-					the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<header>
-						<h2 class="page-header"><?php the_title(); ?></h2>
-					</header>
-					<div class="entry-content">
-						<?php the_content(); ?>
-						<?php t_em_edit_post_link(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-## -->
-<?php 			endwhile;
-			endif;
-		// Else, we display a list of post
-		else :
-			t_em_loop();
-		endif;
-	endif;
-}
-endif; // function t_em_jawp_front_page()
-add_action( 't_em_action_wp_front_page', 't_em_jawp_front_page' );
+add_action( 'home_template', 't_em_load_custom_front_page' );
 
 if ( ! function_exists( 't_em_breadcrumb' ) ) :
 /**
@@ -2338,12 +2316,14 @@ if ( ! function_exists( 't_em_footer_menu' ) ) :
 function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
 	wp_nav_menu( array(
-		'theme_location'	=> 'footer-menu',
-		'container'			=> 'nav',
-		'container_id'		=> 'footer-menu',
-		'container_class'	=> '',
-		'menu_class'		=> 'list-inline text-right menu',
-		'depth'				=> 1, ) );
+			'theme_location'	=> 'footer-menu',
+			'container'			=> 'nav',
+			'container_id'		=> 'footer-menu',
+			'container_class'	=> '',
+			'menu_class'		=> 'list-inline text-right menu',
+			'depth'				=> apply_filters( 't_em_filter_footer_menu_depth', 1 ),
+		)
+	);
 endif;
 }
 endif; // function t_em_footer_menu()
