@@ -32,29 +32,6 @@ require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
 
 
 /**
- * Register Style Sheet and Javascript to beautify the admin option page.
- * This function is attached ti the admin_init() action hook, but just if we are in the right place.
- *
- * @global $t_em_theme_data See t_em_theme_data()
- *
- * @since Twenty'em 0.1
- */
-function t_em_admin_styles_and_scripts(){
-	$screen = get_current_screen();
-	if ( $screen->id == 'toplevel_page_twenty-em-options' ):
-		// Check the theme version right from the style sheet
-		global $t_em_theme_data;
-		wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
-		wp_enqueue_style( 'style-admin-t-em' );
-		wp_enqueue_script( 'jquery-ui-accordion' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $t_em_theme_data['Version'], false );
-		wp_enqueue_script( 'script-admin-t-em' );
-	endif;
-}
-add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts', -999 );
-
-/**
  * Register the form setting for our t_em_theme_options array.
  * This function is attached to the admin_init() action hook.
  *
@@ -85,6 +62,29 @@ function t_em_register_setting_options_init(){
 	do_action( 't_em_admin_action_add_settings_field' );
 }
 add_action( 'admin_init', 't_em_register_setting_options_init' );
+
+/**
+ * Register Style Sheet and Javascript to beautify the admin option page.
+ * This function is attached ti the admin_init() action hook, but just if we are in the right place.
+ *
+ * @global $t_em_theme_data See t_em_theme_data()
+ *
+ * @since Twenty'em 0.1
+ */
+function t_em_admin_styles_and_scripts(){
+	$screen = get_current_screen();
+	if ( $screen->id == 'toplevel_page_twenty-em-options' ):
+		// Check the theme version right from the style sheet
+		global $t_em_theme_data;
+		wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+		wp_enqueue_style( 'style-admin-t-em' );
+		wp_enqueue_script( 'jquery-ui-accordion' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $t_em_theme_data['Version'], false );
+		wp_enqueue_script( 'script-admin-t-em' );
+	endif;
+}
+add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts' );
 
 /**
  * Add our theme options page to the admin menu, including some help documentation.
@@ -125,7 +125,7 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
  * @since Twenty'em 0.1
  */
 function t_em_restore_from_scratch(){
-	global	$t_em;
+	global $t_em;
 	// If options are empties, we load default settings.
 	if ( empty( $t_em ) )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
@@ -290,7 +290,7 @@ function t_em_theme_options_page(){
 		<div class="error">
 			<p><?php t_em_theme_explode(); ?></p>
 		</div>
-		<?php elseif ( $t_em['t_em_db_version'] < T_EM_DB_VERSION ) :
+		<?php elseif ( t_em_db_version() < T_EM_DB_VERSION ) :
 			// Check for updates!
 			$options_diff = array_diff_key( t_em_default_theme_options(), $t_em );
 			$options_update = array_merge( $options_diff, $t_em );
@@ -313,6 +313,8 @@ function t_em_theme_options_page(){
 			</a>
 		<?php 		endif; ?>
 		<?php 		if ( isset( $_GET['update-twenty-em'] ) && $_GET['update-twenty-em'] == true ) :
+						update_option( 't_em_db_version', T_EM_DB_VERSION );
+						update_option( 't_em_framework_version', T_EM_FRAMEWORK_VERSION );
 						update_option( 't_em_theme_options', $options_update );
 					endif;
 		?>
@@ -617,6 +619,27 @@ function t_em_theme_options_validate( $input ){
 	else :
 		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );
 	endif;
+}
+
+/**
+ * If WP_DEBUG is set to true, show debug information for the user
+ */
+function t_em_register_debug_init(){
+	if ( WP_DEBUG ) :
+		add_settings_field( 't_em_debug_info', __( 'Debug Information', 't_em' ), 't_em_debug_info', 'twenty-em-options', 'twenty-em-section' );
+	endif;
+}
+add_action( 't_em_admin_action_add_settings_field', 't_em_register_debug_init', 999 );
+
+function t_em_debug_info(){
+	global $t_em;
+?>
+	<div class="sub-extend option-group">
+		<header><?php printf( __( 'Current Option: <code>%s</code>' ), 't_em_theme_options' ) ?></header>
+		<p class="alert alert-notice"><?php _e( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) ?></p>
+		<pre><?php print_r( $t_em ) ?></pre>
+	</div>
+<?php
 }
 
 /**

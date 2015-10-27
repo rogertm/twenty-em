@@ -53,7 +53,7 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20151025' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20151026' ); // In date format Ymd
 
 // Engine Directory Path
 define ( 'T_EM_ENGINE_DIR_PATH',										get_template_directory().'/engine' );
@@ -95,4 +95,22 @@ if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE' ) )		define( 'T_EM_
 
 if ( ! defined( 'T_EM_HEADER_IMAGE_WIDTH' ) )							define( 'T_EM_HEADER_IMAGE_WIDTH', 1600 );
 if ( ! defined( 'T_EM_HEADER_IMAGE_HEIGHT' ) )							define( 'T_EM_HEADER_IMAGE_HEIGHT', 560 );
+
+/**
+ * Register Data Base version
+ */
+function t_em_db_version(){
+	add_option( 't_em_db_version', T_EM_DB_VERSION );
+	return get_option( 't_em_db_version' );
+}
+add_action( 'after_switch_theme', 't_em_db_version' );
+
+/**
+ * Register Framework version
+ */
+function t_em_framework_version(){
+	add_option( 't_em_framework_version', T_EM_FRAMEWORK_VERSION );
+	return get_option( 't_em_framework_version' );
+}
+add_action( 'after_switch_theme', 't_em_framework_version' );
 ?>

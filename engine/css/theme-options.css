@@ -12,9 +12,6 @@
  * @link			N/A Just another css style sheet ;)
  * @since			Twenty'em 0.1
  */
-#icon-theme-options{
-	background: url('../images/t-em-options-icon.png') no-repeat;
-}
 #t-em-setting .form-table{
 	margin-top: 1.5em;
 	border-collapse: separate;
@@ -225,7 +222,7 @@
 #t-em-setting .alert{
 	border-left: 4px solid;
 	padding: 10px;
-	margin-bottom: 15px;
+	margin: 10px 0 15px;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 	background: none repeat scroll 0% 0% #f7f7f7;
 }
@@ -278,4 +275,8 @@
 	height: 1.7em;
 	outline: 0px none;
 	width: 99%;
+}
+#t-em-setting pre{
+	background: #f5f5f5;
+	padding: 15px;
 }
