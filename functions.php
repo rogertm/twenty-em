@@ -1964,8 +1964,7 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  */
 function t_em_front_page_widgets(){
 	global $t_em;
-	if ( 'widgets-front-page' == $t_em['front_page_set'] ) :
-		t_em_action_custom_front_page_before(); ?>
+	if ( 'widgets-front-page' == $t_em['front_page_set'] ) : ?>
 		<section id="featured-widget-area" class="row">
 			<?php t_em_action_custom_front_page_inside_before(); ?>
 
@@ -2028,7 +2027,6 @@ function t_em_front_page_widgets(){
 			<?php t_em_action_custom_front_page_inside_after(); ?>
 		</section><!-- #featured-widget-area -->
 <?php
-		t_em_action_custom_front_page_after();
 	endif;
 }
 endif; // function t_em_front_page_widgets()
