@@ -966,7 +966,7 @@ function t_em_term_description(){
 	elseif ( is_tax() ) :
 		$query_obj = get_queried_object();
 		$term_description = $query_obj->description;
-		$term_id = get_term_by( 'term_taxonomy_id', $query_obj->term_id, $query_obj->taxonomy );
+		$term_id = get_term_by( 'id', $query_obj->term_id, $query_obj->taxonomy );
 	endif;
 	if ( ! empty( $term_description ) ) :
 		echo '<div id="term-description-'. $term_id->term_id .'" class="archive-meta term-description">' . $term_description . '</div>';
