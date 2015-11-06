@@ -208,7 +208,7 @@ function t_em_theme_sidebar_help(){
 				'<p>' . sprintf( __( '<a href="%1$s">Change Log</a>', 't_em' ), T_EM_SITE . '/?page-request=log&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">News</a>', 't_em' ), T_EM_SITE . '/?page-request=blog&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
 				'<p>' . sprintf( __( '<a href="%1$s">Feedback</a>', 't_em' ), T_EM_SITE . '/?page-request=contact&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Share your Testimony</a>', 't_em' ), T_EM_SITE . '/?page-request=testimonials&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s">Share your Testimony</a>', 't_em' ), T_EM_SITE . '/?page-request=testimonies&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>';
 
 	return $help_sidebar;
 }
