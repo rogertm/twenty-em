@@ -840,45 +840,6 @@ function t_em_post_date(){
 }
 endif; // function t_em_post_date()
 
-if ( ! function_exists( 't_em_get_avatar' ) ) :
-/**
- * Pluggable Function: Retrieve the custom avatar for a user if is enable custom avatar option in
- * 'General Options' in admin panel and provided in the WordPress profile page. If not the default
- * avatar from gravatar.com will be displayed.
- *
- * @param int $user_id Required User ID
- * @param int|string|object Required $id_or_email A user ID,  email address, or comment object
- * @param int $size Size of the avatar image
- * @param string $default URL to a default image to use if no avatar is available
- * @param string $alt Alternative text to use in image tag. Defaults to blank
- *
- * @return string <img> tag for the user's avatar
- *
- * @since Twenty'em 1.0
- */
-function t_em_get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ){
-	global $t_em;
-	if ( '1' == $t_em['custom_avatar'] ) :
-		if ( is_numeric( $id_or_email ) ) :
-			$user = get_user_by( 'id', $id_or_email );
-		else :
-			$user = get_user_by( 'email', $id_or_email );
-		endif;
-		$custom_avatar_url = get_user_meta( $user->ID, 'custom_avatar_url', true );
-
-		if ( $custom_avatar_url ) :
-?>
-		<img src="<?php echo $custom_avatar_url ?>" class="avatar" alt="<?php echo $alt; ?>" width="<?php echo $size; ?>" height="<?php echo $size; ?>">
-<?php
-		else :
-			echo get_avatar( $id_or_email, $size, $default = '', $alt );
-		endif;
-	else :
-		echo get_avatar( $id_or_email, $size, $default = '', $alt );
-	endif;
-}
-endif; // function t_em_get_avatar()
-
 if ( ! function_exists( 't_em_author_meta' ) ) :
 /**
  * Pluggable Function: If a user has filled out their description, show a bio on their entries.
@@ -888,7 +849,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
-		<?php echo t_em_get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
+		<?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
 			<?php the_author_meta( 'description' ); ?>

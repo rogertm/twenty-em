@@ -154,7 +154,6 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'separate_comments_pings_tracks'				=> '1',
 		'single_page_comments'							=> '1',
 		'shortcode_buttoms'								=> '1',
-		'custom_avatar'									=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
 		'header_set'									=> 'no-header-image',
@@ -354,7 +353,6 @@ function t_em_theme_options_validate( $input ){
 			'separate_comments_pings_tracks',
 			'single_page_comments',
 			'shortcode_buttoms',
-			'custom_avatar',
 			'header_featured_image_home_only',
 			'header_featured_image',
 			'slider_home_only',

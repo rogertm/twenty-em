@@ -726,7 +726,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			if ( 1 == $instance['avatar'] ) :
 ?>
 				<div class="pull-left">
-					<div class="media-object"><?php t_em_get_avatar( $contributor, '96', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
+					<div class="media-object"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
 				</div>
 <?php
 			endif;

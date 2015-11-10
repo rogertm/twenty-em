@@ -59,7 +59,6 @@ function t_em_theme_options_help(){
 						'<li>' . sprintf( __( '<strong>Enable comments in single pages</strong>: This option lets you allow comments in single pages. If true, the option <a href="%1$s">Allow people to post comments on new articles</a> in <strong>Default article settings</strong> must be true too.', 't_em' ),
 								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
 						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes allways will be enable', 't_em' ) . '</li>' .
-						'<li>' . __( '<strong>Custom avatar</strong>: Add custom avatar option to users edit screen', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s">Upload</a> and/or select from your <a href="%2$s">Media Library</a> a favicon to your site.', 't_em' ),
 								 admin_url( 'media-new.php' ),
 								 admin_url( 'upload.php' ) ) . '</li>' .

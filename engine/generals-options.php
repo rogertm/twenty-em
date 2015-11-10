@@ -59,72 +59,10 @@ function t_em_general_options( $general_options = '' ){
 			'label'			=> __( 'Enable shortcodes buttons', 't_em' ),
 			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor' ),
 		),
-		'custom_avatar'		=> array(
-			'name'			=> 'custom_avatar',
-			'label'			=> __( 'Enable custom avatar', 't_em' ),
-			'sublabel'		=> '',
-		),
 	);
 
 	return apply_filters( 't_em_admin_filter_general_options', $general_options );
 }
-
-/**
- * Add custom avatar option to users edit screen. This function is attached to the show_user_profile()
- * and the edit_user_profile() action hooks.
- * Only users with upload_files capabilities will access to this option
- *
- * @param $user_id int A user ID
- *
- * @since Twenty'em 1.0
- */
-function t_em_add_custom_avatar_url( $user_id ){
-	global $user_id, $t_em;
-	if ( current_user_can( 'upload_files' ) && '1' == $t_em['custom_avatar'] ) :
-?>
-	<h3><?php _e( 'Custom avatar', 't_em' ); ?></h3>
-	<table class="form-table">
-		<tbody>
-			<tr>
-				<th><label for="custom_avatar_url"><?php _e( 'Avatar url', 't_em' ); ?></label></th>
-				<td>
-				<?php
-				$custom_avatar_url = get_user_meta( $user_id, 'custom_avatar_url', true );
-				if ( $custom_avatar_url ) :
-				?>
-					<p><img src="<?php echo $custom_avatar_url ?>" width="150" height="150"></p>
-				<?php
-				endif;
-				?>
-					<input id="custom_avatar_url" class="regular-text code" type="url" name="custom_avatar_url" value="<?php echo $custom_avatar_url; ?>"></td>
-			</tr>
-		</tbody>
-	</table>
-<?php
-	endif;
-}
-add_action( 'show_user_profile', 't_em_add_custom_avatar_url' );
-add_action( 'edit_user_profile', 't_em_add_custom_avatar_url' );
-
-/**
- * Save data for custom avatar option in users edit screen. This function is attached to the
- * personal_options_update() and edit_user_profile_update() actions hooks.
- * Only users with upload_files capabilities will access to this option
- *
- * @param $user_id int A user ID
- *
- * @since Twenty'em 1.0
- */
-function t_em_update_custom_avatar_url( $user_id ){
-	global $user_id, $t_em;
-	if ( current_user_can( 'upload_files' ) && '1' == $t_em['custom_avatar'] ) :
-		if ( current_user_can( 'edit_users', $user_id ) ) :
-			update_user_meta( $user_id, 'custom_avatar_url', $_POST['custom_avatar_url'] );
-		endif;
-	endif;
-}
-add_action( 'personal_options_update', 't_em_update_custom_avatar_url' );
-add_action( 'edit_user_profile_update', 't_em_update_custom_avatar_url' );
 
 /**
  * Extend setting for General Options in Twenty'em admin panel.
