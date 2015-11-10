@@ -143,9 +143,6 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
  */
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
-		// Twenty'em Version
-		't_em_framework_version'						=> T_EM_FRAMEWORK_VERSION,
-		't_em_db_version'								=> T_EM_DB_VERSION,
 		// Generals Options
 		't_em_link'										=> '1',
 		'single_featured_img'							=> '1',
@@ -339,10 +336,6 @@ function t_em_theme_options_page(){
  */
 function t_em_theme_options_validate( $input ){
 	if ( $input != null ) :
-
-		// CONSTANTS
-		$input['t_em_framework_version'] = T_EM_FRAMEWORK_VERSION;
-		$input['t_em_db_version'] = T_EM_DB_VERSION;
 
 		// All the checkbox are either 0 or 1
 		foreach ( array(
@@ -634,8 +627,8 @@ function t_em_debug_info(){
 ?>
 	<div class="sub-extend option-group">
 		<header><?php printf( __( 'Current Option: <code>%s</code>' ), 't_em_theme_options' ) ?></header>
-		<p class="alert alert-notice"><?php _e( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) ?></p>
-		<pre><?php print_r( $t_em ) ?></pre>
+		<p class="alert alert-info"><?php _e( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) ?></p>
+		<pre><?php print_r( get_option( 't_em_theme_options' ) ) ?></pre>
 	</div>
 <?php
 }

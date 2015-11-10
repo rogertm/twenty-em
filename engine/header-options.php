@@ -67,7 +67,7 @@ function t_em_header_image_callback(){
 	global $t_em;
 //
 	$extend_header = '';
-	$extend_header .= '<p class="alert alert-notice">'. sprintf( __( 'You can manage your header image option in the <a href="%1$s" target="_blank">Theme Customizer</a> screen.', 't_em' ), admin_url( 'customize.php?autofocus[control]=header_image' ) ) .'</p>';
+	$extend_header .= '<p class="alert alert-info">'. sprintf( __( 'You can manage your header image option in the <a href="%1$s" target="_blank">Theme Customizer</a> screen.', 't_em' ), admin_url( 'customize.php?autofocus[control]=header_image' ) ) .'</p>';
 	if ( get_header_image() ) :
 		$extend_header .= '<div class="sub-extend option-group">';
 		$extend_header .= 	'<figure><img src="'.get_header_image().'" width="500"></figure>';
@@ -104,8 +104,9 @@ function t_em_header_image_callback(){
  *
  * Hook this returned filter to display in your slider options some different taxonomies
  */
-function t_em_slider_list_taxonomies(){
-	return apply_filters( 't_em_admin_filter_slider_list_taxonomies', get_categories() );
+function t_em_slider_list_taxonomies( $slider_category = '' ){
+	$slider_category = get_categories();
+	return apply_filters( 't_em_admin_filter_slider_list_taxonomies', $slider_category );
 }
 
 /**

@@ -75,7 +75,7 @@ function t_em_settings_field_webmaster_tools_set(){
 		<?php do_action( 't_em_admin_action_webmaster_tools_options_before' ); ?>
 		<div class="sub-extend option-group">
 			<header><?php _e( 'Trackers ID numbers', 't_em' ); ?></header>
-			<p class="alert alert-critical"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the ID number, the <code>%1$s</code> tag is not needed', 't_em' ), '&lt;meta /&gt;' ); ?></p>
+			<p class="alert alert-info"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the ID number, the <code>%1$s</code> tag is not needed', 't_em' ), '&lt;meta /&gt;' ); ?></p>
 <?php
 		foreach ( t_em_search_engines_id_options() as $search_engine ) :
 ?>
@@ -92,7 +92,7 @@ function t_em_settings_field_webmaster_tools_set(){
 
 		<div class="sub-extend option-group">
 			<header><?php _e( 'Trackers Statistics Codes', 't_em' ); ?></header>
-			<p class="alert alert-critical"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</code> tags are not needed', 't_em' ), '&lt;script type="text/javascript"&gt', '&lt;/script&gt' ); ?></p>
+			<p class="alert alert-info"><?php echo sprintf( __( '<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</code> tags are not needed', 't_em' ), '&lt;script type="text/javascript"&gt', '&lt;/script&gt' ); ?></p>
 <?php
 	foreach ( t_em_stats_tracker_options() as $stat_tracker ) :
 ?>

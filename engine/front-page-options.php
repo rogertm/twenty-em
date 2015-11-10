@@ -62,7 +62,7 @@ function t_em_front_page_jawpfp_callback(){
 	endif;
 
 	$extend_jawpfp = '';
-	$extend_jawpfp .= '<p class="alert alert-notice">' . sprintf( __( 'To manage this options you should go to your <a href="%1$s" target="_blank">Reading Settings</a>', 't_em' ),
+	$extend_jawpfp .= '<p class="alert alert-info">' . sprintf( __( 'To manage this options you should go to your <a href="%1$s" target="_blank">Reading Settings</a>', 't_em' ),
 							  admin_url( 'options-reading.php' ) );
 	$extend_jawpfp .= '</p>';
 	$extend_jawpfp .= '<p>'. $show_on_front . '</p>';

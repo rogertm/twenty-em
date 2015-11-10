@@ -226,8 +226,8 @@
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 	background: none repeat scroll 0% 0% #f7f7f7;
 }
-#t-em-setting .alert-notice{
-	border-left-color: #7AD03A;
+#t-em-setting .alert-info{
+	border-left-color: #0073AA;
 }
 #t-em-setting .alert-critical{
 	border-left-color: #DD3D36;
