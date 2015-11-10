@@ -108,28 +108,6 @@ function t_em_action_main_after(){
 }
 
 /**
- * Fire the t_em_action_wp_front_page action, between t_em_action_content_before and
- * t_em_action_content_after action hook.
- *
- * @file front-page.php
- * @since Twenty'em 1.0
- */
-function t_em_action_wp_front_page(){
-	do_action( 't_em_action_wp_front_page' );
-}
-
-/**
- * Fire the t_em_action_custom_front_page action, between t_em_action_custom_front_page_before and
- * t_em_action_custom_front_page_after action hook.
- *
- * @file front-page.php
- * @since Twenty'em 1.0
- */
-function t_em_action_custom_front_page(){
-	do_action( 't_em_action_custom_front_page' );
-}
-
-/**
  * Fire the t_em_action_custom_front_page_inside_before action just after opening the
  * <section id="featured-widget-area"> tag
  *
