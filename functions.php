@@ -926,7 +926,7 @@ function t_em_term_description(){
 		$term_id = get_term_by( 'name', single_tag_title( '', false ), 'post_tag' );
 	elseif ( is_tax() ) :
 		$query_obj = get_queried_object();
-		$term_description = $query_obj->description;
+		$term_description = t_em_wrap_paragraph ( $query_obj->description );
 		$term_id = get_term_by( 'id', $query_obj->term_id, $query_obj->taxonomy );
 	endif;
 	if ( ! empty( $term_description ) ) :
