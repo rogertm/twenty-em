@@ -133,7 +133,7 @@ function t_em_excerpt_callback(){
 
 	$extend_excerpt = '';
 	$extend_excerpt .= '<div class="sub-extend option-group">';
-	$extend_excerpt .= 		'<header>'. __( 'Excerpt Length' ) .'</header>';
+	$extend_excerpt .= 		'<header>'. __( 'Excerpt Length', 't_em' ) .'</header>';
 	$extend_excerpt .= 		'<div class="layout text-option excerpt-length">';
 	$extend_excerpt .=				'<label>';
 	$extend_excerpt .=					'<p>'. sprintf( __( 'The amount of words displayed in the excerpt. If empty, the default value will be <code>%1$s</code> words.', 't_em' ), '55' ) .'</p>';

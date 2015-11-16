@@ -57,7 +57,7 @@ function t_em_general_options( $general_options = '' ){
 		'shortcode_buttoms'		=> array(
 			'name'			=> 'shortcode_buttoms',
 			'label'			=> __( 'Enable shortcodes buttons', 't_em' ),
-			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor' ),
+			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor', 't_em' ),
 		),
 	);
 

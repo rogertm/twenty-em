@@ -632,7 +632,7 @@ function t_em_debug_info(){
 	global $t_em;
 ?>
 	<div class="sub-extend option-group">
-		<header><?php printf( __( 'Current Option: <code>%s</code>' ), 't_em_theme_options' ) ?></header>
+		<header><?php printf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) ?></header>
 		<p class="alert alert-info"><?php _e( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) ?></p>
 		<pre><?php print_r( get_option( 't_em_theme_options' ) ) ?></pre>
 	</div>

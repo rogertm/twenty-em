@@ -149,7 +149,6 @@ endif;
 function t_em_theme_backup(){
 ?>
 	<div class="wrap">
-		<?php screen_icon(); ?>
 		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . __( 'Backup', 't_em' ); ?></h2>
 		<section id="export-settings">
 			<h3><?php _e( 'Export Settings', 't_em' ); ?></h3>
