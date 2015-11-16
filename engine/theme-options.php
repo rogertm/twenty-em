@@ -26,9 +26,9 @@ require_once( T_EM_ENGINE_DIR_PATH . '/webmaster-tools-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
-require_once( T_EM_INC_DIR_PATH . '/enqueue.php' );
-require_once( T_EM_INC_DIR_PATH . '/shortcodes.php' );
-require_once( T_EM_INC_DIR_PATH . '/widgets.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/enqueue.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/shortcodes.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/widgets.php' );
 
 
 /**
@@ -530,34 +530,20 @@ function t_em_theme_options_validate( $input ){
 		foreach ( array(
 			'static_header_headline',
 			'static_header_primary_button_text',
-			'static_header_primary_button_icon_class',
 			'static_header_secondary_button_text',
-			'static_header_secondary_button_icon_class',
 			'primary_button_text_text_widget_one',
 			'headline_text_widget_one',
-			'headline_icon_class_text_widget_one',
 			'primary_button_link_text_widget_one',
-			'primary_button_icon_class_text_widget_one',
 			'secondary_button_link_text_widget_one',
-			'secondary_button_icon_class_text_widget_one',
 			'headline_text_widget_two',
-			'headline_icon_class_text_widget_two',
 			'primary_button_link_text_widget_two',
-			'primary_button_icon_class_text_widget_two',
 			'secondary_button_link_text_widget_two',
-			'secondary_button_icon_class_text_widget_two',
 			'headline_text_widget_three',
-			'headline_icon_class_text_widget_three',
 			'primary_button_link_text_widget_three',
-			'primary_button_icon_class_text_widget_three',
 			'secondary_button_link_text_widget_three',
-			'secondary_button_icon_class_text_widget_three',
 			'headline_text_widget_four',
-			'headline_icon_class_text_widget_four',
 			'primary_button_link_text_widget_four',
-			'primary_button_icon_class_text_widget_four',
 			'secondary_button_link_text_widget_four',
-			'secondary_button_icon_class_text_widget_four',
 			'secondary_button_text_text_widget_one',
 			'primary_button_text_text_widget_two',
 			'secondary_button_text_text_widget_two',
@@ -566,7 +552,27 @@ function t_em_theme_options_validate( $input ){
 			'primary_button_text_text_widget_four',
 			'secondary_button_text_text_widget_four',
 		) as $text_field ) :
-			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( esc_textarea( $input[$text_field] ) ) : '';
+			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( $input[$text_field] ) : '';
+		endforeach;
+
+		// Validate all text field icon-class options
+		foreach ( array(
+			'static_header_primary_button_icon_class',
+			'static_header_secondary_button_icon_class',
+			'headline_icon_class_text_widget_one',
+			'primary_button_icon_class_text_widget_one',
+			'secondary_button_icon_class_text_widget_one',
+			'headline_icon_class_text_widget_two',
+			'primary_button_icon_class_text_widget_two',
+			'secondary_button_icon_class_text_widget_two',
+			'headline_icon_class_text_widget_three',
+			'primary_button_icon_class_text_widget_three',
+			'secondary_button_icon_class_text_widget_three',
+			'headline_icon_class_text_widget_four',
+			'primary_button_icon_class_text_widget_four',
+			'secondary_button_icon_class_text_widget_four',
+		) as $text_field ) :
+			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( sanitize_text_field( $input[$text_field] ) ) : '';
 		endforeach;
 
 		// Validate all textarea options
@@ -577,7 +583,7 @@ function t_em_theme_options_validate( $input ){
 			'content_text_widget_four',
 			'static_header_content',
 		) as $textarea ) :
-			$input[$textarea] = ( isset( $input[$textarea] ) ) ? trim( esc_textarea( $input[$textarea] ) ) : '';
+			$input[$textarea] = ( isset( $input[$textarea] ) ) ? trim( $input[$textarea] ) : '';
 		endforeach;
 
 		// Validate all Verification Services
@@ -589,9 +595,9 @@ function t_em_theme_options_validate( $input ){
 			$pattern = '/content=["\']?([^"\' ]*)["\' ]/is';
 			preg_match( $pattern, $input[$content_key], $match );
 			if ( $match ) :
-				$input[$content_key] = trim( htmlentities( $match[1] ) );
+				$input[$content_key] = trim( urldecode( $match[1] ) );
 			else :
-				$input[$content_key] = trim( htmlentities( $input[$content_key] ) );
+				$input[$content_key] = trim( $input[$content_key] );
 			endif;
 		endforeach;
 
@@ -601,7 +607,7 @@ function t_em_theme_options_validate( $input ){
 			'stats_tracker_header_tag',
 			'stats_tracker_body_tag',
 		) as $text_tracker ) :
-			$input[$text_tracker] = trim( htmlentities( str_replace( $dirty_tracker, '', $input[$text_tracker] ) ) );
+			$input[$text_tracker] = trim( str_replace( $dirty_tracker, '', $input[$text_tracker] ) );
 		endforeach;
 
 		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.', 't_em' ), home_url() ), 'updated' );

@@ -99,7 +99,7 @@ function t_em_settings_field_webmaster_tools_set(){
 			<div class="layout textarea-option stat-tracker option-single">
 				<label>
 					<span><?php echo $stat_tracker['label']; ?></span>
-					<p><textarea name="t_em_theme_options[<?php echo html_entity_decode( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em[$stat_tracker['name']] ) ?></textarea></p>
+					<p><textarea name="t_em_theme_options[<?php echo esc_textarea( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em[$stat_tracker['name']] ) ?></textarea></p>
 				</label>
 			</div>
 <?php

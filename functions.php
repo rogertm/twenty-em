@@ -1389,7 +1389,7 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 		echo $open_link;
 		?>
 			<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
 				<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 			</figure>
 		<?php
@@ -1405,7 +1405,7 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 			echo $open_link;
 			?>
 				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
 					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 				</figure>
 			<?php
@@ -1504,7 +1504,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 							$image_src = $image_url[0];
 					endif; ?>
 					<div class="item">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_INC_DIR_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" />
+						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" />
 						<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
 							<h3 class="entry-title">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
@@ -1584,9 +1584,8 @@ function t_em_static_header(){
 <?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
 			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
 				<figure>
-					<img src="<?php echo esc_url( $t_em['static_header_img_src'] ); ?>"
-						alt="<?php echo $t_em['static_header_headline']; ?>"
-						title="<?php echo $t_em['static_header_headline']; ?>">
+					<img src="<?php echo $t_em['static_header_img_src']; ?>"
+						alt="<?php echo sanitize_text_field( $t_em['static_header_headline'] ); ?>">
 				</figure>
 			</div><!-- #static-header-image -->
 <?php 	endif; ?>
@@ -1601,23 +1600,23 @@ function t_em_static_header(){
 				<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
 <?php 	endif; ?>
 <?php 	if ( $t_em['static_header_content'] ) : ?>
-				<div class="static-header-content"><?php echo t_em_wrap_paragraph( html_entity_decode( $t_em['static_header_content'] ) ); ?></div>
+				<div class="static-header-content"><?php echo t_em_wrap_paragraph( $t_em['static_header_content'] ); ?></div>
 <?php 	endif; ?>
 				<footer class="actions">
 <?php 	if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
-					<a href="<?php echo esc_url( $t_em['static_header_primary_button_link'] ); ?>"
-						title="<?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?>"
+					<a href="<?php echo $t_em['static_header_primary_button_link']; ?>"
+						title="<?php echo $t_em['static_header_primary_button_text']; ?>"
 						class="btn primary-button">
-							<span class="<?php echo esc_attr( $t_em['static_header_primary_button_icon_class'] ) ?> icomoon"></span>
-							<span class="button-text"><?php echo esc_attr( $t_em['static_header_primary_button_text'] ); ?></span>
+							<span class="<?php echo $t_em['static_header_primary_button_icon_class'] ?> icomoon"></span>
+							<span class="button-text"><?php echo $t_em['static_header_primary_button_text']; ?></span>
 						</a>
 <?php 	endif; ?>
 <?php 	if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
-					<a href="<?php echo esc_url( $t_em['static_header_secondary_button_link'] ); ?>"
-						title="<?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?>"
+					<a href="<?php echo $t_em['static_header_secondary_button_link']; ?>"
+						title="<?php echo $t_em['static_header_secondary_button_text']; ?>"
 						class="btn secondary-button">
-							<span class="<?php echo esc_attr( $t_em['static_header_secondary_button_icon_class'] ) ?> icomoon"></span>
-							<span class="button-text"><?php echo esc_attr( $t_em['static_header_secondary_button_text'] ); ?></span>
+							<span class="<?php echo $t_em['static_header_secondary_button_icon_class'] ?> icomoon"></span>
+							<span class="button-text"><?php echo $t_em['static_header_secondary_button_text']; ?></span>
 						</a>
 <?php 	endif; ?>
 				</footer><!-- .actions -->
@@ -1934,7 +1933,7 @@ function t_em_front_page_widgets(){
 				'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
 
 			$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-				'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. $t_em['headline_'.$widget['name'].''] .'" />' : '';
+				'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ).'" />' : '';
 
 			$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
 
@@ -1942,7 +1941,7 @@ function t_em_front_page_widgets(){
 				'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
 
 			$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
-				'<div>'. t_em_wrap_paragraph( html_entity_decode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
+				'<div>'. t_em_wrap_paragraph( $t_em['content_'.$widget['name'].''] ) .'</div>' : '';
 
 			$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
 			$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
@@ -1953,11 +1952,11 @@ function t_em_front_page_widgets(){
 
 			if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 					$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
-						'<a href="'. $primary_button_link .'" class="btn primary-button" title="'. $primary_link_text .'">
+						'<a href="'. $primary_button_link .'" class="btn primary-button">
 						<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
 					$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
-						'<a href="'. $secondary_button_link .'" class="btn secondary-button" title="'. $secondary_link_text .'">
+						'<a href="'. $secondary_button_link .'" class="btn secondary-button">
 						<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
 				$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
@@ -2404,16 +2403,16 @@ function t_em_stats_header_tracker(){
 	global $t_em;
 	// Google Engine ID
 	if ( $t_em['google_id'] )
-		echo '<meta name="google-site-verification" content="' . html_entity_decode( $t_em['google_id'] ) . '" />' . "\n";
+		echo '<meta name="google-site-verification" content="' . $t_em['google_id'] . '" />' . "\n";
 	// Bing Engine ID
 	if ( $t_em['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . html_entity_decode( $t_em['bing_id'] ) . '" />' . "\n";
+		echo '<meta name="msvalidate.01" content="' . $t_em['bing_id'] . '" />' . "\n";
 	// Pinterest Engine ID
 	if ( $t_em['pinterest_id'] )
-		echo '<meta name="p:domain_verify" content="' . html_entity_decode( $t_em['pinterest_id'] ) . '" />' . "\n";
+		echo '<meta name="p:domain_verify" content="' . $t_em['pinterest_id'] . '" />' . "\n";
 	// Header Stats Tracker
 	if ( $t_em['stats_tracker_header_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_header_tag'] ) . '</script>' . "\n";
+		echo '<script type="text/javascript">' . $t_em['stats_tracker_header_tag'] . '</script>' . "\n";
 }
 add_action( 'wp_head', 't_em_stats_header_tracker' );
 
@@ -2421,7 +2420,7 @@ function t_em_stats_body_tracker(){
 	global $t_em;
 	// Body Stats Tracker
 	if ( $t_em['stats_tracker_body_tag'] )
-		echo '<script type="text/javascript">' . html_entity_decode( $t_em['stats_tracker_body_tag'] ) . '</script>' . "\n";
+		echo '<script type="text/javascript">' . $t_em['stats_tracker_body_tag'] . '</script>' . "\n";
 }
 add_action( 'wp_footer', 't_em_stats_body_tracker' );
 

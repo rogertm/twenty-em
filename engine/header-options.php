@@ -269,13 +269,13 @@ function t_em_static_header_callback(){
 	$extend_static_header .= 	'<header>'. __( 'Headline, Content and More...', 't_em' ) .'</header>';
 	$extend_static_header .= 	'<div class="sub-layout text-option static-header">';
 	$extend_static_header .=		'<label><span>'. __( 'Headline', 't_em' ) .'</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text headline" name="t_em_theme_options[static_header_headline]" value="' . $t_em['static_header_headline'] . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text headline" name="t_em_theme_options[static_header_headline]" value="' . esc_textarea( $t_em['static_header_headline'] ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .= 		'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
 	$extend_static_header .= 			'<input type="url" class="regular-text" name="t_em_theme_options[static_header_img_src]" value="' . $t_em['static_header_img_src'] . '" />';
 	$extend_static_header .= 		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Content', 't_em' ) . '</span>';
-	$extend_static_header .=			'<textarea class="large-text" name="t_em_theme_options[static_header_content]" cols="50" rows="5">' . $t_em['static_header_content'] . '</textarea>';
+	$extend_static_header .=			'<textarea class="large-text" name="t_em_theme_options[static_header_content]" cols="50" rows="5">' . esc_textarea( $t_em['static_header_content'] ) . '</textarea>';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
 	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_text]" value="' . $t_em['static_header_primary_button_text'] . '">';

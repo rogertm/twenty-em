@@ -115,13 +115,13 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 	'<div class="layout text-option front-page">';
 		$extend_front_page .= 		'<header>' . $widget['label'] . '</header>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Headline', 't_em' ) .'</span>';
-		$extend_front_page .= 			'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . $t_em['headline_'.$widget['name']] . '" />';
+		$extend_front_page .= 			'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . esc_textarea( $t_em['headline_'.$widget['name']] ) . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_THEME_DIR_FONTS_URL . '/icomoon.html' ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[headline_icon_class_' . $widget['name'] . ']" value="' . $t_em['headline_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Content', 't_em' ) .'</span>';
-		$extend_front_page .= 			'<textarea name="t_em_theme_options[content_' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . $t_em['content_'.$widget['name']] . '</textarea>';
+		$extend_front_page .= 			'<textarea name="t_em_theme_options[content_' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . esc_textarea( $t_em['content_'.$widget['name']] ) . '</textarea>';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
 		$extend_front_page .= 			'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em['thumbnail_src_'.$widget['name']] . '" />';

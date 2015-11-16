@@ -53,30 +53,42 @@ define ( 'T_EM_SITE',													'http://twenty-em.com' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20151110' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20151115' ); // In date format Ymd
+
+// Theme Directory Path
+define( 'T_EM_THEME_DIR_PATH', 											get_template_directory() );
+define( 'T_EM_CHILD_THEME_DIR_PATH', 									get_stylesheet_directory() );
 
 // Engine Directory Path
-define ( 'T_EM_ENGINE_DIR_PATH',										get_template_directory().'/engine' );
+define ( 'T_EM_ENGINE_DIR_PATH',										T_EM_THEME_DIR_PATH . '/engine' );
+define ( 'T_EM_ENGINE_DIR_CSS_PATH',									T_EM_ENGINE_DIR_PATH . '/css' );
+define ( 'T_EM_ENGINE_DIR_IMG_PATH',									T_EM_ENGINE_DIR_PATH . '/images' );
+define ( 'T_EM_ENGINE_DIR_JS_PATH',										T_EM_ENGINE_DIR_PATH . '/js' );
 
 // Engine Directory URL
 define ( 'T_EM_ENGINE_DIR_URL',											get_template_directory_uri().'/engine' );
-define ( 'T_EM_ENGINE_DIR_CSS_URL',										get_template_directory_uri().'/engine/css' );
-define ( 'T_EM_ENGINE_DIR_IMG_URL',										get_template_directory_uri().'/engine/images' );
-define ( 'T_EM_ENGINE_DIR_JS_URL',										get_template_directory_uri().'/engine/js' );
+define ( 'T_EM_ENGINE_DIR_CSS_URL',										T_EM_ENGINE_DIR_URL . '/css' );
+define ( 'T_EM_ENGINE_DIR_IMG_URL',										T_EM_ENGINE_DIR_URL . '/images' );
+define ( 'T_EM_ENGINE_DIR_JS_URL',										T_EM_ENGINE_DIR_URL . '/js' );
+
+// Theme Directory Path
+define ( 'T_EM_THEME_DIR_INC_PATH',										T_EM_THEME_DIR_PATH . '/inc' );
+define ( 'T_EM_THEME_DIR_LANG_PATH',									T_EM_THEME_DIR_PATH . '/languages' );
+define ( 'T_EM_THEME_DIR_CSS_PATH',										T_EM_THEME_DIR_PATH . '/css' );
+define ( 'T_EM_THEME_DIR_IMG_PATH',										T_EM_THEME_DIR_PATH . '/images' );
+define ( 'T_EM_THEME_DIR_JS_PATH',										T_EM_THEME_DIR_PATH . '/js' );
+define ( 'T_EM_THEME_DIR_FONTS_PATH',									T_EM_THEME_DIR_PATH . '/fonts' );
+define ( 'T_EM_THEME_DIR_TEMPLATES_PATH',								T_EM_THEME_DIR_PATH . '/page-templates' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
-define ( 'T_EM_THEME_DIR_CSS_URL',										get_template_directory_uri().'/css' );
-define ( 'T_EM_THEME_DIR_IMG_URL',										get_template_directory_uri().'/images' );
-define ( 'T_EM_THEME_DIR_JS_URL',										get_template_directory_uri().'/js' );
-define ( 'T_EM_THEME_DIR_FONTS_URL',									get_template_directory_uri().'/fonts' );
-
-// Theme Includes Directory URL
-define ( 'T_EM_INC_DIR_URL',											get_template_directory_uri().'/inc' );
-
-// Some direct path we need
-define ( 'T_EM_INC_DIR_PATH',											get_template_directory().'/inc' );
-define ( 'T_EM_THEME_DIR_LANG_PATH',									get_template_directory().'/languages' );
+define ( 'T_EM_CHILD_THEME_DIR_URL',									get_stylesheet_directory_uri() );
+define ( 'T_EM_THEME_DIR_CSS_URL',										T_EM_THEME_DIR_URL . '/css' );
+define ( 'T_EM_THEME_DIR_IMG_URL',										T_EM_THEME_DIR_URL . '/images' );
+define ( 'T_EM_THEME_DIR_JS_URL',										T_EM_THEME_DIR_URL . '/js' );
+define ( 'T_EM_THEME_DIR_FONTS_URL',									T_EM_THEME_DIR_URL . '/fonts' );
+define ( 'T_EM_THEME_DIR_INC_URL',										T_EM_THEME_DIR_URL . '/inc' );
+define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/page-templates' );
 
 /**
  * Register default values through constants
@@ -113,4 +125,17 @@ function t_em_framework_version(){
 	return get_option( 't_em_framework_version' );
 }
 add_action( 'after_switch_theme', 't_em_framework_version' );
+
+/**
+ * Merge DB Version and Framework Version in to $t_em
+ */
+function t_em_merge_versions(){
+	global $t_em;
+	$versions = array(
+		't_em_db_version' => get_option( 't_em_db_version' ),
+		't_em_framework_version' => get_option( 't_em_framework_version' ),
+	);
+	$t_em = array_merge( $t_em, $versions );
+}
+add_action( 'after_setup_theme', 't_em_merge_versions' );
 ?>
