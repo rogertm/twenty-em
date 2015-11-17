@@ -85,7 +85,10 @@ function t_em_backup_import(){
 	if ( isset( $_POST['t_em_backup_import'] ) && $_POST['t_em_backup_import'] === 'true' && check_admin_referer( 't_em_backup_import', 't_em_backup_import_nonce_time' ) ) :
 
 		// If the import setting has not been sent, we do nothing
-		if ( ! isset( $_FILES['import_theme_data'] ) ) { return; }
+		if ( $_FILES['import_theme_data']['error'] ) :
+			wp_redirect( admin_url( 'admin.php?page=twenty-em-backup&error=true' ) );
+			exit;
+		endif;
 
 		// Check if the uploaded file is our file
 		if ( is_uploaded_file( $_FILES['import_theme_data']['tmp_name'] ) ) :
@@ -117,7 +120,7 @@ function t_em_backup_import(){
 					array( 'option_name' => 't_em_theme_options' )
 				);
 
-		$wpdb->flush();
+			$wpdb->flush();
 
 		endif;
 	else :
@@ -149,11 +152,11 @@ endif;
 function t_em_theme_backup(){
 ?>
 	<div class="wrap">
-		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . __( 'Backup', 't_em' ); ?></h2>
+		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . __( 'Backup Manager', 't_em' ); ?></h2>
 		<section id="export-settings">
 			<h3><?php _e( 'Export Settings', 't_em' ); ?></h3>
 			<?php t_em_backup_notice(); ?>
-			<p><?php printf( __( 'When you click in the button below <strong>%s Framework</strong> will create an TXT file for you to save in your computer.', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
+			<p><?php printf( __( 'When you click in the button below <strong>%s Framework</strong> will create a <code>.txt</code> file for you to save in your computer.', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
 			<p><?php printf( __( 'This file contain all your theme configuration. You can use it to restore your setting in this site or to easily setup another site based on <strong>%s Framework</strong>.', 't_em' ), T_EM_FRAMEWORK_NAME ); ?></p>
 			<form action="options.php" method="post">
 				<?php wp_nonce_field( 't_em_backup_export', 't_em_backup_export_nonce_time' ); ?>
@@ -168,7 +171,7 @@ function t_em_theme_backup(){
 			<form enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=twenty-em-backup&import=true' ); ?>" method="post">
 				<?php wp_nonce_field( 't_em_backup_import', 't_em_backup_import_nonce_time' ); ?>
 				<label>
-					<?php printf( __( 'Upload File: (Maximum Size: %s)', 't_em' ), ini_get( 'post_max_size' ) ); ?><br />
+					<?php printf( __( 'Upload File: (Maximum Size: <code>%s</code>)', 't_em' ), ini_get( 'post_max_size' ) ); ?><br />
 					<input type="file" name="import_theme_data" />
 				</label>
 				<?php submit_button( __( 'Upload file and import', 't_em' ) ); ?>

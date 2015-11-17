@@ -25,7 +25,7 @@ function t_em_theme_options_help(){
 
 	$screen = get_current_screen();
 
-	$help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
+	$overview_help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
 					T_EM_SITE .'/?page-request=home&amp;ver='.T_EM_FRAMEWORK_VERSION,
 					T_EM_FRAMEWORK_NAME,
 					$t_em_theme_data['Name'] ) . '</p>'.
@@ -44,7 +44,7 @@ function t_em_theme_options_help(){
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Overview', 't_em' ),
 		'id'		=> 'theme-options-help',
-		'content'	=> $help,
+		'content'	=> $overview_help,
 		)
 	);
 
@@ -179,16 +179,38 @@ function t_em_theme_options_help(){
 function t_em_theme_backup_help(){
 	$screen = get_current_screen();
 
-	$help =	'<p>' . sprintf( __( '<strong>%1$s Backup Manager</strong>', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
-			'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>%2$s Backup Manager</strong> should be imported. ', 't_em' ),
-							admin_url( 'admin.php?page=twenty-em-options' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
-			'<p>' . sprintf( __( 'Please note that this manager only backs up your settings, not your content, to backup your content use the <a href="%1$s">WordPress Export Tool</a>.', 't_em' ),
-			admin_url( 'export.php' ) ) . '</p>';
+	$overview_help =	'<p>' . sprintf( __( '<strong>%1$s Backup Manager</strong>', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
+						'<p>' . sprintf( __( 'The backup manager allows you to backup or restore your <a href="%1$s">Theme Options</a> settings to or from a text file. Only valid backup files generated through the <strong>%2$s Backup Manager</strong> should be imported. ', 't_em' ),
+										admin_url( 'admin.php?page=twenty-em-options' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
+						'<p>' . sprintf( __( 'Please note that this manager only backs up your settings, not your content, to backup your content use the <a href="%1$s">WordPress Export Tool</a>.', 't_em' ),
+						admin_url( 'export.php' ) ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Overview', 't_em' ),
-		'id'		=> 'theme-options-help',
-		'content'	=> $help,
+		'id'		=> 'theme-backup-help',
+		'content'	=> $overview_help,
+		)
+	);
+
+	$export_help =		'<p>' . __( '<strong>Export Settings</strong>', 't_em' ) . '</p>' .
+						'<p>' . sprintf( __( 'You can export your <strong>%1$s</strong> settings to back them up, or copy them to another site. If Child Themes or Plugins merge their options to <code>t_em_theme_options</code> option, that setting will be exported too.', 't_em' ), T_EM_FRAMEWORK_NAME ) .'</p>' .
+						'<p>' . __( 'The settings are exported in a text file named <code>t-em-backup-</code> fallowed by the date and time it was exported.' ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title'		=> __( 'Export', 't_em' ),
+		'id'		=> 'theme-export-help',
+		'content'	=> $export_help,
+		)
+	);
+
+	$import_help = 		'<p>' . __( '<strong>Import Settings</strong>', 't_em' ) . '</p>' .
+						'<p>' . sprintf( __( 'You can import a file you\'ve previously exported. Remember that only files exported by the <strong>%1$s Backup Manager</strong> can be imported back.', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</p>' .
+						'<p>' . __( 'Once you upload your file, it will update the <code>t_em_theme_options</code> option in the data base. <strong>This action cannot be undone</strong>.', 't_em' ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title'		=> __( 'Import', 't_em' ),
+		'id'		=> 'theme-import-help',
+		'content'	=> $import_help,
 		)
 	);
 
