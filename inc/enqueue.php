@@ -88,7 +88,6 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
 		wp_enqueue_script( $script );
 	endif;
 }
-add_action( 't_em_action_top', 't_em_register_bootstrap_plugin' );
 
 /**
  * Load the html5 shiv for IE8 and below.
