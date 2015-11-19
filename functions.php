@@ -6,10 +6,6 @@
 require_once( get_template_directory() . '/engine/constants.php' );
 require_once( get_template_directory() . '/engine/theme-options.php' );
 
-/** That's all. Start editing here. Happy Theming! */
-
-?>
-<?php
 /**
  * Twenty'em functions and definitions.
  *
@@ -91,6 +87,12 @@ function t_em_setup(){
 
 	// Adds support for custom header text (pluggable function).
 	$custom_header_support = array(
+		/**
+		 * Filter header image Width and Height
+		 *
+		 * @param int Width and Height values
+		 * @since Twenty'em 1.0
+		 */
 		'default-text-color'		=> '333',
 		'width'						=> apply_filters( 't_em_filter_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
 		'height'					=> apply_filters( 't_em_filter_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
@@ -286,12 +288,19 @@ function t_em_support_custom_header_images(){
 			'description'	=> _x( 'Purple', 'header image description', 't_em' ),
 		),
 	);
+	/**
+	 * Filter the list of custom header images
+	 *
+	 * @param array An array of headers keyed by a string id.
+	 * 				The ids point to arrays containing 'url', 'thumbnail_url', and 'description' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_filter_custom_header_images', register_default_headers( $headers ) );
 }
 endif; // function t_em_support_custom_header_images()
 
 /**
- * Add Twenty'em layout clases to the array of boddy clases
+ * Add Twenty'em layout classes to the array of body classes
  *
  * @since Twenty'em 0.1
  */
@@ -323,6 +332,11 @@ function t_em_layout_classes( $existing_classes ){
 	else
 		$classes[] = $layout_set;
 
+	/**
+	 * Filter the list of CSS body classes depending on the layout setting
+	 *
+	 * @since Twenty'em 1.0
+	 */
 	$classes = apply_filters( 't_em_filter_layout_classes', $classes, $layout_set );
 
 	return array_merge( $existing_classes, $classes );
@@ -352,6 +366,11 @@ function t_em_archive_classes( $existing_classes ){
 		$classes[] = 'full-post';
 	endif;
 
+	/**
+	 * Filter the list of CSS classes for the current post depending on the Archive Set
+	 *
+	 * @since Twenty'em 1.0
+	 */
 	$classes = apply_filters( 't_em_filter_archive_classes', $classes, $archive_set );
 
 	return array_merge( $existing_classes, $classes );
@@ -469,6 +488,12 @@ function t_em_add_bootstrap_class( $section ){
 		$bootstrap_classes = 'col-md-' . $cols;
 	endif;
 
+	/**
+	 * Filter the list of CSS Bootstrap classes on the current template
+	 *
+	 * @param string Bootstrap CSS classes
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_filter_bootstrap_classes', $bootstrap_classes );
 }
 
@@ -489,7 +514,7 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
  * Sets up the content width value based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) :
-	$content_width = 640;
+	$content_width = 605;
 endif;
 
 if ( ! function_exists( 't_em_favicon' ) ) :
@@ -585,6 +610,11 @@ function t_em_single_link_pages( $content ){
 
 	$content = $content . wp_link_pages( $args );
 
+	/**
+	 * Filter the single link pages structure
+	 *
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_filter_single_link_pages', $content );
 }
 endif; // function t_em_single_link_pages()
@@ -645,8 +675,8 @@ function t_em_widgets_init() {
 			) );
 
 		if ( in_array( $t_em['footer_set'],
-			array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
-		 ) ) :
+				array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+			) ) :
 			// Area 3, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'Second Footer Widget Area', 't_em' ),
@@ -660,8 +690,8 @@ function t_em_widgets_init() {
 		endif;
 
 		if ( in_array( $t_em['footer_set'],
-			array( 'three-footer-widget', 'four-footer-widget' )
-		 ) ) :
+				array( 'three-footer-widget', 'four-footer-widget' )
+			) ) :
 			// Area 4, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'Third Footer Widget Area', 't_em' ),
@@ -675,8 +705,8 @@ function t_em_widgets_init() {
 		endif;
 
 		if ( in_array( $t_em['footer_set'],
-			array( 'four-footer-widget' )
-		 ) ) :
+				array( 'four-footer-widget' )
+			) ) :
 			// Area 5, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'Fourth Footer Widget Area', 't_em' ),
@@ -1271,15 +1301,21 @@ function t_em_page_navi(){
 			$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
 
 			$links = paginate_links( array(
+				/**
+				 * Filter the paginate link structure
+				 *
+				 * @link http://codex.wordpress.org/Function_Reference/paginate_links
+				 * @since Twenty'em 1.0
+				 */
 				'base'					=> $pagenum_link,
 				'format'				=> $format,
 				'total'					=> $wp_query->max_num_pages,
 				'current'				=> $paged,
 				'add_args'				=> array_map( 'urlencode', $query_args ),
-				'prev_text'				=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
-				'next_text'				=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
+				'prev_text'				=> apply_filters( 't_em_filter_paginate_links_prev_text', __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ) ),
+				'next_text'				=> apply_filters( 't_em_filter_paginate_links_next_text', __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ),
 				'end_size'				=> apply_filters( 't_em_filter_paginate_links_end_size', 1 ),
-				'mid_size'				=> apply_filters( 't_em_filter_paginate_links_mid_size', 2 ),
+ 				'mid_size'				=> apply_filters( 't_em_filter_paginate_links_mid_size', 2 ),
 				'type'					=> apply_filters( 't_em_filter_paginate_links_type', 'list' ),
 				'prev_next'				=> apply_filters( 't_em_filter_paginate_links_prev_next', true ),
 				'add_fragment'			=> apply_filters( 't_em_filter_paginate_links_add_fragment', null ),
@@ -1418,6 +1454,8 @@ endif; // function t_em_featured_post_thumbnail()
 if ( ! function_exists( 't_em_header_image' ) ) :
 /**
  * Pluggable Function: Display header image if it's set by the user in 'Header Options' admin panel
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_header_image(){
 	global $post, $t_em;
@@ -1469,6 +1507,8 @@ if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
  * 'Header Options > Slider' admin panel
  *
  * @param $args array Query arguments
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_slider_bootstrap_carousel( $args ){
 	global	$post, $t_em;
@@ -1565,6 +1605,13 @@ function t_em_slider_query_args(){
 		'order'				=> 'DESC',
 	);
 
+	/**
+	 * Filter the Slider query arguments
+	 *
+	 * @param array An array of arguments
+	 * @link http://codex.wordpress.org/Class_Reference/WP_Query
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_filter_slider_query_args', $args );
 }
 
@@ -1572,6 +1619,8 @@ if ( ! function_exists( 't_em_static_header' ) ) :
 /**
  * Pluggable Function: Display Static Header if it's set by the user in
  * 'Header Options > Static Header' admin panel
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_static_header(){
 	global $t_em;
@@ -1697,62 +1746,6 @@ function t_em_post_archive_set(){
 }
 endif; // function t_em_post_archive_set()
 
-if ( ! function_exists( 't_em_post_format' ) ) :
-/**
- * Pluggable Function: Display the post format of each post
- * This function is attached to the t_em_action_post_inside_before() action hook.
- *
- * @since Twenty'em 1.0
- */
-function t_em_post_format(){
-	$post_format = get_post_format();
-	switch ( $post_format ) :
-		case 'aside' :
-			$format = __( 'Aside', 't_em' );
-			$icomoon_class = 'icomoon-circle';
-			break;
-		case 'audio' :
-			$format = __( 'Audio', 't_em' );
-			$icomoon_class = 'icomoon-volume-high';
-			break;
-		case 'chat' :
-			$format = __( 'Chat', 't_em' );
-			$icomoon_class = 'icomoon-chat';
-			break;
-		case 'gallery' :
-			$format = __( 'Gallery', 't_em' );
-			$icomoon_class = 'icomoon-pictures';
-			break;
-		case 'image' :
-			$format = __( 'Image', 't_em' );
-			$icomoon_class = 'icomoon-picture';
-			break;
-		case 'link' :
-			$format = __( 'Link', 't_em' );
-			$icomoon_class = 'icomoon-link';
-			break;
-		case 'quote' :
-			$format = __( 'Quote', 't_em' );
-			$icomoon_class = 'icomoon-quote-left';
-			break;
-		case 'status' :
-			$format = __( 'Status', 't_em' );
-			$icomoon_class = 'icomoon-comment';
-			break;
-		case 'video' :
-			$format = __( 'Video', 't_em' );
-			$icomoon_class = 'icomoon-facetime-video';
-			break;
-	endswitch;
-	if ( $post_format ) :
-		echo '<div class="entry-format"><span class="'. $icomoon_class .' icomoon"></span><span class="post-format">'. $format .'</span></div>';
-	elseif ( is_sticky() ) :
-		echo '<div class="entry-format"><span class="icomoon-pin icomoon"></span><span class="post-format">'. __( 'Featured', 't_em' ) .'</span></div>';
-	endif;
-}
-endif; // function t_em_post_format()
-add_action( 't_em_action_post_inside_before', 't_em_post_format' );
-
 if ( ! function_exists( 't_em_user_social_network' ) ) :
 /**
  * Pluggable Function: User social network set in "Social Network Options" in the admin theme options.
@@ -1763,7 +1756,7 @@ if ( ! function_exists( 't_em_user_social_network' ) ) :
  * @param string $li_classes Optional. HTML 'class' attribute of each <li>...</li> tag item (usually a Bootstrap class)
  *
  * @uses t_em_social_network_options() See t_em_social_network_options() function
- * in /inc/theme-options.php file.
+ * in /inc/social-network-options.php file.
  *
  * @global $t_em
  *
@@ -1852,18 +1845,24 @@ function t_em_single_related_posts(){
 		$category_terms = get_the_terms( $post->ID, 'category' );
 		$tag_terms = get_the_terms( $post->ID, 'post_tag' );
 
+		/**
+		 * Filter the amount of related post to display
+		 *
+		 * @param int Number of posts to display
+		 * @since Twenty'em 1.0
+		 */
 		$limit = apply_filters( 't_em_filter_single_limit_related_posts', 9 );
 		$post_category_terms = array();
 		$post_tag_terms = array();
 
 		if ( $category_terms ) :
 			foreach ( $category_terms as $cat_term ) :
-				array_push($post_category_terms, $cat_term->term_id);
+				array_push( $post_category_terms, $cat_term->term_id );
 			endforeach;
 		endif;
 		if ( $tag_terms ) :
 			foreach ( $tag_terms as $tag_term ) :
-				array_push($post_tag_terms, $tag_term->term_id);
+				array_push( $post_tag_terms, $tag_term->term_id );
 			endforeach;
 		endif;
 
@@ -1991,6 +1990,8 @@ endif; // function t_em_front_page_widgets()
 
 /**
  * Load custom template for Custom Front Page (Text Widgets) option in admin panel
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_load_custom_front_page( $home_template = '' ){
 	global $t_em;
@@ -2008,7 +2009,7 @@ if ( ! function_exists( 't_em_breadcrumb' ) ) :
  *
  * @global $t_em
  *
- * @return string HTML div boxes
+ * @return string HTML
  *
  * @since Twenty'em 1.0
  */
@@ -2182,7 +2183,7 @@ function t_em_heading_site_title(){
 		<<?php echo $heading_tag; ?> id="site-title">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</<?php echo $heading_tag; ?>>
-		<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+		<h3 id="site-description"><?php bloginfo( 'description' ); ?></h3>
 	</hgroup>
 <?php
 }
@@ -2210,6 +2211,13 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
+							/**
+							 * Filter the menu depth
+							 *
+							 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
+							 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
+							 * @since Twenty'em 1.0
+							 */
 							'theme_location'	=> 'top-menu',
 							'container_id'		=> 'site-top-menu',
 							'container_class'	=> 'collapse navbar-collapse navbar-right',
@@ -2247,6 +2255,13 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
+							/**
+							 * Filter the menu depth
+							 *
+							 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
+							 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
+							 * @since Twenty'em 1.0
+							 */
 							'theme_location'	=> 'navigation-menu',
 							'container_id'		=> 'site-navigation-menu',
 							'container_class'	=> 'collapse navbar-collapse',
@@ -2272,6 +2287,13 @@ if ( ! function_exists( 't_em_footer_menu' ) ) :
 function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
 	wp_nav_menu( array(
+			/**
+			 * Filter the menu depth
+			 *
+			 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
+			 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
+			 * @since Twenty'em 1.0
+			 */
 			'theme_location'	=> 'footer-menu',
 			'container'			=> 'nav',
 			'container_id'		=> 'footer-menu',
@@ -2425,7 +2447,7 @@ function t_em_stats_body_tracker(){
 add_action( 'wp_footer', 't_em_stats_body_tracker' );
 
 /**
- * Wrap paragraphs into <p> ...</p> tags, and clean empty lines
+ * Helper. Wrap paragraphs into <p> ...</p> tags, and clean empty lines
  *
  * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
  *

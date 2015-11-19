@@ -60,6 +60,13 @@ function t_em_layout_options( $layout_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Layout Options Set
+	 *
+	 * @param array An array of new options in the Layout Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'thumbnail' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_layout_options', $layout_options );
 }
 
@@ -95,6 +102,13 @@ function t_em_footer_options( $footer_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Footer Options Set
+	 *
+	 * @param array An array of new options in the Footer Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'thumbnail' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_footer_options', $footer_options );
 }
 

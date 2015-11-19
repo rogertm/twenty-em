@@ -28,6 +28,12 @@
  */
 function t_em_archive_options( $archive_options = '' ){
 	$archive_options = array(
+		/**
+		 * Filter the callback function
+		 *
+		 * @param bool If false, the option will not be enable. Default true
+		 * @since Twenty'em 1.0
+		 */
 		'the-content' => array(
 			'value' => 'the-content',
 			'label' => __( 'Display the content', 't_em' ),
@@ -40,6 +46,13 @@ function t_em_archive_options( $archive_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Archive Options
+	 *
+	 * @param array An array of new options in the Archive Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'callback' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_archive_options', $archive_options );
 }
 
@@ -65,6 +78,13 @@ function t_em_excerpt_options( $excerpt_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the thumbnail options in Archive Options Set.
+	 *
+	 * @param array Array of new options.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'thumbnail' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_excerpt_options', $excerpt_options );
 }
 
@@ -88,6 +108,13 @@ function t_em_archive_in_columns( $archive_in_columns = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Archive in Columns option in Archive Options Set
+	 *
+	 * @param array An array of new options
+	 * 				Keyed by a string id. The ids point to arrays containing 'value' and 'label' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_archive_in_columns', $archive_in_columns );
 }
 
@@ -204,6 +231,14 @@ function t_em_archive_pagination_options( $archive_pagination = '' ){
 			'label'	=> __( 'Display a paginated list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 &hellip; 9 Older &raquo;</code>', 't_em' ),
 		),
 	);
+
+	/**
+	 * Filter the Pagination option in Archive Options Set
+	 *
+	 * @param array An array of new options
+	 * 				Keyed by a string id. The ids point to arrays containing 'value' and 'label' keys.
+	 * @since Twenty'em 1.0
+	 */
 
 	return apply_filters( 't_em_admin_filter_archive_pagination_options', $archive_pagination );
 }

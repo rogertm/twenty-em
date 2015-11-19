@@ -38,6 +38,13 @@ function t_em_search_engines_id_options( $engines_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Search Engines ID Options Set
+	 *
+	 * @param array An array of new options in the Search Engines ID Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'label', and 'name' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_search_engines_options', $engines_options );
 }
 
@@ -60,6 +67,13 @@ function t_em_stats_tracker_options( $tracker_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Tracker Options Set
+	 *
+	 * @param array An array of new options in the Tracker Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'label', and 'name' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_stats_tracker_options', $tracker_options );
 }
 

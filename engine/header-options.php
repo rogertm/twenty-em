@@ -30,6 +30,12 @@
  */
 function t_em_header_options( $header_options = '' ){
 	$header_options = array(
+		/**
+		 * Filter the callback function
+		 *
+		 * @param bool If false, the option will not be enable. Default true
+		 * @since Twenty'em 1.0
+		 */
 		'no-header-image' => array(
 			'value' => 'no-header-image',
 			'label' => __( 'No header image', 't_em' ),
@@ -52,6 +58,13 @@ function t_em_header_options( $header_options = '' ){
 		),
 	);
 
+	/**
+	 * Filter the Header Options Set
+	 *
+	 * @param array An array of new options in the Header Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'callback' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_header_options', $header_options );
 }
 
@@ -106,6 +119,11 @@ function t_em_header_image_callback(){
  */
 function t_em_slider_list_taxonomies( $slider_category = '' ){
 	$slider_category = get_categories();
+	/**
+	 * Filter the Slider Taxonomy
+	 *
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_slider_list_taxonomies', $slider_category );
 }
 
@@ -217,15 +235,22 @@ function t_em_static_header_layout_options( $static_header_layout = '' ){
 		'static-header-text-right' => array(
 			'value' => 'static-header-text-right',
 			'label' => __( 'Static header text on right', 't_em' ),
-			'title' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-right.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-right.png',
 		),
 		'static-header-text-left' => array(
 			'value' => 'static-header-text-left',
 			'label' => __( 'Static header text on left', 't_em' ),
-			'title' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-left.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-left.png',
 		),
 	);
 
+	/**
+	 * Filter the Static Header options in Header Options Set
+	 *
+	 * @param array An array of new options in Static Header Options.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'thumbnail' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_static_header_layout_options', $static_header_layout );
 }
 
@@ -258,7 +283,7 @@ function t_em_static_header_callback(){
 		$extend_static_header .=	'<div class="layout image-radio-option static-header-layout '. $active_option .'">';
 		$extend_static_header .=		'<label class="description">';
 		$extend_static_header .=			'<input class="input-image-radio-option sub-radio-option" type="radio" name="t_em_theme_options[static_header_text]" value="'.esc_attr($static_header['value']).'" '. checked( $t_em['static_header_text'], $static_header['value'], false ) .' />';
-		$extend_static_header .=			'<span><img src="'.$static_header['title'].'" class="" /><p>'.$static_header['label'].'</p></span>';
+		$extend_static_header .=			'<span><img src="'.$static_header['thumbnail'].'" class="" /><p>'.$static_header['label'].'</p></span>';
 		$extend_static_header .=		'</label>';
 		$extend_static_header .=	'</div>';
 	endforeach;

@@ -27,6 +27,12 @@
  */
 function t_em_front_page_options(){
 	$front_page_options = array(
+		/**
+		 * Filter the callback function
+		 *
+		 * @param bool If false, the option will not be enable. Default true
+		 * @since Twenty'em 1.0
+		 */
 		'wp-front-page' => array(
 			'value'			=> 'wp-front-page',
 			'label'			=> __( 'Just another WordPress front page', 't_em' ),
@@ -39,6 +45,13 @@ function t_em_front_page_options(){
 		),
 	);
 
+	/**
+	 * Filter the Front Page Options Set
+	 *
+	 * @param array An array of new options in the Front Page Options Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'callback' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_front_page_options', $front_page_options );
 }
 
@@ -97,6 +110,13 @@ function t_em_front_page_widgets_options( $front_page_widgets = '' ){
 		),
 	);
 
+	/**
+	 * Filter the front page witgets in Front Page Options Set
+	 *
+	 * @param array An array of new options.
+	 * 				Keyed by a string id. The ids point to arrays containing 'name' and 'label' keys.
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_front_page_widgets_options', $front_page_widgets );
 }
 

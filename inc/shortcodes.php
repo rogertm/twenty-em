@@ -118,8 +118,8 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
-		$scrip_alert = t_em_register_bootstrap_plugin( 'alert.js' );
-		add_action( 'wp_enqueue_scripts', "$scrip_alert" );
+		t_em_register_bootstrap_plugin( 'alert.js' );
+		// add_action( 'wp_enqueue_scripts', "$scrip_alert" );
 	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }

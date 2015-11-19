@@ -262,6 +262,12 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'stats_tracker_body_tag'						=> '',
 	);
 
+	/**
+	 * Filter the array list of default theme options
+	 *
+	 * @param array An array of default options
+	 * @since Twenty'em 1.0
+	 */
 	return apply_filters( 't_em_admin_filter_default_theme_options', $default_theme_options );
 }
 
@@ -612,6 +618,12 @@ function t_em_theme_options_validate( $input ){
 
 		add_settings_error( 't-em-update', 't-em-update', sprintf( __( 'Settings saved. <a href="%1$s">Visit your site</a>.', 't_em' ), home_url() ), 'updated' );
 
+		/**
+		 * Filter the array list of options to validate before to insert them in the data base
+		 *
+		 * @param array An array of options to validate
+		 * @since Twenty'em 1.0
+		 */
 		return apply_filters( 't_em_admin_filter_theme_options_validate', $input );
 	else :
 		add_settings_error( 't-em-update', 't-em-update', t_em_rand_error_code(), 'error' );

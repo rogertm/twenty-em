@@ -38,17 +38,20 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Register Carousel Twitter Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
-		t_em_register_bootstrap_plugin( 'carousel.js' );
+		t_em_register_bootstrap_plugin( 'carousel.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
 	endif;
 
 	// Register Collapse Twitter Bootstrap Plugins when needed
-	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) || ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) ) :
+	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) ) :
+		t_em_register_bootstrap_plugin( 'collapse.js' );
+	endif;
+	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
 		t_em_register_bootstrap_plugin( 'collapse.js' );
 	endif;
 
 	// Register Tab Twitter Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-tabbable-content.php' ) ) :
-		t_em_register_bootstrap_plugin( 'tab.js' );
+		t_em_register_bootstrap_plugin( 'tab.js', 'script.tabbable.js', T_EM_THEME_DIR_JS_URL . '/script.tabbable.js' );
 	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
@@ -57,32 +60,35 @@ add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
  * Register and Enqueue Bootstrap jQuery Plugins
  *
  * @param $plugin Required. String. Plugin name and extension (IE: transition.js)
- * @param $script Optional. Bool. Some plugins like carousel.js and tab.js need additional scripts.
- * If false these scripts do not will be enqueue.
+ * @param $script Optional. String. Additional script if needed by the pluggin
+ * @param $script_src Optional. String. Required if $script, the $script source address
  * @param $transition Optional. Bool. Enqueue transition.js Bootstrap plugin for simple transition effects
  * @param $in_footer Optional. Bool. If true, the script is placed before the </body> end tag
+ *
+ * @since Twenty'em 1.0
  */
-function t_em_register_bootstrap_plugin( $plugin, $script = true, $transition = true, $in_footer = false ){
+function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $transition = true, $in_footer = false ){
 	global $t_em_theme_data;
-	// All Bootstrap plugins depend of jQuery
-	$deps = array( 'jquery' );
+	/**
+	 * Filter the list of dependencies for the current Bootstrap jQuery Plugin
+	 *
+	 * @param array An array of dependencies
+	 * @since Twenty'em 1.0
+	 */
+	$deps = apply_filters( 't_em_filter_bootstrap_plugin_deps', array( 'jquery' ) );
 	if ( $transition ) :
-		array_push( $deps, 'transition.js' );
-		wp_register_script( 'transition.js', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array(), $t_em_theme_data['Version'], $in_footer );
+		$transition = 'transition.js';
+		array_push( $deps, $transition );
+		wp_register_script( 'transition.js', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
 	endif;
 	wp_register_script( $plugin, T_EM_THEME_DIR_JS_URL.'/bootstrap/'.$plugin, $deps, $t_em_theme_data['Version'], $in_footer );
 	wp_enqueue_script( $plugin );
 	if ( $script ) :
-		if ( $plugin == 'carousel.js' ) :
-			wp_register_script( 'bootstrap-carousel-script', T_EM_THEME_DIR_JS_URL.'/script.slider.js', array( 'jquery' ), $t_em_theme_data['Version'], false );
-			wp_enqueue_script( 'bootstrap-carousel-script' );
-		endif;
-		if ( $plugin == 'tab.js' ) :
-			wp_register_script( 'script-tabbable', T_EM_THEME_DIR_JS_URL . '/script.tabbable.js', array( 'jquery' ), $t_em_theme_data['Version'], true );
-			wp_enqueue_script( 'script-tabbable' );
-		endif;
+		wp_register_script( $script, $script_src, array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+		wp_enqueue_script( $script );
 	endif;
 }
+add_action( 't_em_action_top', 't_em_register_bootstrap_plugin' );
 
 /**
  * Load the html5 shiv for IE8 and below.
