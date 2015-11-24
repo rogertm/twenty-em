@@ -24,10 +24,11 @@
 	get_sidebar( 'footer' );
 ?>
 		<div id="site-info">
+			<?php t_em_action_site_info_before(); ?>
 			<div id="inner-site-info" class="wrapper container">
 				<div class="row">
 					<div id="site-info-before" class="col-md-12">
-						<?php t_em_action_site_info_before(); ?>
+						<?php t_em_action_site_info_top(); ?>
 					</div>
 					<div id="site-info-left" class="col-md-6">
 						<?php t_em_action_site_info_left(); ?>
@@ -36,10 +37,11 @@
 						<?php t_em_action_site_info_right(); ?>
 					</div>
 					<div id="site-info-after" class="col-md-12">
-						<?php t_em_action_site_info_after(); ?>
+						<?php t_em_action_site_info_bottom(); ?>
 					</div>
 				</div><!-- .row -->
 			</div><!-- .wrapper .container -->
+			<?php t_em_action_site_info_after(); ?>
 		</div><!-- #site-info -->
 		<?php t_em_action_footer_after(); ?>
 	</footer><!-- #footer -->

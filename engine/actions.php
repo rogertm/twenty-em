@@ -340,7 +340,7 @@ function t_em_action_colophon_after(){
 }
 
 /**
- * Fire the t_em_action_site_info_before action, just after opening the <div id="site-info-before"> tag
+ * Fire the t_em_action_site_info_before action, just after opening the <div id="site-info"> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
@@ -350,13 +350,33 @@ function t_em_action_site_info_before(){
 }
 
 /**
- * Fire the t_em_action_site_info_after action, just after opening the <div id="site-info-after"> tag
+ * Fire the t_em_action_site_info_after action, just after closing the </div><!-- #site-info --> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
  */
 function t_em_action_site_info_after(){
 	do_action( 't_em_action_site_info_after' );
+}
+
+/**
+ * Fire the t_em_action_site_info_top action, just after opening the <div id="site-info-before"> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_action_site_info_top(){
+	do_action( 't_em_action_site_info_top' );
+}
+
+/**
+ * Fire the t_em_action_site_info_bottom action, just after opening the <div id="site-info-after"> tag
+ *
+ * @file footer.php
+ * @since Twenty'em 1.0
+ */
+function t_em_action_site_info_bottom(){
+	do_action( 't_em_action_site_info_bottom' );
 }
 
 /**

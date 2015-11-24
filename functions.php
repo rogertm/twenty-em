@@ -1940,7 +1940,7 @@ function t_em_front_page_widgets(){
 				'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
 
 			$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
-				'<div>'. t_em_wrap_paragraph( $t_em['content_'.$widget['name'].''] ) .'</div>' : '';
+				'<div>'. t_em_wrap_paragraph( do_shortcode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
 
 			$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
 			$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
@@ -2392,7 +2392,7 @@ function t_em_dot_com_link(){
 <?php
 	endif;
 }
-add_action( 't_em_action_site_info_after', 't_em_dot_com_link' );
+add_action( 't_em_action_site_info_bottom', 't_em_dot_com_link' );
 
 /**
  * Render some Theme and Framework Data as meta description.
