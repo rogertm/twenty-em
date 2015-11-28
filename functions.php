@@ -1891,7 +1891,14 @@ function t_em_single_related_posts(){
 			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
 			<ul class="related-posts-list">
 		<?php foreach( $all_posts as $post ) : setup_postdata( $post );
-			$related_post = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>'; ?>
+			$related_post = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
+			/**
+			 * Filter the related post html output
+			 *
+			 * @param string HTML output
+			 * @since Twenty'em 1.0
+			 */
+		?>
 				<li><?php echo apply_filters( 't_em_filtrer_single_related_posts_output', $related_post ); ?></li>
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
