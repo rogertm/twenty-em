@@ -1886,12 +1886,12 @@ function t_em_single_related_posts(){
 		);
 		$all_posts = get_posts( $related_post_args );
 ?>
-		<section id="related-posts">
 <?php 	if ( ! empty( $all_posts ) ) : ?>
+		<section id="related-posts">
 			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
 			<ul class="related-posts-list">
 		<?php foreach( $all_posts as $post ) : setup_postdata( $post );
-			$related_post = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
+			$output = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
 			/**
 			 * Filter the related post html output
 			 *
@@ -1899,13 +1899,11 @@ function t_em_single_related_posts(){
 			 * @since Twenty'em 1.0
 			 */
 		?>
-				<li><?php echo apply_filters( 't_em_filtrer_single_related_posts_output', $related_post ); ?></li>
+				<li><?php echo apply_filters( 't_em_filtrer_single_related_posts_output', $output ); ?></li>
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
-<?php 	else : ?>
-			<h3 class="related-posts-title"><?php _e( 'No Related Posts', 't_em' ); ?></h3>
-<?php 	endif; ?>
 		</section>
+<?php 	endif; ?>
 <?php
 	endif;
 }
