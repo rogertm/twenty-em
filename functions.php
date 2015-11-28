@@ -1890,8 +1890,9 @@ function t_em_single_related_posts(){
 <?php 	if ( ! empty( $all_posts ) ) : ?>
 			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
 			<ul class="related-posts-list">
-		<?php foreach( $all_posts as $post ) : setup_postdata( $post ); ?>
-				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+		<?php foreach( $all_posts as $post ) : setup_postdata( $post );
+			$related_post = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>'; ?>
+				<li><?php echo apply_filters( 't_em_filtrer_single_related_posts_output', $related_post ); ?></li>
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
 <?php 	else : ?>
