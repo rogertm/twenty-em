@@ -668,4 +668,13 @@ function t_em_rand_error_code(){
 function t_em_theme_explode(){
 	echo sprintf( __( 'Oops! Your theme explode... Error ID: <strong>%1$s</strong>', 't_em' ), md5( rand() ) );
 }
+
+/**
+ * Helper. Array fields order...
+ */
+function t_em_sort_by_order( $a, $b ){
+	if ( $a['order'] == $b['order'] )
+		return 0;
+	return ( $a['order'] < $b['order'] ) ? -1 : 1;
+}
 ?>
