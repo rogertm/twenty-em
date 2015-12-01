@@ -231,7 +231,9 @@ function t_em_settings_field_socialnetwork_set(){
 		<div class="sub-extend option-group">
 			<header><?php _e( 'Social Links', 't_em' ); ?></header>
 <?php
-	foreach ( t_em_social_network_options() as $social ) :
+	$user_social_network = t_em_social_network_options();
+	uasort( $user_social_network, 't_em_sort_by_order' );
+	foreach ( $user_social_network as $social ) :
 ?>
 		<div id="social-network-options" class="layout text-option social option-single">
 			<label>
