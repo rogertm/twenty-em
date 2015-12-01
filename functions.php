@@ -1768,6 +1768,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	global 	$t_em;
 
 	$user_social_network = t_em_social_network_options();
+	uasort( $user_social_network, 't_em_sort_by_order' );
 
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :

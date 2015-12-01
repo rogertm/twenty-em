@@ -208,7 +208,7 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 	 * Filter the Social Network Options Set
 	 *
 	 * @param array An array of new options in the Social Network Options Set.
-	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'name', 'label', 'item' and 'class' keys.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'name', 'label', 'item', 'class' and 'order' keys.
 	 * @since Twenty'em 1.0
 	 */
 	return apply_filters( 't_em_admin_filter_social_network_options', $socialnetwork_options );
