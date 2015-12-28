@@ -11,24 +11,6 @@
  * Text Domain:	t_em
  */
 
-/* A message for users with JavaScript turned off
-------------------------------------------------------------------------------------------------- */
-noscript {
-	display: block;
-	text-align: center;
-	background-color: #F2DEDE;
-	border: solid 3px #A94442;
-	color: #A94442;
-	padding: 25px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 25px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 2147483647;
-}
-
 /**
  * Just that. See /css/style.less
  */

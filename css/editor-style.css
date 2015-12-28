@@ -1,14 +1,12 @@
 /*
 Theme Name: Twenty'em
-*/
-/*
 Used to style the TinyMCE editor.
 */
 html .mceContentBody {
-	max-width:640px;
+	max-width:768px;
 }
 * {
-	font-family: Georgia, "Bitstream Charter", serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #444;
 	line-height: 1.5;
 }

@@ -1,7 +1,5 @@
 #Ignore files
 cache
-cache/*.html
-cache/*.touch
-cache/*.txt
+cache/*.*
 t-em.sublime-project
 t-em.sublime-workspace
