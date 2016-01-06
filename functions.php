@@ -2497,12 +2497,6 @@ function t_em_lessphp_compiler( $less_files, $options = array(), $modify_vars = 
 	);
 	$options = array_merge( $cache_options, $options );
 
-	$path = str_replace( 'index.php', '', $_SERVER['PHP_SELF'] ) . 'wp-content/themes/twenty-em/fonts/';
-	$cache_vars = array(
-		'icon-font-path' => "'$path'",
-	);
-	$modify_vars = array_merge( $cache_vars, $modify_vars );
-
 	$css_file_name = Less_Cache::Get( $less_files, $options, $modify_vars );
 	$compiled = $dir_url . $css_file_name;
 
