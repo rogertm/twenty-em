@@ -16,19 +16,24 @@
 ?>
 <?php
 /**
- * Register Style Sheet and Javascript to beautify the Twenty'em theme
+ * Load the compiled less file before than Child Theme
  */
-function t_em_enqueue_styles_and_scripts(){
-	global	$t_em,
-			$t_em_theme_data;
-
-	// Load default style sheet style.css
-	wp_enqueue_style( 'style-t-em', get_stylesheet_uri(), '', $t_em_theme_data['Version'], 'all' );
-
-	// Load the compiled less file
+function t_em_enqueue_compiled_style(){
+	global $t_em_theme_data;
 	$less_files = array( T_EM_THEME_DIR_CSS_PATH . '/style.less' => T_EM_THEME_DIR_CSS_URL );
 	$options = array( 'compress' => true );
 	wp_enqueue_style( 'style-less', t_em_lessphp_compiler( $less_files, $options ), '', $t_em_theme_data['Version'], 'all' );
+}
+add_action( 'wp_enqueue_scripts', 't_em_enqueue_compiled_style', 5 );
+
+/**
+ * Register Style Sheet and Javascript to beautify the Twenty'em theme
+ */
+function t_em_enqueue_styles_and_scripts(){
+	global $t_em, $t_em_theme_data;
+
+	// Load default style sheet style.css
+	wp_enqueue_style( 'style-t-em', get_stylesheet_uri(), '', $t_em_theme_data['Version'], 'all' );
 
 	// Load theme layout width
 	wp_enqueue_style( 't-em-width', t_em_theme_layout_width() );
