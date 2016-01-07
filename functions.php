@@ -2497,7 +2497,8 @@ function t_em_lessphp_compiler( $less_files, $options = array(), $modify_vars = 
 	);
 	$options = array_merge( $cache_options, $options );
 
-	$path = str_replace( bloginfo( 'url' ), '', T_EM_THEME_DIR_FONTS_URL .'/' );
+	$url = get_home_url();
+	$path = sprintf( str_replace( '%s', '', T_EM_THEME_DIR_FONTS_URL .'/' ), get_home_url() );
 	$cache_vars = array(
 		'icon-font-path' => "'$path'",
 	);
