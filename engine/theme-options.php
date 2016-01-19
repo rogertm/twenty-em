@@ -26,6 +26,7 @@ require_once( T_EM_ENGINE_DIR_PATH . '/webmaster-tools-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/functions.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/enqueue.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/shortcodes.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/widgets.php' );
@@ -144,7 +145,7 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
 		// Generals Options
-		't_em_link'										=> '1',
+		't_em_credit'										=> '1',
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
@@ -345,7 +346,7 @@ function t_em_theme_options_validate( $input ){
 
 		// All the checkbox are either 0 or 1
 		foreach ( array(
-			't_em_link',
+			't_em_credit',
 			'single_featured_img',
 			'single_related_posts',
 			'breadcrumb_path',
