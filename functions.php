@@ -2489,7 +2489,7 @@ function t_em_lessphp_compiler( $less_files, $options = array(), $modify_vars = 
 	endif;
 
 	if ( ! file_exists( $dir_path ) ) :
-		mkdir( $dir_path, 0777, true );
+		mkdir( $dir_path );
 		copy( $parent_dir .'/index.php', $dir_path .'index.php' );
 	endif;
 	$cache_dir = $dir_path;
