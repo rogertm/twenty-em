@@ -1,17 +1,7 @@
 /**
  * Twenty'em theme options style.
- *
- * @file			theme-options.css
- * @package			WordPress
- * @subpackage		Twenty'em
- * @author			RogerTM
- * @copyright		2012
- * @license			license.txt
- * @version			0.1
- * @filesource		wp-content/themes/twenty-em/inc/theme-options.css
- * @link			N/A Just another css style sheet ;)
- * @since			Twenty'em 0.1
  */
+
 #t-em-setting .form-table{
 	margin-top: 1.5em;
 	border-collapse: separate;
