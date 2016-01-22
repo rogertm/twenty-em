@@ -196,7 +196,7 @@ function t_em_theme_backup_help(){
 
 	$export_help =		'<p>' . __( '<strong>Export Settings</strong>', 't_em' ) . '</p>' .
 						'<p>' . sprintf( __( 'You can export your <strong>%1$s</strong> settings to back them up, or copy them to another site. If Child Themes or Plugins merge their options to <code>t_em_theme_options</code> option, that setting will be exported too.', 't_em' ), T_EM_FRAMEWORK_NAME ) .'</p>' .
-						'<p>' . __( 'The settings are exported in a text file named <code>t-em-backup-</code> fallowed by the date and time it was exported.' ) . '</p>';
+						'<p>' . __( 'The settings are exported in a text file named <code>t-em-backup-</code> fallowed by the date and time it was exported.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Export', 't_em' ),
