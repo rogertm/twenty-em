@@ -307,7 +307,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=		'<label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
 	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_text]" value="' . $t_em['static_header_primary_button_text'] . '">';
 	$extend_static_header .=		'</label>';
-	$extend_static_header .=		'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_FONTS_URL . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=		'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</span>';
 	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_icon_class]" value="' . $t_em['static_header_primary_button_icon_class'] . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
@@ -316,7 +316,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=		'<label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
 	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_text]" value="' . $t_em['static_header_secondary_button_text'] . '">';
 	$extend_static_header .=		'</label>';
-	$extend_static_header .=		'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_THEME_DIR_FONTS_URL . '/icomoon.html' ) . '</span>';
+	$extend_static_header .=		'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</span>';
 	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_icon_class]" value="' . $t_em['static_header_secondary_button_icon_class'] . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';

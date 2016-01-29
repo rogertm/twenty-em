@@ -32,8 +32,13 @@ get_header(); ?>
  * archive and a tag cloud.
  */
 
-// Displaying the latest $limit posts
-$limit = '30';
+/**
+ * Filter the amount of posts to display
+ *
+ * @param int Number of posts to display
+ * @since Twenty'em 1.0
+ */
+$limit = apply_filters( 't_em_filter_template_archive_posts_limit', 30 );
 $args = array( 'post_type' => 'post',
 				'showposts' => $limit,
 		);

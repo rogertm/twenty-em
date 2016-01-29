@@ -99,9 +99,14 @@
 #t-em-setting #text_widget_two,
 #t-em-setting #text_widget_three,
 #t-em-setting #text_widget_four{
-	display: table;
-	float: left;
-	margin: 0 2% 30px 0;
+	display: inline-block;
+	width: 50%;
+}
+#t-em-setting .row .layout.text-option.front-page{
+	padding-right: 15px;
+}
+#t-em-setting .row .sub-extend.option-group:last-child .layout.text-option.front-page{
+	padding-left: 15px;
 }
 
 /**************************************************************************************************/
@@ -254,9 +259,7 @@
 	border-color: #0073AA;
 }
 #t-em-setting #widgets-front-page{
-	-webkit-columns: 2;
-	   -moz-columns: 2;
-	        columns: 2;
+
 }
 #t-em-setting .headline{
 	padding: 3px 8px;

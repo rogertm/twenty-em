@@ -178,7 +178,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
  * @link http://codex.wordpress.org/Shortcode_API
- * @link ../fonts/icomoon.html For a full list of icon classes.
+ * @link http://twenty-em.com/icomoon-demo For a full list of icon classes.
  *
  * @since Twenty'em 1.0
  */

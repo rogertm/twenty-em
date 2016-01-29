@@ -501,7 +501,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 			_prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
 
 			foreach ( (array) $comments as $comment) {
-				$comment_author_link = ( 1 == $instance['author_name_url'] ) ? get_comment_author_link() . _x( ' on ', 't_em', 'Recent Comment Widget' ) : null;
+				$comment_author_link = ( 1 == $instance['author_name_url'] ) ? get_comment_author_link() . _x( ' on ', 'Recent Comment Widget', 't_em' ) : null;
 ?>
 			<li class="t-em-recent-comments media">
 			<?php if ( 1 == $instance['avatar'] ) : ?>
@@ -781,7 +781,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : false;
 		$exclude = esc_attr( $instance['exclude'] );
 ?>
-		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title', 't_em' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 		<p>
 			<label for="<?php echo $this->get_field_id('orderby') ?>"><?php _e( 'Order by', 't_em' ); ?></label>

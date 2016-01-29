@@ -83,7 +83,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-writing.php' ) ). '</li>' .
 						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s">icons</a> to these buttons.', 't_em' ),
 								 admin_url( 'upload.php' ),
-								 T_EM_THEME_DIR_FONTS_URL . '/icomoon.html' ) . '</li>' .
+								 T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -98,7 +98,7 @@ function t_em_theme_options_help(){
 							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
 							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s">icon class</a>, image (previously uploaded to your <a href="%2$s">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
-									 T_EM_THEME_DIR_FONTS_URL . '/icomoon.html',
+									 T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION,
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
 
