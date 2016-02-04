@@ -41,7 +41,7 @@ function t_em_lessphp_compiler( $less_files, $options = array(), $modify_vars = 
 	$dir_path	= T_EM_THEME_DIR_CSS_PATH . $dir;
 	$dir_url	= T_EM_THEME_DIR_CSS_URL . $dir;
 
-	if ( ! is_writable( $parent_dir ) ) :
+	if ( ! is_writable( $parent_dir ) && ! file_exists( $dir_path ) ) :
 		$error = sprintf( __( '%s could not create the css files cache directory in <strong><code>%s</code></strong>. Make this directory writable before continue.<br />
 							   See the Codex for more information about <a href="%s">Changing File Permissions</a>.', 't_em' ),
 								T_EM_FRAMEWORK_NAME,
