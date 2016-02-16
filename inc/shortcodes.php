@@ -40,7 +40,7 @@ function t_em_quickttags_buttons(){
 		QTags.addButton( 'sc_panel', 'panel', '[panel heading="" footer="" style="default"]', '[/panel]', '', '', 128 );
 		QTags.addButton( 'sc_label', 'label', '[label style="default"]', '[/label]', '', '', 129 );
 		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]', '', '', 130 );
-		QTags.addButton( 'sc_well', 'well', '[well]', '[/well]', '', '', 131 );
+		QTags.addButton( 'sc_well', 'well', '[well size=""]', '[/well]', '', '', 131 );
 	</script>
 <?php
 	endif;
@@ -123,7 +123,6 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
 	if ( $close ) :
 		t_em_register_bootstrap_plugin( 'alert.js' );
-		// add_action( 'wp_enqueue_scripts', "$scrip_alert" );
 	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
 }
@@ -289,7 +288,11 @@ add_shortcode( 'lead', 't_em_shortcode_lead' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_well( $atts, $content = null ){
-	return '<div class="well"><p>'. do_shortcode( $content ) .'</p></div>';
+	extract( shortcode_atts( array(
+			'size'		=> '',
+		), $atts ) );
+	$size = ( $size ) ? 'well-'. esc_attr( $size ) : null;
+	return '<div class="well '. $size .'"><p>'. do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'well', 't_em_shortcode_well' );
 ?>
