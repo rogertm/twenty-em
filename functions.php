@@ -1899,7 +1899,7 @@ function t_em_single_related_posts(){
 			 * @since Twenty'em 1.0
 			 */
 		?>
-				<li><?php echo apply_filters( 't_em_filtrer_single_related_posts_output', $related_post ); ?></li>
+				<li><?php echo apply_filters( 't_em_filter_single_related_posts_output', $related_post ); ?></li>
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
 <?php 	else : ?>
