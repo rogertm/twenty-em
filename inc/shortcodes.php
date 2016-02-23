@@ -124,7 +124,7 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	if ( $close ) :
 		t_em_register_bootstrap_plugin( 'alert.js' );
 	endif;
-	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . do_shortcode( $content ) .'</div>';
+	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . '<p>' . do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'alert', 't_em_shortcode_alert' );
 
