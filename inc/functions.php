@@ -171,3 +171,4 @@ function t_em_wrap_paragraph( $paragraph ){
 	endwhile;
 	return implode( "", $clean_paragraph );
 }
+?>

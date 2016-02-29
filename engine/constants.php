@@ -51,11 +51,21 @@ $t_em_theme_data = array(
 // Twenty'em Site
 define ( 'T_EM_SITE',													'http://twenty-em.com' );
 
+// WordPress version in which Twenty'em has been tested
+define ( 'T_EM_WORDPRESS_VERSION',										'4.5' );
+
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20160127' ); // In date format Ymd
+
+// Third Party Softwares
+define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.6' );
+
+require_once get_template_directory() . '/inc/less-php/Version.php';
+define ( 'T_EM_PHP_LESS_VERSION',										Less_version::version );
+define ( 'T_EM_LESS_VERSION',											Less_version::less_version );
 
 // Theme Directory Path
 define( 'T_EM_THEME_DIR_PATH', 											get_template_directory() );

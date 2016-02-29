@@ -643,7 +643,6 @@ function t_em_register_debug_init(){
 add_action( 't_em_admin_action_add_settings_field', 't_em_register_debug_init', 999 );
 
 function t_em_debug_info(){
-	global $t_em;
 ?>
 	<div class="sub-extend option-group">
 		<header><?php printf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) ?></header>
