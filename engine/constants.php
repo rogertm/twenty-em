@@ -64,7 +64,7 @@ define ( 'T_EM_DB_VERSION',												'20160127' ); // In date format Ymd
 define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.6' );
 
 require_once get_template_directory() . '/inc/less-php/Version.php';
-define ( 'T_EM_PHP_LESS_VERSION',										Less_version::version );
+define ( 'T_EM_LESS_PHP_VERSION',										Less_version::version );
 define ( 'T_EM_LESS_VERSION',											Less_version::less_version );
 
 // Theme Directory Path
