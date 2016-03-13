@@ -149,5 +149,5 @@ function t_em_merge_versions(){
 	);
 	$t_em = array_merge( $t_em, $versions );
 }
-add_action( 'after_setup_theme', 't_em_merge_versions' );
+add_action( 'after_switch_theme', 't_em_merge_versions', 15 );
 ?>
