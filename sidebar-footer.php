@@ -71,7 +71,7 @@
 					</aside><!-- #fourth .widget-area -->
 			<?php endif; ?>
 				<?php t_em_action_sidebar_footer_after(); ?>
-				</div><!-- .row -->
+				</div><!-- .row .widget-area -->
 			</section><!-- #footer-widget-area .wrapper .container -->
 
 		<?php endif; // If there is any sidebar active ?>

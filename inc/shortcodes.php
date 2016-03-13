@@ -26,7 +26,7 @@
  *
  * @since Twenty'em 1.0
  */
-function t_em_quickttags_buttons(){
+function t_em_quicktags_buttons(){
 	global $t_em;
 	if ( wp_script_is( 'quicktags' ) && $t_em['shortcode_buttoms'] ) :
 ?>
@@ -45,7 +45,7 @@ function t_em_quickttags_buttons(){
 <?php
 	endif;
 }
-add_action( 'admin_print_footer_scripts', 't_em_quickttags_buttons' );
+add_action( 'admin_print_footer_scripts', 't_em_quicktags_buttons' );
 
 /**
  * Shortcode [button]

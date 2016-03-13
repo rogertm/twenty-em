@@ -113,7 +113,7 @@ function t_em_action_main_after(){
  * Fire the t_em_action_custom_front_page_inside_before action just after opening the
  * <section id="featured-widget-area"> tag
  *
- * @file functions.php via t_em_display_front_page_widgets() function
+ * @file functions.php via t_em_front_page_widgets() function
  * @since Twenty'em 1.0
  */
 function t_em_action_custom_front_page_inside_before(){
@@ -124,7 +124,7 @@ function t_em_action_custom_front_page_inside_before(){
  * Fire the t_em_action_custom_front_page_inside_after action just before closing the
  * </section><!-- #featured-widget-area --> tag
  *
- * @file functions.php via t_em_display_front_page_widgets() function
+ * @file functions.php via t_em_front_page_widgets() function
  * @since Twenty'em 1.0
  */
 function t_em_action_custom_front_page_inside_after(){
@@ -134,7 +134,7 @@ function t_em_action_custom_front_page_inside_after(){
 /**
  * Fire the t_em_action_content_before action, just after opening <section id="content"> tag
  *
- * @files archive.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, author.php, category.php, date.php, home.php
  * home.php, index.php, page.php, search.php, single.php, tag.php, taxonomy.php,
  * taxonomy-post_format.php, page-templates/template-$template_name.php
  * @since Twenty'em 1.0
@@ -146,7 +146,7 @@ function t_em_action_content_before(){
 /**
  * Fire the t_em_action_content_after action, just before closing </section><!-- #content --> tag
  *
- * @files archive.php, author.php, category.php, date.php, front-page.php
+ * @files archive.php, author.php, category.php, date.php, home.php
  * home.php, index.php, pahe.php, search.php, single.php, tag.php, taxonomy.php,
  * taxonomy-post_format.php, page-templates/template-$template_name.php
  * @since Twenty'em 1.0
@@ -160,7 +160,7 @@ function t_em_action_content_after(){
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
- * @file front-page.php
+ * @file custom-front-page.php
  * @since Twenty'em 1.0
  */
 function t_em_action_custom_front_page_before(){
@@ -168,11 +168,11 @@ function t_em_action_custom_front_page_before(){
 }
 
 /**
- * Fire the t_em_action_custom_front_page_after, just before closing <section> <!-- #content --> tag.
+ * Fire the t_em_action_custom_front_page_after, just before closing <section><!-- #content --> tag.
  * Requires Text Widgets Option to be enable if Front Page Options in the Twenty'em admin panel.
  * $t_em['front_page_set'] == 'widgets-front-page'.
  *
- * @file front-page.php
+ * @file custom-front-page.php
  * @since Twenty'em 1.0
  */
 function t_em_action_custom_front_page_after(){
@@ -182,7 +182,8 @@ function t_em_action_custom_front_page_after(){
 /**
  * Fire the t_em_action_post_before action, just before opening <article id="post-##"> tag
  *
- * @file single.php
+ * @file content.php image.php page.php single.php page-templates/template-blog-content.php
+ * page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_before(){
@@ -192,7 +193,8 @@ function t_em_action_post_before(){
 /**
  * Fire the t_em_action_post_after action, just after closing </article><!-- #post-## --> tag
  *
- * @file single.php
+ * @file content.php image.php page.php single.php page-templates/template-blog-content.php
+ * page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_after(){
@@ -202,7 +204,8 @@ function t_em_action_post_after(){
 /**
  * Fire the t_em_action_post_inside_before action, just after opening <article id="post-##"> tag
  *
- * @file single.php
+ * @file content.php image.php page.php single.php page-templates/template-blog-content.php
+ * page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_inside_before(){
@@ -212,7 +215,8 @@ function t_em_action_post_inside_before(){
 /**
  * Fire the t_em_action_post_inside_after action, just before closing </article><!-- #post-## --> tag
  *
- * @file single.php
+ * @file content.php image.php page.php single.php page-templates/template-blog-content.php
+ * page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_inside_after(){
@@ -222,7 +226,7 @@ function t_em_action_post_inside_after(){
 /**
  * Fire the t_em_action_post_content_before action, just before opening <div class="entry-content"> tag
  *
- * @file single.php
+ * @file functions.php 404.php image.php page.php single.php page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_content_before(){
@@ -232,7 +236,7 @@ function t_em_action_post_content_before(){
 /**
  * Fire the t_em_action_post_content_after action, just after closing </div><!-- .entry-content --> tag
  *
- * @file single.php
+ * @file functions.php 404.php image.php page.php single.php page-templates/template-one-column.php
  * @since Twenty'em 1.0
  */
 function t_em_action_post_content_after(){
@@ -280,7 +284,7 @@ function t_em_action_sidebar_after(){
 }
 
 /**
- * Fire the t_em_action_sidebar_alt_before action, just after opening the <section id="sidebar"> tag
+ * Fire the t_em_action_sidebar_alt_before action, just after opening the <section id="sidebar-alt"> tag
  *
  * @file sidebar-alt.php
  * @since Twenty'em 1.0
@@ -290,7 +294,7 @@ function t_em_action_sidebar_alt_before(){
 }
 
 /**
- * Fire the t_em_action_sidebar_alt_after action, just before closing the </section><!-- #sidebar --> tag
+ * Fire the t_em_action_sidebar_alt_after action, just before closing the </section><!-- #sidebar-alt --> tag
  *
  * @file sidebar-alt.php
  * @since Twenty'em 1.0
@@ -300,7 +304,7 @@ function t_em_action_sidebar_alt_after(){
 }
 
 /**
- * Fire the t_em_action_sidebar_footer_before action, just after opening the <section id="footer-widget-area">
+ * Fire the t_em_action_sidebar_footer_before action, just after opening the <div class="widget-area">
  * tag
  *
  * @file sidebar-footer.php
@@ -311,7 +315,7 @@ function t_em_action_sidebar_footer_before(){
 }
 
 /**
- * Fire the t_em_action_sidebar_footer_after action, just after opening the <section id="footer-widget-area">
+ * Fire the t_em_action_sidebar_footer_after action, just before closing the <div><!-- .widget-area -->
  * tag
  *
  * @file sidebar-footer.php
@@ -352,7 +356,7 @@ function t_em_action_site_info_before(){
 }
 
 /**
- * Fire the t_em_action_site_info_after action, just after closing the </div><!-- #site-info --> tag
+ * Fire the t_em_action_site_info_after action, just before closing the </div><!-- #site-info --> tag
  *
  * @file footer.php
  * @since Twenty'em 1.0
