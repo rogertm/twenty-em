@@ -84,7 +84,7 @@ function t_em_setup(){
 	// This theme styles the visual editor with editor-style.css to match the theme style
 	add_editor_style( 'css/editor-style.css' );
 
-	// Adds support for custom header text (pluggable function).
+	// Adds support for custom header.
 	$custom_header_support = array(
 		/**
 		 * Filter header image Width and Height
@@ -294,7 +294,7 @@ function t_em_support_custom_header_images(){
 	 * 				The ids point to arrays containing 'url', 'thumbnail_url', and 'description' keys.
 	 * @since Twenty'em 1.0
 	 */
-	return apply_filters( 't_em_filter_custom_header_images', register_default_headers( $headers ) );
+	return register_default_headers( apply_filters( 't_em_filter_custom_header_images', $headers ) );
 }
 endif; // function t_em_support_custom_header_images()
 
