@@ -28,7 +28,7 @@ if ( in_array( $t_em['layout_set'], array(
 	 */
 	if ( ! is_active_sidebar( 'sidebar-alt' ) ) return;
 ?>
-	<section id="sidebar-alt" class="widget-area <?php echo t_em_add_bootstrap_class( 'sidebar-alt' ); ?>" role="complementary">
+	<section id="sidebar-alt" role="complementary" <?php t_em_add_bootstrap_class( 'sidebar-alt' ); ?>>
 		<?php t_em_action_sidebar_alt_before(); ?>
 <?php
 		if ( is_active_sidebar( 'sidebar-alt' ) ) :

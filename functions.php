@@ -299,7 +299,8 @@ function t_em_support_custom_header_images(){
 endif; // function t_em_support_custom_header_images()
 
 /**
- * Add Twenty'em layout classes to the array of body classes
+ * Add Twenty'em layout classes to the array of body classes.
+ * This function is attached to the 'body_class' filter hook.
  *
  * @since Twenty'em 1.0
  */
@@ -318,32 +319,27 @@ function t_em_layout_classes( $existing_classes ){
 		$classes = array( 'one-column' );
 	endif;
 
-	if ( 'two-column-content-left' == $layout_set )
+	if ( 'two-column-content-left' == $layout_set ) :
 		$classes[] = 'two-column-content-left';
-	elseif ( 'two-column-content-right' == $layout_set )
+	elseif ( 'two-column-content-right' == $layout_set ) :
 		$classes[] = 'two-column-content-right';
-	elseif ( 'three-column-content-left' == $layout_set )
+	elseif ( 'three-column-content-left' == $layout_set ) :
 		$classes[] = 'three-column-content-left';
-	elseif ( 'three-column-content-right' == $layout_set )
+	elseif ( 'three-column-content-right' == $layout_set ) :
 		$classes[] = 'three-column-content-right';
-	elseif ( 'three-column-content-middle' == $layout_set )
+	elseif ( 'three-column-content-middle' == $layout_set ) :
 		$classes[] = 'three-column-content-middle';
-	else
+	else :
 		$classes[] = $layout_set;
-
-	/**
-	 * Filter the list of CSS body classes depending on the layout setting
-	 *
-	 * @since Twenty'em 1.0
-	 */
-	$classes = apply_filters( 't_em_filter_layout_classes', $classes, $layout_set );
+	endif;
 
 	return array_merge( $existing_classes, $classes );
 }
 add_filter( 'body_class', 't_em_layout_classes' );
 
 /**
- * Add Twenty'em archive classes to the array of posts classes
+ * Add Twenty'em archive classes to the array of posts classes.
+ * This function is attached to the 'post_class' filter hook.
  *
  * @since Twenty'em 1.0
  */
@@ -365,32 +361,36 @@ function t_em_archive_classes( $existing_classes ){
 		$classes[] = 'full-post';
 	endif;
 
-	/**
-	 * Filter the list of CSS classes for the current post depending on the Archive Set
-	 *
-	 * @since Twenty'em 1.0
-	 */
-	$classes = apply_filters( 't_em_filter_archive_classes', $classes, $archive_set );
-
 	return array_merge( $existing_classes, $classes );
 }
 add_filter( 'post_class', 't_em_archive_classes' );
+
+/**
+ * Archive in columns.
+ * This function is passed as parameter to the post_class() function in the "content.php" file.
+ *
+ * @return string Class name
+ *
+ * @since Twenty'emn 1.0
+ */
+function t_em_archive_cols(){
+	global $t_em;
+	$cols = 12 / $t_em['archive_in_columns'];
+	$class = 'col-md-' . $cols;
+	return $class;
+}
 
 /**
  * Add Bootstrap CSS Classes dynamically.
  *
  * @param string $section Required. The name of the section that Bootstrap CSS Classes are needed.
  *
- * @global $t_em
- *
- * @return string CSS Class name
- *
  * @since Twenty'em 1.0
  */
 function t_em_add_bootstrap_class( $section ){
 	global $t_em;
 
-	$bootstrap_classes = '';
+	$bootstrap_classes = array();
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
 	$layout_set = $t_em['layout_set'];
@@ -405,45 +405,39 @@ function t_em_add_bootstrap_class( $section ){
 
 	// #main-content and three-column or ( two-column or one-column )
 	if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
-		$bootstrap_classes = 'col-md-9';
+		$bootstrap_classes[] = 'col-md-9';
 	elseif ( 'main-content' == $section && ( $two_column || $one_column || ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' && $three_column ) ) ) :
-		$bootstrap_classes = 'col-md-12';
+		$bootstrap_classes[] = 'col-md-12';
 	endif;
 	// #content and three-column or one-column
 	if ( 'content' == $section && $three_column ) :
-		$bootstrap_classes = 'col-md-8';
+		$bootstrap_classes[] = 'col-md-8';
 	elseif ( 'content' == $section && $one_column ) :
-		$bootstrap_classes = 'col-md-12';
+		$bootstrap_classes[] = 'col-md-12';
 	endif;
 	// #content && #main-content One column templates
 	if ( 'content-one-column' == $section ) :
-		$bootstrap_classes = 'col-md-12';
+		$bootstrap_classes[] = 'col-md-12';
 	endif;
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
-		$bootstrap_classes = 'col-md-4';
+		$bootstrap_classes[] = 'col-md-4';
 	endif;
 	// #sidebar-alt and three-column
 	if ( 'sidebar-alt' == $section && $three_column ) :
-		$bootstrap_classes = 'col-md-3';
+		$bootstrap_classes[] = 'col-md-3';
 	endif;
 	// #content and two-column
-	if ( 'content' == $section && $two_column ) :
-		$bootstrap_classes = 'col-md-8';
+	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
+		$bootstrap_classes[] = 'col-md-8';
 	endif;
 	// #content and front_page_set['widgets-front-page']
 	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] == 'widgets-front-page' ) :
-		$bootstrap_classes = 'col-md-12';
+		$bootstrap_classes[] = 'col-md-12';
 	endif;
 	// #sidebar and two-column
 	if ( 'sidebar' == $section && $two_column ) :
-		$bootstrap_classes = 'col-md-4';
-	endif;
-
-	// Archive columns
-	if ( 'archive-columns' == $section ) :
-		$cols = 12 / $t_em['archive_in_columns'];
-		$bootstrap_classes = 'col-md-' . $cols;
+		$bootstrap_classes[] = 'col-md-4';
 	endif;
 
 	/** Static Header Content and Image */
@@ -456,18 +450,21 @@ function t_em_add_bootstrap_class( $section ){
 								) ? '1' : '0';
 		$total_static_header = array_sum( array( $static_header_img, $static_header_content ) );
 		$cols = 12 / $total_static_header;
-		$bootstrap_classes = 'col-md-' . $cols;
+		$bootstrap_classes[] = 'col-md-' . $cols;
 	endif;
 
 	/** Front Page Widgets Area */
+	if ( 'primary-featured-widget-area' == $section ) :
+		$bootstrap_classes[] = 'col-md-12';
+	endif;
 	// Classes are needed for secondaries widgets only (two, three and four).
-	if ( 'featured-widget-area' == $section ) :
+	if ( 'secondary-featured-widget-area' == $section ) :
 		$widget_two		= ( ! empty ( $t_em['headline_text_widget_two'] ) || ! empty ( $t_em['content_text_widget_two'] ) ) ? '1' : '0' ;
 		$widget_three	= ( ! empty ( $t_em['headline_text_widget_three'] ) || ! empty ( $t_em['content_text_widget_three'] ) ) ? '1' : '0' ;
 		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
-		$bootstrap_classes = 'col-md-' . $cols;
+		$bootstrap_classes[] = 'col-md-' . $cols;
 	endif;
 
 	/** Footer Widgets Area */
@@ -484,17 +481,41 @@ function t_em_add_bootstrap_class( $section ){
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
 		$cols = 12 / $total_widgets;
-		$bootstrap_classes = 'col-md-' . $cols;
+		$bootstrap_classes[] = 'col-md-' . $cols;
 	endif;
 
 	/**
-	 * Filter the list of CSS Bootstrap classes on the current template
+	 * Filter the list of CSS Bootstrap classes on the current template.
+	 * The dynamic portion of the hook name, "$section", refers to the parameter $section where this
+	 * functions is called.
 	 *
-	 * @param string Bootstrap CSS classes
+	 * @param array Bootstrap CSS classes
 	 * @since Twenty'em 1.0
 	 */
-	return apply_filters( 't_em_filter_bootstrap_classes', $bootstrap_classes );
+	$classes = apply_filters( "t_em_filter_bootstrap_classes_{$section}", $bootstrap_classes );
+	$classes = array_unique( $classes );
+	echo 'class="' . implode( ' ', $classes ) . '"';
 }
+
+/**
+ * Push css classes into t_em_filter_bootstrap_classes_content-one-column Filter Hook
+ */
+function t_em_push_bootstrap_one_column_class( $classes ){
+	$classes[] = 'one-column';
+	return $classes;
+}
+add_filter( 't_em_filter_bootstrap_classes_content-one-column', 't_em_push_bootstrap_one_column_class' );
+
+/**
+ * Push css classes into t_em_filter_bootstrap_classes_sidebar and
+ * t_em_filter_bootstrap_classes_sidebar-alt Filter Hook
+ */
+function t_em_push_bootstrap_sidebar_class( $classes ){
+	$classes[] = 'widget-area';
+	return $classes;
+}
+add_filter( 't_em_filter_bootstrap_classes_sidebar', 't_em_push_bootstrap_sidebar_class' );
+add_filter( 't_em_filter_bootstrap_classes_sidebar-alt', 't_em_push_bootstrap_sidebar_class' );
 
 /**
  * Set the post excerpt length depending of the $t_em['excerpt_length'] value.
@@ -1630,7 +1651,7 @@ function t_em_static_header(){
 		<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
 			<div id="static-header-inner" class="wrapper container">
 <?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
-			<div id="static-header-image" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+			<div id="static-header-image" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
 				<figure>
 					<img src="<?php echo $t_em['static_header_img_src']; ?>"
 						alt="<?php echo sanitize_text_field( $t_em['static_header_headline'] ); ?>">
@@ -1643,7 +1664,7 @@ function t_em_static_header(){
 			|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
 			|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
 		) : ?>
-			<div id="static-header-text" class="<?php echo t_em_add_bootstrap_class( 'static-header' ); ?>">
+			<div id="static-header-text" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
 <?php 	if ( $t_em['static_header_headline'] ) : ?>
 				<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
 <?php 	endif; ?>
@@ -1971,10 +1992,9 @@ function t_em_front_page_widgets(){
 				$widget_footer = null;
 			endif;
 
-			// First widget is a Jumbotron
-			$widget_cols = ( $widget['name'] != 'text_widget_one' ) ? t_em_add_bootstrap_class( 'featured-widget-area' ) : 'col-md-12';
+			$section = ( $widget['name'] == 'text_widget_one' ) ? 'primary-featured-widget-area' : 'secondary-featured-widget-area';
 ?>
-			<div class="<?php echo $widget_cols; ?>">
+			<div <?php t_em_add_bootstrap_class( $section ); ?>>
 				<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
 					<?php echo $widget_thumbnail_url; ?>
 					<div class="front-page-widget-caption caption">
