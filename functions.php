@@ -628,14 +628,15 @@ function t_em_single_link_pages( $content ){
 		'echo'			=> 0,
 	);
 
-	$content = $content . wp_link_pages( $args );
-
 	/**
 	 * Filter the single link pages structure
 	 *
+	 * @param array $args Array of arguments
+	 *
 	 * @since Twenty'em 1.0
 	 */
-	return apply_filters( 't_em_filter_single_link_pages', $content );
+	$content = $content . wp_link_pages( apply_filters( 't_em_filter_single_link_pages', $args ) );
+	return $content;
 }
 endif; // function t_em_single_link_pages()
 add_filter( 'the_content', 't_em_single_link_pages' );
