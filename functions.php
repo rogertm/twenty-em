@@ -371,7 +371,7 @@ add_filter( 'post_class', 't_em_archive_classes' );
  *
  * @return string Class name
  *
- * @since Twenty'emn 1.0
+ * @since Twenty'em 1.0
  */
 function t_em_archive_cols(){
 	global $t_em;
@@ -1321,28 +1321,30 @@ function t_em_page_navi(){
 			$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
 			$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
 
-			$links = paginate_links( array(
-				/**
-				 * Filter the paginate link structure
-				 *
-				 * @link http://codex.wordpress.org/Function_Reference/paginate_links
-				 * @since Twenty'em 1.0
-				 */
+			$args = array(
 				'base'					=> $pagenum_link,
 				'format'				=> $format,
 				'total'					=> $wp_query->max_num_pages,
 				'current'				=> $paged,
 				'add_args'				=> array_map( 'urlencode', $query_args ),
-				'prev_text'				=> apply_filters( 't_em_filter_paginate_links_prev_text', __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ) ),
-				'next_text'				=> apply_filters( 't_em_filter_paginate_links_next_text', __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ),
-				'end_size'				=> apply_filters( 't_em_filter_paginate_links_end_size', 1 ),
- 				'mid_size'				=> apply_filters( 't_em_filter_paginate_links_mid_size', 2 ),
-				'type'					=> apply_filters( 't_em_filter_paginate_links_type', 'list' ),
-				'prev_next'				=> apply_filters( 't_em_filter_paginate_links_prev_next', true ),
-				'add_fragment'			=> apply_filters( 't_em_filter_paginate_links_add_fragment', null ),
-				'before_page_number'	=> apply_filters( 't_em_filter_paginate_links_before_page_number', null ),
-				'after_page_number'		=> apply_filters( 't_em_filter_paginate_links_after_page_number', null ),
-			) );
+				'prev_text'				=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
+				'next_text'				=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
+				'end_size'				=> 1,
+				'mid_size'				=> 2,
+				'type'					=> 'list',
+				'prev_next'				=> true,
+				'add_fragment'			=> null,
+				'before_page_number'	=> null,
+				'after_page_number'		=> null,
+			);
+
+			/**
+			 * Filter the paginate link structure
+			 *
+			 * @link http://codex.wordpress.org/Function_Reference/paginate_links
+			 * @since Twenty'em 1.0
+			 */
+			$links = paginate_links( apply_filters( 't_em_filter_paginate_links', $args ) );
 			if ( $links ) :
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
 				$total_pages = $wp_query->max_num_pages;
