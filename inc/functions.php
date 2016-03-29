@@ -122,22 +122,17 @@ function t_em_garbage_cleaner( $directory, $search, $type = 'search', $save_path
  * Helper. Register and Enqueue Bootstrap jQuery Plugins
  *
  * @param $plugin Required. String. Plugin name and extension (IE: transition.js)
- * @param $script Optional. String. Additional script if needed by the pluggin
+ * @param $script Optional. String. Additional script if needed by the plugin
  * @param $script_src Optional. String. Required if $script, the $script source address
+ * @param $deps Optional. Array. Array of the handles of all the registered scripts that this script depends on.
  * @param $transition Optional. Bool. Enqueue transition.js Bootstrap plugin for simple transition effects
  * @param $in_footer Optional. Bool. If true, the script is placed before the </body> end tag
  *
  * @since Twenty'em 1.0
  */
-function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $transition = true, $in_footer = false ){
+function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $deps = array(), $transition = true, $in_footer = false ){
 	global $t_em_theme_data;
-	/**
-	 * Filter the list of dependencies for the current Bootstrap jQuery Plugin
-	 *
-	 * @param array An array of dependencies
-	 * @since Twenty'em 1.0
-	 */
-	$deps = apply_filters( 't_em_filter_bootstrap_plugin_deps', array( 'jquery' ) );
+	$deps = array_merge( $deps, array( 'jquery' ) );
 	if ( $transition ) :
 		$transition = 'transition.js';
 		array_push( $deps, $transition );
