@@ -383,9 +383,9 @@ function t_em_settings_field_header_set(){
 					if ( $sub_header['callback'] ) :
 ?>
 					<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend">
-						<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_before' ); ?>
+						<?php do_action( "t_em_admin_action_header_option_{$sub_header['value']}_before" ); ?>
 						<?php echo $sub_header['callback']; ?>
-						<?php do_action( 't_em_admin_action_header_option_'.$sub_header['value'].'_after' ); ?>
+						<?php do_action( "t_em_admin_action_header_option_{$sub_header['value']}_after" ); ?>
 					</div>
 <?php
 					endif;

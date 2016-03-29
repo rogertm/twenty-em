@@ -330,9 +330,9 @@ function t_em_settings_field_archive_set(){
 					$selected_option = ( $t_em['archive_set'] == $sub_archive['value'] ) ? 'selected-option' : '';
 ?>
 					<div id="<?php echo $sub_archive['value'] ?>" class="sub-layout archive-extend <?php echo $selected_option; ?>">
-						<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_before' ); ?>
+						<?php do_action( "t_em_admin_action_archive_option_{$sub_archive['value']}_before" ); ?>
 						<?php echo $sub_archive['callback']; ?>
-						<?php do_action( 't_em_admin_action_archive_option_'.$sub_archive['value'].'_after' ); ?>
+						<?php do_action( "t_em_admin_action_archive_option_{$sub_archive['value']}_after" ); ?>
 					</div>
 <?php
 					endif;

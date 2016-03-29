@@ -418,14 +418,17 @@ function t_em_add_bootstrap_class( $section ){
 	// #content && #main-content One column templates
 	if ( 'content-one-column' == $section ) :
 		$bootstrap_classes[] = 'col-md-12';
+		$bootstrap_classes[] = 'one-column';
 	endif;
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
 		$bootstrap_classes[] = 'col-md-4';
+		$bootstrap_classes[] = 'widget-area';
 	endif;
 	// #sidebar-alt and three-column
 	if ( 'sidebar-alt' == $section && $three_column ) :
 		$bootstrap_classes[] = 'col-md-3';
+		$bootstrap_classes[] = 'widget-area';
 	endif;
 	// #content and two-column
 	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
@@ -438,6 +441,7 @@ function t_em_add_bootstrap_class( $section ){
 	// #sidebar and two-column
 	if ( 'sidebar' == $section && $two_column ) :
 		$bootstrap_classes[] = 'col-md-4';
+		$bootstrap_classes[] = 'widget-area';
 	endif;
 
 	/** Static Header Content and Image */
@@ -496,26 +500,6 @@ function t_em_add_bootstrap_class( $section ){
 	$classes = array_unique( $classes );
 	echo 'class="' . implode( ' ', $classes ) . '"';
 }
-
-/**
- * Push css classes into t_em_filter_bootstrap_classes_content-one-column Filter Hook
- */
-function t_em_push_bootstrap_one_column_class( $classes ){
-	$classes[] = 'one-column';
-	return $classes;
-}
-add_filter( 't_em_filter_bootstrap_classes_content-one-column', 't_em_push_bootstrap_one_column_class' );
-
-/**
- * Push css classes into t_em_filter_bootstrap_classes_sidebar and
- * t_em_filter_bootstrap_classes_sidebar-alt Filter Hook
- */
-function t_em_push_bootstrap_sidebar_class( $classes ){
-	$classes[] = 'widget-area';
-	return $classes;
-}
-add_filter( 't_em_filter_bootstrap_classes_sidebar', 't_em_push_bootstrap_sidebar_class' );
-add_filter( 't_em_filter_bootstrap_classes_sidebar-alt', 't_em_push_bootstrap_sidebar_class' );
 
 /**
  * Set the post excerpt length depending of the $t_em['excerpt_length'] value.

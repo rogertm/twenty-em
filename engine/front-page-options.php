@@ -236,9 +236,9 @@ function t_em_settings_field_front_page_options_set(){
 					$selected_option = ( $t_em['front_page_set'] == $sub_front_page['value'] ) ? 'selected-option' : '';
 ?>
 					<div id="<?php echo $sub_front_page['value'] ?>" class="sub-layout front-page-extend">
-						<?php do_action( 't_em_admin_action_from_page_option_'.$sub_front_page['value'].'_before' ); ?>
+						<?php do_action( "t_em_admin_action_from_page_option_{$sub_front_page['value']}_before" ); ?>
 						<?php echo $sub_front_page['callback']; ?>
-						<?php do_action( 't_em_admin_action_from_page_option_'.$sub_front_page['value'].'_after' ); ?>
+						<?php do_action( "t_em_admin_action_from_page_option_{$sub_front_page['value']}_after" ); ?>
 					</div>
 <?php
 					endif;
