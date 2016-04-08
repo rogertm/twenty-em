@@ -119,8 +119,30 @@ function t_em_setup(){
 	 */
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
-	// Adds support for custom header image (pluggable function).
-	t_em_support_custom_header_images();
+	// Default custom headers packaged with the theme.
+	register_default_headers( array(
+		'aqua'	=> array(
+				'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua.png',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua-thumbnail.png',
+				'description'	=> _x( 'Aqua', 'header image description', 't_em' ),
+			),
+		'fire'	=> array(
+				'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/fire.png',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/fire-thumbnail.png',
+				'description'	=> _x( 'Fire', 'header image description', 't_em' ),
+			),
+		'lime'	=> array(
+				'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/lime.png',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/lime-thumbnail.png',
+				'description'	=> _x( 'Lime', 'header image description', 't_em' ),
+			),
+		'purple'	=> array(
+				'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/purple.png',
+				'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/purple-thumbnail.png',
+				'description'	=> _x( 'Purple', 'header image description', 't_em' ),
+			),
+		)
+	);
 
 	// This theme uses navigation menus in three locations. Woew!
 	register_nav_menus ( array(
@@ -256,47 +278,6 @@ function t_em_admin_header_image(){ ?>
 <?php
 }
 endif; // function t_em_admin_header_image()
-
-if ( ! function_exists( 't_em_support_custom_header_images' ) ) :
-/**
- * Pluggable Function:  Default custom headers packaged with the theme.
- * Referenced via t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_support_custom_header_images(){
-	$headers = array(
-		'aqua'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/aqua-thumbnail.png',
-			'description'	=> _x( 'Aqua', 'header image description', 't_em' ),
-		),
-		'fire'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/fire.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/fire-thumbnail.png',
-			'description'	=> _x( 'Fire', 'header image description', 't_em' ),
-		),
-		'lime'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/lime.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/lime-thumbnail.png',
-			'description'	=> _x( 'Lime', 'header image description', 't_em' ),
-		),
-		'purple'	=> array(
-			'url'			=> T_EM_THEME_DIR_IMG_URL . '/headers/purple.png',
-			'thumbnail_url'	=> T_EM_THEME_DIR_IMG_URL . '/headers/purple-thumbnail.png',
-			'description'	=> _x( 'Purple', 'header image description', 't_em' ),
-		),
-	);
-	/**
-	 * Filter the list of custom header images
-	 *
-	 * @param array An array of headers keyed by a string id.
-	 * 				The ids point to arrays containing 'url', 'thumbnail_url', and 'description' keys.
-	 * @since Twenty'em 1.0
-	 */
-	return register_default_headers( apply_filters( 't_em_filter_custom_header_images', $headers ) );
-}
-endif; // function t_em_support_custom_header_images()
 
 /**
  * Add Twenty'em layout classes to the array of body classes.
