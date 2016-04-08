@@ -147,6 +147,186 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
 }
 
 /**
+ * Add Bootstrap CSS Classes dynamically.
+ *
+ * @param string $section Required. The name of the section that Bootstrap CSS Classes are needed.
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_add_bootstrap_class( $section ){
+	global $t_em;
+
+	$bootstrap_classes = array();
+
+	/** Main Content, Content, Sidebar and Sidebar Alt */
+	$layout_set = $t_em['layout_set'];
+	$one_column = in_array( $layout_set, array( 'one-column' ) );
+	$two_column = in_array( $layout_set,
+						array( 'two-column-content-right',
+							   'two-column-content-left' ) );
+	$three_column = in_array( $layout_set,
+						array( 'three-column-content-left',
+							   'three-column-content-right',
+							   'three-column-content-middle' ) );
+
+	// #main-content and three-column or ( two-column or one-column )
+	if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
+		$bootstrap_classes[] = 'col-md-9';
+	elseif ( 'main-content' == $section && ( $two_column || $one_column || ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' && $three_column ) ) ) :
+		$bootstrap_classes[] = 'col-md-12';
+	endif;
+	// #content and three-column or one-column
+	if ( 'content' == $section && $three_column ) :
+		$bootstrap_classes[] = 'col-md-8';
+	elseif ( 'content' == $section && $one_column ) :
+		$bootstrap_classes[] = 'col-md-12';
+	endif;
+	// #content && #main-content One column templates
+	if ( 'content-one-column' == $section ) :
+		$bootstrap_classes[] = 'col-md-12';
+		$bootstrap_classes[] = 'one-column';
+	endif;
+	// #sidebar and three-column
+	if ( 'sidebar' == $section && $three_column ) :
+		$bootstrap_classes[] = 'col-md-4';
+		$bootstrap_classes[] = 'widget-area';
+	endif;
+	// #sidebar-alt and three-column
+	if ( 'sidebar-alt' == $section && $three_column ) :
+		$bootstrap_classes[] = 'col-md-3';
+		$bootstrap_classes[] = 'widget-area';
+	endif;
+	// #content and two-column
+	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
+		$bootstrap_classes[] = 'col-md-8';
+	endif;
+	// #content and front_page_set['widgets-front-page']
+	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] == 'widgets-front-page' ) :
+		$bootstrap_classes[] = 'col-md-12';
+	endif;
+	// #sidebar and two-column
+	if ( 'sidebar' == $section && $two_column ) :
+		$bootstrap_classes[] = 'col-md-4';
+		$bootstrap_classes[] = 'widget-area';
+	endif;
+
+	/** Static Header Content and Image */
+	if ( 'static-header' == $section ) :
+		$static_header_img = ( ! empty ( $t_em['static_header_img_src'] ) ) ? '1' : '0';
+		$static_header_content = ( ! empty ( $t_em['static_header_headline'] )
+								|| ! empty ( $t_em['static_header_content'] )
+								|| ! empty ( $t_em['static_header_primary_button_text'] )
+								|| ! empty ( $t_em['static_header_secondary_button_text'] )
+								) ? '1' : '0';
+		$total_static_header = array_sum( array( $static_header_img, $static_header_content ) );
+		$cols = 12 / $total_static_header;
+		$bootstrap_classes[] = 'col-md-' . $cols;
+	endif;
+
+	/** Front Page Widgets Area */
+	if ( 'primary-featured-widget-area' == $section ) :
+		$bootstrap_classes[] = 'col-md-12';
+	endif;
+	// Classes are needed for secondaries widgets only (two, three and four).
+	if ( 'secondary-featured-widget-area' == $section ) :
+		$widget_two		= ( ! empty ( $t_em['headline_text_widget_two'] ) || ! empty ( $t_em['content_text_widget_two'] ) ) ? '1' : '0' ;
+		$widget_three	= ( ! empty ( $t_em['headline_text_widget_three'] ) || ! empty ( $t_em['content_text_widget_three'] ) ) ? '1' : '0' ;
+		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
+		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
+		$cols = 12 / $total_widgets;
+		$bootstrap_classes[] = 'col-md-' . $cols;
+	endif;
+
+	/** Footer Widgets Area */
+	if ( 'footer-widget-area' == $section ) :
+		$one_widget_footer = ( 'no-footer-widget' != $t_em['footer_set'] ) ? '1' : '0';
+		$two_widget_footer = ( in_array( $t_em['footer_set'],
+								array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
+							 ) ) ? '1' : '0';
+		$three_widget_footer = ( in_array( $t_em['footer_set'],
+									array( 'three-footer-widget', 'four-footer-widget' )
+								 ) ) ? '1' : '0';
+		$four_widget_footer = ( in_array( $t_em['footer_set'],
+									array( 'four-footer-widget' )
+								 ) ) ? '1' : '0';
+		$total_widgets = array_sum( array( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
+		$cols = 12 / $total_widgets;
+		$bootstrap_classes[] = 'col-md-' . $cols;
+	endif;
+
+	/**
+	 * Filter the list of CSS Bootstrap classes on the current template.
+	 * The dynamic portion of the hook name, "$section", refers to the parameter $section where this
+	 * functions is called.
+	 *
+	 * @param array Bootstrap CSS classes
+	 * @since Twenty'em 1.0
+	 */
+	$classes = apply_filters( "t_em_filter_bootstrap_classes_{$section}", $bootstrap_classes );
+	$classes = array_unique( $classes );
+	echo 'class="' . implode( ' ', $classes ) . '"';
+}
+
+/**
+ * Helper: Display featured image in posts archives when "Display the Excerpt" option is
+ * activated in admin theme option page.
+ *
+ * @param int $width Require Thumbnail width.
+ * @param int $height Require Thumbnail height.
+ * @param boolean $link Optional The image will be linkable or not. Default: true.
+ * @param string $class Optional CSS class.
+ * @param int $post_id Optional. Post ID. Default is ID of the global $post.
+ *
+ * @global $post
+ * @global $t_em
+ *
+ * @return text HTML content describing embedded figure
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = null, $post_id = 0 ){
+	global $t_em;
+
+	$post_id = absint( $post_id );
+	if ( ! $post_id )
+		$post_id = get_the_ID();
+
+	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" title="'.  get_the_title( $post_id ) .'" rel="bookmark">' : null;
+	$close_link = ( $link ) ? '</a>' : null;
+
+	if ( has_post_thumbnail( $post_id ) ) :
+		// Display featured image assigned to the post
+		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+		$image_src = $image_url[0];
+		echo $open_link;
+		?>
+			<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+				<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
+			</figure>
+		<?php
+		echo $close_link;
+	else :
+		// Display the first image uploaded/attached to the post
+		$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+		$total_images = count( $images );
+		$image = array_shift( $images );
+		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : '';
+		if ( $total_images >= 1 ) :
+			$image_src = $image_url[0];
+			echo $open_link;
+			?>
+				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
+					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
+				</figure>
+			<?php
+			echo $close_link;
+		endif;
+	endif;
+}
+
+/**
  * Helper. Wrap paragraphs into <p> ...</p> tags, and clean empty lines
  *
  * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
