@@ -2022,7 +2022,15 @@ if ( has_nav_menu( 'top-menu' ) ) :
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+				<?php
+					/**
+					 * Filter the navbar brand
+					 *
+					 * @param string $brand HTML containing the navbar brand
+					 */
+					$brand = '<div class="navbar-brand visible-xs-block">' . __( 'Site Navigation', 't_em' ) . '</div>';
+					echo apply_filters( 't_em_filter_top_menu_brand', $brand );
+				?>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
 							/**
@@ -2066,7 +2074,15 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<div class="navbar-brand visible-xs-block"><?php _e( 'Site Navigation', 't_em' ) ?></div>
+				<?php
+					/**
+					 * Filter the navbar brand
+					 *
+					 * @param string $brand HTML containing the navbar brand
+					 */
+					$brand = '<div class="navbar-brand visible-xs-block">' . __( 'Site Navigation', 't_em' ) . '</div>';
+					echo apply_filters( 't_em_filter_navigation_menu_brand', $brand );
+				?>
 				</div><!-- .navbar-header -->
 				<?php wp_nav_menu( array(
 							/**
