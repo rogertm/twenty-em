@@ -86,7 +86,7 @@ function t_em_theme_layout_width(){
 ?>
 <style type="text/css" media="all">
 	.wrapper{
-		max-width: <?php echo $t_em['layout_width']; ?>px !important;
+		max-width: <?php echo $t_em['layout_width']; ?>px;
 	}
 </style>
 <?php
