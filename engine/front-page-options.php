@@ -161,7 +161,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[primary_button_icon_class_' . $widget['name'] . ']" value="' . $t_em['primary_button_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
-		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[primary_button_link_' . $widget['name'] . ']" value="' . $t_em['primary_button_link_'.$widget['name']] . '" />';
+		$extend_front_page .= 			'<input type="url" class="regular-text" name="t_em_theme_options[primary_button_link_' . $widget['name'] . ']" value="' . $t_em['primary_button_link_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_text_' . $widget['name'] . ']" value="' . $t_em['secondary_button_text_'.$widget['name']] . '" />';
@@ -170,7 +170,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_icon_class_' . $widget['name'] . ']" value="' . $t_em['secondary_button_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';
-		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_link_' . $widget['name'] . ']" value="' . $t_em['secondary_button_link_'.$widget['name']] . '" />';
+		$extend_front_page .= 			'<input type="url" class="regular-text" name="t_em_theme_options[secondary_button_link_' . $widget['name'] . ']" value="' . $t_em['secondary_button_link_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 	'</div>';
 		$extend_front_page .= '</div>';
