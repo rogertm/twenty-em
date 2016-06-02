@@ -1185,6 +1185,7 @@ function t_em_page_navi(){
 			/**
 			 * Filter the paginate link structure
 			 *
+			 * @param array $args An array of arguments
 			 * @link http://codex.wordpress.org/Function_Reference/paginate_links
 			 * @since Twenty'em 1.0
 			 */
@@ -1339,18 +1340,10 @@ function t_em_slider_bootstrap_carousel( $args ){
 				</ol><!-- .carousel-indicators -->
 				<div class="carousel-inner">
 <?php 			foreach ( $slider_posts as $post ) : setup_postdata( $post );
-					if ( has_post_thumbnail( $post->ID ) ) :
-						$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-						$image_src = $image_url[0];
-					else :
-						$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-						$total_images = count( $images );
-						$image = array_shift( $images );
-						$image_url = wp_get_attachment_image_src( $image->ID, 'full' );
-							$image_src = $image_url[0];
-					endif; ?>
+					$thumbnail = t_em_image_resize( $t_em['layout_width'], $t_em['slider_height'], $post->ID );
+?>
 					<div class="item">
-						<img alt="<?php the_title(); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$t_em['layout_width'].'&amp;h='.$t_em['slider_height'].'&amp;src='. $image_src ?>" />
+						<img alt="<?php the_title(); ?>" src="<?php echo $thumbnail ?>" />
 						<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
 							<h3 class="entry-title">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
@@ -1414,7 +1407,7 @@ function t_em_slider_query_args(){
 	/**
 	 * Filter the Slider query arguments
 	 *
-	 * @param array An array of arguments
+	 * @param array $args An array of arguments
 	 * @link http://codex.wordpress.org/Class_Reference/WP_Query
 	 * @since Twenty'em 1.0
 	 */

@@ -268,7 +268,7 @@ function t_em_add_bootstrap_class( $section ){
 }
 
 /**
- * Helper: Display featured image in posts archives when "Display the Excerpt" option is
+ * Display featured image in posts archives when "Display the Excerpt" option is
  * activated in admin theme option page.
  *
  * @param int $width Require Thumbnail width.
@@ -280,7 +280,7 @@ function t_em_add_bootstrap_class( $section ){
  * @global $post
  * @global $t_em
  *
- * @return text HTML content describing embedded figure
+ * @return string HTML content describing embedded figure
  *
  * @since Twenty'em 1.0
  */
@@ -293,37 +293,93 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 
 	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" title="'.  get_the_title( $post_id ) .'" rel="bookmark">' : null;
 	$close_link = ( $link ) ? '</a>' : null;
+	$thumbnail = t_em_image_resize( $width, $height, $post_id );
 
-	if ( has_post_thumbnail( $post_id ) ) :
-		// Display featured image assigned to the post
-		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
-		$image_src = $image_url[0];
+	if ( $thumbnail ) :
 		echo $open_link;
-		?>
-			<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-				<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
-				<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
-			</figure>
-		<?php
-		echo $close_link;
-	else :
-		// Display the first image uploaded/attached to the post
-		$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-		$total_images = count( $images );
-		$image = array_shift( $images );
-		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : '';
-		if ( $total_images >= 1 ) :
-			$image_src = $image_url[0];
-			echo $open_link;
 			?>
 				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo T_EM_THEME_DIR_INC_URL .'/timthumb.php?zc=1&amp;w='.$width.'&amp;h='.$height.'&amp;src='. $image_src ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
 					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
 				</figure>
 			<?php
-			echo $close_link;
+		echo $close_link;
+	endif;
+}
+
+/**
+ * Resize images on the fly
+ *
+ * @param int $width Required. New image width
+ * @param int $height Required. New image height
+ * @param int $post_id Optional. Current Post ID. Default is ID of the global $post.
+ * @param bool $crop Optional. Crop image. Default true
+ *
+ * @return string|null URL of the new image if the current post ($post_id) has a post thumbnail or
+ * 					   any image associate to it, Or null if there are no images associated to the
+ * 					   current post.
+ */
+function t_em_image_resize( $width, $height, $post_id = 0, $crop = true ){
+	global $t_em;
+
+	$post_id = absint( $post_id );
+	if ( ! $post_id )
+		$post_id = get_the_ID();
+
+	if ( has_post_thumbnail( $post_id ) ) :
+		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+		$image_path = get_attached_file( get_post_thumbnail_id( $post_id ) );
+	else :
+		$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
+		$total_images = count( $images );
+		$image = array_shift( $images );
+		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : null;
+		if ( $total_images >= 1 ) :
+			$image_path = get_attached_file( $image->ID );
+		else :
+			$image_path = null;
 		endif;
 	endif;
+	if ( $image_path ) :
+		// Image data
+		$image_src = $image_url[0]; // Original image
+		$image_edit = wp_get_image_editor( $image_url[0] );
+		$image_info = pathinfo( $image_path );
+
+		// Image dimensions
+		$image_size = getimagesize( $image_path );
+
+		// If Width and Height are bigger than original size we use the original image
+		if ( $width >= $image_size[0] && $height >= $image_size[1] ) :
+			$image_thumbnail = $image_src;
+		else :
+			// Set dimensions
+			$max_width = ( $width >= $image_size[0] ) ? $image_size[0] : $width;
+			$max_height = ( $height >= $image_size[1] ) ? $image_size[1] : $height;
+
+			// Image to be saved
+			$image_to_save = $image_info['dirname'] .'/'. $image_info['filename'] .'-'. $max_width .'x'. $max_height .'.'. $image_info['extension'];
+
+
+			// Create the new image
+			if ( ! file_exists( $image_to_save ) ) :
+				if ( ! is_wp_error( $image_edit ) ) :
+					$image_edit->resize( $max_width, $max_height, $crop );
+					$image_edit->save( $image_to_save );
+				endif;
+			endif;
+			$image_thumbnail = str_replace( $image_info['filename'], $image_info['filename'] .'-'. $max_width .'x'. $max_height, $image_src );
+		endif;
+	else :
+		/**
+		 * Filter default image to show if the current post has no image associated to it
+		 *
+		 * @param null $default_post_thumbnail. URL of the default post thumbnail
+		 * @since Twenty'em 1.0
+		 */
+		$image_thumbnail = apply_filters( 't_em_filter_default_post_thumbnail', null );
+	endif;
+	return $image_thumbnail;
 }
 
 /**
