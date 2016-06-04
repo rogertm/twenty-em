@@ -33,7 +33,7 @@ get_header(); ?>
 					 * @link http://codex.wordpress.org/Function_Reference/wp_list_pages
 					 */
 					?>
-					<h3 id="sitemap-pages"><?php _e( 'Pages', 't_em' ); ?></h3>
+					<h2 id="sitemap-pages"><?php _e( 'Pages', 't_em' ); ?></h2>
 					<ul><?php wp_list_pages( array( 'title_li' => '', 'sort_column' => 'menu_order' ) ) ?></ul>
 
 					<?php
@@ -41,7 +41,7 @@ get_header(); ?>
 					 * @link http://codex.wordpress.org/Template_Tags/wp_list_categories
 					 */
 					?>
-					<h3 id="sitemap-categories"><?php _e( 'Categories', 't_em' ); ?></h3>
+					<h2 id="sitemap-categories"><?php _e( 'Categories', 't_em' ); ?></h2>
 					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
@@ -49,12 +49,12 @@ get_header(); ?>
 					 * @link http://codex.wordpress.org/Function_Reference/get_categories
 					 */
 					?>
-					<h3 id="sitemap-posts-per-categories"><?php _e( 'Posts per categories', 't_em' ); ?></h3>
+					<h2 id="sitemap-posts-per-categories"><?php _e( 'Posts per categories', 't_em' ); ?></h2>
 					<?php
 					$cats = get_categories();
 					foreach ( $cats as $cat ) :
 					?>
-					<h4><?php echo $cat->cat_name ?></h4>
+					<h3><?php echo $cat->cat_name ?></h3>
 					<?php
 						$posts_per_cat = get_posts( array( 'category' => $cat->cat_ID ) );
 						foreach ( $posts_per_cat as $post ) : setup_postdata( $post );

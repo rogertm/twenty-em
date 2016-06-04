@@ -43,7 +43,7 @@ $args = array( 'post_type' => 'post',
 				'showposts' => $limit,
 		);
 ?>
-					<h3 id="archive-latest-posts"><?php echo sprintf( __( 'The latest %1$s posts', 't_em' ), $limit ); ?></h3>
+					<h2 id="archive-latest-posts"><?php echo sprintf( __( 'The latest %1$s posts', 't_em' ), $limit ); ?></h2>
 <?php
 $wp_query = new WP_Query ( $args );
 
@@ -54,7 +54,7 @@ if ( have_posts() ) :
 						<li id="post-<?php the_ID() ?>">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 							<small> - <?php echo get_the_date(); ?>
-								    - <?php comments_number( '0 Comments', '1 Comment', '% Comments' ); ?></small>
+								    - <?php comments_number( __( '0 Comments', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) ); ?></small>
 						</li>
 <?php endwhile; ?>
 					</ul>
@@ -65,7 +65,7 @@ if ( have_posts() ) :
 					 * @link http://codex.wordpress.org/Template_Tags/wp_list_categories
 					 */
 					?>
-					<h3 id="archive-categories"><?php _e( 'Categories', 't_em' ); ?></h3>
+					<h2 id="archive-categories"><?php _e( 'Categories', 't_em' ); ?></h2>
 					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
@@ -73,7 +73,7 @@ if ( have_posts() ) :
 					 * @link http://codex.wordpress.org/Function_Reference/wp_get_archives
 					 */
 					?>
-					<h3 id="archive-monthly-archive"><?php _e( 'Monthly Archives', 't_em' ) ?></h3>
+					<h2 id="archive-monthly-archive"><?php _e( 'Monthly Archives', 't_em' ) ?></h2>
 					<ul><?php wp_get_archives( array( 'show_post_count' => true ) ); ?></ul>
 
 					<?php
@@ -81,7 +81,7 @@ if ( have_posts() ) :
 					 * @link http://codex.wordpress.org/Function_Reference/wp_tag_cloud
 					 */
 					?>
-					<h3 id="archive-tag-cloud"><?php _e( 'Tag Cloud', 't_em' ); ?></h3>
+					<h2 id="archive-tag-cloud"><?php _e( 'Tag Cloud', 't_em' ); ?></h2>
 					<div><?php wp_tag_cloud( array( 'number' => '0' ) ); ?></div>
 
 				</div><!-- #archive-## -->

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.0-Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2016-06-02 17:09:18+00:00\n"
-"PO-Revision-Date: 2016-06-02 13:12-0500\n"
+"POT-Creation-Date: 2016-06-04 16:03:30+00:00\n"
+"PO-Revision-Date: 2016-06-04 12:04-0500\n"
 "Last-Translator: RogerTM <mail@rogertm.com>\n"
 "Language-Team:  <hi@twenty-em.com>\n"
 "Language: ES_es\n"
@@ -35,7 +35,7 @@ msgid_plural "%1$s responses to: %2$s"
 msgstr[0] "Una respuesta para: %2$s"
 msgstr[1] "%1$s respuestas para: %2$s"
 
-#: comments.php:43 functions.php:663
+#: comments.php:43 functions.php:663 page-templates/template-archive.php:57
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] "1 Comentario"
@@ -1584,7 +1584,7 @@ msgstr "Editar"
 msgid "Leave a comment"
 msgstr "Dejar un comentario"
 
-#: functions.php:663
+#: functions.php:663 page-templates/template-archive.php:57
 msgid "% Comments"
 msgstr "% Comentarios"
 
@@ -2050,6 +2050,10 @@ msgstr "ID de usuarios, separados por comas."
 #: page-templates/template-archive.php:46
 msgid "The latest %1$s posts"
 msgstr "Las últimas %1$s entradas"
+
+#: page-templates/template-archive.php:57
+msgid "0 Comments"
+msgstr "0 Comentarios"
 
 #: page-templates/template-archive.php:68
 #: page-templates/template-sitemap.php:44
