@@ -64,7 +64,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		if ( empty( $instance['thumbnail_height'] ) || ! $thumbnail_height = absint( $instance['thumbnail_height'] ) )
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
-			$thumbnail_align = 'pull-left';
+			$thumbnail_align = 'media-left pull-left';
 
 		if ( 1 == $instance['thumbnail'] ) :
 
@@ -111,7 +111,9 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		<li class="t-em-recent-post-wrapper media">
 			<div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-recent-post-content media-body">
-				<a class="t-em-recent-post-title media-heading" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+				<h4 class="media-heading">
+					<a class="t-em-recent-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+				</h4>
 				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
 				<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
@@ -157,14 +159,14 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 							'title' => '',
 							'thumbnail_width' => get_option( 'thumbnail_size_w' ),
 							'thumbnail_height' => get_option( 'thumbnail_size_h' ),
-							'thumbnail_align' => 'pull-left',
+							'thumbnail_align' => 'media-left pull-left',
 						) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 		$thumbnail = isset( $instance['thumbnail'] ) ? (bool) $instance['thumbnail'] : false;
 		$thumbnail_width = isset( $instance['thumbnail_width'] ) ? absint( $instance['thumbnail_width'] ) : get_option( 'thumbnail_size_w' );
 		$thumbnail_height = isset( $instance['thumbnail_height'] ) ? absint( $instance['thumbnail_height'] ) : get_option( 'thumbnail_size_h' );
-		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'pull-left';
+		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'media-left pull-left';
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -172,8 +174,6 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'thumbnail' ) ?>" <?php checked( $thumbnail ) ?> />
 		<label for="<?php echo $this->get_field_id( 'thumbnail' ) ?>"><?php _e( 'Display only posts with thumbnails', 't_em' ) ?></label></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
 		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
@@ -184,11 +184,14 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
 		<select id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-			<option value="pull-left" <?php selected( 'pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="pull-right" <?php selected( 'pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+			<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+			<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
 			<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
 		</select>
 		</p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
 }
@@ -238,7 +241,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		if ( empty( $instance['thumbnail_height'] ) || ! $thumbnail_height = absint( $instance['thumbnail_height'] ) )
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
-			$thumbnail_align = 'pull-left';
+			$thumbnail_align = 'media-left pull-left';
 
 		if ( 1 == $instance['thumbnail'] ) :
 
@@ -291,13 +294,14 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		<li class="t-em-popular-post-wrapper media">
 			<div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-popular-post-content media-body">
-				<a class="t-em-popular-post-title media-heading" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+				<h4 class="media-heading"><a class="t-em-popular-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
 			<?php if ( $instance['comment_count'] == 1 ) :
 					$total_comments = wp_count_comments( $post->ID );
 					$comments_number = sprintf( _n( '- 0 Comments', '- %1$s Comments', $total_comments->total_comments, 't_em' ), $total_comments->total_comments );
 			?>
 				<small><?php echo $comments_number; ?></small>
 			<?php endif; ?>
+				</h4>
 				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
 				<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 			</div>
@@ -345,14 +349,14 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 							'title' => '',
 							'thumbnail_width' => get_option( 'thumbnail_size_w' ),
 							'thumbnail_height' => get_option( 'thumbnail_size_h' ),
-							'thumbnail_align' => 'pull-left',
+							'thumbnail_align' => 'media-left pull-left',
 						) );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : get_option( 'posts_per_page' );
 		$thumbnail = isset( $instance['thumbnail'] ) ? (bool) $instance['thumbnail'] : false;
 		$thumbnail_width = isset( $instance['thumbnail_width'] ) ? absint( $instance['thumbnail_width'] ) : get_option( 'thumbnail_size_w' );
 		$thumbnail_height = isset( $instance['thumbnail_height'] ) ? absint( $instance['thumbnail_height'] ) : get_option( 'thumbnail_size_h' );
-		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'pull-left';
+		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'media-left pull-left';
 		$comment_count = isset( $instance['comment_count'] ) ? (bool) $instance['comment_count'] : false;
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
@@ -370,8 +374,8 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
 		<select id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-			<option value="pull-left" <?php selected( 'pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="pull-right" <?php selected( 'pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+			<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+			<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
 			<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
 		</select>
 		</p>
@@ -604,7 +608,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 ?>
 			<li class="t-em-recent-comments media">
 			<?php if ( 1 == $instance['avatar'] ) : ?>
-				<div class="pull-left">
+				<div class="media-left pull-left">
 					<figure class="media-object" title="<?php echo get_comment_author(); ?>"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></figure>
 				</div>
 			<?php endif; ?>
@@ -827,7 +831,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 <?php
 			if ( 1 == $instance['avatar'] ) :
 ?>
-				<div class="pull-left">
+				<div class="media-left pull-left">
 					<div class="media-object"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
 				</div>
 <?php
