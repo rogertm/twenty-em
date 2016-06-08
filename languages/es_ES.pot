@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.0-Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2016-06-04 16:03:30+00:00\n"
-"PO-Revision-Date: 2016-06-04 12:04-0500\n"
+"POT-Creation-Date: 2016-06-08 13:43:50+00:00\n"
+"PO-Revision-Date: 2016-06-08 09:45-0500\n"
 "Last-Translator: RogerTM <mail@rogertm.com>\n"
 "Language-Team:  <hi@twenty-em.com>\n"
 "Language: ES_es\n"
@@ -299,10 +299,12 @@ msgstr ""
 "\">WordPress.org</a></strong> en la parte inferior del blog"
 
 #: engine/generals-options.php:36
-msgid "Show featured image on top of the post when a single post is displayed"
+msgid ""
+"Show featured image on top of the entry when a single post or page is "
+"displayed"
 msgstr ""
-"Presentar la imagen destacada en la parte superior de cada entrada cuando "
-"esta es mostrada"
+"Mostrar la imagen destacada en la parte superior de cada entrada o página "
+"cuando esta es mostrada"
 
 #: engine/generals-options.php:41
 msgid "When a single post is displayed, show related posts"
@@ -1835,215 +1837,215 @@ msgstr "%1$s Entradas Recientes"
 msgid "Recent Posts"
 msgstr "Entradas Recientes"
 
-#: inc/widgets.php:169 inc/widgets.php:358 inc/widgets.php:521
-#: inc/widgets.php:650 inc/widgets.php:754 inc/widgets.php:883
+#: inc/widgets.php:171 inc/widgets.php:362 inc/widgets.php:525
+#: inc/widgets.php:654 inc/widgets.php:758 inc/widgets.php:887
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/widgets.php:173 inc/widgets.php:362
+#: inc/widgets.php:175 inc/widgets.php:366
 msgid "Display only posts with thumbnails"
 msgstr "Mostrar solo entradas con imágenes adjuntas"
 
-#: inc/widgets.php:175 inc/widgets.php:382
-msgid "Number of posts to show:"
-msgstr "Número de entradas a mostrar:"
-
-#: inc/widgets.php:178 inc/widgets.php:364 inc/widgets.php:527
+#: inc/widgets.php:178 inc/widgets.php:368 inc/widgets.php:531
 msgid "Thumbnail dimensions:"
 msgstr "Dimensiones de la imagen en miniatura"
 
-#: inc/widgets.php:179 inc/widgets.php:365 inc/widgets.php:528
+#: inc/widgets.php:179 inc/widgets.php:369 inc/widgets.php:532
 msgid "Width:"
 msgstr "Ancho"
 
-#: inc/widgets.php:181 inc/widgets.php:367 inc/widgets.php:530
+#: inc/widgets.php:181 inc/widgets.php:371 inc/widgets.php:534
 msgid "Height:"
 msgstr "Alto"
 
-#: inc/widgets.php:185 inc/widgets.php:371
+#: inc/widgets.php:185 inc/widgets.php:375
 msgid "Thumbnail alignment:"
 msgstr "Alineado de la imagen en miniatura"
 
-#: inc/widgets.php:187 inc/widgets.php:373
+#: inc/widgets.php:187 inc/widgets.php:377
 msgctxt "widget thumbnail alignment"
 msgid "left"
 msgstr "izquierda"
 
-#: inc/widgets.php:188 inc/widgets.php:374
+#: inc/widgets.php:188 inc/widgets.php:378
 msgctxt "widget thumbnail alignment"
 msgid "right"
 msgstr "derecha"
 
-#: inc/widgets.php:189 inc/widgets.php:375
+#: inc/widgets.php:189 inc/widgets.php:379
 msgctxt "widget thumbnail alignment"
 msgid "no align"
 msgstr "sin alinear"
 
-#: inc/widgets.php:206
+#: inc/widgets.php:193 inc/widgets.php:386
+msgid "Number of posts to show:"
+msgstr "Número de entradas a mostrar:"
+
+#: inc/widgets.php:209
 msgid "The most Popular Posts on your site"
 msgstr "Las entradas más populares en tu blog"
 
-#: inc/widgets.php:207
+#: inc/widgets.php:210
 msgid "%1$s Popular Posts"
 msgstr "%1$s Entradas Populares"
 
-#: inc/widgets.php:232
+#: inc/widgets.php:235
 msgid "Popular Posts"
 msgstr "Entradas Populares"
 
-#: inc/widgets.php:297
+#: inc/widgets.php:300
 msgid "- 0 Comments"
 msgid_plural "- %1$s Comments"
 msgstr[0] "- 0 Comentarios"
 msgstr[1] "- %1$s Comentarios"
 
-#: inc/widgets.php:380
+#: inc/widgets.php:384
 msgid "Show comment count"
 msgstr "Mostrar cantidad de comentarios"
 
-#: inc/widgets.php:396
+#: inc/widgets.php:400
 msgid "Display all images on your site attached to a post"
 msgstr "Muestra todas las imágenes que estén adjuntas a una entrada"
 
-#: inc/widgets.php:397
+#: inc/widgets.php:401
 msgid "%1$s Image Gallery"
 msgstr "%1$s Galería de Imágenes"
 
-#: inc/widgets.php:422
+#: inc/widgets.php:426
 msgid "Image Gallery"
 msgstr "Galería de Imágenes"
 
-#: inc/widgets.php:524
+#: inc/widgets.php:528
 msgid "Number of images to show:"
 msgstr "Número de imágenes a mostrar:"
 
-#: inc/widgets.php:534
+#: inc/widgets.php:538
 msgid "Show images in columns"
 msgstr "Mostrar imágenes en columnas"
 
-#: inc/widgets.php:536
+#: inc/widgets.php:540
 msgctxt "number of columns in image gallery widget"
 msgid "1"
 msgstr "1"
 
-#: inc/widgets.php:537
+#: inc/widgets.php:541
 msgctxt "number of columns in image gallery widget"
 msgid "2"
 msgstr "2"
 
-#: inc/widgets.php:538
+#: inc/widgets.php:542
 msgctxt "number of columns in image gallery widget"
 msgid "3"
 msgstr "3"
 
-#: inc/widgets.php:553
+#: inc/widgets.php:557
 msgid "The most recent comments"
 msgstr "Los comentarios más recientes"
 
-#: inc/widgets.php:554
+#: inc/widgets.php:558
 msgid "%1$s Recent Comments"
 msgstr "%1$s Comentarios Recientes"
 
-#: inc/widgets.php:584
+#: inc/widgets.php:588
 msgid "Recent Comments"
 msgstr "Comentarios Recientes"
 
-#: inc/widgets.php:603
+#: inc/widgets.php:607
 msgctxt "Recent Comment Widget"
 msgid " on "
 msgstr " en "
 
-#: inc/widgets.php:653
+#: inc/widgets.php:657
 msgid "Number of comments to show:"
 msgstr "Número de comentarios a mostrar:"
 
-#: inc/widgets.php:657
+#: inc/widgets.php:661
 msgid "Show author name/url"
 msgstr "Mostrar nombre y url del autor"
 
-#: inc/widgets.php:660 inc/widgets.php:908
+#: inc/widgets.php:664 inc/widgets.php:912
 msgid "Display users avatar"
 msgstr "Mostrar avatar del usuario"
 
-#: inc/widgets.php:673 inc/widgets.php:695
+#: inc/widgets.php:677 inc/widgets.php:699
 msgid "Subscribe via FeedBurner"
 msgstr "Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:674
+#: inc/widgets.php:678
 msgid "%1$s Subscribe via FeedBurner"
 msgstr "%1$s Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:698
+#: inc/widgets.php:702
 msgid "Subscribe"
 msgstr "Suscribirse"
 
-#: inc/widgets.php:709
+#: inc/widgets.php:713
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: inc/widgets.php:757
+#: inc/widgets.php:761
 msgid "Your FeedBurner URI (required)"
 msgstr "FeedBurner URI (obligatorio)"
 
-#: inc/widgets.php:760
+#: inc/widgets.php:764
 msgid "Short text inviting users to subscribe..."
 msgstr "Un texto pequeño invitando a los usuarios a suscribirse..."
 
-#: inc/widgets.php:763
+#: inc/widgets.php:767
 msgid "Form placeholder"
 msgstr "Form placeholder"
 
-#: inc/widgets.php:777
+#: inc/widgets.php:781
 msgid "A list of your site&#8217;s contributors"
 msgstr "Una lista de colaboradores de tu blog"
 
-#: inc/widgets.php:778
+#: inc/widgets.php:782
 msgid "%1$s Contributors"
 msgstr "%1$s Colaboradores"
 
 #. #-#-#-#-#  twenty-em.pot (Twenty'em 1.0-Beta)  #-#-#-#-#
 #. Template Name of the plugin/theme
-#: inc/widgets.php:798
+#: inc/widgets.php:802
 msgid "Contributors"
 msgstr "Colaboradores"
 
-#: inc/widgets.php:886
+#: inc/widgets.php:890
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: inc/widgets.php:888
+#: inc/widgets.php:892
 msgid "User Name"
 msgstr "Nombre de usuario"
 
-#: inc/widgets.php:889
+#: inc/widgets.php:893
 msgid "Post Count"
 msgstr "Número de entradas"
 
-#: inc/widgets.php:890
+#: inc/widgets.php:894
 msgid "User ID"
 msgstr "ID de usuario"
 
-#: inc/widgets.php:894
+#: inc/widgets.php:898
 msgid "Order"
 msgstr "Orden"
 
-#: inc/widgets.php:896
+#: inc/widgets.php:900
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: inc/widgets.php:897
+#: inc/widgets.php:901
 msgid "Descending"
 msgstr "Descendente"
 
-#: inc/widgets.php:900
+#: inc/widgets.php:904
 msgid "Number of users to show:"
 msgstr "Número de usuarios a mostrar"
 
-#: inc/widgets.php:903
+#: inc/widgets.php:907
 msgid "Exclude:"
 msgstr "Excluir:"
 
-#: inc/widgets.php:905
+#: inc/widgets.php:909
 msgid "Users IDs, separated by commas."
 msgstr "ID de usuarios, separados por comas."
 

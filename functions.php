@@ -329,7 +329,7 @@ function t_em_archive_classes( $existing_classes ){
 	$archive_set = $t_em['archive_set'];
 	$excerpt_set = $t_em['excerpt_set'];
 
-	if ( 'the-excerpt' == $archive_set && ! is_single() ) :
+	if ( 'the-excerpt' == $archive_set && ! is_singular() ) :
 		if ( 'thumbnail-left' == $excerpt_set ) :
 			$classes[] = 'thumbnail-left';
 		elseif ( 'thumbnail-right' == $excerpt_set ) :
@@ -1496,7 +1496,7 @@ if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
  */
 function t_em_single_post_thumbnail(){
 	global $t_em;
-	if ( is_single() && '1' == $t_em['single_featured_img'] && has_post_thumbnail() ) :
+	if ( is_singular() && '1' == $t_em['single_featured_img'] && has_post_thumbnail() ) :
 ?>
 <figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
 <?php the_post_thumbnail(); ?>

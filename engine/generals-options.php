@@ -33,7 +33,7 @@ function t_em_general_options( $general_options = '' ){
 		),
 		'single_featured_img'	=> array(
 			'value'			=> 'single_featured_img',
-			'label'			=> __( 'Show featured image on top of the post when a single post is displayed', 't_em' ),
+			'label'			=> __( 'Show featured image on top of the entry when a single post or page is displayed', 't_em' ),
 			'sublabel'		=> '',
 		),
 		'single_related_posts'	=> array(
