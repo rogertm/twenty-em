@@ -2199,7 +2199,7 @@ function t_em_credit(){
 	<div id="twenty-em-credit">
 <?php
 	printf( __( 'Proudly powered by: <a href="%1$s" title="%2$s">%3$s</a> and <a href="%4$s" title="%5$s">%6$s</a>. Theme Name: <a href="%7$s" title="Version %8$s">%9$s</a> by: %10$s', 't_em' ),
-		'http://wordpress.org/',
+		__( 'https://wordpress.org/' ),
 		'State-of-the-art semantic personal publishing platform.',
 		'WordPress',
 		T_EM_SITE,

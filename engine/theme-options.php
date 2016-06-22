@@ -678,4 +678,19 @@ function t_em_sort_by_order( $a, $b ){
 		return 0;
 	return ( $a['order'] < $b['order'] ) ? -1 : 1;
 }
+
+/**
+ * And thank you all :)
+ * This function is attached to the admin_footer_text Filter Hook
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_thank_you_all(){
+	$text = sprintf( __( 'Thank you for creating with <a href="%s">WordPress</a> and <a href="%s">%s</a>.', 't_em' ),
+						__( 'https://wordpress.org/' ),
+						T_EM_SITE,
+						T_EM_FRAMEWORK_NAME );
+	return '<span id="footer-thankyou"><em>' . $text . '</em></span>';
+}
+add_filter( 'admin_footer_text', 't_em_thank_you_all' );
 ?>

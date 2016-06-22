@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.0-Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2016-06-08 13:43:50+00:00\n"
-"PO-Revision-Date: 2016-06-08 09:45-0500\n"
+"POT-Creation-Date: 2016-06-22 04:43:42+00:00\n"
+"PO-Revision-Date: 2016-06-22 00:49-0500\n"
 "Last-Translator: RogerTM <mail@rogertm.com>\n"
 "Language-Team:  <hi@twenty-em.com>\n"
 "Language: ES_es\n"
@@ -1418,6 +1418,17 @@ msgstr "Oops! Ha ocurrido un error. ID del error: <strong>%1$s</strong>"
 #: engine/theme-options.php:670
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Tu tema ha explotado... ID del error: <strong>%1$s</strong>"
+
+#: engine/theme-options.php:689
+msgid ""
+"Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
+"%s</a>."
+msgstr ""
+"Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
+
+#: engine/theme-options.php:690
+msgid "https://wordpress.org/"
+msgstr "https://es.wordpress.org/"
 
 #: engine/webmaster-tools-options.php:30
 msgid "Google Webmaster Tools"
