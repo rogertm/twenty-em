@@ -1,8 +1,6 @@
-/**
- * Twenty'em - Just another WordPress theme
- * By RogerTM
- *
- * Changelog
- */
+== Changelog ==
 
-16-05-2013 - Version 0.1-Beta1 Friends Release
+= 1.0 =
+Release Date: July 9, 2016
+
+* Initial release
