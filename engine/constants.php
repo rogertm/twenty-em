@@ -27,6 +27,17 @@
  * pairs
  */
 $t_em = get_option( 't_em_theme_options' );
+
+/**
+ * $t_em_db_version. Database Version.
+ */
+$t_em_db_version = get_option( 't_em_db_version' );
+
+/**
+ * t_em_framework_version. Framework Version.
+ */
+$t_em_framework_version = get_option( 't_em_framework_version' );
+
 /**
  * $t_em_theme_data. Array. Contains theme's information stored in style.css file.
  */
@@ -137,17 +148,4 @@ function t_em_framework_version(){
 	return get_option( 't_em_framework_version' );
 }
 add_action( 'after_switch_theme', 't_em_framework_version' );
-
-/**
- * Merge DB Version and Framework Version in to $t_em
- */
-function t_em_merge_versions(){
-	global $t_em;
-	$versions = array(
-		't_em_db_version' => get_option( 't_em_db_version' ),
-		't_em_framework_version' => get_option( 't_em_framework_version' ),
-	);
-	$t_em = array_merge( $t_em, $versions );
-}
-add_action( 'after_switch_theme', 't_em_merge_versions', 15 );
 ?>

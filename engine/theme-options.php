@@ -121,7 +121,7 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
  * This function is attached to the after_setup_theme() action hook.
  *
  * @global $t_em This var provide the main structure of our theme.
- * See t_em_default_theme_options() in /inc/theme-options.php file for a full list of "key => value"
+ * See t_em_default_theme_options() in /engine/theme-options.php file for a full list of "key => value"
  * array.
  *
  * @since Twenty'em 1.0
@@ -643,6 +643,7 @@ function t_em_register_debug_init(){
 add_action( 't_em_admin_action_add_settings_field', 't_em_register_debug_init', 999 );
 
 function t_em_debug_info(){
+	global $t_em;
 ?>
 	<div class="sub-extend option-group">
 		<header><?php printf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) ?></header>
