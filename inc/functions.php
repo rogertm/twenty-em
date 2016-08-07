@@ -134,9 +134,9 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
 	global $t_em_theme_data;
 	$deps = array_merge( $deps, array( 'jquery' ) );
 	if ( $transition ) :
-		$transition = 'transition.js';
+		$transition = 'transition.min.js';
 		array_push( $deps, $transition );
-		wp_register_script( 'transition.js', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.js', array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+		wp_register_script( 'transition.min.js', T_EM_THEME_DIR_JS_URL.'/bootstrap/transition.min.js', array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
 	endif;
 	wp_register_script( $plugin, T_EM_THEME_DIR_JS_URL.'/bootstrap/'.$plugin, $deps, $t_em_theme_data['Version'], $in_footer );
 	wp_enqueue_script( $plugin );

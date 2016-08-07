@@ -60,20 +60,20 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Register Carousel Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
-		t_em_register_bootstrap_plugin( 'carousel.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
+		t_em_register_bootstrap_plugin( 'carousel.min.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
 	endif;
 
 	// Register Collapse Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse.js' );
+		t_em_register_bootstrap_plugin( 'collapse.min.js' );
 	endif;
 	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse.js' );
+		t_em_register_bootstrap_plugin( 'collapse.min.js' );
 	endif;
 
 	// Register Tab Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-tabs-content.php' ) ) :
-		t_em_register_bootstrap_plugin( 'tab.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
+		t_em_register_bootstrap_plugin( 'tab.min.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
 	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
