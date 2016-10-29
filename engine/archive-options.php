@@ -278,7 +278,7 @@ add_action( 't_em_admin_action_archive_options_after', 't_em_settings_archive_pa
 /**
  * Render the Archive setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
- * /inc/theme-options.php.
+ * /engine/theme-options.php.
  *
  * @global $t_em.
  *

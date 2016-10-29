@@ -187,7 +187,7 @@ function t_em_front_page_witgets_callback(){
 /**
  * Render the Front Page Options setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
- * /inc/theme-options.php.
+ * /engine/theme-options.php.
  *
  * @global $t_em.
  *

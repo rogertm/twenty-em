@@ -143,7 +143,7 @@ add_action( 't_em_admin_action_layout_options_after', 't_em_layout_width' );
 /**
  * Render the Layout setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
- * /inc/theme-options.php.
+ * /engine/theme-options.php.
  *
  * @uses t_em_layout_width() Display a text box into Layout Options panel where you may enter
  * your theme width.

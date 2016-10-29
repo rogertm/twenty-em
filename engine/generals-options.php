@@ -101,7 +101,7 @@ add_action( 't_em_admin_action_general_options_after', 't_em_general_options_fav
 /**
  * Render the General Options setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
- * /inc/theme-options.php.
+ * /engine/theme-options.php.
  *
  * @global $t_em.
  *

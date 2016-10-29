@@ -31,4 +31,11 @@ jQuery(document).ready(function($) {
 	$('.radio-image').click(function(){
 		$(this).addClass('radio-image-active').siblings().removeClass('radio-image-active');
 	});
+
+	// Datepicker
+	$(function() {
+		$( "#datepicker" ).datepicker({
+			dateFormat: "yy-mm-dd",
+		});
+	});
 });

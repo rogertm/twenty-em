@@ -75,6 +75,20 @@ function t_em_enqueue_styles_and_scripts(){
 	if ( is_page_template( 'page-templates/template-tabs-content.php' ) ) :
 		t_em_register_bootstrap_plugin( 'tab.min.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
 	endif;
+
+	// Countdown jQuery plugin for Maintenance Mode
+	$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
+	// Check if the current user can see the site
+	$current_user = wp_get_current_user();
+	$user_can = array_intersect( t_em_maintenance_mode_role_active(), $current_user->roles );
+	if ( $t_em['maintenance_mode'] == 1 && (
+				! is_user_logged_in() ||
+				empty( $user_can ) ||
+				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
+			) ) :
+		wp_register_script( 'countdown', T_EM_THEME_DIR_JS_URL . '/jquery.countdown.min.js', array( 'jquery' ), $t_em_theme_data['Version'] );
+		wp_enqueue_script( 'countdown' );
+	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 

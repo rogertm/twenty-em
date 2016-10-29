@@ -17,6 +17,8 @@
  * Twenty'em Actions Hooks definitions.
  */
 
+/** Since version 1.0 *****************************************************************************/
+
 /**
  * Fire the t_em_action_top action, just after opening <body> tag
  *
@@ -423,5 +425,106 @@ function t_em_action_footer_before(){
  */
 function t_em_action_footer_after(){
 	do_action( 't_em_action_footer_after' );
+}
+
+/** Since version 1.0.1 ***************************************************************************/
+
+/**
+ * Fire the t_em_action_maintenance_mode_top action, just after opening <body> tag
+ * if Maintenance Mode is active
+ *
+ * @file header-maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_top(){
+	do_action( 't_em_action_maintenance_mode_top' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_header_before action, just after opening <header id="header"> tag
+ * if Maintenance Mode is active
+ *
+ * @file header-maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_header_before(){
+	do_action( 't_em_action_maintenance_mode_header_before' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_header_after action, just after closing </header><!-- #header --> tag
+ * if Maintenance Mode is active
+ *
+ * @file header-maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_header_after(){
+	do_action( 't_em_action_maintenance_mode_header_after' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_main_before action, just after opening <div id="main"> tag
+ * if Maintenance Mode is active
+ *
+ * @file header-maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_main_before(){
+	do_action( 't_em_action_maintenance_mode_main_before' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_main_after action, just before closing </div><!-- #main --> tag
+ * if Maintenance Mode is active
+ *
+ * @file footer-maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_main_after(){
+	do_action( 't_em_action_maintenance_mode_main_after' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_before, just after opening <section id="content"> tag
+ * if Maintenance Mode is active
+ *
+ * @file maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_before(){
+	do_action( 't_em_action_maintenance_mode_before' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_after, just before closing <section><!-- #content --> tag
+ * if Maintenance Mode is active
+ *
+ * @file maintenance-mode.php
+ * @since Twenty'em 1.0.1
+ */
+function t_em_action_maintenance_mode_after(){
+	do_action( 't_em_action_maintenance_mode_after' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_inside_before action just after opening the
+ * <section id="maintenance-mode"> tag if Maintenance Mode is active
+ *
+ * @file functions.php via t_em_front_page_widgets() function
+ * @since Twenty'em 1.0
+ */
+function t_em_action_maintenance_mode_inside_before(){
+	do_action( 't_em_action_maintenance_mode_inside_before' );
+}
+
+/**
+ * Fire the t_em_action_maintenance_mode_inside_after action just before closing the
+ * </section><!-- #maintenance-mode --> tag if Maintenance Mode is active
+ *
+ * @file functions.php via t_em_front_page_widgets() function
+ * @since Twenty'em 1.0
+ */
+function t_em_action_maintenance_mode_inside_after(){
+	do_action( 't_em_action_maintenance_mode_inside_after' );
 }
 ?>

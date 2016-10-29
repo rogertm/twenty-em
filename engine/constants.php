@@ -23,7 +23,7 @@
 
 /**
  * $t_em. Array. Contains all the options store in the data base.
- * See t_em_default_theme_options() in /inc/theme-options.php for a complete list of 'key' => 'value'
+ * See t_em_default_theme_options() in /engine/theme-options.php for a complete list of 'key' => 'value'
  * pairs
  */
 $t_em = get_option( 't_em_theme_options' );
@@ -63,13 +63,13 @@ $t_em_theme_data = array(
 define ( 'T_EM_SITE',													'http://twenty-em.com' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.5.3' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.6' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.0.1' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20160127' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20171029' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.6' );

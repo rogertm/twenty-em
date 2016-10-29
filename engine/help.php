@@ -40,6 +40,7 @@ function t_em_theme_options_help(){
 						 T_EM_LAYOUT_WIDTH_DEFAULT_VALUE ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Maintenance Mode Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 			'</ul>' .
 			'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 't_em' ) . '</p>';
 
@@ -154,6 +155,15 @@ function t_em_theme_options_help(){
 		'title' => __( 'Webmaster Tools Options', 't_em' ),
 		'id' => 'webmaster-tools-help',
 		'content' => $webmastertools_help,
+		)
+	);
+
+	$maintenance_help = '<p>' . __( '<strong>Maintenance Mode Options</strong>: Now you can put your site in Maintenance Mode. Activating this option you are able to "shut down" your site to make some "reparations". Only users with administrative roles will see and manage the site, in the meantime visitors will see nothing.', 't_em' ) . '</p>';
+
+	$screen->add_help_tab( array(
+		'title' => __( 'Maintenance Mode Options', 't_em' ),
+		'id' => 'maintenance-mode-help',
+		'content' => $maintenance_help,
 		)
 	);
 

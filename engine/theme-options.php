@@ -25,8 +25,10 @@ require_once( T_EM_ENGINE_DIR_PATH . '/archive-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/layout-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/social-network-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/webmaster-tools-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/maintenance-mode-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/cron.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/functions.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/enqueue.php' );
@@ -60,6 +62,7 @@ function t_em_register_setting_options_init(){
 	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'twenty-em-options',	'twenty-em-section' );
 	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'twenty-em-options',	'twenty-em-section' );
 	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'twenty-em-options', 	'twenty-em-section' );
+	add_settings_field( 't_em_maintenance_mode', 	__( 'Maintenance Mode Options', 't_em' ),	't_em_settings_field_maintenance_mode_set', 	'twenty-em-options', 	'twenty-em-section' );
 
 	do_action( 't_em_admin_action_add_settings_field' );
 }
@@ -82,7 +85,8 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_style( 'style-admin-t-em' );
 		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $t_em_theme_data['Version'], false );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-admin-t-em' );
 	endif;
 }
@@ -146,7 +150,7 @@ add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
 		// Generals Options
-		't_em_credit'										=> '1',
+		't_em_credit'									=> '1',
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',
 		'breadcrumb_path'								=> '1',
@@ -262,6 +266,21 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'pinterest_id'									=> '',
 		'stats_tracker_header_tag'						=> '',
 		'stats_tracker_body_tag'						=> '',
+		// Maintenance Mode Options
+		'maintenance_mode'								=> '',
+		'maintenance_mode_headline'						=> '',
+		'maintenance_mode_headline_icon_class'			=> '',
+		'maintenance_mode_content'						=> '',
+		'maintenance_mode_thumbnail_src'				=> '',
+		'maintenance_mode_primary_button_text'			=> '',
+		'maintenance_mode_primary_button_icon_class'	=> '',
+		'maintenance_mode_primary_button_link'			=> '',
+		'maintenance_mode_secondary_button_text'		=> '',
+		'maintenance_mode_secondary_button_icon_class'	=> '',
+		'maintenance_mode_secondary_button_link'		=> '',
+		'maintenance_mode_timer'						=> '',
+		'maintenance_mode_reactive'						=> '',
+		'maintenance_mode_title_tag'					=> __( 'Site in Maintenance', 't_em' ),
 	);
 
 	/**
@@ -278,7 +297,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
  * Referenced via t_em_theme_options_admin_page(), add_menu_page() callback
  *
  * @uses settings_fields() Output nonce, action, and option_page fields for a settings page.
- * @uses do_settings_sections() Prints out all settings sections added to /inc/theme-options.php.
+ * @uses do_settings_sections() Prints out all settings sections added to /engine/theme-options.php.
  *
  * @link http://codex.wordpress.org/Settings_API
  * @link http://codex.wordpress.org/Administration_Menus
@@ -290,6 +309,11 @@ function t_em_theme_options_page(){
 ?>
 	<div class="wrap">
 		<h2><?php echo T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS ?></h2>
+		<?php if ( $t_em['maintenance_mode'] ) : ?>
+		<div class="updated" style="border-color:#00a0d2">
+			<p><?php printf( __( 'You are using the <a href="%s"><strong>Maintenance Mode</strong></a>.', 't_em' ), wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ) ?></p>
+		</div>
+		<?php endif; ?>
 		<?php if ( empty( $t_em ) ) : ?>
 		<div class="error">
 			<p><?php t_em_theme_explode(); ?></p>
@@ -360,6 +384,8 @@ function t_em_theme_options_validate( $input ){
 			'bootstrap_carousel_pause',
 			'bootstrap_carousel_wrap',
 			'static_header_home_only',
+			'maintenance_mode',
+			'maintenance_mode_reactive',
 		) as $checkbox ) :
 			if ( !isset( $input[$checkbox] ) )
 				$input[$checkbox] = null;
@@ -518,6 +544,9 @@ function t_em_theme_options_validate( $input ){
 			'static_header_img_src',
 			'static_header_primary_button_link',
 			'static_header_secondary_button_link',
+			'maintenance_mode_thumbnail_src',
+			'maintenance_mode_primary_button_link',
+			'maintenance_mode_secondary_button_link',
 		) as $url ) :
 			$input[$url] = ( isset( $input[$url] ) ) ? esc_url_raw( $input[$url] ) : '';
 		endforeach;
@@ -559,9 +588,22 @@ function t_em_theme_options_validate( $input ){
 			'secondary_button_text_text_widget_three',
 			'primary_button_text_text_widget_four',
 			'secondary_button_text_text_widget_four',
+			'maintenance_mode_headline',
+			'maintenance_mode_content',
+			'maintenance_mode_primary_button_text',
+			'maintenance_mode_secondary_button_text',
+			'maintenance_mode_title_tag',
 		) as $text_field ) :
 			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( $input[$text_field] ) : '';
 		endforeach;
+
+		// Validate the Datepicker
+		$year = date( 'Y' );
+		$month = date( 'm' );
+		$day = date( 'd' );
+		$default_date = $year + 1 .'-'. $month .'-'. $day;
+		$date = date_create( $input['maintenance_mode_timer'] );
+		$input['maintenance_mode_timer'] = ( empty( $input['maintenance_mode_timer'] ) || date_format( $date, 'Y-m-d' ) == $input['maintenance_mode_timer'] ) ? $input['maintenance_mode_timer'] : $default_date;
 
 		// Validate all text field icon-class options
 		foreach ( array(
@@ -579,6 +621,9 @@ function t_em_theme_options_validate( $input ){
 			'headline_icon_class_text_widget_four',
 			'primary_button_icon_class_text_widget_four',
 			'secondary_button_icon_class_text_widget_four',
+			'maintenance_mode_headline_icon_class',
+			'maintenance_mode_primary_button_icon_class',
+			'maintenance_mode_secondary_button_icon_class',
 		) as $text_field ) :
 			$input[$text_field] = ( isset( $input[$text_field] ) ) ? trim( sanitize_text_field( $input[$text_field] ) ) : '';
 		endforeach;
