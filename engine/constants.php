@@ -67,9 +67,9 @@ define ( 'T_EM_WORDPRESS_VERSION',										'4.6' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'1.0.1' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.1' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20171029' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20171030' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.6' );
@@ -117,7 +117,7 @@ define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/page-temp
  * Register default values through constants
  */
 if ( ! defined( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE' ) )					define( 'T_EM_LAYOUT_WIDTH_DEFAULT_VALUE', 960 );
-if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1170 );
+if ( ! defined( 'T_EM_LAYOUT_WIDTH_MAX_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MAX_VALUE', 1600 );
 if ( ! defined( 'T_EM_LAYOUT_WIDTH_MIN_VALUE' ) )						define( 'T_EM_LAYOUT_WIDTH_MIN_VALUE', 600 );
 
 if ( ! defined( 'T_EM_SLIDER_DEFAULT_HEIGHT' ) )						define( 'T_EM_SLIDER_DEFAULT_HEIGHT', 350 );

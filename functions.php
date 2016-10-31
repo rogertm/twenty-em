@@ -323,6 +323,15 @@ function t_em_layout_classes( $existing_classes ){
 		$classes[] = 'maintenance-mode';
 	endif;
 
+	/**
+	 * Add wrapper-container-fluid class if full width is active
+	 *
+	 * @since Twenty'em 1.0.1
+	 */
+	if ( $t_em['layout_fluid_width'] ) :
+		$classes[] = 'wrapper-container-fluid';
+	endif;
+
 	return array_merge( $existing_classes, $classes );
 }
 add_filter( 'body_class', 't_em_layout_classes' );

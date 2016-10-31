@@ -1,5 +1,16 @@
 == Changelog ==
 
+= 1.1 =
+Release Date: ****
+
+* Enhancement: T_EM_LAYOUT_WIDTH_MAX_VALUE = 1600
+* Enhancement: Added full width option (Layout Panel)
+* Enhancement: Added the Maintenance Mode Option
+
+= 1.0.1 =
+Release Date: August 7, 2016
+* Bug Fix: Minimized all Bootstrap's jquery plugin files
+
 = 1.0 =
 Release Date: July 9, 2016
 

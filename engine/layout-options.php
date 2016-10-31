@@ -134,6 +134,13 @@ function t_em_layout_width(){
 	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em['layout_width'].'" max="'. T_EM_LAYOUT_WIDTH_MAX_VALUE .'" min="'. T_EM_LAYOUT_WIDTH_MIN_VALUE .'" /><span class="unit">px</span>';
 	$layout_width .= 		'</label>';
 	$layout_width .= 	'</div>';
+	$layout_width .= 	'<div class="layout text-option layout-width">';
+	$layout_width .= 		'<label>';
+	$checked_option = checked( $t_em['layout_fluid_width'], '1', false );
+	$layout_width .= 			'<input type="checkbox" name="t_em_theme_options[layout_fluid_width]" value="1" '. $checked_option .' />';
+	$layout_width .= 			__( 'Use full width container, spanning the entire width of your viewport.', 't_em' );
+	$layout_width .= 		'</label>';
+	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
 
 	echo $layout_width;

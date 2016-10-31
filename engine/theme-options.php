@@ -234,6 +234,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'layout_set'									=> 'two-column-content-left',
 		'footer_set'									=> 'four-footer-widget',
 		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
+		'layout_fluid_width'							=> '',
 		// Social Networks Options
 		'twitter_set'									=> '',
 		'facebook_set'									=> '',
@@ -384,6 +385,7 @@ function t_em_theme_options_validate( $input ){
 			'bootstrap_carousel_pause',
 			'bootstrap_carousel_wrap',
 			'static_header_home_only',
+			'layout_fluid_width',
 			'maintenance_mode',
 			'maintenance_mode_reactive',
 		) as $checkbox ) :

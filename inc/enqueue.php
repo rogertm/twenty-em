@@ -89,6 +89,12 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_script( 'countdown', T_EM_THEME_DIR_JS_URL . '/jquery.countdown.min.js', array( 'jquery' ), $t_em_theme_data['Version'] );
 		wp_enqueue_script( 'countdown' );
 	endif;
+
+	// Container Fluid
+	if ( $t_em['layout_fluid_width'] == 1 ) :
+		wp_register_script( 'fluid-width', T_EM_THEME_DIR_JS_URL . '/script.container-fluid.js', array( 'jquery' ), $t_em_theme_data['Version'] );
+		wp_enqueue_script( 'fluid-width' );
+	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 
