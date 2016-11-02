@@ -250,16 +250,19 @@ add_filter( 'pre_get_document_title', 't_em_maintenance_mode_title_tag' );
  * Alert we are using the Maintenance Mode
  */
 function t_em_maintenance_mode_alert(){
-global $t_em, $t_em_theme_data;
-	if ( $t_em['maintenance_mode'] == 1 && ( is_user_logged_in() || current_user_can( 'manage_options' ) ) ) :
+global $t_em;
+	if ( $t_em['maintenance_mode'] == 1 && is_user_logged_in() && current_user_can( 'manage_options' ) ) :
+		$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
+		$link = ( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) ) ? home_url( '/' ) : wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ;
 ?>
 	<div id="maintenance-mode-alert" class="wrapper container">
-		<div class="alert alert-warning text-center" role="alert"><?php printf( __( 'You are using %s in <strong>Maintenance Mode</strong>', 't_em' ), T_EM_FRAMEWORK_NAME ) ?></div>
+		<div class="text-center" role="alert"><?php printf( __( 'You are using %s in <strong><a href="%s">Maintenance Mode</a></strong>', 't_em' ), T_EM_FRAMEWORK_NAME, $link ) ?></div>
 	</div>
 <?php
 	endif;
 }
-add_action( 't_em_action_top', 't_em_maintenance_mode_alert' );
+add_action( 't_em_action_footer_after', 't_em_maintenance_mode_alert' );
+add_action( 't_em_action_maintenance_mode_main_after', 't_em_maintenance_mode_alert' );
 
 /**
  * Add dynamically maintenance mode user roles to t_em_default_theme_options()

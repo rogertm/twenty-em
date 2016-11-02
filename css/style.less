@@ -323,6 +323,12 @@ nav{
 ------------------------------------------------------------------------------------------------- */
 #maintenance-mode{
 	.jumbotron;
+	#countdown-clock{
+		.lead;
+		.countdown-item{
+			.h3;
+		}
+	}
 	.btn{
 		.btn-lg;
 		&.primary-button{
@@ -332,6 +338,22 @@ nav{
 			.btn-inverse;
 		}
 	}
+}
+#maintenance-mode-alert{
+	background: @gray-darker;
+	color: @gray-lighter;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	a{
+		color: @gray-lighter;
+	}
+}
+body.maintenance-mode-is-admin #wrap{
+	margin-bottom: 30px;
 }
 
 /* =Content

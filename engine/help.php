@@ -158,7 +158,8 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$maintenance_help = '<p>' . __( '<strong>Maintenance Mode Options</strong>: Now you can put your site in Maintenance Mode. Activating this option you are able to "shut down" your site to make some "reparations". Only users with administrative roles will see and manage the site, in the meantime visitors will see nothing.', 't_em' ) . '</p>';
+	$maintenance_help = '<p>' . __( '<strong>Maintenance Mode Options</strong>: Now you can put your site in Maintenance Mode. Activating this option you are able to "shut down" your site to make some "reparations". Only users width role "Administrator" will can interact with your site. Otherwise you can active others group of users in the <strong>Users and Roles</strong> section in the same panel, in the meantime visitors will see nothing.', 't_em' ) . '</p>' .
+						'<p>' . __( 'You can also use the <strong>Timer</strong> section to show a countdown and tell the visitors when your site will be available again. In addition you have Heading, Content, Image and a couple of links, all that in the <strong>Heading, Content and more...</strong> section.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title' => __( 'Maintenance Mode Options', 't_em' ),

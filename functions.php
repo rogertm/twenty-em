@@ -315,12 +315,15 @@ function t_em_layout_classes( $existing_classes ){
 	endif;
 
 	/**
-	 * Add maintenance-mode class if Maintenance Mode is active
+	 * Add maintenance-mode and maintenance-mode-is-admin class if Maintenance Mode is active
 	 *
 	 * @since Twenty'em 1.0.1
 	 */
 	if ( $t_em['maintenance_mode'] ) :
 		$classes[] = 'maintenance-mode';
+		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) :
+			$classes[] = 'maintenance-mode-is-admin';
+		endif;
 	endif;
 
 	/**
@@ -1906,21 +1909,16 @@ function t_em_maintenance_mode_countdown_timer(){
 		jQuery(document).ready(function($){
 			$('#countdown-clock').countdown('<?php echo $t_em['maintenance_mode_timer'] ?>', function(event) {
 				var $this = $(this).html(event.strftime(''
-				// + '<span class="h3">%Y <small><?php _e( 'years', 't_em' ) ?></small> </span>'
-				+ '<span class="h3">%w <small><?php _e( 'weeks', 't_em' ) ?></small> </span>'
-				+ '<span class="h3">%d <small><?php _e( 'days', 't_em' ) ?></small> </span>'
-				+ '<span class="h3">%H <small><?php _e( 'hr', 't_em' ) ?></small> </span>'
-				+ '<span class="h3">%M <small><?php _e( 'min', 't_em' ) ?></small> </span>'
-				+ '<span class="h3">%S <small><?php _e( 'sec', 't_em' ) ?></small></span>'));
-			})
-			// .on('finish.countdown', function(event) {
-			// 	$(this).html('This offer has expired!')
-			// 	.parent().addClass('disabled');
-			// });
+				+ '<span class="countdown-item">%w <small><?php _e( 'weeks', 't_em' ) ?></small> </span>'
+				+ '<span class="countdown-item">%d <small><?php _e( 'days', 't_em' ) ?></small> </span>'
+				+ '<span class="countdown-item">%H <small><?php _e( 'hr', 't_em' ) ?></small> </span>'
+				+ '<span class="countdown-item">%M <small><?php _e( 'min', 't_em' ) ?></small> </span>'
+				+ '<span class="countdown-item">%S <small><?php _e( 'sec', 't_em' ) ?></small></span>'));
+			});
 		});
 		/* ]]> */
 		</script>
-		<div id="countdown-clock" class="lead"></div>
+		<div id="countdown-clock"></div>
 <?php
 	endif;
 }
