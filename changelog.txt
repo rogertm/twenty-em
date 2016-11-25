@@ -3,6 +3,18 @@
 = 1.1 =
 Release Date: ****
 
+* Enhancement: Added the Action Hook "t_em_action_header_image_before"
+* Enhancement: Added the Action Hook "t_em_action_header_image_inner_before"
+* Enhancement: Added the Action Hook "t_em_action_header_image_inner_after"
+* Enhancement: Added the Action Hook "t_em_action_header_image_after"
+* Enhancement: Added the Action Hook "t_em_action_slider_before"
+* Enhancement: Added the Action Hook "t_em_action_slider_inner_before"
+* Enhancement: Added the Action Hook "t_em_action_slider_inner_after"
+* Enhancement: Added the Action Hook "t_em_action_slider_after"
+* Enhancement: Added the Action Hook "t_em_action_static_header_before"
+* Enhancement: Added the Action Hook "t_em_action_static_header_inner_before"
+* Enhancement: Added the Action Hook "t_em_action_static_header_inner_after"
+* Enhancement: Added the Action Hook "t_em_action_static_header_after"
 * Enhancement: T_EM_LAYOUT_WIDTH_MAX_VALUE = 1600
 * Enhancement: Added full width option (Layout Panel)
 * Enhancement: Added the Maintenance Mode Option

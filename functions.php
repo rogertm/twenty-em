@@ -1297,7 +1297,23 @@ function t_em_header_image(){
 			$header_image_height = get_theme_support( 'custom-header', 'height' );
 ?>
 		<section id="header-image">
-			<div  class="wrapper container">
+		<?php
+		/**
+		 * Fires before the header image section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_header_image_before' );
+		?>
+			<div id="header-image-inner" class="wrapper container">
+		<?php
+		/**
+		 * Fires in and before the header image section. Container width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_header_image_inner_before' );
+		?>
 				<div class="row">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
@@ -1320,7 +1336,23 @@ function t_em_header_image(){
 ?>
 					</a>
 				</div>
-			</div>
+		<?php
+		/**
+		 * Fires in and after the header image section. Container width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_header_image_inner_after' );
+		?>
+			</div><!-- #header-image-inner -->
+		<?php
+		/**
+		 * Fires after the header image section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_header_image_after' );
+		?>
 		</section><!-- #header-image -->
 <?php
 		endif;
@@ -1350,13 +1382,29 @@ function t_em_slider_bootstrap_carousel( $args ){
 		$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 		$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
 ?>
-		<section id="header-carousel">
-			<div id="slider-carousel" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide">
+		<section id="slider-carousel">
+		<?php
+		/**
+		 * Fires before the slider carousel section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_slider_before' );
+		?>
+			<div id="slider-carousel-inner" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide">
+		<?php
+		/**
+		 * Fires in and before the slider carousel section. Container width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_slider_inner_before' );
+		?>
 <?php 	if ( $slider_posts ) : ?>
 <?php 			$tp = count( $slider_posts ) ?>
 				<ol class="carousel-indicators">
 			<?php $s = 0; while ( $s < $tp ) : ?>
-					<li data-target="#slider-carousel" data-slide-to="<?php echo $s ?>"></li>
+					<li data-target="#slider-carousel-inner" data-slide-to="<?php echo $s ?>"></li>
 			<?php $s++; endwhile; ?>
 				</ol><!-- .carousel-indicators -->
 				<div class="carousel-inner">
@@ -1374,14 +1422,30 @@ function t_em_slider_bootstrap_carousel( $args ){
 					</div><!-- .item -->
 <?php 			endforeach; wp_reset_postdata(); ?>
 				</div><!-- .carousel-inner -->
-				<a class="left carousel-control" href="#slider-carousel" data-slide="prev">
+				<a class="left carousel-control" href="#slider-carousel-inner" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
-				<a class="right carousel-control" href="#slider-carousel" data-slide="next">
+				<a class="right carousel-control" href="#slider-carousel-inner" data-slide="next">
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
 <?php 	endif; ?>
-		</div>
+		<?php
+		/**
+		 * Fires in and after the slider carousel section. Container width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_slider_inner_after' );
+		?>
+		</div><!-- #slider-carousel-inner -->
+		<?php
+		/**
+		 * Fires after the slider carousel section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_slider_after' );
+		?>
 	</section><!-- #slider-carousel -->
 <?php
 	endif;
@@ -1449,7 +1513,23 @@ function t_em_static_header(){
 		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
 ?>
 		<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
+		<?php
+		/**
+		 * Fires before the static header section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_static_header_before' );
+		?>
 			<div id="static-header-inner" class="wrapper container">
+		<?php
+		/**
+		 * Fires in and before the static header section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_static_header_inner_before' );
+		?>
 <?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
 			<div id="static-header-image" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
 				<figure>
@@ -1491,7 +1571,23 @@ function t_em_static_header(){
 				</footer><!-- .actions -->
 			</div><!-- #static-header-text -->
 <?php 	endif; ?>
+		<?php
+		/**
+		 * Fires in and after the static header section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_static_header_inner_after' );
+		?>
 			</div>
+		<?php
+		/**
+		 * Fires after the static header section. Full width;
+		 *
+		 * @since Twenty'em 1.1
+		 */
+		do_action( 't_em_action_static_header_after' );
+		?>
 		</section><!-- #static-header .container -->
 <?php
 	endif;
