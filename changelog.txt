@@ -3,6 +3,7 @@
 = 1.1 =
 Release Date: ****
 
+* Enhancement: Upgrade to Bootstrap 3.3.7
 * Enhancement: Added the Action Hook "t_em_action_header_image_before"
 * Enhancement: Added the Action Hook "t_em_action_header_image_inner_before"
 * Enhancement: Added the Action Hook "t_em_action_header_image_inner_after"
