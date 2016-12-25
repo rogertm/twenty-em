@@ -63,7 +63,7 @@ $t_em_theme_data = array(
 define ( 'T_EM_SITE',													'http://twenty-em.com' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.6' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.7' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
@@ -72,7 +72,7 @@ define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20171030' ); // In date format Ymd
 
 // Third Party Softwares
-define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.6' );
+define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.7' );
 
 require_once get_template_directory() . '/inc/less-php/Version.php';
 define ( 'T_EM_LESS_PHP_VERSION',										Less_version::version );

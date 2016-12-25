@@ -255,7 +255,7 @@ global $t_em;
 		$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
 		$link = ( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) ) ? home_url( '/' ) : wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ;
 ?>
-	<div id="maintenance-mode-alert" class="wrapper container">
+	<div id="maintenance-mode-alert">
 		<div class="text-center" role="alert"><?php printf( __( 'You are using %s in <strong><a href="%s">Maintenance Mode</a></strong>', 't_em' ), T_EM_FRAMEWORK_NAME, $link ) ?></div>
 	</div>
 <?php
