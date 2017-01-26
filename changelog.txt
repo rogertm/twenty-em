@@ -3,6 +3,7 @@
 = 1.1 =
 Release Date: ****
 
+* Bug Fix: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7
 * Enhancement: Added the Action Hook "t_em_action_header_image_before"
 * Enhancement: Added the Action Hook "t_em_action_header_image_inner_before"
