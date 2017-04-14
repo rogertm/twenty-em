@@ -1305,7 +1305,7 @@ function t_em_header_image(){
 		 */
 		do_action( 't_em_action_header_image_before' );
 		?>
-			<div id="header-image-inner" class="wrapper container">
+			<div id="header-image-inner">
 		<?php
 		/**
 		 * Fires in and before the header image section. Container width;
@@ -1314,7 +1314,6 @@ function t_em_header_image(){
 		 */
 		do_action( 't_em_action_header_image_inner_before' );
 		?>
-				<div class="row">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 <?php
 			// Check if the user choose to display featured image in single posts and pages
@@ -1335,7 +1334,6 @@ function t_em_header_image(){
 			endif;
 ?>
 					</a>
-				</div>
 		<?php
 		/**
 		 * Fires in and after the header image section. Container width;
@@ -1359,7 +1357,7 @@ function t_em_header_image(){
 	endif;
 }
 endif; // function t_em_header_image()
-add_action( 't_em_action_header_after', 't_em_header_image', 5 );
+add_action( 't_em_action_header_inside_before', 't_em_header_image', 5 );
 
 if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
 /**
@@ -1391,7 +1389,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 		 */
 		do_action( 't_em_action_slider_before' );
 		?>
-			<div id="slider-carousel-inner" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="wrapper container carousel slide">
+			<div id="slider-carousel-inner" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="carousel slide">
 		<?php
 		/**
 		 * Fires in and before the slider carousel section. Container width;
@@ -1451,7 +1449,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 	endif;
 }
 endif; // function t_em_slider_bootstrap_carousel()
-add_action( 't_em_action_header_after', 't_em_slider_bootstrap_carousel', 5 );
+add_action( 't_em_action_header_inside_before', 't_em_slider_bootstrap_carousel', 5 );
 
 /**
  * Return arguments for slider query. Only post with images attached to it will be displayed
@@ -1521,7 +1519,7 @@ function t_em_static_header(){
 		 */
 		do_action( 't_em_action_static_header_before' );
 		?>
-			<div id="static-header-inner" class="wrapper container">
+			<div id="static-header-inner" class="row">
 		<?php
 		/**
 		 * Fires in and before the static header section. Full width;
@@ -1593,7 +1591,7 @@ function t_em_static_header(){
 	endif;
 }
 endif; // function t_em_static_header()
-add_action( 't_em_action_header_after', 't_em_static_header', 5 );
+add_action( 't_em_action_header_inside_before', 't_em_static_header', 5 );
 
 if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 /**
@@ -2190,32 +2188,13 @@ function t_em_javascript_required(){
 endif; // function t_em_javascript_required()
 add_action( 't_em_action_top', 't_em_javascript_required' );
 
-if ( ! function_exists( 't_em_heading_site_title' ) ) :
-/**
- * Pluggable Function: Heading Site Title.
- * This function is attached to the t_em_action_header_inside_left() action hook.
- */
-function t_em_heading_site_title(){
-?>
-	<hgroup>
-		<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'h2'; ?>
-		<<?php echo $heading_tag; ?> id="site-title">
-			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-		</<?php echo $heading_tag; ?>>
-		<h3 id="site-description"><?php bloginfo( 'description' ); ?></h3>
-	</hgroup>
-<?php
-}
-endif; // function t_em_heading_site_title()
-add_action( 't_em_action_header_inside_left', 't_em_heading_site_title' );
-
 if ( ! function_exists( 't_em_top_menu' ) ) :
 /**
  * Pluggable Function: Top menu.
  * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
-if ( has_nav_menu( 'top-menu' ) ) :
+// if ( has_nav_menu( 'top-menu' ) ) :
 ?>
 	<div id="top-menu" role="navigation">
 		<div class="wrapper container">
@@ -2237,7 +2216,9 @@ if ( has_nav_menu( 'top-menu' ) ) :
 					echo apply_filters( 't_em_filter_top_menu_brand', $brand );
 				?>
 				</div><!-- .navbar-header -->
-				<?php wp_nav_menu( array(
+				<?php
+					if ( has_nav_menu( 'top-menu' ) ) :
+					wp_nav_menu( array(
 							/**
 							 * Filter the menu depth
 							 *
@@ -2252,15 +2233,29 @@ if ( has_nav_menu( 'top-menu' ) ) :
 							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 0 ),
 						)
 					);
+					endif;
 				?>
 			</nav>
 		</div>
 	</div>
 <?php
-endif;
+// endif;
 }
 endif; // function t_em_top_menu()
 add_action( 't_em_action_header_before', 't_em_top_menu' );
+
+if ( ! function_exists( 't_em_top_menu_brand' ) ) :
+/**
+ * Pluggable Function: Top Menu Brand
+ * This function is attached to the t_em_filter_top_menu_brand filter hook
+ */
+function t_em_top_menu_brand(){
+	$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
+	$brand = '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
+	return $brand;
+}
+add_filter( 't_em_filter_top_menu_brand', 't_em_top_menu_brand' );
+endif;
 
 if ( ! function_exists( 't_em_navigation_menu' ) ) :
 /**

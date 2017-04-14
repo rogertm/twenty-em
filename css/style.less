@@ -34,12 +34,6 @@ body.wrapper-container-fluid{
 		width: inherit;
 	}
 }
-// Header
-#header{
-	#branding{
-		padding-bottom: @line-height-computed;
-	}
-}
 // Content
 #inner-main {
 	padding-top: @line-height-computed;
@@ -54,15 +48,8 @@ body.wrapper-container-fluid{
 /* =Header
 ------------------------------------------------------------------------------------------------- */
 // Branding
-#branding{
+#top-menu{
 	#site-title{
-		.h1;
-		a{
-			text-decoration: none;
-		}
-	}
-	#site-description{
-		.h4;
 		margin: 0;
 	}
 }
@@ -72,6 +59,7 @@ body.wrapper-container-fluid{
 		.jumbotron;
 		margin-bottom: 0;
 		background-color: #fff;
+		overflow: hidden;
 		img{
 			padding: 0;
 		}
@@ -100,6 +88,14 @@ body.wrapper-container-fluid{
 			@media (min-width: @screen-md-min){
 				.pull-right;
 			}
+		}
+	}
+}
+.container{
+	#static-header{
+		#static-header-inner{
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 }

@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.1.1 =
+Release Date: ****
+* Function Removed: t_em_heading_site_title()
+* Function Added: t_em_top_menu_brand()
+
 = 1.1 =
 Release Date: ****
 
