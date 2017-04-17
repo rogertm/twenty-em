@@ -2212,7 +2212,8 @@ function t_em_top_menu(){
 					 *
 					 * @param string $brand HTML containing the navbar brand
 					 */
-					$brand = '<div class="navbar-brand visible-xs-block">' . __( 'Site Navigation', 't_em' ) . '</div>';
+					$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
+					$brand = '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
 					echo apply_filters( 't_em_filter_top_menu_brand', $brand );
 				?>
 				</div><!-- .navbar-header -->
@@ -2243,19 +2244,6 @@ function t_em_top_menu(){
 }
 endif; // function t_em_top_menu()
 add_action( 't_em_action_header_before', 't_em_top_menu' );
-
-if ( ! function_exists( 't_em_top_menu_brand' ) ) :
-/**
- * Pluggable Function: Top Menu Brand
- * This function is attached to the t_em_filter_top_menu_brand filter hook
- */
-function t_em_top_menu_brand(){
-	$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
-	$brand = '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
-	return $brand;
-}
-add_filter( 't_em_filter_top_menu_brand', 't_em_top_menu_brand' );
-endif;
 
 if ( ! function_exists( 't_em_navigation_menu' ) ) :
 /**
