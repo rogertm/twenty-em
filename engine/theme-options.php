@@ -159,7 +159,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'shortcode_buttoms'								=> '1',
 		'favicon_url'									=> T_EM_THEME_DIR_IMG_URL . '/favicon.png',
 		// Header Options
-		'header_set'									=> 'no-header-image',
+		'header_set'									=> 'no-header',
 		'header_featured_image_home_only'				=> '0',
 		'header_featured_image'							=> '1',
 		'slider_home_only'								=> '0',

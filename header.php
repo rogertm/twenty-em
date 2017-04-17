@@ -33,20 +33,18 @@
 <div id="wrap" class="hfeed">
 	<?php t_em_action_header_before(); ?>
 	<header id="header">
-		<section id="masthead">
-			<div id="branding" role="banner" class="wrapper container">
-				<?php t_em_action_header_inside_before() ?>
-				<div class="branding-inner row">
-					<div class="col-md-6">
-						<?php t_em_action_header_inside_left(); ?>
-					</div>
-					<div class="col-md-6">
-						<?php t_em_action_header_inside_right(); ?>
-					</div>
-				</div><!-- .branding-inner -->
-				<?php t_em_action_header_inside_after(); ?>
-			</div><!-- #branding .wrapper .container -->
-		</section><!-- #masthead -->
+		<div id="branding" role="banner" class="wrapper container">
+			<?php t_em_action_header_inside_before() ?>
+			<div class="branding-inner row">
+				<div class="col-md-6">
+					<?php t_em_action_header_inside_left(); ?>
+				</div>
+				<div class="col-md-6">
+					<?php t_em_action_header_inside_right(); ?>
+				</div>
+			</div><!-- .branding-inner -->
+			<?php t_em_action_header_inside_after(); ?>
+		</div><!-- #branding .wrapper .container -->
 	</header><!-- #header -->
 
 	<?php t_em_action_header_after(); ?>

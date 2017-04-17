@@ -20,7 +20,7 @@
 /**
  * Return an array of Header Options for Twenty'em admin panel.
  * This function manage what is displayed in our theme header. Possibles options are:
- * 0. Nothing (no-header-image)
+ * 0. Nothing (no-header)
  * 1. Header image (header-image) defined in t_em_support_custom_header_image() function in
  * /inc/functions.php
  * 2. Slider (slider) displaying featured posts of such category
@@ -38,10 +38,10 @@ function t_em_header_options( $header_options = '' ){
 		 * @param bool If false, the option will not be enable. Default true
 		 * @since Twenty'em 1.0
 		 */
-		'no-header-image' => array(
-			'value' => 'no-header-image',
-			'label' => __( 'No header image', 't_em' ),
-			'callback' => ( apply_filters( 't_em_admin_filter_header_options_no_header_image', true ) ) ? __( '<p>No image, only Site Title and Tagline</p>', 't_em' ) : null,
+		'no-header' => array(
+			'value' => 'no-header',
+			'label' => __( 'No header', 't_em' ),
+			'callback' => ( apply_filters( 't_em_admin_filter_header_options_no_header_image', true ) ) ? __( '<p>No header, nothing to show.</p>', 't_em' ) : null,
 		),
 		'header-image' => array(
 			'value' => 'header-image',

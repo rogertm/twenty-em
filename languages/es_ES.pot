@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.0-Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2016-11-02 04:21:35+00:00\n"
-"PO-Revision-Date: 2016-11-02 00:22-0500\n"
+"POT-Creation-Date: 2017-04-17 08:56-0400\n"
+"PO-Revision-Date: 2017-04-17 09:07-0400\n"
 "Last-Translator: RogerTM <mail@rogertm.com>\n"
-"Language-Team:  <hi@twenty-em.com>\n"
-"Language: ES_es\n"
+"Language-Team: hi@twenty-em.com\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
@@ -88,7 +88,7 @@ msgstr ""
 "Al parecer no podemos encontrar lo que estás buscando. Tal vez puedas usar "
 "el buscador y obtener mejores resultados."
 
-#: content.php:24 functions.php:751 functions.php:1370
+#: content.php:24 functions.php:751 functions.php:1416
 #: page-templates/template-archive.php:55
 #: page-templates/template-blog-content.php:45
 #: page-templates/template-sitemap.php:64
@@ -365,12 +365,12 @@ msgid "Current favicon:"
 msgstr "Favicon actual:"
 
 #: engine/header-options.php:43
-msgid "No header image"
-msgstr "Sin imagen de cabecera"
+msgid "No header"
+msgstr "Sin cabecera"
 
 #: engine/header-options.php:44
-msgid "<p>No image, only Site Title and Tagline</p>"
-msgstr "<p>Sin imagen, solo el título y la descripción corta</p>"
+msgid "<p>No header, nothing to show.</p>"
+msgstr "<p>Sin cabecera, nada que mostrar.</p>"
 
 #: engine/header-options.php:48
 msgid "Header image"
@@ -509,6 +509,7 @@ msgid "Headline, Content and More..."
 msgstr "Encabezado, Contenido y más..."
 
 #: engine/header-options.php:301
+#, fuzzy
 msgid "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
@@ -1084,7 +1085,6 @@ msgstr "Tres columnas. Contenido a la derecha"
 msgid "Three columns. Content in the middle"
 msgstr "Tres columnas. Contenido al centro"
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1-Beta)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: engine/layout-options.php:60
 msgid "One column, no sidebar"
@@ -1541,7 +1541,7 @@ msgid ""
 msgstr ""
 "Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
 
-#: engine/theme-options.php:738 functions.php:2323
+#: engine/theme-options.php:738 functions.php:2409
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
@@ -1627,7 +1627,7 @@ msgstr "Menú de Navegación"
 msgid "Footer Menu"
 msgstr "Menú Inferior"
 
-#: functions.php:442 functions.php:1561
+#: functions.php:442 functions.php:1655
 #: page-templates/template-blog-content.php:52
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
@@ -1855,55 +1855,51 @@ msgstr "Contraseña"
 msgid "Submit"
 msgstr "Enviar"
 
-#: functions.php:1712
+#: functions.php:1806
 msgid "Related Posts"
 msgstr "Entradas relacionadas"
 
-#: functions.php:1727
+#: functions.php:1821
 msgid "No Related Posts"
 msgstr "No hay entradas relacionadas"
 
-#: functions.php:1912
-msgid "years"
-msgstr "años"
-
-#: functions.php:1913
+#: functions.php:2006
 msgid "weeks"
 msgstr "semanas"
 
-#: functions.php:1914
+#: functions.php:2007
 msgid "days"
 msgstr "días"
 
-#: functions.php:1915
+#: functions.php:2008
 msgid "hr"
 msgstr "hr"
 
-#: functions.php:1916
+#: functions.php:2009
 msgid "min"
 msgstr "min"
 
-#: functions.php:1917
+#: functions.php:2010
 msgid "sec"
 msgstr "seg"
 
-#: functions.php:1951
+#: functions.php:2040
 msgid "Home"
 msgstr "Inicio"
 
-#: functions.php:2019
+#: functions.php:2108
 msgid "Search: %s"
 msgstr "Búsqueda: %s"
 
-#: functions.php:2022
+#: functions.php:2111
 msgid "Error 404"
 msgstr "Error 404"
 
-#: functions.php:2077
+#: functions.php:2166
 msgid "Page %s"
 msgstr "Página %s"
 
-#: functions.php:2095
+#: functions.php:2184
 msgid ""
 "JavaScript is required for this website to be displayed correctly.<br /> "
 "Please enable JavaScript before continuing..."
@@ -1911,15 +1907,15 @@ msgstr ""
 "Para que este sitio funcione correctamente necesita JavaScript.<br />Por "
 "favor activa JavaScript antes de contrinuar..."
 
-#: functions.php:2134 functions.php:2186
+#: functions.php:2204 functions.php:2272
 msgid "Toggle Navigation"
 msgstr "Alternar Navegación"
 
-#: functions.php:2145 functions.php:2197
+#: functions.php:2215 functions.php:2283
 msgid "Site Navigation"
 msgstr "Navegación"
 
-#: functions.php:2284
+#: functions.php:2370
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
 "Comments"
@@ -1927,7 +1923,7 @@ msgstr ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
 "Comentarios Antiguos"
 
-#: functions.php:2285
+#: functions.php:2371
 msgid ""
 "Newer Comments <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
@@ -1935,7 +1931,7 @@ msgstr ""
 "Comentarios Recientes <span class=\"meta-nav icomoon-double-angle-right "
 "icomoon\"></span>"
 
-#: functions.php:2322
+#: functions.php:2408
 msgid ""
 "Proudly powered by: <a href=\"%1$s\" title=\"%2$s\">%3$s</a> and <a href="
 "\"%4$s\" title=\"%5$s\">%6$s</a>. Theme Name: <a href=\"%7$s\" title="
@@ -1945,14 +1941,14 @@ msgstr ""
 "\"%5$s\">%6$s</a>. Tema: <a href=\"%7$s\" title=\"Version %8$s\">%9$s</a> "
 "por: %10$s"
 
-#: functions.php:2348
+#: functions.php:2434
 msgid ""
 "<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->"
 msgstr ""
 "<!-- Este sitio está hecho con %1$s WordPress theme/framework v%2$s %3$s - "
 "%4$s -->"
 
-#: functions.php:2361
+#: functions.php:2447
 msgid "<!-- / %1$s WordPress theme/framework -->"
 msgstr "<!-- / %1$s WordPress theme/framework -->"
 
@@ -2153,7 +2149,6 @@ msgstr "Una lista de colaboradores de tu blog"
 msgid "%1$s Contributors"
 msgstr "%1$s Colaboradores"
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1-Beta)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: inc/widgets.php:802
 msgid "Contributors"
@@ -2293,6 +2288,15 @@ msgstr "Mapa del Sitio"
 #. Template Name of the plugin/theme
 msgid "Tabs Content"
 msgstr "Contenido por Pestañas"
+
+#~ msgid "No header image"
+#~ msgstr "Sin imagen de cabecera"
+
+#~ msgid "<p>No image, only Site Title and Tagline</p>"
+#~ msgstr "<p>Sin imagen, solo el título y la descripción corta</p>"
+
+#~ msgid "years"
+#~ msgstr "años"
 
 #~ msgid "Maintenance Mode"
 #~ msgstr "Modo de Mantenimiento"
