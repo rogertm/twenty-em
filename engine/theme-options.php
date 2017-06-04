@@ -88,6 +88,8 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], false );
 		wp_enqueue_script( 'script-admin-t-em' );
+		wp_enqueue_media();
+		wp_enqueue_style( 'media' );
 	endif;
 }
 add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts' );

@@ -2199,6 +2199,7 @@ function t_em_top_menu(){
 	<div id="top-menu" role="navigation">
 		<div class="wrapper container">
 			<nav class="navbar">
+			<?php /** NEED AN ACTION HERE */ ?>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
@@ -2236,6 +2237,7 @@ function t_em_top_menu(){
 					);
 					endif;
 				?>
+			<?php /** NEED AN ACTION HERE */ ?>
 			</nav>
 		</div>
 	</div>
@@ -2256,7 +2258,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 		<div class="wrapper container">
 			<nav class="navbar">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-navigation-menu">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>

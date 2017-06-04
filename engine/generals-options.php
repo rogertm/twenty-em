@@ -91,7 +91,8 @@ function t_em_general_options_favicon(){
 					<p><?php _e( 'Current favicon:', 't_em' ) ?>&nbsp;<img src="<?php echo $t_em['favicon_url'] ?>" width="16" height="16" /></p>
 			<?php endif; ?>
 			</span>
-			<input type="url" class="regular-text" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em['favicon_url'] ?>" />
+			<input type="url" id="t-em-favicon-url" class="regular-text media-url" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em['favicon_url'] ?>" />
+			<a href="#" id="t-em-button-favicon" class="button media-selector"><?php _e( 'Upload Media', 't_em' ) ?></a>
 		</label>
 	</div>
 <?php

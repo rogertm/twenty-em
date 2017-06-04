@@ -152,7 +152,8 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 			'<textarea name="t_em_theme_options[content_' . $widget['name'] . ']" class="large-text" cols="50" rows="10">' . esc_textarea( $t_em['content_'.$widget['name']] ) . '</textarea>';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
-		$extend_front_page .= 			'<input type="url" class="regular-text" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em['thumbnail_src_'.$widget['name']] . '" />';
+		$extend_front_page .= 			'<input type="url" id="t-em-text-widget-image-url-' . $widget['name'] . '" class="regular-text media-url" name="t_em_theme_options[thumbnail_src_' . $widget['name'] . ']" value="' . $t_em['thumbnail_src_'.$widget['name']] . '" />';
+		$extend_front_page .=			'<a href="#" id="t-em-button-text-widget-image-' . $widget['name'] . '" class="button media-selector">'. __( 'Upload Media', 't_em' ) .'</a>';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[primary_button_text_' . $widget['name'] . ']" value="' . $t_em['primary_button_text_'.$widget['name']] . '" />';
