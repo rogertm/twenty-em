@@ -2,6 +2,7 @@
 
 = 1.1.1 =
 Release Date: June 21, 2017
+* Bug Fix: Sanitize text fields in Maintenance Mode Options
 * New URL: https://themingisprose.com
 * Bug Fix: Added the viewport meta in header area
 * Enhancement: Added the Function "t_em_head()"

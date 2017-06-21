@@ -1943,7 +1943,7 @@ function t_em_maintenance_mode_area(){
 	<section id="maintenance-mode">
 	<?php t_em_action_maintenance_mode_inside_before(); ?>
 	<?php if ( $t_em['maintenance_mode_thumbnail_src'] ) : ?>
-		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" alt="<?php echo $t_em['maintenance_mode_headline'] ?>">
+		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" alt="<?php echo sanitize_text_field( $t_em['maintenance_mode_headline'] ) ?>">
 	<?php endif; ?>
 	<?php if ( $t_em['maintenance_mode_headline'] ) :
 				$icon_class	= ( $t_em['maintenance_mode_headline_icon_class'] ) ?

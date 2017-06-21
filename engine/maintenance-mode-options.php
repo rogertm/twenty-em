@@ -84,7 +84,7 @@ function t_em_settings_field_maintenance_mode_set(){
 			<header><?php _e( 'Headline, Content and More...', 't_em' ) ?></header>
 			<p><label>
 				<span><?php _e( 'Headline', 't_em' ) ?></span>
-				<input class="regular-text headline" type="text" name="t_em_theme_options[maintenance_mode_headline]" value="<?php echo $t_em['maintenance_mode_headline'] ?>">
+				<input class="regular-text headline" type="text" name="t_em_theme_options[maintenance_mode_headline]" value="<?php echo esc_textarea( $t_em['maintenance_mode_headline'] ) ?>">
 			</label></p>
 
 			<p><label>
