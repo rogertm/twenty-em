@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			http://twenty-em.com/
+ * @link			https://themingisprose.com/
  * @since 			Twenty'em 1.0
  */
 
@@ -22,9 +22,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<?php wp_head(); ?>
 </head>
 

@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			http://twenty-em.com/
+ * @link			https://themingisprose.com/
  * @since 			Twenty'em 1.0
  */
 
@@ -52,7 +52,7 @@ add_action( 'admin_print_footer_scripts', 't_em_quicktags_buttons' );
  * Enclosing. Permits others shortcodes.
  * Behavior: [button link="" style="default" size=""]Button Text[/button]
  * Options:
- * 0. link. Required. Default value "empty". Possibles value: button link (e.g http://twenty-em.com/)
+ * 0. link. Required. Default value "empty". Possibles value: button link (e.g https://themingisprose.com/)
  * 1. style. Optional. Default value "default". Possibles values: "default", "primary", "success",
  * "info", "warning", "danger", "link", "custom_class"
  * 2. new_window. Optional, Default value "false". Possibles values "false", "true". (open link in new window)
@@ -177,7 +177,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
  * @link http://codex.wordpress.org/Shortcode_API
- * @link http://twenty-em.com/icomoon-demo For a full list of icon classes.
+ * @link https://themingisprose.com/icomoon-demo For a full list of icon classes.
  *
  * @since Twenty'em 1.0
  */

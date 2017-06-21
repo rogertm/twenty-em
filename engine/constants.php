@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			http://twenty-em.com/
+ * @link			https://themingisprose.com/
  * @since 			Twenty'em 1.0
  */
 
@@ -60,7 +60,7 @@ $t_em_theme_data = array(
  */
 
 // Twenty'em Site
-define ( 'T_EM_SITE',													'http://twenty-em.com' );
+define ( 'T_EM_SITE',													'https://themingisprose.com' );
 
 // WordPress version in which Twenty'em has been tested
 define ( 'T_EM_WORDPRESS_VERSION',										'4.7.3' );

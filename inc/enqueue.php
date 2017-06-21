@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			http://twenty-em.com/
+ * @link			https://themingisprose.com/
  * @since 			Twenty'em 1.0
  */
 
@@ -111,4 +111,15 @@ function t_em_theme_layout_width(){
 </style>
 <?php
 }
+
+/**
+ * The Head tags
+ */
+function t_em_head(){
+?>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+}
+add_action( 'wp_head', 't_em_head' );
 ?>

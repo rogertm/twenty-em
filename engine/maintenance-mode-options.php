@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			http://twenty-em.com/
+ * @link			https://themingisprose.com/
  * @since 			Twenty'em 1.0.1
  */
 
@@ -99,7 +99,8 @@ function t_em_settings_field_maintenance_mode_set(){
 
 			<p><label>
 				<span><?php printf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) ?></span>
-				<input type="url" class="regular-text" name="t_em_theme_options[maintenance_mode_thumbnail_src]" value="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>">
+				<input id="t-em-maintenance-mode-image-url" type="url" class="regular-text media-url" name="t_em_theme_options[maintenance_mode_thumbnail_src]" value="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>">
+				<a href="#" id="t-em-button-maintenance-mode-image" class="button media-selector"><?php _e( 'Upload Media', 't_em' ) ?></a>
 			</label></p>
 
 			<p><label><span><?php _e( 'Primary button text', 't_em' ) ?></span>

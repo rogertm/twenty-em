@@ -1,11 +1,16 @@
 == Changelog ==
 
 = 1.1.1 =
-Release Date: ****
-* Function Removed: t_em_heading_site_title()
+Release Date: June 21, 2017
+* New URL: https://themingisprose.com
+* Bug Fix: Added the viewport meta in header area
+* Enhancement: Added the Function "t_em_head()"
+* Enhancement: Added WordPress Upload Manager in admin panel
+* Enhancement: Upgrade to LESS PHP version 1.7.0.13
+* Function Removed: t_em_heading_site_title(),
 
 = 1.1 =
-Release Date: ****
+Release Date: February 2, 2017
 
 * Bug Fix: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7

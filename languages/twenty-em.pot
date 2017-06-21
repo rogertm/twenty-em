@@ -1977,7 +1977,7 @@ msgid "Twenty'em"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://twenty-em.com/"
+msgid "https://themingisprose.com/"
 msgstr ""
 
 #. Description of the plugin/theme
