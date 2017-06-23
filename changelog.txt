@@ -1,6 +1,18 @@
 == Changelog ==
 
 = 1.1.1 =
+Release Date: June 22, 2017
+* Enhancement: Added the Filter Hook "t_em_filter_starter_content"
+* Enhancement: Added theme support for "starter-content"
+* Enhancement: Added theme support for "customize-selective-refresh-widgets"
+* Enhancement: Added the Action Hook "t_em_action_top_menu_navbar_before"
+* Enhancement: Added the Action Hook "t_em_action_top_menu_navbar_after"
+* Enhancement: Added the Action Hook "t_em_action_navigation_menu_navbar_before"
+* Enhancement: Added the Action Hook "t_em_action_navigation_menu_navbar_after"
+* Function Removed: t_em_header_style(), t_em_admin_header_style(), t_em_admin_header_image() in favor of Header Image in WordPress Customizer
+* Enhancement: t_em_favicon() now checks if there is a site icon before to load the default icon
+* Enhancement: Add support for "Custom Logo"
+* Function Removed: "t_em_general_options_favicon()" in favor of Site Icon option in WordPress Customizer
 Release Date: June 21, 2017
 * Bug Fix: Sanitize text fields in Maintenance Mode Options
 * New URL: https://themingisprose.com
@@ -8,11 +20,10 @@ Release Date: June 21, 2017
 * Enhancement: Added the Function "t_em_head()"
 * Enhancement: Added WordPress Upload Manager in admin panel
 * Enhancement: Upgrade to LESS PHP version 1.7.0.13
-* Function Removed: t_em_heading_site_title(),
+* Function Removed: "t_em_heading_site_title()",
 
 = 1.1 =
 Release Date: February 2, 2017
-
 * Bug Fix: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7
 * Enhancement: Added the Action Hook "t_em_action_header_image_before"

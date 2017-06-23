@@ -92,16 +92,12 @@ function t_em_setup(){
 		 * @param int Width and Height values
 		 * @since Twenty'em 1.0
 		 */
-		'default-text-color'		=> '333',
 		'width'						=> apply_filters( 't_em_filter_header_image_width', T_EM_HEADER_IMAGE_WIDTH ),
 		'height'					=> apply_filters( 't_em_filter_header_image_height', T_EM_HEADER_IMAGE_HEIGHT ),
 		'flex-width'				=> true,
 		'flex-height'				=> true,
 		'random-default'			=> true,
 		'uploads'					=> true,
-		'wp-head-callback'			=> 't_em_header_style',
-		'admin-head-callback'		=> 't_em_admin_header_style',
-		'admin-preview-callback'	=> 't_em_admin_header_image',
 	);
 	add_theme_support( 'custom-header', $custom_header_support );
 
@@ -118,6 +114,50 @@ function t_em_setup(){
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
+	// Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(
+		'width'			=> 250,
+		'height'		=> 250,
+		'flex-width'	=> true,
+	) );
+
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	// Define and register starter content to showcase the theme on new sites.
+	$starter_content = array(
+		'widgets'	=> array(
+			'sidebar'	=> array(
+				'search',
+				'text_business_info',
+				'text_about'
+			),
+			'first-footer-widget-area'	=> array(
+				't_em_widget_contributors'
+			),
+			'second-footer-widget-area'	=> array(
+				't_em_widget_recent_posts'
+			),
+			'third-footer-widget-area'	=> array(
+				't_em_widget_feed_burner_subscribe'
+			),
+			'fourth-footer-widget-area'	=> array(
+				'meta',
+			),
+		),
+	);
+
+	/**
+	 * Filters Twenty'em array of starter content.
+	 *
+	 * @since Twenty'em 1.1.1
+	 *
+	 * @param array $starter_content Array of starter content.
+	 */
+	$starter_content = apply_filters( 't_em_filter_starter_content', $starter_content );
+
+	add_theme_support( 'starter-content', $starter_content );
 
 	// Default custom headers packaged with the theme.
 	register_default_headers( array(
@@ -161,123 +201,6 @@ function t_em_setup(){
 
 }
 add_action( 'after_setup_theme', 't_em_setup' );
-
-if ( ! function_exists( 't_em_header_style' ) ) :
-/**
- * Style the header image and text displayed on the site.
- * Referenced via add_theme_support( 'custom-header' ) in t_em_support_custom_header().
- *
- * @since Twenty'em 1.0
- */
-function t_em_header_style(){
-	global $custom_header_support;
-	$text_color = get_header_textcolor();
-
-	// If no custom options for text are set, let's bail
-	if ( $text_color == $custom_header_support['default-text-color'] ) return;
-
-	// If we get this far, we have custom styles. Let's do this.
-?>
-	<style type="text/css">
-<?php
-	// If the text is hidden
-	if ( 'blank' == $text_color ) :
-?>
-		#site-title,
-		#site-description{
-			position: absolute !important;
-			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-			clip: rect(1px, 1px, 1px, 1px);
-		}
-<?php
-	// If the user has set a custom color for the text use that
-	else :
-?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo $text_color; ?>;
-		}
-<?php
-	endif;
-?>
-	</style>
-<?php
-}
-endif; // function t_em_header_style()
-
-if ( ! function_exists( 't_em_admin_header_style' ) ) :
-/**
- * Styles the header image displayed on the Appearance > Header admin panel.
- * Referenced via add_theme_support( 'custom-header' ) in t_em_support_custom_header().
- *
- * @since Twenty'em 1.0
- */
-function t_em_admin_header_style(){
-	global $custom_header_support;
-?>
-	<style type="text/css">
-	.appearance_page_custom-header #headimg {
-		border: none;
-	}
-	#headimg h1,
-	#desc {
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	}
-	#headimg h1 {
-		font-size: 36px;
-		margin-bottom: 10px;
-		margin-top: 20px;
-		font-weight: 500;
-	}
-	#headimg h1 a {
-		text-decoration: none;
-	}
-	#desc {
-		font-size: 18px;
-		margin-bottom: 20px;
-	}
-	<?php
-		// If the user has set a custom color for the text use that
-		if ( get_header_textcolor() != $custom_header_support['default-text-color'] ) :
-	?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo get_header_textcolor(); ?>;
-		}
-	<?php endif; ?>
-	#headimg img {
-		max-width: 1000px;
-		height: auto;
-		width: 100%;
-	}
-	</style>
-<?php
-}
-endif; // function t_em_admin_header_style()
-
-if ( ! function_exists( 't_em_admin_header_image' ) ) :
-/**
- * Custom header image markup displayed on the Appearance > Header admin panel.
- * Referenced via add_theme_support('custom-header') in t_em_setup().
- *
- * @since Twenty'em 1.0
- */
-function t_em_admin_header_image(){ ?>
-	<div id="headimg">
-		<?php
-		$color = get_header_textcolor();
-		$image = get_header_image();
-		$style = ( $color && $color != 'blank' ) ? 'color: #'. $color .'' : 'display: none';
-		?>
-		<h1><a id="name" style="<?php echo $style; ?>" onclick="return false;" href="#"><?php bloginfo( 'name' ); ?></a></h1>
-		<div id="desc" style="<?php echo $style; ?>"><?php bloginfo( 'description' ); ?></div>
-		<?php if ( $image ) : ?>
-			<img src="<?php echo esc_url( $image ); ?>" alt="" />
-		<?php endif; ?>
-	</div>
-<?php
-}
-endif; // function t_em_admin_header_image()
 
 /**
  * Add Twenty'em layout classes to the array of body classes.
@@ -408,12 +331,12 @@ if ( ! function_exists( 't_em_favicon' ) ) :
  * this function is attached to wp_head() and admin_head() action hooks
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.1.1 Checks if there is a site icon, then load it.
  */
 function t_em_favicon(){
-	global $t_em;
-	if ( '' != $t_em['favicon_url'] ) :
-		echo '<link rel="shortcut icon" href="'. $t_em['favicon_url'] .'" />'."\n";
-	endif;
+	if ( has_site_icon() )
+		return;
+	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon.png' .'" />'."\n";
 }
 endif; // function t_em_favicon()
 add_action( 'wp_head', 't_em_favicon' );
@@ -2194,12 +2117,11 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
  * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
-// if ( has_nav_menu( 'top-menu' ) ) :
 ?>
 	<div id="top-menu" role="navigation">
 		<div class="wrapper container">
 			<nav class="navbar">
-			<?php /** NEED AN ACTION HERE */ ?>
+			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
@@ -2214,7 +2136,7 @@ function t_em_top_menu(){
 					 * @param string $brand HTML containing the navbar brand
 					 */
 					$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
-					$brand = '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
+					$brand = get_custom_logo() . '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
 					echo apply_filters( 't_em_filter_top_menu_brand', $brand );
 				?>
 				</div><!-- .navbar-header -->
@@ -2237,12 +2159,11 @@ function t_em_top_menu(){
 					);
 					endif;
 				?>
-			<?php /** NEED AN ACTION HERE */ ?>
+			<?php do_action( 't_em_action_top_menu_navbar_after' ) ?>
 			</nav>
 		</div>
 	</div>
 <?php
-// endif;
 }
 endif; // function t_em_top_menu()
 add_action( 't_em_action_header_before', 't_em_top_menu' );
@@ -2257,6 +2178,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
 		<div class="wrapper container">
 			<nav class="navbar">
+			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
 						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
@@ -2290,6 +2212,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 						)
 					);
 				?>
+			<?php do_action( 't_em_action_navigation_menu_navbar_after' ) ?>
 			</nav>
 		</div>
 	</div>

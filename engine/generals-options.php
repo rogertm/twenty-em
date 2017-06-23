@@ -74,32 +74,6 @@ function t_em_general_options( $general_options = '' ){
 }
 
 /**
- * Extend setting for General Options in Twenty'em admin panel.
- *
- * @return string
- *
- * @since Twenty'em 1.0
- */
-function t_em_general_options_favicon(){
-	global $t_em;
-?>
-	<div class="sub-layout text-option general">
-		<label class="description single-option">
-			<span>
-				<?php echo sprintf( __( '<a href="%1$s" target="_blank">Favicon URL</a>', 't_em' ), admin_url( 'upload.php' ) ); ?>
-			<?php if ( '' != $t_em['favicon_url'] ) : ?>
-					<p><?php _e( 'Current favicon:', 't_em' ) ?>&nbsp;<img src="<?php echo $t_em['favicon_url'] ?>" width="16" height="16" /></p>
-			<?php endif; ?>
-			</span>
-			<input type="url" id="t-em-favicon-url" class="regular-text media-url" name="t_em_theme_options[favicon_url]" value="<?php echo $t_em['favicon_url'] ?>" />
-			<a href="#" id="t-em-button-favicon" class="button media-selector"><?php _e( 'Upload Media', 't_em' ) ?></a>
-		</label>
-	</div>
-<?php
-}
-add_action( 't_em_admin_action_general_options_after', 't_em_general_options_favicon' );
-
-/**
  * Render the General Options setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
