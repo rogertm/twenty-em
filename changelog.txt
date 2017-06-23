@@ -5,13 +5,13 @@ Release Date: June 22, 2017
 * Enhancement: Added the Filter Hook "t_em_filter_starter_content"
 * Enhancement: Added theme support for "starter-content"
 * Enhancement: Added theme support for "customize-selective-refresh-widgets"
+* Enhancement: Added theme support for "custom-logo"
 * Enhancement: Added the Action Hook "t_em_action_top_menu_navbar_before"
 * Enhancement: Added the Action Hook "t_em_action_top_menu_navbar_after"
 * Enhancement: Added the Action Hook "t_em_action_navigation_menu_navbar_before"
 * Enhancement: Added the Action Hook "t_em_action_navigation_menu_navbar_after"
 * Function Removed: t_em_header_style(), t_em_admin_header_style(), t_em_admin_header_image() in favor of Header Image in WordPress Customizer
 * Enhancement: t_em_favicon() now checks if there is a site icon before to load the default icon
-* Enhancement: Add support for "Custom Logo"
 * Function Removed: "t_em_general_options_favicon()" in favor of Site Icon option in WordPress Customizer
 Release Date: June 21, 2017
 * Bug Fix: Sanitize text fields in Maintenance Mode Options
