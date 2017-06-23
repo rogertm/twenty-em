@@ -2,6 +2,7 @@
 
 = 1.1.1 =
 Release Date: June 22, 2017
+* Update: Data Base version 20170622
 * Enhancement: Added the Filter Hook "t_em_filter_starter_content"
 * Enhancement: Added theme support for "starter-content"
 * Enhancement: Added theme support for "customize-selective-refresh-widgets"

@@ -69,7 +69,7 @@ define ( 'T_EM_WORDPRESS_VERSION',										'4.7.3' );
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.1.1' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20161030' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20170622' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.7' );
