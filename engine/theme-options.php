@@ -87,6 +87,12 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], false );
+		// L10n for theme-options.js
+		$l10n = array(
+			'upm_title'		=> __( 'Select Image', 't_em' ),
+			'upm_button'	=> __( 'Use selected image', 't_em' ),
+		);
+		wp_localize_script( 'script-admin-t-em', 't_em_l10n_admin', $l10n );
 		wp_enqueue_script( 'script-admin-t-em' );
 		wp_enqueue_media();
 		wp_enqueue_style( 'media' );

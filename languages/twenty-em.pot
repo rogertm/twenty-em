@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twenty'em 1.1-Beta\n"
+"Project-Id-Version: Twenty'em 1.1.1-Beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-04-17 12:54:14+00:00\n"
+"POT-Creation-Date: 2017-06-24 04:44:15+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgid_plural "%1$s responses to: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:43 functions.php:684 page-templates/template-archive.php:57
+#: comments.php:43 functions.php:671 page-templates/template-archive.php:57
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] ""
@@ -76,7 +76,7 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: content.php:24 functions.php:751 functions.php:1416
+#: content.php:24 functions.php:738 functions.php:1403
 #: page-templates/template-archive.php:55
 #: page-templates/template-blog-content.php:45
 #: page-templates/template-sitemap.php:64
@@ -175,8 +175,8 @@ msgstr ""
 msgid "Archive Pagination"
 msgstr ""
 
-#: engine/archive-options.php:302 engine/front-page-options.php:211
-#: engine/header-options.php:355
+#: engine/archive-options.php:302 engine/front-page-options.php:212
+#: engine/header-options.php:356
 msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
 
@@ -229,7 +229,7 @@ msgstr ""
 msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr ""
 
-#: engine/front-page-options.php:151 engine/header-options.php:304
+#: engine/front-page-options.php:151 engine/header-options.php:305
 #: engine/maintenance-mode-options.php:96
 msgid "Content"
 msgstr ""
@@ -238,31 +238,36 @@ msgstr ""
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
 msgstr ""
 
-#: engine/front-page-options.php:157 engine/header-options.php:307
-#: engine/maintenance-mode-options.php:105
+#: engine/front-page-options.php:156 engine/header-options.php:303
+#: engine/maintenance-mode-options.php:103
+msgid "Upload Image"
+msgstr ""
+
+#: engine/front-page-options.php:158 engine/header-options.php:308
+#: engine/maintenance-mode-options.php:106
 msgid "Primary button text"
 msgstr ""
 
-#: engine/front-page-options.php:160 engine/maintenance-mode-options.php:109
+#: engine/front-page-options.php:161 engine/maintenance-mode-options.php:110
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr ""
 
-#: engine/front-page-options.php:163 engine/header-options.php:313
-#: engine/maintenance-mode-options.php:113
+#: engine/front-page-options.php:164 engine/header-options.php:314
+#: engine/maintenance-mode-options.php:114
 msgid "Primary button link"
 msgstr ""
 
-#: engine/front-page-options.php:166 engine/header-options.php:316
-#: engine/maintenance-mode-options.php:117
+#: engine/front-page-options.php:167 engine/header-options.php:317
+#: engine/maintenance-mode-options.php:118
 msgid "Secondary button text"
 msgstr ""
 
-#: engine/front-page-options.php:169 engine/maintenance-mode-options.php:121
+#: engine/front-page-options.php:170 engine/maintenance-mode-options.php:122
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr ""
 
-#: engine/front-page-options.php:172 engine/header-options.php:322
-#: engine/maintenance-mode-options.php:125
+#: engine/front-page-options.php:173 engine/header-options.php:323
+#: engine/maintenance-mode-options.php:126
 msgid "Secondary button link"
 msgstr ""
 
@@ -317,14 +322,6 @@ msgid ""
 "posts or pages editor"
 msgstr ""
 
-#: engine/generals-options.php:89
-msgid "<a href=\"%1$s\" target=\"_blank\">Favicon URL</a>"
-msgstr ""
-
-#: engine/generals-options.php:91
-msgid "Current favicon:"
-msgstr ""
-
 #: engine/header-options.php:43
 msgid "No header"
 msgstr ""
@@ -347,8 +344,8 @@ msgstr ""
 
 #: engine/header-options.php:85
 msgid ""
-"You can manage your header image option in the <a href=\"%1$s\" target="
-"\"_blank\">Theme Customizer</a> screen."
+"You can manage your header image option in the <a href=\"%1$s\">Theme "
+"Customizer</a> screen."
 msgstr ""
 
 #: engine/header-options.php:89 engine/header-options.php:148
@@ -455,11 +452,11 @@ msgstr ""
 msgid "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
 msgstr ""
 
-#: engine/header-options.php:310
+#: engine/header-options.php:311
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr ""
 
-#: engine/header-options.php:319
+#: engine/header-options.php:320
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr ""
 
@@ -887,7 +884,7 @@ msgstr ""
 msgid "Three columns. Content in the middle"
 msgstr ""
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1-Beta)  #-#-#-#-#
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1.1-Beta)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: engine/layout-options.php:60
 msgid "One column, no sidebar"
@@ -968,17 +965,17 @@ msgstr ""
 msgid "Select which role of users will interact with your site"
 msgstr ""
 
-#: engine/maintenance-mode-options.php:130
+#: engine/maintenance-mode-options.php:131
 msgid "Title tag"
 msgstr ""
 
-#: engine/maintenance-mode-options.php:136
+#: engine/maintenance-mode-options.php:137
 msgid ""
 "Enter the text for the <code>&lt;title&gt;... &lt;/title&gt;</code> tag. "
 "Default: <strong>%s</strong>"
 msgstr ""
 
-#: engine/maintenance-mode-options.php:259
+#: engine/maintenance-mode-options.php:260
 msgid ""
 "You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
 msgstr ""
@@ -1250,19 +1247,27 @@ msgstr ""
 msgid "Upload file and import"
 msgstr ""
 
-#: engine/theme-options.php:111
+#: engine/theme-options.php:92
+msgid "Select Image"
+msgstr ""
+
+#: engine/theme-options.php:93
+msgid "Use selected image"
+msgstr ""
+
+#: engine/theme-options.php:119
 msgid "Backup"
 msgstr ""
 
-#: engine/theme-options.php:284
+#: engine/theme-options.php:291
 msgid "Site in Maintenance"
 msgstr ""
 
-#: engine/theme-options.php:315
+#: engine/theme-options.php:322
 msgid "You are using the <a href=\"%s\"><strong>Maintenance Mode</strong></a>."
 msgstr ""
 
-#: engine/theme-options.php:329
+#: engine/theme-options.php:336
 msgid ""
 "Thank you for updating <strong>%1$s</strong>. Currently running "
 "<strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</"
@@ -1270,46 +1275,46 @@ msgid ""
 "more security, please, <a href=\"%4$s\">backup your setting</a>."
 msgstr ""
 
-#: engine/theme-options.php:335
+#: engine/theme-options.php:342
 msgid "Update completed. Back to <a href=\"%1$s\">Theme Options</a> screen"
 msgstr ""
 
-#: engine/theme-options.php:341
+#: engine/theme-options.php:348
 msgid "Update %s"
 msgstr ""
 
-#: engine/theme-options.php:668
+#: engine/theme-options.php:674
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr ""
 
-#: engine/theme-options.php:687
+#: engine/theme-options.php:693
 msgid "Debug Information"
 msgstr ""
 
-#: engine/theme-options.php:696
+#: engine/theme-options.php:702
 msgid "Current Option: <code>%s</code>"
 msgstr ""
 
-#: engine/theme-options.php:697
+#: engine/theme-options.php:703
 msgid ""
 "You can access these values through the <code>$t_em</code> global variable"
 msgstr ""
 
-#: engine/theme-options.php:711
+#: engine/theme-options.php:717
 msgid "Oops! An error has occurred. Error ID: <strong>%1$s</strong>"
 msgstr ""
 
-#: engine/theme-options.php:718
+#: engine/theme-options.php:724
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr ""
 
-#: engine/theme-options.php:737
+#: engine/theme-options.php:743
 msgid ""
 "Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
 "%s</a>."
 msgstr ""
 
-#: engine/theme-options.php:738 functions.php:2409
+#: engine/theme-options.php:744 functions.php:2386
 msgid "https://wordpress.org/"
 msgstr ""
 
@@ -1355,336 +1360,352 @@ msgid ""
 "code> tags are not needed"
 msgstr ""
 
-#: functions.php:127
+#: functions.php:148
+msgid "Welcome to %s"
+msgstr ""
+
+#: functions.php:150
+msgid ""
+"<p><strong>%s</strong> is a Theme/Framework for WordPress specially designed "
+"to create Child Themes</p>"
+msgstr ""
+
+#: functions.php:151
+msgid ""
+"<p><strong>%s</strong> offers you an ample number of options which allow you "
+"to perform your site easily</p>"
+msgstr ""
+
+#: functions.php:175 functions.php:241
+msgid "Top Menu"
+msgstr ""
+
+#: functions.php:184 functions.php:242
+msgid "Navigation Menu"
+msgstr ""
+
+#: functions.php:193 functions.php:243
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:219
 msgctxt "header image description"
 msgid "Aqua"
 msgstr ""
 
-#: functions.php:132
+#: functions.php:224
 msgctxt "header image description"
 msgid "Fire"
 msgstr ""
 
-#: functions.php:137
+#: functions.php:229
 msgctxt "header image description"
 msgid "Lime"
 msgstr ""
 
-#: functions.php:142
+#: functions.php:234
 msgctxt "header image description"
 msgid "Purple"
 msgstr ""
 
-#: functions.php:149
-msgid "Top Menu"
-msgstr ""
-
-#: functions.php:150
-msgid "Navigation Menu"
-msgstr ""
-
-#: functions.php:151
-msgid "Footer Menu"
-msgstr ""
-
-#: functions.php:442 functions.php:1655
+#: functions.php:429 functions.php:1642
 #: page-templates/template-blog-content.php:52
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#: functions.php:487
+#: functions.php:474
 msgid "Pages:"
 msgstr ""
 
-#: functions.php:491
+#: functions.php:478
 msgid "Page"
 msgstr ""
 
-#: functions.php:525
+#: functions.php:512
 msgid "Main Sidebar Widget Area"
 msgstr ""
 
-#: functions.php:527
+#: functions.php:514
 msgid "The main sidebar widget area"
 msgstr ""
 
-#: functions.php:540
+#: functions.php:527
 msgid "Alternative Sidebar Widget Area"
 msgstr ""
 
-#: functions.php:542
+#: functions.php:529
 msgid "Alternative sidebar widget area"
 msgstr ""
 
-#: functions.php:554
+#: functions.php:541
 msgid "First Footer Widget Area"
 msgstr ""
 
-#: functions.php:556
+#: functions.php:543
 msgid "The first footer widget area"
 msgstr ""
 
-#: functions.php:568
+#: functions.php:555
 msgid "Second Footer Widget Area"
 msgstr ""
 
-#: functions.php:570
+#: functions.php:557
 msgid "The second footer widget area"
 msgstr ""
 
-#: functions.php:583
+#: functions.php:570
 msgid "Third Footer Widget Area"
 msgstr ""
 
-#: functions.php:585
+#: functions.php:572
 msgid "The third footer widget area"
 msgstr ""
 
-#: functions.php:598
+#: functions.php:585
 msgid "Fourth Footer Widget Area"
 msgstr ""
 
-#: functions.php:600
+#: functions.php:587
 msgid "The fourth footer widget area"
 msgstr ""
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:631 functions.php:637
+#: functions.php:618 functions.php:624
 msgid ", "
 msgstr ""
 
-#: functions.php:644
+#: functions.php:631
 msgid "Permalink to %1$s"
 msgstr ""
 
-#: functions.php:645
+#: functions.php:632
 msgid "Permalink"
 msgstr ""
 
-#: functions.php:670 functions.php:1019 functions.php:1051 functions.php:1058
-#: functions.php:1083 functions.php:1090 functions.php:1114
+#: functions.php:657 functions.php:1006 functions.php:1038 functions.php:1045
+#: functions.php:1070 functions.php:1077 functions.php:1101
 #: page-templates/template-collapsible-content.php:58
 #: page-templates/template-tabs-content.php:65
 msgid "Edit"
 msgstr ""
 
-#: functions.php:684
+#: functions.php:671
 msgid "Leave a comment"
 msgstr ""
 
-#: functions.php:684 page-templates/template-archive.php:57
+#: functions.php:671 page-templates/template-archive.php:57
 msgid "% Comments"
 msgstr ""
 
-#: functions.php:699
+#: functions.php:686
 msgid ""
 "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" "
 "datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" "
 "rel=\"gallery\">%5$s</a></span>"
 msgstr ""
 
-#: functions.php:715
+#: functions.php:702
 msgid "Link to full-size image"
 msgstr ""
 
-#: functions.php:716
+#: functions.php:703
 msgid "Full resolution"
 msgstr ""
 
-#: functions.php:734
+#: functions.php:721
 msgid "View all post by %s"
 msgstr ""
 
-#: functions.php:770
+#: functions.php:757
 msgid "About %s"
 msgstr ""
 
-#: functions.php:775
+#: functions.php:762
 msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#: functions.php:804
+#: functions.php:791
 msgid "Author Archives: %s"
 msgstr ""
 
-#: functions.php:874
+#: functions.php:861
 msgid "%1$s Archives: %2$s"
 msgstr ""
 
-#: functions.php:903
+#: functions.php:890
 msgid "Archives for: %1$s"
 msgstr ""
 
-#: functions.php:927
+#: functions.php:914
 msgid "Daily Archives: <small>%s</small>"
 msgstr ""
 
-#: functions.php:930
+#: functions.php:917
 msgid "Monthly Archives: <small>%s</small>"
 msgstr ""
 
-#: functions.php:933
+#: functions.php:920
 msgid "Yearly Archives: <small>%s</small>"
 msgstr ""
 
-#: functions.php:936
+#: functions.php:923
 msgid "Blog Archives"
 msgstr ""
 
-#: functions.php:972
+#: functions.php:959
 msgid "Search Results for: %s"
 msgstr ""
 
-#: functions.php:1007
+#: functions.php:994
 msgid "<b class=\"fn\">%1$s</b><span class=\"says\">says:</span>"
 msgstr ""
 
-#: functions.php:1010 functions.php:1105
+#: functions.php:997 functions.php:1092
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: functions.php:1017 functions.php:1112
+#: functions.php:1004 functions.php:1099
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: functions.php:1051 functions.php:1083
+#: functions.php:1038 functions.php:1070
 msgid "Pingback:"
 msgstr ""
 
-#: functions.php:1058 functions.php:1090
+#: functions.php:1045 functions.php:1077
 msgid "Trackback:"
 msgstr ""
 
-#: functions.php:1102
+#: functions.php:1089
 msgid "<b class=\"fn\">%1$s</b> <span class=\"says\">says:</span>"
 msgstr ""
 
-#: functions.php:1165
+#: functions.php:1152
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
 "posts"
 msgstr ""
 
-#: functions.php:1166
+#: functions.php:1153
 msgid ""
 "Newer posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
 msgstr ""
 
-#: functions.php:1195
+#: functions.php:1182
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Newer "
 "posts"
 msgstr ""
 
-#: functions.php:1196
+#: functions.php:1183
 msgid ""
 "Older posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
 msgstr ""
 
-#: functions.php:1218
+#: functions.php:1205
 msgid "Page %1$s of %2$s"
 msgstr ""
 
-#: functions.php:1242
+#: functions.php:1229
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
 msgstr ""
 
-#: functions.php:1243
+#: functions.php:1230
 msgid "Password"
 msgstr ""
 
-#: functions.php:1246
+#: functions.php:1233
 msgid "Submit"
 msgstr ""
 
-#: functions.php:1806
+#: functions.php:1793
 msgid "Related Posts"
 msgstr ""
 
-#: functions.php:1821
+#: functions.php:1808
 msgid "No Related Posts"
 msgstr ""
 
-#: functions.php:2006
+#: functions.php:1993
 msgid "weeks"
 msgstr ""
 
-#: functions.php:2007
+#: functions.php:1994
 msgid "days"
 msgstr ""
 
-#: functions.php:2008
+#: functions.php:1995
 msgid "hr"
 msgstr ""
 
-#: functions.php:2009
+#: functions.php:1996
 msgid "min"
 msgstr ""
 
-#: functions.php:2010
+#: functions.php:1997
 msgid "sec"
 msgstr ""
 
-#: functions.php:2040
+#: functions.php:2027
 msgid "Home"
 msgstr ""
 
-#: functions.php:2108
+#: functions.php:2095
 msgid "Search: %s"
 msgstr ""
 
-#: functions.php:2111
+#: functions.php:2098
 msgid "Error 404"
 msgstr ""
 
-#: functions.php:2166
+#: functions.php:2153
 msgid "Page %s"
 msgstr ""
 
-#: functions.php:2184
+#: functions.php:2171
 msgid ""
 "JavaScript is required for this website to be displayed correctly.<br /> "
 "Please enable JavaScript before continuing..."
 msgstr ""
 
-#: functions.php:2204 functions.php:2272
+#: functions.php:2191 functions.php:2248
 msgid "Toggle Navigation"
 msgstr ""
 
-#: functions.php:2215 functions.php:2283
+#: functions.php:2259
 msgid "Site Navigation"
 msgstr ""
 
-#: functions.php:2370
+#: functions.php:2347
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
 "Comments"
 msgstr ""
 
-#: functions.php:2371
+#: functions.php:2348
 msgid ""
 "Newer Comments <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
 msgstr ""
 
-#: functions.php:2408
+#: functions.php:2385
 msgid ""
 "Proudly powered by: <a href=\"%1$s\" title=\"%2$s\">%3$s</a> and <a href="
 "\"%4$s\" title=\"%5$s\">%6$s</a>. Theme Name: <a href=\"%7$s\" title="
 "\"Version %8$s\">%9$s</a> by: %10$s"
 msgstr ""
 
-#: functions.php:2434
+#: functions.php:2411
 msgid ""
 "<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->"
 msgstr ""
 
-#: functions.php:2447
+#: functions.php:2424
 msgid "<!-- / %1$s WordPress theme/framework -->"
 msgstr ""
 
@@ -1879,7 +1900,7 @@ msgstr ""
 msgid "%1$s Contributors"
 msgstr ""
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1-Beta)  #-#-#-#-#
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1.1-Beta)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: inc/widgets.php:802
 msgid "Contributors"
@@ -1976,7 +1997,10 @@ msgstr ""
 msgid "Twenty'em"
 msgstr ""
 
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1.1-Beta)  #-#-#-#-#
 #. Theme URI of the plugin/theme
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1.1-Beta)  #-#-#-#-#
+#. Author URI of the plugin/theme
 msgid "https://themingisprose.com/"
 msgstr ""
 
@@ -1988,10 +2012,6 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "RogerTM"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://rogertm.com/"
 msgstr ""
 
 #. Template Name of the plugin/theme

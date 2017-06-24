@@ -116,11 +116,17 @@ function t_em_setup(){
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 	// Add theme support for Custom Logo.
-	add_theme_support( 'custom-logo', array(
-		'width'			=> 250,
-		'height'		=> 250,
+	$custom_logo = array(
 		'flex-width'	=> true,
-	) );
+		'flex-height'	=> true,
+	);
+	/**
+	 * Filters Twenty'em array for custom logo
+	 * @param array $custom_logo Array of custom logo
+	 *
+	 * @since Twenty'em 1.1.1
+	 */
+	add_theme_support( 'custom-logo', apply_filters( 't_em_filter_custom_logo', $custom_logo ) );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -129,31 +135,77 @@ function t_em_setup(){
 	$starter_content = array(
 		'widgets'	=> array(
 			'sidebar'	=> array(
-				'search',
-				'text_business_info',
-				'text_about'
+				'search'	=> array(
+					'title'	=> '',
+				),
+				'recent-posts',
+				'recent-comments',
+				'categories',
+				'archives',
 			),
 			'first-footer-widget-area'	=> array(
-				't_em_widget_contributors'
+				'text_about'	=> array(
+					'title'	=> sprintf( __( 'Welcome to %s', 't_em' ), T_EM_FRAMEWORK_NAME ),
+					'text'	=> join( '', array(
+						sprintf( __( '<p><strong>%s</strong> is a Theme/Framework for WordPress specially designed to create Child Themes</p>', 't_em' ), T_EM_FRAMEWORK_NAME ),
+						sprintf( __( '<p><strong>%s</strong> offers you an ample number of options which allow you to perform your site easily</p>', 't_em' ), T_EM_FRAMEWORK_NAME ),
+					) )
+				),
 			),
 			'second-footer-widget-area'	=> array(
-				't_em_widget_recent_posts'
+				'text_about'
 			),
 			'third-footer-widget-area'	=> array(
-				't_em_widget_feed_burner_subscribe'
+				'text_business_info',
 			),
 			'fourth-footer-widget-area'	=> array(
 				'meta',
+			),
+		),
+		'posts' => array(
+			'home',
+			'about',
+			'contact',
+			'blog'	=> array(
+				'template'	=> 'page-templates/template-blog-excerpt.php',
+			),
+		),
+		'nav_menus'	=> array(
+			'top-menu'	=> array(
+				'name'	=> __( 'Top Menu', 't_em' ),
+				'items' => array(
+					'link_home',
+					'page_about',
+					'page_blog',
+					'page_contact',
+				),
+			),
+			'navigation-menu'	=> array(
+				'name'	=> __( 'Navigation Menu', 't_em' ),
+				'items' => array(
+					'link_home',
+					'page_about',
+					'page_blog',
+					'page_contact',
+				),
+			),
+			'footer-menu'	=> array(
+				'name'	=> __( 'Footer Menu', 't_em' ),
+				'items' => array(
+					'link_home',
+					'page_about',
+					'page_blog',
+					'page_contact',
+				),
 			),
 		),
 	);
 
 	/**
 	 * Filters Twenty'em array of starter content.
+	 * @param array $starter_content Array of starter content.
 	 *
 	 * @since Twenty'em 1.1.1
-	 *
-	 * @param array $starter_content Array of starter content.
 	 */
 	$starter_content = apply_filters( 't_em_filter_starter_content', $starter_content );
 
@@ -289,6 +341,18 @@ function t_em_archive_classes( $existing_classes ){
 	return array_merge( $existing_classes, $classes );
 }
 add_filter( 'post_class', 't_em_archive_classes' );
+
+/**
+ * Custom Logo class
+ * This function is attached to the 'get_custom_logo' filter hook.
+ *
+ * @since Twenty'em 1.1.1
+ */
+function t_em_custom_logo_class( $html ){
+	$html = str_replace( 'custom-logo-link', 'custom-logo-link navbar-brand', $html );
+	return $html;
+}
+add_filter( 'get_custom_logo', 't_em_custom_logo_class' );
 
 /**
  * Archive in columns.

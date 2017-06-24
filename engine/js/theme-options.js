@@ -13,13 +13,13 @@ jQuery(document).ready(function($) {
 
 			// configuration of the media manager new instance
 			wp.media.frames.t_em_upload_media_frame = wp.media({
-				title: 'Title goes here',
+				title: t_em_l10n_admin.upm_title,
 				multiple: false,
 				library: {
 					type: 'image',
 				},
 				button: {
-					text: 'Button label goes here',
+					text: t_em_l10n_admin.upm_button,
 				}
 			});
 

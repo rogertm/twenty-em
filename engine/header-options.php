@@ -300,7 +300,7 @@ function t_em_static_header_callback(){
 	$extend_static_header .=		'</label>';
 	$extend_static_header .= 		'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
 	$extend_static_header .= 			'<input type="url" id="t-em-static-header-image-url" class="regular-text media-url" name="t_em_theme_options[static_header_img_src]" value="' . $t_em['static_header_img_src'] . '" />';
-	$extend_static_header .=			'<a href="#" id="t-em-button-static-header-image" class="button media-selector">'. __( 'Upload Media', 't_em' ) .'</a>';
+	$extend_static_header .=			'<a href="#" id="t-em-button-static-header-image" class="button media-selector">'. __( 'Upload Image', 't_em' ) .'</a>';
 	$extend_static_header .= 		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Content', 't_em' ) . '</span>';
 	$extend_static_header .=			'<textarea class="large-text" name="t_em_theme_options[static_header_content]" cols="50" rows="5">' . esc_textarea( $t_em['static_header_content'] ) . '</textarea>';
