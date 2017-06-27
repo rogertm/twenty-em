@@ -130,21 +130,22 @@ add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 /**
  * Checks if something goes wrong with the data base, in case of scratch, default set up will be
  * loaded.
- * This function is attached to the after_setup_theme() action hook.
+ * This function is attached to the 'wp' action hook.
  *
  * @global $t_em This var provide the main structure of our theme.
  * See t_em_default_theme_options() in /engine/theme-options.php file for a full list of "key => value"
  * array.
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.1.1 Hooked in 'wp' in substitution of 'after_setup_theme'
  */
 function t_em_restore_from_scratch(){
 	global $t_em;
 	// If options are empties, we load default settings.
-	if ( empty( $t_em ) )
+	if ( ! $t_em )
 		update_option( 't_em_theme_options', t_em_default_theme_options() );
 }
-add_action( 'after_setup_theme', 't_em_restore_from_scratch' );
+add_action( 'wp', 't_em_restore_from_scratch' );
 
 /**
  * Return the default options values for Twenty'em after the theme is loaded for first time. This

@@ -1,6 +1,8 @@
 == Changelog ==
 
 = 1.1.1 =
+Release Date: June 26, 2017
+* Bug Fix: t_em_restore_from_scratch() is hooked now in 'wp'
 Release Date: June 22, 2017
 * Update: Data Base version 20170622
 * Enhancement: Added the Filter Hook "t_em_filter_starter_content"
