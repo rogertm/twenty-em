@@ -63,7 +63,7 @@ $t_em_theme_data = array(
 define ( 'T_EM_SITE',													'https://themingisprose.com' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.7.3' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.8' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
