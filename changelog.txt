@@ -1,6 +1,10 @@
 == Changelog ==
 
 = 1.1.1 =
+Release Date: July 01, 2017
+* Enhancement: Theme Tags compatibles with WordPress.org
+* Enhancement: Added 'no-svg' class in <html> tag
+* Bug Fix: Added chartset meta tag
 Release Date: June 26, 2017
 * Bug Fix: t_em_restore_from_scratch() is hooked now in 'wp'
 Release Date: June 22, 2017
@@ -26,7 +30,7 @@ Release Date: June 21, 2017
 * Function Removed: "t_em_heading_site_title()",
 
 = 1.1 =
-Release Date: February 2, 2017
+Release Date: February 02, 2017
 * Bug Fix: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7
 * Enhancement: Added the Action Hook "t_em_action_header_image_before"
@@ -46,10 +50,10 @@ Release Date: February 2, 2017
 * Enhancement: Added the Maintenance Mode Option
 
 = 1.0.1 =
-Release Date: August 7, 2016
+Release Date: August 07, 2016
 * Bug Fix: Minimized all Bootstrap's jquery plugin files
 
 = 1.0 =
-Release Date: July 9, 2016
+Release Date: July 09, 2016
 
 * Initial release

@@ -117,9 +117,13 @@ function t_em_theme_layout_width(){
  */
 function t_em_head(){
 ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
+	if ( is_singular() && pings_open() ) {
+		printf( '<link rel="pingback" href="%s">' . "\n", get_bloginfo( 'pingback_url' ) );
+	}
 }
 add_action( 'wp_head', 't_em_head' );
 ?>
