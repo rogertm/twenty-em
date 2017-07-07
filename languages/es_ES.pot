@@ -2271,8 +2271,8 @@ msgstr "Twenty'em"
 
 #. Theme URI of the plugin/theme
 #. Author URI of the plugin/theme
-msgid "https://themingisprose.com/"
-msgstr "https://themingisprose.com/"
+msgid "https://themingisprose.com/twenty-em"
+msgstr "https://themingisprose.com/twenty-em"
 
 #. Description of the plugin/theme
 msgid ""

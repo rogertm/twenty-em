@@ -2001,7 +2001,7 @@ msgstr ""
 #. Theme URI of the plugin/theme
 #. #-#-#-#-#  twenty-em.pot (Twenty'em 1.1.1-Beta)  #-#-#-#-#
 #. Author URI of the plugin/theme
-msgid "https://themingisprose.com/"
+msgid "https://themingisprose.com/twenty-em"
 msgstr ""
 
 #. Description of the plugin/theme

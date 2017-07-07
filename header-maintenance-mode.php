@@ -9,7 +9,7 @@
  * @subpackage		Twenty'em
  * @author			RogerTM
  * @license			license.txt
- * @link			https://themingisprose.com/
+ * @link			https://themingisprose.com/twenty-em
  * @since 			Twenty'em 1.1
  */
 
