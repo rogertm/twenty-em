@@ -1,6 +1,8 @@
 == Changelog ==
 
 = 1.1.1 =
+Release Date: July 10, 2017
+* Enhancement: Favicon sizes support
 Release Date: July 01, 2017
 * Enhancement: Theme Tags compatibles with WordPress.org
 * Enhancement: Added 'no-svg' class in <html> tag

@@ -396,11 +396,15 @@ if ( ! function_exists( 't_em_favicon' ) ) :
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.1.1 Checks if there is a site icon, then load it.
+ * @since Twenty'em 1.1.1 Favicon sizes support.
  */
 function t_em_favicon(){
 	if ( has_site_icon() )
 		return;
-	echo '<link rel="shortcut icon" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon.png' .'" />'."\n";
+	echo '<link rel="icon" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon-32x32.png' .'" sizes="32x32" />'."\n";
+	echo '<link rel="icon" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon-192x192.png' .'" sizes="192x192" />'."\n";
+	echo '<link rel="apple-touch-icon-precomposed" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon-180x180.png' .'" sizes="180x180" />'."\n";
+	echo '<link rel="msapplication-TileImaged" href="'. T_EM_THEME_DIR_IMG_URL . '/favicon-270x270.png' .'" />'."\n";
 }
 endif; // function t_em_favicon()
 add_action( 'wp_head', 't_em_favicon' );
