@@ -33,7 +33,7 @@ function t_em_theme_options_help(){
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
-				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header image.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Front Page Options</strong>: Default Values: Just another WordPress front page', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Archive Options</strong>: Default Values: The content.', 't_em' ) . '</li>' .
 				'<li>' . sprintf( __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: <code>%1$spx</code>.', 't_em' ),
@@ -53,7 +53,7 @@ function t_em_theme_options_help(){
 
 	$general_help =	'<p>' . __( '<strong>General Options</strong>: By checking the check boxes below, you may enable or not this options.<br />Note: All of then are check by default.', 't_em' ) . '</p>' .
 					'<ul>' .
-						'<li>' . sprintf( __( '<strong>%1$s.com and WordPress.org links</strong>: If this option is set to true, a link to WordPress.org and %1$s.com will be displayed in your site footer area.', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>%1$s and WordPress credit</strong>: If this option is set to true, a link to WordPress and %1$s sites will be displayed in your site footer area.', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</li>' .
 						'<li>' . __( '<strong>Featured image in single post</strong>: Useful to show featured post image on top of a post (above the title) when it is displayed.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Related posts in single post</strong>: Display a list of related posts, sorts by post tags, at the end of each post.', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Breadcrumb path</strong>: Just another <em>You are here</em> script :)', 't_em' ) . '</li>' .
@@ -61,10 +61,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-discussion.php#page_comments' ) ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Enable comments in single pages</strong>: This option lets you allow comments in single pages. If true, the option <a href="%1$s">Allow people to post comments on new articles</a> in <strong>Default article settings</strong> must be true too.', 't_em' ),
 								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
-						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes allways will be enable', 't_em' ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Favicon URL</strong>: <a href="%1$s">Upload</a> and/or select from your <a href="%2$s">Media Library</a> a favicon to your site.', 't_em' ),
-								 admin_url( 'media-new.php' ),
-								 admin_url( 'upload.php' ) ) . '</li>' .
+						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes always will be enable', 't_em' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -76,13 +73,13 @@ function t_em_theme_options_help(){
 
 	$header_help =	'<p>' . __( '<strong>Header Options</strong>: With this options you are able to configure your header site section.', 't_em' ) . '</p>' .
 					'<ul>' .
-						'<li>' . __( '<strong>No header image</strong>: This options will be check by default at the first time the theme is loaded, and display <em>just another WordPress header</em>: Site Title and Tagline.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>No header</strong>: This options will be check by default at the first time the theme is loaded.', 't_em' ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Header image</strong>: This option let you select an image to be shown at the top of your site by uploading from your computer or choosing from your media library. Go to your <a href="%1$s">Header Settings</a> to customize this section. In addition you may active the checkbox "<strong>Display featured image in single posts and pages</strong>", it will show in single post or page the Featured Image attached to it.', 't_em' ),
 								 admin_url( 'customize.php?autofocus[control]=header_image' ) ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favourite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Slider</strong>: With this options active, a carousel with posts under your favorite category will be displayed in header area. The first time your theme is loaded, your default post category (%1$s) will be actives for this option. Go to your <a href="%2$s">Writing Settings</a> to manage your default category.', 't_em' ),
 								 get_cat_name( get_option( 'default_category' ) ),
 								 admin_url( 'options-writing.php' ) ). '</li>' .
-						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to featured URL&#8217;s, also add <a href="%2$s">icons</a> to these buttons.', 't_em' ),
+						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to certain URL, also add <a href="%2$s">icons</a> to these buttons.', 't_em' ),
 								 admin_url( 'upload.php' ),
 								 T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</li>' .
 					'</ul>';
@@ -171,9 +168,11 @@ function t_em_theme_options_help(){
 	$debug_help = '<p>' . __( '<strong>Little Debug Information</strong>:', 't_em' ) . '</p>' .
 					'<ul>' .
 						'<li>' . sprintf( __( '<strong>Framework Name</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_NAME ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Version</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Framework Version</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Status</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION_STATUS ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Data Base Version</strong>: <code>%s</code>', 't_em' ), T_EM_DB_VERSION ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Current Theme</strong>: <code>%s</code>', 't_em' ), $t_em_theme_data['Name'] ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Theme Version</strong>: <code>%s</code>', 't_em' ), $t_em_theme_data['Version'] ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
