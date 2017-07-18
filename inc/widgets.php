@@ -65,8 +65,9 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
 			$thumbnail_align = 'media-left pull-left';
+		$thumbnail = ( ! isset( $instance['thumbnail'] ) ) ? null : $instance['thumbnail'];
 
-		if ( 1 == $instance['thumbnail'] ) :
+		if ( $thumbnail ) :
 
 			// We pass to the query only posts with images attached
 			$all_posts = get_posts( array( 'posts_per_page' => 99 ) );
@@ -177,9 +178,9 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
 		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
 		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
@@ -191,7 +192,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
 }
@@ -242,8 +243,10 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
 			$thumbnail_align = 'media-left pull-left';
+		$thumbnail = ( ! isset( $instance['thumbnail'] ) ) ? null : $instance['thumbnail'];
+		$comment_count = ( ! isset( $instance['comment_count'] ) ) ? null : $instance['comment_count'];
 
-		if ( 1 == $instance['thumbnail'] ) :
+		if ( $thumbnail ) :
 
 			// We pass to the query only posts with images attached
 			$all_posts = get_posts( array( 'posts_per_page' => 99, 'orderby' => 'comment_count', 'order' => 'DESC' ) );
@@ -295,9 +298,9 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 			<div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail media-object', $post->ID ) ?></div>
 			<div class="t-em-popular-post-content media-body">
 				<h4 class="media-heading"><a class="t-em-popular-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
-			<?php if ( $instance['comment_count'] == 1 ) :
-					$total_comments = wp_count_comments( $post->ID );
-					$comments_number = sprintf( _n( '- 0 Comments', '- %1$s Comments', $total_comments->total_comments, 't_em' ), $total_comments->total_comments );
+			<?php if ( $comment_count ) :
+					$total_comments = get_comments_number( $post->ID );
+					$comments_number = sprintf( _n( '- %s Comment', '- %s Comments', $total_comments, 't_em' ), $total_comments );
 			?>
 				<small><?php echo $comments_number; ?></small>
 			<?php endif; ?>
@@ -367,9 +370,9 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
 		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
 		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
@@ -384,7 +387,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		<label for="<?php echo $this->get_field_id( 'comment_count' ) ?>"><?php _e( 'Show comment count', 't_em' ) ?></label></p>
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
 }
@@ -431,6 +434,7 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 			$thumbnail_width = get_option( 'medium_size_w' );
 		if ( empty( $instance['thumbnail_height'] ) || ! $thumbnail_height = absint( $instance['thumbnail_height'] ) )
 			$thumbnail_height = get_option( 'medium_size_h' );
+		$columns = ( ! isset( $instance['columns'] ) ) ? 2 : $instance['columns'];
 
 		// We pass to the query only posts with images attached
 		$all_posts = get_posts( array( 'posts_per_page' => 99 ) );
@@ -464,12 +468,12 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 <?php
 				$i = 0;
 				foreach ( $gallery_posts as $post ) : setup_postdata( $post );
-					if ( 0 == $i % $instance['columns'] ) :
-						$one_column_gallery = ( 1 == $instance['columns'] ) ? 't-em-one-column-gallery' : null;
+					if ( 0 == $i % $columns ) :
+						$one_column_gallery = ( 1 == $columns ) ? 't-em-one-column-gallery' : null;
 						echo '</div>';
 						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
-					$span = 12 / $instance['columns'];
+					$span = 12 / $columns;
 					echo '<div class="col-xs-'. $span .' col-md-'. $span .'">';
 						t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-img-gallery-thumbnail', $post->ID );
 					echo '</div>';
@@ -526,13 +530,13 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of images to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
 		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
 		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="text" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
+		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id( 'columns' ) ?>"><?php _e( 'Show images in columns', 't_em' ); ?></label>
@@ -588,6 +592,9 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 't_em' );
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : get_option( 'posts_per_page' );
+		$author_name_url = ( ! isset( $instance['author_name_url'] ) ) ? null : $instance['author_name_url'];
+		$avatar = ( ! isset( $instance['avatar'] ) ) ? 1 : $instance['avatar'];
+
 		if ( ! $number )
  			$number = get_option( 'posts_per_page' );
 
@@ -604,10 +611,10 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 			_prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
 
 			foreach ( (array) $comments as $comment) {
-				$comment_author_link = ( 1 == $instance['author_name_url'] ) ? get_comment_author_link() . _x( ' on ', 'Recent Comment Widget', 't_em' ) : null;
+				$comment_author_link = ( $author_name_url ) ? get_comment_author_link() . _x( ' on ', 'Recent Comment Widget', 't_em' ) : null;
 ?>
 			<li class="t-em-recent-comments media">
-			<?php if ( 1 == $instance['avatar'] ) : ?>
+			<?php if ( $avatar ) : ?>
 				<div class="media-left pull-left">
 					<figure class="media-object" title="<?php echo get_comment_author(); ?>"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></figure>
 				</div>
@@ -655,7 +662,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'author_name_url' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'author_name_url' ) ?>" <?php checked( $author_name_url ) ?>>
 		<label for="<?php echo $this->get_field_id( 'author_name_url' ) ?>"><?php _e( 'Show author name/url', 't_em' ) ?></label><br />
@@ -805,6 +812,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		$orderby = empty( $instance['orderby'] ) ? 'display_name' : $instance['orderby'];
 		$order = empty( $instance['order'] ) ? 'ASC' : $instance['order'];
 		$exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
+		$avatar = ( ! isset( $instance['avatar'] ) ) ? 0 : $instance['avatar'];
 
 		$user_fields = array(
 			'fields'	=> 'ID',
@@ -829,7 +837,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 ?>
 			<li class="t-em-contributor-wrapper media">
 <?php
-			if ( 1 == $instance['avatar'] ) :
+			if ( $avatar ) :
 ?>
 				<div class="media-left pull-left">
 					<div class="media-object"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
@@ -902,7 +910,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			</select>
 		</p>
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of users to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 		<p>
 			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:', 't_em' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
 			<br />

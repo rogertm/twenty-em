@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.1.2 =
+Release Date: July 18, 2017
+* Bug Fix: Fix some E_NOTICE in widgets
+
 = 1.1.1 =
 Release Date: July 10, 2017
 * Enhancement: Favicon sizes support
