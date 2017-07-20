@@ -169,30 +169,29 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		$thumbnail_height = isset( $instance['thumbnail_height'] ) ? absint( $instance['thumbnail_height'] ) : get_option( 'thumbnail_size_h' );
 		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'media-left pull-left';
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'thumbnail' ) ?>" <?php checked( $thumbnail ) ?> />
-		<label for="<?php echo $this->get_field_id( 'thumbnail' ) ?>"><?php _e( 'Display only posts with thumbnails', 't_em' ) ?></label></p>
+			<label for="<?php echo $this->get_field_id( 'thumbnail' ) ?>"><?php _e( 'Display only posts with thumbnails', 't_em' ) ?></label></p>
 
 
-		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
-		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
-		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
-		</p>
+		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?></p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3"></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
-		<select id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-			<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
-		</select>
-		</p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3"></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label><br>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
+				<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
+			</select></p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
 }
@@ -362,32 +361,32 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		$thumbnail_align = isset($instance['thumbnail_align']) ? esc_attr($instance['thumbnail_align']) : 'media-left pull-left';
 		$comment_count = isset( $instance['comment_count'] ) ? (bool) $instance['comment_count'] : false;
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'thumbnail' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'thumbnail' ) ?>" <?php checked( $thumbnail ) ?> />
-		<label for="<?php echo $this->get_field_id( 'thumbnail' ) ?>"><?php _e( 'Display only posts with thumbnails', 't_em' ) ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'thumbnail' ) ?>"><?php _e( 'Display only posts with thumbnails', 't_em' ) ?></label><br />
 
-		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
-		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
-		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
-		</p>
+		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label>
-		<select id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-			<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
-			<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
-		</select>
-		</p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3"></p>
 
-		<input type="checkbox" id="<?php echo $this->get_field_id( 'comment_count' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'comment_count' ) ?>" <?php checked( $comment_count ) ?> />
-		<label for="<?php echo $this->get_field_id( 'comment_count' ) ?>"><?php _e( 'Show comment count', 't_em' ) ?></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3"></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label><br>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
+				<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
+			</select></p>
+
+		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'comment_count' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'comment_count' ) ?>" <?php checked( $comment_count ) ?> />
+			<label for="<?php echo $this->get_field_id( 'comment_count' ) ?>"><?php _e( 'Show comment count', 't_em' ) ?></label></p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 <?php
 	}
 }
@@ -526,26 +525,26 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 		$thumbnail_height = isset( $instance['thumbnail_height'] ) ? absint( $instance['thumbnail_height'] ) : get_option( 'medium_size_h' );
 		$columns = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 2;
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of images to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of images to show:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 
-		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?><br>
-		<label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3">
-		<label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label>
-		<input id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3">
-		</p>
+		<p><?php _e( 'Thumbnail dimensions:', 't_em' ) ?></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'columns' ) ?>"><?php _e( 'Show images in columns', 't_em' ); ?></label>
-		<select id="<?php echo $this->get_field_id( 'columns' ) ?>" name="<?php echo $this->get_field_name( 'columns' ) ?>">
-			<option value="1" <?php selected( 1, $columns, true ) ?>><?php _ex( '1', 'number of columns in image gallery widget', 't_em' ) ?></option>
-			<option value="2" <?php selected( 2, $columns, true ) ?>><?php _ex( '2', 'number of columns in image gallery widget', 't_em' ) ?></option>
-			<option value="3" <?php selected( 3, $columns, true ) ?>><?php _ex( '3', 'number of columns in image gallery widget', 't_em' ) ?></option>
-		</select>
-		</p>
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>"><?php _e( 'Width:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_width' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_width' ) ?>" value="<?php echo $thumbnail_width ?>" size="3"></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>"><?php _e( 'Height:', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_height' ) ?>" type="number" name="<?php echo $this->get_field_name( 'thumbnail_height' ) ?>" value="<?php echo $thumbnail_height ?>" size="3"></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'columns' ) ?>"><?php _e( 'Show images in columns', 't_em' ); ?></label><br>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'columns' ) ?>" name="<?php echo $this->get_field_name( 'columns' ) ?>">
+				<option value="1" <?php selected( 1, $columns, true ) ?>><?php _ex( '1', 'number of columns in image gallery widget', 't_em' ) ?></option>
+				<option value="2" <?php selected( 2, $columns, true ) ?>><?php _ex( '2', 'number of columns in image gallery widget', 't_em' ) ?></option>
+				<option value="3" <?php selected( 3, $columns, true ) ?>><?php _ex( '3', 'number of columns in image gallery widget', 't_em' ) ?></option>
+			</select></p>
 <?php
 	}
 }
@@ -658,17 +657,17 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		$author_name_url = isset( $instance['author_name_url'] ) ? (bool) $instance['author_name_url'] : false;
 		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : true;
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 't_em' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'author_name_url' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'author_name_url' ) ?>" <?php checked( $author_name_url ) ?>>
-		<label for="<?php echo $this->get_field_id( 'author_name_url' ) ?>"><?php _e( 'Show author name/url', 't_em' ) ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'author_name_url' ) ?>"><?php _e( 'Show author name/url', 't_em' ) ?></label></p>
 
-		<input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
-		<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>
+		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
+			<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>
 <?php
 	}
 }
@@ -762,17 +761,17 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		$feedburner_description = isset( $instance['feedburner_description'] ) ? esc_attr( $instance['feedburner_description'] ) : null;
 		$feedburner_placeholder = isset( $instance['feedburner_placeholder'] ) ? esc_attr( $instance['feedburner_placeholder'] ) : null;
 ?>
-		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('feedburner_uri') ?>"><?php _e( 'Your FeedBurner URI (required)', 't_em' ) ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_uri'); ?>" name="<?php echo $this->get_field_name('feedburner_uri'); ?>" type="text" value="<?php echo $feedburner_uri; ?>" required /></p>
+		<p><label for="<?php echo $this->get_field_id('feedburner_uri') ?>"><?php _e( 'Your FeedBurner URI (required)', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('feedburner_uri'); ?>" name="<?php echo $this->get_field_name('feedburner_uri'); ?>" type="text" value="<?php echo $feedburner_uri; ?>" required /></p>
 
-		<p><label for="<?php echo $this->get_field_id('feedburner_description') ?>"><?php _e( 'Short text inviting users to subscribe...', 't_em' ) ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_description'); ?>" name="<?php echo $this->get_field_name('feedburner_description'); ?>" type="text" value="<?php echo $feedburner_description; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('feedburner_description') ?>"><?php _e( 'Short text inviting users to subscribe...', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('feedburner_description'); ?>" name="<?php echo $this->get_field_name('feedburner_description'); ?>" type="text" value="<?php echo $feedburner_description; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('feedburner_placeholder') ?>"><?php _e( 'Form placeholder', 't_em' ) ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('feedburner_placeholder'); ?>" name="<?php echo $this->get_field_name('feedburner_placeholder'); ?>" type="text" value="<?php echo $feedburner_placeholder; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('feedburner_placeholder') ?>"><?php _e( 'Form placeholder', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('feedburner_placeholder'); ?>" name="<?php echo $this->get_field_name('feedburner_placeholder'); ?>" type="text" value="<?php echo $feedburner_placeholder; ?>" /></p>
 <?php
 	}
 }
@@ -892,30 +891,29 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		$avatar = isset( $instance['avatar'] ) ? (bool) $instance['avatar'] : false;
 		$exclude = esc_attr( $instance['exclude'] );
 ?>
-		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-		<p>
-			<label for="<?php echo $this->get_field_id('orderby') ?>"><?php _e( 'Order by', 't_em' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('orderby') ?>"><?php _e( 'Order by', 't_em' ); ?></label><br>
 			<select name="<?php echo $this->get_field_name('orderby') ?>" id="<?php echo $this->get_field_id('orderby'); ?>" class="widefat">
 				<option value="display_name" <?php selected( $instance['orderby'], 'display_name' ) ?>><?php _e( 'User Name', 't_em' ) ?></option>
 				<option value="post_count" <?php selected( $instance['orderby'], 'post_count' ) ?>><?php _e( 'Post Count', 't_em' ) ?></option>
 				<option value="ID" <?php selected( $instance['orderby'], 'ID' ) ?>><?php _e( 'User ID', 't_em' ) ?></option>
-			</select>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('order') ?>"><?php _e( 'Order', 't_em' ); ?></label>
+			</select></p>
+
+		<p><label for="<?php echo $this->get_field_id('order') ?>"><?php _e( 'Order', 't_em' ); ?></label><br>
 			<select name="<?php echo $this->get_field_name('order') ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
 				<option value="ASC" <?php selected( $instance['order'], 'ASC' ) ?>><?php _e( 'Ascending', 't_em' ) ?></option>
 				<option value="DESC" <?php selected( $instance['order'], 'DESC' ) ?>><?php _e( 'Descending', 't_em' ) ?></option>
-			</select>
-		</p>
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of users to show:', 't_em' ); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
-		<p>
-			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:', 't_em' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
-			<br />
-			<small><?php _e( 'Users IDs, separated by commas.', 't_em' ); ?></small>
-		</p>
+			</select></p>
+
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of users to show:', 't_em' ); ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude:', 't_em' ); ?></label><br>
+			<input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" /><br>
+			<small><?php _e( 'Users IDs, separated by commas.', 't_em' ); ?></small></p>
+
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'avatar' ); ?>" class="checkbox" name="<?php echo $this->get_field_name( 'avatar' ); ?>" <?php checked( $avatar ); ?>>
 		<label for="<?php echo $this->get_field_id( 'avatar' ); ?>"><?php _e( 'Display users avatar', 't_em' ); ?></label></p>
 <?php
