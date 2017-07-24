@@ -234,15 +234,11 @@ function t_em_theme_backup_help(){
  */
 function t_em_theme_sidebar_help(){
 	$help_sidebar = '<p><strong>' . __( 'For more information:', 't_em' ) . '</strong></p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Visit %2$s home page</a>', 't_em' ),
-						T_EM_SITE .'/?page-request=home&amp;ver=' . T_EM_FRAMEWORK_VERSION, T_EM_FRAMEWORK_NAME ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_SITE . '/?page-request=license&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_SITE . '/?page-request=docs&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Change Log</a>', 't_em' ), T_EM_SITE . '/?page-request=log&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">News</a>', 't_em' ), T_EM_SITE . '/?page-request=blog&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Feedback</a>', 't_em' ), T_EM_SITE . '/?page-request=contact&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Share your Testimony</a>', 't_em' ), T_EM_SITE . '/?page-request=testimonies&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</p>' .
-				'<p>' . sprintf( __( '<a href="%1$s">Donate</a>', 't_em' ), 'https://paypal.me/themingisprose' ) . '</p>';
+				'<p>' . sprintf( __( '<a href="%1$s">Visit %2$s home page</a>', 't_em' ), T_EM_SITE, T_EM_FRAMEWORK_NAME ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">License</a>', 't_em' ), T_EM_SITE . '/licencia' ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Documentation</a>', 't_em' ), T_EM_WIKI ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Blog</a>', 't_em' ), T_EM_BLOG ) . '</p>' .
+				'<p>' . sprintf( __( '<a href="%1$s">Donate</a>', 't_em' ), T_EM_PAYPAL ) . '</p>';
 
 	return $help_sidebar;
 }

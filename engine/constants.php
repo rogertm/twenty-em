@@ -61,6 +61,9 @@ $t_em_theme_data = array(
 
 // Twenty'em Site
 define ( 'T_EM_SITE',													'https://themingisprose.com/twenty-em' );
+define ( 'T_EM_BLOG',													'https://themingisprose.com/twenty-em/blog' );
+define ( 'T_EM_WIKI', 													'https://github.com/rogertm/twenty-em/wiki' );
+define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
 define ( 'T_EM_WORDPRESS_VERSION',										'4.8' );
