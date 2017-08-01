@@ -667,8 +667,12 @@ if ( ! function_exists( 't_em_comments_link' ) ) :
  * Pluggable Function: Prints HTML with leave comment link
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.1.2 	Checks if current post type supports comments
  */
 function t_em_comments_link(){
+	$post_type = get_post_type( get_the_ID() );
+	if ( ! post_type_supports( $post_type, 'comments' ) )
+		return;
 ?>
 	<div class="entry-comments"><span class="icomoon-comments icomoon"></span>
 	<span class="comment-link">
@@ -2404,6 +2408,18 @@ function t_em_credit(){
 	endif;
 }
 add_action( 't_em_action_site_info_bottom', 't_em_credit' );
+
+/**
+ * Checks if individual pages supports comments
+ *
+ * @since Twenty'em 1.1.2
+ */
+function t_em_pages_supports_comments(){
+	global $t_em;
+	if ( ! $t_em['single_page_comments'] )
+		remove_post_type_support( 'page', 'comments' );
+}
+add_action( 'init', 't_em_pages_supports_comments' );
 
 /**
  * Render some Theme and Framework Data as meta description.
