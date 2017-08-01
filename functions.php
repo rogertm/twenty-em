@@ -515,7 +515,7 @@ function t_em_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Main Sidebar Widget Area', 't_em' ),
 			'id' => 'sidebar',
-			'description' => __( 'The main sidebar widget area', 't_em' ),
+			'description' => __( 'Add widgets here to appear in your main sidebar', 't_em' ),
 			'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -530,7 +530,7 @@ function t_em_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Alternative Sidebar Widget Area', 't_em' ),
 			'id' => 'sidebar-alt',
-			'description' => __( 'Alternative sidebar widget area', 't_em' ),
+			'description' => __( 'Add widgets here to appear in your alternative sidebar', 't_em' ),
 			'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -544,7 +544,7 @@ function t_em_widgets_init() {
 			register_sidebar( array(
 				'name' => __( 'First Footer Widget Area', 't_em' ),
 				'id' => 'first-footer-widget-area',
-				'description' => __( 'The first footer widget area', 't_em' ),
+				'description' => __( 'Add widgets here to appear in your footer sidebar', 't_em' ),
 				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="widget-title">',
@@ -558,7 +558,7 @@ function t_em_widgets_init() {
 			register_sidebar( array(
 				'name' => __( 'Second Footer Widget Area', 't_em' ),
 				'id' => 'second-footer-widget-area',
-				'description' => __( 'The second footer widget area', 't_em' ),
+				'description' => __( 'Add widgets here to appear in your footer sidebar', 't_em' ),
 				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="widget-title">',
@@ -573,7 +573,7 @@ function t_em_widgets_init() {
 			register_sidebar( array(
 				'name' => __( 'Third Footer Widget Area', 't_em' ),
 				'id' => 'third-footer-widget-area',
-				'description' => __( 'The third footer widget area', 't_em' ),
+				'description' => __( 'Add widgets here to appear in your footer sidebar', 't_em' ),
 				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="widget-title">',
@@ -588,7 +588,7 @@ function t_em_widgets_init() {
 			register_sidebar( array(
 				'name' => __( 'Fourth Footer Widget Area', 't_em' ),
 				'id' => 'fourth-footer-widget-area',
-				'description' => __( 'The fourth footer widget area', 't_em' ),
+				'description' => __( 'Add widgets here to appear in your footer sidebar', 't_em' ),
 				'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="widget-title">',

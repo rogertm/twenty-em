@@ -299,7 +299,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 				<h4 class="media-heading"><a class="t-em-popular-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
 			<?php if ( $comment_count ) :
 					$total_comments = get_comments_number( $post->ID );
-					$comments_number = sprintf( _n( '- %s Comment', '- %s Comments', $total_comments, 't_em' ), $total_comments );
+					$comments_number = sprintf( _n( '- 1 Comment', '- %s Comments', $total_comments, 't_em' ), $total_comments );
 			?>
 				<small><?php echo $comments_number; ?></small>
 			<?php endif; ?>

@@ -2,19 +2,19 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twenty'em 1.0-Beta\n"
+"Project-Id-Version: Twenty'em 1.1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-07-12 01:35-0400\n"
-"PO-Revision-Date: 2017-07-12 01:43-0400\n"
-"Last-Translator: RogerTM <mail@rogertm.com>\n"
-"Language-Team: hi@themingisprose.com\n"
+"POT-Creation-Date: 2017-08-01 01:56-0400\n"
+"PO-Revision-Date: 2017-08-01 02:05-0400\n"
+"Last-Translator: RogerTM <hi@themingisprose.com>\n"
+"Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 404.php:28
 msgid "Error 404 - Page not found!"
@@ -35,7 +35,7 @@ msgid_plural "%1$s responses to: %2$s"
 msgstr[0] "Una respuesta para: %2$s"
 msgstr[1] "%1$s respuestas para: %2$s"
 
-#: comments.php:43 functions.php:675 page-templates/template-archive.php:57
+#: comments.php:43 functions.php:679 page-templates/template-archive.php:57
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] "1 Comentario"
@@ -88,7 +88,7 @@ msgstr ""
 "Al parecer no podemos encontrar lo que estás buscando. Tal vez puedas usar "
 "el buscador y obtener mejores resultados."
 
-#: content.php:24 functions.php:742 functions.php:1407
+#: content.php:24 functions.php:746 functions.php:1411
 #: page-templates/template-archive.php:55
 #: page-templates/template-blog-content.php:45
 #: page-templates/template-sitemap.php:64
@@ -1029,31 +1029,19 @@ msgstr "Para más información:"
 msgid "<a href=\"%1$s\">Visit %2$s home page</a>"
 msgstr "<a href=\"%1$s\">Visita la página de %2$s</a>"
 
-#: engine/help.php:239
+#: engine/help.php:238
 msgid "<a href=\"%1$s\">License</a>"
 msgstr "<a href=\"%1$s\">Licencia</a>"
 
-#: engine/help.php:240
+#: engine/help.php:239
 msgid "<a href=\"%1$s\">Documentation</a>"
 msgstr "<a href=\"%1$s\">Documentación</a>"
 
+#: engine/help.php:240
+msgid "<a href=\"%1$s\">Blog</a>"
+msgstr "<a href=\"%1$s\">Blog</a>"
+
 #: engine/help.php:241
-msgid "<a href=\"%1$s\">Change Log</a>"
-msgstr "<a href=\"%1$s\">Registro de cambios</a>"
-
-#: engine/help.php:242
-msgid "<a href=\"%1$s\">News</a>"
-msgstr "<a href=\"%1$s\">Noticias</a>"
-
-#: engine/help.php:243
-msgid "<a href=\"%1$s\">Feedback</a>"
-msgstr "<a href=\"%1$s\">Contáctanos</a>"
-
-#: engine/help.php:244
-msgid "<a href=\"%1$s\">Share your Testimony</a>"
-msgstr "<a href=\"%1$s\">Comparte tus testimonios</a>"
-
-#: engine/help.php:245
 msgid "<a href=\"%1$s\">Donate</a>"
 msgstr "<a href=\"%1$s\">Donar</a>"
 
@@ -1541,7 +1529,7 @@ msgid ""
 msgstr ""
 "Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
 
-#: engine/theme-options.php:745 functions.php:2390
+#: engine/theme-options.php:745 functions.php:2394
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
@@ -1647,7 +1635,7 @@ msgctxt "header image description"
 msgid "Purple"
 msgstr "Púrpura"
 
-#: functions.php:433 functions.php:1646
+#: functions.php:433 functions.php:1650
 #: page-templates/template-blog-content.php:52
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
@@ -1665,47 +1653,39 @@ msgid "Main Sidebar Widget Area"
 msgstr "Área de widgets principal"
 
 #: functions.php:518
-msgid "The main sidebar widget area"
-msgstr "El área de widtgets principal"
+msgid "Add widgets here to appear in your main sidebar"
+msgstr ""
+"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
+"principal"
 
 #: functions.php:531
 msgid "Alternative Sidebar Widget Area"
 msgstr "Área de widgets alternativa"
 
 #: functions.php:533
-msgid "Alternative sidebar widget area"
-msgstr "Área de widgets alternativa"
+msgid "Add widgets here to appear in your alternative sidebar"
+msgstr ""
+"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
+"alternativa"
 
 #: functions.php:545
 msgid "First Footer Widget Area"
 msgstr "Primera área de widget inferior"
 
-#: functions.php:547
-msgid "The first footer widget area"
-msgstr "Primera área de widget inferior"
+#: functions.php:547 functions.php:561 functions.php:576 functions.php:591
+msgid "Add widgets here to appear in your footer sidebar"
+msgstr "Añade aquí los widgets que quieres que aparezcan en el pie"
 
 #: functions.php:559
 msgid "Second Footer Widget Area"
-msgstr "Segunda área de widget inferior"
-
-#: functions.php:561
-msgid "The second footer widget area"
 msgstr "Segunda área de widget inferior"
 
 #: functions.php:574
 msgid "Third Footer Widget Area"
 msgstr "Tercera área de widget inferior"
 
-#: functions.php:576
-msgid "The third footer widget area"
-msgstr "Tercera área de widget inferior"
-
 #: functions.php:589
 msgid "Fourth Footer Widget Area"
-msgstr "Cuarta área de widget inferior"
-
-#: functions.php:591
-msgid "The fourth footer widget area"
 msgstr "Cuarta área de widget inferior"
 
 #. Translators: used between list items, there is a space after the comma.
@@ -1721,22 +1701,22 @@ msgstr "Enlace permanente a %1$s"
 msgid "Permalink"
 msgstr "Enlace permanente"
 
-#: functions.php:661 functions.php:1010 functions.php:1042 functions.php:1049
-#: functions.php:1074 functions.php:1081 functions.php:1105
+#: functions.php:661 functions.php:1014 functions.php:1046 functions.php:1053
+#: functions.php:1078 functions.php:1085 functions.php:1109
 #: page-templates/template-collapsible-content.php:58
 #: page-templates/template-tabs-content.php:65
 msgid "Edit"
 msgstr "Editar"
 
-#: functions.php:675
+#: functions.php:679
 msgid "Leave a comment"
 msgstr "Dejar un comentario"
 
-#: functions.php:675 page-templates/template-archive.php:57
+#: functions.php:679 page-templates/template-archive.php:57
 msgid "% Comments"
 msgstr "% Comentarios"
 
-#: functions.php:690
+#: functions.php:694
 msgid ""
 "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" "
 "datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" "
@@ -1746,84 +1726,84 @@ msgstr ""
 "datetime=\"%1$s\">%2$s</time> en <a href=\"%3$s\" title=\"Return to %4$s\" "
 "rel=\"gallery\">%5$s</a></span>"
 
-#: functions.php:706
+#: functions.php:710
 msgid "Link to full-size image"
 msgstr "Enlace a imagen a tamaño completo"
 
-#: functions.php:707
+#: functions.php:711
 msgid "Full resolution"
 msgstr "A toda resolución"
 
-#: functions.php:725
+#: functions.php:729
 msgid "View all post by %s"
 msgstr "Ver todas las entradas de %s"
 
-#: functions.php:761
+#: functions.php:765
 msgid "About %s"
 msgstr "Acerca de %s"
 
-#: functions.php:766
+#: functions.php:770
 msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Ver todas las entradas de %s <span class=\"meta-nav\">&raquo;</span>"
 
-#: functions.php:795
+#: functions.php:799
 msgid "Author Archives: %s"
 msgstr "Archivo del Autor: %s"
 
-#: functions.php:865
+#: functions.php:869
 msgid "%1$s Archives: %2$s"
 msgstr "Archivos de %1$s: %2$s"
 
-#: functions.php:894
+#: functions.php:898
 msgid "Archives for: %1$s"
 msgstr "Archivo de: %1$s"
 
-#: functions.php:918
+#: functions.php:922
 msgid "Daily Archives: <small>%s</small>"
 msgstr "Archivo del día: <small>%s</small>"
 
-#: functions.php:921
+#: functions.php:925
 msgid "Monthly Archives: <small>%s</small>"
 msgstr "Archivo del mes: <small>%s</small>"
 
-#: functions.php:924
+#: functions.php:928
 msgid "Yearly Archives: <small>%s</small>"
 msgstr "Archivo del año: <small>%s</small>"
 
-#: functions.php:927
+#: functions.php:931
 msgid "Blog Archives"
 msgstr "Archivo del blog"
 
-#: functions.php:963
+#: functions.php:967
 msgid "Search Results for: %s"
 msgstr "Resultados de búsqueda para: %s"
 
-#: functions.php:998
+#: functions.php:1002
 msgid "<b class=\"fn\">%1$s</b><span class=\"says\">says:</span>"
 msgstr "<b class=\"fn\">%1$s</b><span class=\"says\">dijo:</span>"
 
-#: functions.php:1001 functions.php:1096
+#: functions.php:1005 functions.php:1100
 msgid "Your comment is awaiting moderation."
 msgstr "Su comentario está en espera de moderación."
 
 #. translators: 1: date, 2: time
-#: functions.php:1008 functions.php:1103
+#: functions.php:1012 functions.php:1107
 msgid "%1$s at %2$s"
 msgstr "%1$s a %2$s"
 
-#: functions.php:1042 functions.php:1074
+#: functions.php:1046 functions.php:1078
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: functions.php:1049 functions.php:1081
+#: functions.php:1053 functions.php:1085
 msgid "Trackback:"
 msgstr "Trackback:"
 
-#: functions.php:1093
+#: functions.php:1097
 msgid "<b class=\"fn\">%1$s</b> <span class=\"says\">says:</span>"
 msgstr "<b class=\"fn\">%1$s</b> <span class=\"says\">dijo:</span>"
 
-#: functions.php:1156
+#: functions.php:1160
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
 "posts"
@@ -1831,7 +1811,7 @@ msgstr ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Entradas "
 "antiguas"
 
-#: functions.php:1157
+#: functions.php:1161
 msgid ""
 "Newer posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
@@ -1839,7 +1819,7 @@ msgstr ""
 "Entradas recientes <span class=\"meta-nav icomoon-double-angle-right icomoon"
 "\"></span>"
 
-#: functions.php:1186
+#: functions.php:1190
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Newer "
 "posts"
@@ -1847,7 +1827,7 @@ msgstr ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Entradas "
 "recientes"
 
-#: functions.php:1187
+#: functions.php:1191
 msgid ""
 "Older posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
@@ -1855,11 +1835,11 @@ msgstr ""
 "Entradas antiguas <span class=\"meta-nav icomoon-double-angle-right icomoon"
 "\"></span>"
 
-#: functions.php:1209
+#: functions.php:1213
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
 
-#: functions.php:1233
+#: functions.php:1237
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
@@ -1867,59 +1847,59 @@ msgstr ""
 "Este contenido está protegido con contraseña. Para verlo introduce la "
 "contraseña a continuación:"
 
-#: functions.php:1234
+#: functions.php:1238
 msgid "Password"
 msgstr "Contraseña"
 
-#: functions.php:1237
+#: functions.php:1241
 msgid "Submit"
 msgstr "Enviar"
 
-#: functions.php:1797
+#: functions.php:1801
 msgid "Related Posts"
 msgstr "Entradas relacionadas"
 
-#: functions.php:1812
+#: functions.php:1816
 msgid "No Related Posts"
 msgstr "No hay entradas relacionadas"
 
-#: functions.php:1997
+#: functions.php:2001
 msgid "weeks"
 msgstr "semanas"
 
-#: functions.php:1998
+#: functions.php:2002
 msgid "days"
 msgstr "días"
 
-#: functions.php:1999
+#: functions.php:2003
 msgid "hr"
 msgstr "hr"
 
-#: functions.php:2000
+#: functions.php:2004
 msgid "min"
 msgstr "min"
 
-#: functions.php:2001
+#: functions.php:2005
 msgid "sec"
 msgstr "seg"
 
-#: functions.php:2031
+#: functions.php:2035
 msgid "Home"
 msgstr "Inicio"
 
-#: functions.php:2099
+#: functions.php:2103
 msgid "Search: %s"
 msgstr "Búsqueda: %s"
 
-#: functions.php:2102
+#: functions.php:2106
 msgid "Error 404"
 msgstr "Error 404"
 
-#: functions.php:2157
+#: functions.php:2161
 msgid "Page %s"
 msgstr "Página %s"
 
-#: functions.php:2175
+#: functions.php:2179
 msgid ""
 "JavaScript is required for this website to be displayed correctly.<br /> "
 "Please enable JavaScript before continuing..."
@@ -1927,15 +1907,15 @@ msgstr ""
 "Para que este sitio funcione correctamente necesita JavaScript.<br />Por "
 "favor activa JavaScript antes de contrinuar..."
 
-#: functions.php:2195 functions.php:2252
+#: functions.php:2199 functions.php:2256
 msgid "Toggle Navigation"
 msgstr "Alternar Navegación"
 
-#: functions.php:2263
+#: functions.php:2267
 msgid "Site Navigation"
 msgstr "Navegación"
 
-#: functions.php:2351
+#: functions.php:2355
 msgid ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
 "Comments"
@@ -1943,7 +1923,7 @@ msgstr ""
 "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
 "Comentarios Antiguos"
 
-#: functions.php:2352
+#: functions.php:2356
 msgid ""
 "Newer Comments <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
 "span>"
@@ -1951,7 +1931,7 @@ msgstr ""
 "Comentarios Recientes <span class=\"meta-nav icomoon-double-angle-right "
 "icomoon\"></span>"
 
-#: functions.php:2389
+#: functions.php:2393
 msgid ""
 "Proudly powered by: <a href=\"%1$s\" title=\"%2$s\">%3$s</a> and <a href="
 "\"%4$s\" title=\"%5$s\">%6$s</a>. Theme Name: <a href=\"%7$s\" title="
@@ -1961,14 +1941,14 @@ msgstr ""
 "\"%5$s\">%6$s</a>. Tema: <a href=\"%7$s\" title=\"Version %8$s\">%9$s</a> "
 "por: %10$s"
 
-#: functions.php:2415
+#: functions.php:2431
 msgid ""
 "<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->"
 msgstr ""
 "<!-- Este sitio está hecho con %1$s WordPress theme/framework v%2$s %3$s - "
 "%4$s -->"
 
-#: functions.php:2428
+#: functions.php:2444
 msgid "<!-- / %1$s WordPress theme/framework -->"
 msgstr "<!-- / %1$s WordPress theme/framework -->"
 
@@ -2003,47 +1983,47 @@ msgstr "%1$s Entradas Recientes"
 msgid "Recent Posts"
 msgstr "Entradas Recientes"
 
-#: inc/widgets.php:171 inc/widgets.php:362 inc/widgets.php:525
-#: inc/widgets.php:654 inc/widgets.php:758 inc/widgets.php:887
+#: inc/widgets.php:172 inc/widgets.php:364 inc/widgets.php:528
+#: inc/widgets.php:660 inc/widgets.php:764 inc/widgets.php:894
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/widgets.php:175 inc/widgets.php:366
+#: inc/widgets.php:176 inc/widgets.php:368
 msgid "Display only posts with thumbnails"
 msgstr "Mostrar solo entradas con imágenes adjuntas"
 
-#: inc/widgets.php:178 inc/widgets.php:368 inc/widgets.php:531
+#: inc/widgets.php:179 inc/widgets.php:370 inc/widgets.php:534
 msgid "Thumbnail dimensions:"
-msgstr "Dimensiones de la imagen en miniatura"
+msgstr "Dimensiones de la imagen en miniatura:"
 
-#: inc/widgets.php:179 inc/widgets.php:369 inc/widgets.php:532
+#: inc/widgets.php:180 inc/widgets.php:372 inc/widgets.php:536
 msgid "Width:"
-msgstr "Ancho"
+msgstr "Ancho:"
 
-#: inc/widgets.php:181 inc/widgets.php:371 inc/widgets.php:534
+#: inc/widgets.php:183 inc/widgets.php:375 inc/widgets.php:539
 msgid "Height:"
-msgstr "Alto"
+msgstr "Alto:"
 
-#: inc/widgets.php:185 inc/widgets.php:375
+#: inc/widgets.php:186 inc/widgets.php:378
 msgid "Thumbnail alignment:"
-msgstr "Alineado de la imagen en miniatura"
+msgstr "Alineado de la imagen en miniatura:"
 
-#: inc/widgets.php:187 inc/widgets.php:377
+#: inc/widgets.php:188 inc/widgets.php:380
 msgctxt "widget thumbnail alignment"
 msgid "left"
 msgstr "izquierda"
 
-#: inc/widgets.php:188 inc/widgets.php:378
+#: inc/widgets.php:189 inc/widgets.php:381
 msgctxt "widget thumbnail alignment"
 msgid "right"
 msgstr "derecha"
 
-#: inc/widgets.php:189 inc/widgets.php:379
+#: inc/widgets.php:190 inc/widgets.php:382
 msgctxt "widget thumbnail alignment"
 msgid "no align"
 msgstr "sin alinear"
 
-#: inc/widgets.php:193 inc/widgets.php:386
+#: inc/widgets.php:193 inc/widgets.php:388
 msgid "Number of posts to show:"
 msgstr "Número de entradas a mostrar:"
 
@@ -2059,158 +2039,158 @@ msgstr "%1$s Entradas Populares"
 msgid "Popular Posts"
 msgstr "Entradas Populares"
 
-#: inc/widgets.php:300
-msgid "- 0 Comments"
-msgid_plural "- %1$s Comments"
-msgstr[0] "- 0 Comentarios"
-msgstr[1] "- %1$s Comentarios"
+#: inc/widgets.php:302
+msgid "- 1 Comment"
+msgid_plural "- %s Comments"
+msgstr[0] "- 1 Comentario"
+msgstr[1] "- %s Comentarios"
 
-#: inc/widgets.php:384
+#: inc/widgets.php:386
 msgid "Show comment count"
 msgstr "Mostrar cantidad de comentarios"
 
-#: inc/widgets.php:400
+#: inc/widgets.php:402
 msgid "Display all images on your site attached to a post"
 msgstr "Muestra todas las imágenes que estén adjuntas a una entrada"
 
-#: inc/widgets.php:401
+#: inc/widgets.php:403
 msgid "%1$s Image Gallery"
 msgstr "%1$s Galería de Imágenes"
 
-#: inc/widgets.php:426
+#: inc/widgets.php:428
 msgid "Image Gallery"
 msgstr "Galería de Imágenes"
 
-#: inc/widgets.php:528
+#: inc/widgets.php:531
 msgid "Number of images to show:"
 msgstr "Número de imágenes a mostrar:"
 
-#: inc/widgets.php:538
+#: inc/widgets.php:542
 msgid "Show images in columns"
 msgstr "Mostrar imágenes en columnas"
 
-#: inc/widgets.php:540
+#: inc/widgets.php:544
 msgctxt "number of columns in image gallery widget"
 msgid "1"
 msgstr "1"
 
-#: inc/widgets.php:541
+#: inc/widgets.php:545
 msgctxt "number of columns in image gallery widget"
 msgid "2"
 msgstr "2"
 
-#: inc/widgets.php:542
+#: inc/widgets.php:546
 msgctxt "number of columns in image gallery widget"
 msgid "3"
 msgstr "3"
 
-#: inc/widgets.php:557
+#: inc/widgets.php:560
 msgid "The most recent comments"
 msgstr "Los comentarios más recientes"
 
-#: inc/widgets.php:558
+#: inc/widgets.php:561
 msgid "%1$s Recent Comments"
 msgstr "%1$s Comentarios Recientes"
 
-#: inc/widgets.php:588
+#: inc/widgets.php:591
 msgid "Recent Comments"
 msgstr "Comentarios Recientes"
 
-#: inc/widgets.php:607
+#: inc/widgets.php:613
 msgctxt "Recent Comment Widget"
 msgid " on "
 msgstr " en "
 
-#: inc/widgets.php:657
+#: inc/widgets.php:663
 msgid "Number of comments to show:"
 msgstr "Número de comentarios a mostrar:"
 
-#: inc/widgets.php:661
+#: inc/widgets.php:667
 msgid "Show author name/url"
 msgstr "Mostrar nombre y url del autor"
 
-#: inc/widgets.php:664 inc/widgets.php:912
+#: inc/widgets.php:670 inc/widgets.php:918
 msgid "Display users avatar"
 msgstr "Mostrar avatar del usuario"
 
-#: inc/widgets.php:677 inc/widgets.php:699
+#: inc/widgets.php:683 inc/widgets.php:705
 msgid "Subscribe via FeedBurner"
 msgstr "Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:678
+#: inc/widgets.php:684
 msgid "%1$s Subscribe via FeedBurner"
 msgstr "%1$s Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:702
+#: inc/widgets.php:708
 msgid "Subscribe"
 msgstr "Suscribirse"
 
-#: inc/widgets.php:713
+#: inc/widgets.php:719
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: inc/widgets.php:761
+#: inc/widgets.php:767
 msgid "Your FeedBurner URI (required)"
 msgstr "FeedBurner URI (obligatorio)"
 
-#: inc/widgets.php:764
+#: inc/widgets.php:770
 msgid "Short text inviting users to subscribe..."
 msgstr "Un texto pequeño invitando a los usuarios a suscribirse..."
 
-#: inc/widgets.php:767
+#: inc/widgets.php:773
 msgid "Form placeholder"
 msgstr "Form placeholder"
 
-#: inc/widgets.php:781
+#: inc/widgets.php:787
 msgid "A list of your site&#8217;s contributors"
 msgstr "Una lista de colaboradores de tu blog"
 
-#: inc/widgets.php:782
+#: inc/widgets.php:788
 msgid "%1$s Contributors"
 msgstr "%1$s Colaboradores"
 
 #. Template Name of the plugin/theme
-#: inc/widgets.php:802
+#: inc/widgets.php:808
 msgid "Contributors"
 msgstr "Colaboradores"
 
-#: inc/widgets.php:890
+#: inc/widgets.php:897
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: inc/widgets.php:892
+#: inc/widgets.php:899
 msgid "User Name"
 msgstr "Nombre de usuario"
 
-#: inc/widgets.php:893
+#: inc/widgets.php:900
 msgid "Post Count"
 msgstr "Número de entradas"
 
-#: inc/widgets.php:894
+#: inc/widgets.php:901
 msgid "User ID"
 msgstr "ID de usuario"
 
-#: inc/widgets.php:898
+#: inc/widgets.php:904
 msgid "Order"
 msgstr "Orden"
 
-#: inc/widgets.php:900
+#: inc/widgets.php:906
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: inc/widgets.php:901
+#: inc/widgets.php:907
 msgid "Descending"
 msgstr "Descendente"
 
-#: inc/widgets.php:904
+#: inc/widgets.php:910
 msgid "Number of users to show:"
 msgstr "Número de usuarios a mostrar"
 
-#: inc/widgets.php:907
+#: inc/widgets.php:913
 msgid "Exclude:"
 msgstr "Excluir:"
 
-#: inc/widgets.php:909
+#: inc/widgets.php:915
 msgid "Users IDs, separated by commas."
 msgstr "ID de usuarios, separados por comas."
 
@@ -2305,6 +2285,34 @@ msgstr "Mapa del Sitio"
 #. Template Name of the plugin/theme
 msgid "Tabs Content"
 msgstr "Contenido por Pestañas"
+
+#~ msgid "The main sidebar widget area"
+#~ msgstr "El área de widtgets principal"
+
+#~ msgid "Alternative sidebar widget area"
+#~ msgstr "Área de widgets alternativa"
+
+#~ msgid "- %s Comment"
+#~ msgid_plural "- %s Comments"
+#~ msgstr[0] "- %s Comment"
+#~ msgstr[1] "- %s Comments"
+
+#~ msgid "<a href=\"%1$s\">Change Log</a>"
+#~ msgstr "<a href=\"%1$s\">Registro de cambios</a>"
+
+#~ msgid "<a href=\"%1$s\">News</a>"
+#~ msgstr "<a href=\"%1$s\">Noticias</a>"
+
+#~ msgid "<a href=\"%1$s\">Feedback</a>"
+#~ msgstr "<a href=\"%1$s\">Contáctanos</a>"
+
+#~ msgid "<a href=\"%1$s\">Share your Testimony</a>"
+#~ msgstr "<a href=\"%1$s\">Comparte tus testimonios</a>"
+
+#~ msgid "- 0 Comments"
+#~ msgid_plural "- %1$s Comments"
+#~ msgstr[0] "- 0 Comentarios"
+#~ msgstr[1] "- %1$s Comentarios"
 
 #~ msgid "<strong>Header Options</strong>: Default Values: No header image."
 #~ msgstr ""
