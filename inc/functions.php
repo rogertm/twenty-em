@@ -69,10 +69,13 @@ function t_em_add_bootstrap_class( $section ){
 							   'three-column-content-middle' ) );
 
 	// #main-content and three-column or ( two-column or one-column )
-	if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
+	/*if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
 		$bootstrap_classes[] = 'col-md-9';
 	elseif ( 'main-content' == $section && ( $two_column || $one_column || ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' && $three_column ) ) ) :
 		$bootstrap_classes[] = 'col-md-12';
+	endif;*/
+	if ( 'main-content' == $section ) :
+		$bootstrap_classes[] = 'row';
 	endif;
 	// #content and three-column or one-column
 	if ( 'content' == $section && $three_column ) :
