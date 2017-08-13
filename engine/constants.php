@@ -70,7 +70,7 @@ define ( 'T_EM_WORDPRESS_VERSION',										'4.8.1' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'[Bootstrap v-4.0.0]' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.2 [Bootstrap v-4.0.0]' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20170622' ); // In date format Ymd
 
