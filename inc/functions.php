@@ -79,7 +79,7 @@ function t_em_add_bootstrap_class( $section ){
 	endif;
 	// #content and three-column or one-column
 	if ( 'content' == $section && $three_column ) :
-		$bootstrap_classes[] = 'col-md-8';
+		$bootstrap_classes[] = 'col-md-6';
 	elseif ( 'content' == $section && $one_column ) :
 		$bootstrap_classes[] = 'col-md-12';
 	endif;
@@ -90,7 +90,7 @@ function t_em_add_bootstrap_class( $section ){
 	endif;
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
-		$bootstrap_classes[] = 'col-md-4';
+		$bootstrap_classes[] = 'col-md-3';
 		$bootstrap_classes[] = 'widget-area';
 	endif;
 	// #sidebar-alt and three-column

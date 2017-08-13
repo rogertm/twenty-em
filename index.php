@@ -26,13 +26,25 @@
 get_header(); ?>
 
 		<section id="main-content" <?php t_em_add_bootstrap_class( 'main-content' ); ?>>
+			<?php
+				global $t_em;
+				if ( $t_em['layout_set'] == 'three-column-content-middle'
+						|| $t_em['layout_set'] == 'three-column-content-right' ) :
+					get_sidebar( 'alt' );
+				endif;
+			?>
 			<section id="content" role="main" <?php t_em_add_bootstrap_class( 'content' ); ?>>
 				<?php t_em_action_content_before(); ?>
 				<?php t_em_loop(); ?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
+			<?php
+				global $t_em;
+				if ( $t_em['layout_set'] == 'three-column-content-left' ) :
+					get_sidebar( 'alt' );
+				endif;
+			?>
 		</section><!-- #main-content -->
-		<?php get_sidebar( 'alt' ); ?>
 
 <?php get_footer(); ?>
