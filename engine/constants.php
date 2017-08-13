@@ -66,20 +66,16 @@ define ( 'T_EM_WIKI', 													'https://github.com/rogertm/twenty-em/wiki' )
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.8' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.8.1' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'1.1.2' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'[Bootstrap v-4.0.0]' );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20170622' ); // In date format Ymd
 
 // Third Party Softwares
-define ( 'T_EM_BOOTSTRAP_VERSION',										'3.3.7' );
-
-require_once get_template_directory() . '/inc/less-php/Version.php';
-define ( 'T_EM_LESS_PHP_VERSION',										Less_version::version );
-define ( 'T_EM_LESS_VERSION',											Less_version::less_version );
+define ( 'T_EM_BOOTSTRAP_VERSION',										'4.0.0-beta' );
 
 // Theme Directory Path
 define( 'T_EM_THEME_DIR_PATH', 											get_template_directory() );
@@ -105,6 +101,7 @@ define ( 'T_EM_THEME_DIR_IMG_PATH',										T_EM_THEME_DIR_PATH . '/images' );
 define ( 'T_EM_THEME_DIR_JS_PATH',										T_EM_THEME_DIR_PATH . '/js' );
 define ( 'T_EM_THEME_DIR_FONTS_PATH',									T_EM_THEME_DIR_PATH . '/fonts' );
 define ( 'T_EM_THEME_DIR_TEMPLATES_PATH',								T_EM_THEME_DIR_PATH . '/page-templates' );
+define ( 'T_EM_THEME_DIR_BOOTSTRAP_PATH',								T_EM_THEME_DIR_PATH . '/bootstrap' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
@@ -115,6 +112,7 @@ define ( 'T_EM_THEME_DIR_JS_URL',										T_EM_THEME_DIR_URL . '/js' );
 define ( 'T_EM_THEME_DIR_FONTS_URL',									T_EM_THEME_DIR_URL . '/fonts' );
 define ( 'T_EM_THEME_DIR_INC_URL',										T_EM_THEME_DIR_URL . '/inc' );
 define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/page-templates' );
+define ( 'T_EM_THEME_DIR_BOOTSTRAP_URL',								T_EM_THEME_DIR_URL . '/bootstrap' );
 
 /**
  * Register default values through constants

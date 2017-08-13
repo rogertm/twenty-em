@@ -28,7 +28,7 @@ function t_em_enqueue_compiled_style(){
 	$options = array( 'compress' => true );
 	wp_enqueue_style( 'style-less', t_em_lessphp_compiler( $less_files, $options ), '', $t_em_theme_data['Version'], 'all' );
 }
-add_action( 'wp_enqueue_scripts', 't_em_enqueue_compiled_style', 5 );
+// add_action( 'wp_enqueue_scripts', 't_em_enqueue_compiled_style', 5 );
 
 /**
  * Register Style Sheet and Javascript to beautify the Twenty'em theme
@@ -41,6 +41,14 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Load theme layout width
 	wp_enqueue_style( 't-em-width', t_em_theme_layout_width() );
+
+	// Get Bootstrap
+	wp_register_style( 'bootstrap', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap.min.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'bootstrap-grid', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap-grid.min.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'bootstrap-reboot', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap-reboot.min.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_enqueue_style( 'bootstrap' );
+	wp_enqueue_style( 'bootstrap-grid' );
+	wp_enqueue_style( 'bootstrap-reboot' );
 
 	/**
 	 * Adds JavaScript to pages with the comment form to support
@@ -60,20 +68,20 @@ function t_em_enqueue_styles_and_scripts(){
 
 	// Register Carousel Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
-		t_em_register_bootstrap_plugin( 'carousel.min.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
+		t_em_register_bootstrap_plugin( 'carousel.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
 	endif;
 
 	// Register Collapse Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-collapsible-content.php' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse.min.js' );
+		t_em_register_bootstrap_plugin( 'collapse.js' );
 	endif;
 	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse.min.js' );
+		t_em_register_bootstrap_plugin( 'collapse.js' );
 	endif;
 
 	// Register Tab Bootstrap Plugins when needed
 	if ( is_page_template( 'page-templates/template-tabs-content.php' ) ) :
-		t_em_register_bootstrap_plugin( 'tab.min.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
+		t_em_register_bootstrap_plugin( 'tab.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
 	endif;
 
 	// Countdown jQuery plugin for Maintenance Mode
