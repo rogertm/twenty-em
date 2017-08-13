@@ -36,8 +36,7 @@ function t_em_theme_options_help(){
 				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Front Page Options</strong>: Default Values: Just another WordPress front page', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Archive Options</strong>: Default Values: The content.', 't_em' ) . '</li>' .
-				'<li>' . sprintf( __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas. Site width: <code>%1$spx</code>.', 't_em' ),
-						 T_EM_LAYOUT_WIDTH_DEFAULT_VALUE ) . '</li>' .
+				'<li>' . __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Maintenance Mode Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
@@ -121,11 +120,7 @@ function t_em_theme_options_help(){
 		)
 	);
 
-	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. You may decide where you want your(s) side(s) bar(s), in case you need one.', 't_em' ) . '</p>' .
-					'<p>' . sprintf( __( 'And also enter the value (in pixels) you wish to be your site width. Default: <code>%1$s</code>, Max: <code>%2$s</code>, Min: <code>%3$s</code>.', 't_em' ),
-							T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
-							T_EM_LAYOUT_WIDTH_MAX_VALUE,
-							T_EM_LAYOUT_WIDTH_MIN_VALUE ) . '</p>';
+	$layout_help =	'<p>' . __( '<strong>Layout Options</strong>: This options do not need to be explained, really. You may decide where you want your(s) side(s) bar(s), in case you need one.', 't_em' ) . '</p>';
 
 	$screen->add_help_tab( array(
 		'title'		=> __( 'Layout Options', 't_em' ),

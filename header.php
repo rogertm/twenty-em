@@ -30,7 +30,7 @@
 <div id="wrap" class="hfeed">
 	<?php t_em_action_header_before(); ?>
 	<header id="header">
-		<div id="branding" role="banner" class="wrapper container">
+		<div id="branding" role="banner" class="container">
 			<?php t_em_action_header_inside_before() ?>
 			<div class="branding-inner row">
 				<div class="col-md-6">
@@ -48,5 +48,5 @@
 
 	<div id="main">
 		<?php t_em_action_main_before(); ?>
-		<div id="inner-main" class="wrapper container">
+		<div id="inner-main" class="container">
 

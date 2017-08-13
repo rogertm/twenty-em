@@ -39,9 +39,6 @@ function t_em_enqueue_styles_and_scripts(){
 	// Load default style sheet style.css
 	wp_enqueue_style( 'style-t-em', get_stylesheet_uri(), '', $t_em_theme_data['Version'], 'all' );
 
-	// Load theme layout width
-	wp_enqueue_style( 't-em-width', t_em_theme_layout_width() );
-
 	// Get Bootstrap
 	wp_register_style( 'bootstrap', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap.min.css', array(), $t_em_theme_data['Version'], 'all' );
 	wp_register_style( 'bootstrap-grid', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap-grid.min.css', array(), $t_em_theme_data['Version'], 'all' );
@@ -105,20 +102,6 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
-
-/**
- * Get the theme width set in theme options
- */
-function t_em_theme_layout_width(){
-	global $t_em;
-?>
-<style type="text/css" media="all">
-	.wrapper{
-		max-width: <?php echo $t_em['layout_width']; ?>px;
-	}
-</style>
-<?php
-}
 
 /**
  * The Head tags

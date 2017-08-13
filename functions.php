@@ -1402,7 +1402,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 				</ol><!-- .carousel-indicators -->
 				<div class="carousel-inner">
 <?php 			foreach ( $slider_posts as $post ) : setup_postdata( $post );
-					$thumbnail = t_em_image_resize( $t_em['layout_width'], $t_em['slider_height'], $post->ID );
+					$thumbnail = t_em_image_resize( 1200, $t_em['slider_height'], $post->ID );
 ?>
 					<div class="item">
 						<img alt="<?php the_title(); ?>" src="<?php echo $thumbnail ?>" />
@@ -2191,7 +2191,7 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
 function t_em_top_menu(){
 ?>
 	<div id="top-menu" role="navigation">
-		<div class="wrapper container">
+		<div class="container">
 			<nav class="navbar">
 			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
 				<div class="navbar-header">
@@ -2248,7 +2248,7 @@ if ( ! function_exists( 't_em_navigation_menu' ) ) :
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
-		<div class="wrapper container">
+		<div class="container">
 			<nav class="navbar">
 			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 				<div class="navbar-header">

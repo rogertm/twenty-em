@@ -241,7 +241,6 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		// Layout Options
 		'layout_set'									=> 'two-column-content-left',
 		'footer_set'									=> 'four-footer-widget',
-		'layout_width'									=> T_EM_LAYOUT_WIDTH_DEFAULT_VALUE,
 		'layout_fluid_width'							=> '',
 		// Social Networks Options
 		'twitter_set'									=> '',
@@ -495,13 +494,6 @@ function t_em_theme_options_validate( $input ){
 			$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
 		endif;
 
-		// Layout Width values: default: 960, max: 1600, min: 600.
-		if ( ( $input['layout_width'] < T_EM_LAYOUT_WIDTH_MIN_VALUE || $input['layout_width'] > T_EM_LAYOUT_WIDTH_MAX_VALUE ) || empty( $input['layout_width'] ) || ! is_numeric( $input['layout_width'] ) ) :
-			$input['layout_width'] = T_EM_LAYOUT_WIDTH_DEFAULT_VALUE;
-		else :
-			$input['layout_width'] = $input['layout_width'];
-		endif;
-
 		// Bootstrap Carousel Interval: default: 5000, max: 10000, min: 1000.
 		if ( ( $input['bootstrap_carousel_interval'] < T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE || $input['bootstrap_carousel_interval'] > T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE ) || empty( $input['bootstrap_carousel_interval'] ) || ! is_numeric( $input['bootstrap_carousel_interval'] ) ) :
 			$input['bootstrap_carousel_interval'] = T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE;
@@ -515,7 +507,6 @@ function t_em_theme_options_validate( $input ){
 			'bootstrap_carousel_interval',
 			'excerpt_thumbnail_width',
 			'excerpt_thumbnail_height',
-			'layout_width',
 		) as $int ) :
 			$input[$int] = wp_filter_nohtml_kses( $input[$int] );
 		endforeach;

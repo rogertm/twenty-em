@@ -35,7 +35,7 @@
 ?>
 		<div id="site-info">
 			<?php t_em_action_site_info_before(); ?>
-			<div id="inner-site-info" class="wrapper container">
+			<div id="inner-site-info" class="container">
 				<div class="row">
 					<div id="site-info-before" class="col-md-12">
 						<?php t_em_action_site_info_top(); ?>

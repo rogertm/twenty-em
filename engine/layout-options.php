@@ -121,19 +121,14 @@ function t_em_footer_options( $footer_options = '' ){
  * @return string HTML Text box form.
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2 	Deleted "layout_width" option
  */
 function t_em_layout_width(){
 	global $t_em;
 
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend option-group">';
-	$layout_width .= 	'<header>'. __( 'Layout Width', 't_em' ) .'</header>';
-	$layout_width .= 	'<div class="layout text-option layout-width">';
-	$layout_width .= 		'<label>';
-	$layout_width .= 		'<span>'. sprintf( __( 'Enter the value you wish to be your site width. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>.', 't_em' ), T_EM_LAYOUT_WIDTH_DEFAULT_VALUE, T_EM_LAYOUT_WIDTH_MAX_VALUE, T_EM_LAYOUT_WIDTH_MIN_VALUE ) .'</span>';
-	$layout_width .= 			'<input type="number" name="t_em_theme_options[layout_width]" value="'.$t_em['layout_width'].'" max="'. T_EM_LAYOUT_WIDTH_MAX_VALUE .'" min="'. T_EM_LAYOUT_WIDTH_MIN_VALUE .'" /><span class="unit">px</span>';
-	$layout_width .= 		'</label>';
-	$layout_width .= 	'</div>';
+	$layout_width .= 	'<header>'. __( 'Layout Fluid', 't_em' ) .'</header>';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
 	$checked_option = checked( $t_em['layout_fluid_width'], '1', false );
@@ -151,9 +146,6 @@ add_action( 't_em_admin_action_layout_options_after', 't_em_layout_width' );
  * Render the Layout setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
- *
- * @uses t_em_layout_width() Display a text box into Layout Options panel where you may enter
- * your theme width.
  *
  * @global $t_em.
  *
