@@ -1,6 +1,6 @@
 #Ignore files
-cache
-cache/*.*
+.sass-cache
+.sass-cache/*.*
 t-em.sublime-project
 t-em.sublime-workspace
 TODO

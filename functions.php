@@ -1703,7 +1703,7 @@ endif; // function t_em_user_social_network()
  * @since Twenty'em 1.0
  */
 function t_em_display_user_social_network(){
-	t_em_user_social_network( 't-em', '', 'text-right' );
+	t_em_user_social_network( 't-em', '', 'list-inline text-right', 'list-inline-item' );
 }
 add_action( 't_em_action_site_info_right', 't_em_display_user_social_network' );
 
@@ -2183,6 +2183,36 @@ function t_em_javascript_required(){
 endif; // function t_em_javascript_required()
 add_action( 't_em_action_top', 't_em_javascript_required' );
 
+/**
+ * Add Bootstrap classes to navbar "li" items
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_nav_menu_css_class( $classes, $item, $args ){
+	if ( $args->theme_location == 'footer-menu' ) :
+		$classes[] = 'list-inline-item';
+	elseif ( $args->theme_location == 'top-menu' || $args->theme_location == 'navigation-menu' ) :
+		$classes[] = 'nav-item';
+	endif;
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 't_em_nav_menu_css_class', 10, 3 );
+
+/**
+ * Add Bootstrap classes to navbar "anchor" items
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_nav_menu_link_attributes( $attr, $item, $args ){
+	if ( $args->theme_location == 'footer-menu' ) :
+		$attr['class'] = '';
+	elseif ( $args->theme_location == 'top-menu' || $args->theme_location == 'navigation-menu' ) :
+		$attr['class'] = 'nav-link';
+	endif;
+	return $attr;
+}
+add_filter( 'nav_menu_link_attributes', 't_em_nav_menu_link_attributes', 10, 3 );
+
 if ( ! function_exists( 't_em_top_menu' ) ) :
 /**
  * Pluggable Function: Top menu.
@@ -2191,29 +2221,24 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
 function t_em_top_menu(){
 ?>
 	<div id="top-menu" role="navigation">
-		<div class="container">
-			<nav class="navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
 			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-menu">
-						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				<?php
-					/**
-					 * Filter the navbar brand
-					 *
-					 * @param string $brand HTML containing the navbar brand
-					 */
-					$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
-					$brand = get_custom_logo() . '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
-					echo apply_filters( 't_em_filter_top_menu_brand', $brand );
-				?>
-				</div><!-- .navbar-header -->
-				<?php
-					if ( has_nav_menu( 'top-menu' ) ) :
+			<?php
+				/**
+				 * Filter the navbar brand
+				 *
+				 * @param string $brand HTML containing the navbar brand
+				 */
+				$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
+				$brand = get_custom_logo() . '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
+				echo apply_filters( 't_em_filter_top_menu_brand', $brand );
+			?>
+				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-top-menu">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			<?php
+				if ( has_nav_menu( 'top-menu' ) ) :
 					wp_nav_menu( array(
 							/**
 							 * Filter the menu depth
@@ -2224,16 +2249,16 @@ function t_em_top_menu(){
 							 */
 							'theme_location'	=> 'top-menu',
 							'container_id'		=> 'site-top-menu',
-							'container_class'	=> 'collapse navbar-collapse navbar-right',
-							'menu_class'		=> 'nav navbar-nav menu',
+							'container_class'	=> 'collapse navbar-collapse',
+							'menu_class'		=> 'navbar-nav rm-auto',
 							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 0 ),
 						)
 					);
-					endif;
-				?>
+				endif;
+			?>
 			<?php do_action( 't_em_action_top_menu_navbar_after' ) ?>
-			</nav>
-		</div>
+			</div>
+		</nav>
 	</div>
 <?php
 }
@@ -2248,45 +2273,40 @@ if ( ! function_exists( 't_em_navigation_menu' ) ) :
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
-		<div class="container">
-			<nav class="navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
 			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
-						<span class="sr-only"><?php _e( 'Toggle Navigation', 't_em' ) ?></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				<?php
-					/**
-					 * Filter the navbar brand
-					 *
-					 * @param string $brand HTML containing the navbar brand
-					 */
-					$brand = '<div class="navbar-brand visible-xs-block">' . __( 'Site Navigation', 't_em' ) . '</div>';
-					echo apply_filters( 't_em_filter_navigation_menu_brand', $brand );
-				?>
-				</div><!-- .navbar-header -->
-				<?php wp_nav_menu( array(
-							/**
-							 * Filter the menu depth
-							 *
-							 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
-							 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
-							 * @since Twenty'em 1.0
-							 */
-							'theme_location'	=> 'navigation-menu',
-							'container_id'		=> 'site-navigation-menu',
-							'container_class'	=> 'collapse navbar-collapse',
-							'menu_class'		=> 'nav navbar-nav menu',
-							'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 0 ),
-						)
-					);
-				?>
+			<?php
+				/**
+				 * Filter the navbar brand
+				 *
+				 * @param string $brand HTML containing the navbar brand
+				 */
+				$brand = '<div class="navbar-brand">' . __( 'Site Navigation', 't_em' ) . '</div>';
+				echo apply_filters( 't_em_filter_navigation_menu_brand', $brand );
+			?>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<?php wp_nav_menu( array(
+						/**
+						 * Filter the menu depth
+						 *
+						 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
+						 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
+						 * @since Twenty'em 1.0
+						 */
+						'theme_location'	=> 'navigation-menu',
+						'container_id'		=> 'site-navigation-menu',
+						'container_class'	=> 'collapse navbar-collapse',
+						'menu_class'		=> 'navbar-nav rm-auto',
+						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 0 ),
+					)
+				);
+			?>
 			<?php do_action( 't_em_action_navigation_menu_navbar_after' ) ?>
-			</nav>
-		</div>
+			</div>
+		</nav>
 	</div>
 <?php
 endif;
@@ -2313,7 +2333,7 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 			'container'			=> 'nav',
 			'container_id'		=> 'footer-menu',
 			'container_class'	=> '',
-			'menu_class'		=> 'list-inline text-right menu',
+			'menu_class'		=> 'list-inline text-right',
 			'depth'				=> apply_filters( 't_em_filter_footer_menu_depth', 1 ),
 		)
 	);

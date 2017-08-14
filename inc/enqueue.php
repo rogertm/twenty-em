@@ -40,12 +40,8 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_enqueue_style( 'style-t-em', get_stylesheet_uri(), '', $t_em_theme_data['Version'], 'all' );
 
 	// Get Bootstrap
-	wp_register_style( 'bootstrap', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap.min.css', array(), $t_em_theme_data['Version'], 'all' );
-	wp_register_style( 'bootstrap-grid', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap-grid.min.css', array(), $t_em_theme_data['Version'], 'all' );
-	wp_register_style( 'bootstrap-reboot', T_EM_THEME_DIR_BOOTSTRAP_URL . '/css/bootstrap-reboot.min.css', array(), $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'bootstrap', T_EM_THEME_DIR_CSS_URL . '/style.css', array(), $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'bootstrap' );
-	wp_enqueue_style( 'bootstrap-grid' );
-	wp_enqueue_style( 'bootstrap-reboot' );
 
 	/**
 	 * Adds JavaScript to pages with the comment form to support
