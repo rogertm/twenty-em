@@ -2033,19 +2033,19 @@ function t_em_breadcrumb(){
 
 		$query_obj = get_queried_object();
 		$home_name = __( 'Home', 't_em' );
-		$current_before = '<li class="active">';
+		$current_before = '<li class="breadcrumb-item active">';
 		$current_after = '</li>';
-		$home_link = '<li><a href="'. home_url() .'">'. $home_name .'</a></li>';
-		$year_link = ( is_year() || is_month() || is_day() ) ? '<li><a href="'. get_year_link( get_the_time( 'Y' ) ) .'">'. get_the_time( 'Y' ) .'</a></li>' : null;
-		$month_link = ( is_year() || is_month() || is_day() ) ? '<li><a href="'. get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) .'">'. get_the_time( 'F' ) .'</a></li>' : null;
+		$home_link = '<li class="breadcrumb-item"><a href="'. home_url() .'">'. $home_name .'</a></li>';
+		$year_link = ( is_year() || is_month() || is_day() ) ? '<li class="breadcrumb-item"><a href="'. get_year_link( get_the_time( 'Y' ) ) .'">'. get_the_time( 'Y' ) .'</a></li>' : null;
+		$month_link = ( is_year() || is_month() || is_day() ) ? '<li class="breadcrumb-item"><a href="'. get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) .'">'. get_the_time( 'F' ) .'</a></li>' : null;
 		$post_type_obj = ( is_single() ) ? get_post_type_object( $post->post_type ) : null;
 		$parent_post_type_obj = ( is_single() ) ? get_post_type_object( get_post_type( $post->post_parent ) ) : null;
-		$post_type_archive_link = ( is_single() && empty( $post_type_obj->hierarchical ) ) ? '<li><a href="'. get_post_type_archive_link( $post->post_type ) .'">'. $post_type_obj->label .'</a></li>' : null;
-		$attachment_parent_link = ( is_attachment() ) ? '<li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
-		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<li><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></li><li><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
+		$post_type_archive_link = ( is_single() && empty( $post_type_obj->hierarchical ) ) ? '<li class="breadcrumb-item"><a href="'. get_post_type_archive_link( $post->post_type ) .'">'. $post_type_obj->label .'</a></li>' : null;
+		$attachment_parent_link = ( is_attachment() ) ? '<li class="breadcrumb-item"><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
+		$attachment_post_type_parent_link = ( is_attachment() && ! is_page() ) ? '<li class="breadcrumb-item"><a href="'. get_post_type_archive_link( get_post_type( $post->post_parent ) ) .'">'. $parent_post_type_obj->label .'</a></li><li class="breadcrumb-item"><a href="'. get_permalink( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a></li>' : null;
 ?>
 		<div id="you-are-here">
-			<lo class="breadcrumb col-xs-12">
+			<lo class="breadcrumb">
 <?php
 		if ( is_front_page() ) :
 			echo $current_before . $home_name . $current_after;
@@ -2066,7 +2066,7 @@ function t_em_breadcrumb(){
 			if ( $parent_cat != 0 ) :
 				$ancient_cats = get_ancestors( $cat_id, 'category' );
 				foreach ( array_reverse( $ancient_cats ) as $cat ) :
-					echo '<li><a href="'. get_category_link( $cat ) .'">' . get_cat_name( $cat ) . '</a></li>';
+					echo '<li class="breadcrumb-item"><a href="'. get_category_link( $cat ) .'">' . get_cat_name( $cat ) . '</a></li>';
 				endforeach;
 			endif;
 			echo $current_before . $current_cat . $current_after;
@@ -2113,7 +2113,7 @@ function t_em_breadcrumb(){
 				$breadcrumb_page = array();
 				while ( $parent_id ) :
 					$parent_page = get_page( $parent_id );
-					$breadcrumb_page[] = '<li><a href="'. get_permalink( $parent_page->ID ) .'">'. get_the_title( $parent_page->ID ) .'</a></li>';
+					$breadcrumb_page[] = '<li class="breadcrumb-item"><a href="'. get_permalink( $parent_page->ID ) .'">'. get_the_title( $parent_page->ID ) .'</a></li>';
 					$parent_id = $parent_page->post_parent;
 				endwhile;
 				foreach ( array_reverse( $breadcrumb_page ) as $crumb_page ) :
@@ -2127,15 +2127,15 @@ function t_em_breadcrumb(){
 			if ( $post->post_type == 'post' ) :
 				$post_cat = get_the_category();
 				foreach ( $post_cat as $cat ) :
-					echo '<li><a href="'. get_category_link( $cat->term_id ) .'">'. $cat->cat_name .'</a></li>';
+					echo '<li class="breadcrumb-item"><a href="'. get_category_link( $cat->term_id ) .'">'. $cat->cat_name .'</a></li>';
 				endforeach;
 				echo $current_before . get_the_title() . $current_after;
 			elseif ( ! in_array( $post->post_type, array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				if ( is_post_type_hierarchical( get_post_type() ) ) :
-					echo '<li><a href="'. get_post_type_archive_link( get_post_type() ) .'">'. $post_type_obj->label .'</a></li>';
+					echo '<li class="breadcrumb-item"><a href="'. get_post_type_archive_link( get_post_type() ) .'">'. $post_type_obj->label .'</a></li>';
 					$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
 					foreach ( $ancestors as $ancestor ) :
-						echo '<li><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'. get_permalink( $ancestor ) .'">'. get_the_title( $ancestor ) .'</a></li>';
 					endforeach;
 					echo $post_type_archive_link . $current_before . get_the_title() . $current_after;
 				else :
@@ -2148,7 +2148,7 @@ function t_em_breadcrumb(){
 		if ( is_attachment() && ! is_page() ) :
 			$parent_cat = ( get_post_type( $post->post_parent ) == 'post' ) ? get_the_category( $post->post_parent ) : null;
 			if ( $parent_cat ) :
-				$attachtment_post_parent_link = '<li>' . get_category_parents( $parent_cat[0], true, '' ) . '</li>' . $attachment_parent_link;
+				$attachtment_post_parent_link = '<li class="breadcrumb-item">' . get_category_parents( $parent_cat[0], true, '' ) . '</li>' . $attachment_parent_link;
 			elseif ( ! in_array( get_post_type( $post->post_parent ), array( 'post', 'page', 'attachment', 'revision', 'nav_menu_item' ) ) ) :
 				$attachtment_post_parent_link = $attachment_post_type_parent_link;
 			else :
