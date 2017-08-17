@@ -1,0 +1,4 @@
+<?php
+/**
+ * Silents is gold...
+ */

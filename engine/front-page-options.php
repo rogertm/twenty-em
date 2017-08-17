@@ -180,10 +180,7 @@ function t_em_front_page_witgets_callback(){
 	$extend_front_page .= '</div>';
 
 	return $extend_front_page;
-?>
-<?php
 }
-
 
 /**
  * Render the Front Page Options setting field in admin panel.
@@ -249,4 +246,18 @@ function t_em_settings_field_front_page_options_set(){
 	</div><!-- #front-page-options -->
 <?php
 }
+
+/**
+ * Load custom template for Custom Front Page (Text Widgets) option in admin panel
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_load_custom_front_page( $home_template = '' ){
+	global $t_em;
+	if ( 'widgets-front-page' == $t_em['front_page_set'] ) :
+		$home_template = locate_template( 'custom-front-page.php' );
+	endif;
+	return $home_template;
+}
+add_action( 'home_template', 't_em_load_custom_front_page' );
 ?>

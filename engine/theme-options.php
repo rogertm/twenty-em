@@ -30,10 +30,6 @@ require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/cron.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
-require_once( T_EM_THEME_DIR_INC_PATH . '/functions.php' );
-require_once( T_EM_THEME_DIR_INC_PATH . '/enqueue.php' );
-require_once( T_EM_THEME_DIR_INC_PATH . '/shortcodes.php' );
-require_once( T_EM_THEME_DIR_INC_PATH . '/widgets.php' );
 
 /**
  * Register the form setting for our t_em_theme_options array.

@@ -100,7 +100,8 @@ define ( 'T_EM_THEME_DIR_CSS_PATH',										T_EM_THEME_DIR_PATH . '/css' );
 define ( 'T_EM_THEME_DIR_IMG_PATH',										T_EM_THEME_DIR_PATH . '/images' );
 define ( 'T_EM_THEME_DIR_JS_PATH',										T_EM_THEME_DIR_PATH . '/js' );
 define ( 'T_EM_THEME_DIR_FONTS_PATH',									T_EM_THEME_DIR_PATH . '/fonts' );
-define ( 'T_EM_THEME_DIR_TEMPLATES_PATH',								T_EM_THEME_DIR_PATH . '/page-templates' );
+define ( 'T_EM_THEME_DIR_PAGE_TEMPLATES_PATH',							T_EM_THEME_DIR_PATH . '/page-templates' );
+define ( 'T_EM_THEME_DIR_TEMPLATES_PATH',								T_EM_THEME_DIR_PATH . '/templates' );
 define ( 'T_EM_THEME_DIR_BOOTSTRAP_PATH',								T_EM_THEME_DIR_PATH . '/bootstrap' );
 
 // Theme Directory URL
@@ -111,7 +112,8 @@ define ( 'T_EM_THEME_DIR_IMG_URL',										T_EM_THEME_DIR_URL . '/images' );
 define ( 'T_EM_THEME_DIR_JS_URL',										T_EM_THEME_DIR_URL . '/js' );
 define ( 'T_EM_THEME_DIR_FONTS_URL',									T_EM_THEME_DIR_URL . '/fonts' );
 define ( 'T_EM_THEME_DIR_INC_URL',										T_EM_THEME_DIR_URL . '/inc' );
-define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/page-templates' );
+define ( 'T_EM_THEME_DIR_PAGE_TEMPLATES_URL',							T_EM_THEME_DIR_URL . '/page-templates' );
+define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/templates' );
 define ( 'T_EM_THEME_DIR_BOOTSTRAP_URL',								T_EM_THEME_DIR_URL . '/bootstrap' );
 
 /**

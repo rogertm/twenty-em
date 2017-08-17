@@ -63,7 +63,7 @@ if ( have_posts() ) :
 <?php
 	endwhile;
 else :
-	get_template_part( 'content', 'none' );
+	get_template_part( '/template-parts/content', 'none' );
 endif;
 ?>
 				<?php t_em_action_content_after(); ?>

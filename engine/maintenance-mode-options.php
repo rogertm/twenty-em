@@ -227,6 +227,8 @@ add_action( 'comments_popup', 't_em_load_maintenance_mode_template' );
 
 /**
  * Filter the title tag in Maintenance Mode
+ *
+ * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_title_tag( $title ){
 	global $t_em;
