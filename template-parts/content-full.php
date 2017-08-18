@@ -10,7 +10,7 @@
  * @author			RogerTM
  * @license			license.txt
  * @link			https://themingisprose.com/twenty-em
- * @since 			Twenty'em 1.0
+ * @since 			Twenty'em 1.2
  */
 
 /**
@@ -18,7 +18,7 @@
  */
 ?>
 		<?php t_em_action_post_before(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_archive_cols() ); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<header class="entry-header">
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -26,7 +26,9 @@
 					<?php t_em_posted_on(); ?>
 				</span><!-- .entry-meta -->
 			</header>
-			<?php t_em_post_archive_set(); ?>
+			<div class="entry-content">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
+			</div><!-- .entry-content -->
 			<footer class="entry-utility">
 				<?php t_em_posted_in(); ?>
 				<?php t_em_comments_link(); ?>

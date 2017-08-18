@@ -28,3 +28,10 @@
 		line-height: .5;
 	}
 }
+article{
+	.featured-post-thumbnail{
+		&.card-img-top{
+			height: auto;
+		}
+	}
+}

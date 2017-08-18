@@ -182,9 +182,10 @@ function t_em_add_bootstrap_class( $section ){
  * @global $post
  * @global $t_em
  *
- * @return string HTML content describing embedded figure
+ * @return string 			HTML "img" tag
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Deleted "figure" and "figcaption" wrapped element
  */
 function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = null, $post_id = 0 ){
 	global $t_em;
@@ -198,14 +199,9 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 	$thumbnail = t_em_image_resize( $width, $height, $post_id );
 
 	if ( $thumbnail ) :
-		echo $open_link;
-			?>
-				<figure id="post-attachment-<?php echo $post_id; ?>" class="<?php echo $class ?>" style="width:<?php echo $width ?>px">
-					<img alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
-					<figcaption><?php echo get_the_title( $post_id ); ?></figcaption>
-				</figure>
-			<?php
-		echo $close_link;
+		echo $open_link; ?>
+		<img class="<?php echo $class ?>" alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+<?php 	echo $close_link;
 	endif;
 }
 

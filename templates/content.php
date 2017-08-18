@@ -221,21 +221,6 @@ endif; // function t_em_custom_template_content()
 add_action( 't_em_action_content_before', 't_em_custom_template_content', 15 );
 
 /**
- * Archive in columns.
- * This function is passed as parameter to the post_class() function in the "content.php" file.
- *
- * @return string Class name
- *
- * @since Twenty'em 1.0
- */
-function t_em_archive_cols(){
-	global $t_em;
-	$cols = 12 / $t_em['archive_in_columns'];
-	$class = 'col-md-' . $cols;
-	return $class;
-}
-
-/**
  * Retrieve protected post password form content. This function is attached to the the_password_form
  * filter
  *
@@ -575,21 +560,37 @@ if ( ! function_exists( 't_em_loop' ) ) :
  */
 function t_em_loop(){
 	global $t_em;
-	if ( have_posts() ) : ?>
-		<div class="row">
-	<?php
-		$i = 0;
-		while ( have_posts() ) : the_post();
-			if ( 0 == $i % $t_em['archive_in_columns'] ) :
+	if ( $t_em['archive_set'] == 'the-excerpt' ) :
+		$content = ( $t_em['archive_in_columns'] == 1 && $t_em['excerpt_set'] != 'thumbnail-center' ) ? 'excerpt' : 'columns';
+	elseif ( $t_em['archive_set'] == 'the-content' ) :
+		$content = 'full';
+	else :
+		$content = 'none';
+	endif;
+
+	$cols = ( $t_em['archive_in_columns'] > 1 || $t_em['excerpt_set'] == 'thumbnail-center' ) ? true : null;
+
+	if ( have_posts() ) :
+		if ( $cols ) :
+			echo '<div class="row">';
+			$i = 0;
+		endif;
+
+		while ( have_posts() ) :
+			the_post();
+			if ( $cols && 0 == $i % $t_em['archive_in_columns'] ) :
 				echo '</div>';
 				echo '<div class="row">';
 			endif;
-			get_template_part( '/template-parts/content', get_post_format() );
-			$i++;
+			get_template_part( '/template-parts/content', $content );
+			if ( $cols ) :
+				$i++;
+			endif;
 		endwhile;
-	?>
-		</div><!-- .row -->
-	<?php
+
+		if ( $cols ) :
+			echo '</div>';
+		endif;
 	else :
 		get_template_part( '/template-parts/content', 'none' );
 	endif;
