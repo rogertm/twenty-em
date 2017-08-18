@@ -74,8 +74,8 @@ if ( ! function_exists( 't_em_navigation_menu' ) ) :
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 			<?php
 				/**
@@ -106,8 +106,8 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 				);
 			?>
 			<?php do_action( 't_em_action_navigation_menu_navbar_after' ) ?>
-			</div>
-		</nav>
+			</nav>
+		</div>
 	</div>
 <?php
 endif;

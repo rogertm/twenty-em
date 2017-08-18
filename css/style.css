@@ -7489,4 +7489,9 @@ template {
 article .featured-post-thumbnail.card-img-top {
   height: auto; }
 
+img {
+  height: auto;
+  width: auto;
+  max-width: 100%; }
+
 /*# sourceMappingURL=style.css.map */

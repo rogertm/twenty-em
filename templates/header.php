@@ -144,8 +144,9 @@ function t_em_slider_bootstrap_carousel( $args ){
 <?php 			foreach ( $slider_posts as $post ) : setup_postdata( $post );
 					$thumbnail = t_em_image_resize( 1200, $t_em['slider_height'], $post->ID );
 ?>
-					<div class="item">
-						<img alt="<?php the_title(); ?>" src="<?php echo $thumbnail ?>" />
+					<div class="carousel-item">
+						<!-- <img alt="<?php the_title(); ?>" src="<?php echo $thumbnail ?>" /> -->
+						<?php t_em_featured_post_thumbnail( 1200, $t_em['slider_height'], false, 'd-block w-100', $post->ID ); ?>
 						<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
 							<h3 class="entry-title">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
@@ -155,11 +156,13 @@ function t_em_slider_bootstrap_carousel( $args ){
 					</div><!-- .item -->
 <?php 			endforeach; wp_reset_postdata(); ?>
 				</div><!-- .carousel-inner -->
-				<a class="left carousel-control" href="#slider-carousel-inner" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
+				<a class="carousel-control-prev" href="#slider-carousel-inner" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only"><?php _e( 'Previous', 't_em' ); ?></span>
 				</a>
-				<a class="right carousel-control" href="#slider-carousel-inner" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
+				<a class="carousel-control-next" href="#slider-carousel-inner" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only"><?php _e( 'Next', 't_em' ) ?></span>
 				</a>
 <?php 	endif; ?>
 		<?php
