@@ -43,11 +43,11 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 
 	if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 			$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
-				'<a href="'. $primary_button_link .'" class="btn btn-primary primary-button">
+				'<a href="'. $primary_button_link .'" class="btn btn-primary">
 				<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
 			$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
-				'<a href="'. $secondary_button_link .'" class="btn btn-secondary secondary-button">
+				'<a href="'. $secondary_button_link .'" class="btn btn-secondary">
 				<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
 		$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';

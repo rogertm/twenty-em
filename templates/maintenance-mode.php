@@ -30,7 +30,7 @@ if ( ! function_exists( 't_em_maintenance_mode_area' ) ) :
 function t_em_maintenance_mode_area(){
 	global $t_em;
 ?>
-	<section id="maintenance-mode">
+	<section id="maintenance-mode" class="jumbotron">
 	<?php t_em_action_maintenance_mode_inside_before(); ?>
 	<?php if ( $t_em['maintenance_mode_thumbnail_src'] ) : ?>
 		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" alt="<?php echo sanitize_text_field( $t_em['maintenance_mode_headline'] ) ?>">
@@ -42,7 +42,7 @@ function t_em_maintenance_mode_area(){
 		<header><h1><?php echo $icon_class . $t_em['maintenance_mode_headline'] ?></h1></header>
 	<?php endif; ?>
 	<?php if ( $t_em['maintenance_mode_content'] ) : ?>
-		<div><?php echo t_em_wrap_paragraph( do_shortcode( $t_em['maintenance_mode_content'] ) ) ?></div>
+		<div class="lead"><?php echo t_em_wrap_paragraph( do_shortcode( $t_em['maintenance_mode_content'] ) ) ?></div>
 	<?php endif; ?>
 	<?php t_em_maintenance_mode_countdown_timer() ?>
 	<?php
@@ -55,14 +55,14 @@ function t_em_maintenance_mode_area(){
 
 		if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 				$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
-					'<a href="'. $primary_button_link .'" class="btn primary-button">
+					'<a href="'. $primary_button_link .'" class="btn btn-primary">
 					<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
 				$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
-					'<a href="'. $secondary_button_link .'" class="btn secondary-button">
+					'<a href="'. $secondary_button_link .'" class="btn btn-secondary">
 					<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
-			$footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
+			$footer = '<footer><p class="lead">'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</p></footer>';
 		else :
 			$footer = null;
 		endif;
@@ -102,7 +102,7 @@ function t_em_maintenance_mode_countdown_timer(){
 		});
 		/* ]]> */
 		</script>
-		<div id="countdown-clock"></div>
+		<div id="countdown-clock" class="lead"></div>
 <?php
 	endif;
 }
