@@ -41,7 +41,19 @@ img{
 	max-width: 100%;
 }
 .widget-container{
+	@extend .mb-5;
 	ul, ol{
 		@extend .list-unstyled;
+		li{
+			@extend .mb-2;
+		}
+	}
+	table{
+		@extend .table;
+	}
+	.calendar_wrap{
+		#next{
+			@extend .text-right;
+		}
 	}
 }

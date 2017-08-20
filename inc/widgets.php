@@ -109,7 +109,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<ul class="list-unstyled">
 		<?php foreach ( $recent_posts as $post ) : setup_postdata( $post ); ?>
-			<li class="t-em-recent-post-wrapper media mb-3">
+			<li class="t-em-recent-post-wrapper media">
 				<?php if ( $thumbnail_align == 'float-left' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex mr-3', $post->ID ) ?></div><?php endif; ?>
 				<div class="t-em-recent-post-content media-body">
 				<?php if ( $thumbnail_align == 'float-none' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex mb-2', $post->ID ) ?></div><?php endif; ?>
@@ -294,7 +294,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 		<ul class="list-unstyled">
 		<?php foreach ( $popular_posts as $post ) : setup_postdata( $post ); ?>
-			<li class="t-em-popular-post-wrapper media mb-3">
+			<li class="t-em-popular-post-wrapper media">
 				<?php if ( $thumbnail_align == 'float-left' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex mr-3', $post->ID ) ?></div><?php endif; ?>
 				<div class="t-em-popular-post-content media-body">
 				<?php if ( $thumbnail_align == 'float-none' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex mb-2', $post->ID ) ?></div><?php endif; ?>
@@ -615,7 +615,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 			foreach ( (array) $comments as $comment) {
 				$comment_author_link = ( $author_name_url ) ? get_comment_author_link() . _x( ' on ', 'Recent Comment Widget', 't_em' ) : null;
 ?>
-			<li class="t-em-recent-comments media mb-3">
+			<li class="t-em-recent-comments media">
 			<?php if ( $avatar ) : ?>
 			<div class="d-flex mr-3"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></div>
 			<?php endif; ?>
@@ -723,7 +723,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 				<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
 				<input type="hidden" name="loc" value="en_US"/>
 				<span class="input-group-btn">
-					<button class="btn btn-secondary" type="submit" title="<?php echo $feedburner_placeholder; ?>">
+					<button class="btn btn-secondary" type="submit">
 						<span class="icomoon-envelope icomoon"></span>
 						<span class="label-btn"><?php echo $feedburner_button_label; ?></span>
 					</button>
@@ -841,7 +841,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			if( ! $post_count )
 				continue;
 ?>
-			<li class="t-em-contributor-wrapper media mb-3">
+			<li class="t-em-contributor-wrapper media">
 			<?php if ( $avatar ) : ?>
 			<div class="d-flex mr-3"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
 			<?php endif; ?>

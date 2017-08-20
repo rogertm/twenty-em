@@ -194,13 +194,13 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 	if ( ! $post_id )
 		$post_id = get_the_ID();
 
-	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" title="'.  get_the_title( $post_id ) .'" rel="bookmark">' : null;
+	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" rel="bookmark">' : null;
 	$close_link = ( $link ) ? '</a>' : null;
 	$thumbnail = t_em_image_resize( $width, $height, $post_id );
 
 	if ( $thumbnail ) :
 		echo $open_link; ?>
-		<img class="<?php echo $class ?>" alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" title="<?php echo get_the_title( $post_id ); ?>"/>
+		<img class="<?php echo $class ?>" alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>"/>
 <?php 	echo $close_link;
 	endif;
 }

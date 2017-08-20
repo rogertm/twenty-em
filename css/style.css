@@ -66,10 +66,11 @@
   .badge {
     border: 1px solid #000; }
 
-  .table {
+  .table, .widget-container table {
     border-collapse: collapse !important; }
-    .table td,
-    .table th {
+    .table td, .widget-container table td,
+    .table th,
+    .widget-container table th {
       background-color: #fff !important; }
 
   .table-bordered th,
@@ -1028,22 +1029,23 @@ pre {
 
   .order-xl-12 {
     order: 12; } }
-.table {
+.table, .widget-container table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
-  .table th,
-  .table td {
+  .table th, .widget-container table th,
+  .table td,
+  .widget-container table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #e9ecef; }
-  .table thead th {
+  .table thead th, .widget-container table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #e9ecef; }
-  .table tbody + tbody {
+  .table tbody + tbody, .widget-container table tbody + tbody {
     border-top: 2px solid #e9ecef; }
-  .table .table {
+  .table .table, .widget-container table .table, .table .widget-container table, .widget-container .table table, .widget-container table table {
     background-color: #fff; }
 
 .table-sm th,
@@ -4663,7 +4665,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mr-2 {
   margin-right: 0.5rem !important; }
 
-.mb-2 {
+.mb-2, .widget-container ul li, .widget-container ol li {
   margin-bottom: 0.5rem !important; }
 
 .ml-2 {
@@ -4732,7 +4734,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mr-5 {
   margin-right: 3rem !important; }
 
-.mb-5 {
+.mb-5, .widget-container {
   margin-bottom: 3rem !important; }
 
 .ml-5 {
@@ -6117,7 +6119,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .text-left {
   text-align: left !important; }
 
-.text-right {
+.text-right, .widget-container .calendar_wrap #next {
   text-align: right !important; }
 
 .text-center {
