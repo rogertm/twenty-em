@@ -34,62 +34,7 @@ function t_em_front_page_widgets(){
 	if ( 'widgets-front-page' == $t_em['front_page_set'] ) : ?>
 		<section id="featured-widget-area" class="row">
 			<?php t_em_action_custom_front_page_inside_before(); ?>
-
-<?php
-		foreach ( t_em_front_page_widgets_options() as $widget ) :
-			if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
-			$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
-				'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
-
-			$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-				'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ).'" />' : '';
-
-			$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
-
-			$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
-				'<header><'. $h_tag .'>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</'. $h_tag .'></header>' : '';
-
-			$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
-				'<div>'. t_em_wrap_paragraph( do_shortcode( $t_em['content_'.$widget['name'].''] ) ) .'</div>' : '';
-
-			$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
-			$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
-			$primary_button_link 		= ( $t_em['primary_button_link_'.$widget['name']] ) ? $t_em['primary_button_link_'.$widget['name']] : null;
-			$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
-			$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
-			$secondary_button_link 		= ( $t_em['secondary_button_link_'.$widget['name']] ) ? $t_em['secondary_button_link_'.$widget['name']] : null;
-
-			if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
-					$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
-						'<a href="'. $primary_button_link .'" class="btn primary-button">
-						<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
-
-					$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
-						'<a href="'. $secondary_button_link .'" class="btn secondary-button">
-						<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
-
-				$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
-			else :
-				$widget_footer = null;
-			endif;
-
-			$section = ( $widget['name'] == 'text_widget_one' ) ? 'primary-featured-widget-area' : 'secondary-featured-widget-area';
-?>
-			<div <?php t_em_add_bootstrap_class( $section ); ?>>
-				<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget">
-					<?php echo $widget_thumbnail_url; ?>
-					<div class="front-page-widget-caption caption">
-					<?php	echo $widget_headline;
-							echo $widget_content;
-							echo $widget_footer; ?>
-					</div>
-				</div>
-			</div>
-<?php
-			endif;
-		endforeach;
-?>
-
+			<?php get_template_part( '/template-parts/front', $t_em['text_widget_template'] ) ?>
 			<?php t_em_action_custom_front_page_inside_after(); ?>
 		</section><!-- #featured-widget-area -->
 <?php

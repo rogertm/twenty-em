@@ -123,6 +123,36 @@ function t_em_front_page_widgets_options( $front_page_widgets = '' ){
 }
 
 /**
+ * Array of Front Page Text Widgets Templates
+ * @return 	array
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_front_page_witgets_templates(){
+	$witgets_templates = array(
+		'template-jumbotron'	=> array(
+			'value'		=> 'template-jumbotron',
+			'label'		=> __( 'Jumbotron', 't_em' ),
+			'thumbnail'	=> T_EM_ENGINE_DIR_IMG_URL . '/template-jumbotron.png',
+		),
+		'template-features'	=> array(
+			'value'		=> 'template-features',
+			'label'		=> __( 'Features', 't_em' ),
+			'thumbnail'	=> T_EM_ENGINE_DIR_IMG_URL . '/template-features.png',
+		),
+	);
+
+	/**
+	 * Filter the Front Page Witdgets Template Set
+	 *
+	 * @param array An array of new options in the Front Page Templates Set.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'thumbnail' keys.
+	 * @since Twenty'em 1.2
+	 */
+	return apply_filters( 't_em_admin_filter_front_page_witgets_templates', $witgets_templates );
+}
+
+/**
  * Extend setting for Front Page Text Widgets in Twenty'em admin panel
  * Reference via t_em_front_page_options()
  *
@@ -181,6 +211,40 @@ function t_em_front_page_witgets_callback(){
 
 	return $extend_front_page;
 }
+
+/**
+ * Render the Templates for Front Page Witgets
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_front_page_widtgets_templates_callback(){
+	global $t_em;
+?>
+	<div class="row">
+	<div class="sub-exctend option-group">
+		<header><?php _e( 'Front Page Template', 't_em' ); ?></header>
+		<div class="image-radio-option-group">
+<?php
+	$templates = t_em_front_page_witgets_templates();
+	foreach ( $templates as $template ) :
+		$active_option = ( $t_em['text_widget_template'] == $template['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+?>
+			<div class="layout image-radio-option theme-front-page <?php echo $active_option ?>">
+				<label class="description" style="width:225px;">
+					<input type="radio" class="input-image-radio-option" name="t_em_theme_options[text_widget_template]" value="<?php echo $template['value'] ?>" <?php echo checked( $t_em['text_widget_template'], $template['value'] ) ?>>
+					<span>
+						<img src="<?php echo $template['thumbnail'] ?>" width="200" height="150">
+						<p><?php echo $template['label'] ?></p>
+					</span>
+				</label>
+			</div>
+<?php endforeach; ?>
+		</div>
+	</div>
+	</div>
+<?php
+}
+add_action( 't_em_admin_action_from_page_option_widgets-front-page_after', 't_em_front_page_widtgets_templates_callback' );
 
 /**
  * Render the Front Page Options setting field in admin panel.

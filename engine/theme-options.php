@@ -226,6 +226,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'secondary_button_text_text_widget_four'		=> '',
 		'secondary_button_link_text_widget_four'		=> '',
 		'secondary_button_icon_class_text_widget_four'	=> '',
+		'text_widget_template'							=> 'template-jumbotron',
 		// Archive Options
 		'archive_set'									=> 'the-content',
 		'excerpt_length'								=> '55',
@@ -410,6 +411,10 @@ function t_em_theme_options_validate( $input ){
 			'front-page-options'	=> array(
 				'set'		=> 'front_page_set',
 				'callback'	=> t_em_front_page_options(),
+			),
+			'front-page-template'	=> array(
+				'set'		=> 'text_widget_template',
+				'callback'	=> t_em_front_page_witgets_templates(),
 			),
 			'archive-options'	=> array(
 				'set'		=> 'archive_set',
