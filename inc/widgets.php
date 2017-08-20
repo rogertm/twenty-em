@@ -64,7 +64,7 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 		if ( empty( $instance['thumbnail_height'] ) || ! $thumbnail_height = absint( $instance['thumbnail_height'] ) )
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
-			$thumbnail_align = 'media-left pull-left';
+			$thumbnail_align = 'float-left';
 		$thumbnail = ( ! isset( $instance['thumbnail'] ) ) ? null : $instance['thumbnail'];
 
 		if ( $thumbnail ) :
@@ -107,18 +107,20 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<ul class="media-list">
+		<ul class="list-unstyled">
 		<?php foreach ( $recent_posts as $post ) : setup_postdata( $post ); ?>
-		<li class="t-em-recent-post-wrapper media">
-			<div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail media-object', $post->ID ) ?></div>
-			<div class="t-em-recent-post-content media-body">
-				<h4 class="media-heading">
-					<a class="t-em-recent-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
-				</h4>
-				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
-				<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
-			</div>
-		</li>
+			<li class="t-em-recent-post-wrapper media mb-3">
+				<?php if ( $thumbnail_align == 'float-left' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex mr-3', $post->ID ) ?></div><?php endif; ?>
+				<div class="t-em-recent-post-content media-body">
+				<?php if ( $thumbnail_align == 'float-none' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex mb-2', $post->ID ) ?></div><?php endif; ?>
+					<h4 class="mt-0 mb-1 h5 d-inline">
+						<a class="t-em-recent-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+					</h4>
+					<?php $widget_trim_word = apply_filters( 'the_content', ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content ); ?>
+					<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, ( $post->post_excerpt ) ? 55 : 15, null ) ?></div>
+				</div>
+				<?php if ( $thumbnail_align == 'float-right' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex ml-3', $post->ID ) ?></div><?php endif; ?>
+			</li>
 		<?php endforeach; ?>
 		</ul>
 		<?php echo $after_widget; ?>
@@ -185,9 +187,9 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label><br>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-				<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-				<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
-				<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-left" <?php selected( 'float-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-right" <?php selected( 'float-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-none" <?php selected( 'float-none', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
 			</select></p>
 
 		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to show:', 't_em' ); ?></label><br>
@@ -241,7 +243,7 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 		if ( empty( $instance['thumbnail_height'] ) || ! $thumbnail_height = absint( $instance['thumbnail_height'] ) )
 			$thumbnail_height = get_option( 'thumbnail_size_h' );
 		if ( empty( $instance['thumbnail_align'] ) || ! $thumbnail_align = $instance['thumbnail_align'] )
-			$thumbnail_align = 'media-left pull-left';
+			$thumbnail_align = 'float-left';
 		$thumbnail = ( ! isset( $instance['thumbnail'] ) ) ? null : $instance['thumbnail'];
 		$comment_count = ( ! isset( $instance['comment_count'] ) ) ? null : $instance['comment_count'];
 
@@ -290,24 +292,25 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<ul class="media-list">
+		<ul class="list-unstyled">
 		<?php foreach ( $popular_posts as $post ) : setup_postdata( $post ); ?>
-
-		<li class="t-em-popular-post-wrapper media">
-			<div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail media-object', $post->ID ) ?></div>
-			<div class="t-em-popular-post-content media-body">
-				<h4 class="media-heading"><a class="t-em-popular-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
-			<?php if ( $comment_count ) :
-					$total_comments = get_comments_number( $post->ID );
-					$comments_number = sprintf( _n( '- 1 Comment', '- %s Comments', $total_comments, 't_em' ), $total_comments );
-			?>
-				<small><?php echo $comments_number; ?></small>
-			<?php endif; ?>
-				</h4>
-				<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
-				<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
-			</div>
-		</li>
+			<li class="t-em-popular-post-wrapper media mb-3">
+				<?php if ( $thumbnail_align == 'float-left' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex mr-3', $post->ID ) ?></div><?php endif; ?>
+				<div class="t-em-popular-post-content media-body">
+				<?php if ( $thumbnail_align == 'float-none' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex mb-2', $post->ID ) ?></div><?php endif; ?>
+					<h4 class="mt-0 mb-1 h5 d-inline"><a class="t-em-popular-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
+					</h4>
+				<?php if ( $comment_count ) :
+						$total_comments = get_comments_number( $post->ID );
+						$comments_number = sprintf( _n( '- 1 Comment', '- %s Comments', $total_comments, 't_em' ), $total_comments );
+				?>
+					<small class="text-muted d-inline"><?php echo $comments_number; ?></small>
+				<?php endif; ?>
+					<?php $widget_trim_word = apply_filters( 'the_content', $post->post_content ); ?>
+					<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
+				</div>
+				<?php if ( $thumbnail_align == 'float-right' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex ml-3', $post->ID ) ?></div><?php endif; ?>
+			</li>
 		<?php endforeach; ?>
 		</ul>
 		<?php echo $after_widget; ?>
@@ -377,9 +380,9 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>"><?php _e( 'Thumbnail alignment:', 't_em' ); ?></label><br>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'thumbnail_align' ) ?>" name="<?php echo $this->get_field_name( 'thumbnail_align' ) ?>">
-				<option value="media-left pull-left" <?php selected( 'media-left pull-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
-				<option value="media-right pull-right" <?php selected( 'media-right pull-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
-				<option value="no-align" <?php selected( 'no-align', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-left" <?php selected( 'float-left', $thumbnail_align, true ) ?>><?php _ex( 'left', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-right" <?php selected( 'float-right', $thumbnail_align, true ) ?>><?php _ex( 'right', 'widget thumbnail alignment', 't_em' ) ?></option>
+				<option value="float-none" <?php selected( 'float-none', $thumbnail_align, true ) ?>><?php _ex( 'no align', 'widget thumbnail alignment', 't_em' ) ?></option>
 			</select></p>
 
 		<p><input type="checkbox" id="<?php echo $this->get_field_id( 'comment_count' ) ?>" class="checkbox" name="<?php echo $this->get_field_name( 'comment_count' ) ?>" <?php checked( $comment_count ) ?> />
@@ -472,9 +475,9 @@ class Twenty_Em_Widget_Image_Gallery extends WP_Widget {
 						echo '</div>';
 						echo '<div class="row t-em-img-gallery-row-wrapper '. $one_column_gallery .'">';
 					endif;
-					$span = 12 / $columns;
-					echo '<div class="col-xs-'. $span .' col-md-'. $span .'">';
-						t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-img-gallery-thumbnail', $post->ID );
+					$cols = 12 / $columns;
+					echo '<div class="col-xs-'. $cols .' col-md-'. $cols .'">';
+						t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-img-gallery-thumbnail my-3', $post->ID );
 					echo '</div>';
 					$i++;
 				endforeach;
@@ -602,7 +605,7 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 ?>
-		<ul class="media-list">
+		<ul class="list-unstyled">
 <?php
 		if ( $comments ) {
 			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
@@ -612,11 +615,9 @@ class Twenty_Em_Widget_Recent_Comments extends WP_Widget {
 			foreach ( (array) $comments as $comment) {
 				$comment_author_link = ( $author_name_url ) ? get_comment_author_link() . _x( ' on ', 'Recent Comment Widget', 't_em' ) : null;
 ?>
-			<li class="t-em-recent-comments media">
+			<li class="t-em-recent-comments media mb-3">
 			<?php if ( $avatar ) : ?>
-				<div class="media-left pull-left">
-					<figure class="media-object" title="<?php echo get_comment_author(); ?>"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></figure>
-				</div>
+			<div class="d-flex mr-3"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_comment_author() ); ?></div>
 			<?php endif; ?>
 				<div class="media-body">
 					<?php echo $comment_author_link; ?>
@@ -705,7 +706,8 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Subscribe via FeedBurner', 't_em' ) : $instance['title'], $instance, $this->id_base );
 		$feedburner_uri = ( ! empty( $instance['feedburner_uri'] ) ) ? $instance['feedburner_uri'] : null;
 		$feedburner_description = ( ! empty( $instance['feedburner_description'] ) ) ? $instance['feedburner_description'] : null;
-		$feedburner_placeholder = ( ! empty( $instance['feedburner_placeholder'] ) ) ? $instance['feedburner_placeholder'] : __( 'Subscribe', 't_em' );
+		$feedburner_placeholder = ( ! empty( $instance['feedburner_placeholder'] ) ) ? $instance['feedburner_placeholder'] : __( 'email@domain.com', 't_em' );
+		$feedburner_button_label = ( ! empty( $instance['feedburner_button_label'] ) ) ? $instance['feedburner_button_label'] : __( 'Subscribe', 't_em' );
 		$feedburner_action = 'http://feedburner.google.com/fb/a/mailverify';
 
 		echo $before_widget;
@@ -721,9 +723,9 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 				<input type="hidden" value="<?php echo $feedburner_uri; ?>" name="uri"/>
 				<input type="hidden" name="loc" value="en_US"/>
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="submit" title="<?php echo $feedburner_placeholder; ?>">
+					<button class="btn btn-secondary" type="submit" title="<?php echo $feedburner_placeholder; ?>">
 						<span class="icomoon-envelope icomoon"></span>
-						<span class="label-btn"><?php echo $feedburner_placeholder; ?></span>
+						<span class="label-btn"><?php echo $feedburner_button_label; ?></span>
 					</button>
 				</span>
 			</div>
@@ -741,6 +743,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		$instance['feedburner_uri'] = strip_tags( $new_instance['feedburner_uri'] );
 		$instance['feedburner_description'] = strip_tags( $new_instance['feedburner_description'] );
 		$instance['feedburner_placeholder'] = strip_tags( $new_instance['feedburner_placeholder'] );
+		$instance['feedburner_button_label'] = strip_tags( $new_instance['feedburner_button_label'] );
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -760,6 +763,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 		$feedburner_uri = isset( $instance['feedburner_uri'] ) ? esc_attr( $instance['feedburner_uri'] ) : null;
 		$feedburner_description = isset( $instance['feedburner_description'] ) ? esc_attr( $instance['feedburner_description'] ) : null;
 		$feedburner_placeholder = isset( $instance['feedburner_placeholder'] ) ? esc_attr( $instance['feedburner_placeholder'] ) : null;
+		$feedburner_button_label = isset( $instance['feedburner_button_label'] ) ? esc_attr( $instance['feedburner_button_label'] ) : null;
 ?>
 		<p><label for="<?php echo $this->get_field_id('title') ?>"><?php _e( 'Title:', 't_em' ); ?></label><br>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -772,6 +776,9 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 
 		<p><label for="<?php echo $this->get_field_id('feedburner_placeholder') ?>"><?php _e( 'Form placeholder', 't_em' ) ?></label><br>
 			<input class="widefat" id="<?php echo $this->get_field_id('feedburner_placeholder'); ?>" name="<?php echo $this->get_field_name('feedburner_placeholder'); ?>" type="text" value="<?php echo $feedburner_placeholder; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id('feedburner_button_label') ?>"><?php _e( 'Button Label', 't_em' ) ?></label><br>
+			<input class="widefat" id="<?php echo $this->get_field_id('feedburner_button_label'); ?>" name="<?php echo $this->get_field_name('feedburner_button_label'); ?>" type="text" value="<?php echo $feedburner_button_label; ?>" /></p>
 <?php
 	}
 }
@@ -826,7 +833,7 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 		echo $before_widget;
 		if ( $title ) echo $before_title . $title . $after_title;
 ?>
-		<ul class="media-list">
+		<ul class="list-unstyled">
 <?php
 		foreach ( $contributors as $contributor ) :
 			$post_count = count_user_posts( $contributor );
@@ -834,16 +841,10 @@ class Twenty_Em_Widget_Contributors extends WP_Widget{
 			if( ! $post_count )
 				continue;
 ?>
-			<li class="t-em-contributor-wrapper media">
-<?php
-			if ( $avatar ) :
-?>
-				<div class="media-left pull-left">
-					<div class="media-object"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
-				</div>
-<?php
-			endif;
-?>
+			<li class="t-em-contributor-wrapper media mb-3">
+			<?php if ( $avatar ) : ?>
+			<div class="d-flex mr-3"><?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ); ?></div>
+			<?php endif; ?>
 				<div class="t-em-contributor-name media-body">
 					<a href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
 					<?php echo get_the_author_meta( 'display_name', $contributor ); ?></a>

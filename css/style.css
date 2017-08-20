@@ -408,7 +408,7 @@ mark,
   padding: 0.2em;
   background-color: #fcf8e3; }
 
-.list-unstyled {
+.list-unstyled, .widget-container ul, .widget-container ol {
   padding-left: 0;
   list-style: none; }
 

@@ -40,3 +40,8 @@ img{
 	width: auto;
 	max-width: 100%;
 }
+.widget-container{
+	ul, ol{
+		@extend .list-unstyled;
+	}
+}
