@@ -84,10 +84,10 @@ function t_em_add_bootstrap_class( $section ){
 		$bootstrap_classes[] = 'col-md-12';
 	endif;
 	// #content && #main-content One column templates
-	if ( 'content-one-column' == $section ) :
+	/*if ( 'content-one-column' == $section ) :
 		$bootstrap_classes[] = 'col-md-12';
 		$bootstrap_classes[] = 'one-column';
-	endif;
+	endif;*/
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
 		$bootstrap_classes[] = 'col-md-3';

@@ -34,6 +34,13 @@ article{
 			height: auto;
 		}
 	}
+	.card{
+		.card-body{
+			p{
+				@extend .card-text;
+			}
+		}
+	}
 }
 img{
 	height: auto;
@@ -55,5 +62,22 @@ img{
 		#next{
 			@extend .text-right;
 		}
+	}
+}
+
+@mixin text-columns( $columns: 2 ){
+	columns-count: $columns;
+	-webkit-column-count: $columns;
+	-moz-column-count: $columns;
+}
+.columns{
+	&.cols-2{
+		@include text-columns();
+	}
+	&.cols-3{
+		@include text-columns( 3 );
+	}
+	&.cols-4{
+		@include text-columns( 4 );
 	}
 }

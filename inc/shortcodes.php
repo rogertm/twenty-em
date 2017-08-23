@@ -31,16 +31,16 @@ function t_em_quicktags_buttons(){
 	if ( wp_script_is( 'quicktags' ) && $t_em['shortcode_buttoms'] ) :
 ?>
 	<script type="text/javascript">
-		QTags.addButton( 'sc_button', 'button', '[button link="" style="default" size="" new_window="false"]', '[/button]', '', '', 122 );
-		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size="" justify="false"]', '[/btn-group]', '', '', 123 );
-		QTags.addButton( 'sc_alert', 'alert', '[alert style="" close="false"]', '[/alert]', '', '', 124 );
-		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" float=""]', '[/quote]', '', '', 125 );
+		QTags.addButton( 'sc_button', 'button', '[button link="" style="primary" size="" new_window="false"]', '[/button]', '', '', 122 );
+		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size=""]', '[/btn-group]', '', '', 123 );
+		QTags.addButton( 'sc_alert', 'alert', '[alert style="primary" heading="" close="false"]', '[/alert]', '', '', 124 );
+		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" cite=""]', '[/quote]', '', '', 125 );
 		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size=""]', '', '', '', 126 );
 		QTags.addButton( 'sc_columns', 'columns', '[columns cols="2"]', '[/columns]', '', '', 127 );
-		QTags.addButton( 'sc_panel', 'panel', '[panel heading="" footer="" style="default"]', '[/panel]', '', '', 128 );
-		QTags.addButton( 'sc_label', 'label', '[label style="default"]', '[/label]', '', '', 129 );
+		QTags.addButton( 'sc_card', 'card', '[card header="" title="" footer="" style="" img="" img_overlay="false"]', '[/card]', '', '', 128 );
+		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]', '', '', 129 );
 		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]', '', '', 130 );
-		QTags.addButton( 'sc_well', 'well', '[well size=""]', '[/well]', '', '', 131 );
+		QTags.addButton( 'sc_badge', 'badge', '[badge style="secondary"]', '[/badge]', '', '', 131 );
 	</script>
 <?php
 	endif;
@@ -52,12 +52,12 @@ add_action( 'admin_print_footer_scripts', 't_em_quicktags_buttons' );
  * Enclosing. Permits others shortcodes.
  * Behavior: [button link="" style="default" size=""]Button Text[/button]
  * Options:
- * 0. link. Required. Default value "empty". Possibles value: button link (e.g https://themingisprose.com/twenty-em)
- * 1. style. Optional. Default value "default". Possibles values: "default", "primary", "success",
- * "info", "warning", "danger", "link", "custom_class"
- * 2. new_window. Optional, Default value "false". Possibles values "false", "true". (open link in new window)
- * 3. size. Optional. Default value "empty". Possibles values: "btn-lg", "btn-sm", "btn-xs", "custom_class"
+ * 0. link.			Required. Default value "empty". Possibles value: button link (e.g https://themingisprose.com/twenty-em)
+ * 1. style. 		Optional. Default value "primary".
+ * 2. new_window.	Optional, Default value "false". Possibles values "false", "true". (open link in new window)
+ * 3. size. 		Optional. Default value "empty". Possibles values: "lg", "sm"
  *
+ * @see https://getbootstrap.com/docs/4.0/components/buttons/
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
@@ -65,104 +65,95 @@ add_action( 'admin_print_footer_scripts', 't_em_quicktags_buttons' );
 function t_em_shortcode_button( $atts, $content = null ){
 	extract( shortcode_atts( array(
 			'link'			=> '',
-			'style'			=> 'default',
+			'style'			=> 'primary',
 			'new_window'	=> 'false',
 			'size'			=> '',
 		), $atts ) );
-	$link		= ( esc_url( $link ) ) ? esc_url( $link ) : null;
-	$style		= ( esc_attr( $style ) ) ? esc_attr( $style ) : null;
-	$new_window	= ( esc_attr( $new_window ) == 'true' ) ? '_blank' : null;
-	$size		= ( esc_attr( $size ) ) ? esc_attr( $size ) : null;
-	return '<a href="'. esc_url( $link ) .'" class="btn btn-'. $style .' '. $size .'" target="'. esc_attr( $new_window ) .'">'. do_shortcode( $content ) .'</a>';
+	$link		= ( $link ) ? esc_url( $link ) : null;
+	$style		= ( $style ) ? 'btn-'. esc_attr( $style ) : 'btn-primary';
+	$new_window	= ( $new_window == 'true' ) ? 'target="_blank' : null;
+	$size		= ( $size ) ? 'btn-'. esc_attr( $size ) : null;
+	return '<a href="'. esc_url( $link ) .'" class="btn '. $style .' '. $size .'" '. $new_window .'">'. do_shortcode( $content ) .'</a>';
 }
 add_shortcode( 'button', 't_em_shortcode_button' );
 
 /**
  * Shortcode [btn-group]
  * Enclosing. Permits others shortcodes
- * Behavior: [btn-group size="" justify="false"][/btn-group].
+ * Behavior: [btn-group size=""][/btn-group].
  * Used to group buttons created with [button] shortcode
  * Options:
- * 0. size. Optional. Default value "empty". Possibles values "lg", "sm", "xs", "custom_class"
- * 1. justify. Optional. Default value "false". Possibles values "false", "true"
+ * 0. size. 		Optional. Default value "empty". Possibles values "lg", "sm"
  *
+ * @see https://getbootstrap.com/docs/4.0/components/button-group/
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Removed "justify" parameter
  */
 function t_em_shortcode_btn_group( $atts, $content = null ){
 	extract( shortcode_atts( array(
 			'size'		=> '',
-			'justify'	=> 'false',
 		), $atts ) );
 	$size = ( $size ) ? 'btn-group-'. esc_attr( $size ) : null;
-	$justify = ( $justify == 'true' ) ? 'btn-group-justified' : null;
-	return '<div class="btn-group '. $size .' '. $justify .'" role="group" aria-label="'. __( 'Button group', 't_em' ) .'">'. do_shortcode( $content ) .'</div>';
+	return '<div class="btn-group '. $size .'" role="group" aria-label="'. __( 'Button group', 't_em' ) .'">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'btn-group', 't_em_shortcode_btn_group' );
 
 /**
  * Shortcode [alert]
  * Enclosing. Permits others shortcodes.
- * Behavior: [alert style="" close="false"][/alert]
+ * Behavior: [alert style="primary" heading="" close="false"][/alert]
  * Options:
- * 0. style. Optional (but recommended). Default value "empty". Possibles values "success", "info",
- * "warning", "danger", "custom_class"
- * 1. close. Optional. Default value "false" Display a close button
+ * 0. style. 		Optional. (but recommended). Default value "primary".
+ * 1. heading. 		Optional. Alert Heading
+ * 2. close. 		Optional. Default value "false". Display a close button
  *
+ * @see https://getbootstrap.com/docs/4.0/components/alerts/
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Added "heading" parameter
  */
 function t_em_shortcode_alert( $atts, $content = null ){
 	extract( shortcode_atts( array(
-			'style' => '',
+			'style' => 'primary',
+			'heading' => '',
 			'close' => 'false',
 		), $atts ) );
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
-	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : null;
+	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : 'primary';
+	$heading = ( esc_attr( $heading ) != '' ) ? '<h4 class="alert-heading">'. esc_attr( $heading ).'</h4>' : null;
 	if ( $close ) :
-		t_em_register_bootstrap_plugin( 'alert.min.js' );
+		t_em_register_bootstrap_plugin( 'alert.js' );
 	endif;
-	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . '<p>' . do_shortcode( $content ) .'</p></div>';
+	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . $heading . '<p class="mb-0">' . do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'alert', 't_em_shortcode_alert' );
 
 /**
  * Shortcode [quote]
  * Enclosing. Permits others shortcodes.
- * Behavior: [quote text_align="" float=""][/quote]
+ * Behavior: [quote text_align="" cite=""][/quote]
  * Options:
- * 0. text_align. Optional. Default value "empty". Possibles values "left", "right". Text alignment
- * 1. float. Optional. Default value "empty". Possibles values "left", "right". Blockquote tag
- * floating.
+ * 0. text_align. Optional. Default value "empty". Possibles values "left", "right", "center". Text alignment
  *
+ * @see https://getbootstrap.com/docs/4.0/content/typography/#blockquotes
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Added "cite" attribute
+ * @since Twenty'em 1.2		Removed "float" attribute
  */
 function t_em_shortcode_quote( $atts, $content = null ){
 	extract( shortcode_atts( array(
 			'text_align' => '',
-			'float' => '',
+			'cite' => '',
 		), $atts ) );
-	if ( esc_attr( $text_align ) == 'left' ) :
-		$class_align = 'text-left';
-	elseif ( esc_attr( $text_align )  == 'right') :
-		$class_align = 'text-right';
-	else :
-		$class_align = '';
-	endif;
+	$text_align = ( $text_align ) ? 'text-'. esc_attr( $text_align ) : null;
+	$cite = ( $cite ) ? '<footer class="blockquote-footer">'. esc_attr( $cite ) .'</footer>' : null;
 
-	if ( esc_attr( $float ) == 'left' ) :
-		$class_float = 'pull-left col-md-6';
-	elseif ( esc_attr( $float ) == 'right' ) :
-		$class_float = 'pull-right col-md-6';
-	else :
-		$class_float = '';
-	endif;
-
-	return '<blockquote class="'. esc_attr( $class_align ) .' '. esc_attr( $class_float ) .'"><p>'. do_shortcode( $content ) .'</p></blockquote>';
+	return '<blockquote class="blockquote '. esc_attr( $text_align ) .'"><p>'. do_shortcode( $content ) .'</p>'. $cite .'</blockquote>';
 }
 add_shortcode( 'quote', 't_em_shortcode_quote' );
 
@@ -177,7 +168,7 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
  * @link http://codex.wordpress.org/Shortcode_API
- * @link https://themingisprose.com/twenty-emicomoon-demo For a full list of icon classes.
+ * @link https://themingisprose.com/twenty-em/icomoon-demo For a full list of icon classes.
  *
  * @since Twenty'em 1.0
  */
@@ -199,20 +190,126 @@ add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
  * Enclosing. Permits others shortcodes.
  * Behavior [columns cols=""][/columns]
  * Options:
- * 0. cols. Optional. Number of columns. Default value "2"
+ * 0. cols. Optional. Number of columns. Default value "2". Possibles values: "2", "3", "4".
  *
  * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Limits columns count to 4
  */
 function t_em_shortcode_columns( $atts, $content = null ){
 	extract( shortcode_atts( array(
 			'cols' => '2',
 		), $atts ) );
-	return '<div class="columns cols-'. esc_attr( $cols ) .'"><p>'. do_shortcode( $content ) .'</p></div>';
+	$cols = ( $cols && $cols <= 4 && $cols > 1 ) ? esc_attr( $cols ) : 2;
+	return '<div class="columns cols-'. $cols .'"><p>'. do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'columns', 't_em_shortcode_columns' );
 
+/**
+ * Shortcode [lead]
+ * Enclosing. Permits others shortcodes
+ * Behavior [lead][/lead]
+ *
+ * @link http://codex.wordpress.org/Shortcode_API
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_shortcode_lead( $atts, $content = null ){
+	return '<div class="lead"><p>'. do_shortcode( $content ) .'</p></div>';
+}
+add_shortcode( 'lead', 't_em_shortcode_lead' );
+
+/**
+ * Shorcode [card]
+ * Enclosing. Permits others shortcodes
+ * Behavior [card header="" title="" footer="" style="" img="" img_overlay="false"][/card]
+ * Options:
+ * 0. header.		Optional. Default value "empty"
+ * 1. title.		Optional. Default value "empty"
+ * 2. footer.		Optional. Default value "empty"
+ * 3. style.		Optional. Default value "empty"
+ * 4. img.			Optional. Image url. Default value "empty"
+ * 5. img_overlay.	Optional. Image url. Default value "empty"
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/card/
+ * @link http://codex.wordpress.org/Shortcode_API
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_card( $atts, $content = null ){
+	extract( shortcode_atts( array(
+			'header'		=> '',
+			'title'			=> '',
+			'footer'		=> '',
+			'style'			=> '',
+			'img'			=> '',
+			'img_overlay'	=> 'false',
+		), $atts ) );
+	$header = ( $header ) ? '<div class="card-header">'. esc_attr( $header ) .'</div>' : null;
+	$title	= ( $title ) ? '<h4 class="card-title">'. esc_attr( $title ) .'</h4>' : null;
+	$footer = ( $footer ) ? '<div class="card-footer">'. esc_attr( $footer ) .'</div>' : null;
+	$style	= ( $style ) ? esc_attr( $style ) : null;
+	$img	= ( $img ) ? '<img src="'. esc_url( $img ) .'" class="car-img-top">' : null;
+	$body 	= ( $img_overlay == 'true' ) ? 'card-img-overlay' : 'card-body';
+
+	$card = '<div class="card '. $style .'">';
+	$card .=	$header;
+	$card .=	$img;
+	$card .= 	'<div class="'. $body .'">';
+	$card .=		$title;
+	$card .=		'<p>'. do_shortcode( $content ) .'</p>';
+	$card .= 	'</div>';
+	$card .=	$footer;
+	$card .= '</div>';
+	return $card;
+}
+add_shortcode( 'card', 't_em_shortcode_card' );
+
+/**
+ * Shortcode [card-group]
+ * Enclosing. Permits others shortcodes
+ * Behavior [card-group style="group"][/card-group]
+ * Options:
+ * 0. style.	Optional. Default value "group"
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/card/#card-groups
+ * @link http://codex.wordpress.org/Shortcode_API
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_card_group( $atts, $content = null ){
+	extract( shortcode_atts( array(
+			'style'	=> 'group',
+		), $atts ) );
+	$group_style = ( $style != '' ) ? esc_attr( $style ) : 'group';
+	return '<div class="card-'. $group_style .'">'. do_shortcode( $content ) .'</div>';
+}
+add_shortcode( 'card-group', 't_em_shortcode_card_group' );
+
+/**
+ * Shortcode [badge]
+ * Enclosing. Permits others shortcodes
+ * Behavior [badge style="secondary"][/badge]
+ * Options:
+ * 0. style. 	Optional. Default value "secondary".
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/badge/
+ * @link http://codex.wordpress.org/Shortcode_API
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_badge( $atts, $content = null ){
+	extract( shortcode_atts( array(
+			'style'	=> 'secondary',
+		), $atts ) );
+	$style = ( $style != '' ) ? esc_attr( $style ) : 'secondary';
+	return '<span class="badge badge-'. $style .'">'. do_shortcode( $content ) .'</span>';
+}
+add_shortcode( 'badge', 't_em_shortcode_badge' );
+
+
+/** Deprecated ************************************************************************************/
 /**
  * Shortcode [panel]
  * Enclosing. Permits others shortcodes
@@ -228,6 +325,7 @@ add_shortcode( 'columns', 't_em_shortcode_columns' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_panel( $atts, $content = null ){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_shortcode_card()' );
 	extract( shortcode_atts( array(
 			'heading'	=> '',
 			'footer'	=> '',
@@ -257,26 +355,13 @@ add_shortcode( 'panel', 't_em_shortcode_panel' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_label( $atts, $content = null ){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_shortcode_card()' );
 	extract( shortcode_atts( array(
 			'style'	=> 'default',
 		), $atts ) );
 	return '<span class="label label-'. esc_attr( $style ) .'">'. do_shortcode( $content ) .'</span>';
 }
 add_shortcode( 'label', 't_em_shortcode_label' );
-
-/**
- * Shortcode [lead]
- * Enclosing. Permits others shortcodes
- * Behavior [lead][/lead]
- *
- * @link http://codex.wordpress.org/Shortcode_API
- *
- * @since Twenty'em 1.0
- */
-function t_em_shortcode_lead( $atts, $content = null ){
-	return '<div class="lead"><p>'. do_shortcode( $content ) .'</p></div>';
-}
-add_shortcode( 'lead', 't_em_shortcode_lead' );
 
 /**
  * Shortcode [well]
@@ -288,6 +373,7 @@ add_shortcode( 'lead', 't_em_shortcode_lead' );
  * @since Twenty'em 1.0
  */
 function t_em_shortcode_well( $atts, $content = null ){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_shortcode_card()' );
 	extract( shortcode_atts( array(
 			'size'		=> '',
 		), $atts ) );
