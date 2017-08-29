@@ -14,10 +14,16 @@
  */
 
 /**
- * Template Name: Tabs Content
+ * Template Name: [Deprecated] Tabs Content
  *
  * The template for displaying all child pages of the current page in tabs style.
  */
+
+_deprecated_file(
+	basename( __FILE__ ),
+	T_EM_FRAMEWORK_NAME .' '. 1.2, null,
+	sprintf( __( '%s is deprecated in favor of [tabs] shortcode and will be removed in a future version', 't_em' ), basename( __FILE__ ) )
+);
 
 get_header(); ?>
 

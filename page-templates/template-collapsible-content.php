@@ -14,10 +14,16 @@
  */
 
 /**
- * Template Name: Collapsible Content
+ * Template Name: [Deprecated] Collapsible Content
  *
  * The template for displaying all child pages of the current page in accordion style.
  */
+
+_deprecated_file(
+	basename( __FILE__ ),
+	T_EM_FRAMEWORK_NAME .' '. 1.2, null,
+	sprintf( __( '%s is deprecated in favor of [collapse] shortcode and will be removed in a future version', 't_em' ), basename( __FILE__ ) )
+);
 
 get_header(); ?>
 
