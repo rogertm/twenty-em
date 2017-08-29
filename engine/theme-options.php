@@ -17,20 +17,6 @@
  * Twenty'em theme options.
  */
 
-// First of all we call this files we need to complete the Twenty'em engine.
-require_once( T_EM_ENGINE_DIR_PATH . '/generals-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/header-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/front-page-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/archive-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/layout-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/social-network-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/webmaster-tools-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/maintenance-mode-options.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/actions.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/cron.php' );
-require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
-
 /**
  * Register the form setting for our t_em_theme_options array.
  * This function is attached to the admin_init() action hook.
