@@ -22,8 +22,6 @@
 /**
  * Include additional buttons in the Text (HTML) mode of the WordPress editor
  *
- * @link http://codex.wordpress.org/Quicktags_API
- *
  * @since Twenty'em 1.0
  */
 function t_em_quicktags_buttons(){
@@ -41,6 +39,10 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]', '', '', 129 );
 		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]', '', '', 130 );
 		QTags.addButton( 'sc_badge', 'badge', '[badge style="secondary"]', '[/badge]', '', '', 131 );
+		QTags.addButton( 'sc_collapse-item', 'collapse-item', '[collapse-item title=""]', '[/collapse-item]', '', '', 132 );
+		QTags.addButton( 'sc_collapse', 'collapse', '[collapse]', '[/collapse]', '', '', 133 );
+		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]', '', '', 134 );
+		QTags.addButton( 'sc_tab', 'tabs', '[tabs type="tabs" class=""]', '[/tabs]', '', '', 135 );
 	</script>
 <?php
 	endif;
@@ -58,7 +60,6 @@ add_action( 'admin_print_footer_scripts', 't_em_quicktags_buttons' );
  * 3. size. 		Optional. Default value "empty". Possibles values: "lg", "sm"
  *
  * @see https://getbootstrap.com/docs/4.0/components/buttons/
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  */
@@ -86,7 +87,6 @@ add_shortcode( 'button', 't_em_shortcode_button' );
  * 0. size. 		Optional. Default value "empty". Possibles values "lg", "sm"
  *
  * @see https://getbootstrap.com/docs/4.0/components/button-group/
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Removed "justify" parameter
@@ -110,7 +110,6 @@ add_shortcode( 'btn-group', 't_em_shortcode_btn_group' );
  * 2. close. 		Optional. Default value "false". Display a close button
  *
  * @see https://getbootstrap.com/docs/4.0/components/alerts/
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Added "heading" parameter
@@ -139,7 +138,6 @@ add_shortcode( 'alert', 't_em_shortcode_alert' );
  * 0. text_align. Optional. Default value "empty". Possibles values "left", "right", "center". Text alignment
  *
  * @see https://getbootstrap.com/docs/4.0/content/typography/#blockquotes
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Added "cite" attribute
@@ -167,7 +165,6 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * 1. align. Optional. Default value "empty". Possibles values "left", "right". Icon alignment.
  * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
- * @link http://codex.wordpress.org/Shortcode_API
  * @link https://themingisprose.com/twenty-em/icomoon-demo For a full list of icon classes.
  *
  * @since Twenty'em 1.0
@@ -192,8 +189,6 @@ add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
  * Options:
  * 0. cols. Optional. Number of columns. Default value "2". Possibles values: "2", "3", "4".
  *
- * @link http://codex.wordpress.org/Shortcode_API
- *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Limits columns count to 4
  */
@@ -210,8 +205,6 @@ add_shortcode( 'columns', 't_em_shortcode_columns' );
  * Shortcode [lead]
  * Enclosing. Permits others shortcodes
  * Behavior [lead][/lead]
- *
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.0
  */
@@ -233,7 +226,6 @@ add_shortcode( 'lead', 't_em_shortcode_lead' );
  * 5. img_overlay.	Optional. Image url. Default value "empty"
  *
  * @see https://getbootstrap.com/docs/4.0/components/card/
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.2
  */
@@ -274,7 +266,6 @@ add_shortcode( 'card', 't_em_shortcode_card' );
  * 0. style.	Optional. Default value "group"
  *
  * @see https://getbootstrap.com/docs/4.0/components/card/#card-groups
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.2
  */
@@ -295,7 +286,6 @@ add_shortcode( 'card-group', 't_em_shortcode_card_group' );
  * 0. style. 	Optional. Default value "secondary".
  *
  * @see https://getbootstrap.com/docs/4.0/components/badge/
- * @link http://codex.wordpress.org/Shortcode_API
  *
  * @since Twenty'em 1.2
  */
@@ -307,6 +297,202 @@ function t_em_shortcode_badge( $atts, $content = null ){
 	return '<span class="badge badge-'. $style .'">'. do_shortcode( $content ) .'</span>';
 }
 add_shortcode( 'badge', 't_em_shortcode_badge' );
+
+/**
+ * Shortcode [collapse-item].
+ * Enclosing. Permits others shortcodes
+ * Behavior [collapse-item title=""][/collapse-item]
+ * Options:
+ * 0. title.	Required. Item title. Default value "empty".
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/collapse/
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_collapse_item( $atts, $content = null ){
+	if ( isset( $GLOBALS['collapse_item_count'] ) ) :
+		$GLOBALS['collapse_item_count']++;
+	else :
+		$GLOBALS['collapse_item_count'] = 0;
+	endif;
+
+	extract( shortcode_atts( array(
+			'title'	=> '',
+			'active' => 'false',
+		), $atts ) );
+	$title 		= ( $title ) ? esc_attr( $title ) : null;
+	$item_id	= ( $title ) ? sanitize_title( $title ) .'-'. $GLOBALS['collapse_item_count']  : null;
+	$active 	= ( $active == 'true' ) ? 'show' : null;
+	$expanded 	= ( $active ) ? 'true' : 'false';
+
+	$item = '<div class="collapsible-item">';
+	$item .= 	'<a class="collapsible-title lead" href="#'. $item_id .'" data-toggle="collapse" data-parent="#collapse-'. $GLOBALS['collapse_count'] .'" aria-expanded="'. $expanded .'" aria-controls="'. $item_id .'">';
+	$item .=		$title;
+	$item .=	'</a>';
+	$item .=	'<div id="'. $item_id .'" class="collapsible-text collapse '. $active .'" role="tabpanel">';
+	$item .= 		'<p>'. do_shortcode( $content ) .'</p>';
+	$item .= 	'</div>';
+	$item .= '</div>';
+	return $item;
+}
+add_shortcode( 'collapse-item', 't_em_shortcode_collapse_item' );
+
+/**
+ * Shorcode [collapse]
+ * Enclosing. Permits others shortcodes
+ * Behavior [collapse][/collapse]
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/collapse/
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_collapse( $atts, $content = null ){
+	if ( isset( $GLOBALS['collapse_count'] ) ) :
+		$GLOBALS['collapse_count']++;
+	else :
+		$GLOBALS['collapse_count'] = 0;
+	endif;
+
+	t_em_register_bootstrap_plugin( 'collapse.js' );
+	return '<div id="collapse-'. $GLOBALS['collapse_count'] .'" class="collapsible" data-children=".collapsible-item">'. do_shortcode( $content ) .'</div>';
+}
+add_shortcode( 'collapse', 't_em_shortcode_collapse' );
+
+/**
+ * Shortcode [tab-item]
+ * Part of the code in this shortcode is inspired in "Bootstrap 3 Shortcodes": https://github.com/MWDelaney/bootstrap-shortcodes
+ * Enclosing. Permits others shortcodes
+ * Behavior [tab-item title="" active="false"][/tab-item]
+ * Options:
+ * 0. title 	Required. Tab title. Default value "empty"
+ * 1. class 	Optional. Default value "empty"
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/navs/
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_tab_item( $atts, $content = null ){
+	extract( shortcode_atts( array(
+			'title' => '',
+			'active' => 'false',
+		), $atts ) );
+	$title = ( $title ) ? esc_attr( $title ) : null;
+	$item_id = ( $title ) ? sanitize_title( $title ) .'-'. $GLOBALS['tabs_count'] : null;
+
+	if( $GLOBALS['tabs_default_active'] && $GLOBALS['tabs_default_count'] == 0 ) {
+			$atts['active'] = true;
+	}
+	$GLOBALS['tabs_default_count']++;
+
+	$item_active = ( $atts['active'] == 'true' ) ? 'active' : null;
+	$item = '<div id="'. $item_id .'" class="tab-pane fade '. $item_active .'" role="tabpanel">';
+	$item .=	'<p>'. do_shortcode( $content ) .'</p>';
+	$item .= '</div>';
+	return $item;
+}
+add_shortcode( 'tab-item', 't_em_shortcode_tab_item' );
+
+/**
+ * Shortcode [tabs]
+ * Part of the code in this shortcode is inspired in "Bootstrap 3 Shortcodes": https://github.com/MWDelaney/bootstrap-shortcodes
+ * Enclosing. Permits others shortcodes
+ * Behavior [tabs type="" class=""][/tabs]
+ * Options:
+ * 0. type 		Optional. Default value "empty"
+ * 1. class 	Optional. Default value "empty"
+ *
+ * @see https://getbootstrap.com/docs/4.0/components/navs/
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_tabs( $atts, $content = null ){
+	extract( shortcode_atts( array(
+			'type' => 'tabs',
+			'class' => '',
+		), $atts ) );
+	$type = ( $type ) ? 'nav-'. esc_attr( $type ) : 'nav-tabs';
+	$class = ( $class ) ? esc_attr( $class ) : null;
+	$items_map = t_em_shortcode_attr_map( $content );
+
+	if ( isset( $GLOBALS['tabs_count'] ) ) :
+		$GLOBALS['tabs_count']++;
+	else :
+		$GLOBALS['tabs_count'] = 0;
+	endif;
+
+	$GLOBALS['tabs_default_count'] = 0;
+
+	// Get the tabs items
+	if ( $items_map ) :
+		$tabs = array();
+		$GLOBALS['tabs_default_active'] = true;
+
+		foreach ( $items_map as $item ) :
+			if ( $item['tab-item']['active'] == 'true' ) :
+				$GLOBALS['tabs_default_active'] = false;
+			endif;
+		endforeach;
+		$i = 0;
+		foreach ( $items_map as $item ) :
+			if ( $item['tab-item']['active'] == 'true' ) :
+				$GLOBALS['tabs_default_active'] = false;
+			endif;
+			$item_id = sanitize_title( $item['tab-item']['title'] ) .'-'. $GLOBALS['tabs_count'];
+			$item_class = 'nav-item';
+			$active = ( $item['tab-item']['active'] == 'true' || ( $GLOBALS['tabs_default_active'] == true && $i == 0 ) ) ? 'active' : null;
+			$tabs[] = '<li class="'. $item_class .'"><a href="#'. $item_id .'" class="nav-link '. $active .'" data-toggle="pill">'. $item['tab-item']['title'] .'</a></li>';
+			$i++;
+		endforeach;
+	endif;
+
+	t_em_register_bootstrap_plugin( 'tab.js' );
+
+	$output = '<div class="tabbable my-3">';
+	$output .= 	'<ul class="nav '. $type .' '. $class .' tabbable-list mb-2" role="tablist">'. implode( '', $tabs ) .'</ul>';
+	$output .= 	'<div class="tab-content">'. do_shortcode( $content ) .'</div>';
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode( 'tabs', 't_em_shortcode_tabs' );
+
+/**
+ * Helper function. Create attributes map
+ * @param $content string 	String containing a shortcode, usually post content.
+ * @return array 			Array containing shortcode map
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_attr_map( $content ){
+	$res = array();
+	$output = array();
+	$regex = get_shortcode_regex();
+	preg_match_all( '~'.$regex.'~', $content, $matches );
+
+	foreach( $matches[2] as $key => $value ) :
+		$parsed = shortcode_parse_atts( $matches[3][$key] );
+		$parsed = is_array( $parsed ) ? $parsed : array();
+		$res[$value] = $parsed;
+		$output[] = $res;
+	endforeach;
+	return $output;
+}
+
+/**
+ * Helper function. Remove extra line breaks around shortcodes
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_shortcode_cleanup( $content ){
+	$tags = array(
+		'<p>['		=> '[',
+		']</p>'		=> ']',
+		']<br />'	=> ']',
+		']<br>'		=> ']',
+	);
+	$content = strtr( $content, $tags );
+	return $content;
+}
+add_filter( 'the_content', 't_em_shortcode_cleanup' );
 
 
 /** Deprecated ************************************************************************************/

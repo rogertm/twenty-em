@@ -102,6 +102,9 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_register_script( 'fluid-width', T_EM_THEME_DIR_JS_URL . '/script.container-fluid.js', array( 'jquery' ), $t_em_theme_data['Version'] );
 		wp_enqueue_script( 'fluid-width' );
 	endif;
+
+	wp_register_script( 'app-utils', T_EM_THEME_DIR_JS_URL .'/app.utils.js', array( 'jquery' ), $t_em_theme_data['Version'] );
+	wp_enqueue_script( 'app-utils' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
 
