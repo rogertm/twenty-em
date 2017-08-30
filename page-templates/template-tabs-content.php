@@ -25,6 +25,8 @@ _deprecated_file(
 	sprintf( __( '%s is deprecated in favor of [tabs] shortcode and will be removed in a future version', 't_em' ), basename( __FILE__ ) )
 );
 
+t_em_register_bootstrap_plugin( 'tab.js', 'script.tabs.js', T_EM_THEME_DIR_JS_URL . '/script.tabs.js' );
+
 get_header(); ?>
 
 		<section id="main-content" <?php t_em_add_bootstrap_class( 'main-content' ); ?>>

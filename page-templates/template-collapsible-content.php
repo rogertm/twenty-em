@@ -25,6 +25,8 @@ _deprecated_file(
 	sprintf( __( '%s is deprecated in favor of [collapse] shortcode and will be removed in a future version', 't_em' ), basename( __FILE__ ) )
 );
 
+t_em_register_bootstrap_plugin( 'collapse.js' );
+
 get_header(); ?>
 
 		<section id="main-content" <?php t_em_add_bootstrap_class( 'main-content' ); ?>>
