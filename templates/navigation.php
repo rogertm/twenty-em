@@ -83,8 +83,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 				 *
 				 * @param string $brand HTML containing the navbar brand
 				 */
-				$brand = '<div class="navbar-brand">' . __( 'Site Navigation', 't_em' ) . '</div>';
-				echo apply_filters( 't_em_filter_navigation_menu_brand', $brand );
+				echo apply_filters( 't_em_filter_navigation_menu_brand', $brand = '' );
 			?>
 			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>

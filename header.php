@@ -29,24 +29,10 @@
 	<?php t_em_action_top(); ?>
 <div id="wrap" class="hfeed">
 	<?php t_em_action_header_before(); ?>
-	<header id="header">
-		<div id="branding" role="banner" class="container">
-			<?php t_em_action_header_inside_before() ?>
-			<div class="branding-inner row">
-				<div class="col-md-6">
-					<?php t_em_action_header_inside_left(); ?>
-				</div>
-				<div class="col-md-6">
-					<?php t_em_action_header_inside_right(); ?>
-				</div>
-			</div><!-- .branding-inner -->
-			<?php t_em_action_header_inside_after(); ?>
-		</div><!-- #branding .wrapper .container -->
+	<header id="header" role="banner">
+		<?php t_em_action_header() ?>
 	</header><!-- #header -->
-
 	<?php t_em_action_header_after(); ?>
-
 	<div id="main">
 		<?php t_em_action_main_before(); ?>
 		<div id="inner-main" class="container">
-

@@ -23,7 +23,7 @@
  * @link			https://themingisprose.com/twenty-em
  * @since 			Twenty'em 1.2
  */
-/*!
+/**
  * Import Bootstrap
  */
 /*!
@@ -628,7 +628,7 @@ pre {
   flex: 0 0 100%;
   max-width: 100%; }
 
-.order-1 {
+.order-1, #header #static-header.static-header-text-left #static-header-text {
   order: 1; }
 
 .order-2 {
@@ -661,7 +661,7 @@ pre {
 .order-11 {
   order: 11; }
 
-.order-12 {
+.order-12, #header #static-header.static-header-text-left #static-header-image {
   order: 12; }
 
 @media (min-width: 576px) {
@@ -4621,7 +4621,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mh-100 {
   max-height: 100% !important; }
 
-.m-0 {
+.m-0, #header #static-header {
   margin: 0 !important; }
 
 .mt-0 {
@@ -4759,7 +4759,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important; }
 
-.p-0 {
+.p-0, #header #header-image .container-fluid, #header #slider-carousel.container-fluid {
   padding: 0 !important; }
 
 .pt-0 {
@@ -6379,7 +6379,7 @@ html {
   flex: 0 0 100%;
   max-width: 100%; }
 
-.order-1 {
+.order-1, #header #static-header.static-header-text-left #static-header-text {
   order: 1; }
 
 .order-2 {
@@ -6412,7 +6412,7 @@ html {
 .order-11 {
   order: 11; }
 
-.order-12 {
+.order-12, #header #static-header.static-header-text-left #static-header-image {
   order: 12; }
 
 @media (min-width: 576px) {
@@ -7493,11 +7493,22 @@ template {
 [hidden] {
   display: none !important; }
 
+/**
+ * Navigation
+ */
+#top-menu h1#site-title {
+  line-height: .6; }
+
 .breadcrumb {
   display: block; }
 
-#top-menu h1#site-title {
-  line-height: .5; }
+/**
+ * Header
+ */
+#header #header-image .container-fluid img,
+#header #header-image .container img {
+  width: 100%;
+  height: auto; }
 
 article .featured-post-thumbnail.card-img-top {
   height: auto; }

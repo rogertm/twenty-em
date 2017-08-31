@@ -40,48 +40,6 @@ function t_em_action_header_before(){
 }
 
 /**
- * Fire the t_em_action_header_inside_before action, just after opening <div id="branding"> tag
- *
- * @file header.php
- * @since Twenty'em 1.0
- */
-function t_em_action_header_inside_before(){
-	do_action( 't_em_action_header_inside_before' );
-}
-
-/**
- * Fire the t_em_action_header_inside_left action, just after opening <div id="branding"><div class="branding-inner">
- * tag
- *
- * @file header.php
- * @since Twenty'em 1.0
- */
-function t_em_action_header_inside_left(){
-	do_action( 't_em_action_header_inside_left' );
-}
-
-/**
- * Fire the t_em_action_header_inside_right action, just after opening <div id="branding"><div class="branding-inner">
- * tag
- *
- * @file header.php
- * @since Twenty'em 1.0
- */
-function t_em_action_header_inside_right(){
-	do_action( 't_em_action_header_inside_right' );
-}
-
-/**
- * Fire the t_em_action_header_inside_after action, just before closing </div><!-- #branding .wrapper .container --> tag
- *
- * @file header.php
- * @since Twenty'em 1.0
- */
-function t_em_action_header_inside_after(){
-	do_action( 't_em_action_header_inside_after' );
-}
-
-/**
  * Fire the t_em_action_header_after action, just after closing </header><!-- #header --> tag
  *
  * @file header.php
@@ -529,6 +487,16 @@ function t_em_action_maintenance_mode_inside_after(){
 }
 
 /** Since version 1.2 *****************************************************************************/
+
+/**
+ * Fire the t_em_action_header action hook just after opening <header id="header"> tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.2
+ */
+function t_em_action_header(){
+	do_action( 't_em_action_header' );
+}
 
 /**
  * Fire the t_em_action_entry_meta_header action just after opening the <div class="entry-meta entry-meta-header">

@@ -40,7 +40,7 @@ function t_em_header_image(){
 		 */
 		do_action( 't_em_action_header_image_before' );
 		?>
-			<div id="header-image-inner">
+			<div id="header-image-inner" class="container">
 		<?php
 		/**
 		 * Fires in and before the header image section. Container width;
@@ -92,7 +92,7 @@ function t_em_header_image(){
 	endif;
 }
 endif; // function t_em_header_image()
-add_action( 't_em_action_header_inside_before', 't_em_header_image', 5 );
+add_action( 't_em_action_header', 't_em_header_image', 5 );
 
 if ( ! function_exists( 't_em_slider_bootstrap_carousel' ) ) :
 /**
@@ -111,69 +111,65 @@ function t_em_slider_bootstrap_carousel( $args ){
 
 		if ( ! $args ) $args = t_em_slider_query_args();
 
-		$slider_posts = get_posts( $args );
-		$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
-		$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'null';
-?>
-		<section id="slider-carousel">
-		<?php
-		/**
-		 * Fires before the slider carousel section. Full width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_slider_before' );
-		?>
-			<div id="slider-carousel-inner" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>" class="carousel slide">
-		<?php
-		/**
-		 * Fires in and before the slider carousel section. Container width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_slider_inner_before' );
-		?>
-<?php 	if ( $slider_posts ) : ?>
+			$slider_posts = get_posts( $args );
+			$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
+			$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'false';
+	?>
+			<section id="slider-carousel" class="carousel slide container" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>">
+			<?php
+			/**
+			 * Fires before the slider carousel section. Full width;
+			 *
+			 * @since Twenty'em 1.1
+			 */
+			do_action( 't_em_action_slider_before' );
+			?>
+<?php 		if ( $slider_posts ) : ?>
 <?php 			$tp = count( $slider_posts ) ?>
 				<ol class="carousel-indicators">
 			<?php $s = 0; while ( $s < $tp ) : ?>
-					<li data-target="#slider-carousel-inner" data-slide-to="<?php echo $s ?>"></li>
+					<li data-target="#slider-carousel" data-slide-to="<?php echo $s ?>"></li>
 			<?php $s++; endwhile; ?>
 				</ol><!-- .carousel-indicators -->
 				<div class="carousel-inner">
-<?php 			foreach ( $slider_posts as $post ) : setup_postdata( $post );
-					$thumbnail = t_em_image_resize( 1200, $t_em['slider_height'], $post->ID );
-?>
+				<?php
+				/**
+				 * Fires in and before the slider carousel section. Container width;
+				 *
+				 * @since Twenty'em 1.1
+				 */
+				do_action( 't_em_action_slider_inner_before' );
+				?>
+				<?php foreach ( $slider_posts as $post ) : setup_postdata( $post );
+					$thumbnail = t_em_image_resize( 1200, $t_em['slider_height'], $post->ID ); ?>
 					<div class="carousel-item">
-						<!-- <img alt="<?php the_title(); ?>" src="<?php echo $thumbnail ?>" /> -->
 						<?php t_em_featured_post_thumbnail( 1200, $t_em['slider_height'], false, 'd-block w-100', $post->ID ); ?>
 						<div id="<?php echo $post->post_name ?>-<?php echo $post->ID; ?>" class="carousel-caption">
-							<h3 class="entry-title">
+							<h3 class="item-title">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
 							</h3>
-							<div class="entry-summary hidden-xs hidden-sm"><?php echo get_the_excerpt(); ?></div>
+							<div class="item-summary d-none d-md-block"><?php echo get_the_excerpt(); ?></div>
 						</div>
 					</div><!-- .item -->
-<?php 			endforeach; wp_reset_postdata(); ?>
+				<?php endforeach; wp_reset_postdata(); ?>
+				<?php
+				/**
+				 * Fires in and after the slider carousel section. Container width;
+				 *
+				 * @since Twenty'em 1.1
+				 */
+				do_action( 't_em_action_slider_inner_after' );
+				?>
 				</div><!-- .carousel-inner -->
-				<a class="carousel-control-prev" href="#slider-carousel-inner" role="button" data-slide="prev">
+				<a class="carousel-control-prev" href="#slider-carousel" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only"><?php _e( 'Previous', 't_em' ); ?></span>
 				</a>
-				<a class="carousel-control-next" href="#slider-carousel-inner" role="button" data-slide="next">
+				<a class="carousel-control-next" href="#slider-carousel" role="button" data-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only"><?php _e( 'Next', 't_em' ) ?></span>
 				</a>
 <?php 	endif; ?>
-		<?php
-		/**
-		 * Fires in and after the slider carousel section. Container width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_slider_inner_after' );
-		?>
-		</div><!-- #slider-carousel-inner -->
 		<?php
 		/**
 		 * Fires after the slider carousel section. Full width;
@@ -187,7 +183,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 	endif;
 }
 endif; // function t_em_slider_bootstrap_carousel()
-add_action( 't_em_action_header_inside_before', 't_em_slider_bootstrap_carousel', 5 );
+add_action( 't_em_action_header', 't_em_slider_bootstrap_carousel', 5 );
 
 /**
  * Return arguments for slider query. Only post with images attached to it will be displayed
@@ -248,86 +244,84 @@ function t_em_static_header(){
 		&& ( ( '1' == $t_em['static_header_home_only'] && is_home() )
 		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
 ?>
-		<section id="static-header" class="<?php echo $t_em['static_header_text'] ?>" role="info">
-		<?php
-		/**
-		 * Fires before the static header section. Full width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_static_header_before' );
-		?>
-			<div id="static-header-inner" class="row">
-		<?php
-		/**
-		 * Fires in and before the static header section. Full width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_static_header_inner_before' );
-		?>
-<?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
-			<div id="static-header-image" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
-				<figure>
+		<section id="static-header" class="jumbotron <?php echo $t_em['static_header_text'] ?>" role="info">
+			<div class="container">
+			<?php
+			/**
+			 * Fires before the static header section. Full width;
+			 *
+			 * @since Twenty'em 1.1
+			 */
+			do_action( 't_em_action_static_header_before' );
+			?>
+				<div id="static-header-inner" class="row">
+			<?php
+			/**
+			 * Fires in and before the static header section. Full width;
+			 *
+			 * @since Twenty'em 1.1
+			 */
+			do_action( 't_em_action_static_header_inner_before' );
+			?>
+	<?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
+				<div id="static-header-image" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
 					<img src="<?php echo $t_em['static_header_img_src']; ?>"
 						alt="<?php echo sanitize_text_field( $t_em['static_header_headline'] ); ?>">
-				</figure>
-			</div><!-- #static-header-image -->
-<?php 	endif; ?>
+				</div><!-- #static-header-image -->
+	<?php 	endif; ?>
 
-<?php 	if ( $t_em['static_header_headline']
-			|| $t_em['static_header_content']
-			|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
-			|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
-		) : ?>
-			<div id="static-header-text" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
-<?php 	if ( $t_em['static_header_headline'] ) : ?>
-				<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
-<?php 	endif; ?>
-<?php 	if ( $t_em['static_header_content'] ) : ?>
-				<div class="static-header-content"><?php echo t_em_wrap_paragraph( $t_em['static_header_content'] ); ?></div>
-<?php 	endif; ?>
-				<footer class="actions">
-<?php 	if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
-					<a href="<?php echo $t_em['static_header_primary_button_link']; ?>"
-						title="<?php echo $t_em['static_header_primary_button_text']; ?>"
-						class="btn primary-button">
-							<span class="<?php echo $t_em['static_header_primary_button_icon_class'] ?> icomoon"></span>
-							<span class="button-text"><?php echo $t_em['static_header_primary_button_text']; ?></span>
-						</a>
-<?php 	endif; ?>
-<?php 	if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
-					<a href="<?php echo $t_em['static_header_secondary_button_link']; ?>"
-						title="<?php echo $t_em['static_header_secondary_button_text']; ?>"
-						class="btn secondary-button">
-							<span class="<?php echo $t_em['static_header_secondary_button_icon_class'] ?> icomoon"></span>
-							<span class="button-text"><?php echo $t_em['static_header_secondary_button_text']; ?></span>
-						</a>
-<?php 	endif; ?>
-				</footer><!-- .actions -->
-			</div><!-- #static-header-text -->
-<?php 	endif; ?>
-		<?php
-		/**
-		 * Fires in and after the static header section. Full width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_static_header_inner_after' );
-		?>
+	<?php 	if ( $t_em['static_header_headline']
+				|| $t_em['static_header_content']
+				|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
+				|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
+			) : ?>
+				<div id="static-header-text" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
+	<?php 	if ( $t_em['static_header_headline'] ) : ?>
+					<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
+	<?php 	endif; ?>
+	<?php 	if ( $t_em['static_header_content'] ) : ?>
+					<div class="static-header-content"><?php echo t_em_wrap_paragraph( $t_em['static_header_content'] ); ?></div>
+	<?php 	endif; ?>
+					<footer class="actions">
+	<?php 	if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
+						<a href="<?php echo $t_em['static_header_primary_button_link']; ?>"
+							class="btn btn-primary">
+								<span class="<?php echo $t_em['static_header_primary_button_icon_class'] ?> icomoon"></span>
+								<span class="button-text"><?php echo $t_em['static_header_primary_button_text']; ?></span>
+							</a>
+	<?php 	endif; ?>
+	<?php 	if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
+						<a href="<?php echo $t_em['static_header_secondary_button_link']; ?>"
+							class="btn btn-secondary">
+								<span class="<?php echo $t_em['static_header_secondary_button_icon_class'] ?> icomoon"></span>
+								<span class="button-text"><?php echo $t_em['static_header_secondary_button_text']; ?></span>
+							</a>
+	<?php 	endif; ?>
+					</footer><!-- .actions -->
+				</div><!-- #static-header-text -->
+	<?php 	endif; ?>
+			<?php
+			/**
+			 * Fires in and after the static header section. Full width;
+			 *
+			 * @since Twenty'em 1.1
+			 */
+			do_action( 't_em_action_static_header_inner_after' );
+			?>
+				</div>
+			<?php
+			/**
+			 * Fires after the static header section. Full width;
+			 *
+			 * @since Twenty'em 1.1
+			 */
+			do_action( 't_em_action_static_header_after' );
+			?>
 			</div>
-		<?php
-		/**
-		 * Fires after the static header section. Full width;
-		 *
-		 * @since Twenty'em 1.1
-		 */
-		do_action( 't_em_action_static_header_after' );
-		?>
 		</section><!-- #static-header .container -->
 <?php
 	endif;
 }
 endif; // function t_em_static_header()
-add_action( 't_em_action_header_inside_before', 't_em_static_header', 5 );
+add_action( 't_em_action_header', 't_em_static_header', 5 );
 ?>

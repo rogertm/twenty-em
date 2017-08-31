@@ -97,4 +97,54 @@ function t_em_shortcode_well( $atts, $content = null ){
 	return '<div class="well '. $size .'"><p>'. do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'well', 't_em_shortcode_well' );
+
+/**
+ * Fire the t_em_action_header_inside_before action, just after opening <div id="branding"> tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0
+ * @deprecated 1.2
+ */
+function t_em_action_header_inside_before(){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_action_header()' );
+	do_action( 't_em_action_header_inside_before' );
+}
+
+/**
+ * Fire the t_em_action_header_inside_left action, just after opening <div id="branding"><div class="branding-inner">
+ * tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0
+ * @deprecated 1.2
+ */
+function t_em_action_header_inside_left(){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_action_header()' );
+	do_action( 't_em_action_header_inside_left' );
+}
+
+/**
+ * Fire the t_em_action_header_inside_right action, just after opening <div id="branding"><div class="branding-inner">
+ * tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0
+ * @deprecated 1.2
+ */
+function t_em_action_header_inside_right(){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_action_header()' );
+	do_action( 't_em_action_header_inside_right' );
+}
+
+/**
+ * Fire the t_em_action_header_inside_after action, just before closing </div><!-- #branding .wrapper .container --> tag
+ *
+ * @file header.php
+ * @since Twenty'em 1.0
+ * @deprecated 1.2
+ */
+function t_em_action_header_inside_after(){
+	_deprecated_function( __FUNCTION__, T_EM_FRAMEWORK_NAME .' '. 1.2, 't_em_action_header()' );
+	do_action( 't_em_action_header_inside_after' );
+}
 ?>

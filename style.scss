@@ -25,21 +25,61 @@
  * @since 			Twenty'em 1.2
  */
 
-/*!
+/**
  * Import Bootstrap
  */
 @import "bootstrap/scss/bootstrap.scss";
 @import "bootstrap/scss/bootstrap-grid.scss";
 @import "bootstrap/scss/bootstrap-reboot.scss";
 
+/**
+ * Navigation
+ */
+#top-menu{
+	h1#site-title{
+		line-height: .6;
+	}
+}
 .breadcrumb{
 	display: block;
 }
-#top-menu{
-	h1#site-title{
-		line-height: .5;
+
+/**
+ * Header
+ */
+#header{
+	#header-image{
+		.container-fluid{
+			@extend .p-0;
+		}
+		.container-fluid,
+		.container{
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	#slider-carousel{
+		&.container-fluid{
+			@extend .p-0;
+		}
+	}
+	#static-header{
+		@extend .m-0;
+		&.static-header-text-left{
+			#static-header-image{
+				@extend .order-12;
+			}
+			#static-header-text{
+				@extend .order-1;
+			}
+		}
 	}
 }
+
+
+
 article{
 	.featured-post-thumbnail{
 		&.card-img-top{
