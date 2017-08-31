@@ -30,11 +30,9 @@ global $t_em;
 					</div><!-- .entry-meta -->
 				</header>
 				<?php the_excerpt(); ?>
-				<footer class="entry-utility">
-					<?php t_em_posted_in(); ?>
-					<?php t_em_comments_link(); ?>
-					<?php t_em_edit_post_link(); ?>
-				</footer><!-- .entry-utility -->
+				<footer class="entry-meta entry-meta-footer">
+					<?php t_em_action_entry_meta_footer(); ?>
+				</footer><!-- .entry-meta .entry-meta-footer -->
 				<?php t_em_action_post_inside_after(); ?>
 			</div>
 			<?php if ( $t_em['excerpt_set'] == 'thumbnail-right' ) t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true, 'featured-post-thumbnail d-flex ml-3' ); ?>

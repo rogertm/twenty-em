@@ -30,11 +30,9 @@ $cols = 12 / $t_em['archive_in_columns'];
 					</div><!-- .entry-meta -->
 				</header>
 				<div class=""><?php the_excerpt(); ?></div>
-				<footer class="entry-utility ">
-					<?php t_em_posted_in(); ?>
-					<?php t_em_comments_link(); ?>
-					<?php t_em_edit_post_link(); ?>
-				</footer><!-- .entry-utility -->
+				<footer class="entry-meta entry-meta-footer">
+					<?php t_em_action_entry_meta_footer(); ?>
+				</footer><!-- .entry-meta .entry-meta-footer -->
 				<?php t_em_action_post_inside_after(); ?>
 		</article><!-- #post-## -->
 		<?php t_em_action_post_after(); ?>

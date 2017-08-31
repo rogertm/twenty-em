@@ -29,11 +29,9 @@ global $t_em;
 					</div><!-- .entry-meta -->
 				</header>
 				<?php the_excerpt(); ?>
-				<footer class="entry-utility">
-					<?php t_em_posted_in(); ?>
-					<?php t_em_comments_link(); ?>
-					<?php t_em_edit_post_link(); ?>
-				</footer><!-- .entry-utility -->
+				<footer class="entry-meta entry-meta-footer">
+					<?php t_em_action_entry_meta_footer(); ?>
+				</footer><!-- .entry-meta .entry-meta-footer -->
 				<?php t_em_action_post_inside_after(); ?>
 			</div>
 		</article><!-- #post-## -->

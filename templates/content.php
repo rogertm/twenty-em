@@ -210,7 +210,7 @@ function t_em_custom_template_content(){
 <?php if ( $template_data->post_content ) : ?>
 		<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
 <?php endif; ?>
-		<footer class="entry-utility">
+		<footer class="entry-meta entry-meta-footer">
 			<?php t_em_edit_post_link(); ?>
 		</footer>
 	</div><!-- .featured-header -->

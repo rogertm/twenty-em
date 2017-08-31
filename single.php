@@ -46,12 +46,9 @@ get_header(); ?>
 
 			<?php t_em_action_post_content_after(); ?>
 
-			<footer class="entry-utility entry-meta entry-meta-footer">
+			<footer class="entry-meta entry-meta-footer">
 				<?php t_em_action_entry_meta_footer() ?>
-				<?php t_em_posted_in(); ?>
-				<?php t_em_comments_link(); ?>
-				<?php t_em_edit_post_link(); ?>
-			</footer><!-- .entry-utility -->
+			</footer><!-- .entry-meta .entry-meta-footer -->
 
 			<?php t_em_action_post_inside_after(); ?>
 		</article><!-- #post-## -->

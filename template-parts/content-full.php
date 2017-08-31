@@ -29,11 +29,9 @@
 			<div class="entry-content">
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
 			</div><!-- .entry-content -->
-			<footer class="entry-utility">
-				<?php t_em_posted_in(); ?>
-				<?php t_em_comments_link(); ?>
-				<?php t_em_edit_post_link(); ?>
-			</footer><!-- .entry-utility -->
+			<footer class="entry-meta entry-meta-footer">
+				<?php t_em_action_entry_meta_footer(); ?>
+			</footer><!-- .entry-meta .entry-meta-footer -->
 			<?php t_em_action_post_inside_after(); ?>
 		</article><!-- #post-## -->
 		<?php t_em_action_post_after(); ?>

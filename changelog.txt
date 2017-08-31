@@ -6,7 +6,7 @@ Release Date: August 01, 2017
 * Update: Updated right sidebar on help panel
 * Bug Fix: Fix some E_NOTICE in widgets
 * Bug Fix: Disable comments supports for pages if [single_page_comments] => 1
-* Bug Fix: Do not show "Comments are close" if current post type does not support them in .entry-utility
+* Bug Fix: Do not show "Comments are close" if current post type does not support them in .entry-meta.entry-meta-footer
 
 = 1.1.1 =
 Release Date: July 10, 2017

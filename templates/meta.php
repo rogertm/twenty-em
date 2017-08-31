@@ -88,26 +88,26 @@ function t_em_posted_in(){
 	if ( $tags_list ) :
 		echo '<div class="entry-tags small d-inline mr-3"><span class="icomoon-tags icomoon"></span><span class="tags-links">'. $tags_list .'</span></div>';
 	endif;
-
-	$post_url = sprintf( '<div class="entry-permalink small d-inline mr-3"><span class="icomoon-link icomoon"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span></div>',
-					get_permalink(),
-					sprintf( __( 'Permalink to %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
-					__( 'Permalink', 't_em' )
-				);
-	echo $post_url;
 }
 endif; // function t_em_posted_in()
+add_action( 't_em_action_entry_meta_footer', 't_em_posted_in' );
 
-if ( ! function_exists( 't_em_edit_post_link' ) ) :
+if ( ! function_exists( 't_em_post_shortlink' ) ) :
 /**
- * Pluggable Function: Prints HTML with edit post link
+ * Pluggable Function: Prints HTML width post short link
  *
- * @since Twenty'em 1.0
+ * @since Twenty'em 1.2
  */
-function t_em_edit_post_link(){
-	edit_post_link( __( 'Edit', 't_em' ), '<div class="entry-edit small d-inline mr-3"><span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span></div>' );
+function t_em_post_shortlink(){
+	$post_shortlink = sprintf( '<div class="entry-permalink small d-inline mr-3"><span class="icomoon-link icomoon"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span></div>',
+					wp_get_shortlink(),
+					sprintf( __( 'Short link to: %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
+					__( 'Short link', 't_em' )
+				);
+	echo $post_shortlink;
 }
-endif; // function t_em_edit_post_link()
+endif; // function t_em_post_shortlink()
+add_action( 't_em_action_entry_meta_footer', 't_em_post_shortlink' );
 
 if ( ! function_exists( 't_em_comments_link' ) ) :
 /**
@@ -128,6 +128,19 @@ function t_em_comments_link(){
 <?php
 }
 endif; // function t_em_comments_link()
+add_action( 't_em_action_entry_meta_footer', 't_em_comments_link' );
+
+if ( ! function_exists( 't_em_edit_post_link' ) ) :
+/**
+ * Pluggable Function: Prints HTML with edit post link
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_edit_post_link(){
+	edit_post_link( __( 'Edit', 't_em' ), '<div class="entry-edit small d-inline mr-3"><span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span></div>' );
+}
+endif; // function t_em_edit_post_link()
+add_action( 't_em_action_entry_meta_footer', 't_em_edit_post_link' );
 
 if ( ! function_exists( 't_em_attachment_meta' ) ) :
 /**

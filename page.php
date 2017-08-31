@@ -47,7 +47,7 @@ get_header(); ?>
 
 			<?php t_em_action_post_content_after(); ?>
 
-			<footer class="entry-utility">
+			<footer class="entry-meta entry-meta-footer">
 				<?php t_em_edit_post_link(); ?>
 			</footer>
 			<?php t_em_action_post_inside_after(); ?>
