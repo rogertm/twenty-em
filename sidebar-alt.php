@@ -19,9 +19,9 @@
 global $t_em;
 
 if ( in_array( $t_em['layout_set'], array(
-	'three-column-content-left',
-	'three-column-content-right',
-	'three-column-content-middle' ) ) ) :
+	'three-columns-content-left',
+	'three-columns-content-right',
+	'three-columns-content-middle' ) ) ) :
 
 	/* The alternative widget area is triggered if have widgets.
 	 * So let's check that first.

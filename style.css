@@ -7510,6 +7510,20 @@ template {
   width: 100%;
   height: auto; }
 
+/**
+ * Layout
+ */
+@media (min-width: 768px) {
+  body.content-right #content {
+    order: 12; }
+  body.content-middle #content {
+    order: 6; }
+  body.content-middle #sidebar {
+    order: 1; }
+  body.content-middle #sidebar-alt {
+    order: 12; } }
+
+/**************************************************************************************************/
 article .featured-post-thumbnail.card-img-top {
   height: auto; }
 

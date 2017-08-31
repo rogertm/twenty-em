@@ -78,8 +78,32 @@
 	}
 }
 
+/**
+ * Layout
+ */
+body{
+	@include media-breakpoint-up(md){
+		&.content-right{
+			#content{
+				order: 12;
+			}
+		}
+		&.content-middle{
+			#content{
+				order: 6;
+			}
+			#sidebar{
+				order: 1;
+			}
+			#sidebar-alt{
+				order: 12;
+			}
+		}
+	}
+}
 
 
+/**************************************************************************************************/
 article{
 	.featured-post-thumbnail{
 		&.card-img-top{

@@ -61,12 +61,12 @@ function t_em_add_bootstrap_class( $section ){
 	$layout_set = $t_em['layout_set'];
 	$one_column = in_array( $layout_set, array( 'one-column' ) );
 	$two_column = in_array( $layout_set,
-						array( 'two-column-content-right',
-							   'two-column-content-left' ) );
+						array( 'two-columns-content-right',
+							   'two-columns-content-left' ) );
 	$three_column = in_array( $layout_set,
-						array( 'three-column-content-left',
-							   'three-column-content-right',
-							   'three-column-content-middle' ) );
+						array( 'three-columns-content-left',
+							   'three-columns-content-right',
+							   'three-columns-content-middle' ) );
 
 	// #main-content and three-column or ( two-column or one-column )
 	/*if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :

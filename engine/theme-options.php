@@ -222,7 +222,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'archive_in_columns'							=> '1',
 		'archive_pagination_set'						=> 'prev-next',
 		// Layout Options
-		'layout_set'									=> 'two-column-content-left',
+		'layout_set'									=> 'two-columns-content-left',
 		'footer_set'									=> 'four-footer-widget',
 		'layout_fluid_width'							=> '',
 		// Social Networks Options

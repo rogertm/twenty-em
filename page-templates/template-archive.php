@@ -88,7 +88,7 @@ if ( have_posts() ) :
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
+			<?php get_sidebar( 'alt' ); ?>
 		</section><!-- #main-content -->
-		<?php get_sidebar( 'alt' ); ?>
 
 <?php get_footer(); ?>

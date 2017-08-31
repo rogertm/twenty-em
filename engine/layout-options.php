@@ -20,8 +20,8 @@
 /**
  * Return an array of Layout Options for Twenty'em admin panel.
  * This function manage how is displayed our theme layout. Possibles options are:
- * 0. Sidebar on right (two-column-content-left).
- * 1. Sidebar on left (two-column-content-right).
+ * 0. Sidebar on right (two-columns-content-left).
+ * 1. Sidebar on left (two-columns-content-right).
  * 2. One column, no sidebar (content).
  *
  * @return array
@@ -30,30 +30,30 @@
  */
 function t_em_layout_options( $layout_options = '' ){
 	$layout_options = array(
-		'two-column-content-left' => array(
-			'value' => 'two-column-content-left',
+		'two-columns-content-left' => array(
+			'value' => 'two-columns-content-left',
 			'label' => __( 'Two columns. Content on left', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/two-column-content-left.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/two-columns-content-left.png',
 		),
-		'two-column-content-right' => array(
-			'value' => 'two-column-content-right',
+		'two-columns-content-right' => array(
+			'value' => 'two-columns-content-right',
 			'label' => __( 'Two columns. Content on right', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/two-column-content-right.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/two-columns-content-right.png',
 		),
-		'three-column-content-left' => array(
-			'value' => 'three-column-content-left',
+		'three-columns-content-left' => array(
+			'value' => 'three-columns-content-left',
 			'label' => __( 'Three columns. Content on left', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-column-content-left.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-columns-content-left.png',
 		),
-		'three-column-content-right' => array(
-			'value' => 'three-column-content-right',
+		'three-columns-content-right' => array(
+			'value' => 'three-columns-content-right',
 			'label' => __( 'Three columns. Content on right', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-column-content-right.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-columns-content-right.png',
 		),
-		'three-column-content-middle' => array(
-			'value' => 'three-column-content-middle',
+		'three-columns-content-middle' => array(
+			'value' => 'three-columns-content-middle',
 			'label' => __( 'Three columns. Content in the middle', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-column-content-middle.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/three-columns-content-middle.png',
 		),
 		'one-column' => array(
 			'value' => 'one-column',

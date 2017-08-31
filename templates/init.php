@@ -226,27 +226,23 @@ function t_em_layout_classes( $existing_classes ){
 	// In front page and 'front-page-set => widgets-front-page' one column is enough
 	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
 		$classes = array( 'one-column widgets-front-page' );
-	elseif ( in_array( $layout_set, array( 'two-column-content-left', 'two-column-content-right' ) ) ) :
-		$classes = array( 'two-column' );
-	elseif ( in_array( $layout_set, array( 'three-column-content-left', 'three-column-content-right', 'three-column-content-middle' ) ) ) :
-		$classes = array( 'three-column' );
+	elseif ( in_array( $layout_set, array( 'two-columns-content-left', 'two-columns-content-right' ) ) ) :
+		$classes = array( 'two-columns' );
+	elseif ( in_array( $layout_set, array( 'three-columns-content-left', 'three-columns-content-right', 'three-columns-content-middle' ) ) ) :
+		$classes = array( 'three-columns' );
 	else :
 		$classes = array( 'one-column' );
 	endif;
 
-	if ( 'two-column-content-left' == $layout_set ) :
-		$classes[] = 'two-column-content-left';
-	elseif ( 'two-column-content-right' == $layout_set ) :
-		$classes[] = 'two-column-content-right';
-	elseif ( 'three-column-content-left' == $layout_set ) :
-		$classes[] = 'three-column-content-left';
-	elseif ( 'three-column-content-right' == $layout_set ) :
-		$classes[] = 'three-column-content-right';
-	elseif ( 'three-column-content-middle' == $layout_set ) :
-		$classes[] = 'three-column-content-middle';
-	else :
-		$classes[] = $layout_set;
+	if ( in_array( $layout_set, array( 'two-columns-content-left', 'three-columns-content-left' ) ) ) :
+		$classes = array( 'content-left' );
+	elseif ( in_array( $layout_set, array( 'two-columns-content-right', 'three-columns-content-right' ) ) ) :
+		$classes = array( 'content-right' );
+	elseif ( in_array( $layout_set, array( 'three-columns-content-middle' ) ) ) :
+		$classes = array( 'content-middle' );
 	endif;
+
+	$classes[] = $layout_set;
 
 	/**
 	 * Add maintenance-mode and maintenance-mode-is-admin class if Maintenance Mode is active
@@ -261,12 +257,12 @@ function t_em_layout_classes( $existing_classes ){
 	endif;
 
 	/**
-	 * Add wrapper-container-fluid class if full width is active
+	 * Add is-container-fluid class if full width is active
 	 *
 	 * @since Twenty'em 1.0.1
 	 */
 	if ( $t_em['layout_fluid_width'] ) :
-		$classes[] = 'wrapper-container-fluid';
+		$classes[] = 'is-container-fluid';
 	endif;
 
 	return array_merge( $existing_classes, $classes );
@@ -371,7 +367,7 @@ function t_em_widgets_init() {
 	endif;
 
 	if ( in_array( $t_em['layout_set'],
-			array('three-column-content-left', 'three-column-content-right', 'three-column-content-middle' )
+			array('three-columns-content-left', 'three-columns-content-right', 'three-columns-content-middle' )
 		) ) :
 		// Area 1, located at the top of the sidebar.
 		register_sidebar( array(
