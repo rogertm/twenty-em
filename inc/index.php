@@ -18,6 +18,7 @@
  */
 
 require_once( T_EM_THEME_DIR_INC_PATH . '/functions.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/actions.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/enqueue.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/shortcodes.php' );
 require_once( T_EM_THEME_DIR_INC_PATH . '/widgets.php' );

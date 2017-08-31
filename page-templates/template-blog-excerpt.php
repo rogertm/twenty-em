@@ -30,9 +30,39 @@ get_header(); ?>
 								'posts_per_page' => get_option( 'posts_per_page' ),
 								'paged' => get_query_var( 'paged' ),
 						);
-				$wp_query = new WP_Query ( $args );
-				?>
-				<?php t_em_loop(); ?>
+				$the_query = new WP_Query ( $args );
+
+				global $t_em;
+				$content = ( $t_em['archive_in_columns'] == 1 && $t_em['excerpt_set'] != 'thumbnail-center' ) ? 'excerpt' : 'columns';
+
+				$cols = ( $t_em['archive_in_columns'] > 1 || $t_em['excerpt_set'] == 'thumbnail-center' ) ? true : null;
+
+				if ( $the_query->have_posts() ) :
+					if ( $cols ) :
+						echo '<div class="row">';
+						$i = 0;
+					endif;
+
+					while ( $the_query->have_posts() ) :
+						$the_query->the_post();
+						if ( $cols && 0 == $i % $t_em['archive_in_columns'] ) :
+							echo '</div>';
+							echo '<div class="row">';
+						endif;
+						get_template_part( '/template-parts/content', $content );
+						if ( $cols ) :
+							$i++;
+						endif;
+					endwhile;
+
+					if ( $cols ) :
+						echo '</div>';
+					endif;
+				else :
+					get_template_part( '/template-parts/content', 'none' );
+				endif;
+wp_reset_postdata();
+?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>

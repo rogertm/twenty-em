@@ -511,7 +511,7 @@ function t_em_action_maintenance_mode_after(){
  * <section id="maintenance-mode"> tag if Maintenance Mode is active
  *
  * @file functions.php via t_em_front_page_widgets() function
- * @since Twenty'em 1.0
+ * @since Twenty'em 1.0.1
  */
 function t_em_action_maintenance_mode_inside_before(){
 	do_action( 't_em_action_maintenance_mode_inside_before' );
@@ -522,9 +522,31 @@ function t_em_action_maintenance_mode_inside_before(){
  * </section><!-- #maintenance-mode --> tag if Maintenance Mode is active
  *
  * @file functions.php via t_em_front_page_widgets() function
- * @since Twenty'em 1.0
+ * @since Twenty'em 1.0.1
  */
 function t_em_action_maintenance_mode_inside_after(){
 	do_action( 't_em_action_maintenance_mode_inside_after' );
+}
+
+/** Since version 1.2 *****************************************************************************/
+
+/**
+ * Fire the t_em_action_entry_meta_header action just after opening the <div class="entry-meta entry-meta-header">
+ *
+ * @file ...
+ * @since Twenty'em 1.2
+ */
+function t_em_action_entry_meta_header(){
+	do_action( 't_em_action_entry_meta_header' );
+}
+
+/**
+ * Fire the t_em_action_entry_meta_footer action just after opening the <div class="entry-meta entry-meta-footer">
+ *
+ * @file ...
+ * @since Twenty'em 1.2
+ */
+function t_em_action_entry_meta_footer(){
+	do_action( 't_em_action_entry_meta_footer' );
 }
 ?>

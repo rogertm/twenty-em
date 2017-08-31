@@ -31,21 +31,21 @@ $args = array( 'post_type' => 'post',
 				'posts_per_page' => get_option( 'posts_per_page' ),
 				'paged' => get_query_var( 'paged' )
 		);
-$wp_query = new WP_Query ( $args );
+$the_query = new WP_Query ( $args );
 
-if ( have_posts() ) :
+if ( $the_query->have_posts() ) :
 
 // Start the Custom Loop
-	while ( have_posts() ) : the_post();
+	while ( $the_query->have_posts() ) : $the_query->the_post();
 ?>
 		<?php t_em_action_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<header class="entry-header">
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-				<span class="entry-meta">
-					<?php t_em_posted_on(); ?>
-				</span><!-- .entry-meta -->
+				<div class="entry-meta entry-meta-header">
+					<?php t_em_action_entry_meta_header() ?>
+				</div><!-- .entry-meta -->
 			</header>
 
 			<div class="entry-content">
@@ -65,6 +65,7 @@ if ( have_posts() ) :
 else :
 	get_template_part( '/template-parts/content', 'none' );
 endif;
+wp_reset_postdata();
 ?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->

@@ -98,18 +98,6 @@ function t_em_posted_in(){
 }
 endif; // function t_em_posted_in()
 
-if ( ! function_exists( 't_em_posted_on' ) ) :
-/**
- * Pluggable Function: Prints HTML with meta information for the current post—date/time and author.
- *
- * @since Twenty'em 1.0
- */
-function t_em_posted_on() {
-	t_em_post_date();
-	t_em_post_author();
-}
-endif; // function t_em_posted_on()
-
 if ( ! function_exists( 't_em_edit_post_link' ) ) :
 /**
  * Pluggable Function: Prints HTML with edit post link
@@ -174,24 +162,6 @@ function t_em_attachment_meta(){
 }
 endif; // function t_em_attachment_meta()
 
-if ( ! function_exists( 't_em_post_author' ) ) :
-/**
- * Pluggable Function: Prints HTML with author posts link
- *
- * @since Twenty'em 1.0
- */
-function t_em_post_author(){
-	global $post;
-	$author_id = $post->post_author;
-	$post_author = sprintf( '<div class="entry-author small d-inline mr-3"><span class="icomoon-user icomoon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span></div>',
-				esc_url( get_author_posts_url( $author_id ) ),
-				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author_meta( 'display_name', $author_id ) ) ),
-				get_the_author_meta( 'display_name', $author_id )
-			);
-	echo $post_author;
-}
-endif; // function t_em_post_author()
-
 if ( ! function_exists( 't_em_post_date' ) ) :
 /**
  * Pluggable Function: Prints HTML with post date link
@@ -209,6 +179,26 @@ function t_em_post_date(){
 	echo $post_date;
 }
 endif; // function t_em_post_date()
+add_action( 't_em_action_entry_meta_header', 't_em_post_date' );
+
+if ( ! function_exists( 't_em_post_author' ) ) :
+/**
+ * Pluggable Function: Prints HTML with author posts link
+ *
+ * @since Twenty'em 1.0
+ */
+function t_em_post_author(){
+	global $post;
+	$author_id = $post->post_author;
+	$post_author = sprintf( '<div class="entry-author small d-inline mr-3"><span class="icomoon-user icomoon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span></div>',
+				esc_url( get_author_posts_url( $author_id ) ),
+				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author_meta( 'display_name', $author_id ) ) ),
+				get_the_author_meta( 'display_name', $author_id )
+			);
+	echo $post_author;
+}
+endif; // function t_em_post_author()
+add_action( 't_em_action_entry_meta_header', 't_em_post_author' );
 
 if ( ! function_exists( 't_em_author_meta' ) ) :
 /**

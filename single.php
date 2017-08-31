@@ -33,9 +33,9 @@ get_header(); ?>
 			<?php t_em_action_post_inside_before(); ?>
 			<header>
 				<h1 class="page-header"><?php the_title(); ?></h1>
-				<span class="entry-meta">
-					<?php t_em_posted_on(); ?>
-				</span><!-- .entry-meta -->
+				<div class="entry-meta entry-meta-header">
+					<?php t_em_action_entry_meta_header() ?>
+				</div><!-- .entry-meta -->
 			</header>
 
 			<?php t_em_action_post_content_before(); ?>
@@ -46,7 +46,8 @@ get_header(); ?>
 
 			<?php t_em_action_post_content_after(); ?>
 
-			<footer class="entry-utility">
+			<footer class="entry-utility entry-meta entry-meta-footer">
+				<?php t_em_action_entry_meta_footer() ?>
 				<?php t_em_posted_in(); ?>
 				<?php t_em_comments_link(); ?>
 				<?php t_em_edit_post_link(); ?>

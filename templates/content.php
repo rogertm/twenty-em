@@ -250,24 +250,26 @@ if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
  * user in "General Options" in the admin options page. This function is attached to the
  * t_em_action_post_inside_before() action hook.
  *
- * @uses has_post_thumbnail() Returns a boolean if a post has a Featured Image
- * @uses the_post_thumbnail() Display the Featured Image for the current post, as set in that
- * post's edit screen.
- *
- * @link http://codex.wordpress.org/Post_Thumbnails
- *
- * @global $t_em
- *
  * @since Twenty'em 1.0
  */
 function t_em_single_post_thumbnail(){
-	global $t_em;
-	if ( is_singular() && '1' == $t_em['single_featured_img'] && has_post_thumbnail() ) :
-?>
-<figure id="featured-image-<?php the_ID() ?>" class="featured-post-thumbnail">
-<?php the_post_thumbnail(); ?>
-</figure>
-<?php
+	if ( is_page_template( 'page-templates/template-blog-excerpt.php' ) )
+		return;
+	global $t_em, $post;
+	if ( $t_em['single_featured_img']
+		&& ( is_singular() && has_post_thumbnail() )
+		|| ( $t_em['archive_set'] == 'the-content'
+			&& ( is_home() || is_front_page() || is_archive() )
+		)
+		|| ( is_page_template( 'page-templates/template-blog-content.php' ) )
+	) :
+		$open_link	= ( ! is_single() ) ? '<a href="'. get_permalink( $post->ID ) .'">' : null;
+		$close_link	= ( ! is_single() ) ? '</a>' : null;
+		$attr = array(
+			'class'	=> 'featured-post-thumbnail',
+			'alt'	=> $post->post_title,
+		);
+		echo $open_link . get_the_post_thumbnail( $post->ID, 'full', $attr ) . $close_link;
 	endif;
 }
 endif; // function t_em_single_post_thumbnail()

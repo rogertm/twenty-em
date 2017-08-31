@@ -25,9 +25,9 @@ $cols = 12 / $t_em['archive_in_columns'];
 			<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true, 'featured-post-thumbnail' ); ?>
 				<header class="entry-header">
 					<h2 class="entry-title "><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-					<span class="entry-meta">
-						<?php t_em_posted_on(); ?>
-					</span><!-- .entry-meta -->
+					<div class="entry-meta entry-meta-header">
+						<?php t_em_action_entry_meta_header() ?>
+					</div><!-- .entry-meta -->
 				</header>
 				<div class=""><?php the_excerpt(); ?></div>
 				<footer class="entry-utility ">
