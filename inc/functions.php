@@ -170,6 +170,22 @@ function t_em_add_bootstrap_class( $section ){
 }
 
 /**
+ * Container or Container Fluid, that's the meollo
+ * @param bool 		$echo. Echo or return the result
+ * @return string 	.container or .container-fluid class, set by the user in the admin panel Layout Options
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_container( $echo = true ){
+	global $t_em;
+	$container = ( $t_em['layout_fluid_width'] ) ? 'container-fluid' : 'container';
+	if ( $echo )
+		echo $container;
+	else
+		return $container;
+}
+
+/**
  * Display featured image in posts archives when "Display the Excerpt" option is
  * activated in admin theme option page.
  *

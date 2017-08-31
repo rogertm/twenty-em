@@ -35,4 +35,4 @@
 	<?php t_em_action_header_after(); ?>
 	<div id="main">
 		<?php t_em_action_main_before(); ?>
-		<div id="inner-main" class="container">
+		<div id="inner-main" class="<?php t_em_container(); ?>">

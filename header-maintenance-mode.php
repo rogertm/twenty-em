@@ -34,5 +34,5 @@
 
 	<div id="main">
 		<?php t_em_action_maintenance_mode_main_before(); ?>
-		<div id="inner-main" class="container">
+		<div id="inner-main" class="<?php t_em_container(); ?>">
 

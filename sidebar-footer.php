@@ -36,7 +36,7 @@
 
 			// If we get this far, we have widgets. Let do this.
 		?>
-			<section id="footer-widget-area" class="container" role="complementary">
+			<section id="footer-widget-area" class="<?php t_em_container(); ?>" role="complementary">
 				<div class="row widget-area">
 				<?php t_em_action_sidebar_footer_before(); ?>
 

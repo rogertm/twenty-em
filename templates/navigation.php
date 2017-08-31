@@ -23,7 +23,7 @@ function t_em_top_menu(){
 ?>
 	<div id="top-menu" role="navigation">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class="container">
+			<div class="<?php t_em_container(); ?>">
 			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
 			<?php
 				/**
@@ -75,7 +75,7 @@ function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 	<div id="site-navigation" role="navigation">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container">
+			<div class="<?php t_em_container(); ?>">
 			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 			<?php
 				/**

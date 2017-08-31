@@ -40,7 +40,7 @@ function t_em_header_image(){
 		 */
 		do_action( 't_em_action_header_image_before' );
 		?>
-			<div id="header-image-inner" class="container">
+			<div id="header-image-inner" class="<?php t_em_container(); ?>">
 		<?php
 		/**
 		 * Fires in and before the header image section. Container width;
@@ -115,7 +115,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 			$slider_wrap = ( $t_em['bootstrap_carousel_wrap'] == '1' ) ? 'false' : 'true';
 			$slider_pause = ( $t_em['bootstrap_carousel_pause'] == '1' ) ? 'hover' : 'false';
 	?>
-			<section id="slider-carousel" class="carousel slide container" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>">
+			<section id="slider-carousel" class="carousel slide <?php t_em_container(); ?>" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo $t_em['bootstrap_carousel_interval'] ?>">
 			<?php
 			/**
 			 * Fires before the slider carousel section. Full width;
@@ -245,7 +245,7 @@ function t_em_static_header(){
 		|| ( '0' == $t_em['static_header_home_only'] ) ) ) :
 ?>
 		<section id="static-header" class="jumbotron <?php echo $t_em['static_header_text'] ?>" role="info">
-			<div class="container">
+			<div class="<?php t_em_container(); ?>">
 			<?php
 			/**
 			 * Fires before the static header section. Full width;
