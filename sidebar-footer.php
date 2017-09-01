@@ -18,7 +18,7 @@
  */
 ?>
 
-		<div id="colophon">
+		<div id="colophon" class="py-5">
 		<?php t_em_action_colophon_before(); ?>
 		<?php
 		global $t_em;

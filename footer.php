@@ -33,7 +33,7 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-		<div id="site-info">
+		<div id="site-info" class="py-3">
 			<?php t_em_action_site_info_before(); ?>
 			<div id="inner-site-info" class="<?php t_em_container(); ?>">
 				<div class="row">
