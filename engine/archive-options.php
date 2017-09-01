@@ -228,8 +228,8 @@ function t_em_archive_pagination_options( $archive_pagination = '' ){
 			'value'	=> 'prev-next',
 			'label'	=> __( 'Display <code>Newer</code> and <code>Older</code> posts links', 't_em' ),
 		),
-		'page-navi'	=> array(
-			'value'	=> 'page-navi',
+		'pagination'	=> array(
+			'value'	=> 'pagination',
 			'label'	=> __( 'Display a paginated list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 &hellip; 9 Older &raquo;</code>', 't_em' ),
 		),
 	);

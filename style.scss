@@ -33,7 +33,14 @@
 @import "bootstrap/scss/bootstrap-reboot.scss";
 
 /**
- * Navigation
+ * Scaffolding
+ */
+.screen-reader-text{
+	@extend .sr-only;
+}
+
+/**
+ * Navs
  */
 #top-menu{
 	h1#site-title{
@@ -134,6 +141,55 @@ body{
 				.front-page-widget-caption{
 					order: 1;
 				}
+			}
+		}
+	}
+}
+
+/**
+ * Pagination
+ */
+#site-pagination{
+	&.prev-next{
+		.nav-item{
+			@extend .w-50;
+			&:hover{
+				background-color: $gray-200;
+			}
+		}
+	}
+	&.pagination{
+		ul{
+			@extend .pagination;
+			li{
+				@extend .page-item;
+				.page-numbers{
+					@extend .page-link;
+					&.current{
+						color: $pagination-active-color;
+						background-color: $pagination-active-bg;
+						border-color: $pagination-active-border-color;
+					}
+					&.dots{
+						color: $pagination-disabled-color;
+						background-color: $pagination-disabled-bg;
+						border-color: $pagination-disabled-border-color;
+					}
+				}
+			}
+		}
+	}
+}
+#posts-navigation,
+#comments-navigation{
+	&.nav{
+		a{
+			@extend .nav-item;
+			@extend .nav-link;
+			@extend .w-50;
+			@extend .text-center;
+			&:hover{
+				background-color: $gray-200;
 			}
 		}
 	}

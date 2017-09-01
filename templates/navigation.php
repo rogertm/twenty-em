@@ -149,13 +149,18 @@ if ( ! function_exists( 't_em_single_navigation' ) ) :
  */
 function t_em_single_navigation(){
 	if ( is_single() ) :
+		/**
+		 * Filter the prev-next navigation class attribute
+		 *
+		 * @since Twenty'em 1.2
+		 */
+		$nav_class = apply_filters( 't_em_filter_single_navigation_class', 'nav nav-pills nav-fill my-3' );
 ?>
-	<nav id="single-navigation" class="navi" role="navigation">
-		<ul>
-			<li class="previous"><?php previous_post_link( '%link', '<span class="meta-nav icomoon-double-angle-left icomoon"></span> %title' ); ?></li>
-			<li class="next"><?php next_post_link( '%link', '%title <span class="meta-nav icomoon-double-angle-right icomoon"></span>' ); ?></li>
-		</ul>
-	</nav><!-- #nav-above -->
+	<nav id="posts-navigation" class="<?php echo $nav_class ?>" role="navigation">
+		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
+		<?php previous_post_link( '%link', '%title' ); ?>
+		<?php next_post_link( '%link', '%title' ); ?>
+	</nav>
 <?php
 	endif;
 }
@@ -166,29 +171,43 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
 /**
  * Pluggable Function: Display navigation to next/previous pages when applicable.
  * This function is attached to the t_em_action_content_after() action hook
+ * @param object $the_query 	Default to $wp_query object.
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2			Added $the_quey parameter.
  */
-function t_em_page_navi(){
-	global $wp_query, $t_em;
+function t_em_page_navi( $the_query ){
+	global $t_em;
+	if ( ! $the_query )
+		$the_query = $GLOBALS['wp_query'];
 	// Don't print empty markup if there's only one page.
-	if ( $wp_query->max_num_pages < 2 || is_404() ) :
+	if ( $the_query->max_num_pages < 2 || is_404() )
 		return;
-	endif;
 ?>
 <?php
 		if ( 'prev-next' == $t_em['archive_pagination_set'] ) :
+			/**
+			 * Filter the prev-next navigation class attribute
+			 *
+			 * @since Twenty'em 1.2
+			 */
+			$nav_class = apply_filters( 't_em_filter_prev_next_navigation_class', 'nav nav-pills nav-fill my-3' );
 ?>
-	<nav id="site-pagination" class="navi">
-		<ul>
-			<li class="previous"><?php next_posts_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older posts', 't_em' ) ); ?></li>
-			<li class="next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
-		</ul>
+	<nav id="site-pagination" class="prev-next <?php echo $nav_class ?>">
+		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
+		<?php next_posts_link( __( 'Older posts', 't_em' ), $the_query->max_num_pages ); ?>
+		<?php previous_posts_link( __( 'Newer posts', 't_em' ) ); ?>
 	</nav>
 <?php
-		elseif ( 'page-navi' == $t_em['archive_pagination_set'] ) :
+		elseif ( 'pagination' == $t_em['archive_pagination_set'] ) :
+			/**
+			 * Filter the prev-next navigation class attribute
+			 *
+			 * @since Twenty'em 1.2
+			 */
+			$nav_class = apply_filters( 't_em_filter_pagination_navigation_class', 'my-3' );
 ?>
-	<nav id="site-pagination" class="pagi">
+	<nav id="site-pagination" class="pagination <?php echo $nav_class ?>" aria-label="<?php _e( 'Page navigation', 't_em' ) ?>">
 <?php
 			$paged 			= get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 			$pagenum_link 	= html_entity_decode( get_pagenum_link() );
@@ -208,11 +227,11 @@ function t_em_page_navi(){
 			$args = array(
 				'base'					=> $pagenum_link,
 				'format'				=> $format,
-				'total'					=> $wp_query->max_num_pages,
+				'total'					=> $the_query->max_num_pages,
 				'current'				=> $paged,
 				'add_args'				=> array_map( 'urlencode', $query_args ),
-				'prev_text'				=> __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Newer posts', 't_em' ),
-				'next_text'				=> __( 'Older posts <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ),
+				'prev_text'				=> __( 'Newer posts', 't_em' ),
+				'next_text'				=> __( 'Older posts', 't_em' ),
 				'end_size'				=> 1,
 				'mid_size'				=> 2,
 				'type'					=> 'list',
@@ -232,9 +251,9 @@ function t_em_page_navi(){
 			$links = paginate_links( apply_filters( 't_em_filter_paginate_links', $args ) );
 			if ( $links ) :
 				$current_page = ( 0 == get_query_var( 'paged' ) ) ? '1' : get_query_var( 'paged' );
-				$total_pages = $wp_query->max_num_pages;
+				$total_pages = $the_query->max_num_pages;
 ?>
-				<span class="pages page-numbers"><?php echo sprintf( __( 'Page %1$s of %2$s', 't_em' ), $current_page, $total_pages ); ?></span>
+				<span class="pages page-numbers sr-only"><?php echo sprintf( __( 'Page %1$s of %2$s', 't_em' ), $current_page, $total_pages ); ?></span>
 				<?php echo $links; ?>
 <?php
 			endif;
@@ -246,6 +265,18 @@ function t_em_page_navi(){
 endif; // function t_em_page_navi()
 add_action( 't_em_action_content_after', 't_em_page_navi' );
 
+/**
+ * Add custom attributes to next and previous posts navigation
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_next_posts_link_attributes(){
+	$attr = 'class="nav-item nav-link"';
+	return $attr;
+}
+add_filter( 'next_posts_link_attributes', 't_em_next_posts_link_attributes' );
+add_filter( 'previous_posts_link_attributes', 't_em_next_posts_link_attributes' );
+
 if ( ! function_exists( 't_em_comments_pagination' ) ) :
 /**
  * Pluggable Function: Comments navigation.
@@ -254,11 +285,9 @@ if ( ! function_exists( 't_em_comments_pagination' ) ) :
 function t_em_comments_pagination(){
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
-	<nav id="comments-navigation" class="navi" role="navigation">
-		<ul>
-			<li class="previous"><?php previous_comments_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older Comments', 't_em' ) ); ?></li>
-			<li class="next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?></li>
-		</ul>
+	<nav id="comments-navigation" class="nav my-3" role="navigation">
+		<?php previous_comments_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older Comments', 't_em' ) ); ?>
+		<?php next_comments_link( __( 'Newer Comments <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?>
 	</nav>
 <?php
 endif;

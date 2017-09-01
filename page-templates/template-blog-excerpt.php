@@ -34,7 +34,6 @@ get_header(); ?>
 
 				global $t_em;
 				$content = ( $t_em['archive_in_columns'] == 1 && $t_em['excerpt_set'] != 'thumbnail-center' ) ? 'excerpt' : 'columns';
-
 				$cols = ( $t_em['archive_in_columns'] > 1 || $t_em['excerpt_set'] == 'thumbnail-center' ) ? true : null;
 
 				if ( $the_query->have_posts() ) :
@@ -61,8 +60,9 @@ get_header(); ?>
 				else :
 					get_template_part( '/template-parts/content', 'none' );
 				endif;
-wp_reset_postdata();
-?>
+				wp_reset_postdata();
+				t_em_page_navi( $the_query );
+				?>
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
