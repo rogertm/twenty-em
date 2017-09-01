@@ -305,12 +305,10 @@ if ( ! function_exists( 't_em_single_link_pages' ) ) :
  */
 function t_em_single_link_pages( $content ){
 	$args = array(
-		'before'		=> '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 't_em' ) . '</span>',
+		'before'		=> '<div class="page-links">' . __( 'Pages:', 't_em' ) . '',
 		'after'			=> '</div>',
-		'link_before'	=> '<span>',
+		'link_before'	=> '<span class="page-number">',
 		'link_after'	=> '</span>',
-		'pagelink'		=> '<span class="sr-only">' . __( 'Page', 't_em' ) . ' </span>%',
-		'separator'		=> '<span class="sr-only">, </span>',
 		'echo'			=> 0,
 	);
 

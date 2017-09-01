@@ -194,6 +194,28 @@ body{
 		}
 	}
 }
+.page-links{
+	@extend .my-3;
+	.page-number{
+		color: $body-color;
+		border-bottom: solid 1px;
+		font-weight: $font-weight-bold;
+		@extend .p-1;
+	}
+	a{
+		&:hover,
+		&:focus{
+			text-decoration: none;
+		}
+		.page-number{
+			border-bottom: none;
+			&:hover,
+			&:focus{
+				border-bottom: solid 1px;
+			}
+		}
+	}
+}
 
 
 /**************************************************************************************************/

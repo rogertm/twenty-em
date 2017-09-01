@@ -4806,7 +4806,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   margin-right: 1rem !important;
   margin-left: 1rem !important; }
 
-.my-3 {
+.my-3, .page-links {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important; }
 
@@ -4879,7 +4879,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
 
-.p-1 {
+.p-1, .page-links .page-number {
   padding: 0.25rem !important; }
 
 .pt-1 {
@@ -7652,6 +7652,17 @@ template {
 #posts-navigation.nav a:hover,
 #comments-navigation.nav a:hover {
   background-color: #e9ecef; }
+
+.page-links .page-number {
+  color: #212529;
+  border-bottom: solid 1px;
+  font-weight: bold; }
+.page-links a:hover, .page-links a:focus {
+  text-decoration: none; }
+.page-links a .page-number {
+  border-bottom: none; }
+  .page-links a .page-number:hover, .page-links a .page-number:focus {
+    border-bottom: solid 1px; }
 
 /**************************************************************************************************/
 article .featured-post-thumbnail.card-img-top {
