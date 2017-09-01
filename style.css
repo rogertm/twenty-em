@@ -4699,7 +4699,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mr-3 {
   margin-right: 1rem !important; }
 
-.mb-3 {
+.mb-3, #featured-widget-area .front-page-widget, #featured-widget-area.template-jumbotron .front-page-widget .widget-thumbnail, #featured-widget-area.template-features .widget-thumbnail {
   margin-bottom: 1rem !important; }
 
 .ml-3 {
@@ -4745,7 +4745,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .mr-5 {
   margin-right: 3rem !important; }
 
-.mb-5, .widget-container {
+.mb-5, #featured-widget-area.template-jumbotron #front-page-widget-one, #featured-widget-area.template-jumbotron #front-page-widget-one .widget-thumbnail, .widget-container {
   margin-bottom: 3rem !important; }
 
 .ml-5 {
@@ -7522,6 +7522,15 @@ template {
     order: 1; }
   body.content-middle #sidebar-alt {
     order: 12; } }
+
+/**
+ * Front Page Widgets
+ */
+@media (min-width: 992px) {
+  #featured-widget-area.template-features .front-page-widget:nth-child(2n) .widget-thumbnail {
+    order: 12; }
+  #featured-widget-area.template-features .front-page-widget:nth-child(2n) .front-page-widget-caption {
+    order: 1; } }
 
 /**************************************************************************************************/
 article .featured-post-thumbnail.card-img-top {

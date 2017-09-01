@@ -102,6 +102,43 @@ body{
 	}
 }
 
+/**
+ * Front Page Widgets
+ */
+#featured-widget-area{
+	.front-page-widget{
+		@extend .mb-3;
+	}
+	&.template-jumbotron{
+		.front-page-widget{
+			.widget-thumbnail{
+				@extend .mb-3;
+			}
+		}
+		#front-page-widget-one{
+			@extend .mb-5;
+			.widget-thumbnail{
+				@extend .mb-5;
+			}
+		}
+	}
+	&.template-features{
+		.widget-thumbnail{
+			@extend .mb-3;
+		}
+		@include media-breakpoint-up(lg){
+			.front-page-widget:nth-child(2n){
+				.widget-thumbnail{
+					order: 12;
+				}
+				.front-page-widget-caption{
+					order: 1;
+				}
+			}
+		}
+	}
+}
+
 
 /**************************************************************************************************/
 article{

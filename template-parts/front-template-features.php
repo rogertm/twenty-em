@@ -24,7 +24,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 		'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : null;
 
 	$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-		'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ) .'" class="hidden-xs"/>' : null;
+		'<div class="widget-thumbnail col-lg-5"><img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ) .'"/></div>' : null;
 
 	$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
 		'<header><h2>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</h2></header>' : null;
@@ -53,12 +53,14 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 		$widget_footer = null;
 	endif;
 ?>
-	<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget widgets-template-features d-flex">
-		<div class="widget-thumbnail col-md-5"><?php echo $widget_thumbnail_url; ?></div>
-		<div class="front-page-widget-caption col-md-7">
-		<?php	echo $widget_headline;
-				echo $widget_content;
-				echo $widget_footer; ?>
+	<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget mb-5 <?php t_em_container() ?>">
+		<div class="row">
+			<?php echo $widget_thumbnail_url; ?>
+			<div class="front-page-widget-caption col-lg-7">
+			<?php	echo $widget_headline;
+					echo $widget_content;
+					echo $widget_footer; ?>
+			</div>
 		</div>
 	</div>
 <?php

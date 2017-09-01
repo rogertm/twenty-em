@@ -24,7 +24,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 		'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : '';
 
 	$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-		'<img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ).'" />' : '';
+		'<div class="widget-thumbnail"><img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ).'" /></div>' : null;
 
 	$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
 
@@ -59,9 +59,9 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 	$jumbo = ( $widget['name'] == 'text_widget_one' ) ? 'jumbotron' : null;
 ?>
 	<div <?php t_em_add_bootstrap_class( $section ); ?>>
-		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget widgets-template-jumbotron <?php echo $jumbo ?>">
+		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget <?php echo $jumbo ?>">
 			<?php echo $widget_thumbnail_url; ?>
-			<div class="front-page-widget-caption">
+			<div class="widget-caption">
 			<?php	echo $widget_headline;
 					echo $widget_content;
 					echo $widget_footer; ?>
