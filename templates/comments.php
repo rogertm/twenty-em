@@ -29,33 +29,30 @@ function t_em_comment( $comment, $args, $depth ) {
 	switch ( $comment->comment_type ) :
 		case '' :
 	?>
-	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
-		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-			<div class="media-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
+	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'mb-3' ); ?>>
+		<article id="comment-<?php comment_ID(); ?>" class="comment-wrap media d-flex my-1">
+			<div class="d-flex mr-3"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
 			<div class="media-body">
-				<header class="comment-header media-heading">
-					<div class="comment-author vcard">
-						<?php printf( __( '<b class="fn">%1$s</b><span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
-					</div><!-- .comment-author .vcard -->
+				<footer class="comment-author vcard mt-0 mb-1">
+					<?php printf( __( '<b class="fn">%1$s</b><span class="says sr-only">says:</span>', 't_em' ), get_comment_author_link() ); ?>
 					<?php if ( $comment->comment_approved == '0' ) : ?>
 						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
 						<br />
 					<?php endif; ?>
 
-					<time class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-						<?php
-							/* translators: 1: date, 2: time */
-							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a>
-					</time><!-- .comment-meta .commentmetadata -->
-					<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-				</header><!-- comment-heading -->
+					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<?php /* translators: 1: date, 2: time */
+						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?>
+						<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small></a>
+					</div><!-- .comment-meta .commentmetadata -->
+				</footer><!-- comment-heading -->
 				<div class="comment-body"><?php comment_text(); ?></div>
 
 				<div class="reply">
 					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
-		</div><!-- #comment-## .comment-wrap -->
+		</article><!-- #comment-## .comment-wrap -->
 	<?php
 			break;
 	endswitch;
@@ -75,6 +72,9 @@ if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
  */
 function t_em_comment_pingback_trackback( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
+	if ( ! comment )
+		return;
+
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
 	?>
@@ -123,35 +123,7 @@ function t_em_comment_all( $comment, $args, $depth ){
 	<?php
 			break;
 		default :
-	?>
-	<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
-		<div id="comment-<?php comment_ID(); ?>" class="comment-wrap">
-			<div class="media-left media-object"><?php echo get_avatar( $comment, '', '', get_comment_author() ); ?></div>
-			<div class="media-body">
-				<header class="comment-header media-heading">
-					<div class="comment-author vcard">
-						<?php printf( __( '<b class="fn">%1$s</b> <span class="says">says:</span>', 't_em' ), get_comment_author_link() ); ?>
-					</div><!-- .comment-author .vcard -->
-					<?php if ( $comment->comment_approved == '0' ) : ?>
-						<em><?php _e( 'Your comment is awaiting moderation.', 't_em' ); ?></em>
-						<br />
-					<?php endif; ?>
-
-					<time class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-						<?php
-							/* translators: 1: date, 2: time */
-							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?></a>
-					</time><!-- .comment-meta .commentmetadata -->
-					<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit icomoon"></span>' ); ?></small>
-				</header><!-- comment-heading -->
-				<div class="comment-body"><?php comment_text(); ?></div>
-
-				<div class="reply">
-					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-				</div><!-- .reply -->
-			</div><!-- .media-body -->
-		</div><!-- #comment-## .comment-wrap -->
-	<?php
+		t_em_comment( $comment, $args, $depth );
 		break;
 	endswitch;
 }
@@ -167,7 +139,7 @@ function t_em_comments_template(){
 	global $t_em;
 	if ( comments_open() || get_comments_number() ) :
 		if ( ( is_single() )
-			|| ( is_page() && $t_em['single_page_comments'] == true ) ) :
+			|| ( is_page() && $t_em['single_page_comments'] ) ) :
 			return comments_template( '', true );
 		endif;
 	endif;

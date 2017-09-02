@@ -197,7 +197,7 @@ function t_em_shortcode_columns( $atts, $content = null ){
 			'cols' => '2',
 		), $atts ) );
 	$cols = ( $cols && $cols <= 4 && $cols > 1 ) ? esc_attr( $cols ) : 2;
-	return '<div class="columns cols-'. $cols .'"><p>'. do_shortcode( $content ) .'</p></div>';
+	return '<div class="columns columns-'. $cols .'"><p>'. do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'columns', 't_em_shortcode_columns' );
 

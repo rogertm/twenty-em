@@ -222,7 +222,7 @@ if ( ! function_exists( 't_em_author_meta' ) ) :
 function t_em_author_meta(){
 	if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 	<div id="author-info-<?php echo get_the_author_meta( 'user_login' ); ?>" class="author-info author-archive media">
-		<?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?>
+		<div class="d-flex mr-3"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?></div>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
 			<?php the_author_meta( 'description' ); ?>
