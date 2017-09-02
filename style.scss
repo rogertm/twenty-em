@@ -38,6 +38,40 @@
 .screen-reader-text{
 	@extend .sr-only;
 }
+figure,
+img{
+	height: auto;
+	width: auto;
+	max-width: 100%;
+}
+figure{
+	@extend .figure;
+	&.alignleft{
+		@extend .mr-3;
+	}
+	&.alignright{
+		@extend .ml-3;
+	}
+	figcaption{
+		@extend .figure-caption;
+	}
+}
+.alignleft{
+	@extend .float-left;
+}
+.alignright{
+	@extend .float-right;
+}
+.aligncenter{
+	@extend .mx-auto;
+}
+a{
+	.featured-post-thumbnail{
+		&:hover{
+			opacity: .8;
+		}
+	}
+}
 
 /**
  * Navs
@@ -151,8 +185,11 @@ body{
  */
 #site-pagination{
 	&.prev-next{
-		.nav-item{
+		a{
+			@extend .nav-item;
+			@extend .nav-link;
 			@extend .w-50;
+			@extend .text-center;
 			&:hover{
 				background-color: $gray-200;
 			}
@@ -217,27 +254,58 @@ body{
 	}
 }
 
-
-/**************************************************************************************************/
+/**
+ * Posts
+ */
 article{
+	@extend .mt-3;
+	@extend .mb-5;
 	.featured-post-thumbnail{
+		@extend .mb-3;
 		&.card-img-top{
 			height: auto;
 		}
 	}
-	.card{
-		.card-body{
-			p{
-				@extend .card-text;
-			}
+	.entry{
+		&-excerpt{
+			@extend .lead;
+			@extend .mb-3;
+			border-bottom: solid 1px $gray-200;
+		}
+		&-content{
+			overflow: hidden;
 		}
 	}
+	.author-info{
+		@extend .mt-5;
+		@extend .mb-3;
+	}
 }
-img{
-	height: auto;
-	width: auto;
-	max-width: 100%;
+// Posts meta
+.author-info{
+	@extend .p-3;
+	@extend .mb-5;
+	@extend .border;
 }
+#related-posts{
+	@extend .my-3;
+	.related-posts-list{
+		@extend .list-unstyled;
+	}
+}
+
+/**
+ * Page Templates
+ */
+.featured-header-template{
+	.entry-content{
+		@extend .lead;
+	}
+}
+
+
+/**************************************************************************************************/
+
 .widget-container{
 	@extend .mb-5;
 	ul, ol{

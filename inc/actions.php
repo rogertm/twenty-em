@@ -499,7 +499,7 @@ function t_em_action_header(){
 }
 
 /**
- * Fire the t_em_action_entry_meta_header action just after opening the <div class="entry-meta entry-meta-header">
+ * Fire the t_em_action_entry_meta_header action just after opening the <div class="entry-meta entry-meta-header mb-3">
  *
  * @file ...
  * @since Twenty'em 1.2
@@ -509,7 +509,7 @@ function t_em_action_entry_meta_header(){
 }
 
 /**
- * Fire the t_em_action_entry_meta_footer action just after opening the <div class="entry-meta entry-meta-footer">
+ * Fire the t_em_action_entry_meta_footer action just after opening the <div class="entry-meta entry-meta-footer mb-3">
  *
  * @file ...
  * @since Twenty'em 1.2

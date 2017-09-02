@@ -154,7 +154,7 @@ function t_em_single_navigation(){
 		 *
 		 * @since Twenty'em 1.2
 		 */
-		$nav_class = apply_filters( 't_em_filter_single_navigation_class', 'nav nav-pills nav-fill my-3' );
+		$nav_class = apply_filters( 't_em_filter_single_navigation_class', 'nav nav-pills nav-fill mt-3 mb-4' );
 ?>
 	<nav id="posts-navigation" class="<?php echo $nav_class ?>" role="navigation">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
@@ -264,18 +264,6 @@ function t_em_page_navi( $the_query ){
 }
 endif; // function t_em_page_navi()
 add_action( 't_em_action_content_after', 't_em_page_navi' );
-
-/**
- * Add custom attributes to next and previous posts navigation
- *
- * @since Twenty'em 1.2
- */
-function t_em_next_posts_link_attributes(){
-	$attr = 'class="nav-item nav-link"';
-	return $attr;
-}
-add_filter( 'next_posts_link_attributes', 't_em_next_posts_link_attributes' );
-add_filter( 'previous_posts_link_attributes', 't_em_next_posts_link_attributes' );
 
 if ( ! function_exists( 't_em_comments_pagination' ) ) :
 /**

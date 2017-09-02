@@ -116,8 +116,8 @@ class Twenty_Em_Widget_Recent_Posts extends WP_Widget {
 					<h4 class="mt-0 mb-1 h5 d-inline">
 						<a class="t-em-recent-post-title" href="<?php echo get_permalink( $post->ID ) ?>" title="<?php echo get_the_title( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a>
 					</h4>
-					<?php $widget_trim_word = apply_filters( 'the_content', ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content ); ?>
-					<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, ( $post->post_excerpt ) ? 55 : 15, null ) ?></div>
+					<?php $widget_trim_word = ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content; ?>
+					<div class="t-em-recent-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 				</div>
 				<?php if ( $thumbnail_align == 'float-right' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-recent-post-thumbnail d-flex ml-3', $post->ID ) ?></div><?php endif; ?>
 			</li>
@@ -306,8 +306,8 @@ class Twenty_Em_Widget_Popular_Posts extends WP_Widget {
 				?>
 					<small class="text-muted d-inline"><?php echo $comments_number; ?></small>
 				<?php endif; ?>
-					<?php $widget_trim_word = apply_filters( 'the_content', ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content ); ?>
-					<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, ( $post->post_excerpt ) ? 55 : 15, null ) ?></div>
+					<?php $widget_trim_word = ( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content; ?>
+					<div class="t-em-popular-post-sumary"><?php echo wp_trim_words( $widget_trim_word, 15, null ) ?></div>
 				</div>
 				<?php if ( $thumbnail_align == 'float-right' ) : ?><div class="<?php echo $thumbnail_align ?>"><?php t_em_featured_post_thumbnail( $thumbnail_width, $thumbnail_height, true, 't-em-popular-post-thumbnail d-flex ml-3', $post->ID ) ?></div><?php endif; ?>
 			</li>

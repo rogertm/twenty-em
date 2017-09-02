@@ -20,7 +20,7 @@
 
 <article id="post-0" class="post no-results not-found">
 	<header>
-		<h1 class="page-header"><?php _e( 'Nothing Found', 't_em' ); ?></h1>
+		<h1 class="entry-title"><?php _e( 'Nothing Found', 't_em' ); ?></h1>
 	</header>
 
 	<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>

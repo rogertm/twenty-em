@@ -25,7 +25,7 @@ get_header(); ?>
 
 				<article id="post-0" class="post error404 not-found hentry">
 					<header>
-						<h1 class="entry-title page-header"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
+						<h1 class="entry-title"><?php _e( 'Error 404 - Page not found!', 't_em' ); ?></h1>
 					</header>
 					<?php t_em_action_post_content_before(); ?>
 					<div class="entry-content">

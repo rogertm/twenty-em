@@ -380,7 +380,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1rem; }
 
-.lead {
+.lead, article .entry-excerpt, .featured-header-template .entry-content {
   font-size: 1.25rem;
   font-weight: 300; }
 
@@ -420,7 +420,7 @@ mark,
   padding: 0.2em;
   background-color: #fcf8e3; }
 
-.list-unstyled, .widget-container ul, .widget-container ol {
+.list-unstyled, #related-posts .related-posts-list, .widget-container ul, .widget-container ol {
   padding-left: 0;
   list-style: none; }
 
@@ -461,14 +461,14 @@ mark,
   max-width: 100%;
   height: auto; }
 
-.figure {
+.figure, figure {
   display: inline-block; }
 
 .figure-img {
   margin-bottom: 0.5rem;
   line-height: 1; }
 
-.figure-caption {
+.figure-caption, figure figcaption {
   font-size: 90%;
   color: #868e96; }
 
@@ -2339,50 +2339,56 @@ tbody.collapse.show {
   margin-bottom: 0;
   list-style: none; }
 
-.nav-link, #posts-navigation.nav a,
+.nav-link, #site-pagination.prev-next a, #posts-navigation.nav a,
 #comments-navigation.nav a {
   display: block;
   padding: 0.5rem 1rem; }
-  .nav-link:focus, #posts-navigation.nav a:focus,
-  #comments-navigation.nav a:focus, .nav-link:hover, #posts-navigation.nav a:hover,
+  .nav-link:focus, #site-pagination.prev-next a:focus, #posts-navigation.nav a:focus,
+  #comments-navigation.nav a:focus, .nav-link:hover, #site-pagination.prev-next a:hover, #posts-navigation.nav a:hover,
   #comments-navigation.nav a:hover {
     text-decoration: none; }
-  .nav-link.disabled, #posts-navigation.nav a.disabled,
+  .nav-link.disabled, #site-pagination.prev-next a.disabled, #posts-navigation.nav a.disabled,
   #comments-navigation.nav a.disabled {
     color: #868e96; }
 
 .nav-tabs {
   border-bottom: 1px solid #ddd; }
-  .nav-tabs .nav-item, .nav-tabs #posts-navigation.nav a, #posts-navigation.nav .nav-tabs a,
+  .nav-tabs .nav-item, .nav-tabs #site-pagination.prev-next a, #site-pagination.prev-next .nav-tabs a, .nav-tabs #posts-navigation.nav a, #posts-navigation.nav .nav-tabs a,
   .nav-tabs #comments-navigation.nav a,
   #comments-navigation.nav .nav-tabs a {
     margin-bottom: -1px; }
-  .nav-tabs .nav-link, .nav-tabs #posts-navigation.nav a, #posts-navigation.nav .nav-tabs a,
+  .nav-tabs .nav-link, .nav-tabs #site-pagination.prev-next a, #site-pagination.prev-next .nav-tabs a, .nav-tabs #posts-navigation.nav a, #posts-navigation.nav .nav-tabs a,
   .nav-tabs #comments-navigation.nav a,
   #comments-navigation.nav .nav-tabs a {
     border: 1px solid transparent;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; }
-    .nav-tabs .nav-link:focus, .nav-tabs #posts-navigation.nav a:focus, #posts-navigation.nav .nav-tabs a:focus,
+    .nav-tabs .nav-link:focus, .nav-tabs #site-pagination.prev-next a:focus, #site-pagination.prev-next .nav-tabs a:focus, .nav-tabs #posts-navigation.nav a:focus, #posts-navigation.nav .nav-tabs a:focus,
     .nav-tabs #comments-navigation.nav a:focus,
-    #comments-navigation.nav .nav-tabs a:focus, .nav-tabs .nav-link:hover, .nav-tabs #posts-navigation.nav a:hover, #posts-navigation.nav .nav-tabs a:hover,
+    #comments-navigation.nav .nav-tabs a:focus, .nav-tabs .nav-link:hover, .nav-tabs #site-pagination.prev-next a:hover, #site-pagination.prev-next .nav-tabs a:hover, .nav-tabs #posts-navigation.nav a:hover, #posts-navigation.nav .nav-tabs a:hover,
     .nav-tabs #comments-navigation.nav a:hover,
     #comments-navigation.nav .nav-tabs a:hover {
       border-color: #e9ecef #e9ecef #ddd; }
-    .nav-tabs .nav-link.disabled, .nav-tabs #posts-navigation.nav a.disabled, #posts-navigation.nav .nav-tabs a.disabled,
+    .nav-tabs .nav-link.disabled, .nav-tabs #site-pagination.prev-next a.disabled, #site-pagination.prev-next .nav-tabs a.disabled, .nav-tabs #posts-navigation.nav a.disabled, #posts-navigation.nav .nav-tabs a.disabled,
     .nav-tabs #comments-navigation.nav a.disabled,
     #comments-navigation.nav .nav-tabs a.disabled {
       color: #868e96;
       background-color: transparent;
       border-color: transparent; }
-  .nav-tabs .nav-link.active, .nav-tabs #posts-navigation.nav a.active, #posts-navigation.nav .nav-tabs a.active,
+  .nav-tabs .nav-link.active, .nav-tabs #site-pagination.prev-next a.active, #site-pagination.prev-next .nav-tabs a.active, .nav-tabs #posts-navigation.nav a.active, #posts-navigation.nav .nav-tabs a.active,
   .nav-tabs #comments-navigation.nav a.active,
   #comments-navigation.nav .nav-tabs a.active,
   .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs #site-pagination.prev-next a.show .nav-link,
+  #site-pagination.prev-next .nav-tabs a.show .nav-link,
   .nav-tabs #posts-navigation.nav a.show .nav-link,
   #posts-navigation.nav .nav-tabs a.show .nav-link,
   .nav-tabs #comments-navigation.nav a.show .nav-link,
   #comments-navigation.nav .nav-tabs a.show .nav-link,
+  .nav-tabs .nav-item.show #site-pagination.prev-next a,
+  #site-pagination.prev-next .nav-tabs .nav-item.show a,
+  .nav-tabs #site-pagination.prev-next a.show a,
+  #site-pagination.prev-next .nav-tabs a.show a,
   .nav-tabs .nav-item.show #posts-navigation.nav a,
   #posts-navigation.nav .nav-tabs .nav-item.show a,
   .nav-tabs #posts-navigation.nav a.show a,
@@ -2399,25 +2405,25 @@ tbody.collapse.show {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
-.nav-pills .nav-link, .nav-pills #posts-navigation.nav a, #posts-navigation.nav .nav-pills a,
+.nav-pills .nav-link, .nav-pills #site-pagination.prev-next a, #site-pagination.prev-next .nav-pills a, .nav-pills #posts-navigation.nav a, #posts-navigation.nav .nav-pills a,
 .nav-pills #comments-navigation.nav a,
 #comments-navigation.nav .nav-pills a {
   border-radius: 0.25rem; }
-  .nav-pills .nav-link.active, .nav-pills #posts-navigation.nav a.active, #posts-navigation.nav .nav-pills a.active,
+  .nav-pills .nav-link.active, .nav-pills #site-pagination.prev-next a.active, #site-pagination.prev-next .nav-pills a.active, .nav-pills #posts-navigation.nav a.active, #posts-navigation.nav .nav-pills a.active,
   .nav-pills #comments-navigation.nav a.active,
-  #comments-navigation.nav .nav-pills a.active, .show > .nav-pills .nav-link, .show > .nav-pills #posts-navigation.nav a, #posts-navigation.nav .show > .nav-pills a,
+  #comments-navigation.nav .nav-pills a.active, .show > .nav-pills .nav-link, .show > .nav-pills #site-pagination.prev-next a, #site-pagination.prev-next .show > .nav-pills a, .show > .nav-pills #posts-navigation.nav a, #posts-navigation.nav .show > .nav-pills a,
   .show > .nav-pills #comments-navigation.nav a,
   #comments-navigation.nav .show > .nav-pills a {
     color: #fff;
     background-color: #007bff; }
 
-.nav-fill .nav-item, .nav-fill #posts-navigation.nav a, #posts-navigation.nav .nav-fill a,
+.nav-fill .nav-item, .nav-fill #site-pagination.prev-next a, #site-pagination.prev-next .nav-fill a, .nav-fill #posts-navigation.nav a, #posts-navigation.nav .nav-fill a,
 .nav-fill #comments-navigation.nav a,
 #comments-navigation.nav .nav-fill a {
   flex: 1 1 auto;
   text-align: center; }
 
-.nav-justified .nav-item, .nav-justified #posts-navigation.nav a, #posts-navigation.nav .nav-justified a,
+.nav-justified .nav-item, .nav-justified #site-pagination.prev-next a, #site-pagination.prev-next .nav-justified a, .nav-justified #posts-navigation.nav a, #posts-navigation.nav .nav-justified a,
 .nav-justified #comments-navigation.nav a,
 #comments-navigation.nav .nav-justified a {
   flex-basis: 0;
@@ -2460,7 +2466,7 @@ tbody.collapse.show {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
-  .navbar-nav .nav-link, .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-nav a,
+  .navbar-nav .nav-link, .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-nav a, .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-nav a,
   .navbar-nav #comments-navigation.nav a,
   #comments-navigation.nav .navbar-nav a {
     padding-right: 0;
@@ -2514,7 +2520,7 @@ tbody.collapse.show {
       .navbar-expand-sm .navbar-nav .dropdown-menu-right {
         right: 0;
         left: auto; }
-      .navbar-expand-sm .navbar-nav .nav-link, .navbar-expand-sm .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-sm .navbar-nav a,
+      .navbar-expand-sm .navbar-nav .nav-link, .navbar-expand-sm .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-expand-sm .navbar-nav a, .navbar-expand-sm .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-sm .navbar-nav a,
       .navbar-expand-sm .navbar-nav #comments-navigation.nav a,
       #comments-navigation.nav .navbar-expand-sm .navbar-nav a {
         padding-right: .5rem;
@@ -2543,7 +2549,7 @@ tbody.collapse.show {
       .navbar-expand-md .navbar-nav .dropdown-menu-right {
         right: 0;
         left: auto; }
-      .navbar-expand-md .navbar-nav .nav-link, .navbar-expand-md .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-md .navbar-nav a,
+      .navbar-expand-md .navbar-nav .nav-link, .navbar-expand-md .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-expand-md .navbar-nav a, .navbar-expand-md .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-md .navbar-nav a,
       .navbar-expand-md .navbar-nav #comments-navigation.nav a,
       #comments-navigation.nav .navbar-expand-md .navbar-nav a {
         padding-right: .5rem;
@@ -2572,7 +2578,7 @@ tbody.collapse.show {
       .navbar-expand-lg .navbar-nav .dropdown-menu-right {
         right: 0;
         left: auto; }
-      .navbar-expand-lg .navbar-nav .nav-link, .navbar-expand-lg .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-lg .navbar-nav a,
+      .navbar-expand-lg .navbar-nav .nav-link, .navbar-expand-lg .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-expand-lg .navbar-nav a, .navbar-expand-lg .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-lg .navbar-nav a,
       .navbar-expand-lg .navbar-nav #comments-navigation.nav a,
       #comments-navigation.nav .navbar-expand-lg .navbar-nav a {
         padding-right: .5rem;
@@ -2601,7 +2607,7 @@ tbody.collapse.show {
       .navbar-expand-xl .navbar-nav .dropdown-menu-right {
         right: 0;
         left: auto; }
-      .navbar-expand-xl .navbar-nav .nav-link, .navbar-expand-xl .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-xl .navbar-nav a,
+      .navbar-expand-xl .navbar-nav .nav-link, .navbar-expand-xl .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-expand-xl .navbar-nav a, .navbar-expand-xl .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand-xl .navbar-nav a,
       .navbar-expand-xl .navbar-nav #comments-navigation.nav a,
       #comments-navigation.nav .navbar-expand-xl .navbar-nav a {
         padding-right: .5rem;
@@ -2628,7 +2634,7 @@ tbody.collapse.show {
     .navbar-expand .navbar-nav .dropdown-menu-right {
       right: 0;
       left: auto; }
-    .navbar-expand .navbar-nav .nav-link, .navbar-expand .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand .navbar-nav a,
+    .navbar-expand .navbar-nav .nav-link, .navbar-expand .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-expand .navbar-nav a, .navbar-expand .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-expand .navbar-nav a,
     .navbar-expand .navbar-nav #comments-navigation.nav a,
     #comments-navigation.nav .navbar-expand .navbar-nav a {
       padding-right: .5rem;
@@ -2645,34 +2651,40 @@ tbody.collapse.show {
   color: rgba(0, 0, 0, 0.9); }
   .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
     color: rgba(0, 0, 0, 0.9); }
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-light .navbar-nav a,
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-light .navbar-nav a, .navbar-light .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-light .navbar-nav a,
 .navbar-light .navbar-nav #comments-navigation.nav a,
 #comments-navigation.nav .navbar-light .navbar-nav a {
   color: rgba(0, 0, 0, 0.5); }
-  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav #posts-navigation.nav a:focus, #posts-navigation.nav .navbar-light .navbar-nav a:focus,
+  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav #site-pagination.prev-next a:focus, #site-pagination.prev-next .navbar-light .navbar-nav a:focus, .navbar-light .navbar-nav #posts-navigation.nav a:focus, #posts-navigation.nav .navbar-light .navbar-nav a:focus,
   .navbar-light .navbar-nav #comments-navigation.nav a:focus,
-  #comments-navigation.nav .navbar-light .navbar-nav a:focus, .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav #posts-navigation.nav a:hover, #posts-navigation.nav .navbar-light .navbar-nav a:hover,
+  #comments-navigation.nav .navbar-light .navbar-nav a:focus, .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav #site-pagination.prev-next a:hover, #site-pagination.prev-next .navbar-light .navbar-nav a:hover, .navbar-light .navbar-nav #posts-navigation.nav a:hover, #posts-navigation.nav .navbar-light .navbar-nav a:hover,
   .navbar-light .navbar-nav #comments-navigation.nav a:hover,
   #comments-navigation.nav .navbar-light .navbar-nav a:hover {
     color: rgba(0, 0, 0, 0.7); }
-  .navbar-light .navbar-nav .nav-link.disabled, .navbar-light .navbar-nav #posts-navigation.nav a.disabled, #posts-navigation.nav .navbar-light .navbar-nav a.disabled,
+  .navbar-light .navbar-nav .nav-link.disabled, .navbar-light .navbar-nav #site-pagination.prev-next a.disabled, #site-pagination.prev-next .navbar-light .navbar-nav a.disabled, .navbar-light .navbar-nav #posts-navigation.nav a.disabled, #posts-navigation.nav .navbar-light .navbar-nav a.disabled,
   .navbar-light .navbar-nav #comments-navigation.nav a.disabled,
   #comments-navigation.nav .navbar-light .navbar-nav a.disabled {
     color: rgba(0, 0, 0, 0.3); }
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav #posts-navigation.nav .show > a, #posts-navigation.nav .navbar-light .navbar-nav .show > a,
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav #site-pagination.prev-next .show > a, #site-pagination.prev-next .navbar-light .navbar-nav .show > a, .navbar-light .navbar-nav #posts-navigation.nav .show > a, #posts-navigation.nav .navbar-light .navbar-nav .show > a,
 .navbar-light .navbar-nav #comments-navigation.nav .show > a,
 #comments-navigation.nav .navbar-light .navbar-nav .show > a,
 .navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav #site-pagination.prev-next .active > a,
+#site-pagination.prev-next .navbar-light .navbar-nav .active > a,
 .navbar-light .navbar-nav #posts-navigation.nav .active > a,
 #posts-navigation.nav .navbar-light .navbar-nav .active > a,
 .navbar-light .navbar-nav #comments-navigation.nav .active > a,
 #comments-navigation.nav .navbar-light .navbar-nav .active > a,
 .navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav #site-pagination.prev-next a.show,
+#site-pagination.prev-next .navbar-light .navbar-nav a.show,
 .navbar-light .navbar-nav #posts-navigation.nav a.show,
 #posts-navigation.nav .navbar-light .navbar-nav a.show,
 .navbar-light .navbar-nav #comments-navigation.nav a.show,
 #comments-navigation.nav .navbar-light .navbar-nav a.show,
 .navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav #site-pagination.prev-next a.active,
+#site-pagination.prev-next .navbar-light .navbar-nav a.active,
 .navbar-light .navbar-nav #posts-navigation.nav a.active,
 #posts-navigation.nav .navbar-light .navbar-nav a.active,
 .navbar-light .navbar-nav #comments-navigation.nav a.active,
@@ -2690,34 +2702,40 @@ tbody.collapse.show {
   color: white; }
   .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
     color: white; }
-.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-dark .navbar-nav a,
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav #site-pagination.prev-next a, #site-pagination.prev-next .navbar-dark .navbar-nav a, .navbar-dark .navbar-nav #posts-navigation.nav a, #posts-navigation.nav .navbar-dark .navbar-nav a,
 .navbar-dark .navbar-nav #comments-navigation.nav a,
 #comments-navigation.nav .navbar-dark .navbar-nav a {
   color: rgba(255, 255, 255, 0.5); }
-  .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav #posts-navigation.nav a:focus, #posts-navigation.nav .navbar-dark .navbar-nav a:focus,
+  .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav #site-pagination.prev-next a:focus, #site-pagination.prev-next .navbar-dark .navbar-nav a:focus, .navbar-dark .navbar-nav #posts-navigation.nav a:focus, #posts-navigation.nav .navbar-dark .navbar-nav a:focus,
   .navbar-dark .navbar-nav #comments-navigation.nav a:focus,
-  #comments-navigation.nav .navbar-dark .navbar-nav a:focus, .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav #posts-navigation.nav a:hover, #posts-navigation.nav .navbar-dark .navbar-nav a:hover,
+  #comments-navigation.nav .navbar-dark .navbar-nav a:focus, .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav #site-pagination.prev-next a:hover, #site-pagination.prev-next .navbar-dark .navbar-nav a:hover, .navbar-dark .navbar-nav #posts-navigation.nav a:hover, #posts-navigation.nav .navbar-dark .navbar-nav a:hover,
   .navbar-dark .navbar-nav #comments-navigation.nav a:hover,
   #comments-navigation.nav .navbar-dark .navbar-nav a:hover {
     color: rgba(255, 255, 255, 0.75); }
-  .navbar-dark .navbar-nav .nav-link.disabled, .navbar-dark .navbar-nav #posts-navigation.nav a.disabled, #posts-navigation.nav .navbar-dark .navbar-nav a.disabled,
+  .navbar-dark .navbar-nav .nav-link.disabled, .navbar-dark .navbar-nav #site-pagination.prev-next a.disabled, #site-pagination.prev-next .navbar-dark .navbar-nav a.disabled, .navbar-dark .navbar-nav #posts-navigation.nav a.disabled, #posts-navigation.nav .navbar-dark .navbar-nav a.disabled,
   .navbar-dark .navbar-nav #comments-navigation.nav a.disabled,
   #comments-navigation.nav .navbar-dark .navbar-nav a.disabled {
     color: rgba(255, 255, 255, 0.25); }
-.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav #posts-navigation.nav .show > a, #posts-navigation.nav .navbar-dark .navbar-nav .show > a,
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav #site-pagination.prev-next .show > a, #site-pagination.prev-next .navbar-dark .navbar-nav .show > a, .navbar-dark .navbar-nav #posts-navigation.nav .show > a, #posts-navigation.nav .navbar-dark .navbar-nav .show > a,
 .navbar-dark .navbar-nav #comments-navigation.nav .show > a,
 #comments-navigation.nav .navbar-dark .navbar-nav .show > a,
 .navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav #site-pagination.prev-next .active > a,
+#site-pagination.prev-next .navbar-dark .navbar-nav .active > a,
 .navbar-dark .navbar-nav #posts-navigation.nav .active > a,
 #posts-navigation.nav .navbar-dark .navbar-nav .active > a,
 .navbar-dark .navbar-nav #comments-navigation.nav .active > a,
 #comments-navigation.nav .navbar-dark .navbar-nav .active > a,
 .navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav #site-pagination.prev-next a.show,
+#site-pagination.prev-next .navbar-dark .navbar-nav a.show,
 .navbar-dark .navbar-nav #posts-navigation.nav a.show,
 #posts-navigation.nav .navbar-dark .navbar-nav a.show,
 .navbar-dark .navbar-nav #comments-navigation.nav a.show,
 #comments-navigation.nav .navbar-dark .navbar-nav a.show,
 .navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav #site-pagination.prev-next a.active,
+#site-pagination.prev-next .navbar-dark .navbar-nav a.active,
 .navbar-dark .navbar-nav #posts-navigation.nav a.active,
 #posts-navigation.nav .navbar-dark .navbar-nav a.active,
 .navbar-dark .navbar-nav #comments-navigation.nav a.active,
@@ -2753,7 +2771,7 @@ tbody.collapse.show {
   margin-top: -0.375rem;
   margin-bottom: 0; }
 
-.card-text:last-child, article .card .card-body p:last-child {
+.card-text:last-child {
   margin-bottom: 0; }
 
 .card-link:hover {
@@ -3914,7 +3932,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .bg-transparent {
   background-color: transparent !important; }
 
-.border {
+.border, .author-info {
   border: 1px solid #e9ecef !important; }
 
 .border-0 {
@@ -4600,10 +4618,10 @@ a.bg-dark:focus, a.bg-dark:hover {
 
   .align-self-xl-stretch {
     align-self: stretch !important; } }
-.float-left {
+.float-left, .alignleft {
   float: left !important; }
 
-.float-right {
+.float-right, .alignright {
   float: right !important; }
 
 .float-none {
@@ -4688,9 +4706,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .w-25 {
   width: 25% !important; }
 
-.w-50, #site-pagination.prev-next .nav-item, #site-pagination.prev-next #posts-navigation.nav a, #posts-navigation.nav #site-pagination.prev-next a,
-#site-pagination.prev-next #comments-navigation.nav a,
-#comments-navigation.nav #site-pagination.prev-next a, #posts-navigation.nav a,
+.w-50, #site-pagination.prev-next a, #posts-navigation.nav a,
 #comments-navigation.nav a {
   width: 50% !important; }
 
@@ -4790,23 +4806,23 @@ a.bg-dark:focus, a.bg-dark:hover {
 .m-3 {
   margin: 1rem !important; }
 
-.mt-3 {
+.mt-3, article {
   margin-top: 1rem !important; }
 
-.mr-3 {
+.mr-3, figure.alignleft {
   margin-right: 1rem !important; }
 
-.mb-3, #featured-widget-area .front-page-widget, #featured-widget-area.template-jumbotron .front-page-widget .widget-thumbnail, #featured-widget-area.template-features .widget-thumbnail {
+.mb-3, #featured-widget-area .front-page-widget, #featured-widget-area.template-jumbotron .front-page-widget .widget-thumbnail, #featured-widget-area.template-features .widget-thumbnail, article .featured-post-thumbnail, article .entry-excerpt, article .author-info {
   margin-bottom: 1rem !important; }
 
-.ml-3 {
+.ml-3, figure.alignright {
   margin-left: 1rem !important; }
 
 .mx-3 {
   margin-right: 1rem !important;
   margin-left: 1rem !important; }
 
-.my-3, .page-links {
+.my-3, .page-links, #related-posts {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important; }
 
@@ -4836,13 +4852,13 @@ a.bg-dark:focus, a.bg-dark:hover {
 .m-5 {
   margin: 3rem !important; }
 
-.mt-5 {
+.mt-5, article .author-info {
   margin-top: 3rem !important; }
 
 .mr-5 {
   margin-right: 3rem !important; }
 
-.mb-5, #featured-widget-area.template-jumbotron #front-page-widget-one, #featured-widget-area.template-jumbotron #front-page-widget-one .widget-thumbnail, .widget-container {
+.mb-5, #featured-widget-area.template-jumbotron #front-page-widget-one, #featured-widget-area.template-jumbotron #front-page-widget-one .widget-thumbnail, article, .author-info, .widget-container {
   margin-bottom: 3rem !important; }
 
 .ml-5 {
@@ -4925,7 +4941,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important; }
 
-.p-3 {
+.p-3, .author-info {
   padding: 1rem !important; }
 
 .pt-3 {
@@ -5009,7 +5025,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .ml-auto {
   margin-left: auto !important; }
 
-.mx-auto {
+.mx-auto, .aligncenter {
   margin-right: auto !important;
   margin-left: auto !important; }
 
@@ -6230,7 +6246,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .text-right, .widget-container .calendar_wrap #next {
   text-align: right !important; }
 
-.text-center, #posts-navigation.nav a,
+.text-center, #site-pagination.prev-next a, #posts-navigation.nav a,
 #comments-navigation.nav a {
   text-align: center !important; }
 
@@ -7594,6 +7610,15 @@ template {
 /**
  * Scaffolding
  */
+figure,
+img {
+  height: auto;
+  width: auto;
+  max-width: 100%; }
+
+a .featured-post-thumbnail:hover {
+  opacity: .8; }
+
 /**
  * Navs
  */
@@ -7636,9 +7661,7 @@ template {
 /**
  * Pagination
  */
-#site-pagination.prev-next .nav-item:hover, #site-pagination.prev-next #posts-navigation.nav a:hover, #posts-navigation.nav #site-pagination.prev-next a:hover,
-#site-pagination.prev-next #comments-navigation.nav a:hover,
-#comments-navigation.nav #site-pagination.prev-next a:hover {
+#site-pagination.prev-next a:hover {
   background-color: #e9ecef; }
 #site-pagination.pagination ul li .page-numbers.current {
   color: #fff;
@@ -7664,15 +7687,20 @@ template {
   .page-links a .page-number:hover, .page-links a .page-number:focus {
     border-bottom: solid 1px; }
 
-/**************************************************************************************************/
+/**
+ * Posts
+ */
 article .featured-post-thumbnail.card-img-top {
   height: auto; }
+article .entry-excerpt {
+  border-bottom: solid 1px #e9ecef; }
+article .entry-content {
+  overflow: hidden; }
 
-img {
-  height: auto;
-  width: auto;
-  max-width: 100%; }
-
+/**
+ * Page Templates
+ */
+/**************************************************************************************************/
 .columns.cols-2 {
   columns-count: 2;
   -webkit-column-count: 2;

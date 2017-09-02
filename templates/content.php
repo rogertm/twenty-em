@@ -46,7 +46,7 @@ function t_em_header_archive_author_meta(){
 ?>
 	<div id="featured-header-author-<?php echo get_the_author_meta( 'user_login' ) ?>" class="featured-header featured-header-author">
 		<header>
-			<h1 class="page-header author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<small><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></small>" ); ?></h1>
+			<h1 class="entry-title author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<small><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></small>" ); ?></h1>
 		</header>
 		<?php t_em_author_meta(); ?>
 	</div><!-- .featured-header -->
@@ -80,7 +80,7 @@ function t_em_header_archive_taxonomy(){
 		?>
 	<div id="featured-header-taxonomy-<?php echo $query_obj->term_id ?>" class="featured-header <?php echo $classes; ?>">
 		<header>
-			<h1 class="page-header">
+			<h1 class="entry-title">
 				<?php printf( __( '%1$s Archives: %2$s', 't_em' ), $labels->labels->singular_name, '<small>' . single_term_title( '', false ) . '</small>' ); ?>
 			</h1>
 		</header>
@@ -109,7 +109,7 @@ function t_em_header_archive_post_type_archive(){
 ?>
 	<div id="featured-header-post-type-<?php echo get_post_type(); ?>" class="featured-header featured-header-post-type">
 		<header>
-			<h1 class="page-header">
+			<h1 class="entry-title">
 				<?php printf( __( 'Archives for: %1$s', 't_em' ), '<small>' . $post_type_name . '</small>' ); ?>
 			</h1>
 		</header>
@@ -148,7 +148,7 @@ function t_em_header_archive_date(){
 			endif; ?>
 	<div id="featured-header-<?php echo $archive_id; ?>" class="featured-header featured-header-date">
 		<header>
-			<h1 class="page-header">
+			<h1 class="entry-title">
 			<?php echo $date_archive; ?>
 			</h1>
 		</header>
@@ -179,7 +179,7 @@ function t_em_header_archive_search(){
 		if ( have_posts() ) : the_post(); ?>
 		<div id="featured-header-search" class="featured-header featured-header-search">
 			<header>
-				<h1 class="page-header"><?php printf( __( 'Search Results for: %s', 't_em' ), '<small>' . get_search_query() . '</small>' ); ?></h1>
+				<h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 't_em' ), '<small>' . get_search_query() . '</small>' ); ?></h1>
 			</header>
 		</div><!-- .featured-header -->
 <?php
@@ -205,12 +205,12 @@ function t_em_custom_template_content(){
 ?>
 	<div id="featured-header-template-<?php the_ID(); ?>" <?php post_class( 'featured-header featured-header-template custom-template-content' ); ?>>
 		<header>
-			<h1 class="page-header"><?php echo $template_data->post_title; ?></h1>
+			<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
 		</header>
 <?php if ( $template_data->post_content ) : ?>
 		<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
 <?php endif; ?>
-		<footer class="entry-meta entry-meta-footer">
+		<footer class="entry-meta entry-meta-footer mb-3">
 			<?php t_em_edit_post_link(); ?>
 		</footer>
 	</div><!-- .featured-header -->
@@ -298,7 +298,7 @@ function t_em_post_archive_set(){
 	if ( 'the-excerpt' == $t_em['archive_set'] ) :
 ?>
 			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true, 'featured-post-thumbnail' ); ?>
+				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php

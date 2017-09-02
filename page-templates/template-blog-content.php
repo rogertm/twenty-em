@@ -38,9 +38,9 @@ get_header(); ?>
 						<?php t_em_action_post_before(); ?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<?php t_em_action_post_inside_before(); ?>
-							<header class="entry-header">
+							<header>
 								<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-								<div class="entry-meta entry-meta-header">
+								<div class="entry-meta entry-meta-header mb-3">
 									<?php t_em_action_entry_meta_header() ?>
 								</div><!-- .entry-meta -->
 							</header>
@@ -49,7 +49,7 @@ get_header(); ?>
 								<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 't_em' ) ); ?>
 							</div><!-- .entry-content -->
 
-							<footer class="entry-meta entry-meta-footer">
+							<footer class="entry-meta entry-meta-footer mb-3">
 								<?php t_em_action_entry_meta_footer(); ?>
 							</footer><!-- .entry-meta .entry-meta-footer -->
 							<?php t_em_action_post_inside_after(); ?>

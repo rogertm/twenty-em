@@ -242,14 +242,14 @@ endif; // function t_em_author_meta()
 
 /**
  * Display Author meta in single post.
- * This function is attached to the t_em_action_post_content_after action hook
+ * This function is attached to the t_em_action_post_inside_after action hook
  *
  * @since Twenty'em 1.0
  */
 function t_em_single_author_meta(){
 	if ( is_single() ) return t_em_author_meta();
 }
-add_action( 't_em_action_post_content_after', 't_em_single_author_meta' );
+add_action( 't_em_action_post_inside_after', 't_em_single_author_meta' );
 
 if ( ! function_exists( 't_em_term_description' ) ) :
 /**

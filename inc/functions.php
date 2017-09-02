@@ -216,7 +216,7 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 
 	if ( $thumbnail ) :
 		echo $open_link; ?>
-		<img class="<?php echo $class ?>" alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>"/>
+		<img class="featured-post-thumbnail <?php echo $class ?>" alt="<?php echo get_the_title( $post_id ); ?>" src="<?php echo $thumbnail ?>" width="<?php echo $width ?>" height="<?php echo $height ?>"/>
 <?php 	echo $close_link;
 	endif;
 }

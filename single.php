@@ -32,21 +32,23 @@ get_header(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<header>
-				<h1 class="page-header"><?php the_title(); ?></h1>
-				<div class="entry-meta entry-meta-header">
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<div class="entry-meta entry-meta-header mb-3">
 					<?php t_em_action_entry_meta_header() ?>
 				</div><!-- .entry-meta -->
 			</header>
 
 			<?php t_em_action_post_content_before(); ?>
-
+			<?php if ( ! empty( get_post_field( 'post_excerpt' ) ) ) : ?>
+			<div class="entry-excerpt"><?php echo t_em_wrap_paragraph( do_shortcode( $post->post_excerpt ) ) ?></div>
+			<?php endif; ?>
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
 
 			<?php t_em_action_post_content_after(); ?>
 
-			<footer class="entry-meta entry-meta-footer">
+			<footer class="entry-meta entry-meta-footer mb-3">
 				<?php t_em_action_entry_meta_footer() ?>
 			</footer><!-- .entry-meta .entry-meta-footer -->
 

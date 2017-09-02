@@ -36,7 +36,7 @@ get_header(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<header>
-				<h1 class="page-header"><?php the_title(); ?></h1>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
 			</header>
 
 			<?php t_em_action_post_content_before(); ?>
@@ -47,7 +47,7 @@ get_header(); ?>
 
 			<?php t_em_action_post_content_after(); ?>
 
-			<footer class="entry-meta entry-meta-footer">
+			<footer class="entry-meta entry-meta-footer mb-3">
 				<?php t_em_edit_post_link(); ?>
 			</footer>
 			<?php t_em_action_post_inside_after(); ?>

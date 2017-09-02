@@ -69,7 +69,7 @@ get_header(); ?>
 							<div class="entry-content">
 								<?php echo $content; ?>
 							</div>
-							<footer class="entry-meta entry-meta-footer">
+							<footer class="entry-meta entry-meta-footer mb-3">
 								<?php edit_post_link( __( 'Edit', 't_em' ), '<span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span>', $page->ID ); ?>
 							</footer>
 						</article>
