@@ -220,30 +220,6 @@ function t_em_custom_template_content(){
 endif; // function t_em_custom_template_content()
 add_action( 't_em_action_content_before', 't_em_custom_template_content', 15 );
 
-/**
- * Retrieve protected post password form content. This function is attached to the the_password_form
- * filter
- *
- * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
- * @return string HTML content for password form for password protected post.
- */
-function t_em_the_password_form(){
-	global $post;
-	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
-	$output = 	'<form class="" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
-					<div class="form-group">
-						<p>' . __( 'This content is password protected. To view it please enter your password below:', 't_em' ) . '</p>
-						<label for="'. $label .'">'. __( 'Password', 't_em' ) .'</label>
-						<input id="' . $label . '" type="password" class="form-control" name="post_password">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit" name="Submit" title="' . esc_attr__( 'Submit', 't_em' ) . '">'. esc_attr__( 'Submit', 't_em' ) .'</button>
-						</span>
-					</div>
-				</form>';
-	return $output;
-}
-add_filter( 'the_password_form', 't_em_the_password_form' );
-
 if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 /**
  * Pluggable Function: Display featured post thumbnail on top of a single post if it is set by the

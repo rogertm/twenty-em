@@ -280,6 +280,9 @@ article{
 		@extend .mt-5;
 		@extend .mb-3;
 	}
+	&.sticky{
+		border-bottom: solid 1px $gray-200;
+	}
 }
 // Posts meta
 .author-info{
@@ -300,6 +303,20 @@ article{
 .featured-header-template{
 	.entry-content{
 		@extend .lead;
+		border-bottom: solid 1px $gray-200;
+	}
+}
+
+/**
+ * Forms
+ */
+#commentform{
+	.required{
+		@extend .text-danger;
+	}
+	.submit{
+		@extend .btn;
+		@extend .btn-primary;
 	}
 }
 

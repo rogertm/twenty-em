@@ -155,11 +155,13 @@ function t_em_single_navigation(){
 		 * @since Twenty'em 1.2
 		 */
 		$nav_class = apply_filters( 't_em_filter_single_navigation_class', 'nav nav-pills nav-fill mt-3 mb-4' );
+		$previous = sprintf( '<span class="sr-only">%s</span> %s', __( 'Previous post:', 't_em' ), '%link' );
+		$next = sprintf( '<span class="sr-only">%s</span> %s', __( 'Next post:', 't_em' ), '%link' );
 ?>
 	<nav id="posts-navigation" class="<?php echo $nav_class ?>" role="navigation">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
-		<?php previous_post_link( '%link', '%title' ); ?>
-		<?php next_post_link( '%link', '%title' ); ?>
+		<?php previous_post_link( $previous, '%title' ); ?>
+		<?php next_post_link( $next, '%title' ); ?>
 	</nav>
 <?php
 	endif;
