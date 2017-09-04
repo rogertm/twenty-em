@@ -80,13 +80,13 @@ function t_em_posted_in(){
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
-		echo '<div class="entry-categories small d-inline mr-3"><span class="icomoon-folder-open icomoon"></span><span class="categories-links">'. $categories_list .'</span></div>';
+		echo '<div class="entry-categories small d-inline mr-3"><span class="icomoon-folder-open"></span><span class="categories-links">'. $categories_list .'</span></div>';
 	endif;
 
 	// Translators: used between list items, there is a space after the comma.
 	$tags_list = get_the_tag_list( '', __( ', ', 't_em' ) );
 	if ( $tags_list ) :
-		echo '<div class="entry-tags small d-inline mr-3"><span class="icomoon-tags icomoon"></span><span class="tags-links">'. $tags_list .'</span></div>';
+		echo '<div class="entry-tags small d-inline mr-3"><span class="icomoon-price-tags"></span><span class="tags-links">'. $tags_list .'</span></div>';
 	endif;
 }
 endif; // function t_em_posted_in()
@@ -99,7 +99,7 @@ if ( ! function_exists( 't_em_post_shortlink' ) ) :
  * @since Twenty'em 1.2
  */
 function t_em_post_shortlink(){
-	$post_shortlink = sprintf( '<div class="entry-permalink small d-inline mr-3"><span class="icomoon-link icomoon"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span></div>',
+	$post_shortlink = sprintf( '<div class="entry-permalink small d-inline mr-3"><span class="icomoon-link"></span><span class="post-link"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span></div>',
 					wp_get_shortlink(),
 					sprintf( __( 'Short link to: %1$s', 't_em' ), the_title_attribute( 'echo=0' ) ),
 					__( 'Short link', 't_em' )
@@ -121,7 +121,7 @@ function t_em_comments_link(){
 	if ( ! post_type_supports( $post_type, 'comments' ) )
 		return;
 ?>
-	<div class="entry-comments small d-inline mr-3"><span class="icomoon-comments icomoon"></span>
+	<div class="entry-comments small d-inline mr-3"><span class="icomoon-comments"></span>
 	<span class="comment-link">
 	<?php comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) ); ?>
 	</span></div>
@@ -137,7 +137,7 @@ if ( ! function_exists( 't_em_edit_post_link' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_edit_post_link(){
-	edit_post_link( __( 'Edit', 't_em' ), '<div class="entry-edit small d-inline mr-3"><span class="icomoon-edit icomoon"></span><span class="edit-link">', '</span></div>' );
+	edit_post_link( __( 'Edit', 't_em' ), '<div class="entry-edit small d-inline mr-3"><span class="icomoon-edit"></span><span class="edit-link">', '</span></div>' );
 }
 endif; // function t_em_edit_post_link()
 add_action( 't_em_action_entry_meta_footer', 't_em_edit_post_link' );
@@ -150,7 +150,7 @@ if ( ! function_exists( 't_em_attachment_meta' ) ) :
  */
 function t_em_attachment_meta(){
 	global $post;
-	echo '<span class="icomoon-calendar icomoon"></span>';
+	echo '<span class="icomoon-calendar"></span>';
 	$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
 	$post_title = get_the_title( $post->post_parent );
 	if ( empty( $post_title ) || 0 == $post->post_parent )
@@ -182,7 +182,7 @@ if ( ! function_exists( 't_em_post_date' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_post_date(){
-	$post_date = sprintf( '<div class="entry-date small d-inline mr-3"><span class="icomoon-time icomoon"></span><span class="post-date">
+	$post_date = sprintf( '<div class="entry-date small d-inline mr-3"><span class="icomoon-time"></span><span class="post-date">
 		<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span></div>',
 					esc_url( get_permalink() ),
 					esc_attr( sprintf( __( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ) ),
@@ -203,7 +203,7 @@ if ( ! function_exists( 't_em_post_author' ) ) :
 function t_em_post_author(){
 	global $post;
 	$author_id = $post->post_author;
-	$post_author = sprintf( '<div class="entry-author small d-inline mr-3"><span class="icomoon-user icomoon"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span></div>',
+	$post_author = sprintf( '<div class="entry-author small d-inline mr-3"><span class="icomoon-user"></span><span class="post-author"><a href="%1$s" title="%2$s" rel="author">%3$s</a></span></div>',
 				esc_url( get_author_posts_url( $author_id ) ),
 				esc_attr( sprintf( __( 'View all post by %s', 't_em' ), get_the_author_meta( 'display_name', $author_id ) ) ),
 				get_the_author_meta( 'display_name', $author_id )

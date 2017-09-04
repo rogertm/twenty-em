@@ -199,7 +199,7 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 			'name' => 'feed_set',
 			'label' => __( 'RSS Feed URL', 't_em' ),
 			'item' => __( 'RSS Feed', 't_em' ),
-			'class' => 'icomoon-feed',
+			'class' => 'icomoon-rss',
 			'order' => '250',
 		),
 	);

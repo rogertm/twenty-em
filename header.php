@@ -20,7 +20,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js no-svg">
+<html <?php language_attributes(); ?>>
 <head>
 	<?php wp_head(); ?>
 </head>

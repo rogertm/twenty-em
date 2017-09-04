@@ -40,10 +40,6 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_enqueue_script( 'html5-shiv', T_EM_THEME_DIR_JS_URL . '/html5.js', array(), $t_em_theme_data['Version'] );
 	wp_script_add_data( 'html5-shiv', 'conditional', 'lt IE 9' );
 
-	// Load the icomoon.js for IE 7.
-	wp_enqueue_script( 'icomoon-js', T_EM_THEME_DIR_JS_URL . '/icomoon.lte-ie7.js', array(), $t_em_theme_data['Version'] );
-	wp_script_add_data( 'icomoon-js', 'conditional', 'lt IE 7' );
-
 	// Register Carousel Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
 		t_em_register_bootstrap_plugin( 'carousel.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );

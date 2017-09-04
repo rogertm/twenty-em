@@ -276,8 +276,8 @@ function t_em_comments_pagination(){
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 	<nav id="comments-navigation" class="nav my-3" role="navigation">
-		<?php previous_comments_link( __( '<span class="meta-nav icomoon-double-angle-left icomoon"></span> Older Comments', 't_em' ) ); ?>
-		<?php next_comments_link( __( 'Newer Comments <span class="meta-nav icomoon-double-angle-right icomoon"></span>', 't_em' ) ); ?>
+		<?php previous_comments_link( __( '<span class="meta-nav-double-angle-left"></span> Older Comments', 't_em' ) ); ?>
+		<?php next_comments_link( __( 'Newer Comments <span class="meta-nav-double-angle-right"></span>', 't_em' ) ); ?>
 	</nav>
 <?php
 endif;
@@ -342,7 +342,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .' icomoon" title="'. $t_em[$social_network['name']] .'"><span class="network-label">'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .'"><span class="network-label">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( ! empty( $output_items ) ) :
