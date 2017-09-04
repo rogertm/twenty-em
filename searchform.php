@@ -24,7 +24,7 @@
 		<span class="input-group-btn">
 			<button class="btn btn-secondary" type="submit" title="<?php _e( 'Search', 't_em' ) ?>">
 				<span class="icomoon-search"></span>
-				<span class="label-btn"><?php _e( 'Search', 't_em' ) ?></span>
+				<span class="label-btn sr-only"><?php _e( 'Search', 't_em' ) ?></span>
 			</button>
 		</span>
 	</div>

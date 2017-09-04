@@ -725,7 +725,7 @@ class Twenty_Em_Widget_Feed_Burner_Subscribe extends WP_Widget{
 				<span class="input-group-btn">
 					<button class="btn btn-secondary" type="submit">
 						<span class="icomoon-envelope"></span>
-						<span class="label-btn"><?php echo $feedburner_button_label; ?></span>
+						<span class="label-btn sr-only"><?php echo $feedburner_button_label; ?></span>
 					</button>
 				</span>
 			</div>

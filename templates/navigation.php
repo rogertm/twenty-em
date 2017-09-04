@@ -160,8 +160,8 @@ function t_em_single_navigation(){
 ?>
 	<nav id="posts-navigation" class="<?php echo $nav_class ?>" role="navigation">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
-		<?php previous_post_link( $previous, '%title' ); ?>
-		<?php next_post_link( $next, '%title' ); ?>
+		<?php previous_post_link( $previous, '<span class="icomoon-arrow-left2"></span> %title' ); ?>
+		<?php next_post_link( $next, '%title <span class="icomoon-arrow-right2"></span>' ); ?>
 	</nav>
 <?php
 	endif;
@@ -197,8 +197,8 @@ function t_em_page_navi( $the_query ){
 ?>
 	<nav id="site-pagination" class="prev-next <?php echo $nav_class ?>">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
-		<?php next_posts_link( __( 'Older posts', 't_em' ), $the_query->max_num_pages ); ?>
-		<?php previous_posts_link( __( 'Newer posts', 't_em' ) ); ?>
+		<?php next_posts_link( __( '<span class="icomoon-arrow-left2"></span> Older posts', 't_em' ), $the_query->max_num_pages ); ?>
+		<?php previous_posts_link( __( 'Newer posts <span class="icomoon-arrow-right2"></span>', 't_em' ) ); ?>
 	</nav>
 <?php
 		elseif ( 'pagination' == $t_em['archive_pagination_set'] ) :
@@ -342,7 +342,7 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .'"><span class="network-label">'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .'"><span class="network-label sr-only">'.$social_network['item'].'</span></a></li>';
 		endif;
 	endforeach;
 	if ( ! empty( $output_items ) ) :

@@ -39,7 +39,7 @@ function t_em_credit(){
 	global $t_em, $t_em_theme_data;
 	if ( '1' == $t_em['t_em_credit'] ) :
 ?>
-	<div id="twenty-em-credit">
+	<div id="twenty-em-credit" class="text-center">
 <?php
 	printf( __( 'Proudly powered by: <a href="%1$s" title="%2$s">%3$s</a> and <a href="%4$s" title="%5$s">%6$s</a>. Theme Name: <a href="%7$s" title="Version %8$s">%9$s</a> by: %10$s', 't_em' ),
 		__( 'https://wordpress.org/' ),

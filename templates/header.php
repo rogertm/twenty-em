@@ -286,14 +286,14 @@ function t_em_static_header(){
 	<?php 	if ( ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] ) ) : ?>
 						<a href="<?php echo $t_em['static_header_primary_button_link']; ?>"
 							class="btn btn-primary">
-								<span class="<?php echo $t_em['static_header_primary_button_icon_class'] ?> icomoon"></span>
+								<span class="<?php echo $t_em['static_header_primary_button_icon_class'] ?>"></span>
 								<span class="button-text"><?php echo $t_em['static_header_primary_button_text']; ?></span>
 							</a>
 	<?php 	endif; ?>
 	<?php 	if ( ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] ) ) : ?>
 						<a href="<?php echo $t_em['static_header_secondary_button_link']; ?>"
 							class="btn btn-secondary">
-								<span class="<?php echo $t_em['static_header_secondary_button_icon_class'] ?> icomoon"></span>
+								<span class="<?php echo $t_em['static_header_secondary_button_icon_class'] ?>"></span>
 								<span class="button-text"><?php echo $t_em['static_header_secondary_button_text']; ?></span>
 							</a>
 	<?php 	endif; ?>

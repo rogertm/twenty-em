@@ -21,7 +21,7 @@ global $t_em;
 foreach ( t_em_front_page_widgets_options() as $widget ) :
 	if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
 	$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
-		'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .' icomoon"></span>' : null;
+		'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .'"></span> ' : null;
 
 	$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
 		'<div class="widget-thumbnail col-lg-5"><img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ) .'"/></div>' : null;
@@ -42,11 +42,11 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 	if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 			$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
 				'<a href="'. $primary_button_link .'" class="btn btn-primary primary-button">
-				<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
+				<span class="'.$primary_link_icon_class.'"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
 			$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
 				'<a href="'. $secondary_button_link .'" class="btn btn-secondary secondary-button">
-				<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
+				<span class="'.$secondary_link_icon_class.'"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
 		$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
 	else :

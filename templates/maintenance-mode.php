@@ -30,16 +30,16 @@ if ( ! function_exists( 't_em_maintenance_mode_area' ) ) :
 function t_em_maintenance_mode_area(){
 	global $t_em;
 ?>
-	<section id="maintenance-mode" class="jumbotron">
+	<section id="maintenance-mode" class="jumbotron my-5">
 	<?php t_em_action_maintenance_mode_inside_before(); ?>
 	<?php if ( $t_em['maintenance_mode_thumbnail_src'] ) : ?>
-		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" alt="<?php echo sanitize_text_field( $t_em['maintenance_mode_headline'] ) ?>">
+		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" class="maintenance-mode-thumbnail mb-5" alt="<?php echo sanitize_text_field( $t_em['maintenance_mode_headline'] ) ?>">
 	<?php endif; ?>
 	<?php if ( $t_em['maintenance_mode_headline'] ) :
 				$icon_class	= ( $t_em['maintenance_mode_headline_icon_class'] ) ?
-					'<span class="'. $t_em['maintenance_mode_headline_icon_class'] .' icomoon"></span>' : '';
+					'<span class="'. $t_em['maintenance_mode_headline_icon_class'] .'"></span>' : '';
 	?>
-		<header><h1><?php echo $icon_class . $t_em['maintenance_mode_headline'] ?></h1></header>
+		<header><h1><?php echo $icon_class .' '. $t_em['maintenance_mode_headline'] ?></h1></header>
 	<?php endif; ?>
 	<?php if ( $t_em['maintenance_mode_content'] ) : ?>
 		<div class="lead"><?php echo t_em_wrap_paragraph( do_shortcode( $t_em['maintenance_mode_content'] ) ) ?></div>
@@ -56,11 +56,11 @@ function t_em_maintenance_mode_area(){
 		if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 				$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
 					'<a href="'. $primary_button_link .'" class="btn btn-primary">
-					<span class="'.$primary_link_icon_class.' icomoon"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
+					<span class="'.$primary_link_icon_class.'"></span> <span class="button-text">'. $primary_link_text .'</span></a>' : null;
 
 				$secondary_button_link_url = ( $secondary_button_link && $secondary_link_text ) ?
 					'<a href="'. $secondary_button_link .'" class="btn btn-secondary">
-					<span class="'.$secondary_link_icon_class.' icomoon"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
+					<span class="'.$secondary_link_icon_class.'"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
 			$footer = '<footer><p class="lead">'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</p></footer>';
 		else :
@@ -102,9 +102,29 @@ function t_em_maintenance_mode_countdown_timer(){
 		});
 		/* ]]> */
 		</script>
-		<div id="countdown-clock" class="lead"></div>
+		<div id="countdown-clock" class="lead my-3"></div>
 <?php
 	endif;
 }
 endif;
+
+/**
+ * Alert we are using the Maintenance Mode
+ *
+ * @since Twenty'em 1.0.1
+ */
+function t_em_maintenance_mode_alert(){
+global $t_em;
+	if ( $t_em['maintenance_mode'] == 1 && is_user_logged_in() && current_user_can( 'manage_options' ) ) :
+		$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
+		$link = ( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) ) ? home_url( '/' ) : wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ;
+?>
+	<div id="maintenance-mode-alert" class="fixed-bottom bg-dark text-white p-1">
+		<div class="text-center" role="alert"><?php printf( __( 'You are using %s in <strong><a href="%s">Maintenance Mode</a></strong>', 't_em' ), T_EM_FRAMEWORK_NAME, $link ) ?></div>
+	</div>
+<?php
+	endif;
+}
+add_action( 't_em_action_footer_after', 't_em_maintenance_mode_alert' );
+add_action( 't_em_action_maintenance_mode_main_after', 't_em_maintenance_mode_alert' );
 ?>
