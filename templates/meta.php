@@ -122,7 +122,7 @@ function t_em_comments_link(){
 		return;
 ?>
 	<div class="entry-comments small d-inline mr-3">
-	<span class="icomoon-comment text-muted"></span> <span class="comment-link">
+	<span class="icomoon-chat text-muted"></span> <span class="comment-link">
 	<?php comments_popup_link( __( 'Leave a comment', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) ); ?>
 	</span></div>
 <?php

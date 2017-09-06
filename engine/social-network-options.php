@@ -118,13 +118,13 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 			'class' => 'icomoon-reddit',
 			'order' => '130',
 		),
-/*		'picassa_set' => array(
+		'picassa_set' => array(
 			'name' => 'picassa_set',
-			'label' => __( 'Picassa URL', 't_em' ),
-			'item' => __( 'Picassa', 't_em' ),
-			'class' => 'icomoon-picassa',
+			'label' => __( 'Picasa URL', 't_em' ),
+			'item' => __( 'Picasa', 't_em' ),
+			'class' => 'icomoon-picasa',
 			'order' => '140',
-		),*/
+		),
 		'lastfm_set' => array(
 			'name' => 'lastfm_set',
 			'label' => __( 'Lastfm URL', 't_em' ),
@@ -188,13 +188,13 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 			'class' => 'icomoon-dribbble',
 			'order' => '230',
 		),
-		'forrst_set' => array(
+/*		'forrst_set' => array(
 			'name' => 'forrst_set',
 			'label' => __( 'Sorrst URL', 't_em' ),
 			'item' => __( 'Sorrst', 't_em' ),
 			'class' => 'icomoon-forrst',
 			'order' => '240',
-		),
+		),*/
 		'feed_set' => array(
 			'name' => 'feed_set',
 			'label' => __( 'RSS Feed URL', 't_em' ),

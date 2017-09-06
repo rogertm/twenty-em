@@ -33,7 +33,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size=""]', '[/btn-group]', '', '', 123 );
 		QTags.addButton( 'sc_alert', 'alert', '[alert style="primary" heading="" close="false"]', '[/alert]', '', '', 124 );
 		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" cite=""]', '[/quote]', '', '', 125 );
-		QTags.addButton( 'sc_icon', 'icon', '[icon class="" align="" size=""]', '', '', '', 126 );
+		QTags.addButton( 'sc_icon', 'icon', '[icon class=""]', '', '', '', 126 );
 		QTags.addButton( 'sc_columns', 'columns', '[columns cols="2"]', '[/columns]', '', '', 127 );
 		QTags.addButton( 'sc_card', 'card', '[card header="" title="" footer="" style="" img="" img_overlay="false"]', '[/card]', '', '', 128 );
 		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]', '', '', 129 );
@@ -162,8 +162,6 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
  * Options:
  * 0. icon_class. Required. Default value "empty". Possibles values "icomoon-$icon_name". Display a
  * IcoMoon icon
- * 1. align. Optional. Default value "empty". Possibles values "left", "right". Icon alignment.
- * 2. size. Optional. Default value "icon-sm". Possibles values "icon-xs", "icon-sm", "icon-md", "icon-lg", "icon-hg". Icon size
  *
  * @link https://themingisprose.com/twenty-em/icomoon-demo For a full list of icon classes.
  *
@@ -172,13 +170,11 @@ add_shortcode( 'quote', 't_em_shortcode_quote' );
 function t_em_shortcode_icomoon_icon( $atts ){
 	extract( shortcode_atts( array(
 			'class' => '',
-			'align' => '',
-			'size' => 'icon-sm',
 		), $atts ) );
 	$class_size = ( ! empty( $size ) ) ? esc_attr( $size ) : null;
 	$class_align = ( ! empty( $align ) ) ? 'pull-'. esc_attr( $align ) : null;
 
-	return '<span class="'. esc_attr( $class ) . ' '. esc_attr( $class_size ) . ' '. esc_attr( $class_align ) .' icomoon"></span>';
+	return '<span class="'. esc_attr( $class ) .'"></span>';
 }
 add_shortcode( 'icon', 't_em_shortcode_icomoon_icon' );
 
