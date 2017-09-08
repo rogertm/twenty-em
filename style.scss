@@ -101,6 +101,27 @@ figure{
 		line-height: .6;
 	}
 }
+
+//
+// Navigation Menus
+//
+// #menu{
+// 	&-top-menu{
+// 		.dropdown-menu{
+// 			a{
+// 				color: $dropdown-link-color;
+// 				&:hover{
+// 					color: $dropdown-link-hover-color;
+// 					background-color: $dropdown-link-hover-bg;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+//
+// Breadcrumb
+//
 .breadcrumb{
 	display: block;
 }

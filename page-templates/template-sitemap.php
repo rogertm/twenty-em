@@ -34,7 +34,7 @@ get_header(); ?>
 					 */
 					?>
 					<h2 id="sitemap-pages"><?php _e( 'Pages', 't_em' ); ?></h2>
-					<ul><?php wp_list_pages( array( 'title_li' => '', 'sort_column' => 'menu_order' ) ) ?></ul>
+					<ul class="list-unstyled"><?php wp_list_pages( array( 'title_li' => '', 'sort_column' => 'menu_order' ) ) ?></ul>
 
 					<?php
 					/** Displaying a list of categories
@@ -42,7 +42,7 @@ get_header(); ?>
 					 */
 					?>
 					<h2 id="sitemap-categories"><?php _e( 'Categories', 't_em' ); ?></h2>
-					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
+					<ul class="list-unstyled"><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
 					/** Displaying posts per category
@@ -55,20 +55,18 @@ get_header(); ?>
 					foreach ( $cats as $cat ) :
 					?>
 					<h3><?php echo $cat->cat_name ?></h3>
+						<ul class="list-unstyled">
 					<?php
 						$posts_per_cat = get_posts( array( 'category' => $cat->cat_ID ) );
 						foreach ( $posts_per_cat as $post ) : setup_postdata( $post );
 					 ?>
-						<ul>
 							<li>
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 								<small> - <?php comments_number( '0 Comments', '1 Comment', '% Comments' ); ?></small>
 							</li>
+					<?php endforeach; wp_reset_postdata(); ?>
 						</ul>
-					<?php
-						endforeach; wp_reset_postdata();
-					endforeach;
-					?>
+					<?php endforeach; ?>
 				</div><!-- #sitemap-## -->
 				<?php t_em_action_content_after(); ?>
 			</section><!-- #content -->

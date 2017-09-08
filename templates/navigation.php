@@ -20,6 +20,7 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
  * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
+	require_once( T_EM_THEME_DIR_INC_PATH .'/wp-bootstrap-navwalker.php' );
 ?>
 	<div id="top-menu" role="navigation">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,6 +54,8 @@ function t_em_top_menu(){
 							'container_class'	=> 'collapse navbar-collapse',
 							'menu_class'		=> 'navbar-nav rm-auto',
 							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 0 ),
+							'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+							'walker'			=> new WP_Bootstrap_Navwalker(),
 						)
 					);
 				endif;
@@ -101,6 +104,8 @@ if ( has_nav_menu( 'navigation-menu' ) ) : ?>
 						'container_class'	=> 'collapse navbar-collapse',
 						'menu_class'		=> 'navbar-nav rm-auto',
 						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 0 ),
+						'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+						'walker'			=> new WP_Bootstrap_Navwalker(),
 					)
 				);
 			?>

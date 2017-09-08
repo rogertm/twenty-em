@@ -142,39 +142,6 @@ function t_em_edit_post_link(){
 endif; // function t_em_edit_post_link()
 add_action( 't_em_action_entry_meta_footer', 't_em_edit_post_link' );
 
-if ( ! function_exists( 't_em_attachment_meta' ) ) :
-/**
- * Pluggable Function: Prints author, date and metadata for attached files
- *
- * @since Twenty'em 1.0
- */
-function t_em_attachment_meta(){
-	global $post;
-	echo '<span class="icomoon-calendar text-muted"></span>';
-	$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 't_em' );
-	$post_title = get_the_title( $post->post_parent );
-	if ( empty( $post_title ) || 0 == $post->post_parent )
-		$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
-
-	printf( $published_text,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_url( get_permalink( $post->post_parent ) ),
-		esc_attr( strip_tags( $post_title ) ),
-		$post_title
-	);
-
-	$metadata = wp_get_attachment_metadata();
-	printf( '<span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
-		esc_url( wp_get_attachment_url() ),
-		esc_attr__( 'Link to full-size image', 't_em' ),
-		__( 'Full resolution', 't_em' ),
-		$metadata['width'],
-		$metadata['height']
-	);
-}
-endif; // function t_em_attachment_meta()
-
 if ( ! function_exists( 't_em_post_date' ) ) :
 /**
  * Pluggable Function: Prints HTML with post date link
@@ -229,7 +196,7 @@ function t_em_author_meta(){
 			<?php if ( is_single() ) : ?>
 			<div id="author-link">
 				<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-					<?php printf( __( 'View all posts by %s <span class="meta-nav">&raquo;</span>', 't_em' ), get_the_author() ); ?>
+					<?php printf( __( 'View all posts by %s <span class="icomoon-arrow-right2"></span>', 't_em' ), get_the_author() ); ?>
 				</a>
 			</div><!-- #author-link	-->
 		<?php endif; ?>

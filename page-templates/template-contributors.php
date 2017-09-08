@@ -49,15 +49,15 @@ get_header(); ?>
 					<div class="media-body">
 						<h4 class="media-heading contributor-name"><?php echo get_the_author_meta( 'display_name', $contributor ); ?></h4>
 						<p class="contributor-bio"><?php echo get_the_author_meta( 'description', $contributor ) ?></p>
-						<a class="contributor-posts-link" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
-							<span class="icomoon"></span>
+						<a class="contributor-posts-link btn btn-outline-secondary btn-sm" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
+							<span class="icomoon-pencil"></span>
 							<?php printf( _n( '%d Article', '%d Articles', $post_count, 't_em' ), $post_count ); ?>
 						</a>
 					<?php
 					if ( get_the_author_meta( 'user_url', $contributor ) ) :
 					?>
-						<a class="contributor-url" href="<?php echo get_the_author_meta( 'user_url', $contributor ); ?>">
-							<span class="icomoon"></span>
+						<a class="contributor-url btn btn-outline-secondary btn-sm" href="<?php echo get_the_author_meta( 'user_url', $contributor ); ?>">
+							<span class="icomoon-globe"></span>
 							<?php _e( 'Visit web site', 't_em' ); ?>
 						</a>
 					<?php

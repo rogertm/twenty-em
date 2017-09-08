@@ -46,7 +46,7 @@ function t_em_header_archive_author_meta(){
 ?>
 	<div id="featured-header-author-<?php echo get_the_author_meta( 'user_login' ) ?>" class="featured-header featured-header-author">
 		<header>
-			<h1 class="entry-title author"><?php printf( __( 'Author Archives: %s', 't_em' ), "<small><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></small>" ); ?></h1>
+			<h1 class="entry-title author"><?php printf( __( 'Author Archives: %s', 't_em' ), '<small class="vcard">' . get_the_author() . '</small>' ); ?></h1>
 		</header>
 		<?php t_em_author_meta(); ?>
 	</div><!-- .featured-header -->

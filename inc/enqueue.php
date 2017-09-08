@@ -48,6 +48,8 @@ function t_em_enqueue_styles_and_scripts(){
 	// Register Collapse Bootstrap Plugins when needed
 	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
 		t_em_register_bootstrap_plugin( 'collapse.js' );
+		t_em_register_bootstrap_plugin( 'popper.min.js' );
+		t_em_register_bootstrap_plugin( 'dropdown.js' );
 	endif;
 
 	// Countdown jQuery plugin for Maintenance Mode

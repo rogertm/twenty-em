@@ -42,15 +42,16 @@ $limit = apply_filters( 't_em_filter_template_archive_posts_limit', 30 );
 $args = array( 'post_type' => 'post',
 				'showposts' => $limit,
 		);
+$the_query = new WP_Query ( $args );
+$post_count = $the_query->post_count;
 ?>
-					<h2 id="archive-latest-posts"><?php echo sprintf( __( 'The latest %1$s posts', 't_em' ), $limit ); ?></h2>
+					<h2 id="archive-latest-posts"><?php echo sprintf( __( 'The latest %1$s posts', 't_em' ), $post_count ); ?></h2>
 <?php
-$wp_query = new WP_Query ( $args );
 
-if ( have_posts() ) :
+if ( $the_query->have_posts() ) :
 ?>
-					<ul>
-<?php while ( have_posts() ) : the_post(); ?>
+					<ul class="list-unstyled">
+<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 						<li id="post-<?php the_ID() ?>">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 							<small> - <?php echo get_the_date(); ?>
@@ -66,7 +67,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h2 id="archive-categories"><?php _e( 'Categories', 't_em' ); ?></h2>
-					<ul><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
+					<ul class="list-unstyled"><?php wp_list_categories( array( 'title_li' => '', 'show_count' => '1' ) ); ?></ul>
 
 					<?php
 					/** Displaying the monthly archive
@@ -74,7 +75,7 @@ if ( have_posts() ) :
 					 */
 					?>
 					<h2 id="archive-monthly-archive"><?php _e( 'Monthly Archives', 't_em' ) ?></h2>
-					<ul><?php wp_get_archives( array( 'show_post_count' => true ) ); ?></ul>
+					<ul class="list-unstyled"><?php wp_get_archives( array( 'show_post_count' => true ) ); ?></ul>
 
 					<?php
 					/** And now, the Tag Cloud!

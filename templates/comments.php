@@ -40,10 +40,12 @@ function t_em_comment( $comment, $args, $depth ) {
 						<br />
 					<?php endif; ?>
 
-					<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<?php /* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?>
-						<small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit"></span>' ); ?></small></a>
+					<div class="comment-meta commentmetadata">
+						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+						<?php /* translators: 1: date, 2: time */
+							printf( __( '%1$s at %2$s', 't_em' ), get_comment_date(),  get_comment_time() ); ?>
+						</a>
+						<small class="ml-3 text-muted"><?php edit_comment_link( __('Edit', 't_em'), ' <span class="icomoon-pencil"></span> ' ); ?></small>
 					</div><!-- .comment-meta .commentmetadata -->
 				</footer><!-- comment-heading -->
 				<div class="comment-body"><?php comment_text(); ?></div>
@@ -79,14 +81,14 @@ function t_em_comment_pingback_trackback( $comment, $args, $depth ) {
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit"></span>' ); ?></small>
+		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small class="ml-3 text-muted"><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-pencil"></span> ' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit"></span>' ); ?></small>
+		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small class="ml-3 text-muted"><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-pencil"></span> ' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 		break;
@@ -111,14 +113,14 @@ function t_em_comment_all( $comment, $args, $depth ){
 		case 'pingback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit"></span>' ); ?></small>
+		<?php _e( 'Pingback:', 't_em' ); ?> <?php comment_author_link(); ?> <small class="ml-3 text-muted"><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-pencil"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;
 		case 'trackback' :
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-edit"></span>' ); ?></small>
+		<?php _e( 'Trackback:', 't_em' ); ?> <?php comment_author_link(); ?> <small><?php edit_comment_link( __('Edit', 't_em'), '<span class="icomoon-pencil"></span>' ); ?></small>
 		<div class="comment-body"><?php comment_text(); ?></div>
 	<?php
 			break;

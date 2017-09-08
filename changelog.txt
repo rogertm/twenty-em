@@ -1,5 +1,37 @@
 == Changelog ==
 
+= Bootstrap 4 =
+Release Date: September 09, 2017
+* Enhancement: A fully migration to Bootstrap v4.0.0-beta
+* Enhancement: Completely deletion of LESS features in favor of SASS preprocessor
+* Enhancement: New and simpler Icomoon icon pack
+* Enhancement: Better and intuitive file tree directory
+* Enhancement: Added t_em_nav_menu_css_class() and t_em_nav_menu_link_attributes()
+* Enhancement: Added .container-fluid support
+* Enhancement: Shortcodes [tabs] and [collapse]
+* Enhancement: Enable post excerpt in "single" if exists
+* Enhancement: Make all archives Bootstrap .media likes
+* Enhancement: Added Front Page => Text Widget's templates
+* Enhancement: Change "Permanent Link" to "Short Link" (wp_get_shortlink()) in .entry-meta entry-meta-footer
+
+* Update: Now T_EM_THEME_DIR_TEMPLATES_PATH point to "/templates"
+* Update: Now T_EM_THEME_DIR_TEMPLATES_URL point to "/templates"
+* Update: Move T_EM_THEME_DIR_TEMPLATES_PATH to T_EM_THEME_DIR_PAGE_TEMPLATES_PATH
+* Update: Move T_EM_THEME_DIR_TEMPLATES_URL to T_EM_THEME_DIR_PAGE_TEMPLATES_URL
+* Update: Template Hierarchy, delete all archive template files in favor of index.php
+
+* Fix Bug: Fix The Loop in page-templates/template-blog-*.php
+
+* Deprecated: Page Templates: Collapsible Content; Tabbable Content in favor of [tabs] and [collapse] shortcodes.
+* Deprecated: t_em_action_header_inside_before, t_em_action_header_inside_left, t_em_action_header_inside_right and t_em_action_header_inside_after action hooks
+
+* Delete: 'layout_width'
+* Delete: .wrapper class in favor of Bootstrap .container class
+* Delete: T_EM_LAYOUT_WIDTH_DEFAULT_VALUE Constant
+* Delete: T_EM_LAYOUT_WIDTH_MAX_VALUE Constant
+* Delete: T_EM_LAYOUT_WIDTH_MIN_VALUE Constant
+* Delete: t_em_archive_cols()
+
 = 1.1.2 =
 Release Date: August 01, 2017
 * Enhancement: Added T_EM_BLOG, T_EM_WIKI, T_EM_PAYPAL
@@ -65,5 +97,4 @@ Release Date: August 07, 2016
 
 = 1.0 =
 Release Date: July 09, 2016
-
 * Initial release
