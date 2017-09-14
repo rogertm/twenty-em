@@ -13,6 +13,8 @@ Release Date: September 09, 2017
 * Enhancement: Make all archives Bootstrap .media likes
 * Enhancement: Added Front Page => Text Widget's templates
 * Enhancement: Change "Permanent Link" to "Short Link" (wp_get_shortlink()) in .entry-meta entry-meta-footer
+* Enhancement: Move t_em_add_bootstrap_class() to t_em_breakpoint() and t_em_filter_bootstrap_classes_{$section} filter to t_em_filter_breakpoint_{$section}
+* Enhancement: Set default breakpoint to 'lg', filtered by 't_em_filter_default_breakpoint'
 
 * Update: Now T_EM_THEME_DIR_TEMPLATES_PATH point to "/templates"
 * Update: Now T_EM_THEME_DIR_TEMPLATES_URL point to "/templates"

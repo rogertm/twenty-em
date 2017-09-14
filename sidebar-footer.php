@@ -42,7 +42,7 @@
 
 			<?php if ( is_active_sidebar( 'first-footer-widget-area' )
 					&& 'no-footer-widget' != $t_em['footer_set'] ) : ?>
-					<aside id="first" <?php t_em_add_bootstrap_class( 'footer-widget-area' ); ?>>
+					<aside id="first" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
 					</aside><!-- #first .widget-area -->
 			<?php endif; ?>
@@ -50,7 +50,7 @@
 			<?php if ( is_active_sidebar( 'second-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
 						array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
-					<aside id="second" <?php t_em_add_bootstrap_class( 'footer-widget-area' ); ?>>
+					<aside id="second" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
 					</aside><!-- #second .widget-area -->
 			<?php endif; ?>
@@ -58,7 +58,7 @@
 			<?php if ( is_active_sidebar( 'third-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
 						array( 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
-					<aside id="third" <?php t_em_add_bootstrap_class( 'footer-widget-area' ); ?>>
+					<aside id="third" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
 					</aside><!-- #third .widget-area -->
 			<?php endif; ?>
@@ -66,7 +66,7 @@
 			<?php if ( is_active_sidebar( 'fourth-footer-widget-area' )
 					&& in_array( $t_em['footer_set'],
 						array( 'four-footer-widget' ) ) ) : ?>
-					<aside id="fourth" <?php t_em_add_bootstrap_class( 'footer-widget-area' ); ?>>
+					<aside id="fourth" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
 					</aside><!-- #fourth .widget-area -->
 			<?php endif; ?>

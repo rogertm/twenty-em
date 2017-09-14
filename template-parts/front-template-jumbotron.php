@@ -58,7 +58,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 	$section = ( $widget['name'] == 'text_widget_one' ) ? 'primary-featured-widget-area' : 'secondary-featured-widget-area';
 	$jumbo = ( $widget['name'] == 'text_widget_one' ) ? 'jumbotron' : null;
 ?>
-	<div <?php t_em_add_bootstrap_class( $section ); ?>>
+	<div <?php t_em_breakpoint( $section ); ?>>
 		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget <?php echo $jumbo ?>">
 			<?php echo $widget_thumbnail_url; ?>
 			<div class="widget-caption">

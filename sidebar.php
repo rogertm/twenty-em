@@ -22,7 +22,7 @@ global $t_em;
 if ( 'one-column' != $t_em['layout_set'] ) :
 ?>
 
-		<section id="sidebar" role="complementary" <?php t_em_add_bootstrap_class( 'sidebar' ); ?>>
+		<section id="sidebar" role="complementary" <?php t_em_breakpoint( 'sidebar' ); ?>>
 			<?php
 			t_em_action_sidebar_before();
 			if ( is_active_sidebar( 'sidebar' ) ) :

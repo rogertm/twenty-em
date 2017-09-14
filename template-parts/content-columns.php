@@ -20,7 +20,7 @@ global $t_em;
 $cols = 12 / $t_em['archive_in_columns'];
 ?>
 		<?php t_em_action_post_before(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-lg-'.$cols ); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_grid( $cols ) ); ?>>
 			<?php t_em_action_post_inside_before(); ?>
 			<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true ); ?>
 				<header>

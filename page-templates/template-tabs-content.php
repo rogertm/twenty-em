@@ -29,8 +29,8 @@ t_em_register_bootstrap_plugin( 'tab.js', 'script.tabs.js', T_EM_THEME_DIR_JS_UR
 
 get_header(); ?>
 
-		<section id="main-content" <?php t_em_add_bootstrap_class( 'main-content' ); ?>>
-			<section id="content" role="main" <?php t_em_add_bootstrap_class( 'content' ); ?>>
+		<section id="main-content" <?php t_em_breakpoint( 'main-content' ); ?>>
+			<section id="content" role="main" <?php t_em_breakpoint( 'content' ); ?>>
 				<?php t_em_action_content_before(); ?>
 				<div id="tabbable-<?php echo get_the_ID(); ?>" class="custom-template custom-template-tabs" role="tabpanel">
 <?php

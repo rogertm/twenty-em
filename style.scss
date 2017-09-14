@@ -105,19 +105,19 @@ figure{
 //
 // Navigation Menus
 //
-// #menu{
-// 	&-top-menu{
-// 		.dropdown-menu{
-// 			a{
-// 				color: $dropdown-link-color;
-// 				&:hover{
-// 					color: $dropdown-link-hover-color;
-// 					background-color: $dropdown-link-hover-bg;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+/* #menu{
+	&-top-menu{
+		.dropdown-menu{
+			a{
+				color: $dropdown-link-color;
+				&:hover{
+					color: $dropdown-link-hover-color;
+					background-color: $dropdown-link-hover-bg;
+				}
+			}
+		}
+	}
+} */
 
 //
 // Breadcrumb
@@ -149,12 +149,18 @@ figure{
 	}
 	#static-header{
 		@extend .m-0;
+		#static-header-image,
+		#static-header-text{
+			@extend .my-3;
+		}
+		@include media-breakpoint-up(lg){
 		&.static-header-text-left{
-			#static-header-image{
-				@extend .order-12;
-			}
-			#static-header-text{
-				@extend .order-1;
+				#static-header-image{
+					order: 12;
+				}
+				#static-header-text{
+					order: 1;
+				}
 			}
 		}
 	}
@@ -164,7 +170,7 @@ figure{
 // Layout
 //
 body{
-	@include media-breakpoint-up(md){
+	@include media-breakpoint-up(lg){
 		&.content-right{
 			#content{
 				order: 12;
@@ -413,6 +419,21 @@ article{
 	.calendar_wrap{
 		#next{
 			@extend .text-right;
+		}
+	}
+}
+
+//
+// Footer
+//
+#site-info{
+	@extend .text-center;
+	@include media-breakpoint-up(lg){
+		#site-info-right{
+			text-align: right;
+		}
+		#site-info-left{
+			text-align: left;
 		}
 	}
 }

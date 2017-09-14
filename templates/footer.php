@@ -21,7 +21,7 @@ if ( ! function_exists( 't_em_copy_right' ) ) :
  */
 function t_em_copy_right(){
 ?>
-	<div id="copyright">
+	<div id="copyright" class="mb-3">
 		<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>" rel="home">
 			<?php bloginfo( 'name' ); ?>
 		</a>

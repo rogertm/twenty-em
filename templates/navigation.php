@@ -20,10 +20,13 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
  * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
-	require_once( T_EM_THEME_DIR_INC_PATH .'/wp-bootstrap-navwalker.php' );
+	require_once( T_EM_THEME_DIR_INC_PATH .'/navwalker.php' );
+
+	/** This filter is documented in inc/functions.php */
+	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
 ?>
 	<div id="top-menu" role="navigation">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-dark bg-dark">
 			<div class="<?php t_em_container(); ?>">
 			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
 			<?php
@@ -75,9 +78,14 @@ if ( ! function_exists( 't_em_navigation_menu' ) ) :
  * This function is attached to the t_em_action_header_after action hook
  */
 function t_em_navigation_menu(){
-if ( has_nav_menu( 'navigation-menu' ) ) : ?>
+if ( has_nav_menu( 'navigation-menu' ) ) :
+	require_once( T_EM_THEME_DIR_INC_PATH .'/navwalker.php' );
+
+	/** This filter is documented in inc/functions.php */
+	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
+?>
 	<div id="site-navigation" role="navigation">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-light bg-light">
 			<div class="<?php t_em_container(); ?>">
 			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 			<?php
@@ -138,7 +146,7 @@ if ( has_nav_menu( 'footer-menu' ) ) :
 			'container'			=> 'nav',
 			'container_id'		=> 'footer-menu',
 			'container_class'	=> '',
-			'menu_class'		=> 'list-inline text-right',
+			'menu_class'		=> 'list-inline',
 			'depth'				=> apply_filters( 't_em_filter_footer_menu_depth', 1 ),
 		)
 	);
@@ -368,7 +376,7 @@ endif; // function t_em_user_social_network()
  * @since Twenty'em 1.0
  */
 function t_em_display_user_social_network(){
-	t_em_user_social_network( 't-em', '', 'list-inline text-right', 'list-inline-item' );
+	t_em_user_social_network( 't-em', '', 'list-inline', 'list-inline-item' );
 }
 add_action( 't_em_action_site_info_right', 't_em_display_user_social_network' );
 ?>

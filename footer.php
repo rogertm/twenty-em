@@ -37,16 +37,16 @@
 			<?php t_em_action_site_info_before(); ?>
 			<div id="inner-site-info" class="<?php t_em_container(); ?>">
 				<div class="row">
-					<div id="site-info-before" class="col-md-12">
+					<div id="site-info-before" class="<?php echo t_em_grid( '12' ) ?>">
 						<?php t_em_action_site_info_top(); ?>
 					</div>
-					<div id="site-info-left" class="col-md-6">
+					<div id="site-info-left" class="<?php echo t_em_grid( '6' ) ?>">
 						<?php t_em_action_site_info_left(); ?>
 					</div>
-					<div id="site-info-right" class="col-md-6">
+					<div id="site-info-right" class="<?php echo t_em_grid( '6' ) ?>">
 						<?php t_em_action_site_info_right(); ?>
 					</div>
-					<div id="site-info-after" class="col-md-12">
+					<div id="site-info-after" class="<?php echo t_em_grid( '12' ) ?>">
 						<?php t_em_action_site_info_bottom(); ?>
 					</div>
 				</div><!-- .row -->

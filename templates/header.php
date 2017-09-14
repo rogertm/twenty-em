@@ -264,7 +264,7 @@ function t_em_static_header(){
 			do_action( 't_em_action_static_header_inner_before' );
 			?>
 	<?php 	if ( ! empty ( $t_em['static_header_img_src'] ) ) : ?>
-				<div id="static-header-image" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
+				<div id="static-header-image" <?php t_em_breakpoint( 'static-header' ); ?>>
 					<img src="<?php echo $t_em['static_header_img_src']; ?>"
 						alt="<?php echo sanitize_text_field( $t_em['static_header_headline'] ); ?>">
 				</div><!-- #static-header-image -->
@@ -275,7 +275,7 @@ function t_em_static_header(){
 				|| ( $t_em['static_header_primary_button_text'] && $t_em['static_header_primary_button_link'] )
 				|| ( $t_em['static_header_secondary_button_text'] && $t_em['static_header_secondary_button_link'] )
 			) : ?>
-				<div id="static-header-text" <?php t_em_add_bootstrap_class( 'static-header' ); ?>>
+				<div id="static-header-text" <?php t_em_breakpoint( 'static-header' ); ?>>
 	<?php 	if ( $t_em['static_header_headline'] ) : ?>
 					<header><h2><?php echo $t_em['static_header_headline']; ?></h2></header>
 	<?php 	endif; ?>

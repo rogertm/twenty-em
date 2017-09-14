@@ -21,8 +21,8 @@
  */
 
 get_header( 'maintenance-mode' ); ?>
-			<section id="main-content" <?php t_em_add_bootstrap_class( 'one-column' ); ?>>
-				<section id="content" role="main" <?php t_em_add_bootstrap_class( 'one-column' ); ?>>
+			<section id="main-content" <?php t_em_breakpoint( 'one-column' ); ?>>
+				<section id="content" role="main" <?php t_em_breakpoint( 'one-column' ); ?>>
 				<?php t_em_action_maintenance_mode_before(); ?>
 				<?php t_em_maintenance_mode_area(); ?>
 				<?php t_em_action_maintenance_mode_after(); ?>

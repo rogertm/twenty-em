@@ -52,10 +52,10 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
  *
  * @since Twenty'em 1.0
  */
-function t_em_add_bootstrap_class( $section ){
+function t_em_breakpoint( $section ){
 	global $t_em;
 
-	$bootstrap_classes = array();
+	$breakpoint = array();
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
 	$layout_set = $t_em['layout_set'];
@@ -68,48 +68,43 @@ function t_em_add_bootstrap_class( $section ){
 							   'three-columns-content-right',
 							   'three-columns-content-middle' ) );
 
-	// #main-content and three-column or ( two-column or one-column )
-	/*if ( 'main-content' == $section && $three_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
-		$bootstrap_classes[] = 'col-md-9';
-	elseif ( 'main-content' == $section && ( $two_column || $one_column || ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' && $three_column ) ) ) :
-		$bootstrap_classes[] = 'col-md-12';
-	endif;*/
+	// #main-content
 	if ( 'main-content' == $section ) :
-		$bootstrap_classes[] = 'row';
+		$breakpoint[] = 'row';
 	endif;
 	// #content and three-column or one-column
 	if ( 'content' == $section && $three_column ) :
-		$bootstrap_classes[] = 'col-md-6';
+		$breakpoint[] = t_em_grid( '6' );
 	elseif ( 'content' == $section && $one_column ) :
-		$bootstrap_classes[] = 'col-md-12';
+		$breakpoint[] = t_em_grid( '12' );
 	endif;
 	// #content && #main-content One column templates
-	/*if ( 'content-one-column' == $section ) :
-		$bootstrap_classes[] = 'col-md-12';
-		$bootstrap_classes[] = 'one-column';
-	endif;*/
+	if ( 'content-one-column' == $section ) :
+		$breakpoint[] = t_em_grid( '12' );
+		$breakpoint[] = 'one-column';
+	endif;
 	// #sidebar and three-column
 	if ( 'sidebar' == $section && $three_column ) :
-		$bootstrap_classes[] = 'col-md-3';
-		$bootstrap_classes[] = 'widget-area';
+		$breakpoint[] = t_em_grid( '3' );
+		$breakpoint[] = 'widget-area';
 	endif;
 	// #sidebar-alt and three-column
 	if ( 'sidebar-alt' == $section && $three_column ) :
-		$bootstrap_classes[] = 'col-md-3';
-		$bootstrap_classes[] = 'widget-area';
+		$breakpoint[] = t_em_grid( '3' );
+		$breakpoint[] = 'widget-area';
 	endif;
 	// #content and two-column
 	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
-		$bootstrap_classes[] = 'col-md-8';
+		$breakpoint[] = t_em_grid( '8' );
 	endif;
 	// #content and front_page_set['widgets-front-page']
 	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] == 'widgets-front-page' ) :
-		$bootstrap_classes[] = 'col-md-12';
+		$breakpoint[] = t_em_grid( '12' );
 	endif;
 	// #sidebar and two-column
 	if ( 'sidebar' == $section && $two_column ) :
-		$bootstrap_classes[] = 'col-md-4';
-		$bootstrap_classes[] = 'widget-area';
+		$breakpoint[] = t_em_grid( '4' );
+		$breakpoint[] = 'widget-area';
 	endif;
 
 	/** Static Header Content and Image */
@@ -122,12 +117,12 @@ function t_em_add_bootstrap_class( $section ){
 								) ? '1' : '0';
 		$total_static_header = array_sum( array( $static_header_img, $static_header_content ) );
 		$cols = 12 / $total_static_header;
-		$bootstrap_classes[] = 'col-md-' . $cols;
+		$breakpoint[] = t_em_grid( $cols );
 	endif;
 
 	/** Front Page Widgets Area */
 	if ( 'primary-featured-widget-area' == $section ) :
-		$bootstrap_classes[] = 'col-md-12';
+		$breakpoint[] = t_em_grid( '12', 'md' );
 	endif;
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'secondary-featured-widget-area' == $section ) :
@@ -136,7 +131,7 @@ function t_em_add_bootstrap_class( $section ){
 		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
-		$bootstrap_classes[] = 'col-md-' . $cols;
+		$breakpoint[] = t_em_grid( $cols, 'md' );
 	endif;
 
 	/** Footer Widgets Area */
@@ -153,7 +148,7 @@ function t_em_add_bootstrap_class( $section ){
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
 		$cols = 12 / $total_widgets;
-		$bootstrap_classes[] = 'col-md-' . $cols;
+		$breakpoint[] = t_em_grid( $cols );
 	endif;
 
 	/**
@@ -164,9 +159,29 @@ function t_em_add_bootstrap_class( $section ){
 	 * @param array Bootstrap CSS classes
 	 * @since Twenty'em 1.0
 	 */
-	$classes = apply_filters( "t_em_filter_bootstrap_classes_{$section}", $bootstrap_classes );
+	$classes = apply_filters( "t_em_filter_breakpoint_{$section}", $breakpoint );
 	$classes = array_unique( $classes );
 	echo 'class="' . implode( ' ', $classes ) . '"';
+}
+
+/**
+ * Grid breakpoint
+ * @param string $cols 			Columns
+ * @param string $breakpoint 	breakpoint. Default 'lg'
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_grid( $cols, $breakpoint = '' ){
+	/**
+	 * Filter the default breakpoint
+	 * @param string $breakpoint	Default breakpoint
+	 *
+	 * @since Twenty'em 1.2
+	 */
+	$bp = ( ! $breakpoint ) ? apply_filters( 't_em_filter_default_breakpoint', 'lg' ) : $breakpoint;
+	$sep = ( $bp ) ? '-' : null;
+	$class = 'col-'. $bp . $sep . $cols;
+	return $class;
 }
 
 /**
