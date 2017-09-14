@@ -20,4 +20,11 @@ jQuery(document).ready(function($){
 	if ( $().tab ){
 		$('.tabbable .tab-pane.active').addClass('show');
 	}
+
+	// Bootstrap Carousel
+	if ( $().carousel ){
+		$('.carousel-indicators li').first().addClass('active');
+		$('.carousel-inner .carousel-item').first().addClass('active');
+		$('.carousel').carousel();
+	}
 });

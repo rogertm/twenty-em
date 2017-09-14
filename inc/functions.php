@@ -32,17 +32,51 @@
 function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $deps = array(), $util = true, $in_footer = false ){
 	global $t_em_theme_data;
 	$deps = array_merge( $deps, array( 'jquery' ) );
-	if ( $util ) :
-		$util = 'util.js';
-		array_push( $deps, $util );
-		wp_register_script( 'util.js', T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/util.js', array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+
+	if ( WP_DEBUG ) :
+		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. $plugin .'.js' ) ) ? $plugin .'.js' : $plugin .'.min.js';
+		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. 'util.js' ) ) ? 'util.js' : 'util.min.js';
+	else :
+		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. $plugin .'.min.js' ) ) ? $plugin .'.min.js' : $plugin .'.js';
+		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. 'util.min.js' ) ) ? 'util.min.js' : 'util.js';
 	endif;
-	wp_register_script( $plugin, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/'. $plugin, $deps, $t_em_theme_data['Version'], $in_footer );
-	wp_enqueue_script( $plugin );
+
+	if ( $util ) :
+		array_push( $deps, $util );
+		wp_register_script( $util, T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/'. $util, array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+	endif;
+
+	wp_register_script( $handle, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/'. $handle, $deps, $t_em_theme_data['Version'], $in_footer );
+	wp_enqueue_script( $handle );
 	if ( $script ) :
 		wp_register_script( $script, $script_src, array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
 		wp_enqueue_script( $script );
 	endif;
+}
+
+/**
+ * Get javascript files
+ * This functions loads minify scripts if the site is running online, otherwise (WP_DEBUG == true),
+ * loads the beautify script.
+ * @param string $handle 	Script handle. If the file is named my.script.min.js, $handle = 'my.script'
+ * 							Both files should exists: my.script.min.js and my.script.js
+ * @param string $path  	File path. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_PATH .'/path/to/js-dir/'
+ * @param string $url  		File url. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_URL .'/url/to/js-dir/'
+ * @return string  			File URL. False if file does not exist
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_get_js( $handle, $path = T_EM_THEME_DIR_JS_PATH, $url = T_EM_THEME_DIR_JS_URL ){
+	if ( WP_DEBUG ) :
+		$file = ( file_exists( $path .'/'. $handle .'.js' ) ) ? $handle .'.js' : $handle .'.min.js';
+	else :
+		$file = ( file_exists( $path .'/'. $handle .'.min.js' ) ) ? $handle .'.min.js' : $handle .'.js';
+	endif;
+	if ( file_exists( $path .'/'. $file ) ) :
+		$file_url = $url .'/'. $file;
+		return $file_url;
+	endif;
+	return false;
 }
 
 /**

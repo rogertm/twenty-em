@@ -37,19 +37,19 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Load the html5 shiv.
-	wp_enqueue_script( 'html5-shiv', T_EM_THEME_DIR_JS_URL . '/html5.js', array(), $t_em_theme_data['Version'] );
+	wp_enqueue_script( 'html5-shiv', t_em_get_js( 'html5' ), array(), $t_em_theme_data['Version'] );
 	wp_script_add_data( 'html5-shiv', 'conditional', 'lt IE 9' );
 
 	// Register Carousel Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
-		t_em_register_bootstrap_plugin( 'carousel.js', 'script.slider.js', T_EM_THEME_DIR_JS_URL . '/script.slider.js' );
+		t_em_register_bootstrap_plugin( 'carousel' );
 	endif;
 
 	// Register Collapse Bootstrap Plugins when needed
 	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse.js' );
-		t_em_register_bootstrap_plugin( 'popper.min.js' );
-		t_em_register_bootstrap_plugin( 'dropdown.js' );
+		t_em_register_bootstrap_plugin( 'collapse' );
+		t_em_register_bootstrap_plugin( 'popper' );
+		t_em_register_bootstrap_plugin( 'dropdown' );
 	endif;
 
 	// Countdown jQuery plugin for Maintenance Mode
@@ -62,11 +62,11 @@ function t_em_enqueue_styles_and_scripts(){
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
 			) ) :
-		wp_register_script( 'countdown', T_EM_THEME_DIR_JS_URL . '/jquery.countdown.min.js', array( 'jquery' ), $t_em_theme_data['Version'] );
+		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), $t_em_theme_data['Version'] );
 		wp_enqueue_script( 'countdown' );
 	endif;
 
-	wp_register_script( 'app-utils', T_EM_THEME_DIR_JS_URL .'/app.utils.js', array( 'jquery' ), $t_em_theme_data['Version'] );
+	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), $t_em_theme_data['Version'] );
 	wp_enqueue_script( 'app-utils' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );
