@@ -94,39 +94,6 @@ figure{
 }
 
 //
-// Navs
-//
-#top-menu{
-	h1#site-title{
-		line-height: .6;
-	}
-}
-
-//
-// Navigation Menus
-//
-/* #menu{
-	&-top-menu{
-		.dropdown-menu{
-			a{
-				color: $dropdown-link-color;
-				&:hover{
-					color: $dropdown-link-hover-color;
-					background-color: $dropdown-link-hover-bg;
-				}
-			}
-		}
-	}
-} */
-
-//
-// Breadcrumb
-//
-.breadcrumb{
-	display: block;
-}
-
-//
 // Header
 //
 #header{
@@ -164,6 +131,29 @@ figure{
 			}
 		}
 	}
+}
+
+//
+// Site Brand
+//
+#top-menu{
+	h1#site-title{
+		line-height: .6;
+		@extend .d-inline-block;
+	}
+	.custom-logo-link{
+		#site-title{
+			font-size: $navbar-brand-font-size;
+			@extend .mr-3;
+		}
+	}
+}
+
+//
+// Breadcrumb
+//
+.breadcrumb{
+	display: block;
 }
 
 //

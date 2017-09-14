@@ -302,9 +302,16 @@ add_filter( 'post_class', 't_em_archive_classes' );
  * This function is attached to the 'get_custom_logo' filter hook.
  *
  * @since Twenty'em 1.1.1
+ * @since Twenty'em 1.2 	Display site name
  */
 function t_em_custom_logo_class( $html ){
-	$html = str_replace( 'custom-logo-link', 'custom-logo-link navbar-brand', $html );
+	$logo_id = get_theme_mod( 'custom_logo' );
+	$logo_src = wp_get_attachment_url( $logo_id );
+	$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
+	$html = '<a href="'. esc_url( home_url( '/' ) ) .'" class="custom-logo-link navbar-brand">
+				<img class="custom-logo" src="'. $logo_src .'"/>
+				<'. $heading_tag .' id="site-title">'. get_bloginfo( 'name' ) .'</'. $heading_tag .'>
+			</a>';
 	return $html;
 }
 add_filter( 'get_custom_logo', 't_em_custom_logo_class' );

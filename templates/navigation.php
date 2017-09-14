@@ -20,7 +20,7 @@ if ( ! function_exists( 't_em_top_menu' ) ) :
  * This function is attached to the t_em_action_header_before() action hook
  */
 function t_em_top_menu(){
-	require_once( T_EM_THEME_DIR_INC_PATH .'/navwalker.php' );
+	require_once( T_EM_THEME_DIR_INC_PATH .'/class-navwalker.php' );
 
 	/** This filter is documented in inc/functions.php */
 	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
@@ -36,14 +36,15 @@ function t_em_top_menu(){
 				 * @param string $brand HTML containing the navbar brand
 				 */
 				$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
-				$brand = get_custom_logo() . '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
+				$brand = ( has_custom_logo() ) ? get_custom_logo() : '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
 				echo apply_filters( 't_em_filter_top_menu_brand', $brand );
+
+				if ( has_nav_menu( 'top-menu' ) ) :
 			?>
 				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-top-menu">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 			<?php
-				if ( has_nav_menu( 'top-menu' ) ) :
 					wp_nav_menu( array(
 							/**
 							 * Filter the menu depth
@@ -53,12 +54,12 @@ function t_em_top_menu(){
 							 * @since Twenty'em 1.0
 							 */
 							'theme_location'	=> 'top-menu',
+							'container'			=> 'div',
 							'container_id'		=> 'site-top-menu',
 							'container_class'	=> 'collapse navbar-collapse',
 							'menu_class'		=> 'navbar-nav rm-auto',
-							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 0 ),
-							'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
-							'walker'			=> new WP_Bootstrap_Navwalker(),
+							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 2 ),
+							'walker'			=> new Twenty_Em_Navwalker(),
 						)
 					);
 				endif;
@@ -79,7 +80,7 @@ if ( ! function_exists( 't_em_navigation_menu' ) ) :
  */
 function t_em_navigation_menu(){
 if ( has_nav_menu( 'navigation-menu' ) ) :
-	require_once( T_EM_THEME_DIR_INC_PATH .'/navwalker.php' );
+	require_once( T_EM_THEME_DIR_INC_PATH .'/class-navwalker.php' );
 
 	/** This filter is documented in inc/functions.php */
 	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
@@ -111,9 +112,8 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 						'container_id'		=> 'site-navigation-menu',
 						'container_class'	=> 'collapse navbar-collapse',
 						'menu_class'		=> 'navbar-nav rm-auto',
-						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 0 ),
-						'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
-						'walker'			=> new WP_Bootstrap_Navwalker(),
+						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 2 ),
+						'walker'			=> new Twenty_Em_Navwalker(),
 					)
 				);
 			?>
