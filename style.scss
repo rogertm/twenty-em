@@ -153,7 +153,7 @@ figure{
 // Breadcrumb
 //
 .breadcrumb{
-	display: block;
+	@extend .d-block;
 }
 
 //

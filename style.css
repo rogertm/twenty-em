@@ -4253,7 +4253,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .d-inline-block, #top-menu h1#site-title {
   display: inline-block !important; }
 
-.d-block {
+.d-block, .breadcrumb {
   display: block !important; }
 
 .d-table {
@@ -9322,9 +9322,6 @@ a .featured-post-thumbnail:hover {
   line-height: .6; }
 #top-menu .custom-logo-link #site-title {
   font-size: 1.25rem; }
-
-.breadcrumb {
-  display: block; }
 
 @media (min-width: 992px) {
   body.content-right #content {

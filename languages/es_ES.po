@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-08-01 01:56-0400\n"
-"PO-Revision-Date: 2017-08-01 02:05-0400\n"
+"POT-Creation-Date: 2017-09-14 23:57-0400\n"
+"PO-Revision-Date: 2017-09-14 23:58-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -28,72 +28,35 @@ msgstr ""
 "Lo sentimos, la página que has pedido no se encuentra en nuestro servidor. "
 "Tal vez puedas usar el buscador y obtener mejores resultados."
 
-#: comments.php:34
+#: comments.php:33
 msgctxt "comments title"
 msgid "One response to: %2$s"
 msgid_plural "%1$s responses to: %2$s"
 msgstr[0] "Una respuesta para: %2$s"
 msgstr[1] "%1$s respuestas para: %2$s"
 
-#: comments.php:43 functions.php:679 page-templates/template-archive.php:57
+#: comments.php:39 page-templates/template-archive.php:58
+#: templates/meta.php:126
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] "1 Comentario"
 msgstr[1] "%1$s Comentarios"
 
-#: comments.php:52
+#: comments.php:46
 msgid "No Comments"
 msgstr "No hay comentarios"
 
-#: comments.php:63
+#: comments.php:51
 msgid "%1$d Pingbacks | %2$d Trackbacks"
 msgstr "%1$d Pingbacks | %2$d Trackbacks"
 
-#: comments.php:72
-msgid "0 Pingbacks | 0 Trackbacks"
-msgstr "0 Pingbacks | 0 Trackbacks"
-
-#: comments.php:91
+#: comments.php:69
 msgid "Comments are closed"
 msgstr "Los comentarios están cerrados"
 
-#: comments.php:97
+#: comments.php:73
 msgid "No responds to: <small>%s</small>"
 msgstr "No hay respuestas para: <small>%s</small>"
-
-#: content-none.php:23
-msgid "Nothing Found"
-msgstr "No hay resultados"
-
-#: content-none.php:28
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"¿Listo para publicar tu primera entrada? <a href=\"%1$s\">Comienza por aquí</"
-"a>."
-
-#: content-none.php:32
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with "
-"different keywords."
-msgstr ""
-"Lo sentimos, pero no hay coincidencias con tus términos de búsqueda. Por "
-"favor, intenta nuevamente con diferentes criterios."
-
-#: content-none.php:37
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr ""
-"Al parecer no podemos encontrar lo que estás buscando. Tal vez puedas usar "
-"el buscador y obtener mejores resultados."
-
-#: content.php:24 functions.php:746 functions.php:1411
-#: page-templates/template-archive.php:55
-#: page-templates/template-blog-content.php:45
-#: page-templates/template-sitemap.php:64
-msgid "Permalink to %s"
-msgstr "Enlace permanente a %s"
 
 #: engine/archive-options.php:41
 msgid "Display the content"
@@ -198,7 +161,7 @@ msgstr ""
 msgid "Archive Pagination"
 msgstr "Paginado del archivo"
 
-#: engine/archive-options.php:302 engine/front-page-options.php:212
+#: engine/archive-options.php:302 engine/front-page-options.php:273
 #: engine/header-options.php:356
 msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
@@ -248,56 +211,68 @@ msgstr "Tercera área de texto"
 msgid "Fourth home page text area"
 msgstr "Cuarta área de texto"
 
-#: engine/front-page-options.php:145 engine/header-options.php:298
+#: engine/front-page-options.php:135
+msgid "Jumbotron"
+msgstr "Jumbotron"
+
+#: engine/front-page-options.php:140
+msgid "Features"
+msgstr "Features"
+
+#: engine/front-page-options.php:175 engine/header-options.php:298
 #: engine/maintenance-mode-options.php:86
 msgid "Headline"
 msgstr "Encabezado"
 
-#: engine/front-page-options.php:148 engine/maintenance-mode-options.php:91
+#: engine/front-page-options.php:178 engine/maintenance-mode-options.php:91
 msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Encabezado <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:151 engine/header-options.php:305
+#: engine/front-page-options.php:181 engine/header-options.php:305
 #: engine/maintenance-mode-options.php:96
 msgid "Content"
 msgstr "Contenido"
 
-#: engine/front-page-options.php:154 engine/maintenance-mode-options.php:101
+#: engine/front-page-options.php:184 engine/maintenance-mode-options.php:101
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
-#: engine/front-page-options.php:156 engine/header-options.php:303
+#: engine/front-page-options.php:186 engine/header-options.php:303
 #: engine/maintenance-mode-options.php:103
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: engine/front-page-options.php:158 engine/header-options.php:308
+#: engine/front-page-options.php:188 engine/header-options.php:308
 #: engine/maintenance-mode-options.php:106
 msgid "Primary button text"
 msgstr "Texto del botón primario"
 
-#: engine/front-page-options.php:161 engine/maintenance-mode-options.php:110
+#: engine/front-page-options.php:191 engine/maintenance-mode-options.php:110
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:164 engine/header-options.php:314
+#: engine/front-page-options.php:194 engine/header-options.php:314
 #: engine/maintenance-mode-options.php:114
 msgid "Primary button link"
 msgstr "Enlace del botón primario"
 
-#: engine/front-page-options.php:167 engine/header-options.php:317
+#: engine/front-page-options.php:197 engine/header-options.php:317
 #: engine/maintenance-mode-options.php:118
 msgid "Secondary button text"
 msgstr "Texto del botón secundario"
 
-#: engine/front-page-options.php:170 engine/maintenance-mode-options.php:122
+#: engine/front-page-options.php:200 engine/maintenance-mode-options.php:122
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:173 engine/header-options.php:323
+#: engine/front-page-options.php:203 engine/header-options.php:323
 #: engine/maintenance-mode-options.php:126
 msgid "Secondary button link"
 msgstr "Enlace del botón secundario"
+
+#: engine/front-page-options.php:225
+msgid "Front Page Template"
+msgstr "Plantillas para la Página de Inicio"
 
 #: engine/generals-options.php:31
 msgid ""
@@ -557,30 +532,29 @@ msgstr ""
 #: engine/help.php:39
 msgid ""
 "<strong>Layout Options</strong>: Default Values: Two Columns, content on "
-"left. Four footer widgets areas. Site width: <code>%1$spx</code>."
+"left. Four footer widgets areas."
 msgstr ""
 "<strong>Opciones de Estructura</strong>: Valores por defecto: Dos columnas, "
-"contenido a la izquierda. Cuatro áreas de widgets en el pie de página. Ancho "
-"del blog: <code>%1$spx</code>."
+"contenido a la izquierda. Cuatro áreas de widgets en el pie de página."
 
-#: engine/help.php:41
+#: engine/help.php:40
 msgid "<strong>Social Network Options</strong>: Default Values: Empty."
 msgstr ""
 "<strong>Opciones de Redes Sociales</strong>: Valores por defecto: Vacío."
 
-#: engine/help.php:42
+#: engine/help.php:41
 msgid "<strong>Webmaster Tools Options</strong>: Default Values: Empty."
 msgstr ""
 "<strong>Opciones de Herramientas para Webmaster</strong>: Valores por "
 "defecto: Vacío."
 
-#: engine/help.php:43
+#: engine/help.php:42
 msgid "<strong>Maintenance Mode Options</strong>: Default Values: Empty."
 msgstr ""
 "<strong>Opciones de Modo de Mantenimiento</strong>: Valores por defecto: "
 "Vacío."
 
-#: engine/help.php:45
+#: engine/help.php:44
 msgid ""
 "Remember to click \"Save Changes\" to save any changes you have made to the "
 "theme options."
@@ -588,11 +562,11 @@ msgstr ""
 "Recuerda hacer clic en \"Guardar Cambios\" para salvar cualquier cambio que "
 "hagas en esta página de opciones."
 
-#: engine/help.php:48 engine/help.php:201
+#: engine/help.php:47 engine/help.php:196
 msgid "Overview"
 msgstr "Generalidades"
 
-#: engine/help.php:54
+#: engine/help.php:53
 msgid ""
 "<strong>General Options</strong>: By checking the check boxes below, you may "
 "enable or not this options.<br />Note: All of then are check by default."
@@ -601,7 +575,7 @@ msgstr ""
 "no las opciones siguientes.<br />Nota: Todas estas opciones están activas de "
 "manera predeterminada."
 
-#: engine/help.php:56
+#: engine/help.php:55
 msgid ""
 "<strong>%1$s and WordPress credit</strong>: If this option is set to true, a "
 "link to WordPress and %1$s sites will be displayed in your site footer area."
@@ -609,7 +583,7 @@ msgstr ""
 "<strong>Crédito para %1$s y WordPress</strong>: Si activas esta opción, se "
 "mostrará un enlace a los sitios de WordPress y Twenty'em en el pie de página."
 
-#: engine/help.php:57
+#: engine/help.php:56
 msgid ""
 "<strong>Featured image in single post</strong>: Useful to show featured post "
 "image on top of a post (above the title) when it is displayed."
@@ -618,7 +592,7 @@ msgstr ""
 "destacada (sobre el título) de la entrada cuando esta se visualiza de manera "
 "individual."
 
-#: engine/help.php:58
+#: engine/help.php:57
 msgid ""
 "<strong>Related posts in single post</strong>: Display a list of related "
 "posts, sorts by post tags, at the end of each post."
@@ -627,7 +601,7 @@ msgstr ""
 "lista de entradas relacionadas, ordenadas por categorías y etiquetas, al "
 "final de cada entrada individual."
 
-#: engine/help.php:59
+#: engine/help.php:58
 msgid ""
 "<strong>Breadcrumb path</strong>: Just another <em>You are here</em> "
 "script :)"
@@ -635,7 +609,7 @@ msgstr ""
 "<strong>Breadcrumb o Migas de Pan</strong>: Solamente otro script del tipo "
 "<em>Tú estás aquí</em> :)"
 
-#: engine/help.php:60
+#: engine/help.php:59
 msgid ""
 "<strong>Separate comments from pingbacks and trackbacks</strong>: Display "
 "pingbacks and trackbacks in a different list at the end of all comments. For "
@@ -647,7 +621,7 @@ msgstr ""
 "demás comentarios. Para que esta opción funcione correctamente, por favor, "
 "desactiva el <a href=\"%1$s\">paginado en los comentarios</a>."
 
-#: engine/help.php:62
+#: engine/help.php:61
 msgid ""
 "<strong>Enable comments in single pages</strong>: This option lets you allow "
 "comments in single pages. If true, the option <a href=\"%1$s\">Allow people "
@@ -660,7 +634,7 @@ msgstr ""
 "artículos nuevos</a> en <strong>Ajustes por defecto de las entradas</strong> "
 "debe estar activa también."
 
-#: engine/help.php:64
+#: engine/help.php:63
 msgid ""
 "<strong>Enable shortcodes buttons</strong>: Lets you show or hide the "
 "shortocde buttons in the post or page editor. Note that shortcodes always "
@@ -670,11 +644,11 @@ msgstr ""
 "los botones de shortcodes en el editor de entradas. Independientemente de "
 "esta configuración, los shortcodes estarán siempre disponibles."
 
-#: engine/help.php:68 engine/theme-options.php:58
+#: engine/help.php:67 engine/theme-options.php:40
 msgid "General Options"
 msgstr "Opciones Generales"
 
-#: engine/help.php:74
+#: engine/help.php:73
 msgid ""
 "<strong>Header Options</strong>: With this options you are able to configure "
 "your header site section."
@@ -682,7 +656,7 @@ msgstr ""
 "<strong>Opciones de Cabecera</strong>: Usando estas opciones podrás "
 "configurar el encabezado de tu blog."
 
-#: engine/help.php:76
+#: engine/help.php:75
 msgid ""
 "<strong>No header</strong>: This options will be check by default at the "
 "first time the theme is loaded."
@@ -690,7 +664,7 @@ msgstr ""
 "<strong>Sin cabecera</strong>: Esta opción estará activa por defecto la "
 "primera vez que se cargue el tema."
 
-#: engine/help.php:77
+#: engine/help.php:76
 msgid ""
 "<strong>Header image</strong>: This option let you select an image to be "
 "shown at the top of your site by uploading from your computer or choosing "
@@ -707,7 +681,7 @@ msgstr ""
 "página inicial</strong>\", lo cual mostrará en las entradas o páginas "
 "individuales, la imagen destacada adjunta a las mismas."
 
-#: engine/help.php:79
+#: engine/help.php:78
 msgid ""
 "<strong>Slider</strong>: With this options active, a carousel with posts "
 "under your favorite category will be displayed in header area. The first "
@@ -721,7 +695,7 @@ msgstr ""
 "entradas (%1$s) estará activa para esta opción. Para manejar la categoría "
 "predeterminada debes ir a los <a href=\"%2$s\">Ajustes de escritura</a>."
 
-#: engine/help.php:82
+#: engine/help.php:81
 msgid ""
 "<strong>Static Header</strong>: Useful option to let people know what about "
 "your site is. You can insert an image previously uploaded to your <a href="
@@ -737,11 +711,11 @@ msgstr ""
 "botón primario y/o secundario enlazando una URL personalizada, también "
 "agregar <a href=\"%2$s\">iconos</a> a estos botones."
 
-#: engine/help.php:88 engine/theme-options.php:59
+#: engine/help.php:87 engine/theme-options.php:41
 msgid "Header Options"
 msgstr "Opciones de Cabecera"
 
-#: engine/help.php:94
+#: engine/help.php:93
 msgid ""
 "<strong>Front Page Options</strong>: With this options you are able to "
 "configure your front page."
@@ -749,7 +723,7 @@ msgstr ""
 "<strong>Opciones de Página de Inicio</strong>: Usando estas opciones podrás "
 "configurar tu página inicial."
 
-#: engine/help.php:96
+#: engine/help.php:95
 msgid ""
 "<strong>Just another WordPress front page</strong>: This is a child of your "
 "<a href=\"%1$s\">Reading Settings</a> options."
@@ -757,7 +731,7 @@ msgstr ""
 "<strong>Como cualquier página inicial de WordPress</strong>: Esta opción es "
 "heredera de los <a href=\"%1$s\">Ajustes de lectura</a>."
 
-#: engine/help.php:98
+#: engine/help.php:97
 msgid ""
 "<strong>Text Widgets</strong>: Four featured text widgets areas (one "
 "primary, three secondaries). Same options for all of them: headline, content "
@@ -772,11 +746,11 @@ msgstr ""
 "<a href=\"%2$s\">Librería multimedia</a>) y dos botones enlazados a la URL "
 "que desees."
 
-#: engine/help.php:104 engine/theme-options.php:60
+#: engine/help.php:103 engine/theme-options.php:42
 msgid "Front Page Options"
 msgstr "Opciones de Página de Inicio"
 
-#: engine/help.php:110
+#: engine/help.php:109
 msgid ""
 "<strong>Archive Options</strong>: Two simple ways to show your posts "
 "archive: The Content or The Excerpt. Besides two pagination options"
@@ -785,7 +759,7 @@ msgstr ""
 "archivos de entradas: el contenido o el resumen. Además de dos opciones para "
 "el paginado."
 
-#: engine/help.php:112
+#: engine/help.php:111
 msgid ""
 "<strong>The Content</strong>: If you are running <em>Just another WordPress "
 "Blog</em>, this could be a great option, showing the whole content of your "
@@ -795,7 +769,7 @@ msgstr ""
 "de WordPress</em>, esta puede ser una gran opción, mostrando todo el "
 "contenido de cada entrada cuando se accede a los archivos."
 
-#: engine/help.php:113
+#: engine/help.php:112
 msgid ""
 "<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your "
 "posts, also let you manage some other options, like excerpt length, "
@@ -806,7 +780,7 @@ msgstr ""
 "palabras, del resumen, alineado, alto y ancho de la imagen en miniatura de "
 "cada entrada."
 
-#: engine/help.php:114
+#: engine/help.php:113
 msgid ""
 "<strong>Archive Pagination</strong>: Two ways to display your pagination. "
 "Simple: <code>Older</code> and <code>Newer</code> posts links. Or Paginated: "
@@ -818,11 +792,11 @@ msgstr ""
 "una lista paginada <code>&laquo; Recientes 1 &hellip; 3 4 5 6 7 &hellip; 9 "
 "Antiguas &raquo;</code>."
 
-#: engine/help.php:118 engine/theme-options.php:61
+#: engine/help.php:117 engine/theme-options.php:43
 msgid "Archive Options"
 msgstr "Opciones de Archivo"
 
-#: engine/help.php:124
+#: engine/help.php:123
 msgid ""
 "<strong>Layout Options</strong>: This options do not need to be explained, "
 "really. You may decide where you want your(s) side(s) bar(s), in case you "
@@ -832,20 +806,11 @@ msgstr ""
 "explicación. Puedes decidir donde colocar tus barras laterales en caso que "
 "necesites alguna."
 
-#: engine/help.php:125
-msgid ""
-"And also enter the value (in pixels) you wish to be your site width. "
-"Default: <code>%1$s</code>, Max: <code>%2$s</code>, Min: <code>%3$s</code>."
-msgstr ""
-"Además de introducir el valor (en píxeles) del ancho que debe tener tu blog. "
-"Predeterminado: <code>%1$s</code>, Máximo: <code>%2$s</code>, Mínimo: <code>"
-"%3$s</code>."
-
-#: engine/help.php:131 engine/theme-options.php:62
+#: engine/help.php:126 engine/theme-options.php:44
 msgid "Layout Options"
 msgstr "Opciones de Estructura"
 
-#: engine/help.php:137
+#: engine/help.php:132
 msgid ""
 "<strong>Social Network Options</strong>: We provide a long list of the must "
 "used social network sites on the Internet. This option let you introduce "
@@ -856,11 +821,11 @@ msgstr ""
 "las URLs de tus usuarios, que se mostrarán en la parte inferior del blog en "
 "forma de menú."
 
-#: engine/help.php:140 engine/theme-options.php:63
+#: engine/help.php:135 engine/theme-options.php:45
 msgid "Social Network Options"
 msgstr "Opciones de Redes Sociales"
 
-#: engine/help.php:146
+#: engine/help.php:141
 msgid ""
 "<strong>Webmaster Tools Options</strong>: In this section you should enter "
 "your meta key \"content\" value provided by <a href=\"%1$s\">Google "
@@ -874,11 +839,11 @@ msgstr ""
 "Webmaster Center</a> y <a href=\"%3$s\">Pinterest Site Verification</a>, y "
 "códigos de Rastreo Estadístico de tu sistema favorito."
 
-#: engine/help.php:152 engine/theme-options.php:64
+#: engine/help.php:147 engine/theme-options.php:46
 msgid "Webmaster Tools Options"
 msgstr "Opciones de Herramientas para Webmaster"
 
-#: engine/help.php:158
+#: engine/help.php:153
 msgid ""
 "<strong>Maintenance Mode Options</strong>: Now you can put your site in "
 "Maintenance Mode. Activating this option you are able to \"shut down\" your "
@@ -894,7 +859,7 @@ msgstr ""
 "activar otros grupos de usuarios en la sección <strong>Usuarios y Roles</"
 "strong>, mientras los visitantes no podrán ver nada."
 
-#: engine/help.php:159
+#: engine/help.php:154
 msgid ""
 "You can also use the <strong>Timer</strong> section to show a countdown and "
 "tell the visitors when your site will be available again. In addition you "
@@ -907,47 +872,47 @@ msgstr ""
 "de enlaces a tu disposición en la sección <strong>Encabezado, Contenido y "
 "más...</strong>."
 
-#: engine/help.php:162 engine/theme-options.php:65
+#: engine/help.php:157 engine/theme-options.php:47
 msgid "Maintenance Mode Options"
 msgstr "Opciones de Modo de Mantenimiento"
 
-#: engine/help.php:168
+#: engine/help.php:163
 msgid "<strong>Little Debug Information</strong>:"
 msgstr "<strong>Información de Desarrollo</strong>:"
 
-#: engine/help.php:170
+#: engine/help.php:165
 msgid "<strong>Framework Name</strong>: <code>%s</code>"
 msgstr "<strong>Nombre del Framework</strong>: <code>%s</code>"
 
-#: engine/help.php:171
+#: engine/help.php:166
 msgid "<strong>Framework Version</strong>: <code>%s</code>"
 msgstr "<strong>Versión del Framework</strong>: <code>%s</code>"
 
-#: engine/help.php:172
+#: engine/help.php:167
 msgid "<strong>Status</strong>: <code>%s</code>"
 msgstr "<strong>Estado</strong>: <code>%s</code>"
 
-#: engine/help.php:173
+#: engine/help.php:168
 msgid "<strong>Data Base Version</strong>: <code>%s</code>"
 msgstr "<strong>Versión de la Base de Datos</strong>: <code>%s</code>"
 
-#: engine/help.php:174
+#: engine/help.php:169
 msgid "<strong>Current Theme</strong>: <code>%s</code>"
 msgstr "<strong>Tema Actual</strong>: <code>%s</code>"
 
-#: engine/help.php:175
+#: engine/help.php:170
 msgid "<strong>Theme Version</strong>: <code>%s</code>"
 msgstr "<strong>Versión del Tema</strong>: <code>%s</code>"
 
-#: engine/help.php:179
+#: engine/help.php:174
 msgid "Little Debug Info"
 msgstr "Información de Desarrollo"
 
-#: engine/help.php:194
+#: engine/help.php:189
 msgid "<strong>%1$s Backup Manager</strong>"
 msgstr "<strong>%1$s Administrador de Respaldo</strong>"
 
-#: engine/help.php:195
+#: engine/help.php:190
 msgid ""
 "The backup manager allows you to backup or restore your <a href=\"%1$s"
 "\">Theme Options</a> settings to or from a text file. Only valid backup "
@@ -959,7 +924,7 @@ msgstr ""
 "válidos generados por el <strong>Adminostrador de Respaldo de %2$s</strong> "
 "pueden ser importados."
 
-#: engine/help.php:197
+#: engine/help.php:192
 msgid ""
 "Please note that this manager only backs up your settings, not your content, "
 "to backup your content use the <a href=\"%1$s\">WordPress Export Tool</a>."
@@ -968,11 +933,11 @@ msgstr ""
 "contenido del blog, para respaldar tu contenido debes ir a <a href=\"%1$s"
 "\">Herramientas > Exportar</a>."
 
-#: engine/help.php:207
+#: engine/help.php:202
 msgid "<strong>Export Settings</strong>"
 msgstr "<strong>Exportar</strong>"
 
-#: engine/help.php:208
+#: engine/help.php:203
 msgid ""
 "You can export your <strong>%1$s</strong> settings to back them up, or copy "
 "them to another site. If Child Themes or Plugins merge their options to "
@@ -983,7 +948,7 @@ msgstr ""
 "opciones dentro de la opción <code>t_em_theme_options</code>, estas se "
 "guardarán también."
 
-#: engine/help.php:209
+#: engine/help.php:204
 msgid ""
 "The settings are exported in a text file named <code>t-em-backup-</code> "
 "fallowed by the date and time it was exported."
@@ -991,15 +956,15 @@ msgstr ""
 "La configuración se exportará en un archivo de texto llamado <code>t-em-"
 "backup-</code> seguido por la fecha y la hora en que ha sido exportado."
 
-#: engine/help.php:212
+#: engine/help.php:207
 msgid "Export"
 msgstr "Exportar"
 
-#: engine/help.php:218
+#: engine/help.php:213
 msgid "<strong>Import Settings</strong>"
 msgstr "<strong>Importar</strong>"
 
-#: engine/help.php:219
+#: engine/help.php:214
 msgid ""
 "You can import a file you've previously exported. Remember that only files "
 "exported by the <strong>%1$s Backup Manager</strong> can be imported back."
@@ -1008,7 +973,7 @@ msgstr ""
 "solo archivos exportados por el <strong>%1$s Administrador de Resplado</"
 "strong> pueden ser importados."
 
-#: engine/help.php:220
+#: engine/help.php:215
 msgid ""
 "Once you upload your file, it will update the <code>t_em_theme_options</"
 "code> option in the data base. <strong>This action cannot be undone</strong>."
@@ -1017,31 +982,31 @@ msgstr ""
 "<code>t_em_theme_options</code> en la base de datos. <strong>Esta acción no "
 "se puede deshacer</strong>."
 
-#: engine/help.php:223
+#: engine/help.php:218
 msgid "Import"
 msgstr "Importar"
 
-#: engine/help.php:236
+#: engine/help.php:231
 msgid "For more information:"
 msgstr "Para más información:"
 
-#: engine/help.php:237
+#: engine/help.php:232
 msgid "<a href=\"%1$s\">Visit %2$s home page</a>"
 msgstr "<a href=\"%1$s\">Visita la página de %2$s</a>"
 
-#: engine/help.php:238
+#: engine/help.php:233
 msgid "<a href=\"%1$s\">License</a>"
 msgstr "<a href=\"%1$s\">Licencia</a>"
 
-#: engine/help.php:239
+#: engine/help.php:234
 msgid "<a href=\"%1$s\">Documentation</a>"
 msgstr "<a href=\"%1$s\">Documentación</a>"
 
-#: engine/help.php:240
+#: engine/help.php:235
 msgid "<a href=\"%1$s\">Blog</a>"
 msgstr "<a href=\"%1$s\">Blog</a>"
 
-#: engine/help.php:241
+#: engine/help.php:236
 msgid "<a href=\"%1$s\">Donate</a>"
 msgstr "<a href=\"%1$s\">Donar</a>"
 
@@ -1090,28 +1055,19 @@ msgstr "Un áreas de widgets"
 msgid "No footer widgets"
 msgstr "Sin áreas de widgets"
 
-#: engine/layout-options.php:130
-msgid "Layout Width"
-msgstr "Ancho de la estructura"
+#: engine/layout-options.php:131
+msgid "Layout Fluid"
+msgstr "Estructura Fluida"
 
-#: engine/layout-options.php:133
-msgid ""
-"Enter the value you wish to be your site width. Options: default: <code>"
-"%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>."
-msgstr ""
-"Introduce el valor que deseas tenga el ancho de tu blog. Opciones: "
-"predeterminado: <code>%1$s</code>; máximo: <code>%2$s</code>; mínimo: <code>"
-"%3$s</code>."
-
-#: engine/layout-options.php:141
+#: engine/layout-options.php:136
 msgid "Use full width container, spanning the entire width of your viewport."
 msgstr "Expandir el contenedor por todo el ancho de la pantalla."
 
-#: engine/layout-options.php:168
+#: engine/layout-options.php:160
 msgid "Main Layout Setting"
 msgstr "Ajustes de la estructura principal"
 
-#: engine/layout-options.php:187
+#: engine/layout-options.php:179
 msgid "Footer Widgets Area Setting"
 msgstr "Ajustes de áreas de widgets inferior"
 
@@ -1165,12 +1121,6 @@ msgid ""
 msgstr ""
 "Introducir el texto para la etiqueta <code>&lt;title&gt;... &lt;/title&gt;</"
 "code>. Por defecto: <strong>%s</strong>"
-
-#: engine/maintenance-mode-options.php:260
-msgid ""
-"You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
-msgstr ""
-"Estás usando %s en <strong><a href=\"%s\">Modo de Mantenimiento</a></strong>"
 
 #: engine/social-network-options.php:32
 msgid "Twitter URL"
@@ -1277,12 +1227,12 @@ msgid "Reddit"
 msgstr "Reddit"
 
 #: engine/social-network-options.php:123
-msgid "Picassa URL"
-msgstr "Picassa URL"
+msgid "Picasa URL"
+msgstr "Picasa URL"
 
 #: engine/social-network-options.php:124
-msgid "Picassa"
-msgstr "Picassa"
+msgid "Picasa"
+msgstr "Picasa"
 
 #: engine/social-network-options.php:130
 msgid "Lastfm URL"
@@ -1316,14 +1266,6 @@ msgstr "Deviantart URL"
 msgid "Deviantart"
 msgstr "Deviantart"
 
-#: engine/social-network-options.php:158
-msgid "My Space URL"
-msgstr "My Space URL"
-
-#: engine/social-network-options.php:159
-msgid "My Space"
-msgstr "My Space"
-
 #: engine/social-network-options.php:165
 msgid "Xing URL"
 msgstr "Xing URL"
@@ -1355,14 +1297,6 @@ msgstr "Dribbble URL"
 #: engine/social-network-options.php:187
 msgid "Dribbble"
 msgstr "Dribbble"
-
-#: engine/social-network-options.php:193
-msgid "Sorrst URL"
-msgstr "Sorrst URL"
-
-#: engine/social-network-options.php:194
-msgid "Sorrst"
-msgstr "Sorrst"
 
 #: engine/social-network-options.php:200
 msgid "RSS Feed URL"
@@ -1452,28 +1386,28 @@ msgstr "Archivo a cargar: (Tamaño Máximo <code>%s</code>)"
 msgid "Upload file and import"
 msgstr "Cargar archivo e importar"
 
-#: engine/theme-options.php:92
+#: engine/theme-options.php:74
 msgid "Select Image"
 msgstr "Seleccionar Imagen"
 
-#: engine/theme-options.php:93
+#: engine/theme-options.php:75
 msgid "Use selected image"
 msgstr "Usar imagen seleccionada"
 
-#: engine/theme-options.php:119
+#: engine/theme-options.php:101
 msgid "Backup"
 msgstr "Respaldo"
 
-#: engine/theme-options.php:292
+#: engine/theme-options.php:274
 msgid "Site in Maintenance"
 msgstr "Sitio en Mantenimiento"
 
-#: engine/theme-options.php:323
+#: engine/theme-options.php:305
 msgid "You are using the <a href=\"%s\"><strong>Maintenance Mode</strong></a>."
 msgstr ""
 "Estás usando el <a href=\"%s\"><strong>Modo de Mantenimiento</strong></a>."
 
-#: engine/theme-options.php:337
+#: engine/theme-options.php:319
 msgid ""
 "Thank you for updating <strong>%1$s</strong>. Currently running "
 "<strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</"
@@ -1486,50 +1420,50 @@ msgstr ""
 "base de datos. Para más seguridad, por favor, <a href=\"%4$s\">guarda tu "
 "configuración</a>."
 
-#: engine/theme-options.php:343
+#: engine/theme-options.php:325
 msgid "Update completed. Back to <a href=\"%1$s\">Theme Options</a> screen"
 msgstr ""
 "Actualización completada. Vuelve a las <a href=\"%1$s\">Opciones del Tema</"
 "a> "
 
-#: engine/theme-options.php:349
+#: engine/theme-options.php:331
 msgid "Update %s"
 msgstr "Actualizar %s"
 
-#: engine/theme-options.php:675
+#: engine/theme-options.php:653
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
 
-#: engine/theme-options.php:694
+#: engine/theme-options.php:672
 msgid "Debug Information"
 msgstr "Información de Desarrollo"
 
-#: engine/theme-options.php:703
+#: engine/theme-options.php:681
 msgid "Current Option: <code>%s</code>"
 msgstr "Mostrando la opción: <code>%s</code>"
 
-#: engine/theme-options.php:704
+#: engine/theme-options.php:682
 msgid ""
 "You can access these values through the <code>$t_em</code> global variable"
 msgstr ""
 "Puedes acceder a estos valores mediante la variable global <code>$t_em</code>"
 
-#: engine/theme-options.php:718
+#: engine/theme-options.php:696
 msgid "Oops! An error has occurred. Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Ha ocurrido un error. ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:725
+#: engine/theme-options.php:703
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Tu tema ha explotado... ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:744
+#: engine/theme-options.php:722
 msgid ""
 "Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
 "%s</a>."
 msgstr ""
 "Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
 
-#: engine/theme-options.php:745 functions.php:2394
+#: engine/theme-options.php:723 templates/footer.php:45
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
@@ -1583,140 +1517,7 @@ msgstr ""
 "<strong>NOTA</strong>: Solo el código, las etiquetas <code>%1$s</code> y "
 "<code>%2$s</code> no son necesarias"
 
-#: functions.php:148
-msgid "Welcome to %s"
-msgstr "Bienvenido a %s"
-
-#: functions.php:150
-msgid ""
-"<p><strong>%s</strong> is a Theme/Framework for WordPress specially designed "
-"to create Child Themes</p>"
-msgstr ""
-"<p><strong>%s</strong> es un Theme/Framework para WordPress concebido para "
-"el desarrollo de Child Themes</p>"
-
-#: functions.php:151
-msgid ""
-"<p><strong>%s</strong> offers you an ample number of options which allow you "
-"to perform your site easily</p>"
-msgstr ""
-"<p><strong>%s</strong> ofrece una amplia gama de opciones que te permitirán "
-"modificar tu sitio fácilmente</p>"
-
-#: functions.php:175 functions.php:241
-msgid "Top Menu"
-msgstr "Menú Superior"
-
-#: functions.php:184 functions.php:242
-msgid "Navigation Menu"
-msgstr "Menú de Navegación"
-
-#: functions.php:193 functions.php:243
-msgid "Footer Menu"
-msgstr "Menú Inferior"
-
-#: functions.php:219
-msgctxt "header image description"
-msgid "Aqua"
-msgstr "Aqua"
-
-#: functions.php:224
-msgctxt "header image description"
-msgid "Fire"
-msgstr "Fuego"
-
-#: functions.php:229
-msgctxt "header image description"
-msgid "Lime"
-msgstr "Lima"
-
-#: functions.php:234
-msgctxt "header image description"
-msgid "Purple"
-msgstr "Púrpura"
-
-#: functions.php:433 functions.php:1650
-#: page-templates/template-blog-content.php:52
-msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
-msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
-
-#: functions.php:478
-msgid "Pages:"
-msgstr "Páginas:"
-
-#: functions.php:482
-msgid "Page"
-msgstr "Página"
-
-#: functions.php:516
-msgid "Main Sidebar Widget Area"
-msgstr "Área de widgets principal"
-
-#: functions.php:518
-msgid "Add widgets here to appear in your main sidebar"
-msgstr ""
-"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
-"principal"
-
-#: functions.php:531
-msgid "Alternative Sidebar Widget Area"
-msgstr "Área de widgets alternativa"
-
-#: functions.php:533
-msgid "Add widgets here to appear in your alternative sidebar"
-msgstr ""
-"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
-"alternativa"
-
-#: functions.php:545
-msgid "First Footer Widget Area"
-msgstr "Primera área de widget inferior"
-
-#: functions.php:547 functions.php:561 functions.php:576 functions.php:591
-msgid "Add widgets here to appear in your footer sidebar"
-msgstr "Añade aquí los widgets que quieres que aparezcan en el pie"
-
-#: functions.php:559
-msgid "Second Footer Widget Area"
-msgstr "Segunda área de widget inferior"
-
-#: functions.php:574
-msgid "Third Footer Widget Area"
-msgstr "Tercera área de widget inferior"
-
-#: functions.php:589
-msgid "Fourth Footer Widget Area"
-msgstr "Cuarta área de widget inferior"
-
-#. Translators: used between list items, there is a space after the comma.
-#: functions.php:622 functions.php:628
-msgid ", "
-msgstr ", "
-
-#: functions.php:635
-msgid "Permalink to %1$s"
-msgstr "Enlace permanente a %1$s"
-
-#: functions.php:636
-msgid "Permalink"
-msgstr "Enlace permanente"
-
-#: functions.php:661 functions.php:1014 functions.php:1046 functions.php:1053
-#: functions.php:1078 functions.php:1085 functions.php:1109
-#: page-templates/template-collapsible-content.php:58
-#: page-templates/template-tabs-content.php:65
-msgid "Edit"
-msgstr "Editar"
-
-#: functions.php:679
-msgid "Leave a comment"
-msgstr "Dejar un comentario"
-
-#: functions.php:679 page-templates/template-archive.php:57
-msgid "% Comments"
-msgstr "% Comentarios"
-
-#: functions.php:694
+#: inc/deprecated.php:161
 msgid ""
 "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" "
 "datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" "
@@ -1726,245 +1527,15 @@ msgstr ""
 "datetime=\"%1$s\">%2$s</time> en <a href=\"%3$s\" title=\"Return to %4$s\" "
 "rel=\"gallery\">%5$s</a></span>"
 
-#: functions.php:710
+#: inc/deprecated.php:177
 msgid "Link to full-size image"
 msgstr "Enlace a imagen a tamaño completo"
 
-#: functions.php:711
+#: inc/deprecated.php:178
 msgid "Full resolution"
 msgstr "A toda resolución"
 
-#: functions.php:729
-msgid "View all post by %s"
-msgstr "Ver todas las entradas de %s"
-
-#: functions.php:765
-msgid "About %s"
-msgstr "Acerca de %s"
-
-#: functions.php:770
-msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
-msgstr "Ver todas las entradas de %s <span class=\"meta-nav\">&raquo;</span>"
-
-#: functions.php:799
-msgid "Author Archives: %s"
-msgstr "Archivo del Autor: %s"
-
-#: functions.php:869
-msgid "%1$s Archives: %2$s"
-msgstr "Archivos de %1$s: %2$s"
-
-#: functions.php:898
-msgid "Archives for: %1$s"
-msgstr "Archivo de: %1$s"
-
-#: functions.php:922
-msgid "Daily Archives: <small>%s</small>"
-msgstr "Archivo del día: <small>%s</small>"
-
-#: functions.php:925
-msgid "Monthly Archives: <small>%s</small>"
-msgstr "Archivo del mes: <small>%s</small>"
-
-#: functions.php:928
-msgid "Yearly Archives: <small>%s</small>"
-msgstr "Archivo del año: <small>%s</small>"
-
-#: functions.php:931
-msgid "Blog Archives"
-msgstr "Archivo del blog"
-
-#: functions.php:967
-msgid "Search Results for: %s"
-msgstr "Resultados de búsqueda para: %s"
-
-#: functions.php:1002
-msgid "<b class=\"fn\">%1$s</b><span class=\"says\">says:</span>"
-msgstr "<b class=\"fn\">%1$s</b><span class=\"says\">dijo:</span>"
-
-#: functions.php:1005 functions.php:1100
-msgid "Your comment is awaiting moderation."
-msgstr "Su comentario está en espera de moderación."
-
-#. translators: 1: date, 2: time
-#: functions.php:1012 functions.php:1107
-msgid "%1$s at %2$s"
-msgstr "%1$s a %2$s"
-
-#: functions.php:1046 functions.php:1078
-msgid "Pingback:"
-msgstr "Pingback:"
-
-#: functions.php:1053 functions.php:1085
-msgid "Trackback:"
-msgstr "Trackback:"
-
-#: functions.php:1097
-msgid "<b class=\"fn\">%1$s</b> <span class=\"says\">says:</span>"
-msgstr "<b class=\"fn\">%1$s</b> <span class=\"says\">dijo:</span>"
-
-#: functions.php:1160
-msgid ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
-"posts"
-msgstr ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Entradas "
-"antiguas"
-
-#: functions.php:1161
-msgid ""
-"Newer posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
-"span>"
-msgstr ""
-"Entradas recientes <span class=\"meta-nav icomoon-double-angle-right icomoon"
-"\"></span>"
-
-#: functions.php:1190
-msgid ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Newer "
-"posts"
-msgstr ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Entradas "
-"recientes"
-
-#: functions.php:1191
-msgid ""
-"Older posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
-"span>"
-msgstr ""
-"Entradas antiguas <span class=\"meta-nav icomoon-double-angle-right icomoon"
-"\"></span>"
-
-#: functions.php:1213
-msgid "Page %1$s of %2$s"
-msgstr "Página %1$s de %2$s"
-
-#: functions.php:1237
-msgid ""
-"This content is password protected. To view it please enter your password "
-"below:"
-msgstr ""
-"Este contenido está protegido con contraseña. Para verlo introduce la "
-"contraseña a continuación:"
-
-#: functions.php:1238
-msgid "Password"
-msgstr "Contraseña"
-
-#: functions.php:1241
-msgid "Submit"
-msgstr "Enviar"
-
-#: functions.php:1801
-msgid "Related Posts"
-msgstr "Entradas relacionadas"
-
-#: functions.php:1816
-msgid "No Related Posts"
-msgstr "No hay entradas relacionadas"
-
-#: functions.php:2001
-msgid "weeks"
-msgstr "semanas"
-
-#: functions.php:2002
-msgid "days"
-msgstr "días"
-
-#: functions.php:2003
-msgid "hr"
-msgstr "hr"
-
-#: functions.php:2004
-msgid "min"
-msgstr "min"
-
-#: functions.php:2005
-msgid "sec"
-msgstr "seg"
-
-#: functions.php:2035
-msgid "Home"
-msgstr "Inicio"
-
-#: functions.php:2103
-msgid "Search: %s"
-msgstr "Búsqueda: %s"
-
-#: functions.php:2106
-msgid "Error 404"
-msgstr "Error 404"
-
-#: functions.php:2161
-msgid "Page %s"
-msgstr "Página %s"
-
-#: functions.php:2179
-msgid ""
-"JavaScript is required for this website to be displayed correctly.<br /> "
-"Please enable JavaScript before continuing..."
-msgstr ""
-"Para que este sitio funcione correctamente necesita JavaScript.<br />Por "
-"favor activa JavaScript antes de contrinuar..."
-
-#: functions.php:2199 functions.php:2256
-msgid "Toggle Navigation"
-msgstr "Alternar Navegación"
-
-#: functions.php:2267
-msgid "Site Navigation"
-msgstr "Navegación"
-
-#: functions.php:2355
-msgid ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
-"Comments"
-msgstr ""
-"<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
-"Comentarios Antiguos"
-
-#: functions.php:2356
-msgid ""
-"Newer Comments <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
-"span>"
-msgstr ""
-"Comentarios Recientes <span class=\"meta-nav icomoon-double-angle-right "
-"icomoon\"></span>"
-
-#: functions.php:2393
-msgid ""
-"Proudly powered by: <a href=\"%1$s\" title=\"%2$s\">%3$s</a> and <a href="
-"\"%4$s\" title=\"%5$s\">%6$s</a>. Theme Name: <a href=\"%7$s\" title="
-"\"Version %8$s\">%9$s</a> by: %10$s"
-msgstr ""
-"Hecho con <a href=\"%1$s\" title=\"%2$s\">%3$s</a> y <a href=\"%4$s\" title="
-"\"%5$s\">%6$s</a>. Tema: <a href=\"%7$s\" title=\"Version %8$s\">%9$s</a> "
-"por: %10$s"
-
-#: functions.php:2431
-msgid ""
-"<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->"
-msgstr ""
-"<!-- Este sitio está hecho con %1$s WordPress theme/framework v%2$s %3$s - "
-"%4$s -->"
-
-#: functions.php:2444
-msgid "<!-- / %1$s WordPress theme/framework -->"
-msgstr "<!-- / %1$s WordPress theme/framework -->"
-
-#: inc/functions.php:45
-msgid ""
-"%s could not create the css files cache directory in <strong><code>%s</"
-"code></strong>. Make this directory writable before continue.<br />\n"
-"\t\t\t\t\t\t\t   See the Codex for more information about <a href=\"%s"
-"\">Changing File Permissions</a>."
-msgstr ""
-"%s no ha podido crear el directorio cache para los archivos css en "
-"<strong><code>%s</code></strong>. Este directorio debe tener permisos de "
-"escritura.<br />Lee la documentación para más información acerca de <a href="
-"\"%s\">Cambiar permisos a archivos y directorios</a>."
-
-#: inc/shortcodes.php:100
+#: inc/shortcodes.php:99
 msgid "Button group"
 msgstr "Button group"
 
@@ -1983,237 +1554,278 @@ msgstr "%1$s Entradas Recientes"
 msgid "Recent Posts"
 msgstr "Entradas Recientes"
 
-#: inc/widgets.php:172 inc/widgets.php:364 inc/widgets.php:528
-#: inc/widgets.php:660 inc/widgets.php:764 inc/widgets.php:894
+#: inc/widgets.php:174 inc/widgets.php:367 inc/widgets.php:531
+#: inc/widgets.php:661 inc/widgets.php:768 inc/widgets.php:895
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/widgets.php:176 inc/widgets.php:368
+#: inc/widgets.php:178 inc/widgets.php:371
 msgid "Display only posts with thumbnails"
 msgstr "Mostrar solo entradas con imágenes adjuntas"
 
-#: inc/widgets.php:179 inc/widgets.php:370 inc/widgets.php:534
+#: inc/widgets.php:181 inc/widgets.php:373 inc/widgets.php:537
 msgid "Thumbnail dimensions:"
 msgstr "Dimensiones de la imagen en miniatura:"
 
-#: inc/widgets.php:180 inc/widgets.php:372 inc/widgets.php:536
+#: inc/widgets.php:182 inc/widgets.php:375 inc/widgets.php:539
 msgid "Width:"
 msgstr "Ancho:"
 
-#: inc/widgets.php:183 inc/widgets.php:375 inc/widgets.php:539
+#: inc/widgets.php:185 inc/widgets.php:378 inc/widgets.php:542
 msgid "Height:"
 msgstr "Alto:"
 
-#: inc/widgets.php:186 inc/widgets.php:378
+#: inc/widgets.php:188 inc/widgets.php:381
 msgid "Thumbnail alignment:"
 msgstr "Alineado de la imagen en miniatura:"
 
-#: inc/widgets.php:188 inc/widgets.php:380
+#: inc/widgets.php:190 inc/widgets.php:383
 msgctxt "widget thumbnail alignment"
 msgid "left"
 msgstr "izquierda"
 
-#: inc/widgets.php:189 inc/widgets.php:381
+#: inc/widgets.php:191 inc/widgets.php:384
 msgctxt "widget thumbnail alignment"
 msgid "right"
 msgstr "derecha"
 
-#: inc/widgets.php:190 inc/widgets.php:382
+#: inc/widgets.php:192 inc/widgets.php:385
 msgctxt "widget thumbnail alignment"
 msgid "no align"
 msgstr "sin alinear"
 
-#: inc/widgets.php:193 inc/widgets.php:388
+#: inc/widgets.php:195 inc/widgets.php:391
 msgid "Number of posts to show:"
 msgstr "Número de entradas a mostrar:"
 
-#: inc/widgets.php:209
+#: inc/widgets.php:211
 msgid "The most Popular Posts on your site"
 msgstr "Las entradas más populares en tu blog"
 
-#: inc/widgets.php:210
+#: inc/widgets.php:212
 msgid "%1$s Popular Posts"
 msgstr "%1$s Entradas Populares"
 
-#: inc/widgets.php:235
+#: inc/widgets.php:237
 msgid "Popular Posts"
 msgstr "Entradas Populares"
 
-#: inc/widgets.php:302
+#: inc/widgets.php:305
 msgid "- 1 Comment"
 msgid_plural "- %s Comments"
 msgstr[0] "- 1 Comentario"
 msgstr[1] "- %s Comentarios"
 
-#: inc/widgets.php:386
+#: inc/widgets.php:389
 msgid "Show comment count"
 msgstr "Mostrar cantidad de comentarios"
 
-#: inc/widgets.php:402
+#: inc/widgets.php:405
 msgid "Display all images on your site attached to a post"
 msgstr "Muestra todas las imágenes que estén adjuntas a una entrada"
 
-#: inc/widgets.php:403
+#: inc/widgets.php:406
 msgid "%1$s Image Gallery"
 msgstr "%1$s Galería de Imágenes"
 
-#: inc/widgets.php:428
+#: inc/widgets.php:431
 msgid "Image Gallery"
 msgstr "Galería de Imágenes"
 
-#: inc/widgets.php:531
+#: inc/widgets.php:534
 msgid "Number of images to show:"
 msgstr "Número de imágenes a mostrar:"
 
-#: inc/widgets.php:542
+#: inc/widgets.php:545
 msgid "Show images in columns"
 msgstr "Mostrar imágenes en columnas"
 
-#: inc/widgets.php:544
+#: inc/widgets.php:547
 msgctxt "number of columns in image gallery widget"
 msgid "1"
 msgstr "1"
 
-#: inc/widgets.php:545
+#: inc/widgets.php:548
 msgctxt "number of columns in image gallery widget"
 msgid "2"
 msgstr "2"
 
-#: inc/widgets.php:546
+#: inc/widgets.php:549
 msgctxt "number of columns in image gallery widget"
 msgid "3"
 msgstr "3"
 
-#: inc/widgets.php:560
+#: inc/widgets.php:563
 msgid "The most recent comments"
 msgstr "Los comentarios más recientes"
 
-#: inc/widgets.php:561
+#: inc/widgets.php:564
 msgid "%1$s Recent Comments"
 msgstr "%1$s Comentarios Recientes"
 
-#: inc/widgets.php:591
+#: inc/widgets.php:594
 msgid "Recent Comments"
 msgstr "Comentarios Recientes"
 
-#: inc/widgets.php:613
+#: inc/widgets.php:616
 msgctxt "Recent Comment Widget"
 msgid " on "
 msgstr " en "
 
-#: inc/widgets.php:663
+#: inc/widgets.php:664
 msgid "Number of comments to show:"
 msgstr "Número de comentarios a mostrar:"
 
-#: inc/widgets.php:667
+#: inc/widgets.php:668
 msgid "Show author name/url"
 msgstr "Mostrar nombre y url del autor"
 
-#: inc/widgets.php:670 inc/widgets.php:918
+#: inc/widgets.php:671 inc/widgets.php:919
 msgid "Display users avatar"
 msgstr "Mostrar avatar del usuario"
 
-#: inc/widgets.php:683 inc/widgets.php:705
+#: inc/widgets.php:684 inc/widgets.php:706
 msgid "Subscribe via FeedBurner"
 msgstr "Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:684
+#: inc/widgets.php:685
 msgid "%1$s Subscribe via FeedBurner"
 msgstr "%1$s Suscribirse vía FeedBurner"
 
-#: inc/widgets.php:708
+#: inc/widgets.php:709
+msgid "email@domain.com"
+msgstr "email@dominio.com"
+
+#: inc/widgets.php:710
 msgid "Subscribe"
 msgstr "Suscribirse"
 
-#: inc/widgets.php:719
+#: inc/widgets.php:721
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: inc/widgets.php:767
+#: inc/widgets.php:771
 msgid "Your FeedBurner URI (required)"
 msgstr "FeedBurner URI (obligatorio)"
 
-#: inc/widgets.php:770
+#: inc/widgets.php:774
 msgid "Short text inviting users to subscribe..."
 msgstr "Un texto pequeño invitando a los usuarios a suscribirse..."
 
-#: inc/widgets.php:773
+#: inc/widgets.php:777
 msgid "Form placeholder"
 msgstr "Form placeholder"
 
-#: inc/widgets.php:787
+#: inc/widgets.php:780
+msgid "Button Label"
+msgstr "Texto del botón"
+
+#: inc/widgets.php:794
 msgid "A list of your site&#8217;s contributors"
 msgstr "Una lista de colaboradores de tu blog"
 
-#: inc/widgets.php:788
+#: inc/widgets.php:795
 msgid "%1$s Contributors"
 msgstr "%1$s Colaboradores"
 
 #. Template Name of the plugin/theme
-#: inc/widgets.php:808
+#: inc/widgets.php:815
 msgid "Contributors"
 msgstr "Colaboradores"
 
-#: inc/widgets.php:897
+#: inc/widgets.php:898
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: inc/widgets.php:899
+#: inc/widgets.php:900
 msgid "User Name"
 msgstr "Nombre de usuario"
 
-#: inc/widgets.php:900
+#: inc/widgets.php:901
 msgid "Post Count"
 msgstr "Número de entradas"
 
-#: inc/widgets.php:901
+#: inc/widgets.php:902
 msgid "User ID"
 msgstr "ID de usuario"
 
-#: inc/widgets.php:904
+#: inc/widgets.php:905
 msgid "Order"
 msgstr "Orden"
 
-#: inc/widgets.php:906
+#: inc/widgets.php:907
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: inc/widgets.php:907
+#: inc/widgets.php:908
 msgid "Descending"
 msgstr "Descendente"
 
-#: inc/widgets.php:910
+#: inc/widgets.php:911
 msgid "Number of users to show:"
 msgstr "Número de usuarios a mostrar"
 
-#: inc/widgets.php:913
+#: inc/widgets.php:914
 msgid "Exclude:"
 msgstr "Excluir:"
 
-#: inc/widgets.php:915
+#: inc/widgets.php:916
 msgid "Users IDs, separated by commas."
 msgstr "ID de usuarios, separados por comas."
 
-#: page-templates/template-archive.php:46
+#: page-templates/template-archive.php:48
 msgid "The latest %1$s posts"
 msgstr "Las últimas %1$s entradas"
 
-#: page-templates/template-archive.php:57
+#: page-templates/template-archive.php:56
+#: page-templates/template-blog-content.php:42
+#: page-templates/template-sitemap.php:64 template-parts/content-columns.php:27
+#: template-parts/content-excerpt.php:27 template-parts/content-full.php:24
+#: template-parts/content-search.php:26 templates/header.php:149
+#: templates/meta.php:155
+msgid "Permalink to %s"
+msgstr "Enlace permanente a %s"
+
+#: page-templates/template-archive.php:58
 msgid "0 Comments"
 msgstr "0 Comentarios"
 
-#: page-templates/template-archive.php:68
+#: page-templates/template-archive.php:58 templates/meta.php:126
+msgid "% Comments"
+msgstr "% Comentarios"
+
+#: page-templates/template-archive.php:69
 #: page-templates/template-sitemap.php:44
 msgid "Categories"
 msgstr "Categorías"
 
-#: page-templates/template-archive.php:76
+#: page-templates/template-archive.php:77
 msgid "Monthly Archives"
 msgstr "Archivo Mensual"
 
-#: page-templates/template-archive.php:84
+#: page-templates/template-archive.php:85
 msgid "Tag Cloud"
 msgstr "Nube de Etiquetas"
+
+#: page-templates/template-blog-content.php:49
+#: template-parts/content-full.php:30 templates/content.php:284
+msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
+msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
+
+#: page-templates/template-collapsible-content.php:25
+msgid ""
+"%s is deprecated in favor of [collapse] shortcode and will be removed in a "
+"future version"
+msgstr ""
+"%s está marcada como obsoleta en favor del shortcode [collapse] y será "
+"eliminada en versiones futuras"
+
+#: page-templates/template-collapsible-content.php:66
+#: page-templates/template-tabs-content.php:73 templates/comments.php:48
+#: templates/comments.php:84 templates/comments.php:91
+#: templates/comments.php:116 templates/comments.php:123 templates/meta.php:140
+msgid "Edit"
+msgstr "Editar"
 
 #: page-templates/template-contributors.php:54
 msgid "%d Article"
@@ -2233,6 +1845,14 @@ msgstr "Páginas"
 msgid "Posts per categories"
 msgstr "Entradas por categorías"
 
+#: page-templates/template-tabs-content.php:25
+msgid ""
+"%s is deprecated in favor of [tabs] shortcode and will be removed in a "
+"future version"
+msgstr ""
+"%s está marcada como obsoleta en favor del shortcode [tabs] y será eliminada "
+"en versiones futuras"
+
 #: searchform.php:22
 msgid "Search in"
 msgstr "Buscar en"
@@ -2241,12 +1861,391 @@ msgstr "Buscar en"
 msgid "Search"
 msgstr "Buscar"
 
+#: template-parts/content-none.php:23
+msgid "Nothing Found"
+msgstr "No hay resultados"
+
+#: template-parts/content-none.php:28
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"¿Listo para publicar tu primera entrada? <a href=\"%1$s\">Comienza por aquí</"
+"a>."
+
+#: template-parts/content-none.php:32
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+"Lo sentimos, pero no hay coincidencias con tus términos de búsqueda. Por "
+"favor, intenta nuevamente con diferentes criterios."
+
+#: template-parts/content-none.php:37
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Al parecer no podemos encontrar lo que estás buscando. Tal vez puedas usar "
+"el buscador y obtener mejores resultados."
+
+#: templates/comments.php:37
+msgid "<b class=\"fn\">%1$s</b><span class=\"says sr-only\">says:</span>"
+msgstr "<b class=\"fn\">%1$s</b><span class=\"says sr-only\">dijo:</span>"
+
+#: templates/comments.php:39
+msgid "Your comment is awaiting moderation."
+msgstr "Su comentario está en espera de moderación."
+
+#. translators: 1: date, 2: time
+#: templates/comments.php:46
+msgid "%1$s at %2$s"
+msgstr "%1$s a %2$s"
+
+#: templates/comments.php:84 templates/comments.php:116
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: templates/comments.php:91 templates/comments.php:123
+msgid "Trackback:"
+msgstr "Trackback:"
+
+#: templates/content.php:24
+msgid ""
+"JavaScript is required for this website to be displayed correctly.<br /> "
+"Please enable JavaScript before continuing..."
+msgstr ""
+"Para que este sitio funcione correctamente necesita JavaScript.<br />Por "
+"favor activa JavaScript antes de contrinuar..."
+
+#: templates/content.php:49
+msgid "Author Archives: %s"
+msgstr "Archivo del Autor: %s"
+
+#: templates/content.php:84
+msgid "%1$s Archives: %2$s"
+msgstr "Archivos de %1$s: %2$s"
+
+#: templates/content.php:113
+msgid "Archives for: %1$s"
+msgstr "Archivo de: %1$s"
+
+#: templates/content.php:137
+msgid "Daily Archives: <small>%s</small>"
+msgstr "Archivo del día: <small>%s</small>"
+
+#: templates/content.php:140
+msgid "Monthly Archives: <small>%s</small>"
+msgstr "Archivo del mes: <small>%s</small>"
+
+#: templates/content.php:143
+msgid "Yearly Archives: <small>%s</small>"
+msgstr "Archivo del año: <small>%s</small>"
+
+#: templates/content.php:146
+msgid "Blog Archives"
+msgstr "Archivo del blog"
+
+#: templates/content.php:182
+msgid "Search Results for: %s"
+msgstr "Resultados de búsqueda para: %s"
+
+#: templates/content.php:354
+msgid "Related Posts"
+msgstr "Entradas relacionadas"
+
+#: templates/content.php:369
+msgid "No Related Posts"
+msgstr "No hay entradas relacionadas"
+
+#: templates/content.php:396
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/content.php:464
+msgid "Search: %s"
+msgstr "Búsqueda: %s"
+
+#: templates/content.php:467
+msgid "Error 404"
+msgstr "Error 404"
+
+#: templates/content.php:522
+msgid "Page %s"
+msgstr "Página %s"
+
+#: templates/footer.php:44
+msgid ""
+"Proudly powered by: <a href=\"%1$s\" title=\"%2$s\">%3$s</a> and <a href="
+"\"%4$s\" title=\"%5$s\">%6$s</a>. Theme Name: <a href=\"%7$s\" title="
+"\"Version %8$s\">%9$s</a> by: %10$s"
+msgstr ""
+"Hecho con <a href=\"%1$s\" title=\"%2$s\">%3$s</a> y <a href=\"%4$s\" title="
+"\"%5$s\">%6$s</a>. Tema: <a href=\"%7$s\" title=\"Version %8$s\">%9$s</a> "
+"por: %10$s"
+
+#: templates/forms.php:30
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/forms.php:33
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: templates/forms.php:36
+msgid "Website"
+msgstr "Web"
+
+#: templates/forms.php:49
+msgid "Comment"
+msgstr "Comentario"
+
+#: templates/forms.php:66
+msgid ""
+"This content is password protected. To view it please enter your password "
+"below:"
+msgstr ""
+"Este contenido está protegido con contraseña. Para verlo introduce la "
+"contraseña a continuación:"
+
+#: templates/forms.php:67
+msgid "Password"
+msgstr "Contraseña"
+
+#: templates/forms.php:70
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/head.php:44
+msgid ""
+"<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->"
+msgstr ""
+"<!-- Este sitio está hecho con %1$s WordPress theme/framework v%2$s %3$s - "
+"%4$s -->"
+
+#: templates/head.php:57
+msgid "<!-- / %1$s WordPress theme/framework -->"
+msgstr "<!-- / %1$s WordPress theme/framework -->"
+
+#: templates/header.php:166
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/header.php:170
+msgid "Next"
+msgstr "Siguiente"
+
+#: templates/init.php:107
+msgid "Welcome to %s"
+msgstr "Bienvenido a %s"
+
+#: templates/init.php:109
+msgid ""
+"<p><strong>%s</strong> is a Theme/Framework for WordPress specially designed "
+"to create Child Themes</p>"
+msgstr ""
+"<p><strong>%s</strong> es un Theme/Framework para WordPress concebido para "
+"el desarrollo de Child Themes</p>"
+
+#: templates/init.php:110
+msgid ""
+"<p><strong>%s</strong> offers you an ample number of options which allow you "
+"to perform your site easily</p>"
+msgstr ""
+"<p><strong>%s</strong> ofrece una amplia gama de opciones que te permitirán "
+"modificar tu sitio fácilmente</p>"
+
+#: templates/init.php:134 templates/init.php:200
+msgid "Top Menu"
+msgstr "Menú Superior"
+
+#: templates/init.php:143 templates/init.php:201
+msgid "Navigation Menu"
+msgstr "Menú de Navegación"
+
+#: templates/init.php:152 templates/init.php:202
+msgid "Footer Menu"
+msgstr "Menú Inferior"
+
+#: templates/init.php:178
+msgctxt "header image description"
+msgid "Aqua"
+msgstr "Aqua"
+
+#: templates/init.php:183
+msgctxt "header image description"
+msgid "Fire"
+msgstr "Fuego"
+
+#: templates/init.php:188
+msgctxt "header image description"
+msgid "Lime"
+msgstr "Lima"
+
+#: templates/init.php:193
+msgctxt "header image description"
+msgid "Purple"
+msgstr "Púrpura"
+
+#: templates/init.php:366
+msgid "Main Sidebar Widget Area"
+msgstr "Área de widgets principal"
+
+#: templates/init.php:368
+msgid "Add widgets here to appear in your main sidebar"
+msgstr ""
+"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
+"principal"
+
+#: templates/init.php:381
+msgid "Alternative Sidebar Widget Area"
+msgstr "Área de widgets alternativa"
+
+#: templates/init.php:383
+msgid "Add widgets here to appear in your alternative sidebar"
+msgstr ""
+"Añade aquí los widgets que quieres que aparezcan en la barra lateral "
+"alternativa"
+
+#: templates/init.php:395
+msgid "First Footer Widget Area"
+msgstr "Primera área de widget inferior"
+
+#: templates/init.php:397 templates/init.php:411 templates/init.php:426
+#: templates/init.php:441
+msgid "Add widgets here to appear in your footer sidebar"
+msgstr "Añade aquí los widgets que quieres que aparezcan en el pie"
+
+#: templates/init.php:409
+msgid "Second Footer Widget Area"
+msgstr "Segunda área de widget inferior"
+
+#: templates/init.php:424
+msgid "Third Footer Widget Area"
+msgstr "Tercera área de widget inferior"
+
+#: templates/init.php:439
+msgid "Fourth Footer Widget Area"
+msgstr "Cuarta área de widget inferior"
+
+#: templates/maintenance-mode.php:96
+msgid "weeks"
+msgstr "semanas"
+
+#: templates/maintenance-mode.php:97
+msgid "days"
+msgstr "días"
+
+#: templates/maintenance-mode.php:98
+msgid "hr"
+msgstr "hr"
+
+#: templates/maintenance-mode.php:99
+msgid "min"
+msgstr "min"
+
+#: templates/maintenance-mode.php:100
+msgid "sec"
+msgstr "seg"
+
+#: templates/maintenance-mode.php:123
+msgid ""
+"You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
+msgstr ""
+"Estás usando %s en <strong><a href=\"%s\">Modo de Mantenimiento</a></strong>"
+
+#: templates/meta.php:26
+msgid ""
+"Continue reading <span class=\"sr-only\">%s</span> <span class=\"meta-nav"
+"\">&raquo;</span>"
+msgstr ""
+"Seguir leyendo <span class=\"sr-only\">%s</span> <span class=\"meta-nav"
+"\">&raquo;</span>"
+
+#. Translators: used between list items, there is a space after the comma.
+#: templates/meta.php:81 templates/meta.php:87
+msgid ", "
+msgstr ", "
+
+#: templates/meta.php:104
+msgid "Short link to: %1$s"
+msgstr "Enlace corto a: %1$s"
+
+#: templates/meta.php:105
+msgid "Short link"
+msgstr "Enlace corto"
+
+#: templates/meta.php:126
+msgid "Leave a comment"
+msgstr "Dejar un comentario"
+
+#: templates/meta.php:175
+msgid "View all post by %s"
+msgstr "Ver todas las entradas de %s"
+
+#: templates/meta.php:194
+msgid "About %s"
+msgstr "Acerca de %s"
+
+#: templates/meta.php:199
+msgid "View all posts by %s <span class=\"icomoon-arrow-right2\"></span>"
+msgstr ""
+"Ver todas las entradas de %s <span class=\"icomoon-arrow-right2\"></span>"
+
+#: templates/navigation.php:171
+msgid "Previous post:"
+msgstr "Entrada anterior:"
+
+#: templates/navigation.php:172
+msgid "Next post:"
+msgstr "Entrada siguiente:"
+
+#: templates/navigation.php:175 templates/navigation.php:212
+msgid "Posts navigation"
+msgstr "Navegación de entradas"
+
+#: templates/navigation.php:213
+msgid "<span class=\"icomoon-arrow-left2\"></span> Older posts"
+msgstr "<span class=\"icomoon-arrow-left2\"></span> Entradas anteriores"
+
+#: templates/navigation.php:214
+msgid "Newer posts <span class=\"icomoon-arrow-right2\"></span>"
+msgstr "Entradas recientes <span class=\"icomoon-arrow-right2\"></span>"
+
+#: templates/navigation.php:225
+msgid "Page navigation"
+msgstr "Navegación de entradas"
+
+#: templates/navigation.php:248
+msgid "Newer posts"
+msgstr "Entradas recientes"
+
+#: templates/navigation.php:249
+msgid "Older posts"
+msgstr "Entradas anteriores"
+
+#: templates/navigation.php:271
+msgid "Page %1$s of %2$s"
+msgstr "Página %1$s de %2$s"
+
+#: templates/navigation.php:292
+msgid "<span class=\"meta-nav-double-angle-left\"></span> Older Comments"
+msgstr ""
+"<span class=\"meta-nav-double-angle-left\"></span> Comentarios anteriores"
+
+#: templates/navigation.php:293
+msgid "Newer Comments <span class=\"meta-nav-double-angle-right\"></span>"
+msgstr ""
+"Comentarios recientes <span class=\"meta-nav-double-angle-right\"></span>"
+
+#: templates/navigation.php:311
+msgid "Pages:"
+msgstr "Páginas:"
+
 #. Theme Name of the plugin/theme
 msgid "Twenty'em"
 msgstr "Twenty'em"
 
 #. Theme URI of the plugin/theme
-#. Author URI of the plugin/theme
 msgid "https://themingisprose.com/twenty-em"
 msgstr "https://themingisprose.com/twenty-em"
 
@@ -2262,6 +2261,10 @@ msgstr ""
 msgid "RogerTM"
 msgstr "RogerTM"
 
+#. Author URI of the plugin/theme
+msgid "https://themingisprose.com/"
+msgstr "https://themingisprose.com/"
+
 #. Template Name of the plugin/theme
 msgid "Archive"
 msgstr "Archivo"
@@ -2275,16 +2278,149 @@ msgid "Blog Excerpt (summary)"
 msgstr "Blog Excerpt (resumen)"
 
 #. Template Name of the plugin/theme
-msgid "Collapsible Content"
-msgstr "Contenido Plegable"
+msgid "[Deprecated] Collapsible Content"
+msgstr "[Obsoleta] Collapsible Content"
 
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
 
 #. Template Name of the plugin/theme
-msgid "Tabs Content"
-msgstr "Contenido por Pestañas"
+msgid "[Deprecated] Tabs Content"
+msgstr "[Obsoleta] Tabs Content"
+
+#~ msgid "0 Pingbacks | 0 Trackbacks"
+#~ msgstr "0 Pingbacks | 0 Trackbacks"
+
+#~ msgid ""
+#~ "<strong>Layout Options</strong>: Default Values: Two Columns, content on "
+#~ "left. Four footer widgets areas. Site width: <code>%1$spx</code>."
+#~ msgstr ""
+#~ "<strong>Opciones de Estructura</strong>: Valores por defecto: Dos "
+#~ "columnas, contenido a la izquierda. Cuatro áreas de widgets en el pie de "
+#~ "página. Ancho del blog: <code>%1$spx</code>."
+
+#~ msgid ""
+#~ "And also enter the value (in pixels) you wish to be your site width. "
+#~ "Default: <code>%1$s</code>, Max: <code>%2$s</code>, Min: <code>%3$s</"
+#~ "code>."
+#~ msgstr ""
+#~ "Además de introducir el valor (en píxeles) del ancho que debe tener tu "
+#~ "blog. Predeterminado: <code>%1$s</code>, Máximo: <code>%2$s</code>, "
+#~ "Mínimo: <code>%3$s</code>."
+
+#~ msgid "Layout Width"
+#~ msgstr "Ancho de la estructura"
+
+#~ msgid ""
+#~ "Enter the value you wish to be your site width. Options: default: <code>"
+#~ "%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>."
+#~ msgstr ""
+#~ "Introduce el valor que deseas tenga el ancho de tu blog. Opciones: "
+#~ "predeterminado: <code>%1$s</code>; máximo: <code>%2$s</code>; mínimo: "
+#~ "<code>%3$s</code>."
+
+#~ msgid "Picassa URL"
+#~ msgstr "Picassa URL"
+
+#~ msgid "Picassa"
+#~ msgstr "Picassa"
+
+#~ msgid "My Space URL"
+#~ msgstr "My Space URL"
+
+#~ msgid "My Space"
+#~ msgstr "My Space"
+
+#~ msgid "Sorrst URL"
+#~ msgstr "Sorrst URL"
+
+#~ msgid "Sorrst"
+#~ msgstr "Sorrst"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "Permalink to %1$s"
+#~ msgstr "Enlace permanente a %1$s"
+
+#~ msgid "Permalink"
+#~ msgstr "Enlace permanente"
+
+#~ msgid "View all posts by %s <span class=\"meta-nav\">&raquo;</span>"
+#~ msgstr ""
+#~ "Ver todas las entradas de %s <span class=\"meta-nav\">&raquo;</span>"
+
+#~ msgid "<b class=\"fn\">%1$s</b><span class=\"says\">says:</span>"
+#~ msgstr "<b class=\"fn\">%1$s</b><span class=\"says\">dijo:</span>"
+
+#~ msgid "<b class=\"fn\">%1$s</b> <span class=\"says\">says:</span>"
+#~ msgstr "<b class=\"fn\">%1$s</b> <span class=\"says\">dijo:</span>"
+
+#~ msgid ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
+#~ "posts"
+#~ msgstr ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
+#~ "Entradas antiguas"
+
+#~ msgid ""
+#~ "Newer posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
+#~ "span>"
+#~ msgstr ""
+#~ "Entradas recientes <span class=\"meta-nav icomoon-double-angle-right "
+#~ "icomoon\"></span>"
+
+#~ msgid ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Newer "
+#~ "posts"
+#~ msgstr ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
+#~ "Entradas recientes"
+
+#~ msgid ""
+#~ "Older posts <span class=\"meta-nav icomoon-double-angle-right icomoon\"></"
+#~ "span>"
+#~ msgstr ""
+#~ "Entradas antiguas <span class=\"meta-nav icomoon-double-angle-right "
+#~ "icomoon\"></span>"
+
+#~ msgid "Toggle Navigation"
+#~ msgstr "Alternar Navegación"
+
+#~ msgid "Site Navigation"
+#~ msgstr "Navegación"
+
+#~ msgid ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> Older "
+#~ "Comments"
+#~ msgstr ""
+#~ "<span class=\"meta-nav icomoon-double-angle-left icomoon\"></span> "
+#~ "Comentarios Antiguos"
+
+#~ msgid ""
+#~ "Newer Comments <span class=\"meta-nav icomoon-double-angle-right icomoon"
+#~ "\"></span>"
+#~ msgstr ""
+#~ "Comentarios Recientes <span class=\"meta-nav icomoon-double-angle-right "
+#~ "icomoon\"></span>"
+
+#~ msgid ""
+#~ "%s could not create the css files cache directory in <strong><code>%s</"
+#~ "code></strong>. Make this directory writable before continue.<br />\n"
+#~ "\t\t\t\t\t\t\t   See the Codex for more information about <a href=\"%s"
+#~ "\">Changing File Permissions</a>."
+#~ msgstr ""
+#~ "%s no ha podido crear el directorio cache para los archivos css en "
+#~ "<strong><code>%s</code></strong>. Este directorio debe tener permisos de "
+#~ "escritura.<br />Lee la documentación para más información acerca de <a "
+#~ "href=\"%s\">Cambiar permisos a archivos y directorios</a>."
+
+#~ msgid "Collapsible Content"
+#~ msgstr "Contenido Plegable"
+
+#~ msgid "Tabs Content"
+#~ msgstr "Contenido por Pestañas"
 
 #~ msgid "The main sidebar widget area"
 #~ msgstr "El área de widtgets principal"
