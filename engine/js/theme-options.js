@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
 			};
 
 			// closing event for media manger
-			wp.media.frames.t_em_upload_media_frame.on('close', t_em_uploaded_media);
+			wp.media.frames.t_em_upload_media_frame.on('close', null);
 			// media selection event
 			wp.media.frames.t_em_upload_media_frame.on('select', t_em_uploaded_media);
 			// showing media manager
