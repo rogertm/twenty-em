@@ -34,10 +34,11 @@ function t_em_enqueue_styles_and_scripts(){
 	 */
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) :
 		wp_enqueue_script( 'comment-reply' );
+		// wp_enqueue_script( $handle, $src = false, $deps = array, $ver = false, $in_footer = false )
 	endif;
 
 	// Load the html5 shiv.
-	wp_enqueue_script( 'html5-shiv', t_em_get_js( 'html5' ), array(), $t_em_theme_data['Version'] );
+	wp_enqueue_script( 'html5-shiv', t_em_get_js( 'html5' ), array(), $t_em_theme_data['Version'], true );
 	wp_script_add_data( 'html5-shiv', 'conditional', 'lt IE 9' );
 
 	// Register Carousel Bootstrap Plugins when needed
@@ -62,11 +63,11 @@ function t_em_enqueue_styles_and_scripts(){
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
 			) ) :
-		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), $t_em_theme_data['Version'] );
+		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), $t_em_theme_data['Version'], true );
 		wp_enqueue_script( 'countdown' );
 	endif;
 
-	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), $t_em_theme_data['Version'] );
+	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), $t_em_theme_data['Version'], true );
 	wp_enqueue_script( 'app-utils' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );

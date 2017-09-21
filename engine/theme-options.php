@@ -68,7 +68,7 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-datepicker' );
-		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], false );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], true );
 		// L10n for theme-options.js
 		$l10n = array(
 			'upm_title'		=> __( 'Select Image', 't_em' ),

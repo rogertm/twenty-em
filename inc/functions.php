@@ -29,7 +29,7 @@
  *
  * @since Twenty'em 1.0
  */
-function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $deps = array(), $util = true, $in_footer = false ){
+function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $deps = array(), $util = true, $in_footer = true ){
 	global $t_em_theme_data;
 	$deps = array_merge( $deps, array( 'jquery' ) );
 
