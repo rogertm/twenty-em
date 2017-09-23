@@ -333,7 +333,7 @@ add_filter( 'excerpt_length', 't_em_excerpt_length' );
  * Sets up the content width value based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) :
-	$content_width = 605;
+	$content_width = 1200;
 endif;
 
 /**
