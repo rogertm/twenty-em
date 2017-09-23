@@ -23,7 +23,7 @@ if ( ! function_exists( 't_em_continue_reading_link' ) ) :
  * @return string "Continue Reading" link
  */
 function t_em_continue_reading_link() {
-	return '<a href="'. get_permalink() . '" class="more-link d-table mt-3">' . sprintf( __( 'Continue reading <span class="sr-only">%s</span> <span class="meta-nav">&raquo;</span>', 't_em' ), get_the_title() ) . '</a>';
+	return '<p class="link-more"><a href="'. get_permalink() . '" class="more-link">' . sprintf( __( 'Continue reading <span class="sr-only">%s</span> <span class="meta-nav">&raquo;</span>', 't_em' ), get_the_title() ) . '</a></p>';
 }
 endif;
 
