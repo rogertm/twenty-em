@@ -9287,7 +9287,7 @@ template {
   content: ""; }
 
 * {
-  transition: 250ms; }
+  transition: all 0.2s ease-in-out; }
 
 .columns-2 {
   columns-count: 2;

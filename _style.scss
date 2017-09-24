@@ -35,11 +35,6 @@
 @import "css/icomoon.scss";
 
 //
-// Variables
-//
-$transition: 250ms !default;
-
-//
 // Mixins
 //
 @mixin text-columns( $columns: 2 ){
@@ -52,7 +47,7 @@ $transition: 250ms !default;
 // Scaffolding
 //
 *{
-	transition: $transition;
+	transition: $thumbnail-transition;
 }
 .columns{
 	&-2{
