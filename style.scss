@@ -35,12 +35,24 @@
 @import "css/icomoon.scss";
 
 //
-// Scaffolding
+// Variables
+//
+$transition: 250ms !default;
+
+//
+// Mixins
 //
 @mixin text-columns( $columns: 2 ){
 	columns-count: $columns;
 	-webkit-column-count: $columns;
 	-moz-column-count: $columns;
+}
+
+//
+// Scaffolding
+//
+*{
+	transition: $transition;
 }
 .columns{
 	&-2{
@@ -88,8 +100,78 @@ figure{
 	}
 }
 .featured-post-thumbnail{
-	a &:hover{
-		opacity: .8;
+	a &:hover,
+	a &:focus{
+		filter: opacity(80%);
+	}
+}
+
+//
+// Galleries
+//
+.gallery{
+	.gallery-item{
+		@extend .d-inline-block;
+		@extend .text-left;
+		@extend .align-top;
+		@extend .mb-3;
+		@extend .pr-3;
+		width: 50%;
+		a{
+			img{
+				&:hover,
+				&:focus{
+					filter: opacity(80%);
+				}
+			}
+		}
+	}
+	&.gallery-columns{
+		&-1{
+			.gallery-item{
+				width: 100%;
+			}
+		}
+		&-2{
+			.gallery-item{
+				width: 50%;
+			}
+		}
+		&-3{
+			.gallery-item{
+				width: 33.33%;
+			}
+		}
+		&-4{
+			.gallery-item{
+				width: 25%;
+			}
+		}
+		&-5{
+			.gallery-item{
+				width: 20%;
+			}
+		}
+		&-6{
+			.gallery-item{
+				width: 16.66%;
+			}
+		}
+		&-7{
+			.gallery-item{
+				width: 14.28%;
+			}
+		}
+		&-8{
+			.gallery-item{
+				width: 12.5%;
+			}
+		}
+		&-9{
+			.gallery-item{
+				width: 11.11%;
+			}
+		}
 	}
 }
 
