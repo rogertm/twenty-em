@@ -57,7 +57,7 @@ function t_em_top_menu(){
 							'container'			=> 'div',
 							'container_id'		=> 'site-top-menu',
 							'container_class'	=> 'collapse navbar-collapse',
-							'menu_class'		=> 'navbar-nav rm-auto',
+							'menu_class'		=> 'navbar-nav',
 							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 2 ),
 							'walker'			=> new Twenty_Em_Navwalker(),
 						)
@@ -111,7 +111,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 						'theme_location'	=> 'navigation-menu',
 						'container_id'		=> 'site-navigation-menu',
 						'container_class'	=> 'collapse navbar-collapse',
-						'menu_class'		=> 'navbar-nav rm-auto',
+						'menu_class'		=> 'navbar-nav',
 						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 2 ),
 						'walker'			=> new Twenty_Em_Navwalker(),
 					)
