@@ -4239,7 +4239,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .rounded-0 {
   border-radius: 0; }
 
-.clearfix::after {
+.clearfix::after, article .entry-content::after {
   display: block;
   clear: both;
   content: ""; }
@@ -9395,8 +9395,6 @@ article .featured-post-thumbnail.card-img-top {
   height: auto; }
 article .entry-excerpt {
   border-bottom: solid 1px #e9ecef; }
-article .entry-content {
-  overflow: hidden; }
 article.sticky {
   border-bottom: solid 1px #e9ecef; }
 
