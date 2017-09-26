@@ -23,7 +23,7 @@ function t_em_comment_form_fields(){
 	$req		= get_option( 'require_name_email' );
 	$aria_req	= ( $req ? " aria-required='true'" : '' );
 	$html_req	= ( $req ? " required='required'" : '' );
-	$html5		= 'html5' === $args['format'];
+	$html5		= current_theme_supports( 'html5' ) ? true : null;
 	$form_group	= '<div class="form-group %s">%s</div>';
 	$fields = array(
 		'author'	=> sprintf( $form_group, 'comment-form-author',

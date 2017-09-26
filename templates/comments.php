@@ -74,7 +74,7 @@ if ( ! function_exists( 't_em_comment_pingback_trackback' ) ) :
  */
 function t_em_comment_pingback_trackback( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
-	if ( ! comment )
+	if ( ! $comment )
 		return;
 
 	switch ( $comment->comment_type ) :
