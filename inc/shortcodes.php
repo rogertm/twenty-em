@@ -72,9 +72,9 @@ function t_em_shortcode_button( $atts, $content = null ){
 		), $atts ) );
 	$link		= ( $link ) ? esc_url( $link ) : null;
 	$style		= ( $style ) ? 'btn-'. esc_attr( $style ) : 'btn-primary';
-	$new_window	= ( $new_window == 'true' ) ? 'target="_blank' : null;
+	$new_window	= ( $new_window == 'true' ) ? 'target="_blank"' : null;
 	$size		= ( $size ) ? 'btn-'. esc_attr( $size ) : null;
-	return '<a href="'. esc_url( $link ) .'" class="btn '. $style .' '. $size .'" '. $new_window .'">'. do_shortcode( $content ) .'</a>';
+	return '<a href="'. esc_url( $link ) .'" class="btn '. $style .' '. $size .'" '. $new_window .'>'. do_shortcode( $content ) .'</a>';
 }
 add_shortcode( 'button', 't_em_shortcode_button' );
 
