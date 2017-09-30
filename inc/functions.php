@@ -61,7 +61,7 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
  * @param string $handle 	Script handle. If the file is named my.script.min.js, $handle = 'my.script'
  * 							Both files should exists: my.script.min.js and my.script.js
  * @param string $path  	File path. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_PATH .'/path/to/js-dir/'
- * @param string $url  		File url. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_URL .'/url/to/js-dir/'
+ * @param string $url  		File URL. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_URL .'/url/to/js-dir/'
  * @return string  			File URL. False if file does not exist
  *
  * @since Twenty'em 1.2
@@ -71,6 +71,31 @@ function t_em_get_js( $handle, $path = T_EM_THEME_DIR_JS_PATH, $url = T_EM_THEME
 		$file = ( file_exists( $path .'/'. $handle .'.js' ) ) ? $handle .'.js' : $handle .'.min.js';
 	else :
 		$file = ( file_exists( $path .'/'. $handle .'.min.js' ) ) ? $handle .'.min.js' : $handle .'.js';
+	endif;
+	if ( file_exists( $path .'/'. $file ) ) :
+		$file_url = $url .'/'. $file;
+		return $file_url;
+	endif;
+	return false;
+}
+
+/**
+ * Get css files
+ * This functions loads minify css file if the site is running online, otherwise (WP_DEBUG == true),
+ * loads the beautify css.
+ * @param string $handle 	Script handle. If the file is named my.css.min.js, $handle = 'my.css'
+ * 							Both files should exists: my.css.min.js and my.css.js
+ * @param string $path  	File path. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_PATH .'/path/to/css-dir/'
+ * @param string $url  		File URL. If is a child theme set this parameter to T_EM_CHILD_THEME_DIR_URL .'/url/to/css-dir/'
+ * @return string  			File URL. False if file does not exist
+ *
+ * @since Twenty'em 1.2
+ */
+function t_em_get_css( $handle, $path = T_EM_THEME_DIR_CSS_PATH, $url = T_EM_THEME_DIR_CSS_URL ){
+	if ( WP_DEBUG ) :
+		$file = ( file_exists( $path .'/'. $handle .'.css' ) ) ? $handle .'.css' : $handle .'.min.css';
+	else :
+		$file = ( file_exists( $path .'/'. $handle .'.min.css' ) ) ? $handle .'.min.css' : $handle .'.css';
 	endif;
 	if ( file_exists( $path .'/'. $file ) ) :
 		$file_url = $url .'/'. $file;

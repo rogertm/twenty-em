@@ -173,8 +173,8 @@ function t_em_single_navigation(){
 ?>
 	<nav id="posts-navigation" class="<?php echo $nav_class ?>" role="navigation">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
-		<?php previous_post_link( $previous, '<span class="icomoon-arrow-left2"></span> %title' ); ?>
-		<?php next_post_link( $next, '%title <span class="icomoon-arrow-right2"></span>' ); ?>
+		<span class="post-previous"><?php previous_post_link( $previous, '<span class="icomoon-arrow-left2"></span> %title' ); ?></span>
+		<span class="post-next"><?php next_post_link( $next, '%title <span class="icomoon-arrow-right2"></span>' ); ?></span>
 	</nav>
 <?php
 	endif;
@@ -210,8 +210,8 @@ function t_em_page_navi( $the_query ){
 ?>
 	<nav id="site-pagination" class="prev-next <?php echo $nav_class ?>">
 		<h2 class="sr-only"><?php _e( 'Posts navigation', 't_em' ) ?></h2>
-		<?php next_posts_link( __( '<span class="icomoon-arrow-left2"></span> Older posts', 't_em' ), $the_query->max_num_pages ); ?>
-		<?php previous_posts_link( __( 'Newer posts <span class="icomoon-arrow-right2"></span>', 't_em' ) ); ?>
+		<span class="page-previous"><?php next_posts_link( __( '<span class="icomoon-arrow-left2"></span> Older posts', 't_em' ), $the_query->max_num_pages ); ?></span>
+		<span class="page-next"><?php previous_posts_link( __( 'Newer posts <span class="icomoon-arrow-right2"></span>', 't_em' ) ); ?></span>
 	</nav>
 <?php
 		elseif ( 'pagination' == $t_em['archive_pagination_set'] ) :
@@ -289,8 +289,8 @@ function t_em_comments_pagination(){
 if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 ?>
 	<nav id="comments-navigation" class="nav my-3" role="navigation">
-		<?php previous_comments_link( __( '<span class="meta-nav-double-angle-left"></span> Older Comments', 't_em' ) ); ?>
-		<?php next_comments_link( __( 'Newer Comments <span class="meta-nav-double-angle-right"></span>', 't_em' ) ); ?>
+		<span class="comments-previous"><?php previous_comments_link( __( '<span class="icomoon-arrow-left2"></span> Older Comments', 't_em' ) ); ?></span>
+		<span class="comments-next"><?php next_comments_link( __( 'Newer Comments <span class="icomoon-arrow-right2"></span>', 't_em' ) ); ?></span>
 	</nav>
 <?php
 endif;

@@ -51,7 +51,7 @@ function t_em_comment( $comment, $args, $depth ) {
 				<div class="comment-body"><?php comment_text(); ?></div>
 
 				<div class="reply">
-					<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '<span class="icomoon-reply"></span> '. __( 'Reply', 't_em' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 				</div><!-- .reply -->
 			</div><!-- .media-body -->
 		</article><!-- #comment-## .comment-wrap -->
