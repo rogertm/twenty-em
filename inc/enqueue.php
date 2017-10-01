@@ -26,7 +26,7 @@ function t_em_enqueue_styles_and_scripts(){
 	global $t_em, $t_em_theme_data;
 
 	// Load default style sheet style.css
-	wp_register_style( 'twenty-em-style', t_em_get_css( 'style', T_EM_THEME_DIR_PATH, T_EM_THEME_DIR_URL ), '', $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'twenty-em-style', t_em_get_css( 'theme' ), '', $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'twenty-em-style' );
 
 	/**
