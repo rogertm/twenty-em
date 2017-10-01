@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-09-14 23:57-0400\n"
-"PO-Revision-Date: 2017-09-14 23:58-0400\n"
+"POT-Creation-Date: 2017-10-01 11:43-0400\n"
+"PO-Revision-Date: 2017-10-01 11:44-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -1901,6 +1901,10 @@ msgstr "Su comentario está en espera de moderación."
 msgid "%1$s at %2$s"
 msgstr "%1$s a %2$s"
 
+#: templates/comments.php:54
+msgid "Reply"
+msgstr "Responder"
+
 #: templates/comments.php:84 templates/comments.php:116
 msgid "Pingback:"
 msgstr "Pingback:"
@@ -2228,14 +2232,12 @@ msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
 
 #: templates/navigation.php:292
-msgid "<span class=\"meta-nav-double-angle-left\"></span> Older Comments"
-msgstr ""
-"<span class=\"meta-nav-double-angle-left\"></span> Comentarios anteriores"
+msgid "<span class=\"icomoon-arrow-left2\"></span> Older Comments"
+msgstr "<span class=\"icomoon-arrow-left2\"></span> Comentarios antiguos"
 
 #: templates/navigation.php:293
-msgid "Newer Comments <span class=\"meta-nav-double-angle-right\"></span>"
-msgstr ""
-"Comentarios recientes <span class=\"meta-nav-double-angle-right\"></span>"
+msgid "Newer Comments <span class=\"icomoon-arrow-right2\"></span>"
+msgstr "Comentarios recientes <span class=\"icomoon-arrow-right2\"></span>"
 
 #: templates/navigation.php:311
 msgid "Pages:"
@@ -2256,10 +2258,6 @@ msgid ""
 msgstr ""
 "HTML5 y CSS3 WordPress theme/framework para desarrolladores. Genial para la "
 "creación de Child Themes"
-
-#. Author of the plugin/theme
-msgid "RogerTM"
-msgstr "RogerTM"
 
 #. Author URI of the plugin/theme
 msgid "https://themingisprose.com/"
@@ -2288,6 +2286,17 @@ msgstr "Mapa del Sitio"
 #. Template Name of the plugin/theme
 msgid "[Deprecated] Tabs Content"
 msgstr "[Obsoleta] Tabs Content"
+
+#~ msgid "<span class=\"meta-nav-double-angle-left\"></span> Older Comments"
+#~ msgstr ""
+#~ "<span class=\"meta-nav-double-angle-left\"></span> Comentarios anteriores"
+
+#~ msgid "Newer Comments <span class=\"meta-nav-double-angle-right\"></span>"
+#~ msgstr ""
+#~ "Comentarios recientes <span class=\"meta-nav-double-angle-right\"></span>"
+
+#~ msgid "RogerTM"
+#~ msgstr "RogerTM"
 
 #~ msgid "0 Pingbacks | 0 Trackbacks"
 #~ msgstr "0 Pingbacks | 0 Trackbacks"
