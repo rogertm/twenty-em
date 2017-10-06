@@ -29,4 +29,5 @@ require_once( T_EM_ENGINE_DIR_PATH . '/maintenance-mode-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/theme-backup.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/cron.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/help.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/debug-options.php' );
 ?>

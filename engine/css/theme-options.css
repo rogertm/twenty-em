@@ -177,6 +177,24 @@
 	background: #f5f5f5;
 	padding: 15px;
 }
+#t-em-setting .dl-horizontal dt{
+	float: left;
+	width: 180px;
+	overflow: hidden;
+	clear: left;
+	text-align: left;
+	-ms-text-overflow: ellipsis;
+	    text-overflow: ellipsis;
+	white-space: nowrap;
+	min-height: 20px;
+}
+#t-em-setting .dl-horizontal dd{
+	margin-left: 200px;
+	min-height: 20px;
+}
+#t-em-setting #debug-options .tab-heading:before{
+	display: none;
+}
 
 /** jQuery UI *************************************************************************************/
 /* Accordion */
