@@ -179,7 +179,7 @@
 }
 #t-em-setting .dl-horizontal dt{
 	float: left;
-	width: 180px;
+	width: 220px;
 	overflow: hidden;
 	clear: left;
 	text-align: left;
@@ -189,7 +189,7 @@
 	min-height: 20px;
 }
 #t-em-setting .dl-horizontal dd{
-	margin-left: 200px;
+	margin-left: 240px;
 	min-height: 20px;
 }
 #t-em-setting #debug-options .tab-heading:before{
