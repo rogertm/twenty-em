@@ -18,7 +18,7 @@
 jQuery(document).ready(function($){
 	// Bootstrap Tabs
 	if ( $().tab ){
-		$('.tabbable .tab-pane.active').addClass('show');
+		$('.tab-content .tab-pane.active').addClass('show');
 	}
 
 	// Bootstrap Carousel

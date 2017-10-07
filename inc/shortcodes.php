@@ -444,7 +444,7 @@ function t_em_shortcode_tabs( $atts, $content = null ){
 	t_em_register_bootstrap_plugin( 'tab' );
 
 	$output = '<div class="tabbable my-3">';
-	$output .= 	'<ul class="nav '. $type .' '. $class .' tabbable-list mb-2" role="tablist">'. implode( '', $tabs ) .'</ul>';
+	$output .= 	'<ul class="nav '. $type .' '. $class .' mb-2" role="tablist">'. implode( '', $tabs ) .'</ul>';
 	$output .= 	'<div class="tab-content">'. do_shortcode( $content ) .'</div>';
 	$output .= '</div>';
 	return $output;
