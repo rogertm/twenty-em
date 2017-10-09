@@ -61,6 +61,11 @@ function t_em_general_options( $general_options = '' ){
 			'label'			=> __( 'Enable shortcodes buttons', 't_em' ),
 			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor', 't_em' ),
 		),
+		'show_debug_panel'		=> array(
+			'value'			=> 'show_debug_panel',
+			'label'			=> __( 'Show Debug Panel', 't_em' ),
+			'sublabel'		=> __( 'Great tool for developers. Display a Debug Panel with important information at the bottom of this administration panel. If <code>WP_DEBUG</code> is enable, this panel will be shown any way.', 't_em' ),
+		),
 	);
 
 	/**

@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.2 =
+Release Date: October 09, 2017
+* Enhancement: Better Debug Info Panel
+* Enhancement: Support for custom post types in single related posts. Added the "t_em_filter_single_related_post_query" filter
+
 = Bootstrap 4 =
 Release Date: September 09, 2017
 * Enhancement: A fully migration to Bootstrap v4.0.0-beta

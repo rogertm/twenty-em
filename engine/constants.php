@@ -73,7 +73,7 @@ define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.2' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Plymita picta', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20170909' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20171009' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'4.0.0-beta' );

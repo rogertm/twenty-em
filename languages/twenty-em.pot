@@ -1,10 +1,10 @@
-# Copyright (C) 2017 
+# Copyright (C) 2017 RogerTM
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-10-01 15:41:36+00:00\n"
+"POT-Creation-Date: 2017-10-09 19:53:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -147,6 +147,442 @@ msgstr ""
 #: engine/archive-options.php:302 engine/front-page-options.php:273
 #: engine/header-options.php:356
 msgid "<strong>Oops!</strong> No options available for this setting..."
+msgstr ""
+
+#: engine/constants.php:74
+msgid "Plymita picta"
+msgstr ""
+
+#: engine/debug-options.php:22
+msgid "Debug Information"
+msgstr ""
+
+#: engine/debug-options.php:37 engine/debug-options.php:77
+msgid "Theme Data"
+msgstr ""
+
+#: engine/debug-options.php:42
+msgid "Theme Setting"
+msgstr ""
+
+#: engine/debug-options.php:47
+msgid "Default Setting"
+msgstr ""
+
+#: engine/debug-options.php:52
+msgid "System Information"
+msgstr ""
+
+#: engine/debug-options.php:79
+msgid "Framework:"
+msgstr ""
+
+#: engine/debug-options.php:81
+msgid "Status:"
+msgstr ""
+
+#: engine/debug-options.php:83
+msgid "Data Base Version:"
+msgstr ""
+
+#: engine/debug-options.php:85
+msgid "Current Theme:"
+msgstr ""
+
+#: engine/debug-options.php:87
+msgid "Theme URI:"
+msgstr ""
+
+#: engine/debug-options.php:89
+msgid "Theme Author:"
+msgstr ""
+
+#: engine/debug-options.php:91
+msgid "Theme Tags:"
+msgstr ""
+
+#: engine/debug-options.php:93
+msgid "Theme Text Domain:"
+msgstr ""
+
+#: engine/debug-options.php:98
+msgid "CONSTANTS Values"
+msgstr ""
+
+#: engine/debug-options.php:100
+msgid "T_EM_WORDPRESS_VERSION"
+msgstr ""
+
+#: engine/debug-options.php:102
+msgid "T_EM_BOOTSTRAP_VERSION"
+msgstr ""
+
+#: engine/debug-options.php:104
+msgid "T_EM_THEME_DIR_PATH"
+msgstr ""
+
+#: engine/debug-options.php:106
+msgid "T_EM_CHILD_THEME_DIR_PATH"
+msgstr ""
+
+#: engine/debug-options.php:108
+msgid "T_EM_ENGINE_DIR_PATH"
+msgstr ""
+
+#: engine/debug-options.php:110
+msgid "T_EM_ENGINE_DIR_CSS_PATH"
+msgstr ""
+
+#: engine/debug-options.php:112
+msgid "T_EM_ENGINE_DIR_IMG_PATH"
+msgstr ""
+
+#: engine/debug-options.php:114
+msgid "T_EM_ENGINE_DIR_JS_PATH"
+msgstr ""
+
+#: engine/debug-options.php:116
+msgid "T_EM_ENGINE_DIR_URL"
+msgstr ""
+
+#: engine/debug-options.php:118
+msgid "T_EM_ENGINE_DIR_CSS_URL"
+msgstr ""
+
+#: engine/debug-options.php:120
+msgid "T_EM_ENGINE_DIR_IMG_URL"
+msgstr ""
+
+#: engine/debug-options.php:122
+msgid "T_EM_ENGINE_DIR_JS_URL"
+msgstr ""
+
+#: engine/debug-options.php:124
+msgid "T_EM_THEME_DIR_INC_PATH"
+msgstr ""
+
+#: engine/debug-options.php:126
+msgid "T_EM_THEME_DIR_LANG_PATH"
+msgstr ""
+
+#: engine/debug-options.php:128
+msgid "T_EM_THEME_DIR_CSS_PATH"
+msgstr ""
+
+#: engine/debug-options.php:130
+msgid "T_EM_THEME_DIR_IMG_PATH"
+msgstr ""
+
+#: engine/debug-options.php:132
+msgid "T_EM_THEME_DIR_JS_PATH"
+msgstr ""
+
+#: engine/debug-options.php:134
+msgid "T_EM_THEME_DIR_FONTS_PATH"
+msgstr ""
+
+#: engine/debug-options.php:136
+msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"
+msgstr ""
+
+#: engine/debug-options.php:138
+msgid "T_EM_THEME_DIR_TEMPLATES_PATH"
+msgstr ""
+
+#: engine/debug-options.php:140
+msgid "T_EM_THEME_DIR_BOOTSTRAP_PATH"
+msgstr ""
+
+#: engine/debug-options.php:142
+msgid "T_EM_THEME_DIR_URL"
+msgstr ""
+
+#: engine/debug-options.php:144
+msgid "T_EM_CHILD_THEME_DIR_URL"
+msgstr ""
+
+#: engine/debug-options.php:146
+msgid "T_EM_THEME_DIR_CSS_URL"
+msgstr ""
+
+#: engine/debug-options.php:148
+msgid "T_EM_THEME_DIR_IMG_URL"
+msgstr ""
+
+#: engine/debug-options.php:150
+msgid "T_EM_THEME_DIR_JS_URL"
+msgstr ""
+
+#: engine/debug-options.php:152
+msgid "T_EM_THEME_DIR_FONTS_URL"
+msgstr ""
+
+#: engine/debug-options.php:154
+msgid "T_EM_THEME_DIR_INC_URL"
+msgstr ""
+
+#: engine/debug-options.php:156
+msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_URL"
+msgstr ""
+
+#: engine/debug-options.php:158
+msgid "T_EM_THEME_DIR_TEMPLATES_URL"
+msgstr ""
+
+#: engine/debug-options.php:160
+msgid "T_EM_THEME_DIR_BOOTSTRAP_URL"
+msgstr ""
+
+#: engine/debug-options.php:162
+msgid "T_EM_SLIDER_DEFAULT_HEIGHT"
+msgstr ""
+
+#: engine/debug-options.php:164
+msgid "T_EM_SLIDER_MAX_HEIGHT"
+msgstr ""
+
+#: engine/debug-options.php:166
+msgid "T_EM_SLIDER_MIN_HEIGHT"
+msgstr ""
+
+#: engine/debug-options.php:168
+msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE"
+msgstr ""
+
+#: engine/debug-options.php:170
+msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE"
+msgstr ""
+
+#: engine/debug-options.php:172
+msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE"
+msgstr ""
+
+#: engine/debug-options.php:174
+msgid "T_EM_HEADER_IMAGE_WIDTH"
+msgstr ""
+
+#: engine/debug-options.php:176
+msgid "T_EM_HEADER_IMAGE_HEIGHT"
+msgstr ""
+
+#: engine/debug-options.php:195 engine/debug-options.php:440
+msgid "Current Option: <code>%s</code>"
+msgstr ""
+
+#: engine/debug-options.php:196 engine/debug-options.php:441
+msgid ""
+"You can access these values through the <code>$t_em</code> global variable"
+msgstr ""
+
+#: engine/debug-options.php:216
+msgid "Current Function: <code>%s</code>"
+msgstr ""
+
+#: engine/debug-options.php:217
+msgid "This function return the defaults values of your theme"
+msgstr ""
+
+#: engine/debug-options.php:238
+msgid "Site Info"
+msgstr ""
+
+#: engine/debug-options.php:240
+msgid "Site URL:"
+msgstr ""
+
+#: engine/debug-options.php:242
+msgid "Home URL:"
+msgstr ""
+
+#: engine/debug-options.php:244
+msgid "Multisite:"
+msgstr ""
+
+#: engine/debug-options.php:245
+msgid "Yes"
+msgstr ""
+
+#: engine/debug-options.php:245
+msgid "No"
+msgstr ""
+
+#: engine/debug-options.php:249
+msgid "Hosting Provider"
+msgstr ""
+
+#: engine/debug-options.php:251
+msgid "Domain:"
+msgstr ""
+
+#: engine/debug-options.php:253
+msgid "IP:"
+msgstr ""
+
+#: engine/debug-options.php:258
+msgid "Browser"
+msgstr ""
+
+#: engine/debug-options.php:260
+msgid "User Agent:"
+msgstr ""
+
+#: engine/debug-options.php:271 engine/debug-options.php:292
+#: engine/debug-options.php:294 engine/debug-options.php:301
+#: engine/debug-options.php:387
+msgid "N/A"
+msgstr ""
+
+#: engine/debug-options.php:274
+msgid "WordPress Configuration"
+msgstr ""
+
+#: engine/debug-options.php:276
+msgid "Version:"
+msgstr ""
+
+#: engine/debug-options.php:278
+msgid "Language:"
+msgstr ""
+
+#: engine/debug-options.php:279
+msgid "en_US"
+msgstr ""
+
+#: engine/debug-options.php:280
+msgid "Permalink Structure:"
+msgstr ""
+
+#: engine/debug-options.php:281
+msgid "Default"
+msgstr ""
+
+#: engine/debug-options.php:282
+msgid "Active Theme:"
+msgstr ""
+
+#: engine/debug-options.php:284
+msgid "Parent Theme:"
+msgstr ""
+
+#: engine/debug-options.php:286
+msgid "Show On Front:"
+msgstr ""
+
+#: engine/debug-options.php:291
+msgid "Page On Front:"
+msgstr ""
+
+#: engine/debug-options.php:292 engine/debug-options.php:294
+msgid "Title: %s - ID: %s"
+msgstr ""
+
+#: engine/debug-options.php:293
+msgid "Page For Posts:"
+msgstr ""
+
+#: engine/debug-options.php:296
+msgid "ABSPATH:"
+msgstr ""
+
+#: engine/debug-options.php:298
+msgid "Table Prefix:"
+msgstr ""
+
+#: engine/debug-options.php:299
+msgid "\"%s\". Length: %s. Status: %s"
+msgstr ""
+
+#: engine/debug-options.php:299
+msgid "ERROR: Too long"
+msgstr ""
+
+#: engine/debug-options.php:299
+msgid "Acceptable"
+msgstr ""
+
+#: engine/debug-options.php:300
+msgid "WP_DEBUG:"
+msgstr ""
+
+#: engine/debug-options.php:301
+msgid "Enabled"
+msgstr ""
+
+#: engine/debug-options.php:301
+msgid "Disabled"
+msgstr ""
+
+#: engine/debug-options.php:302 engine/debug-options.php:371
+msgid "Memory Limit:"
+msgstr ""
+
+#: engine/debug-options.php:304
+msgid "Registered Post Stati:"
+msgstr ""
+
+#: engine/debug-options.php:306
+msgid "Registered Post Types:"
+msgstr ""
+
+#: engine/debug-options.php:315
+msgid "Active Plugins"
+msgstr ""
+
+#: engine/debug-options.php:320 engine/debug-options.php:332
+#: engine/debug-options.php:349
+msgid "Update Available - %s"
+msgstr ""
+
+#: engine/debug-options.php:327
+msgid "Inactive Plugins"
+msgstr ""
+
+#: engine/debug-options.php:343
+msgid "Network Active Plugins"
+msgstr ""
+
+#: engine/debug-options.php:358
+msgid "Webserver Configuration"
+msgstr ""
+
+#: engine/debug-options.php:360
+msgid "PHP Version:"
+msgstr ""
+
+#: engine/debug-options.php:362
+msgid "MySQL Version:"
+msgstr ""
+
+#: engine/debug-options.php:364
+msgid "Webserver:"
+msgstr ""
+
+#: engine/debug-options.php:369
+msgid "PHP Configuration"
+msgstr ""
+
+#: engine/debug-options.php:374
+msgid "Upload Max Size:"
+msgstr ""
+
+#: engine/debug-options.php:377
+msgid "Post Max Filesize:"
+msgstr ""
+
+#: engine/debug-options.php:380
+msgid "Time Limit:"
+msgstr ""
+
+#: engine/debug-options.php:383
+msgid "Max Input Vars:"
+msgstr ""
+
+#: engine/debug-options.php:386
+msgid "Display Errors:"
+msgstr ""
+
+#: engine/debug-options.php:387
+msgid "On: %s"
 msgstr ""
 
 #: engine/front-page-options.php:40
@@ -301,6 +737,17 @@ msgstr ""
 msgid ""
 "Shortcodes are always enables, but you can hide or show the buttons in the "
 "posts or pages editor"
+msgstr ""
+
+#: engine/generals-options.php:66
+msgid "Show Debug Panel"
+msgstr ""
+
+#: engine/generals-options.php:67
+msgid ""
+"Great tool for developers. Display a Debug Panel with important information "
+"at the bottom of this administration panel. If <code>WP_DEBUG</code> is "
+"enable, this panel will be shown any way."
 msgstr ""
 
 #: engine/header-options.php:43
@@ -1195,15 +1642,15 @@ msgstr ""
 msgid "Backup"
 msgstr ""
 
-#: engine/theme-options.php:274
+#: engine/theme-options.php:275
 msgid "Site in Maintenance"
 msgstr ""
 
-#: engine/theme-options.php:305
+#: engine/theme-options.php:306
 msgid "You are using the <a href=\"%s\"><strong>Maintenance Mode</strong></a>."
 msgstr ""
 
-#: engine/theme-options.php:319
+#: engine/theme-options.php:320
 msgid ""
 "Thank you for updating <strong>%1$s</strong>. Currently running "
 "<strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</"
@@ -1211,46 +1658,33 @@ msgid ""
 "more security, please, <a href=\"%4$s\">backup your setting</a>."
 msgstr ""
 
-#: engine/theme-options.php:325
+#: engine/theme-options.php:326
 msgid "Update completed. Back to <a href=\"%1$s\">Theme Options</a> screen"
 msgstr ""
 
-#: engine/theme-options.php:331
+#: engine/theme-options.php:332
 msgid "Update %s"
 msgstr ""
 
-#: engine/theme-options.php:653
+#: engine/theme-options.php:655
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr ""
 
-#: engine/theme-options.php:672
-msgid "Debug Information"
-msgstr ""
-
-#: engine/theme-options.php:681
-msgid "Current Option: <code>%s</code>"
-msgstr ""
-
-#: engine/theme-options.php:682
-msgid ""
-"You can access these values through the <code>$t_em</code> global variable"
-msgstr ""
-
-#: engine/theme-options.php:696
+#: engine/theme-options.php:677
 msgid "Oops! An error has occurred. Error ID: <strong>%1$s</strong>"
 msgstr ""
 
-#: engine/theme-options.php:703
+#: engine/theme-options.php:684
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr ""
 
-#: engine/theme-options.php:722
+#: engine/theme-options.php:703
 msgid ""
 "Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
 "%s</a>."
 msgstr ""
 
-#: engine/theme-options.php:723 templates/footer.php:45
+#: engine/theme-options.php:704 templates/footer.php:45
 msgid "https://wordpress.org/"
 msgstr ""
 
@@ -1587,19 +2021,6 @@ msgstr ""
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#: page-templates/template-collapsible-content.php:25
-msgid ""
-"%s is deprecated in favor of [collapse] shortcode and will be removed in a "
-"future version"
-msgstr ""
-
-#: page-templates/template-collapsible-content.php:66
-#: page-templates/template-tabs-content.php:73 templates/comments.php:48
-#: templates/comments.php:84 templates/comments.php:91
-#: templates/comments.php:116 templates/comments.php:123 templates/meta.php:140
-msgid "Edit"
-msgstr ""
-
 #: page-templates/template-contributors.php:54
 msgid "%d Article"
 msgid_plural "%d Articles"
@@ -1616,12 +2037,6 @@ msgstr ""
 
 #: page-templates/template-sitemap.php:52
 msgid "Posts per categories"
-msgstr ""
-
-#: page-templates/template-tabs-content.php:25
-msgid ""
-"%s is deprecated in favor of [tabs] shortcode and will be removed in a "
-"future version"
 msgstr ""
 
 #: searchform.php:22
@@ -1664,6 +2079,12 @@ msgstr ""
 #. translators: 1: date, 2: time
 #: templates/comments.php:46
 msgid "%1$s at %2$s"
+msgstr ""
+
+#: templates/comments.php:48 templates/comments.php:84
+#: templates/comments.php:91 templates/comments.php:116
+#: templates/comments.php:123 templates/meta.php:140
+msgid "Edit"
 msgstr ""
 
 #: templates/comments.php:54
@@ -1716,27 +2137,29 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: templates/content.php:354
-msgid "Related Posts"
+#: templates/content.php:363
+msgctxt "similar custom post type label"
+msgid "Similar %s"
 msgstr ""
 
-#: templates/content.php:369
-msgid "No Related Posts"
+#: templates/content.php:378
+msgctxt "no similar custom post type label"
+msgid "No Similar %s"
 msgstr ""
 
-#: templates/content.php:396
+#: templates/content.php:405
 msgid "Home"
 msgstr ""
 
-#: templates/content.php:464
+#: templates/content.php:473
 msgid "Search: %s"
 msgstr ""
 
-#: templates/content.php:467
+#: templates/content.php:476
 msgid "Error 404"
 msgstr ""
 
-#: templates/content.php:522
+#: templates/content.php:531
 msgid "Page %s"
 msgstr ""
 
@@ -2001,6 +2424,10 @@ msgid ""
 "Themes creation"
 msgstr ""
 
+#. Author of the plugin/theme
+msgid "RogerTM"
+msgstr ""
+
 #. Author URI of the plugin/theme
 msgid "https://themingisprose.com/"
 msgstr ""
@@ -2018,13 +2445,5 @@ msgid "Blog Excerpt (summary)"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "[Deprecated] Collapsible Content"
-msgstr ""
-
-#. Template Name of the plugin/theme
 msgid "Site Map"
-msgstr ""
-
-#. Template Name of the plugin/theme
-msgid "[Deprecated] Tabs Content"
 msgstr ""

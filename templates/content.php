@@ -300,13 +300,23 @@ if ( ! function_exists( 't_em_single_related_posts' ) ) :
  * @return string HTML list of items
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2		Support for custom post types
  */
 function t_em_single_related_posts(){
 	global $t_em;
-	if ( is_single() && '1' == $t_em['single_related_posts'] ) :
+	if ( is_single() && $t_em['single_related_posts'] ) :
 		global $post;
-		$category_terms = get_the_terms( $post->ID, 'category' );
-		$tag_terms = get_the_terms( $post->ID, 'post_tag' );
+		$post_id = $post->ID;
+		$taxonomies = get_taxonomies( array( 'public' => true ), 'object' );
+		$post_type = get_post_type( $post_id );
+		$labels = get_post_type_object( $post_type );
+		$taxonomy = array();
+
+		foreach ( $taxonomies as $key => $value ) :
+			if ( in_array( $post_type, $value->object_type ) ) :
+				array_push( $taxonomy, $key );
+			endif;
+		endforeach;
 
 		/**
 		 * Filter the amount of related post to display
@@ -315,43 +325,42 @@ function t_em_single_related_posts(){
 		 * @since Twenty'em 1.0
 		 */
 		$limit = apply_filters( 't_em_filter_single_limit_related_posts', 9 );
-		$post_category_terms = array();
-		$post_tag_terms = array();
 
-		if ( $category_terms ) :
-			foreach ( $category_terms as $cat_term ) :
-				array_push( $post_category_terms, $cat_term->term_id );
-			endforeach;
-		endif;
-		if ( $tag_terms ) :
-			foreach ( $tag_terms as $tag_term ) :
-				array_push( $post_tag_terms, $tag_term->term_id );
-			endforeach;
-		endif;
-
-		$related_post_args = array(
+		$query_args = array(
+			'post_type'			=> $post_type,
 			'posts_per_page'	=> $limit,
-			'post__not_in'		=> array( $post->ID ),
+			'post__not_in'		=> array( $post_id ),
 			'post_status'		=> 'publish',
 			'tax_query'			=> array(
 				'relation'		=> 'OR',
-				array(
-					'taxonomy'	=> 'category',
-					'field'		=> 'id',
-					'terms'		=> $post_category_terms,
-				),
-				array(
-					'taxonomy'	=> 'post_tag',
-					'field'		=> 'id',
-					'terms'		=> $post_tag_terms,
-				),
 			),
 		);
-		$all_posts = get_posts( $related_post_args );
+		foreach ( $taxonomy as $tax ) :
+			$terms = get_the_terms( $post_id, $tax );
+			if ( ! $terms ) continue;
+			$terms_ids = array();
+			foreach ( $terms as $term ) :
+				array_push( $terms_ids, $term->term_id );
+			endforeach;
+			$key = array(
+				'taxonomy'	=> $tax,
+				'field'		=> 'id',
+				'terms'		=> $terms_ids,
+			);
+			array_push( $query_args['tax_query'], $key );
+		endforeach;
+
+		/**
+		 * Filter the related post query arguments
+		 * @param array 	Query arguments
+		 *
+		 * @since Twenty'em 1.2
+		 */
+		$all_posts = apply_filters( 't_em_filter_single_related_post_query', get_posts( $query_args ) );
 ?>
 		<section id="related-posts">
 <?php 	if ( ! empty( $all_posts ) ) : ?>
-			<h3 class="related-posts-title"><?php _e( 'Related Posts', 't_em' ); ?></h3>
+			<h3 class="related-posts-title"><?php printf( _x( 'Similar %s', 'similar custom post type label', 't_em' ), $labels->labels->name ); ?></h3>
 			<ul class="related-posts-list">
 		<?php foreach( $all_posts as $post ) : setup_postdata( $post );
 			$related_post = '<a href="'. get_permalink() .'">'. get_the_title() .'</a>';
@@ -366,7 +375,7 @@ function t_em_single_related_posts(){
 		<?php endforeach; wp_reset_query(); ?>
 			</ul>
 <?php 	else : ?>
-			<h3 class="no-related-posts-title"><?php _e( 'No Related Posts', 't_em' ); ?></h3>
+			<h3 class="no-related-posts-title"><?php printf( _x( 'No Similar %s', 'no similar custom post type label', 't_em' ), $labels->labels->name ); ?></h3>
 <?php 	endif; ?>
 		</section>
 <?php

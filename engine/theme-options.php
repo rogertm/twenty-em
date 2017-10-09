@@ -148,6 +148,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'separate_comments_pings_tracks'				=> '1',
 		'single_page_comments'							=> '1',
 		'shortcode_buttoms'								=> '1',
+		'show_debug_panel'								=> '0',
 		// Header Options
 		'header_set'									=> 'no-header',
 		'header_featured_image_home_only'				=> '0',
@@ -369,6 +370,7 @@ function t_em_theme_options_validate( $input ){
 			'separate_comments_pings_tracks',
 			'single_page_comments',
 			'shortcode_buttoms',
+			'show_debug_panel',
 			'header_featured_image_home_only',
 			'header_featured_image',
 			'slider_home_only',
