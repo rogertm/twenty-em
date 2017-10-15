@@ -480,8 +480,6 @@ function t_em_shortcode_attr_map( $content ){
  */
 function t_em_shortcode_cleanup( $content ){
 	$tags = array(
-		'<p>['		=> '[',
-		']</p>'		=> ']',
 		']<br />'	=> ']',
 		']<br>'		=> ']',
 	);
@@ -489,7 +487,4 @@ function t_em_shortcode_cleanup( $content ){
 	return $content;
 }
 add_filter( 'the_content', 't_em_shortcode_cleanup' );
-
-
-/** Deprecated ************************************************************************************/
 ?>
