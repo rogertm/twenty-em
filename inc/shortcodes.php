@@ -30,7 +30,7 @@ function t_em_quicktags_buttons(){
 ?>
 	<script type="text/javascript">
 		QTags.addButton( 'sc_button', 'button', '[button link="" style="primary" size="" new_window="false"]', '[/button]', '', '', 122 );
-		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size=""]', '[/btn-group]', '', '', 123 );
+		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size="" vertical="false"]', '[/btn-group]', '', '', 123 );
 		QTags.addButton( 'sc_alert', 'alert', '[alert style="primary" heading="" close="false"]', '[/alert]', '', '', 124 );
 		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" cite=""]', '[/quote]', '', '', 125 );
 		QTags.addButton( 'sc_icon', 'icon', '[icon class=""]', '', '', '', 126 );
@@ -90,13 +90,16 @@ add_shortcode( 'button', 't_em_shortcode_button' );
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Removed "justify" parameter
+ * @since Twenty'em 1.2.1	Added "vertical" parameter
  */
 function t_em_shortcode_btn_group( $atts, $content = null ){
 	extract( shortcode_atts( array(
 			'size'		=> '',
+			'vertical'	=> 'false',
 		), $atts ) );
-	$size = ( $size ) ? 'btn-group-'. esc_attr( $size ) : null;
-	return '<div class="btn-group '. $size .'" role="group" aria-label="'. __( 'Button group', 't_em' ) .'">'. do_shortcode( $content ) .'</div>';
+	$size = ( esc_attr( $size ) ) ? 'btn-group-'. esc_attr( $size ) : null;
+	$vertical = ( esc_attr( $vertical ) == 'true' ) ? 'btn-group-vertical' : null;
+	return '<div class="btn-group '. $size .' '. $vertical .'" role="group" aria-label="'. __( 'Button group', 't_em' ) .'">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'btn-group', 't_em_shortcode_btn_group' );
 

@@ -2,6 +2,8 @@
 
 = 1.2.1 =
 Release Date: October 12, 2017
+* Enhancement: Added the parameter "vertical" in shortcode [btn-group]
+* Bug Fix: Removed the <p> jumps in t_em_shortcode_cleanup()
 
 = 1.2 =
 Release Date: October 09, 2017
