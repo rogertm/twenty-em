@@ -39,7 +39,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]', '', '', 129 );
 		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]', '', '', 130 );
 		QTags.addButton( 'sc_badge', 'badge', '[badge style="secondary"]', '[/badge]', '', '', 131 );
-		QTags.addButton( 'sc_collapse-item', 'collapse-item', '[collapse-item title=""]', '[/collapse-item]', '', '', 132 );
+		QTags.addButton( 'sc_collapse-item', 'collapse-item', '[collapse-item title="" active="false"]', '[/collapse-item]', '', '', 132 );
 		QTags.addButton( 'sc_collapse', 'collapse', '[collapse]', '[/collapse]', '', '', 133 );
 		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]', '', '', 134 );
 		QTags.addButton( 'sc_tab', 'tabs', '[tabs type="tabs" class=""]', '[/tabs]', '', '', 135 );
@@ -138,7 +138,8 @@ add_shortcode( 'alert', 't_em_shortcode_alert' );
  * Enclosing. Permits others shortcodes.
  * Behavior: [quote text_align="" cite=""][/quote]
  * Options:
- * 0. text_align. Optional. Default value "empty". Possibles values "left", "right", "center". Text alignment
+ * 0. text_align. 	Optional. Default value "empty". Possibles values "left", "right", "center". Text alignment
+ * 1. cite. 		Optional. Cite's source
  *
  * @see https://getbootstrap.com/docs/4.0/content/typography/#blockquotes
  *
@@ -303,6 +304,7 @@ add_shortcode( 'badge', 't_em_shortcode_badge' );
  * Behavior [collapse-item title=""][/collapse-item]
  * Options:
  * 0. title.	Required. Item title. Default value "empty".
+ * 1. active 	Optional. If the item is active on load. Default "false"
  *
  * @see https://getbootstrap.com/docs/4.0/components/collapse/
  *
