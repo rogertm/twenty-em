@@ -1,6 +1,8 @@
 == Changelog ==
 
 = 1.2.1 =
+Release Date: October 21, 2017
+* Enhancement: Added Yelp to Social Network Options
 Release Date: October 12, 2017
 * Enhancement: Added the parameter "vertical" in shortcode [btn-group]
 * Bug Fix: Removed the <p> jumps in t_em_shortcode_cleanup()

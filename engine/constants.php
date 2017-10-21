@@ -62,7 +62,8 @@ $t_em_theme_data = array(
 // Twenty'em Site
 define ( 'T_EM_SITE',													'https://themingisprose.com/twenty-em' );
 define ( 'T_EM_BLOG',													'https://themingisprose.com/twenty-em/blog' );
-define ( 'T_EM_WIKI', 													'https://github.com/rogertm/twenty-em/wiki' );
+define ( 'T_EM_WIKI', 													'https://themingisprose.com/twenty-em/documentacion' );
+define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/icon-pack' );
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
@@ -73,7 +74,7 @@ define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.2.1' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Polymita picta', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20171009' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20171020' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'4.0.0-beta' );

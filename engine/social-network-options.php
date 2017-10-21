@@ -153,13 +153,6 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 			'class' => 'icomoon-deviantart',
 			'order' => '180',
 		),
-/*		'myspace_set' => array(
-			'name' => 'myspace_set',
-			'label' => __( 'My Space URL', 't_em' ),
-			'item' => __( 'My Space', 't_em' ),
-			'class' => 'icomoon-myspace',
-			'order' => '190',
-		),*/
 		'xing_set' => array(
 			'name' => 'xing_set',
 			'label' => __( 'Xing URL', 't_em' ),
@@ -188,13 +181,13 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 			'class' => 'icomoon-dribbble',
 			'order' => '230',
 		),
-/*		'forrst_set' => array(
-			'name' => 'forrst_set',
-			'label' => __( 'Sorrst URL', 't_em' ),
-			'item' => __( 'Sorrst', 't_em' ),
-			'class' => 'icomoon-forrst',
+		'yelp_set' => array(
+			'name' => 'yelp_set',
+			'label' => __( 'Yelp URL', 't_em' ),
+			'item' => __( 'Yelp', 't_em' ),
+			'class' => 'icomoon-yelp',
 			'order' => '240',
-		),*/
+		),
 		'feed_set' => array(
 			'name' => 'feed_set',
 			'label' => __( 'RSS Feed URL', 't_em' ),
