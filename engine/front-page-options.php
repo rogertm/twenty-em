@@ -318,7 +318,7 @@ function t_em_settings_field_front_page_options_set(){
  */
 function t_em_load_custom_front_page( $home_template = '' ){
 	global $t_em;
-	if ( 'widgets-front-page' == $t_em['front_page_set'] ) :
+	if ( 'wp-front-page' != $t_em['front_page_set'] ) :
 		$home_template = locate_template( 'custom-front-page.php' );
 	endif;
 	return $home_template;
