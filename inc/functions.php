@@ -153,11 +153,11 @@ function t_em_breakpoint( $section ){
 		$breakpoint[] = 'widget-area';
 	endif;
 	// #content and two-column
-	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] == 'widgets-front-page' ) ) :
+	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] != 'wp-front-page' ) ) :
 		$breakpoint[] = t_em_grid( '8' );
 	endif;
-	// #content and front_page_set['widgets-front-page']
-	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] == 'widgets-front-page' ) :
+	// #content and !front_page_set['wp-front-page']
+	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] != 'wp-front-page' ) :
 		$breakpoint[] = t_em_grid( '12' );
 	endif;
 	// #sidebar and two-column
