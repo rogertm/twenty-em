@@ -336,17 +336,16 @@ if ( ! function_exists( 't_em_user_social_network' ) ) :
  * @param string $nav_classes Optional. HTML 'class' attribute of the <nav>...</nav> tag section (usually a Bootstrap class)
  * @param string $ul_classes Optional. HTML 'class' attribute of the <ul>...</ul> tag section (usually a Bootstrap class)
  * @param string $li_classes Optional. HTML 'class' attribute of each <li>...</li> tag item (usually a Bootstrap class)
- *
- * @uses t_em_social_network_options() See t_em_social_network_options() function
- * in /inc/social-network-options.php file.
+ * @param string $a_classes Optional. HTML 'class' attribute of each <a>...</a> tag item (usually a Bootstrap class)
  *
  * @global $t_em
  *
  * @return string HTML list of items
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.2.1 	Added parameter $a_classes
  */
-function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classes = '', $li_classes = '' ){
+function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classes = '', $li_classes = '', $a_classes = '' ){
 	global 	$t_em;
 
 	$user_social_network = t_em_social_network_options();
@@ -355,7 +354,12 @@ function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classe
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
 		if ( $t_em[$social_network['name']] != '' ) :
-		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'"><a href="'. $t_em[$social_network['name']] .'" class="'. $social_network['class'] .'"><span class="network-label sr-only">'.$social_network['item'].'</span></a></li>';
+		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'">';
+		$output_items .= 	'<a href="'. $t_em[$social_network['name']] .'" class="'. $a_classes .'">';
+		$output_items .= 		'<span class="'. $social_network['class'] .'"></span>';
+		$output_items .= 		'<span class="network-label sr-only">'. $social_network['item']. '</span>';
+		$output_items .= 	'</a>';
+		$output_items .= '</li>';
 		endif;
 	endforeach;
 	if ( ! empty( $output_items ) ) :
