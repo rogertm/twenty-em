@@ -245,14 +245,20 @@ function t_em_layout_classes( $existing_classes ){
 	$classes[] = $layout_set;
 
 	/**
-	 * Add maintenance-mode and maintenance-mode-is-admin class if Maintenance Mode is active
+	 * Add maintenance-mode classes if Maintenance Mode is active
 	 *
 	 * @since Twenty'em 1.0.1
+	 * @since Twenty'em 1.2.1 Added 'maintenance-mode-preview' and 'maintenance-mode-is-visitor'
 	 */
 	if ( $t_em['maintenance_mode'] ) :
 		$classes[] = 'maintenance-mode';
 		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) :
 			$classes[] = 'maintenance-mode-is-admin';
+			if ( ! isset( $_GET['maintenance-mode'] ) ) :
+				$classes[] = 'maintenance-mode-preview';
+			endif;
+		else :
+			$classes[] = 'maintenance-mode-is-visitor';
 		endif;
 	endif;
 
