@@ -248,17 +248,14 @@ function t_em_layout_classes( $existing_classes ){
 	 * Add maintenance-mode classes if Maintenance Mode is active
 	 *
 	 * @since Twenty'em 1.0.1
-	 * @since Twenty'em 1.2.1 Added 'maintenance-mode-preview' and 'maintenance-mode-is-visitor'
+	 * @since Twenty'em 1.2.1 Added 'maintenance-mode-out-site' and 'maintenance-mode-in-site'
 	 */
 	if ( $t_em['maintenance_mode'] ) :
 		$classes[] = 'maintenance-mode';
-		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) :
-			$classes[] = 'maintenance-mode-is-admin';
-			if ( ! isset( $_GET['maintenance-mode'] ) ) :
-				$classes[] = 'maintenance-mode-preview';
-			endif;
-		else :
-			$classes[] = 'maintenance-mode-is-visitor';
+		if ( t_em_load_maintenance_mode_template() ) :
+			$classes[] = 'maintenance-mode-out-site';
+		else:
+			$classes[] = 'maintenance-mode-in-site';
 		endif;
 	endif;
 
