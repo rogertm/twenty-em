@@ -28,8 +28,7 @@ function t_em_top_menu(){
 	<div id="top-menu" role="navigation">
 		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-dark bg-dark">
 			<div class="<?php t_em_container(); ?>">
-			<?php do_action( 't_em_action_top_menu_navbar_before' ) ?>
-			<?php
+				<?php
 				/**
 				 * Filter the navbar brand
 				 *
@@ -38,13 +37,14 @@ function t_em_top_menu(){
 				$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'span';
 				$brand = ( has_custom_logo() ) ? get_custom_logo() : '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
 				echo apply_filters( 't_em_filter_top_menu_brand', $brand );
-
-				if ( has_nav_menu( 'top-menu' ) ) :
-			?>
+				?>
 				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-top-menu">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-			<?php
+				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
+					<div id="site-top-menu" class="collapse navbar-collapse">
+					<?php
+					do_action( 't_em_action_top_menu_navbar_before' );
 					wp_nav_menu( array(
 							/**
 							 * Filter the menu depth
@@ -54,17 +54,15 @@ function t_em_top_menu(){
 							 * @since Twenty'em 1.0
 							 */
 							'theme_location'	=> 'top-menu',
-							'container'			=> 'div',
-							'container_id'		=> 'site-top-menu',
-							'container_class'	=> 'collapse navbar-collapse',
+							'container'			=> false,
 							'menu_class'		=> 'navbar-nav',
 							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 2 ),
 							'walker'			=> new Twenty_Em_Navwalker(),
 						)
 					);
-				endif;
-			?>
-			<?php do_action( 't_em_action_top_menu_navbar_after' ) ?>
+					do_action( 't_em_action_top_menu_navbar_after' ); ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</nav>
 	</div>
@@ -88,7 +86,6 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 	<div id="site-navigation" role="navigation">
 		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-light bg-light">
 			<div class="<?php t_em_container(); ?>">
-			<?php do_action( 't_em_action_navigation_menu_navbar_before' ) ?>
 			<?php
 				/**
 				 * Filter the navbar brand
@@ -100,7 +97,10 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-navigation-menu" aria-expanded="false">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<?php wp_nav_menu( array(
+				<div id="site-navigation-menu" class="collapse navbar-collapse">
+				<?php
+				do_action( 't_em_action_navigation_menu_navbar_before' );
+				wp_nav_menu( array(
 						/**
 						 * Filter the menu depth
 						 *
@@ -109,15 +109,14 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 						 * @since Twenty'em 1.0
 						 */
 						'theme_location'	=> 'navigation-menu',
-						'container_id'		=> 'site-navigation-menu',
-						'container_class'	=> 'collapse navbar-collapse',
 						'menu_class'		=> 'navbar-nav',
 						'depth'				=> apply_filters( 't_em_filter_navigation_menu_depth', 2 ),
 						'walker'			=> new Twenty_Em_Navwalker(),
 					)
 				);
-			?>
-			<?php do_action( 't_em_action_navigation_menu_navbar_after' ) ?>
+				do_action( 't_em_action_navigation_menu_navbar_after' );
+				?>
+				</div>
 			</div>
 		</nav>
 	</div>
