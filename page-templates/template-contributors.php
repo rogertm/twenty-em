@@ -43,12 +43,12 @@ get_header(); ?>
 						continue;
 ?>
 				<div id="contributor-<?php echo get_the_author_meta( 'user_login', $contributor ); ?>" class="author-info contributor media">
-					<div class="media-left media-object contributor-avatar">
+					<div class="mr-3 contributor-avatar">
 					<?php echo get_avatar( $contributor, '', '', get_the_author_meta( 'display_name', $contributor ) ) ?>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading contributor-name"><?php echo get_the_author_meta( 'display_name', $contributor ); ?></h4>
-						<p class="contributor-bio"><?php echo get_the_author_meta( 'description', $contributor ) ?></p>
+						<h5 class="mt-0"><?php echo get_the_author_meta( 'display_name', $contributor ); ?></h5>
+						<?php echo get_the_author_meta( 'description', $contributor ) ?>
 						<a class="contributor-posts-link btn btn-outline-secondary btn-sm" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
 							<span class="icomoon-pencil"></span>
 							<?php printf( _n( '%d Article', '%d Articles', $post_count, 't_em' ), $post_count ); ?>
