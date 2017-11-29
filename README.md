@@ -1,5 +1,4 @@
-#
-Twenty'em WordPress Framework
+# Twenty'em WordPress Framework
 
 ## ¿Qué es Twenty'em?
 
