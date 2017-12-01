@@ -88,7 +88,7 @@ function t_em_settings_field_maintenance_mode_set(){
 			</label></p>
 
 			<p><label>
-				<span><?php printf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) ?></span>
+				<span><?php printf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_headline_icon_class]" value="<?php echo $t_em['maintenance_mode_headline_icon_class'] ?>" >
 			</label></p>
 
@@ -107,7 +107,7 @@ function t_em_settings_field_maintenance_mode_set(){
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_text]" value="<?php echo $t_em['maintenance_mode_primary_button_text'] ?>" />
 			</label></p>
 
-			<p><label><span><?php printf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) ?></span>
+			<p><label><span><?php printf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_icon_class]" value="<?php echo $t_em['maintenance_mode_primary_button_icon_class'] ?>" />
 			</label></p>
 
@@ -119,7 +119,7 @@ function t_em_settings_field_maintenance_mode_set(){
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_text]" value="<?php echo $t_em['maintenance_mode_secondary_button_text'] ?>" />
 			</label></p>
 
-			<p><label><span><?php printf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) ?></span>
+			<p><label><span><?php printf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_icon_class]" value="<?php echo $t_em['maintenance_mode_secondary_button_icon_class'] ?>" />
 			</label></p>
 

@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.2.2 =
+Release Date: November 30, 2017
+* Update: Bootstrap v4.0.0-beta.2
+* Update: jQuery v3.0.0 to support Bootstrap js plugins
+
+* Delete: /js/html5-shiv.js
+
 = 1.2.1 =
 Release Date: October 21, 2017
 * Enhancement: Added Yelp to Social Network Options

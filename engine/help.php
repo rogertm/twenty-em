@@ -28,7 +28,7 @@ function t_em_theme_options_help(){
 	$screen = get_current_screen();
 
 	$overview_help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
-					T_EM_SITE .'/?page-request=home&amp;ver='.T_EM_FRAMEWORK_VERSION,
+					T_EM_SITE,
 					T_EM_FRAMEWORK_NAME,
 					$t_em_theme_data['Name'] ) . '</p>'.
 			'<ul>' .
@@ -61,6 +61,7 @@ function t_em_theme_options_help(){
 						'<li>' . sprintf( __( '<strong>Enable comments in single pages</strong>: This option lets you allow comments in single pages. If true, the option <a href="%1$s">Allow people to post comments on new articles</a> in <strong>Default article settings</strong> must be true too.', 't_em' ),
 								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
 						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes always will be enable', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Enable Debug Panel</strong>: Show or not a Debug Panel at the bottom of this page. If <code>WP_DEBUG</code> is enable, this panel will be shown any way.', 't_em' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -80,7 +81,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-writing.php' ) ). '</li>' .
 						'<li>' . sprintf( __( '<strong>Static Header</strong>: Useful option to let people know what about your site is. You can insert an image previously uploaded to your <a href="%1$s">Media Library</a> and a headline with a small text or slogan describing your site. In addition you can add a primary and/or secondary button linked to certain URL, also add <a href="%2$s">icons</a> to these buttons.', 't_em' ),
 								 admin_url( 'upload.php' ),
-								 T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</li>' .
+								 T_EM_ICON_PACK ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -95,7 +96,7 @@ function t_em_theme_options_help(){
 							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
 							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s">icon class</a>, image (previously uploaded to your <a href="%2$s">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
-									 T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION,
+									 T_EM_ICON_PACK,
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
 

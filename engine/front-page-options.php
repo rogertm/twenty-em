@@ -175,7 +175,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 		'<p><label><span>' . __( 'Headline', 't_em' ) .'</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . esc_textarea( $t_em['headline_'.$widget['name']] ) . '" />';
 		$extend_front_page .= 		'</label></p>';
-		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</span>';
+		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[headline_icon_class_' . $widget['name'] . ']" value="' . $t_em['headline_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Content', 't_em' ) .'</span>';
@@ -188,7 +188,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 		'<p><label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[primary_button_text_' . $widget['name'] . ']" value="' . $t_em['primary_button_text_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
-		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</span>';
+		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[primary_button_icon_class_' . $widget['name'] . ']" value="' . $t_em['primary_button_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
@@ -197,7 +197,7 @@ function t_em_front_page_witgets_callback(){
 		$extend_front_page .= 		'<p><label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_text_' . $widget['name'] . ']" value="' . $t_em['secondary_button_text_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
-		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_SITE . '/?page-request=icomoon&amp;ver=' . T_EM_FRAMEWORK_VERSION ) . '</span>';
+		$extend_front_page .= 		'<p><label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) . '</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_icon_class_' . $widget['name'] . ']" value="' . $t_em['secondary_button_icon_class_'.$widget['name']] . '" />';
 		$extend_front_page .= 		'</label></p>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';

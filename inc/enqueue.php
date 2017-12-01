@@ -25,6 +25,12 @@
 function t_em_enqueue_styles_and_scripts(){
 	global $t_em, $t_em_theme_data;
 
+	// Dequeue old jQuery
+	wp_deregister_script('jquery');
+	// Enqueue jQuery 3.0.0 to support Bootstrap jQuery plugins
+	wp_register_script( 'jquery', t_em_get_js( 'jquery' ), array(), $t_em_theme_data['Version'], true );
+	wp_enqueue_script( 'jquery' );
+
 	// Load default style sheet style.css
 	wp_register_style( 'twenty-em-style', t_em_get_css( 'theme' ), '', $t_em_theme_data['Version'], 'all' );
 	wp_enqueue_style( 'twenty-em-style' );
@@ -36,10 +42,6 @@ function t_em_enqueue_styles_and_scripts(){
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) :
 		wp_enqueue_script( 'comment-reply' );
 	endif;
-
-	// Load the html5 shiv.
-	wp_enqueue_script( 'html5-shiv', t_em_get_js( 'html5' ), array(), $t_em_theme_data['Version'], true );
-	wp_script_add_data( 'html5-shiv', 'conditional', 'lt IE 9' );
 
 	// Register Carousel Bootstrap Plugins when needed
 	if ( 'slider' == $t_em['header_set'] ) :
