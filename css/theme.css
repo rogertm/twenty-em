@@ -4595,7 +4595,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 .d-inline-block, .gallery .gallery-item, #top-menu h1#site-title {
   display: inline-block !important; }
 
-.d-block, .breadcrumb {
+.d-block {
   display: block !important; }
 
 .d-table {
