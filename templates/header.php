@@ -148,7 +148,7 @@ function t_em_slider_bootstrap_carousel( $args ){
 							<h3 class="item-title">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo get_the_title(); ?></a>
 							</h3>
-							<p class="item-summary d-none d-md-block"><?php echo get_the_excerpt(); ?></p>
+							<p class="item-summary d-none d-md-block"><?php echo t_em_get_post_excerpt(); ?></p>
 						</div>
 					</div><!-- .item -->
 				<?php endforeach; wp_reset_postdata(); ?>

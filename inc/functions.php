@@ -372,9 +372,7 @@ function t_em_image_resize( $width, $height, $post_id = 0, $crop = true ){
 
 /**
  * Helper. Wrap paragraphs into <p> ...</p> tags, and clean empty lines
- *
  * @param string $paragraph Require Paragraph to be wrapped into <p> ...</p> tags
- *
  * @return string
  *
  * @since Twenty'em 1.0
@@ -389,5 +387,38 @@ function t_em_wrap_paragraph( $paragraph ){
 		$i++;
 	endwhile;
 	return implode( "", $clean_paragraph );
+}
+
+/**
+ * Get the resume of every post
+ * @param int $post_id 	Post ID. Default 0, the current post
+ * @param bool $echo 	Return the value or print it on screen. Default to 'true'
+ * @return string 		The 'post_excerpt' field or the first $trim words of the 'post_content' fields
+ * 						if 'post_excerpt' is empty
+ *
+ * @since Twenty'em 1.2.2
+ */
+function t_em_get_post_excerpt( $post_id = 0, $echo = true ){
+	global $t_em, $post;
+
+	$post_id = absint( $post_id );
+	if ( ! $post_id )
+		$post_id = $post->ID;
+
+	$excerpt = get_post_field( 'post_excerpt', $post_id );
+	$content = get_post_field( 'post_content', $post_id );
+	$trim 	 = $t_em['excerpt_length'];
+
+	if ( ! empty( $excerpt ) ) :
+		$resume = $excerpt;
+	else :
+		$resume = wp_trim_words( $content, $trim );
+	endif;
+
+	if ( $echo ) :
+		echo strip_shortcodes( $resume );
+	else :
+		return strip_shortcodes( $resume );
+	endif;
 }
 ?>

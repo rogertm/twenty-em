@@ -1,27 +1,47 @@
 == Changelog ==
 
+
 = 1.2.2 =
+
+Release Date: December 08, 2017
+
+* Enhancement: New helper function t_em_get_post_excerpt()
+
+* Bug Fix: Fixed broken <p> output in t_em_slider_bootstrap_carousel()
+
 Release Date: November 30, 2017
+
 * Update: Bootstrap v4.0.0-beta.2
 * Update: jQuery v3.0.0 to support Bootstrap js plugins
 
 * Delete: /js/html5-shiv.js
 
+
 = 1.2.1 =
+
 Release Date: October 21, 2017
+
 * Enhancement: Added Yelp to Social Network Options
+
 Release Date: October 12, 2017
+
 * Enhancement: Added the parameter "vertical" in shortcode [btn-group]
 * Bug Fix: Removed the <p> jumps in t_em_shortcode_cleanup()
 
+
 = 1.2 =
+
 Release Date: October 09, 2017
+
 * Enhancement: Better Debug Info Panel
 * Enhancement: Support for custom post types in single related posts. Added the "t_em_filter_single_related_post_query" filter
 * Enhancement: Added shortcode support in term description t_em_term_description()
 
+
 = Bootstrap 4 =
+
 Release Date: September 09, 2017
+
 * Enhancement: A fully migration to Bootstrap v4.0.0-beta
 * Enhancement: Completely deletion of LESS features in favor of SASS preprocessor
 * Enhancement: New and simpler Icomoon icon pack
@@ -56,24 +76,36 @@ Release Date: September 09, 2017
 * Delete: T_EM_LAYOUT_WIDTH_MIN_VALUE Constant
 * Delete: t_em_archive_cols()
 
+
 = 1.1.2 =
+
 Release Date: August 01, 2017
+
 * Enhancement: Added T_EM_BLOG, T_EM_WIKI, T_EM_PAYPAL
 * Update: Updated right sidebar on help panel
 * Bug Fix: Fix some E_NOTICE in widgets
 * Bug Fix: Disable comments supports for pages if [single_page_comments] => 1
 * Bug Fix: Do not show "Comments are close" if current post type does not support them in .entry-meta.entry-meta-footer
 
+
 = 1.1.1 =
+
 Release Date: July 10, 2017
+
 * Enhancement: Favicon sizes support
+
 Release Date: July 01, 2017
+
 * Enhancement: Theme Tags compatibles with WordPress.org
 * Enhancement: Added 'no-svg' class in <html> tag
 * Bug Fix: Added chartset meta tag
+
 Release Date: June 26, 2017
+
 * Bug Fix: t_em_restore_from_scratch() is hooked now in 'wp'
+
 Release Date: June 22, 2017
+
 * Update: Data Base version 20170622
 * Enhancement: Added the Filter Hook "t_em_filter_starter_content"
 * Enhancement: Added theme support for "starter-content"
@@ -86,7 +118,9 @@ Release Date: June 22, 2017
 * Function Removed: t_em_header_style(), t_em_admin_header_style(), t_em_admin_header_image() in favor of Header Image in WordPress Customizer
 * Enhancement: t_em_favicon() now checks if there is a site icon before to load the default icon
 * Function Removed: "t_em_general_options_favicon()" in favor of Site Icon option in WordPress Customizer
+
 Release Date: June 21, 2017
+
 * Bug Fix: Sanitize text fields in Maintenance Mode Options
 * New URL: https://themingisprose.com
 * Bug Fix: Added the viewport meta in header area
@@ -95,8 +129,11 @@ Release Date: June 21, 2017
 * Enhancement: Upgrade to LESS PHP version 1.7.0.13
 * Function Removed: "t_em_heading_site_title()",
 
+
 = 1.1 =
+
 Release Date: February 02, 2017
+
 * Bug Fix: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7
 * Enhancement: Added the Action Hook "t_em_action_header_image_before"
@@ -115,10 +152,16 @@ Release Date: February 02, 2017
 * Enhancement: Added full width option (Layout Panel)
 * Enhancement: Added the Maintenance Mode Option
 
+
 = 1.0.1 =
+
 Release Date: August 07, 2016
+
 * Bug Fix: Minimized all Bootstrap's jquery plugin files
 
+
 = 1.0 =
+
 Release Date: July 09, 2016
+
 * Initial release
