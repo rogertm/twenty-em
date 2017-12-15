@@ -97,7 +97,10 @@ add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts' );
 function t_em_theme_options_admin_page(){
 	global $t_em_theme_data;
 
-	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', T_EM_ENGINE_DIR_IMG_URL . '/twenty-em-logo.png', '2.25031992' );
+	$svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="fill:#82878c" viewBox="0 0 32 32"><title>twenty-em</title><path d="M29.7 23.6h-8.3l-6.4-11.1v-12.5h-12.7v12.6h12.5l6.5 11.2v8.2h8.4z"></path></svg>';
+	$svg = 'data:image/svg+xml;base64,' . base64_encode( $svg );
+
+	$theme_page 		= add_menu_page( T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS, T_EM_FRAMEWORK_NAME, 'edit_theme_options', 'twenty-em-options', 't_em_theme_options_page', $svg, '2.25031992' );
 	$theme_backup_page	= add_submenu_page( 'twenty-em-options', __( 'Backup', 't_em' ), __( 'Backup', 't_em' ), 'edit_theme_options', 'twenty-em-backup', 't_em_theme_backup' );
 
 	// We call our help screens

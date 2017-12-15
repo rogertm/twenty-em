@@ -6773,7 +6773,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("../fonts/icomoon.ttf?r8tdks") format("truetype"), url("../fonts/icomoon.woff?r8tdks") format("woff"), url("../fonts/icomoon.svg?r8tdks#icomoon") format("svg");
+  src: url("../fonts/icomoon.ttf?b7bmat") format("truetype"), url("../fonts/icomoon.woff?b7bmat") format("woff"), url("../fonts/icomoon.svg?b7bmat#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 [class^="icomoon-"], [class*=" icomoon-"] {
@@ -6788,6 +6788,9 @@ a.text-dark:focus, a.text-dark:hover {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icomoon-twenty-em:before {
+  content: ""; }
 
 .icomoon-cloud-upload:before {
   content: ""; }

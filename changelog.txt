@@ -3,6 +3,10 @@
 
 = 1.2.2 =
 
+Release Date: December 15, 2017
+
+* Update: IcoMoon
+
 Release Date: December 08, 2017
 
 * Enhancement: New helper function t_em_get_post_excerpt()
