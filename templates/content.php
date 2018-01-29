@@ -205,7 +205,7 @@ function t_em_custom_template_content(){
 ?>
 	<div id="featured-header-template-<?php the_ID(); ?>" <?php post_class( 'featured-header featured-header-template custom-template-content' ); ?>>
 		<header>
-			<h1 class="entry-title"><?php echo $template_data->post_title; ?></h1>
+			<h1 class="entry-title"><?php echo apply_filters( 'the_title', $template_data->post_title ); ?></h1>
 		</header>
 <?php if ( $template_data->post_content ) : ?>
 		<div class="entry-content"><?php echo apply_filters( 'the_content', $template_data->post_content ); ?></div>
