@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rogertm/twenty-em.svg?branch=master)](https://travis-ci.org/rogertm/twenty-em)
+
 # Twenty'em WordPress Framework
 
 ## ¿Qué es Twenty'em?
