@@ -1,4 +1,6 @@
+[![Total Downloads](https://poser.pugx.org/rogertm/twenty-em/downloads)](https://packagist.org/packages/rogertm/twenty-em)
 [![Build Status](https://travis-ci.org/rogertm/twenty-em.svg?branch=master)](https://travis-ci.org/rogertm/twenty-em)
+[![License](https://poser.pugx.org/rogertm/twenty-em/license)](https://packagist.org/packages/rogertm/twenty-em)
 
 # Twenty'em WordPress Framework
 
