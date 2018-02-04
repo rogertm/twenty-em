@@ -2,13 +2,13 @@
 	"name": "rogertm/twenty-em",
 	"description": "Twenty'em WordPress Framework & Bootstrap 4",
 	"keywords": ["wordpress", "framework", "child-theme", "theme-framework", "theme-development", "wordpress-framework", "bootstrap", "bootstrap-4"],
-	"homepage": "https://github.com/themingisprose/twenty-em-child",
+	"homepage": "https://themingisprose.com/twenty-em",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "RogerTM",
 			"email": "roger213tm@gmail.com",
-			"homepage": "https://themingisprose.com/twenty-em",
+			"homepage": "https://themingisprose.com",
 			"role": "Developer"
 		}
 	]
