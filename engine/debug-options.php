@@ -179,7 +179,6 @@ function t_em_debug_theme_data_callback(){
 	$output .= '</dl>';
 	$output .= '</div>';
 
-
 	return $output;
 }
 
@@ -261,7 +260,7 @@ function t_em_debug_system_info_callback(){
 	$output .=	'<dd>'. $_SERVER['HTTP_USER_AGENT'] .'</dd>';
 	$output .= '</dl>';
 
-	// WordPress COnfiguration
+	// WordPress Configuration
 	$locale = get_locale();
 	$parent_theme = $t_em_theme_data['Template'];
 	if ( ! empty( $parent_theme ) ) :
@@ -392,9 +391,10 @@ function t_em_debug_system_info_callback(){
 
 /**
  * The DEBUG
+ *
+ * @since Twenty'em 1.2
  */
 function t_em_settings_field_debug_set(){
-	global $t_em;
 ?>
 	<div id="debug-options" class="tabs">
 	<ul>
@@ -413,33 +413,16 @@ function t_em_settings_field_debug_set(){
 ?>
 	</ul>
 <?php
-
-	/* If our 'callback' key brings something, then we display our callback function.
-	 * Header Image or Slider, that's the question.
-	 */
 	foreach ( t_em_debug_options() as $sub_header ) :
 		if ( $sub_header['callback'] ) :
 ?>
 		<div id="<?php echo $sub_header['value']; ?>" class="sub-layout header-extend">
-			<?php // do_action( "t_em_admin_action_header_option_{$sub_header['value']}_before" ); ?>
 			<?php echo $sub_header['callback']; ?>
-			<?php // do_action( "t_em_admin_action_header_option_{$sub_header['value']}_after" ); ?>
 		</div>
 <?php
 		endif;
 	endforeach;
 ?>
-	</div>
-<?php
-}
-
-function _t_em_debug_info(){
-	global $t_em;
-?>
-	<div class="sub-extend option-group">
-		<header><?php printf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) ?></header>
-		<p class="alert alert-info"><?php _e( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) ?></p>
-		<pre><?php print_r( get_option( 't_em_theme_options' ) ) ?></pre>
 	</div>
 <?php
 }

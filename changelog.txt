@@ -3,6 +3,10 @@
 
 = 1.2.2 =
 
+Release Date: February 06, 2018
+
+* Enhancement: Filtered some outputs in admin panel
+
 Release Date: December 15, 2017
 
 * Update: IcoMoon

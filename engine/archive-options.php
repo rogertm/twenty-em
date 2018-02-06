@@ -126,7 +126,7 @@ function t_em_archive_in_columns( $archive_in_columns = '' ){
  * @param string $contex Require In which form ($contex) you want to use this function.
  * Example: You have a new slider plugin, and you want set Width and Height for yours thumbnail in
  * slideshow. So, you may call this function like this: $thumb = t_em_thumbnail_sizes( 'slideshow' );
- * See t_em_excerpt_callback() in /inc/archive-options.php file
+ * See t_em_excerpt_callback() in /engine/archive-options.php file
  *
  * @return array
  *
@@ -151,7 +151,7 @@ function t_em_thumbnail_sizes( $contex ){
 
 /**
  * Extend setting for Archive Option in Twenty'em admin panel.
- * Referenced via t_em_archive_options() in /inc/archive-options.php.
+ * Referenced via t_em_archive_options() in /engine/archive-options.php.
  *
  * @global $t_em.
  *
@@ -216,7 +216,13 @@ function t_em_excerpt_callback(){
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
 
-	return $extend_excerpt;
+	/**
+	 * Filter the Archive Excerpt Option output
+	 * @param string $extend_excerpt HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_excerpt_output', $extend_excerpt );
 }
 
 /**
@@ -247,7 +253,7 @@ function t_em_archive_pagination_options( $archive_pagination = '' ){
 
 /**
  * Extend setting for Archive Pagination Option in Twenty'em admin panel.
- * Referenced via t_em_archive_options() in /inc/archive-options.php.
+ * Referenced via t_em_archive_options() in /engine/archive-options.php.
  *
  * @global $t_em.
  * @global $archive_pagination Returns a string value for pagination.
@@ -257,21 +263,27 @@ function t_em_archive_pagination_options( $archive_pagination = '' ){
 function t_em_settings_archive_pagination(){
 	global $t_em;
 
-	$extend_excerpt = '';
-	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group option-group">';
-	$extend_excerpt .=	'<header>'. __( 'Archive Pagination', 't_em' ) .'</header>';
+	$extend_pagination = '';
+	$extend_pagination .= '<div class="sub-extend layout text-radio-option-group option-group">';
+	$extend_pagination .=	'<header>'. __( 'Archive Pagination', 't_em' ) .'</header>';
 	foreach ( t_em_archive_pagination_options() as $pagination ) :
 		$checked_option = checked( $t_em['archive_pagination_set'], $pagination['value'], false );
-		$extend_excerpt .=	'<div class="layout text-radio-option-group archive-pagination option-single">';
-		$extend_excerpt .=		'<label class="description">';
-		$extend_excerpt .=			'<input type="radio" name="t_em_theme_options[archive_pagination_set]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
-		$extend_excerpt .=			'<span>'. $pagination['label'] .'</span>';
-		$extend_excerpt .=		'</label>';
-		$extend_excerpt .=	'</div>';
+		$extend_pagination .=	'<div class="layout text-radio-option-group archive-pagination option-single">';
+		$extend_pagination .=		'<label class="description">';
+		$extend_pagination .=			'<input type="radio" name="t_em_theme_options[archive_pagination_set]" value="'. esc_attr( $pagination['value'] ) .'" '. $checked_option .'>';
+		$extend_pagination .=			'<span>'. $pagination['label'] .'</span>';
+		$extend_pagination .=		'</label>';
+		$extend_pagination .=	'</div>';
 	endforeach;
-	$extend_excerpt .= '</div><!-- .sub-extend -->';
+	$extend_pagination .= '</div><!-- .sub-extend -->';
 
-	echo $extend_excerpt;
+	/**
+	 * Filter the Archive Pagination Option output
+	 * @param string $extend_pagination HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	echo apply_filters( 't_em_admin_filter_archive_pagination_output', $extend_pagination );
 }
 add_action( 't_em_admin_action_archive_options_after', 't_em_settings_archive_pagination' );
 

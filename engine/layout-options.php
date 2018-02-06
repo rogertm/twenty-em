@@ -138,7 +138,13 @@ function t_em_layout_width(){
 	$layout_width .= 	'</div>';
 	$layout_width .= '</div>';
 
-	echo $layout_width;
+	/**
+	 * Filter the Layout Width Option output
+	 * @param string $layout_width HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	echo apply_filters( 't_em_admin_filter_layout_width_output', $layout_width );
 }
 add_action( 't_em_admin_action_layout_options_after', 't_em_layout_width' );
 

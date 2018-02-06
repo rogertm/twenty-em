@@ -111,7 +111,13 @@ function t_em_header_image_callback(){
 		$extend_header .= '<p>'. __( 'Oops! No image chosen yet', 't_em' ) .'</p>';
 	endif;
 
-	return $extend_header;
+	/**
+	 * Filter the Header Image Option output
+	 * @param string $extend_header HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_header_image_output', $extend_header );
 }
 
 /**
@@ -226,7 +232,13 @@ function t_em_slider_callback(){
 	$extend_slider .= 	'</div>';
 	$extend_slider .= '</div>';
 
-	return $extend_slider;
+	/**
+	 * Filter the Carousel Option output
+	 * @param string $extend_slider HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_slider_output', $extend_slider );
 }
 
 /**
@@ -326,7 +338,13 @@ function t_em_static_header_callback(){
 	$extend_static_header .= 	'</div>';
 	$extend_static_header .= '</div>';
 
-	return $extend_static_header;
+	/**
+	 * Filter the Static Header Option output
+	 * @param string $extend_static_header HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_static_header_output', $extend_static_header );
 }
 
 /**

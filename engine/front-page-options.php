@@ -82,7 +82,13 @@ function t_em_front_page_jawpfp_callback(){
 	$extend_jawpfp .= '</p>';
 	$extend_jawpfp .= '<p>'. $show_on_front . '</p>';
 
-	return $extend_jawpfp;
+	/**
+	 * Filter the Just another WordPress front page Option output
+	 * @param string $extend_jawpfp HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_jawpfp_output', $extend_jawpfp );
 }
 
 /**
@@ -209,7 +215,13 @@ function t_em_front_page_witgets_callback(){
 	endforeach;
 	$extend_front_page .= '</div>';
 
-	return $extend_front_page;
+	/**
+	 * Filter the Front Page Widgets Option output
+	 * @param string $extend_front_page HTML output
+	 *
+	 * @since Twenty'em 1.2.2
+	 */
+	return apply_filters( 't_em_admin_filter_front_page_widgets_output', $extend_front_page );
 }
 
 /**
