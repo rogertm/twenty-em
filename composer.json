@@ -4,6 +4,8 @@
 	"keywords": ["wordpress", "framework", "child-theme", "theme-framework", "theme-development", "wordpress-framework", "bootstrap", "bootstrap-4"],
 	"homepage": "https://themingisprose.com/twenty-em",
 	"license": "GPL-2.0-or-later",
+	"minimum-stability": "stable",
+	"type": "wordpress-theme",
 	"authors": [
 		{
 			"name": "RogerTM",
