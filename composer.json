@@ -6,6 +6,9 @@
 	"license": "GPL-2.0-or-later",
 	"minimum-stability": "stable",
 	"type": "wordpress-theme",
+	"require": {
+		"php": ">=7.0"
+	},
 	"authors": [
 		{
 			"name": "RogerTM",
