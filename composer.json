@@ -17,5 +17,11 @@
 			"homepage": "https://themingisprose.com",
 			"role": "Developer"
 		}
-	]
+	],
+	"support": {
+		"email": "roger213tm@gmail.com",
+		"issues": "https://github.com/rogertm/twenty-em/issues",
+		"source": "https://github.com/rogertm/twenty-em",
+		"docs": "https://themingisprose.com/twenty-em/documentacion/"
+	}
 }
