@@ -71,7 +71,3 @@ script:
     # Uses a custom ruleset based on WordPress. This ruleset is automatically
     # picked up by PHPCS as it's named `phpcs.xml(.dist)`.
     - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs; fi
-    # CodeCov.io
-    - vendor/bin/phpunit --coverage-clover=coverage.xml
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
