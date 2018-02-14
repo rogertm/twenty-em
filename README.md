@@ -1,6 +1,9 @@
 [![Total Downloads](https://poser.pugx.org/rogertm/twenty-em/downloads)](https://packagist.org/packages/rogertm/twenty-em)
 [![Build Status](https://travis-ci.org/rogertm/twenty-em.svg?branch=master)](https://travis-ci.org/rogertm/twenty-em)
 [![License](https://poser.pugx.org/rogertm/twenty-em/license)](https://packagist.org/packages/rogertm/twenty-em)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rogertm/twenty-em/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/build.png?b=master)](https://scrutinizer-ci.com/g/rogertm/twenty-em/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 # Twenty'em WordPress Framework
 
