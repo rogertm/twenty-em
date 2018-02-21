@@ -21,39 +21,7 @@
  * Define Twenty'em $GLOBALS
  */
 
-/**
- * $t_em. Array. Contains all the options store in the data base.
- * See t_em_default_theme_options() in /engine/theme-options.php for a complete list of 'key' => 'value'
- * pairs
- */
-$t_em = get_option( 't_em_theme_options' );
 
-/**
- * $t_em_db_version. Database Version.
- */
-$t_em_db_version = get_option( 't_em_db_version' );
-
-/**
- * t_em_framework_version. Framework Version.
- */
-$t_em_framework_version = get_option( 't_em_framework_version' );
-
-/**
- * $t_em_theme_data. Array. Contains theme's information stored in style.css file.
- */
-$t_em_theme_data = array(
-	'Name'			=> wp_get_theme()->display( 'Name' ),
-	'ThemeURI'		=> esc_url( wp_get_theme()->display( 'ThemeURI' ) ),
-	'Description'	=> wp_get_theme()->display( 'Description' ),
-	'Author'		=> wp_get_theme()->display( 'Author' ),
-	'AuthorURI'		=> esc_url( wp_get_theme()->display( 'AuthorURI' ) ),
-	'Version'		=> wp_get_theme()->display( 'Version' ),
-	'Template'		=> wp_get_theme()->display( 'Template' ),
-	'Status'		=> wp_get_theme()->display( 'Status' ),
-	'Tags'			=> wp_get_theme()->display( 'Tags' ),
-	'TextDomain'	=> wp_get_theme()->display( 'TextDomain' ),
-	'DomainPath'	=> wp_get_theme()->display( 'DomainPath' ),
-);
 
 /**
  * Define Twenty'em CONSTANTS
@@ -67,14 +35,14 @@ define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/ico
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.9' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.9.1' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'1.2.2' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.3' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Polymita picta', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20171020' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20171021' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'4.0.0-beta.2' );
@@ -131,22 +99,4 @@ if ( ! defined( 'T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE' ) )		define( 'T_EM_
 
 if ( ! defined( 'T_EM_HEADER_IMAGE_WIDTH' ) )							define( 'T_EM_HEADER_IMAGE_WIDTH', 1600 );
 if ( ! defined( 'T_EM_HEADER_IMAGE_HEIGHT' ) )							define( 'T_EM_HEADER_IMAGE_HEIGHT', 560 );
-
-/**
- * Register Data Base version
- */
-function t_em_db_version(){
-	add_option( 't_em_db_version', T_EM_DB_VERSION );
-	return get_option( 't_em_db_version' );
-}
-add_action( 'after_switch_theme', 't_em_db_version' );
-
-/**
- * Register Framework version
- */
-function t_em_framework_version(){
-	add_option( 't_em_framework_version', T_EM_FRAMEWORK_VERSION );
-	return get_option( 't_em_framework_version' );
-}
-add_action( 'after_switch_theme', 't_em_framework_version' );
 ?>

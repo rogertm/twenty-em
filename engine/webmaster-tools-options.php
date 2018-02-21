@@ -85,7 +85,6 @@ function t_em_stats_tracker_options( $tracker_options = '' ){
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_webmaster_tools_set(){
-	global $t_em;
 ?>
 	<div id="webmaster-tools-options">
 		<?php do_action( 't_em_admin_action_webmaster_tools_options_before' ); ?>
@@ -98,7 +97,7 @@ function t_em_settings_field_webmaster_tools_set(){
 			<div class="layout text-option search-engine">
 				<label>
 					<span><?php echo $search_engine['label']; ?></span>
-					<input class="headline regular-text" type="text" name="t_em_theme_options[<?php echo $search_engine['name']; ?>]" value="<?php echo esc_attr( $t_em[$search_engine['name']] ) ?>" />
+					<input class="headline regular-text" type="text" name="t_em_theme_options[<?php echo $search_engine['name']; ?>]" value="<?php echo esc_attr( t_em( $search_engine['name'] ) ) ?>" />
 				</label>
 			</div>
 <?php
@@ -115,7 +114,7 @@ function t_em_settings_field_webmaster_tools_set(){
 			<div class="layout textarea-option stat-tracker option-single">
 				<label>
 					<span><?php echo $stat_tracker['label']; ?></span>
-					<p><textarea name="t_em_theme_options[<?php echo esc_textarea( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( $t_em[$stat_tracker['name']] ) ?></textarea></p>
+					<p><textarea name="t_em_theme_options[<?php echo esc_textarea( $stat_tracker['name'] ); ?>]" class="large-text" cols="50" rows="10"><?php echo esc_attr( t_em( $stat_tracker['name'] ) ) ?></textarea></p>
 				</label>
 			</div>
 <?php

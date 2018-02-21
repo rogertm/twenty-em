@@ -214,12 +214,9 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
  *
- * @global $t_em.
- *
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_socialnetwork_set(){
-	global $t_em;
 ?>
 	<div id="social-network-options">
 		<?php do_action( 't_em_admin_action_social_network_options_before' ); ?>
@@ -233,7 +230,7 @@ function t_em_settings_field_socialnetwork_set(){
 		<div id="social-network-options" class="layout text-option social option-single">
 			<label>
 				<span><?php echo $social['label'];?></span>
-				<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( $t_em[$social['name']] ); ?>" />
+				<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $social['name']; ?>]" value="<?php echo esc_url( t_em( $social['name'] ) ); ?>" />
 			</label>
 		</div>
 <?php

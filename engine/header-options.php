@@ -74,13 +74,9 @@ function t_em_header_options( $header_options = '' ){
  * Extend setting for Header Image Option in Twenty'em admin panel.
  * Referenced via t_em_header_options().
  *
- * @global $t_em
- *
  * @since Twenty'em 1.0
  */
 function t_em_header_image_callback(){
-	global $t_em;
-
 	$extend_header = '';
 	$extend_header .= '<p class="alert alert-info">'. sprintf( __( 'You can manage your header image option in the <a href="%1$s">Theme Customizer</a> screen.', 't_em' ), admin_url( 'customize.php?autofocus[control]=header_image' ) ) .'</p>';
 	if ( get_header_image() ) :
@@ -90,7 +86,7 @@ function t_em_header_image_callback(){
 		$extend_header .= 	'<div class="sub-extend option-single">';
 		$extend_header .= 		'<label class="description">';
 		$extend_header .= 			'<p>';
-		$checked_option = checked( $t_em['header_featured_image_home_only'], '1', false );
+		$checked_option = checked( t_em( 'header_featured_image_home_only' ), '1', false );
 		$extend_header .=				'<input type="checkbox" name="t_em_theme_options[header_featured_image_home_only]" value="1" '. $checked_option .' />';
 		$extend_header .=				__( 'Show header image only at home page ', 't_em' );
 		$extend_header .= 			'</p>';
@@ -100,7 +96,7 @@ function t_em_header_image_callback(){
 		$extend_header .= 	'<div class="sub-extend option-single">';
 		$extend_header .= 		'<label class="description">';
 		$extend_header .= 			'<p>';
-		$checked_option = checked( $t_em['header_featured_image'], '1', false );
+		$checked_option = checked( t_em( 'header_featured_image' ), '1', false );
 		$extend_header .=				'<input type="checkbox" name="t_em_theme_options[header_featured_image]" value="1" '. $checked_option .' />';
 		$extend_header .=				__( 'Display featured image in single posts and pages ', 't_em' );
 		$extend_header .= 			'</p>';
@@ -139,8 +135,6 @@ function t_em_slider_list_taxonomies( $slider_category = '' ){
  * Extend setting for Header Slider Option in Twenty'em admin panel.
  * Referenced via t_em_header_options().
  *
- * @global $t_em
- *
  * @since Twenty'em 1.0
  */
 function t_em_slider_callback(){
@@ -149,7 +143,7 @@ function t_em_slider_callback(){
 	$extend_slider = '';
 
 	// Show Slider only at home page?
-	$checked_option = checked( $t_em['slider_home_only'], '1', false );
+	$checked_option = checked( t_em( 'slider_home_only' ), '1', false );
 	$extend_slider .= '<div class="sub-extend option-group">';
 	$extend_slider .= 	'<header>'. __( 'Options', 't_em' ). '</header>';
 	$extend_slider .= 	'<p>';
@@ -168,12 +162,12 @@ function t_em_slider_callback(){
 	$extend_slider .= 		'<div class="layout text-option thumbnail">';
 	$extend_slider .=			'<label class="description">';
 	$extend_slider .=				'<span>'. __( 'Interval value', 't_em' ) .'</span>';
-	$extend_slider .=				'<input type="number" name="t_em_theme_options[bootstrap_carousel_interval]" value="'. $t_em['bootstrap_carousel_interval'] .'" max="'. T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE .'" min="'. T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE .'">';
+	$extend_slider .=				'<input type="number" name="t_em_theme_options[bootstrap_carousel_interval]" value="'. t_em( 'bootstrap_carousel_interval' ) .'" max="'. T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE .'" min="'. T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE .'">';
 	$extend_slider .=				'<span class="unit">mls</span>';
 	$extend_slider .=			'</label>';
 	$extend_slider .=		'</div>';
 	$extend_slider .=	'</div>';
-	$checked_option = checked( $t_em['bootstrap_carousel_pause'], '1', false );
+	$checked_option = checked( t_em( 'bootstrap_carousel_pause' ), '1', false );
 	$extend_slider .=	'<div class="sub-extend option-single">';
 	$extend_slider .=		'<p>';
 	$extend_slider .=			'<label class="description">';
@@ -182,7 +176,7 @@ function t_em_slider_callback(){
 	$extend_slider .=			'</label>';
 	$extend_slider .=		'</p>';
 	$extend_slider .=	'</div>';
-	$checked_option = checked( $t_em['bootstrap_carousel_wrap'], '1', false );
+	$checked_option = checked( t_em( 'bootstrap_carousel_wrap' ), '1', false );
 	$extend_slider .=	'<div class="sub-extend option-single">';
 	$extend_slider .=		'<p>';
 	$extend_slider .=			'<label class="description">';
@@ -199,7 +193,7 @@ function t_em_slider_callback(){
 	$extend_slider .= 	'<p>'. sprintf( __( 'By default slider width is the same than layout width. Here you may enter the value you wish to be your slider height. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: <code>%3$s</code>', 't_em' ), T_EM_SLIDER_DEFAULT_HEIGHT, T_EM_SLIDER_MAX_HEIGHT, T_EM_SLIDER_MIN_HEIGHT ).'</p>';
 	$extend_slider .= 		'<div class="layout text-option thumbnail">';
 	$extend_slider .=			'<label class="description"><span>'. __( 'Slider Height', 't_em' ) .'</span>';
-	$extend_slider .=				'<input type="number" name="t_em_theme_options[slider_height]" value="'.esc_attr( $t_em['slider_height'] ).'" max="'. T_EM_SLIDER_MAX_HEIGHT .'" min="'. T_EM_SLIDER_MIN_HEIGHT .'" /><span class="unit">px</span>';
+	$extend_slider .=				'<input type="number" name="t_em_theme_options[slider_height]" value="'.esc_attr( t_em( 'slider_height' ) ).'" max="'. T_EM_SLIDER_MAX_HEIGHT .'" min="'. T_EM_SLIDER_MIN_HEIGHT .'" /><span class="unit">px</span>';
 	$extend_slider .=			'</label>';
 	$extend_slider .=		'</div>';
 	$extend_slider .= '</div><!-- .sub-extend -->';
@@ -211,7 +205,7 @@ function t_em_slider_callback(){
 	$extend_slider .= 			'<span>'. __( 'Select the category you want to be displayed in the slider section', 't_em' ) .'</span>';
 	$extend_slider .= 			'<select name="t_em_theme_options[slider_category]">';
 	foreach ( t_em_slider_list_taxonomies() as $slider_category ) :
-		$selected_option = selected( ( isset( $t_em['slider_category'] ) ) ? $t_em['slider_category'] : get_option( 'default_category' ), $slider_category->term_id, false );
+		$selected_option = selected( ( t_em( 'slider_category' ) ) ? t_em( 'slider_category' ) : get_option( 'default_category' ), $slider_category->term_id, false );
 		$extend_slider .= 	'<option value="'.$slider_category->term_id.'" '.$selected_option.'>'.$slider_category->name.'</option>';
 	endforeach;
 	$extend_slider .= 			'</select>';
@@ -227,7 +221,7 @@ function t_em_slider_callback(){
 	$extend_slider .= 			'<span>'. sprintf( __( 'Introduce the number of slides you want to show. Default value will be <strong>%1$s</strong>, set at your <a href="%2$s" target="_blank">Reading Settings</a> posts per page option', 't_em' ),
 		get_option( 'posts_per_page' ),
 		admin_url( 'options-reading.php' ) ) .'</span>';
-	$extend_slider .= 			'<input type="number"  name="t_em_theme_options[slider_number]" value="'. esc_attr( $t_em['slider_number'] ) .'" />';
+	$extend_slider .= 			'<input type="number"  name="t_em_theme_options[slider_number]" value="'. esc_attr( t_em( 'slider_number' ) ) .'" />';
 	$extend_slider .=		'</label>';
 	$extend_slider .= 	'</div>';
 	$extend_slider .= '</div>';
@@ -273,12 +267,10 @@ function t_em_static_header_layout_options( $static_header_layout = '' ){
  * Referenced via t_em_header_options().
  */
 function t_em_static_header_callback(){
-	global $t_em;
-
 	$extend_static_header = '';
 
 	// Show Static Header only at home page?
-	$checked_option = checked( $t_em['static_header_home_only'], '1', false );
+	$checked_option = checked( t_em( 'static_header_home_only' ), '1', false );
 	$extend_static_header .= '<div class="sub-extend option-group">';
 	$extend_static_header .= 	'<header>'. __( 'Options', 't_em' ) .'</header>';
 	$extend_static_header .= 	'<p>';
@@ -293,10 +285,10 @@ function t_em_static_header_callback(){
 	$extend_static_header .= 	'<header>'. __( 'Image and Text Alignment', 't_em' ) .'</header>';
 	$extend_static_header .= 	'<div class="image-radio-option-group">';
 	foreach ( t_em_static_header_layout_options() as $static_header ) :
-		$active_option = ( $t_em['static_header_text'] == $static_header['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+		$active_option = ( t_em( 'static_header_text' ) == $static_header['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 		$extend_static_header .=	'<div class="layout image-radio-option static-header-layout '. $active_option .'">';
 		$extend_static_header .=		'<label class="description">';
-		$extend_static_header .=			'<input class="input-image-radio-option sub-radio-option" type="radio" name="t_em_theme_options[static_header_text]" value="'.esc_attr($static_header['value']).'" '. checked( $t_em['static_header_text'], $static_header['value'], false ) .' />';
+		$extend_static_header .=			'<input class="input-image-radio-option sub-radio-option" type="radio" name="t_em_theme_options[static_header_text]" value="'.esc_attr($static_header['value']).'" '. checked( t_em( 'static_header_text' ), $static_header['value'], false ) .' />';
 		$extend_static_header .=			'<span><img src="'.$static_header['thumbnail'].'" class="" /><p>'.$static_header['label'].'</p></span>';
 		$extend_static_header .=		'</label>';
 		$extend_static_header .=	'</div>';
@@ -308,32 +300,32 @@ function t_em_static_header_callback(){
 	$extend_static_header .= 	'<header>'. __( 'Headline, Content and More...', 't_em' ) .'</header>';
 	$extend_static_header .= 	'<div class="sub-layout text-option static-header">';
 	$extend_static_header .=		'<label><span>'. __( 'Headline', 't_em' ) .'</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text headline" name="t_em_theme_options[static_header_headline]" value="' . esc_textarea( $t_em['static_header_headline'] ) . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text headline" name="t_em_theme_options[static_header_headline]" value="' . esc_textarea( t_em( 'static_header_headline' ) ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .= 		'<label><span>' . sprintf( __( '<a href="%1$s" target="_blank">Image URL</a>', 't_em' ), admin_url( 'upload.php' ) ) . '</span>';
-	$extend_static_header .= 			'<input type="url" id="t-em-static-header-image-url" class="regular-text media-url" name="t_em_theme_options[static_header_img_src]" value="' . $t_em['static_header_img_src'] . '" />';
+	$extend_static_header .= 			'<input type="url" id="t-em-static-header-image-url" class="regular-text media-url" name="t_em_theme_options[static_header_img_src]" value="' . t_em( 'static_header_img_src' ) . '" />';
 	$extend_static_header .=			'<a href="#" id="t-em-button-static-header-image" class="button media-selector">'. __( 'Upload Image', 't_em' ) .'</a>';
 	$extend_static_header .= 		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Content', 't_em' ) . '</span>';
-	$extend_static_header .=			'<textarea class="large-text" name="t_em_theme_options[static_header_content]" cols="50" rows="5">' . esc_textarea( $t_em['static_header_content'] ) . '</textarea>';
+	$extend_static_header .=			'<textarea class="large-text" name="t_em_theme_options[static_header_content]" cols="50" rows="5">' . esc_textarea( t_em( 'static_header_content' ) ) . '</textarea>';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Primary button text', 't_em' ) . '</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_text]" value="' . $t_em['static_header_primary_button_text'] . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_text]" value="' . t_em( 'static_header_primary_button_text' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . sprintf( __( 'Primary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_ICON_PACK ) . '</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_icon_class]" value="' . $t_em['static_header_primary_button_icon_class'] . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_primary_button_icon_class]" value="' . t_em( 'static_header_primary_button_icon_class' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Primary button link', 't_em' ) . '</span>';
-	$extend_static_header .=			'<input type="url" class="regular-text" name="t_em_theme_options[static_header_primary_button_link]" value="' . $t_em['static_header_primary_button_link'] . '">';
+	$extend_static_header .=			'<input type="url" class="regular-text" name="t_em_theme_options[static_header_primary_button_link]" value="' . t_em( 'static_header_primary_button_link' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Secondary button text', 't_em' ) . '</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_text]" value="' . $t_em['static_header_secondary_button_text'] . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_text]" value="' . t_em( 'static_header_secondary_button_text' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . sprintf( __( 'Secondary button <a href="%1$s" target="_blank">icon class</a>', 't_em' ), T_EM_ICON_PACK ) . '</span>';
-	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_icon_class]" value="' . $t_em['static_header_secondary_button_icon_class'] . '">';
+	$extend_static_header .=			'<input type="text" class="regular-text" name="t_em_theme_options[static_header_secondary_button_icon_class]" value="' . t_em( 'static_header_secondary_button_icon_class' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .=		'<label><span>' . __( 'Secondary button link', 't_em' ) . '</span>';
-	$extend_static_header .=			'<input type="url" class="regular-text" name="t_em_theme_options[static_header_secondary_button_link]" value="' . $t_em['static_header_secondary_button_link'] . '">';
+	$extend_static_header .=			'<input type="url" class="regular-text" name="t_em_theme_options[static_header_secondary_button_link]" value="' . t_em( 'static_header_secondary_button_link' ) . '">';
 	$extend_static_header .=		'</label>';
 	$extend_static_header .= 	'</div>';
 	$extend_static_header .= '</div>';
@@ -352,13 +344,9 @@ function t_em_static_header_callback(){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
  *
- * @global $t_em.
- *
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_header_set(){
-	global $t_em;
-
 	// If any option is set to false, check the first available option from t_em_header_options()
 	$header_value = array();
 	foreach ( t_em_header_options() as $header ) :
@@ -366,7 +354,7 @@ function t_em_settings_field_header_set(){
 			array_push( $header_value, $header['value'] );
 		endif;
 	endforeach;
-	$default_checked = ( count( $header_value ) > 0 && ! in_array( $t_em['header_set'], $header_value ) ) ? $header_value[0] : null;
+	$default_checked = ( count( $header_value ) > 0 && ! in_array( t_em( 'header_set' ), $header_value ) ) ? $header_value[0] : null;
 ?>
 	<div id="header-options" class="tabs">
 		<?php do_action( 't_em_admin_action_header_options_before' ); ?>
@@ -377,10 +365,10 @@ function t_em_settings_field_header_set(){
 <?php
 				foreach ( t_em_header_options() as $header ) :
 					if ( $header['callback'] ) :
-						$active_option = ( $t_em['header_set'] == $header['value'] ) ? 'ui-tabs-active' : '';
+						$active_option = ( t_em( 'header_set' ) == $header['value'] ) ? 'ui-tabs-active' : '';
 						$checked = ( $default_checked == $header['value'] )
 										? $checked = 'checked="checked"'
-										: checked( $t_em['header_set'], $header['value'], false );
+										: checked( t_em( 'header_set' ), $header['value'], false );
 ?>
 					<li class="<?php echo $active_option ?>">
 						<a href="#<?php echo $header['value'] ?>" class="tab-heading">

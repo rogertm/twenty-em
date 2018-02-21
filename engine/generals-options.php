@@ -83,12 +83,9 @@ function t_em_general_options( $general_options = '' ){
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
  *
- * @global $t_em.
- *
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_general_options_set(){
-	global $t_em;
 ?>
 	<div id="general-options">
 <?php
@@ -97,7 +94,7 @@ function t_em_settings_field_general_options_set(){
 ?>
 		<div class="layout checkbox-option general">
 			<label class="description single-option">
-				<?php $checked_option = checked( $t_em[$general['value']], '1', false ); ?>
+				<?php $checked_option = checked( t_em( $general['value'] ), '1', false ); ?>
 				<p><input type="checkbox" name="t_em_theme_options[<?php echo $general['value'] ?>]" value="1" <?php echo $checked_option; ?> >
 				<?php echo $general['label']; ?></p>
 				<p class="description"><?php echo $general['sublabel'] ?></p>

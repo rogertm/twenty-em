@@ -124,14 +124,12 @@ function t_em_footer_options( $footer_options = '' ){
  * @since Twenty'em 1.2 	Deleted "layout_width" option
  */
 function t_em_layout_width(){
-	global $t_em;
-
 	$layout_width = '';
 	$layout_width .= '<div class="sub-extend option-group">';
 	$layout_width .= 	'<header>'. __( 'Layout Fluid', 't_em' ) .'</header>';
 	$layout_width .= 	'<div class="layout text-option layout-width">';
 	$layout_width .= 		'<label>';
-	$checked_option = checked( $t_em['layout_fluid_width'], '1', false );
+	$checked_option = checked( t_em( 'layout_fluid_width' ), '1', false );
 	$layout_width .= 			'<input type="checkbox" name="t_em_theme_options[layout_fluid_width]" value="1" '. $checked_option .' />';
 	$layout_width .= 			__( 'Use full width container, spanning the entire width of your viewport.', 't_em' );
 	$layout_width .= 		'</label>';
@@ -153,12 +151,9 @@ add_action( 't_em_admin_action_layout_options_after', 't_em_layout_width' );
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
  *
- * @global $t_em.
- *
  * @since Twenty'em 1.0
  */
 function t_em_settings_field_layout_set(){
-	global $t_em;
 ?>
 	<div id="layout-options">
 		<?php do_action( 't_em_admin_action_layout_options_before' ); ?>
@@ -167,11 +162,11 @@ function t_em_settings_field_layout_set(){
 			<div class="image-radio-option-group">
 <?php
 			foreach ( t_em_layout_options() as $layout ) :
-				$active_option = ( $t_em['layout_set'] == $layout['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+				$active_option = ( t_em( 'layout_set' ) == $layout['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 ?>
 				<div class="layout image-radio-option theme-layout <?php echo $active_option ?>">
 					<label class="description">
-						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( $t_em['layout_set'], $layout['value'] ); ?> />
+						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[layout_set]" value="<?php echo esc_attr( $layout['value'] ) ?>" <?php checked( t_em( 'layout_set' ), $layout['value'] ); ?> />
 						<span><img src="<?php echo esc_url( $layout['thumbnail'] ); ?>" alt="" /><p><?php echo $layout['label']; ?></p></span>
 					</label>
 				</div>
@@ -186,11 +181,11 @@ function t_em_settings_field_layout_set(){
 			<div class="image-radio-option-group">
 <?php
 			foreach ( t_em_footer_options() as $footer ) :
-				$active_option = ( $t_em['footer_set'] == $footer['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+				$active_option = ( t_em( 'footer_set' ) == $footer['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 ?>
 				<div class="footer image-radio-option theme-footer <?php echo $active_option ?>">
 					<label class="description">
-						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( $t_em['footer_set'], $footer['value'] ); ?> />
+						<input class="input-image-radio-option" type="radio" name="t_em_theme_options[footer_set]" value="<?php echo esc_attr( $footer['value'] ) ?>" <?php checked( t_em( 'footer_set' ), $footer['value'] ); ?> />
 						<span><img src="<?php echo esc_url( $footer['thumbnail'] ); ?>" alt="" /><p><?php echo $footer['label']; ?></p></span>
 					</label>
 				</div>

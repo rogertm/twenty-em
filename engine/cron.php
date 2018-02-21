@@ -28,16 +28,15 @@ function t_em_admin_action_schedule_maintenance_mode_event(){
 add_action( 'wp', 't_em_admin_action_schedule_maintenance_mode_event' );
 
 function t_em_maintenance_mode_do_auto_reactive(){
-	global $t_em;
-	if ( $t_em['maintenance_mode'] == 1 && $t_em['maintenance_mode_reactive'] == 1 && $t_em['maintenance_mode_timer'] != '' ) :
-		$end_date = new DateTime( $t_em['maintenance_mode_timer'] );
+	if ( t_em( 'maintenance_mode' ) == 1 && t_em( 'maintenance_mode_reactive' ) == 1 && t_em( 'maintenance_mode_timer' ) != '' ) :
+		$end_date = new DateTime( t_em( 'maintenance_mode_timer' ) );
 		$today = new DateTime( date( 'Y-m-d' ) );
 		if ( $end_date <= $today ) :
 			$maintenance_mode_off = array(
 										'maintenance_mode'			=> 0,
 										'maintenance_mode_reactive'	=> 0,
 									);
-			$update_options = array_replace( $t_em, $maintenance_mode_off );
+			$update_options = array_replace( t_em(), $maintenance_mode_off );
 			update_option( 't_em_theme_options', $update_options );
 		endif;
 	endif;

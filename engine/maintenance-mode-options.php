@@ -22,12 +22,9 @@
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
  *
- * @global $t_em.
- *
  * @since Twenty'em 1.0.1
  */
 function t_em_settings_field_maintenance_mode_set(){
-	global $t_em;
 ?>
 	<div id="maintenance-mode-options">
 		<?php do_action( 't_em_admin_action_maintenance_mode_options_before' ); ?>
@@ -36,7 +33,7 @@ function t_em_settings_field_maintenance_mode_set(){
 			<header><?php _e( 'Options', 't_em' ) ?></header>
 			<p>
 				<label class="description single-option">
-					<?php $checked_option = checked( $t_em['maintenance_mode'], '1', false ); ?>
+					<?php $checked_option = checked( t_em( 'maintenance_mode' ), '1', false ); ?>
 					<input type="checkbox" name="t_em_theme_options[maintenance_mode]" value="1" <?php echo $checked_option ?>>
 					<?php _e( 'Active the Maintenance Mode', 't_em' ) ?>
 				</label>
@@ -51,11 +48,11 @@ function t_em_settings_field_maintenance_mode_set(){
 				$date = $year + 1 .'-'. $month .'-'. $day;
 			?>
 			<p><label><span><?php printf( __( 'Enter the date your site will be available again. Format: <code>YYYY-MM-DD</code>. Example: <code>%s</code>', 't_em' ), $date ) ?></span>
-				<input id="datepicker" type="date" class="regular-text" name="t_em_theme_options[maintenance_mode_timer]" value="<?php echo $t_em['maintenance_mode_timer'] ?>" autocomplete="off" />
+				<input id="datepicker" type="date" class="regular-text" name="t_em_theme_options[maintenance_mode_timer]" value="<?php echo t_em( 'maintenance_mode_timer' ) ?>" autocomplete="off" />
 			</label></p>
 			<p>
 				<label class="description single-option">
-					<?php $checked_option = checked( $t_em['maintenance_mode_reactive'], '1', false ); ?>
+					<?php $checked_option = checked( t_em( 'maintenance_mode_reactive' ), '1', false ); ?>
 					<input type="checkbox" name="t_em_theme_options[maintenance_mode_reactive]" value="1" <?php echo $checked_option ?>>
 					<?php _e( 'Reactive automatically after the timer end date', 't_em' ) ?>
 				</label>
@@ -70,7 +67,7 @@ function t_em_settings_field_maintenance_mode_set(){
 			foreach ( $roles as $role => $name ) :
 			?>
 				<label class="description single-option">
-					<?php $checked_role = checked( $t_em[$role], '1', false ); ?>
+					<?php $checked_role = checked( t_em( $role ), '1', false ); ?>
 					<?php $disabled = ( $role == 'maintenance_mode_role_administrator' ) ? 'disabled' : null; ?>
 					<input type="checkbox" name="t_em_theme_options[<?php echo $role ?>]" value="1" <?php echo $checked_role ?> <?php echo $disabled ?>>
 					<?php echo $name ?>
@@ -84,47 +81,47 @@ function t_em_settings_field_maintenance_mode_set(){
 			<header><?php _e( 'Headline, Content and More...', 't_em' ) ?></header>
 			<p><label>
 				<span><?php _e( 'Headline', 't_em' ) ?></span>
-				<input class="regular-text headline" type="text" name="t_em_theme_options[maintenance_mode_headline]" value="<?php echo esc_textarea( $t_em['maintenance_mode_headline'] ) ?>">
+				<input class="regular-text headline" type="text" name="t_em_theme_options[maintenance_mode_headline]" value="<?php echo esc_textarea( t_em( 'maintenance_mode_headline' ) ) ?>">
 			</label></p>
 
 			<p><label>
 				<span><?php printf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_headline_icon_class]" value="<?php echo $t_em['maintenance_mode_headline_icon_class'] ?>" >
+				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_headline_icon_class]" value="<?php echo t_em( 'maintenance_mode_headline_icon_class' ) ?>" >
 			</label></p>
 
 			<p><label>
 				<span><?php _e( 'Content', 't_em' ) ?></span>
-				<textarea class="large-text" name="t_em_theme_options[maintenance_mode_content]" cols="50" rows="5"><?php echo $t_em['maintenance_mode_content'] ?></textarea>
+				<textarea class="large-text" name="t_em_theme_options[maintenance_mode_content]" cols="50" rows="5"><?php echo t_em( 'maintenance_mode_content' ) ?></textarea>
 			</label></p>
 
 			<p><label>
 				<span><?php printf( __( '<a href="%1$s" target="_blank">Thumbnail URL</a>', 't_em' ), admin_url( 'upload.php' ) ) ?></span>
-				<input id="t-em-maintenance-mode-image-url" type="url" class="regular-text media-url" name="t_em_theme_options[maintenance_mode_thumbnail_src]" value="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>">
+				<input id="t-em-maintenance-mode-image-url" type="url" class="regular-text media-url" name="t_em_theme_options[maintenance_mode_thumbnail_src]" value="<?php echo t_em( 'maintenance_mode_thumbnail_src' ) ?>">
 				<a href="#" id="t-em-button-maintenance-mode-image" class="button media-selector"><?php _e( 'Upload Image', 't_em' ) ?></a>
 			</label></p>
 
 			<p><label><span><?php _e( 'Primary button text', 't_em' ) ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_text]" value="<?php echo $t_em['maintenance_mode_primary_button_text'] ?>" />
+				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_text]" value="<?php echo t_em( 'maintenance_mode_primary_button_text' ) ?>" />
 			</label></p>
 
 			<p><label><span><?php printf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_icon_class]" value="<?php echo $t_em['maintenance_mode_primary_button_icon_class'] ?>" />
+				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_icon_class]" value="<?php echo t_em( 'maintenance_mode_primary_button_icon_class' ) ?>" />
 			</label></p>
 
 			<p><label><span><?php _e( 'Primary button link', 't_em' ) ?></span>
-				<input type="url" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_link]" value="<?php echo $t_em['maintenance_mode_primary_button_link'] ?>" />
+				<input type="url" class="regular-text" name="t_em_theme_options[maintenance_mode_primary_button_link]" value="<?php echo t_em( 'maintenance_mode_primary_button_link' ) ?>" />
 			</label></p>
 
 			<p><label><span><?php _e( 'Secondary button text', 't_em' ) ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_text]" value="<?php echo $t_em['maintenance_mode_secondary_button_text'] ?>" />
+				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_text]" value="<?php echo t_em( 'maintenance_mode_secondary_button_text' ) ?>" />
 			</label></p>
 
 			<p><label><span><?php printf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
-				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_icon_class]" value="<?php echo $t_em['maintenance_mode_secondary_button_icon_class'] ?>" />
+				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_icon_class]" value="<?php echo t_em( 'maintenance_mode_secondary_button_icon_class' ) ?>" />
 			</label></p>
 
 			<p><label><span><?php _e( 'Secondary button link', 't_em' ) ?></span>
-				<input type="url" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_link]" value="<?php echo $t_em['maintenance_mode_secondary_button_link'] ?>" />
+				<input type="url" class="regular-text" name="t_em_theme_options[maintenance_mode_secondary_button_link]" value="<?php echo t_em( 'maintenance_mode_secondary_button_link' ) ?>" />
 			</label></p>
 		</div>
 		<div class="sub-extend option-group text-option">
@@ -132,7 +129,7 @@ function t_em_settings_field_maintenance_mode_set(){
 			<?php
 				$default_options = t_em_default_theme_options();
 				$title_tag = $default_options['maintenance_mode_title_tag'];
-				$the_title_tag = ( ! empty( $t_em['maintenance_mode_title_tag'] ) ? $t_em['maintenance_mode_title_tag'] : $title_tag );
+				$the_title_tag = ( ! empty( t_em( 'maintenance_mode_title_tag' ) ) ? t_em( 'maintenance_mode_title_tag' ) : $title_tag );
 			?>
 			<p><label><span><?php printf( __( 'Enter the text for the <code>&lt;title&gt;... &lt;/title&gt;</code> tag. Default: <strong>%s</strong>', 't_em' ), $title_tag ) ?></span>
 				<input type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_title_tag]" value="<?php echo $the_title_tag ?>" />
@@ -169,11 +166,10 @@ function t_em_maintenance_mode_roles(){
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_role_active(){
-	global $t_em;
 	$roles = t_em_maintenance_mode_roles();
 	$role_active = array();
 	foreach ( $roles as $key => $value ) :
-		if ( $t_em[$key] == 1 ) :
+		if ( t_em( $key ) == 1 ) :
 			$role = str_replace( 'maintenance_mode_role_', '', $key );
 			$role_active = array_merge( $role_active, array( $role ) );
 		endif;
@@ -184,18 +180,15 @@ function t_em_maintenance_mode_role_active(){
 /**
  * Load the Maintenance Mode template file before any other template file
  *
- * @global $t_em
- *
  * @since Twenty'em 1.0.1
  */
 function t_em_load_maintenance_mode_template( $template = '' ){
-	global $t_em;
 	// Check if the current user can see the site
 	$current_user = wp_get_current_user();
 	$user_can = array_intersect( t_em_maintenance_mode_role_active(), $current_user->roles );
 
 	$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
-	if ( $t_em['maintenance_mode'] == 1 && (
+	if ( t_em( 'maintenance_mode' ) == 1 && (
 				! is_user_logged_in() ||
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
@@ -231,19 +224,18 @@ add_action( 'comments_popup', 't_em_load_maintenance_mode_template' );
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_title_tag( $title ){
-	global $t_em;
 	// Check if the current user can see the site
 	$current_user = wp_get_current_user();
 	$user_can = array_intersect( t_em_maintenance_mode_role_active(), $current_user->roles );
 
 	$sep = apply_filters( 'document_title_separator', '-' );
 	$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
-	if ( $t_em['maintenance_mode'] == 1 && (
+	if ( t_em( 'maintenance_mode' ) == 1 && (
 				! is_user_logged_in() ||
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
 			) ) :
-		$title = $t_em['maintenance_mode_title_tag'] . " $sep " . get_bloginfo( 'name' );
+		$title = t_em( 'maintenance_mode_title_tag' ) . " $sep " . get_bloginfo( 'name' );
 	endif;
 	return $title;
 }
@@ -276,7 +268,6 @@ add_filter( 't_em_admin_filter_default_theme_options', 't_em_maintenance_mode_de
  */
 function t_em_maintenance_mode_options_validate( $input ){
 	if ( $input != null ) :
-		global $t_em;
 		// All the checkbox are either 0 or 1
 		$user_roles = t_em_maintenance_mode_roles();
 		foreach ( $user_roles as $key => $value ) :

@@ -17,6 +17,8 @@
  * Silents is gold... But we call the others
  */
 require_once( get_template_directory() . '/engine/constants.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/functions.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/deprecated.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/theme-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/generals-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/header-options.php' );

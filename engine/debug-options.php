@@ -17,8 +17,7 @@
  * If WP_DEBUG is set to true, show debug information for the user
  */
 function t_em_register_debug_init(){
-	global $t_em;
-	if ( WP_DEBUG || $t_em['show_debug_panel'] ) :
+	if ( WP_DEBUG || t_em( 'show_debug_panel' ) ) :
 		add_settings_field( 't_em_debug_info', __( 'Debug Information', 't_em' ), 't_em_settings_field_debug_set', 'twenty-em-options', 'twenty-em-section' );
 	endif;
 }
