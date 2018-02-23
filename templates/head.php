@@ -40,7 +40,7 @@ add_action( 'admin_head', 't_em_favicon' );
  * @since Twenty'em 1.0
  */
 function t_em_theme_metadata(){
-	global $t_em_theme_data;
+	$t_em_theme = t_em_theme();
 	printf( __( '<!-- This site uses %1$s WordPress theme/framework v%2$s %3$s - %4$s -->', 't_em' ),
 				T_EM_FRAMEWORK_NAME,
 				T_EM_FRAMEWORK_VERSION,
@@ -48,12 +48,12 @@ function t_em_theme_metadata(){
 				T_EM_SITE ); echo "\n";
 	echo '<meta name="framework-name" content="' . T_EM_FRAMEWORK_NAME . '">' . "\n";
 	echo '<meta name="framework-version" content="' . T_EM_FRAMEWORK_VERSION . ' ' . T_EM_FRAMEWORK_VERSION_STATUS . '">' . "\n";
-	echo '<meta name="theme-name" content="' . $t_em_theme_data['Name'] . '">' . "\n";
-	echo '<meta name="theme-version" content="' . $t_em_theme_data['Version'] . '">' . "\n";
-	echo '<meta name="theme-uri" content="' . $t_em_theme_data['ThemeURI'] . '">' . "\n";
-	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme_data['Author'] ) . '">' . "\n";
-	echo '<meta name="theme-description" content="' . $t_em_theme_data['Description'] . '">' . "\n";
-	echo '<meta name="theme-tags" content="' . $t_em_theme_data['Tags'] . '">' . "\n";
+	echo '<meta name="theme-name" content="' . $t_em_theme['Name'] . '">' . "\n";
+	echo '<meta name="theme-version" content="' . $t_em_theme['Version'] . '">' . "\n";
+	echo '<meta name="theme-uri" content="' . $t_em_theme['ThemeURI'] . '">' . "\n";
+	echo '<meta name="theme-author" content="' . strip_tags( $t_em_theme['Author'] ) . '">' . "\n";
+	echo '<meta name="theme-description" content="' . $t_em_theme['Description'] . '">' . "\n";
+	echo '<meta name="theme-tags" content="' . $t_em_theme['Tags'] . '">' . "\n";
 	printf( __( '<!-- / %1$s WordPress theme/framework -->', 't_em' ), T_EM_FRAMEWORK_NAME ); echo "\n";
 }
 add_action( 'wp_head', 't_em_theme_metadata' );

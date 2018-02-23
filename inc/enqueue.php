@@ -23,16 +23,14 @@
  * Register Style Sheet and Javascript to beautify the Twenty'em theme
  */
 function t_em_enqueue_styles_and_scripts(){
-	global $t_em_theme_data;
-
 	// Dequeue old jQuery
 	wp_deregister_script('jquery');
 	// Enqueue jQuery 3.0.0 to support Bootstrap jQuery plugins
-	wp_register_script( 'jquery', t_em_get_js( 'jquery' ), array(), $t_em_theme_data['Version'], true );
+	wp_register_script( 'jquery', t_em_get_js( 'jquery' ), array(), t_em_theme( 'Version' ), true );
 	wp_enqueue_script( 'jquery' );
 
 	// Load default style sheet style.css
-	wp_register_style( 'twenty-em-style', t_em_get_css( 'theme' ), '', $t_em_theme_data['Version'], 'all' );
+	wp_register_style( 'twenty-em-style', t_em_get_css( 'theme' ), '', t_em_theme( 'Version' ), 'all' );
 	wp_enqueue_style( 'twenty-em-style' );
 
 	/**
@@ -65,11 +63,11 @@ function t_em_enqueue_styles_and_scripts(){
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
 			) ) :
-		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), $t_em_theme_data['Version'], true );
+		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
 		wp_enqueue_script( 'countdown' );
 	endif;
 
-	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), $t_em_theme_data['Version'], true );
+	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
 	wp_enqueue_script( 'app-utils' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );

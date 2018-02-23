@@ -32,6 +32,34 @@ function t_em( $option = null ){
 }
 
 /**
+ * Get the Theme's headers
+ * @param $header string 	Style sheet header.
+ * 							Name, Description, Author, Version, ThemeURI, AuthorURI, Status, Tags, Template, TextDomain, DomainPath
+ * @return string|array		Value of the given header or array if $header is not set.
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_theme( $header = null ){
+	if ( $header )
+		$theme = wp_get_theme()->display( $header );
+	else
+		$theme = array(
+			'Name'			=> wp_get_theme()->display( 'Name' ),
+			'ThemeURI'		=> esc_url( wp_get_theme()->display( 'ThemeURI' ) ),
+			'Description'	=> wp_get_theme()->display( 'Description' ),
+			'Author'		=> wp_get_theme()->display( 'Author' ),
+			'AuthorURI'		=> esc_url( wp_get_theme()->display( 'AuthorURI' ) ),
+			'Version'		=> wp_get_theme()->display( 'Version' ),
+			'Template'		=> wp_get_theme()->display( 'Template' ),
+			'Status'		=> wp_get_theme()->display( 'Status' ),
+			'Tags'			=> wp_get_theme()->display( 'Tags' ),
+			'TextDomain'	=> wp_get_theme()->display( 'TextDomain' ),
+			'DomainPath'	=> wp_get_theme()->display( 'DomainPath' ),
+		);
+	return $theme;
+}
+
+/**
  * Register Data Base version
  *
  * @since Twenty'em N/A
@@ -80,7 +108,6 @@ add_action( 'wp', 't_em_restore_from_scratch' );
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
 		// Generals Options
-		'foo'									=> '1',
 		't_em_credit'									=> '1',
 		'single_featured_img'							=> '1',
 		'single_related_posts'							=> '1',

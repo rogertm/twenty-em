@@ -23,14 +23,14 @@
  * @since Twenty'em 1.0
  */
 function t_em_theme_options_help(){
-	global $t_em_theme_data;
+	$t_em_theme = t_em_theme();
 
 	$screen = get_current_screen();
 
 	$overview_help =	'<p>' . sprintf( __( '<strong><a href="%1$s" title="%2$s Framework">%2$s Framework</a></strong> provide customization options that are grouped together on this Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, <strong>%3$s</strong>, provides the following options:', 't_em' ),
 					T_EM_SITE,
 					T_EM_FRAMEWORK_NAME,
-					$t_em_theme_data['Name'] ) . '</p>'.
+					$t_em_theme['Name'] ) . '</p>'.
 			'<ul>' .
 				'<li>' . __( '<strong>General Options</strong>: Default Values: All.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Header Options</strong>: Default Values: No header.', 't_em' ) . '</li>' .
@@ -167,8 +167,8 @@ function t_em_theme_options_help(){
 						'<li>' . sprintf( __( '<strong>Framework Version</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Status</strong>: <code>%s</code>', 't_em' ), T_EM_FRAMEWORK_VERSION_STATUS ) . '</li>' .
 						'<li>' . sprintf( __( '<strong>Data Base Version</strong>: <code>%s</code>', 't_em' ), T_EM_DB_VERSION ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Current Theme</strong>: <code>%s</code>', 't_em' ), $t_em_theme_data['Name'] ) . '</li>' .
-						'<li>' . sprintf( __( '<strong>Theme Version</strong>: <code>%s</code>', 't_em' ), $t_em_theme_data['Version'] ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Current Theme</strong>: <code>%s</code>', 't_em' ), $t_em_theme['Name'] ) . '</li>' .
+						'<li>' . sprintf( __( '<strong>Theme Version</strong>: <code>%s</code>', 't_em' ), $t_em_theme['Version'] ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(

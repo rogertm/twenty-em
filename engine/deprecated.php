@@ -33,17 +33,5 @@ $t_em = t_em();
  * $t_em_theme_data is deprecated since Twenty'em 1.3
  * @deprecated 1.3
  */
-$t_em_theme_data = array(
-	'Name'			=> wp_get_theme()->display( 'Name' ),
-	'ThemeURI'		=> esc_url( wp_get_theme()->display( 'ThemeURI' ) ),
-	'Description'	=> wp_get_theme()->display( 'Description' ),
-	'Author'		=> wp_get_theme()->display( 'Author' ),
-	'AuthorURI'		=> esc_url( wp_get_theme()->display( 'AuthorURI' ) ),
-	'Version'		=> wp_get_theme()->display( 'Version' ),
-	'Template'		=> wp_get_theme()->display( 'Template' ),
-	'Status'		=> wp_get_theme()->display( 'Status' ),
-	'Tags'			=> wp_get_theme()->display( 'Tags' ),
-	'TextDomain'	=> wp_get_theme()->display( 'TextDomain' ),
-	'DomainPath'	=> wp_get_theme()->display( 'DomainPath' ),
-);
+$t_em_theme_data = t_em_theme();
 ?>

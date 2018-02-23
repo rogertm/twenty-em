@@ -30,7 +30,6 @@
  * @since Twenty'em 1.0
  */
 function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = '', $deps = array(), $util = true, $in_footer = true ){
-	global $t_em_theme_data;
 	$deps = array_merge( $deps, array( 'jquery' ) );
 
 	if ( WP_DEBUG ) :
@@ -43,13 +42,13 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
 
 	if ( $util ) :
 		array_push( $deps, $util );
-		wp_register_script( $util, T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/'. $util, array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+		wp_register_script( $util, T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/'. $util, array( 'jquery' ), t_em_theme( 'Version' ), $in_footer );
 	endif;
 
-	wp_register_script( $handle, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/'. $handle, $deps, $t_em_theme_data['Version'], $in_footer );
+	wp_register_script( $handle, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/'. $handle, $deps, t_em_theme( 'Version' ), $in_footer );
 	wp_enqueue_script( $handle );
 	if ( $script ) :
-		wp_register_script( $script, $script_src, array( 'jquery' ), $t_em_theme_data['Version'], $in_footer );
+		wp_register_script( $script, $script_src, array( 'jquery' ), t_em_theme( 'Version' ), $in_footer );
 		wp_enqueue_script( $script );
 	endif;
 }

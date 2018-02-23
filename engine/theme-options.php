@@ -52,23 +52,19 @@ add_action( 'admin_init', 't_em_register_setting_options_init' );
 
 /**
  * Register Style Sheet and Javascript to beautify the admin option page.
- * This function is attached ti the admin_init() action hook, but just if we are in the right place.
- *
- * @global $t_em_theme_data See t_em_theme_data()
  *
  * @since Twenty'em 1.0
  */
-function t_em_admin_styles_and_scripts(){
+function t_em_admin_enqueue(){
 	$screen = get_current_screen();
 	if ( $screen->id == 'toplevel_page_twenty-em-options' ):
 		// Check the theme version right from the style sheet
-		global $t_em_theme_data;
-		wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, $t_em_theme_data['Version'], 'all' );
+		wp_register_style( 'style-admin-t-em', T_EM_ENGINE_DIR_CSS_URL . '/theme-options.css', false, t_em_theme( 'Version' ), 'all' );
 		wp_enqueue_style( 'style-admin-t-em' );
 		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-datepicker' );
-		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), $t_em_theme_data['Version'], true );
+		wp_register_script( 'script-admin-t-em', T_EM_ENGINE_DIR_JS_URL . '/theme-options.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-ui-datepicker' ), t_em_theme( 'Version' ), true );
 		// L10n for theme-options.js
 		$l10n = array(
 			'upm_title'		=> __( 'Select Image', 't_em' ),
@@ -80,23 +76,15 @@ function t_em_admin_styles_and_scripts(){
 		wp_enqueue_style( 'media' );
 	endif;
 }
-add_action( 'admin_enqueue_scripts', 't_em_admin_styles_and_scripts' );
+add_action( 'admin_enqueue_scripts', 't_em_admin_enqueue' );
 
 /**
  * Add our theme options page to the admin menu, including some help documentation.
  * This function is attached to the admin_menu() action hook.
  *
- * @uses add_menu_page() Add a top level menu page.
- * @uses add_submenu_page() Add a sub menu page.
- * @uses $t_em_theme_data See t_em_theme_data().
- *
- * @link http://codex.wordpress.org/Administration_Menus
- *
  * @since Twenty'em 1.0
  */
 function t_em_theme_options_admin_page(){
-	global $t_em_theme_data;
-
 	$svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="fill:#82878c" viewBox="0 0 32 32"><title>twenty-em</title><path d="M29.7 23.6h-8.3l-6.4-11.1v-12.5h-12.7v12.6h12.5l6.5 11.2v8.2h8.4z"></path></svg>';
 	$svg = 'data:image/svg+xml;base64,' . base64_encode( $svg );
 

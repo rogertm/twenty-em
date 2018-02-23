@@ -69,7 +69,7 @@ function t_em_debug_options(){
  * @since Twenty'em 1.2
  */
 function t_em_debug_theme_data_callback(){
-	global $t_em_theme_data;
+	$t_em_theme = t_em_theme();
 
 	$output = '<div class="sub-extend option-group">';
 	// Theme Data
@@ -82,15 +82,15 @@ function t_em_debug_theme_data_callback(){
 	$output .=		'<dt>'. __( 'Data Base Version:', 't_em' ) .'</dt>';
 	$output .=		'<dd>'. T_EM_DB_VERSION .'</dd>';
 	$output .=		'<dt>'. __( 'Current Theme:', 't_em' ) .'</dt>';
-	$output .=		'<dd>'. $t_em_theme_data['Name'] .' '. $t_em_theme_data['Version'] .'</dd>';
+	$output .=		'<dd>'. $t_em_theme['Name'] .' '. $t_em_theme['Version'] .'</dd>';
 	$output .=		'<dt>'. __( 'Theme URI:', 't_em' ) .'</dt>';
-	$output .=		'<dd>'. $t_em_theme_data['ThemeURI'] .'</dd>';
+	$output .=		'<dd>'. $t_em_theme['ThemeURI'] .'</dd>';
 	$output .=		'<dt>'. __( 'Theme Author:', 't_em' ) .'</dt>';
-	$output .=		'<dd>'. $t_em_theme_data['Author'] .'</dd>';
+	$output .=		'<dd>'. $t_em_theme['Author'] .'</dd>';
 	$output .=		'<dt>'. __( 'Theme Tags:', 't_em' ) .'</dt>';
-	$output .=		'<dd>'. $t_em_theme_data['Tags'] .'</dd>';
+	$output .=		'<dd>'. $t_em_theme['Tags'] .'</dd>';
 	$output .=		'<dt>'. __( 'Theme Text Domain:', 't_em' ) .'</dt>';
-	$output .=		'<dd>'. $t_em_theme_data['TextDomain'] .'</dd>';
+	$output .=		'<dd>'. $t_em_theme['TextDomain'] .'</dd>';
 	$output .= '</dl>';
 
 	// CONSTANTS
@@ -229,7 +229,8 @@ function t_em_debug_default_setting_callback(){
  * @since Twenty'em 1.2
  */
 function t_em_debug_system_info_callback(){
-	global $t_em_theme_data, $wpdb;
+	global $wpdb;
+	$t_em_theme = t_em_theme();
 
 	$output = '<div class="sub-extend option-group">';
 	// Site Info
@@ -261,7 +262,7 @@ function t_em_debug_system_info_callback(){
 
 	// WordPress Configuration
 	$locale = get_locale();
-	$parent_theme = $t_em_theme_data['Template'];
+	$parent_theme = $t_em_theme['Template'];
 	if ( ! empty( $parent_theme ) ) :
 		$parent_theme_data	= wp_get_theme( $parent_theme );
 		$parent_theme 		= $parent_theme_data->Name . ' ' . $parent_theme_data->Version;
@@ -278,7 +279,7 @@ function t_em_debug_system_info_callback(){
 	$output .=	'<dt>'. __( 'Permalink Structure:', 't_em' ) .'</dt>';
 	$output .=	'<dd>'. ( get_option( 'permalink_structure' ) ? get_option( 'permalink_structure' ) : __( 'Default', 't_em' ) ) .'</dd>';
 	$output .=	'<dt>'. __( 'Active Theme:', 't_em' ) .'</dt>';
-	$output .=	'<dd>'. $t_em_theme_data['Name'] .' '. $t_em_theme_data['Version'] .'</dd>';
+	$output .=	'<dd>'. $t_em_theme['Name'] .' '. $t_em_theme['Version'] .'</dd>';
 	$output .=	'<dt>'. __( 'Parent Theme:', 't_em' ) .'</dt>';
 	$output .=	'<dd>'. $parent_theme .'</dd>';
 	$output .=	'<dt>'. __( 'Show On Front:', 't_em' ) .'</dt>';

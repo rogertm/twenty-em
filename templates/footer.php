@@ -36,7 +36,7 @@ add_action( 't_em_action_site_info_left', 't_em_copy_right' );
  * the t_em_action_site_info action hook.
  */
 function t_em_credit(){
-	global $t_em_theme_data;
+	$t_em_theme = t_em_theme();
 	if ( '1' == t_em( 't_em_credit' ) ) :
 ?>
 	<div id="twenty-em-credit" class="text-center">
@@ -48,10 +48,10 @@ function t_em_credit(){
 		T_EM_SITE,
 		'Theming is Prose',
 		T_EM_FRAMEWORK_NAME,
-		$t_em_theme_data['ThemeURI'],
-		$t_em_theme_data['Version'],
-		$t_em_theme_data['Name'],
-		$t_em_theme_data['Author']
+		$t_em_theme['ThemeURI'],
+		$t_em_theme['Version'],
+		$t_em_theme['Name'],
+		$t_em_theme['Author']
 	);
 ?>
 	</div>
