@@ -27,9 +27,9 @@ function t_em_front_page_widgets(){
 	if ( 'widgets-front-page' == t_em( 'front_page_set' ) ) : ?>
 		<section id="featured-widget-area" class="<?php echo t_em( 'text_widget_template' ) ?>">
 			<div class="row">
-				<?php t_em_action_custom_front_page_inside_before(); ?>
+				<?php do_action( 't_em_action_custom_front_page_inside_before' ); ?>
 				<?php get_template_part( '/template-parts/front', t_em( 'text_widget_template' ) ) ?>
-				<?php t_em_action_custom_front_page_inside_after(); ?>
+				<?php do_action( 't_em_action_custom_front_page_inside_after' ); ?>
 			</div>
 		</section><!-- #featured-widget-area -->
 <?php

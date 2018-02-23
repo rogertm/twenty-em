@@ -27,13 +27,13 @@ if ( in_array( t_em( 'layout_set' ), array(
 	if ( ! is_active_sidebar( 'sidebar-alt' ) ) return;
 ?>
 	<section id="sidebar-alt" role="complementary" <?php t_em_breakpoint( 'sidebar-alt' ); ?>>
-		<?php t_em_action_sidebar_alt_before(); ?>
+		<?php do_action( 't_em_action_sidebar_alt_before' ); ?>
 <?php
 		if ( is_active_sidebar( 'sidebar-alt' ) ) :
 			dynamic_sidebar( 'sidebar-alt' );
 		endif;
 ?>
-		<?php t_em_action_sidebar_alt_after(); ?>
+		<?php do_action( 't_em_action_sidebar_alt_after' ); ?>
 	</section><!-- #sidebar-alt -->
 <?php
 endif;

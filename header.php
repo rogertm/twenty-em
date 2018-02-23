@@ -26,13 +26,13 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<?php t_em_action_top(); ?>
+	<?php do_action( 't_em_action_top' ); ?>
 <div id="wrap" class="hfeed">
-	<?php t_em_action_header_before(); ?>
+	<?php do_action( 't_em_action_header_before' ); ?>
 	<header id="header" role="banner">
-		<?php t_em_action_header() ?>
+		<?php do_action( 't_em_action_header' ) ?>
 	</header><!-- #header -->
-	<?php t_em_action_header_after(); ?>
+	<?php do_action( 't_em_action_header_after' ); ?>
 	<div id="main" class="my-5">
-		<?php t_em_action_main_before(); ?>
+		<?php do_action( 't_em_action_main_before' ); ?>
 		<div id="inner-main" class="<?php t_em_container(); ?>">

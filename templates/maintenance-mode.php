@@ -26,7 +26,7 @@ if ( ! function_exists( 't_em_maintenance_mode_area' ) ) :
 function t_em_maintenance_mode_area(){
 ?>
 	<section id="maintenance-mode" class="jumbotron my-5">
-	<?php t_em_action_maintenance_mode_inside_before(); ?>
+	<?php do_action( 't_em_action_maintenance_mode_inside_before' ); ?>
 	<?php if ( t_em( 'maintenance_mode_thumbnail_src' ) ) : ?>
 		<img src="<?php echo t_em( 'maintenance_mode_thumbnail_src' ) ?>" class="maintenance-mode-thumbnail mb-5" alt="<?php echo sanitize_text_field( t_em( 'maintenance_mode_headline' ) ) ?>">
 	<?php endif; ?>
@@ -63,7 +63,7 @@ function t_em_maintenance_mode_area(){
 		endif;
 		echo $footer;
 	?>
-	<?php t_em_action_maintenance_mode_inside_after(); ?>
+	<?php do_action( 't_em_action_maintenance_mode_inside_after' ); ?>
 	</section>
 <?php
 }

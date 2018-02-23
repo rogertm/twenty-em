@@ -17,7 +17,7 @@
 if ( ! function_exists( 't_em_top_menu' ) ) :
 /**
  * Pluggable Function: Top menu.
- * This function is attached to the t_em_action_header_before() action hook
+ * This function is attached to the do_action( 't_em_action_header_before' ) action hook
  */
 function t_em_top_menu(){
 	require_once( T_EM_THEME_DIR_INC_PATH .'/class-navwalker.php' );
@@ -129,7 +129,7 @@ add_action( 't_em_action_header_after', 't_em_navigation_menu' );
 if ( ! function_exists( 't_em_footer_menu' ) ) :
 /**
  * Pluggable Function: The Footer Menu, if it's active by the user we display it, else, we get nothing
- * This function is attached to the t_em_action_site_info_right() action hook
+ * This function is attached to the do_action( 't_em_action_site_info_right' ) action hook
  */
 function t_em_footer_menu(){
 if ( has_nav_menu( 'footer-menu' ) ) :
@@ -184,7 +184,7 @@ add_action( 't_em_action_post_after', 't_em_single_navigation', 5 );
 if ( ! function_exists( 't_em_page_navi' ) ) :
 /**
  * Pluggable Function: Display navigation to next/previous pages when applicable.
- * This function is attached to the t_em_action_content_after() action hook
+ * This function is attached to the do_action( 't_em_action_content_after' ) action hook
  * @param object $the_query 	Default to $wp_query object.
  *
  * @since Twenty'em 1.0

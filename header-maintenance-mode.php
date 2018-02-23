@@ -26,13 +26,13 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<?php t_em_action_maintenance_mode_top(); ?>
+	<?php do_action( 't_em_action_maintenance_mode_top' ); ?>
 <div id="wrap" class="hfeed">
-	<?php t_em_action_maintenance_mode_header_before(); ?>
+	<?php do_action( 't_em_action_maintenance_mode_header_before' ); ?>
 
-	<?php t_em_action_maintenance_mode_header_after(); ?>
+	<?php do_action( 't_em_action_maintenance_mode_header_after' ); ?>
 
 	<div id="main">
-		<?php t_em_action_maintenance_mode_main_before(); ?>
+		<?php do_action( 't_em_action_maintenance_mode_main_before' ); ?>
 		<div id="inner-main" class="<?php t_em_container(); ?>">
 

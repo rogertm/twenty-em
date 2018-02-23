@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<section id="main-content" <?php t_em_breakpoint( 'main-content' ); ?>>
 			<section id="content" role="main" <?php t_em_breakpoint( 'content' ); ?>>
-				<?php t_em_action_content_before(); ?>
+				<?php do_action( 't_em_action_content_before' ); ?>
 				<?php
 				// Query for Custom Loop
 				$args = array( 'post_type' => 'post',
@@ -35,13 +35,13 @@ get_header(); ?>
 				if ( $the_query->have_posts() ) :
 					while ( $the_query->have_posts() ) : $the_query->the_post();
 				?>
-						<?php t_em_action_post_before(); ?>
+						<?php do_action( 't_em_action_post_before' ); ?>
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<?php t_em_action_post_inside_before(); ?>
+							<?php do_action( 't_em_action_post_inside_before' ); ?>
 							<header>
 								<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 								<div class="entry-meta entry-meta-header mb-3">
-									<?php t_em_action_entry_meta_header() ?>
+									<?php do_action( 't_em_action_entry_meta_header' ) ?>
 								</div><!-- .entry-meta -->
 							</header>
 
@@ -50,11 +50,11 @@ get_header(); ?>
 							</div><!-- .entry-content -->
 
 							<footer class="entry-meta entry-meta-footer mb-3">
-								<?php t_em_action_entry_meta_footer(); ?>
+								<?php do_action( 't_em_action_entry_meta_footer' ); ?>
 							</footer><!-- .entry-meta .entry-meta-footer -->
-							<?php t_em_action_post_inside_after(); ?>
+							<?php do_action( 't_em_action_post_inside_after' ); ?>
 						</article><!-- #post-## -->
-						<?php t_em_action_post_after(); ?>
+						<?php do_action( 't_em_action_post_after' ); ?>
 				<?php
 					endwhile;
 				else :
@@ -63,7 +63,7 @@ get_header(); ?>
 				wp_reset_postdata();
 				t_em_page_navi( $the_query );
 				?>
-				<?php t_em_action_content_after(); ?>
+				<?php do_action( 't_em_action_content_after' ); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 			<?php get_sidebar( 'alt' ); ?>

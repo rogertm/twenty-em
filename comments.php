@@ -36,11 +36,11 @@ endif;
 
 			if ( ! empty( $comments_by_type['comment'] ) ) : ?>
 				<div id="comment-count" class="lead mb-1"><?php printf( _n( '1 Comment', '%1$s Comments', count( $wp_query->comments_by_type['comment'] ), 't_em' ), count( $wp_query->comments_by_type['comment'] ) ) ?></div>
-				<?php t_em_action_comments_list_before(); ?>
+				<?php do_action( 't_em_action_comments_list_before' ); ?>
 				<ol class="commentlist list-unstyled">
 					<?php wp_list_comments( array( 'style' => 'ol', 'type' => 'comment', 'callback' => 't_em_comment' ) ); ?>
 				</ol>
-				<?php t_em_action_comments_list_after(); ?>
+				<?php do_action( 't_em_action_comments_list_after' ); ?>
 <?php 		else : // If there are no responds type comments ?>
 				<div id="comment-count" class="lead mb-1"><?php _e('No Comments', 't_em'); ?></div>
 <?php 		endif; // !empty($comments_by_type['comment']) ?>
@@ -56,11 +56,11 @@ endif;
 				<?php endif; ?>
 <?php 	else : // ( '0' == t_em( 'separate_comments_pings_tracks' ) ) :
 
-			t_em_action_comments_list_before(); ?>
+			do_action( 't_em_action_comments_list_before' ); ?>
 			<ol class="commentlist list-unstyled">
 			<?php wp_list_comments( array( 'style' => 'ol', 'callback' => 't_em_comment_all' ) ); ?>
 			</ol>
-<?php 		t_em_action_comments_list_after();
+<?php 		do_action( 't_em_action_comments_list_after' );
 
 		endif; // '1' == t_em( 'separate_comments_pings_tracks' )
 

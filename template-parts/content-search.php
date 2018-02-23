@@ -17,21 +17,21 @@
  * The default template for displaying content search results
  */
 ?>
-		<?php t_em_action_post_before(); ?>
+		<?php do_action( 't_em_action_post_before' ); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'media' ); ?>>
-			<?php t_em_action_post_inside_before(); ?>
+			<?php do_action( 't_em_action_post_inside_before' ); ?>
 			<div class="media-body">
 				<header>
 					<h2 class="entry-title mt-0"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 					<div class="entry-meta entry-meta-header mb-3">
-						<?php t_em_action_entry_meta_header() ?>
+						<?php do_action( 't_em_action_entry_meta_header' ) ?>
 					</div><!-- .entry-meta -->
 				</header>
 				<?php the_excerpt(); ?>
 				<footer class="entry-meta entry-meta-footer mb-3">
-					<?php t_em_action_entry_meta_footer(); ?>
+					<?php do_action( 't_em_action_entry_meta_footer' ); ?>
 				</footer><!-- .entry-meta .entry-meta-footer -->
-				<?php t_em_action_post_inside_after(); ?>
+				<?php do_action( 't_em_action_post_inside_after' ); ?>
 			</div>
 		</article><!-- #post-## -->
-		<?php t_em_action_post_after(); ?>
+		<?php do_action( 't_em_action_post_after' ); ?>

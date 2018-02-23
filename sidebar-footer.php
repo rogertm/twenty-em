@@ -19,7 +19,7 @@
 ?>
 
 		<div id="colophon" class="py-5">
-		<?php t_em_action_colophon_before(); ?>
+		<?php do_action( 't_em_action_colophon_before' ); ?>
 		<?php
 			/* The footer widget area is triggered if any of the areas
 			 * have widgets. So let's check that first.
@@ -37,7 +37,7 @@
 		?>
 			<section id="footer-widget-area" class="<?php t_em_container(); ?>" role="complementary">
 				<div class="row widget-area">
-				<?php t_em_action_sidebar_footer_before(); ?>
+				<?php do_action( 't_em_action_sidebar_footer_before' ); ?>
 
 			<?php if ( is_active_sidebar( 'first-footer-widget-area' )
 					&& 'no-footer-widget' != t_em( 'footer_set' ) ) : ?>
@@ -69,10 +69,10 @@
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
 					</aside><!-- #fourth .widget-area -->
 			<?php endif; ?>
-				<?php t_em_action_sidebar_footer_after(); ?>
+				<?php do_action( 't_em_action_sidebar_footer_after' ); ?>
 				</div><!-- .row .widget-area -->
 			</section><!-- #footer-widget-area .wrapper .container -->
 
 		<?php endif; // If there is any sidebar active ?>
-		<?php t_em_action_colophon_after(); ?>
+		<?php do_action( 't_em_action_colophon_after' ); ?>
 		</div><!-- #colophon -->

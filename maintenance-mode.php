@@ -23,9 +23,9 @@
 get_header( 'maintenance-mode' ); ?>
 			<section id="main-content" <?php t_em_breakpoint( 'one-column' ); ?>>
 				<section id="content" role="main" <?php t_em_breakpoint( 'one-column' ); ?>>
-				<?php t_em_action_maintenance_mode_before(); ?>
+				<?php do_action( 't_em_action_maintenance_mode_before' ); ?>
 				<?php t_em_maintenance_mode_area(); ?>
-				<?php t_em_action_maintenance_mode_after(); ?>
+				<?php do_action( 't_em_action_maintenance_mode_after' ); ?>
 				</section><!-- #content -->
 			</section><!-- #main-content -->
 <?php get_footer( 'maintenance-mode' ); ?>

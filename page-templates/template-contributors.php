@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<section id="main-content" <?php t_em_breakpoint( 'main-content' ); ?>>
 			<section id="content" role="main" <?php t_em_breakpoint( 'content' ); ?>>
-				<?php t_em_action_content_before(); ?>
+				<?php do_action( 't_em_action_content_before' ); ?>
 
 				<div id="contributors-<?php echo get_the_ID(); ?>" class="custom-template custom-template-contributors">
 				<?php
@@ -70,7 +70,7 @@ get_header(); ?>
 				?>
 
 				</div><!-- #contributors-## -->
-				<?php t_em_action_content_after(); ?>
+				<?php do_action( 't_em_action_content_after' ); ?>
 			</section><!-- #content -->
 			<?php get_sidebar(); ?>
 			<?php get_sidebar( 'alt' ); ?>

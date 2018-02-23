@@ -20,7 +20,7 @@
  */
 ?>
 		</div><!-- #inner-main .row -->
-		<?php t_em_action_maintenance_mode_main_after(); ?>
+		<?php do_action( 't_em_action_maintenance_mode_main_after' ); ?>
 	</div><!-- #main .container -->
 
 </div><!-- #wrap -->

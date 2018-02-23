@@ -16,7 +16,7 @@
 
 if ( ! function_exists( 't_em_javascript_required' ) ) :
 /**
- * Pluggable Function: Javascript required. This function is attached to the t_em_action_top() action hook
+ * Pluggable Function: Javascript required. This function is attached to the t_em_action_top action hook
  */
 function t_em_javascript_required(){
 ?>
@@ -224,7 +224,7 @@ if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 /**
  * Pluggable Function: Display featured post thumbnail on top of a single post if it is set by the
  * user in "General Options" in the admin options page. This function is attached to the
- * t_em_action_post_inside_before() action hook.
+ * do_action( 't_em_action_post_inside_before' ) action hook.
  *
  * @since Twenty'em 1.0
  */
@@ -259,7 +259,7 @@ if ( ! function_exists( 't_em_post_archive_set' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_post_archive_set(){
-	t_em_action_post_content_before();
+	do_action( 't_em_action_post_content_before' );
 	if ( 'the-excerpt' == t_em( 'archive_set' ) ) :
 ?>
 			<div class="entry-summary">
@@ -274,7 +274,7 @@ function t_em_post_archive_set(){
 			</div><!-- .entry-content -->
 <?php
 	endif;
-	t_em_action_post_content_after();
+	do_action( 't_em_action_post_content_after' );
 }
 endif; // function t_em_post_archive_set()
 
@@ -373,7 +373,7 @@ add_action( 't_em_action_post_after', 't_em_single_related_posts' );
 if ( ! function_exists( 't_em_breadcrumb' ) ) :
 /**
  * Pluggable Function: Show breadcrumb path if it's enable by the user in 'General Options' in admin panel.
- * This function is attached to the t_em_action_content_before() action hook. *
+ * This function is attached to the do_action( 't_em_action_content_before' ) action hook. *
  * @return string HTML
  *
  * @since Twenty'em 1.0
