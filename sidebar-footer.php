@@ -21,7 +21,6 @@
 		<div id="colophon" class="py-5">
 		<?php t_em_action_colophon_before(); ?>
 		<?php
-		global $t_em;
 			/* The footer widget area is triggered if any of the areas
 			 * have widgets. So let's check that first.
 			 *
@@ -32,7 +31,7 @@
 				|| is_active_sidebar( 'second-footer-widget-area' )
 				|| is_active_sidebar( 'third-footer-widget-area'  )
 				|| is_active_sidebar( 'fourth-footer-widget-area' )
-				) && 'no-footer-widget' != $t_em['footer_set'] ) :
+				) && 'no-footer-widget' != t_em( 'footer_set' ) ) :
 
 			// If we get this far, we have widgets. Let do this.
 		?>
@@ -41,14 +40,14 @@
 				<?php t_em_action_sidebar_footer_before(); ?>
 
 			<?php if ( is_active_sidebar( 'first-footer-widget-area' )
-					&& 'no-footer-widget' != $t_em['footer_set'] ) : ?>
+					&& 'no-footer-widget' != t_em( 'footer_set' ) ) : ?>
 					<aside id="first" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
 					</aside><!-- #first .widget-area -->
 			<?php endif; ?>
 
 			<?php if ( is_active_sidebar( 'second-footer-widget-area' )
-					&& in_array( $t_em['footer_set'],
+					&& in_array( t_em( 'footer_set' ),
 						array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
 					<aside id="second" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'second-footer-widget-area' ); ?>
@@ -56,7 +55,7 @@
 			<?php endif; ?>
 
 			<?php if ( is_active_sidebar( 'third-footer-widget-area' )
-					&& in_array( $t_em['footer_set'],
+					&& in_array( t_em( 'footer_set' ),
 						array( 'three-footer-widget', 'four-footer-widget' ) ) ) : ?>
 					<aside id="third" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
@@ -64,7 +63,7 @@
 			<?php endif; ?>
 
 			<?php if ( is_active_sidebar( 'fourth-footer-widget-area' )
-					&& in_array( $t_em['footer_set'],
+					&& in_array( t_em( 'footer_set' ),
 						array( 'four-footer-widget' ) ) ) : ?>
 					<aside id="fourth" <?php t_em_breakpoint( 'footer-widget-area' ); ?>>
 						<?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>

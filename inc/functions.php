@@ -112,12 +112,10 @@ function t_em_get_css( $handle, $path = T_EM_THEME_DIR_CSS_PATH, $url = T_EM_THE
  * @since Twenty'em 1.0
  */
 function t_em_breakpoint( $section ){
-	global $t_em;
-
 	$breakpoint = array();
 
 	/** Main Content, Content, Sidebar and Sidebar Alt */
-	$layout_set = $t_em['layout_set'];
+	$layout_set = t_em( 'layout_set' );
 	$one_column = in_array( $layout_set, array( 'one-column' ) );
 	$two_column = in_array( $layout_set,
 						array( 'two-columns-content-right',
@@ -153,11 +151,11 @@ function t_em_breakpoint( $section ){
 		$breakpoint[] = 'widget-area';
 	endif;
 	// #content and two-column
-	if ( 'content' == $section && $two_column && ! ( is_home() && $t_em['front_page_set'] != 'wp-front-page' ) ) :
+	if ( 'content' == $section && $two_column && ! ( is_home() && t_em( 'front_page_set' ) != 'wp-front-page' ) ) :
 		$breakpoint[] = t_em_grid( '8' );
 	endif;
 	// #content and !front_page_set['wp-front-page']
-	if ( 'content' == $section && is_front_page() && $t_em['front_page_set'] != 'wp-front-page' ) :
+	if ( 'content' == $section && is_front_page() && t_em( 'front_page_set' ) != 'wp-front-page' ) :
 		$breakpoint[] = t_em_grid( '12' );
 	endif;
 	// #sidebar and two-column
@@ -168,11 +166,11 @@ function t_em_breakpoint( $section ){
 
 	/** Static Header Content and Image */
 	if ( 'static-header' == $section ) :
-		$static_header_img = ( ! empty ( $t_em['static_header_img_src'] ) ) ? '1' : '0';
-		$static_header_content = ( ! empty ( $t_em['static_header_headline'] )
-								|| ! empty ( $t_em['static_header_content'] )
-								|| ! empty ( $t_em['static_header_primary_button_text'] )
-								|| ! empty ( $t_em['static_header_secondary_button_text'] )
+		$static_header_img = ( ! empty ( t_em( 'static_header_img_src' ) ) ) ? '1' : '0';
+		$static_header_content = ( ! empty ( t_em( 'static_header_headline' ) )
+								|| ! empty ( t_em( 'static_header_content' ) )
+								|| ! empty ( t_em( 'static_header_primary_button_text' ) )
+								|| ! empty ( t_em( 'static_header_secondary_button_text' ) )
 								) ? '1' : '0';
 		$total_static_header = array_sum( array( $static_header_img, $static_header_content ) );
 		$cols = 12 / $total_static_header;
@@ -185,9 +183,9 @@ function t_em_breakpoint( $section ){
 	endif;
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'secondary-featured-widget-area' == $section ) :
-		$widget_two		= ( ! empty ( $t_em['headline_text_widget_two'] ) || ! empty ( $t_em['content_text_widget_two'] ) ) ? '1' : '0' ;
-		$widget_three	= ( ! empty ( $t_em['headline_text_widget_three'] ) || ! empty ( $t_em['content_text_widget_three'] ) ) ? '1' : '0' ;
-		$widget_four	= ( ! empty ( $t_em['headline_text_widget_four'] ) || ! empty ( $t_em['content_text_widget_four'] ) ) ? '1' : '0' ;
+		$widget_two		= ( ! empty ( t_em( 'headline_text_widget_two' ) ) || ! empty ( t_em( 'content_text_widget_two' ) ) ) ? '1' : '0' ;
+		$widget_three	= ( ! empty ( t_em( 'headline_text_widget_three' ) ) || ! empty ( t_em( 'content_text_widget_three' ) ) ) ? '1' : '0' ;
+		$widget_four	= ( ! empty ( t_em( 'headline_text_widget_four' ) ) || ! empty ( t_em( 'content_text_widget_four' ) ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
 		$breakpoint[] = t_em_grid( $cols, 'md' );
@@ -195,14 +193,14 @@ function t_em_breakpoint( $section ){
 
 	/** Footer Widgets Area */
 	if ( 'footer-widget-area' == $section ) :
-		$one_widget_footer = ( 'no-footer-widget' != $t_em['footer_set'] ) ? '1' : '0';
-		$two_widget_footer = ( in_array( $t_em['footer_set'],
+		$one_widget_footer = ( 'no-footer-widget' != t_em( 'footer_set' ) ) ? '1' : '0';
+		$two_widget_footer = ( in_array( t_em( 'footer_set' ),
 								array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 							 ) ) ? '1' : '0';
-		$three_widget_footer = ( in_array( $t_em['footer_set'],
+		$three_widget_footer = ( in_array( t_em( 'footer_set' ),
 									array( 'three-footer-widget', 'four-footer-widget' )
 								 ) ) ? '1' : '0';
-		$four_widget_footer = ( in_array( $t_em['footer_set'],
+		$four_widget_footer = ( in_array( t_em( 'footer_set' ),
 									array( 'four-footer-widget' )
 								 ) ) ? '1' : '0';
 		$total_widgets = array_sum( array( $one_widget_footer, $two_widget_footer, $three_widget_footer, $four_widget_footer ) );
@@ -251,8 +249,7 @@ function t_em_grid( $cols, $breakpoint = '' ){
  * @since Twenty'em 1.2
  */
 function t_em_container( $echo = true ){
-	global $t_em;
-	$container = ( $t_em['layout_fluid_width'] ) ? 'container-fluid' : 'container';
+	$container = ( t_em( 'layout_fluid_width' ) ) ? 'container-fluid' : 'container';
 	if ( $echo )
 		echo $container;
 	else
@@ -269,17 +266,12 @@ function t_em_container( $echo = true ){
  * @param string $class Optional CSS class.
  * @param int $post_id Optional. Post ID. Default is ID of the global $post.
  *
- * @global $post
- * @global $t_em
- *
  * @return string 			HTML "img" tag
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Deleted "figure" and "figcaption" wrapped element
  */
 function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = null, $post_id = 0 ){
-	global $t_em;
-
 	$post_id = absint( $post_id );
 	if ( ! $post_id )
 		$post_id = get_the_ID();
@@ -308,8 +300,6 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
  * 					   current post.
  */
 function t_em_image_resize( $width, $height, $post_id = 0, $crop = true ){
-	global $t_em;
-
 	$post_id = absint( $post_id );
 	if ( ! $post_id )
 		$post_id = get_the_ID();
@@ -399,7 +389,7 @@ function t_em_wrap_paragraph( $paragraph ){
  * @since Twenty'em 1.2.2
  */
 function t_em_get_post_excerpt( $post_id = 0, $echo = true ){
-	global $t_em, $post;
+	global $post;
 
 	$post_id = absint( $post_id );
 	if ( ! $post_id )
@@ -407,7 +397,7 @@ function t_em_get_post_excerpt( $post_id = 0, $echo = true ){
 
 	$excerpt = get_post_field( 'post_excerpt', $post_id );
 	$content = get_post_field( 'post_content', $post_id );
-	$trim 	 = $t_em['excerpt_length'];
+	$trim 	 = t_em( 'excerpt_length' );
 
 	if ( ! empty( $excerpt ) ) :
 		$resume = $excerpt;

@@ -23,7 +23,7 @@
  * Register Style Sheet and Javascript to beautify the Twenty'em theme
  */
 function t_em_enqueue_styles_and_scripts(){
-	global $t_em, $t_em_theme_data;
+	global $t_em_theme_data;
 
 	// Dequeue old jQuery
 	wp_deregister_script('jquery');
@@ -44,7 +44,7 @@ function t_em_enqueue_styles_and_scripts(){
 	endif;
 
 	// Register Carousel Bootstrap Plugins when needed
-	if ( 'slider' == $t_em['header_set'] ) :
+	if ( 'slider' == t_em( 'header_set' ) ) :
 		t_em_register_bootstrap_plugin( 'carousel' );
 	endif;
 
@@ -60,7 +60,7 @@ function t_em_enqueue_styles_and_scripts(){
 	// Check if the current user can see the site
 	$current_user = wp_get_current_user();
 	$user_can = array_intersect( t_em_maintenance_mode_role_active(), $current_user->roles );
-	if ( $t_em['maintenance_mode'] == 1 && (
+	if ( t_em( 'maintenance_mode' ) == 1 && (
 				! is_user_logged_in() ||
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )

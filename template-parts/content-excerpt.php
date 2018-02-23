@@ -16,12 +16,11 @@
 /**
  * The default template for displaying content
  */
-global $t_em;
 ?>
 		<?php t_em_action_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'media' ); ?>>
 			<?php t_em_action_post_inside_before(); ?>
-			<?php if ( $t_em['excerpt_set'] == 'thumbnail-left' ) t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true, 'd-flex mr-3' ); ?>
+			<?php if ( t_em( 'excerpt_set' ) == 'thumbnail-left' ) t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true, 'd-flex mr-3' ); ?>
 			<div class="media-body">
 				<header>
 					<h2 class="entry-title mt-0"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
@@ -35,6 +34,6 @@ global $t_em;
 				</footer><!-- .entry-meta .entry-meta-footer -->
 				<?php t_em_action_post_inside_after(); ?>
 			</div>
-			<?php if ( $t_em['excerpt_set'] == 'thumbnail-right' ) t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true, 'd-flex ml-3' ); ?>
+			<?php if ( t_em( 'excerpt_set' ) == 'thumbnail-right' ) t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true, 'd-flex ml-3' ); ?>
 		</article><!-- #post-## -->
 		<?php t_em_action_post_after(); ?>

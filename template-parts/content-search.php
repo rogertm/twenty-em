@@ -16,7 +16,6 @@
 /**
  * The default template for displaying content search results
  */
-global $t_em;
 ?>
 		<?php t_em_action_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'media' ); ?>>

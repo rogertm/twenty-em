@@ -138,8 +138,6 @@ function t_em_slider_list_taxonomies( $slider_category = '' ){
  * @since Twenty'em 1.0
  */
 function t_em_slider_callback(){
-	global	$t_em;
-
 	$extend_slider = '';
 
 	// Show Slider only at home page?

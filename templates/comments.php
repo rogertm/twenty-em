@@ -138,10 +138,9 @@ if ( ! function_exists( 't_em_comments_template' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_comments_template(){
-	global $t_em;
 	if ( comments_open() || get_comments_number() ) :
 		if ( ( is_single() )
-			|| ( is_page() && $t_em['single_page_comments'] ) ) :
+			|| ( is_page() && t_em( 'single_page_comments' ) ) ) :
 			return comments_template( '', true );
 		endif;
 	endif;

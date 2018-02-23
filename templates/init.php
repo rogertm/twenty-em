@@ -220,11 +220,10 @@ add_action( 'after_setup_theme', 't_em_setup' );
  * @since Twenty'em 1.0
  */
 function t_em_layout_classes( $existing_classes ){
-	global $t_em;
-	$layout_set = $t_em['layout_set'];
+	$layout_set = t_em( 'layout_set' );
 
 	// In front page and 'front-page-set => widgets-front-page' one column is enough
-	if ( $t_em['front_page_set'] == 'widgets-front-page' && is_front_page() ) :
+	if ( t_em( 'front_page_set' ) == 'widgets-front-page' && is_front_page() ) :
 		$classes = array( 'one-column widgets-front-page' );
 	elseif ( in_array( $layout_set, array( 'two-columns-content-left', 'two-columns-content-right' ) ) ) :
 		$classes = array( 'two-columns' );
@@ -250,7 +249,7 @@ function t_em_layout_classes( $existing_classes ){
 	 * @since Twenty'em 1.0.1
 	 * @since Twenty'em 1.2.1 Added 'maintenance-mode-out-site' and 'maintenance-mode-in-site'
 	 */
-	if ( $t_em['maintenance_mode'] ) :
+	if ( t_em( 'maintenance_mode' ) ) :
 		$classes[] = 'maintenance-mode';
 		if ( t_em_load_maintenance_mode_template() ) :
 			$classes[] = 'maintenance-mode-out-site';
@@ -264,7 +263,7 @@ function t_em_layout_classes( $existing_classes ){
 	 *
 	 * @since Twenty'em 1.0.1
 	 */
-	if ( $t_em['layout_fluid_width'] ) :
+	if ( t_em( 'layout_fluid_width' ) ) :
 		$classes[] = 'is-container-fluid';
 	endif;
 
@@ -279,9 +278,8 @@ add_filter( 'body_class', 't_em_layout_classes' );
  * @since Twenty'em 1.0
  */
 function t_em_archive_classes( $existing_classes ){
-	global $t_em;
-	$archive_set = $t_em['archive_set'];
-	$excerpt_set = $t_em['excerpt_set'];
+	$archive_set = t_em( 'archive_set' );
+	$excerpt_set = t_em( 'excerpt_set' );
 
 	if ( 'the-excerpt' == $archive_set && ! is_singular() ) :
 		if ( 'thumbnail-left' == $excerpt_set ) :
@@ -320,15 +318,14 @@ function t_em_custom_logo_class( $html ){
 add_filter( 'get_custom_logo', 't_em_custom_logo_class' );
 
 /**
- * Set the post excerpt length depending of the $t_em['excerpt_length'] value.
+ * Set the post excerpt length depending of the t_em( 'excerpt_length' ) value.
  * You don't need to override this value in a Child Theme, just because you can set this value from
  * the Twenty'em Framework interface.
  *
  * @since Twenty'em 1.0
  */
 function t_em_excerpt_length( $length ){
-	global $t_em;
-	return $t_em['excerpt_length'];
+	return t_em( 'excerpt_length' );
 }
 add_filter( 'excerpt_length', 't_em_excerpt_length' );
 
@@ -360,10 +357,8 @@ add_filter( 'wp_page_menu_args', 't_em_page_menu_args' );
  * @since Twenty'em 1.0
  */
 function t_em_widgets_init() {
-	global $t_em;
-
 	// Sidebars Widgets Area
-	if ( 'one-column' != $t_em['layout_set'] ) :
+	if ( 'one-column' != t_em( 'layout_set' ) ) :
 		// Area 0, located at the top of the sidebar.
 		register_sidebar( array(
 			'name' => __( 'Main Sidebar Widget Area', 't_em' ),
@@ -376,7 +371,7 @@ function t_em_widgets_init() {
 		) );
 	endif;
 
-	if ( in_array( $t_em['layout_set'],
+	if ( in_array( t_em( 'layout_set' ),
 			array('three-columns-content-left', 'three-columns-content-right', 'three-columns-content-middle' )
 		) ) :
 		// Area 1, located at the top of the sidebar.
@@ -392,7 +387,7 @@ function t_em_widgets_init() {
 	endif;
 
 	// Footer Widgets Area
-	if ( $t_em['footer_set'] != 'no-footer-widget' ) :
+	if ( t_em( 'footer_set' ) != 'no-footer-widget' ) :
 			// Area 2, located in the footer. Empty by default.
 			register_sidebar( array(
 				'name' => __( 'First Footer Widget Area', 't_em' ),
@@ -404,7 +399,7 @@ function t_em_widgets_init() {
 				'after_title' => '</h3>',
 			) );
 
-		if ( in_array( $t_em['footer_set'],
+		if ( in_array( t_em( 'footer_set' ),
 				array( 'two-footer-widget', 'three-footer-widget', 'four-footer-widget' )
 			) ) :
 			// Area 3, located in the footer. Empty by default.
@@ -419,7 +414,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em['footer_set'],
+		if ( in_array( t_em( 'footer_set' ),
 				array( 'three-footer-widget', 'four-footer-widget' )
 			) ) :
 			// Area 4, located in the footer. Empty by default.
@@ -434,7 +429,7 @@ function t_em_widgets_init() {
 			) );
 		endif;
 
-		if ( in_array( $t_em['footer_set'],
+		if ( in_array( t_em( 'footer_set' ),
 				array( 'four-footer-widget' )
 			) ) :
 			// Area 5, located in the footer. Empty by default.
@@ -488,8 +483,7 @@ add_filter( 'nav_menu_link_attributes', 't_em_nav_menu_link_attributes', 10, 3 )
  * @since Twenty'em 1.1.2
  */
 function t_em_pages_supports_comments(){
-	global $t_em;
-	if ( ! $t_em['single_page_comments'] )
+	if ( ! t_em( 'single_page_comments' ) )
 		remove_post_type_support( 'page', 'comments' );
 }
 add_action( 'init', 't_em_pages_supports_comments' );

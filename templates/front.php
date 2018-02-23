@@ -21,21 +21,14 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  *
  * This function is directly call from custom-front-page.php template
  *
- * @global $t_em
- *
- * @uses t_em_front_page_widgets_options()
- *
- * @return string HTML
- *
  * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets(){
-	global $t_em;
-	if ( 'widgets-front-page' == $t_em['front_page_set'] ) : ?>
-		<section id="featured-widget-area" class="<?php echo $t_em['text_widget_template'] ?> <?php // t_em_container() ?>">
+	if ( 'widgets-front-page' == t_em( 'front_page_set' ) ) : ?>
+		<section id="featured-widget-area" class="<?php echo t_em( 'text_widget_template' ) ?>">
 			<div class="row">
 				<?php t_em_action_custom_front_page_inside_before(); ?>
-				<?php get_template_part( '/template-parts/front', $t_em['text_widget_template'] ) ?>
+				<?php get_template_part( '/template-parts/front', t_em( 'text_widget_template' ) ) ?>
 				<?php t_em_action_custom_front_page_inside_after(); ?>
 			</div>
 		</section><!-- #featured-widget-area -->

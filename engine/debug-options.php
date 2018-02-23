@@ -187,13 +187,13 @@ function t_em_debug_theme_data_callback(){
  * @since Twenty'em 1.2
  */
 function t_em_debug_theme_setting_callback(){
-	global $t_em;
+	$t_em = t_em();
 	ksort( $t_em );
 	$output = '<div class="sub-extend option-group">';
 		$output .= '<header>'. sprintf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) .'</header>';
 		$output .= '<p class="alert alert-info">'. __( 'You can access these values through the <code>$t_em</code> global variable', 't_em' ) .'</p>';
 		$output .= '<dl class="dl-horizontal">';
-		foreach ( $t_em as $key => $value ) :
+		foreach ( t_em() as $key => $value ) :
 			$output .=		'<dt title="'. $key .'"><code>'. '['. $key .']' .'</code></dt>';
 			$output .=		'<dd>'. '=> '. $value .'</dd>';
 		endforeach;

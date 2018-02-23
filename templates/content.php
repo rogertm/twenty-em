@@ -231,10 +231,10 @@ if ( ! function_exists( 't_em_single_post_thumbnail' ) ) :
 function t_em_single_post_thumbnail(){
 	if ( is_page_template( 'page-templates/template-blog-excerpt.php' ) )
 		return;
-	global $t_em, $post;
-	if ( $t_em['single_featured_img']
+	global $post;
+	if ( t_em( 'single_featured_img' )
 		&& ( is_singular() && has_post_thumbnail() )
-		|| ( $t_em['archive_set'] == 'the-content'
+		|| ( t_em( 'archive_set' ) == 'the-content'
 			&& ( is_home() || is_front_page() || is_archive() )
 		)
 		|| ( is_page_template( 'page-templates/template-blog-content.php' ) )
@@ -256,25 +256,14 @@ if ( ! function_exists( 't_em_post_archive_set' ) ) :
  * Pluggable Function: Display posts archive in excerpt or content form. Set in "Archive Options"
  * in admin theme option page.
  *
- * @uses t_em_featured_post_thumbnail() Display featured image in posts archives.
- * @uses the_excerpt() Displays the excerpt of the current post with the "..." text at the end.
- * @uses the_content() Displays the contents of the current post.
- *
- * @link http://codex.wordpress.org/Function_Reference/the_excerpt
- * @link http://codex.wordpress.org/Function_Reference/the_content
- *
- * @global $t_em
- *
  * @since Twenty'em 1.0
  */
 function t_em_post_archive_set(){
-	global $t_em;
-
 	t_em_action_post_content_before();
-	if ( 'the-excerpt' == $t_em['archive_set'] ) :
+	if ( 'the-excerpt' == t_em( 'archive_set' ) ) :
 ?>
 			<div class="entry-summary">
-				<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true ); ?>
+				<?php t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true ); ?>
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 <?php
@@ -293,9 +282,7 @@ if ( ! function_exists( 't_em_single_related_posts' ) ) :
 /**
  * Pluggable Function: Show related posts to the current single post if it's set by the user in
  * "General Options" in admin theme options page.
- * This function is attached to the t_em_action_post_after() action hook.
- *
- * @global $t_em
+ * This function is attached to the t_em_action_post_after action hook.
  *
  * @return string HTML list of items
  *
@@ -303,8 +290,7 @@ if ( ! function_exists( 't_em_single_related_posts' ) ) :
  * @since Twenty'em 1.2		Support for custom post types
  */
 function t_em_single_related_posts(){
-	global $t_em;
-	if ( is_single() && $t_em['single_related_posts'] ) :
+	if ( is_single() && t_em( 'single_related_posts' ) ) :
 		global $post;
 		$post_id = $post->ID;
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'object' );
@@ -387,18 +373,13 @@ add_action( 't_em_action_post_after', 't_em_single_related_posts' );
 if ( ! function_exists( 't_em_breadcrumb' ) ) :
 /**
  * Pluggable Function: Show breadcrumb path if it's enable by the user in 'General Options' in admin panel.
- * This function is attached to the t_em_action_content_before() action hook.
- *
- * @global $t_em
- *
+ * This function is attached to the t_em_action_content_before() action hook. *
  * @return string HTML
  *
  * @since Twenty'em 1.0
  */
 function t_em_breadcrumb(){
-	global $t_em;
-
-	if ( '1' == $t_em['breadcrumb_path'] ) :
+	if ( '1' == t_em( 'breadcrumb_path' ) ) :
 		global $post;
 
 		$query_obj = get_queried_object();
@@ -546,16 +527,15 @@ if ( ! function_exists( 't_em_loop' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_loop(){
-	global $t_em;
-	if ( $t_em['archive_set'] == 'the-excerpt' ) :
-		$content = ( $t_em['archive_in_columns'] == 1 && $t_em['excerpt_set'] != 'thumbnail-center' ) ? 'excerpt' : 'columns';
-	elseif ( $t_em['archive_set'] == 'the-content' ) :
+	if ( t_em( 'archive_set' ) == 'the-excerpt' ) :
+		$content = ( t_em( 'archive_in_columns' ) == 1 && t_em( 'excerpt_set' ) != 'thumbnail-center' ) ? 'excerpt' : 'columns';
+	elseif ( t_em( 'archive_set' ) == 'the-content' ) :
 		$content = 'full';
 	else :
 		$content = 'none';
 	endif;
 
-	$cols = ( $t_em['archive_in_columns'] > 1 || $t_em['excerpt_set'] == 'thumbnail-center' ) ? true : null;
+	$cols = ( t_em( 'archive_in_columns' ) > 1 || t_em( 'excerpt_set' ) == 'thumbnail-center' ) ? true : null;
 
 	if ( have_posts() ) :
 		if ( $cols ) :
@@ -565,7 +545,7 @@ function t_em_loop(){
 
 		while ( have_posts() ) :
 			the_post();
-			if ( $cols && 0 == $i % $t_em['archive_in_columns'] ) :
+			if ( $cols && 0 == $i % t_em( 'archive_in_columns' ) ) :
 				echo '</div>';
 				echo '<div class="row">';
 			endif;

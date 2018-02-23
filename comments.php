@@ -27,13 +27,12 @@ if ( post_password_required() ) :
 endif;
 ?>
 <section id="comments">
-<?php if ( have_comments() ) :
-		global $t_em; ?>
+<?php if ( have_comments() ) : ?>
 		<h2 id="comments-title"><?php
 		printf( _nx( 'One response to: %2$s', '%1$s responses to: %2$s', get_comments_number(), 'comments title', 't_em' ),
 			number_format_i18n( get_comments_number() ), '<small>' . get_the_title() . '</small>' );
 		?></h2>
-<?php 	if ( $t_em['separate_comments_pings_tracks'] ) :
+<?php 	if ( t_em( 'separate_comments_pings_tracks' ) ) :
 
 			if ( ! empty( $comments_by_type['comment'] ) ) : ?>
 				<div id="comment-count" class="lead mb-1"><?php printf( _n( '1 Comment', '%1$s Comments', count( $wp_query->comments_by_type['comment'] ), 't_em' ), count( $wp_query->comments_by_type['comment'] ) ) ?></div>
@@ -55,7 +54,7 @@ endif;
 				<?php wp_list_comments( array( 'style' => 'ol', 'type' => 'pings', 'callback' => 't_em_comment_pingback_trackback' ) ); ?>
 				</ol>
 				<?php endif; ?>
-<?php 	else : // ( '0' == $t_em['separate_comments_pings_tracks'] ) :
+<?php 	else : // ( '0' == t_em( 'separate_comments_pings_tracks' ) ) :
 
 			t_em_action_comments_list_before(); ?>
 			<ol class="commentlist list-unstyled">
@@ -63,7 +62,7 @@ endif;
 			</ol>
 <?php 		t_em_action_comments_list_after();
 
-		endif; // '1' == $t_em['separate_comments_pings_tracks']
+		endif; // '1' == t_em( 'separate_comments_pings_tracks' )
 
 		if ( ! comments_open() ) : ?>
 			<div id="comments-closed" class="lead mb-1"><?php _e('Comments are closed', 't_em'); ?></div>

@@ -191,7 +191,6 @@ if ( ! function_exists( 't_em_page_navi' ) ) :
  * @since Twenty'em 1.2			Added $the_quey parameter.
  */
 function t_em_page_navi( $the_query ){
-	global $t_em;
 	if ( ! $the_query )
 		$the_query = $GLOBALS['wp_query'];
 	// Don't print empty markup if there's only one page.
@@ -199,7 +198,7 @@ function t_em_page_navi( $the_query ){
 		return;
 ?>
 <?php
-		if ( 'prev-next' == $t_em['archive_pagination_set'] ) :
+		if ( 'prev-next' == t_em( 'archive_pagination_set' ) ) :
 			/**
 			 * Filter the prev-next navigation class attribute
 			 *
@@ -213,7 +212,7 @@ function t_em_page_navi( $the_query ){
 		<span class="page-next"><?php previous_posts_link( __( 'Newer posts <span class="icomoon-arrow-right2"></span>', 't_em' ) ); ?></span>
 	</nav>
 <?php
-		elseif ( 'pagination' == $t_em['archive_pagination_set'] ) :
+		elseif ( 'pagination' == t_em( 'archive_pagination_set' ) ) :
 			/**
 			 * Filter the prev-next navigation class attribute
 			 *
@@ -337,24 +336,20 @@ if ( ! function_exists( 't_em_user_social_network' ) ) :
  * @param string $li_classes Optional. HTML 'class' attribute of each <li>...</li> tag item (usually a Bootstrap class)
  * @param string $a_classes Optional. HTML 'class' attribute of each <a>...</a> tag item (usually a Bootstrap class)
  *
- * @global $t_em
- *
  * @return string HTML list of items
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2.1 	Added parameter $a_classes
  */
 function t_em_user_social_network( $nav_id = true, $nav_classes = '', $ul_classes = '', $li_classes = '', $a_classes = '' ){
-	global 	$t_em;
-
 	$user_social_network = t_em_social_network_options();
 	uasort( $user_social_network, 't_em_sort_by_order' );
 
 	$output_items = '';
 	foreach ( $user_social_network as $social_network ) :
-		if ( $t_em[$social_network['name']] != '' ) :
+		if ( t_em( $social_network['name'] ) != '' ) :
 		$output_items .= '<li id="'.$social_network['name'].'" class="social-icon '. $li_classes .'">';
-		$output_items .= 	'<a href="'. $t_em[$social_network['name']] .'" class="'. $a_classes .'">';
+		$output_items .= 	'<a href="'. t_em( $social_network['name'] ) .'" class="'. $a_classes .'">';
 		$output_items .= 		'<span class="'. $social_network['class'] .'"></span>';
 		$output_items .= 		'<span class="network-label sr-only">'. $social_network['item']. '</span>';
 		$output_items .= 	'</a>';

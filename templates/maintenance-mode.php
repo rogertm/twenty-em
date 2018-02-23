@@ -21,37 +21,32 @@ if ( ! function_exists( 't_em_maintenance_mode_area' ) ) :
  *
  * This function is directly call from maintenance-mode.php template
  *
- * @global $t_em
- *
- * @return string HTML
- *
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_area(){
-	global $t_em;
 ?>
 	<section id="maintenance-mode" class="jumbotron my-5">
 	<?php t_em_action_maintenance_mode_inside_before(); ?>
-	<?php if ( $t_em['maintenance_mode_thumbnail_src'] ) : ?>
-		<img src="<?php echo $t_em['maintenance_mode_thumbnail_src'] ?>" class="maintenance-mode-thumbnail mb-5" alt="<?php echo sanitize_text_field( $t_em['maintenance_mode_headline'] ) ?>">
+	<?php if ( t_em( 'maintenance_mode_thumbnail_src' ) ) : ?>
+		<img src="<?php echo t_em( 'maintenance_mode_thumbnail_src' ) ?>" class="maintenance-mode-thumbnail mb-5" alt="<?php echo sanitize_text_field( t_em( 'maintenance_mode_headline' ) ) ?>">
 	<?php endif; ?>
-	<?php if ( $t_em['maintenance_mode_headline'] ) :
-				$icon_class	= ( $t_em['maintenance_mode_headline_icon_class'] ) ?
-					'<span class="'. $t_em['maintenance_mode_headline_icon_class'] .'"></span>' : '';
+	<?php if ( t_em( 'maintenance_mode_headline' ) ) :
+				$icon_class	= ( t_em( 'maintenance_mode_headline_icon_class' ) ) ?
+					'<span class="'. t_em( 'maintenance_mode_headline_icon_class' ) .'"></span>' : '';
 	?>
-		<header><h1><?php echo $icon_class .' '. $t_em['maintenance_mode_headline'] ?></h1></header>
+		<header><h1><?php echo $icon_class .' '. t_em( 'maintenance_mode_headline' ) ?></h1></header>
 	<?php endif; ?>
-	<?php if ( $t_em['maintenance_mode_content'] ) : ?>
-		<div class="lead"><?php echo t_em_wrap_paragraph( do_shortcode( $t_em['maintenance_mode_content'] ) ) ?></div>
+	<?php if ( t_em( 'maintenance_mode_content' ) ) : ?>
+		<div class="lead"><?php echo t_em_wrap_paragraph( do_shortcode( t_em( 'maintenance_mode_content' ) ) ) ?></div>
 	<?php endif; ?>
 	<?php t_em_maintenance_mode_countdown_timer() ?>
 	<?php
-		$primary_link_text			= ( $t_em['maintenance_mode_primary_button_text'] ) ? $t_em['maintenance_mode_primary_button_text'] : null;
-		$primary_link_icon_class	= ( $t_em['maintenance_mode_primary_button_icon_class'] ) ? $t_em['maintenance_mode_primary_button_icon_class'] : null;
-		$primary_button_link 		= ( $t_em['maintenance_mode_primary_button_link'] ) ? $t_em['maintenance_mode_primary_button_link'] : null;
-		$secondary_link_text		= ( $t_em['maintenance_mode_secondary_button_text'] ) ? $t_em['maintenance_mode_secondary_button_text'] : null;
-		$secondary_link_icon_class	= ( $t_em['maintenance_mode_secondary_button_icon_class'] ) ? $t_em['maintenance_mode_secondary_button_icon_class'] : null;
-		$secondary_button_link 		= ( $t_em['maintenance_mode_secondary_button_link'] ) ? $t_em['maintenance_mode_secondary_button_link'] : null;
+		$primary_link_text			= ( t_em( 'maintenance_mode_primary_button_text' ) ) ? t_em( 'maintenance_mode_primary_button_text' ) : null;
+		$primary_link_icon_class	= ( t_em( 'maintenance_mode_primary_button_icon_class' ) ) ? t_em( 'maintenance_mode_primary_button_icon_class' ) : null;
+		$primary_button_link 		= ( t_em( 'maintenance_mode_primary_button_link' ) ) ? t_em( 'maintenance_mode_primary_button_link' ) : null;
+		$secondary_link_text		= ( t_em( 'maintenance_mode_secondary_button_text' ) ) ? t_em( 'maintenance_mode_secondary_button_text' ) : null;
+		$secondary_link_icon_class	= ( t_em( 'maintenance_mode_secondary_button_icon_class' ) ) ? t_em( 'maintenance_mode_secondary_button_icon_class' ) : null;
+		$secondary_button_link 		= ( t_em( 'maintenance_mode_secondary_button_link' ) ) ? t_em( 'maintenance_mode_secondary_button_link' ) : null;
 
 		if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 				$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?
@@ -78,20 +73,17 @@ if ( ! function_exists( 't_em_maintenance_mode_countdown_timer' ) ) :
 /**
  * Pluggable Function: Display countdown timer if it's set in the Maintenance Mode options in the admin panel
  *
- * @global $t_em
- *
  * @return string HTML
  *
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_countdown_timer(){
-	global $t_em;
-	if ( $t_em['maintenance_mode_timer'] ) :
+	if ( t_em( 'maintenance_mode_timer' ) ) :
 ?>
 		<script type="text/javascript">
 		/* <![CDATA[ */
 		jQuery(document).ready(function($){
-			$('#countdown-clock').countdown('<?php echo $t_em['maintenance_mode_timer'] ?>', function(event) {
+			$('#countdown-clock').countdown('<?php echo t_em( 'maintenance_mode_timer' ) ?>', function(event) {
 				var $this = $(this).html(event.strftime(''
 				+ '<span class="countdown-item">%w <small><?php _e( 'weeks', 't_em' ) ?></small> </span>'
 				+ '<span class="countdown-item">%d <small><?php _e( 'days', 't_em' ) ?></small> </span>'
@@ -114,8 +106,7 @@ endif;
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_alert(){
-global $t_em;
-	if ( $t_em['maintenance_mode'] == 1 && is_user_logged_in() && current_user_can( 'manage_options' ) ) :
+	if ( t_em( 'maintenance_mode' ) == 1 && is_user_logged_in() && current_user_can( 'manage_options' ) ) :
 		$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
 		$link = ( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) ) ? home_url( '/' ) : wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ;
 ?>

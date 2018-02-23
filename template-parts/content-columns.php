@@ -16,13 +16,12 @@
 /**
  * The default template for displaying content
  */
-global $t_em;
-$cols = 12 / $t_em['archive_in_columns'];
+$cols = 12 / t_em( 'archive_in_columns' );
 ?>
 		<?php t_em_action_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( t_em_grid( $cols ) ); ?>>
 			<?php t_em_action_post_inside_before(); ?>
-			<?php t_em_featured_post_thumbnail( $t_em['excerpt_thumbnail_width'], $t_em['excerpt_thumbnail_height'], true ); ?>
+			<?php t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true ); ?>
 				<header>
 					<h2 class="entry-title "><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 					<div class="entry-meta entry-meta-header mb-3">

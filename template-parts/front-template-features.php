@@ -16,28 +16,26 @@
 /**
  * Display Featured template for Front Page text widgets
  */
-
-global $t_em;
 foreach ( t_em_front_page_widgets_options() as $widget ) :
-	if ( ! empty( $t_em['headline_'.$widget['name'].''] ) || ! empty( $t_em['content_'.$widget['name'].''] ) ) :
-	$widget_icon_class	= ( $t_em['headline_icon_class_'.$widget['name'].''] ) ?
-		'<span class="'. $t_em['headline_icon_class_'.$widget['name'].''] .'"></span> ' : null;
+	if ( ! empty( t_em( 'headline_'.$widget['name'] ) ) || ! empty( t_em( 'content_'.$widget['name'] ) ) ) :
+	$widget_icon_class	= ( t_em( 'headline_icon_class_'.$widget['name'] ) ) ?
+		'<span class="'. t_em( 'headline_icon_class_'.$widget['name'] ) .'"></span> ' : null;
 
-	$widget_thumbnail_url	= ( $t_em['thumbnail_src_'.$widget['name'].''] ) ?
-		'<div class="widget-thumbnail '. t_em_grid( '5' ) .'"><img src="'. $t_em['thumbnail_src_'.$widget['name'].''] .'" alt="'. sanitize_text_field( $t_em['headline_'.$widget['name']] ) .'"/></div>' : null;
+	$widget_thumbnail_url	= ( t_em( 'thumbnail_src_'.$widget['name'] ) ) ?
+		'<div class="widget-thumbnail '. t_em_grid( '5' ) .'"><img src="'. t_em( 'thumbnail_src_'.$widget['name'] ) .'" alt="'. sanitize_text_field( t_em( 'headline_'.$widget['name'] ) ) .'"/></div>' : null;
 
-	$widget_headline	= ( $t_em['headline_'.$widget['name'].''] ) ?
-		'<header><h2>'. $widget_icon_class . $t_em['headline_'.$widget['name'].''] .'</h2></header>' : null;
+	$widget_headline	= ( t_em( 'headline_'.$widget['name'] ) ) ?
+		'<header><h2>'. $widget_icon_class . t_em( 'headline_'.$widget['name'] ) .'</h2></header>' : null;
 
-	$widget_content		= ( $t_em['content_'.$widget['name'].''] ) ?
-		'<div class="front-page-widget-content">'. t_em_wrap_paragraph( do_shortcode( $t_em['content_'.$widget['name']] ) ) .'</div>' : null;
+	$widget_content		= ( t_em( 'content_'.$widget['name'] ) ) ?
+		'<div class="front-page-widget-content">'. t_em_wrap_paragraph( do_shortcode( t_em( 'content_'.$widget['name'] ) ) ) .'</div>' : null;
 
-	$primary_link_text			= ( $t_em['primary_button_text_'.$widget['name']] ) ? $t_em['primary_button_text_'.$widget['name']] : null;
-	$primary_link_icon_class	= ( $t_em['primary_button_icon_class_'.$widget['name']] ) ? $t_em['primary_button_icon_class_'.$widget['name']] : null;
-	$primary_button_link 		= ( $t_em['primary_button_link_'.$widget['name']] ) ? $t_em['primary_button_link_'.$widget['name']] : null;
-	$secondary_link_text		= ( $t_em['secondary_button_text_'.$widget['name']] ) ? $t_em['secondary_button_text_'.$widget['name']] : null;
-	$secondary_link_icon_class	= ( $t_em['secondary_button_icon_class_'.$widget['name']] ) ? $t_em['secondary_button_icon_class_'.$widget['name']] : null;
-	$secondary_button_link 		= ( $t_em['secondary_button_link_'.$widget['name']] ) ? $t_em['secondary_button_link_'.$widget['name']] : null;
+	$primary_link_text			= ( t_em( 'primary_button_text_'.$widget['name'] ) ) ? t_em( 'primary_button_text_'.$widget['name'] ) : null;
+	$primary_link_icon_class	= ( t_em( 'primary_button_icon_class_'.$widget['name'] ) ) ? t_em( 'primary_button_icon_class_'.$widget['name'] ) : null;
+	$primary_button_link 		= ( t_em( 'primary_button_link_'.$widget['name'] ) ) ? t_em( 'primary_button_link_'.$widget['name'] ) : null;
+	$secondary_link_text		= ( t_em( 'secondary_button_text_'.$widget['name'] ) ) ? t_em( 'secondary_button_text_'.$widget['name'] ) : null;
+	$secondary_link_icon_class	= ( t_em( 'secondary_button_icon_class_'.$widget['name'] ) ) ? t_em( 'secondary_button_icon_class_'.$widget['name'] ) : null;
+	$secondary_button_link 		= ( t_em( 'secondary_button_link_'.$widget['name'] ) ) ? t_em( 'secondary_button_link_'.$widget['name'] ) : null;
 
 	if ( ( $primary_button_link && $primary_link_text ) || ( $secondary_button_link && $secondary_link_text ) ) :
 			$primary_button_link_url = ( $primary_button_link && $primary_link_text ) ?

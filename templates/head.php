@@ -62,27 +62,25 @@ add_action( 'wp_head', 't_em_theme_metadata' );
  * Webmasters Tools and Tracking Codes
  */
 function t_em_stats_header_tracker(){
-	global $t_em;
 	// Google Engine ID
-	if ( $t_em['google_id'] )
-		echo '<meta name="google-site-verification" content="' . $t_em['google_id'] . '" />' . "\n";
+	if ( t_em( 'google_id' ) )
+		echo '<meta name="google-site-verification" content="' . t_em( 'google_id' ) . '" />' . "\n";
 	// Bing Engine ID
-	if ( $t_em['bing_id'] )
-		echo '<meta name="msvalidate.01" content="' . $t_em['bing_id'] . '" />' . "\n";
+	if ( t_em( 'bing_id' ) )
+		echo '<meta name="msvalidate.01" content="' . t_em( 'bing_id' ) . '" />' . "\n";
 	// Pinterest Engine ID
-	if ( $t_em['pinterest_id'] )
-		echo '<meta name="p:domain_verify" content="' . $t_em['pinterest_id'] . '" />' . "\n";
+	if ( t_em( 'pinterest_id' ) )
+		echo '<meta name="p:domain_verify" content="' . t_em( 'pinterest_id' ) . '" />' . "\n";
 	// Header Stats Tracker
-	if ( $t_em['stats_tracker_header_tag'] )
-		echo '<script type="text/javascript">' . $t_em['stats_tracker_header_tag'] . '</script>' . "\n";
+	if ( t_em( 'stats_tracker_header_tag' ) )
+		echo '<script type="text/javascript">' . t_em( 'stats_tracker_header_tag' ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 't_em_stats_header_tracker' );
 
 function t_em_stats_body_tracker(){
-	global $t_em;
 	// Body Stats Tracker
-	if ( $t_em['stats_tracker_body_tag'] )
-		echo '<script type="text/javascript">' . $t_em['stats_tracker_body_tag'] . '</script>' . "\n";
+	if ( t_em( 'stats_tracker_body_tag' ) )
+		echo '<script type="text/javascript">' . t_em( 'stats_tracker_body_tag' ) . '</script>' . "\n";
 }
 add_action( 'wp_footer', 't_em_stats_body_tracker' );
 ?>

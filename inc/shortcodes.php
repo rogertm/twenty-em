@@ -25,8 +25,7 @@
  * @since Twenty'em 1.0
  */
 function t_em_quicktags_buttons(){
-	global $t_em;
-	if ( wp_script_is( 'quicktags' ) && $t_em['shortcode_buttoms'] ) :
+	if ( wp_script_is( 'quicktags' ) && t_em( 'shortcode_buttoms' ) ) :
 ?>
 	<script type="text/javascript">
 		QTags.addButton( 'sc_button', 'button', '[button link="" style="primary" size="" new_window="false"]', '[/button]', '', '', 122 );

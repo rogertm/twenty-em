@@ -32,9 +32,8 @@ get_header(); ?>
 						);
 				$the_query = new WP_Query ( $args );
 
-				global $t_em;
-				$content = ( $t_em['archive_in_columns'] == 1 && $t_em['excerpt_set'] != 'thumbnail-center' ) ? 'excerpt' : 'columns';
-				$cols = ( $t_em['archive_in_columns'] > 1 || $t_em['excerpt_set'] == 'thumbnail-center' ) ? true : null;
+				$content = ( t_em( 'archive_in_columns' ) == 1 && t_em( 'excerpt_set' ) != 'thumbnail-center' ) ? 'excerpt' : 'columns';
+				$cols = ( t_em( 'archive_in_columns' ) > 1 || t_em( 'excerpt_set' ) == 'thumbnail-center' ) ? true : null;
 
 				if ( $the_query->have_posts() ) :
 					if ( $cols ) :
@@ -44,7 +43,7 @@ get_header(); ?>
 
 					while ( $the_query->have_posts() ) :
 						$the_query->the_post();
-						if ( $cols && 0 == $i % $t_em['archive_in_columns'] ) :
+						if ( $cols && 0 == $i % t_em( 'archive_in_columns' ) ) :
 							echo '</div>';
 							echo '<div class="row">';
 						endif;

@@ -16,9 +16,7 @@
 /**
  * The template for the sidebar containing the alternative widget area.
  */
-global $t_em;
-
-if ( in_array( $t_em['layout_set'], array(
+if ( in_array( t_em( 'layout_set' ), array(
 	'three-columns-content-left',
 	'three-columns-content-right',
 	'three-columns-content-middle' ) ) ) :
