@@ -186,38 +186,21 @@ endif; // function t_em_slider_bootstrap_carousel()
 add_action( 't_em_action_header', 't_em_slider_bootstrap_carousel', 5 );
 
 /**
- * Return arguments for slider query. Only post with images attached to it will be displayed
+ * Return arguments for slider query. Only post with featured images attached to it will be displayed
  *
- * @return array Query arguments
+ * @return array 			Query arguments
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.3 	Get only post with '_thumbnail_id' meta key.
  */
 function t_em_slider_query_args(){
-	$cat_posts = get_posts( array( 'category' => t_em( 'slider_category' ), 'posts_per_page' => 99 ) );
-	$i = 1;
-	$p = array();
-	foreach ( $cat_posts as $cp ) :
-		$img = get_children( array( 'post_parent' => $cp->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
-		if ( ! empty( $img ) ) :
-			$tp = $cp->ID;
-			array_push( $p, $tp );
-		endif;
-	endforeach;
-	$tp = count( $p );
-	$lp = $tp - t_em( 'slider_number' );
-	while ( $i <= $lp ) :
-		array_pop( $p );
-		$i++;
-	endwhile;
-	$tp = count( $p );
-
 	$args = array(
 		'post_type'			=> 'post',
 		'cat'				=> t_em( 'slider_category' ),
-		'post__in'			=> $p,
-		'posts_per_page'	=> $tp,
+		'posts_per_page'	=> t_em( 'slider_number' ),
 		'orderby'			=> 'date',
 		'order'				=> 'DESC',
+		'meta_key'			=> '_thumbnail_id',
 	);
 
 	/**
