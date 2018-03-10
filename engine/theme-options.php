@@ -101,6 +101,47 @@ function t_em_theme_options_admin_page(){
 add_action( 'admin_menu', 't_em_theme_options_admin_page' );
 
 /**
+ * Add node to admin bar
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_add_node( $wp_admin_bar ){
+	$svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="fill:#82878c" viewBox="0 0 32 32"><title>twenty-em</title><path d="M29.7 23.6h-8.3l-6.4-11.1v-12.5h-12.7v12.6h12.5l6.5 11.2v8.2h8.4z"></path></svg>';
+	$svg = 'data:image/svg+xml;base64,' . base64_encode( $svg );
+	$style = array(
+		'background-image: url('. $svg .');',
+		'background-repeat: no-repeat;',
+		'background-position: 0 6px;',
+		'width: 20px;',
+		'height: 30px;',
+	);
+
+	$args = array(
+		'id'		=> 'twenty-em',
+		'title'		=> '<div id="twenty-em-ab-icon" class="" style="'. implode( '', $style ) .'"><span class="screen-reader-text">'. T_EM_FRAMEWORK_NAME . ' ' . T_EM_FRAMEWORK_VERSION .'</span></div>',
+		'href'		=> admin_url( 'admin.php?page=twenty-em-options' ),
+	);
+	$wp_admin_bar->add_node( $args );
+
+	$args = array(
+		'id'		=> 'twenty-em-options',
+		'title'		=> T_EM_FRAMEWORK_NAME,
+		'parent'	=> 'twenty-em',
+		'href'		=> admin_url( 'admin.php?page=twenty-em-options' ),
+	);
+	$wp_admin_bar->add_node( $args );
+
+	$args = array(
+		'id'		=> 'twenty-em-backup',
+		'title'		=> __( 'Backup', 't_em' ),
+		'parent'	=> 'twenty-em',
+		'href'		=> admin_url( 'admin.php?page=twenty-em-backup' ),
+	);
+	$wp_admin_bar->add_node( $args );
+}
+add_action( 'admin_bar_menu', 't_em_add_node', 100 );
+
+/**
  * Finally a Options Page is displayed.
  * Referenced via t_em_theme_options_admin_page(), add_menu_page() callback
  *
