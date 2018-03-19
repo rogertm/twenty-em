@@ -23,48 +23,57 @@
  * @return array
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.3		Added the 'default_value' key
  */
-function t_em_general_options( $general_options = '' ){
+function t_em_general_options(){
 	$general_options = array(
-		't_em_credit'				=> array(
+		't_em_credit'			=> array(
 			'value'			=> 't_em_credit',
 			'label'			=> sprintf( __( 'Show <strong><a href="%1$s" target="_blank">%2$s</a></strong> and <strong><a href="http://wordpress.org/" target="_blank">WordPress.org</a></strong> home page link at the bottom of your site', 't_em' ), T_EM_SITE, T_EM_FRAMEWORK_NAME ),
 			'sublabel'		=> '',
+			'default_value'	=> '1',
 		),
 		'single_featured_img'	=> array(
 			'value'			=> 'single_featured_img',
 			'label'			=> __( 'Show featured image on top of the entry when a single post or page is displayed', 't_em' ),
 			'sublabel'		=> '',
+			'default_value'	=> '1',
 		),
 		'single_related_posts'	=> array(
 			'value'			=> 'single_related_posts',
 			'label'			=> __( 'When a single post is displayed, show related posts', 't_em' ),
 			'sublabel'		=> '',
+			'default_value'	=> '1',
 		),
 		'breadcrumb_path'		=> array(
 			'value'			=> 'breadcrumb_path',
 			'label'			=> __( 'Display a breadcrumb path', 't_em' ),
 			'sublabel'		=> '',
+			'default_value'	=> '1',
 		),
 		'separate_comments_pings_tracks'	=> array(
 			'value'			=> 'separate_comments_pings_tracks',
 			'label'			=> __( 'Separate comments from pingbacks and trackbacks', 't_em' ),
 			'sublabel'		=> sprintf( __( 'For a best performances of this option, please deactivate your <a href="%1$s">comments pagination</a>.', 't_em' ), admin_url( 'options-discussion.php#page_comments' ) ),
+			'default_value'	=> '1',
 		),
 		'single_page_comments'	=> array(
 			'value'			=> 'single_page_comments',
 			'label'			=> __( 'Enable comments in single pages', 't_em' ),
 			'sublabel'		=> sprintf( __( 'If true, be sure to <a href="%1$s">allow people to post comments on new articles</a>.', 't_em' ), admin_url( 'options-discussion.php#default_comment_status' ) ),
+			'default_value'	=> '1',
 		),
 		'shortcode_buttoms'		=> array(
 			'value'			=> 'shortcode_buttoms',
 			'label'			=> __( 'Enable shortcodes buttons', 't_em' ),
 			'sublabel'		=> __( 'Shortcodes are always enables, but you can hide or show the buttons in the posts or pages editor', 't_em' ),
+			'default_value'	=> '1',
 		),
 		'show_debug_panel'		=> array(
 			'value'			=> 'show_debug_panel',
 			'label'			=> __( 'Show Debug Panel', 't_em' ),
 			'sublabel'		=> __( 'Great tool for developers. Display a Debug Panel with important information at the bottom of this administration panel. If <code>WP_DEBUG</code> is enable, this panel will be shown any way.', 't_em' ),
+			'default_value'	=> '0',
 		),
 	);
 
@@ -72,11 +81,52 @@ function t_em_general_options( $general_options = '' ){
 	 * Filter the General Options Set
 	 *
 	 * @param array An array of new options in the General Options Set.
-	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', and 'sublabel' keys.
+	 * 				Keyed by a string id. The ids point to arrays containing 'value', 'label', 'sublabel' and 'default_value' keys.
 	 * @since Twenty'em 1.0
 	 */
 	return apply_filters( 't_em_admin_filter_general_options', $general_options );
 }
+
+/**
+ * Add dynamically General Options to t_em_default_theme_options()
+ * @return array
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_general_options_default( $default_theme_options ){
+	$general_options = array();
+	foreach ( t_em_general_options() as $key => $value ) :
+		$default = array( $key => $value['default_value'] );
+		$general_options = array_merge( $general_options, array_slice( $default, -1 ) );
+	endforeach;
+	$general_options = array_merge( $default_theme_options, $general_options );
+	return $general_options;
+}
+add_filter( 't_em_admin_filter_default_theme_options', 't_em_general_options_default' );
+
+function foo(){
+	echo '<pre>'. print_r( t_em_general_options_default( array() ), true ) .'</pre>';
+}
+add_action( 't_em_action_top', 'foo' );
+
+/**
+ * Sanitize and validate dynamically the General Options
+ * This function is attached to the "t_em_admin_filter_theme_options_validate" filter hook
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_general_options_validate( $input ){
+	if ( ! $input )
+		return;
+
+	foreach ( t_em_general_options_default( array() ) as $key => $value ) :
+		if ( ! isset( $input[$key] ) )
+			$input[$key] = null;
+		$input[$key] = ( $input[$key] == 1 ? 1 : 0 );
+	endforeach;
+	return $input;
+}
+add_filter( 't_em_admin_filter_theme_options_validate', 't_em_general_options_validate' );
 
 /**
  * Render the General Options setting field in admin panel.

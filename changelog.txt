@@ -1,6 +1,11 @@
 == Changelog ==
 
 = 1.3 =
+Release Date: March 09, 2018
+
+* Enhancement: Added node to Admin Bar
+* Enhancement: Improved "t_em_slider_query_args()"
+
 Release Date: February 23, 2018
 
 * Enhancement: New function t_em_theme() in substitution of deprecated var $t_em_theme_data

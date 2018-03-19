@@ -97,6 +97,16 @@ function t_em_restore_from_scratch(){
 add_action( 'wp', 't_em_restore_from_scratch' );
 
 /**
+ * Load the defaults values
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_load_defaults(){
+	update_option( 't_em_theme_options', t_em_default_theme_options() );
+}
+add_action( 'after_switch_theme', 't_em_load_defaults' );
+
+/**
  * Return the default options values for Twenty'em after the theme is loaded for first time. This
  * function manage the main option sections like General, Header, Archive, Layout and Social Network
  * Options in the Twenty'em admin panel.
@@ -107,15 +117,6 @@ add_action( 'wp', 't_em_restore_from_scratch' );
  */
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
-		// Generals Options
-		't_em_credit'									=> '1',
-		'single_featured_img'							=> '1',
-		'single_related_posts'							=> '1',
-		'breadcrumb_path'								=> '1',
-		'separate_comments_pings_tracks'				=> '1',
-		'single_page_comments'							=> '1',
-		'shortcode_buttoms'								=> '1',
-		'show_debug_panel'								=> '0',
 		// Header Options
 		'header_set'									=> 'no-header',
 		'header_featured_image_home_only'				=> '0',
@@ -259,16 +260,8 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 function t_em_theme_options_validate( $input ){
 	if ( $input != null ) :
 
-		// All the checkbox are either 0 or 1
+		// All the checkbox are either 1 or 0
 		foreach ( array(
-			't_em_credit',
-			'single_featured_img',
-			'single_related_posts',
-			'breadcrumb_path',
-			'separate_comments_pings_tracks',
-			'single_page_comments',
-			'shortcode_buttoms',
-			'show_debug_panel',
 			'header_featured_image_home_only',
 			'header_featured_image',
 			'slider_home_only',
