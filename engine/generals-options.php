@@ -104,11 +104,6 @@ function t_em_general_options_default( $default_theme_options ){
 }
 add_filter( 't_em_admin_filter_default_theme_options', 't_em_general_options_default' );
 
-function foo(){
-	echo '<pre>'. print_r( t_em_general_options_default( array() ), true ) .'</pre>';
-}
-add_action( 't_em_action_top', 'foo' );
-
 /**
  * Sanitize and validate dynamically the General Options
  * This function is attached to the "t_em_admin_filter_theme_options_validate" filter hook
