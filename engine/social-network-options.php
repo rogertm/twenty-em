@@ -210,6 +210,40 @@ function t_em_social_network_options( $socialnetwork_options = '' ){
 }
 
 /**
+ * Add dynamically Social Network Options to t_em_default_theme_options()
+ * @return array
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_social_network_options_default( $default_theme_options ){
+	$socialnetwork_options = array();
+	foreach ( t_em_social_network_options() as $key => $value ) :
+		$default = array( $key => '' );
+		$socialnetwork_options = array_merge( $socialnetwork_options, array_slice( $default, -1 ) );
+	endforeach;
+	$socialnetwork_options = array_merge( $default_theme_options, $socialnetwork_options );
+	return $socialnetwork_options;
+}
+add_filter( 't_em_admin_filter_default_theme_options', 't_em_social_network_options_default' );
+
+/**
+ * Sanitize and validate dynamically the Social Network Options
+ * This function is attached to the "t_em_admin_filter_theme_options_validate" filter hook
+ *
+ * @since Twenty'em 1.3
+ */
+function t_em_social_network_options_validate( $input ){
+	if ( ! $input )
+		return;
+
+	foreach ( t_em_social_network_options_default( array() ) as $url ) :
+		$input[$url] = ( isset( $input[$url] ) ) ? esc_url_raw( $input[$url] ) : '';
+	endforeach;
+	return $input;
+}
+add_filter( 't_em_admin_filter_theme_options_validate', 't_em_social_network_options_validate' );
+
+/**
  * Render the Socialnetwork setting field in admin panel.
  * Referenced via t_em_register_setting_options_init(), add_settings_field() callback in
  * /engine/theme-options.php.
