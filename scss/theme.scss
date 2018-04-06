@@ -75,7 +75,6 @@ figure{
 	}
 }
 .featured-post-thumbnail{
-	transition: $thumbnail-transition;
 	a &:hover,
 	a &:focus{
 		filter: opacity(80%);
@@ -95,7 +94,6 @@ figure{
 		width: 50%;
 		a{
 			img{
-				transition: $thumbnail-transition;
 				&:hover,
 				&:focus{
 					filter: opacity(80%);
