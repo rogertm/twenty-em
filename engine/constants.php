@@ -35,12 +35,12 @@ define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/ico
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.9.1' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.9.4' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.3' );
-define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Polymita picta', 't_em' ) );
+define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Solenodon Cubanus', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20171021' ); // In date format Ymd
 
