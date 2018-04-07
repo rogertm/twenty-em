@@ -10,18 +10,24 @@
 # Twenty'em WordPress Framework
 
 ## ¿Qué es Twenty'em?
-
 Twenty'em es un theme/framework para WordPress creado específicamente para el desarrollo de Child Themes, que gracias a la gran variedad de opciones de configuración que posee y su API de Desarollo, puede ser usado tanto para proyectos sencillos como para proyectos de gran envergadura.
 
 ## Instalación
-
-Twenty'em se instala como cualquier otro theme de WordPress. Para ello debes descargar la [última versión](https://github.com/rogertm/twenty-em/archive/master.zip) de este software, descompactar el archivo `.zip` y copiar su contenido en el directorio `/wp-content/themes/` de tu instalación de WordPress. O subirlo usando el instalador de themes de WordPress.
-
-O bien puedes clonar el repositorio directamente de GitHub:
-
+### Manual
+Twenty'em se instala como cualquier otro theme de WordPress. Para ello debes descargar la [última versión](https://github.com/rogertm/twenty-em/releases/latest), descompactar el archivo `.zip` y copiar su contenido en el directorio `/wp-content/themes/` de tu instalación de WordPress. O subirlo usando el instalador de themes de WordPress.
+### Instalar vía Git
+Puedes clonar el repositorio directamente de GitHub:
 ```bash
 $ cd /path/to/your/wordpress-site/wp-content/themes/
 $ git clone https://github.com/rogertm/twenty-em.git
+```
+### Instalar vía Composer
+```bash
+$ composer require rogertm/twenty-em:^1.0
+```
+O puedes instalar directamente [Twenty'em Child Theme](https://github.com/rogertm/twenty-em-child) que automáticamente instalará Twenty'em.
+```bash
+$ composer require rogertm/twenty-em-child:^1.0
 ```
 
 ## Panel de Administración
@@ -80,3 +86,8 @@ Twenty'em se basa fundamentalmente en el uso de Hooks, lo cual permite que el de
 Como WordPress, **Twenty'em es un software de código libre y abierto y se distribuye bajo Licencia GPLv2 (o superior)**. Una copia de la licencia se puede encontrar en cada versión de Twenty'em, también incluimos una copia **no oficial** en español para usuarios hispanohablantes.
 
 Asimismo, cada software que se derive de Twenty'em (plugin, módulo, código, etc…) y se distribuya desde este sitio heredará dicha licencia.
+
+## Donar
+Hemos trabajado durante varios años en el desarrollo de Twenty'em Framework y ahora lo compartimos contigo. Apreciamos cualquier contribución que nos quieras hacer y así poder mantener nuestro proyecto. Gracias.
+
+[Hacer una Donación](https://paypal.me/themingisprose)
