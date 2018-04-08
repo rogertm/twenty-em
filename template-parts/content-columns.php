@@ -28,7 +28,7 @@ $cols = 12 / t_em( 'archive_in_columns' );
 						<?php do_action( 't_em_action_entry_meta_header' ) ?>
 					</div><!-- .entry-meta -->
 				</header>
-				<div class=""><?php the_excerpt(); ?></div>
+				<?php the_excerpt(); ?>
 				<footer class="entry-meta entry-meta-footer mb-3">
 					<?php do_action( 't_em_action_entry_meta_footer' ); ?>
 				</footer><!-- .entry-meta .entry-meta-footer -->

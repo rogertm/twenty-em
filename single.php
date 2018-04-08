@@ -40,7 +40,7 @@ get_header(); ?>
 
 			<?php do_action( 't_em_action_post_content_before' ); ?>
 			<?php if ( ! empty( get_post_field( 'post_excerpt' ) ) ) : ?>
-			<div class="entry-excerpt"><?php echo t_em_wrap_paragraph( do_shortcode( $post->post_excerpt ) ) ?></div>
+			<div class="entry-excerpt"><?php echo t_em_wrap_paragraph( $post->post_excerpt ) ?></div>
 			<?php endif; ?>
 			<div class="entry-content">
 				<?php the_content(); ?>
