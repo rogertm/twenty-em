@@ -1,6 +1,9 @@
 == Changelog ==
 
 = 1.3 =
+Release Date: April 11, 2018
+* Enhancement: New actions hooks "t_em_action_top_menu_before", "t_em_action_top_menu_after", "t_em_action_navigation_menu_before" and "t_em_action_navigation_menu_after".
+
 Release Date: April 06, 2018
 * Update: Bootstrap 4.0.0
 

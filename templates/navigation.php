@@ -26,6 +26,7 @@ function t_em_top_menu(){
 	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
 ?>
 	<div id="top-menu" role="navigation">
+	<?php do_action( 't_em_action_top_menu_before' ) ?>
 		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-dark bg-dark">
 			<div class="<?php t_em_container(); ?>">
 				<?php
@@ -65,6 +66,7 @@ function t_em_top_menu(){
 				<?php endif; ?>
 			</div>
 		</nav>
+		<?php do_action( 't_em_action_top_menu_after' ) ?>
 	</div>
 <?php
 }
@@ -84,6 +86,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 	$bp = apply_filters( 't_em_filter_default_breakpoint', 'lg' );
 ?>
 	<div id="site-navigation" role="navigation">
+	<?php do_action( 't_em_action_navigation_menu_before' ) ?>
 		<nav class="navbar navbar-expand-<?php echo $bp ?> navbar-light bg-light">
 			<div class="<?php t_em_container(); ?>">
 			<?php
@@ -119,6 +122,7 @@ if ( has_nav_menu( 'navigation-menu' ) ) :
 				</div>
 			</div>
 		</nav>
+		<?php do_action( 't_em_action_navigation_menu_after' ) ?>
 	</div>
 <?php
 endif;
