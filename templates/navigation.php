@@ -71,7 +71,7 @@ function t_em_top_menu(){
 <?php
 }
 endif; // function t_em_top_menu()
-add_action( 't_em_action_header_before', 't_em_top_menu' );
+add_action( 't_em_action_header', 't_em_top_menu', 1 );
 
 if ( ! function_exists( 't_em_navigation_menu' ) ) :
 /**
