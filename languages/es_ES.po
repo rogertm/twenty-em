@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2017-12-01 00:01-0500\n"
-"PO-Revision-Date: 2017-12-01 00:06-0500\n"
+"POT-Creation-Date: 2018-04-12 23:15-0400\n"
+"PO-Revision-Date: 2018-04-12 23:18-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -28,33 +28,33 @@ msgstr ""
 "Lo sentimos, la página que has pedido no se encuentra en nuestro servidor. "
 "Tal vez puedas usar el buscador y obtener mejores resultados."
 
-#: comments.php:33
+#: comments.php:32
 msgctxt "comments title"
 msgid "One response to: %2$s"
 msgid_plural "%1$s responses to: %2$s"
 msgstr[0] "Una respuesta para: %2$s"
 msgstr[1] "%1$s respuestas para: %2$s"
 
-#: comments.php:39 page-templates/template-archive.php:58
+#: comments.php:38 page-templates/template-archive.php:58
 #: templates/meta.php:126
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] "1 Comentario"
 msgstr[1] "%1$s Comentarios"
 
-#: comments.php:46
+#: comments.php:45
 msgid "No Comments"
 msgstr "No hay comentarios"
 
-#: comments.php:51
+#: comments.php:50
 msgid "%1$d Pingbacks | %2$d Trackbacks"
 msgstr "%1$d Pingbacks | %2$d Trackbacks"
 
-#: comments.php:69
+#: comments.php:68
 msgid "Comments are closed"
 msgstr "Los comentarios están cerrados"
 
-#: comments.php:73
+#: comments.php:72
 msgid "No responds to: <small>%s</small>"
 msgstr "No hay respuestas para: <small>%s</small>"
 
@@ -82,31 +82,31 @@ msgstr "Miniatura a la derecha"
 msgid "Thumbnail on center"
 msgstr "Miniatura al centro"
 
-#: engine/archive-options.php:101
+#: engine/archive-options.php:100
 msgid "One column"
 msgstr "Una columna"
 
-#: engine/archive-options.php:105
+#: engine/archive-options.php:104
 msgid "Two columns"
 msgstr "Dos columnas"
 
-#: engine/archive-options.php:109
+#: engine/archive-options.php:108
 msgid "Three columns"
 msgstr "Tres columnas"
 
-#: engine/archive-options.php:140
+#: engine/archive-options.php:139
 msgid "Width"
 msgstr "Ancho"
 
-#: engine/archive-options.php:145
+#: engine/archive-options.php:144
 msgid "Height"
 msgstr "Alto"
 
-#: engine/archive-options.php:165
+#: engine/archive-options.php:160
 msgid "Excerpt Length"
 msgstr "Extensión del resumen"
 
-#: engine/archive-options.php:168
+#: engine/archive-options.php:163
 msgid ""
 "The amount of words displayed in the excerpt. If empty, the default value "
 "will be <code>%1$s</code> words."
@@ -114,15 +114,15 @@ msgstr ""
 "Cantidad de palabras a mostrar en el resumen. Si se deja vacío, el valor por "
 "defecto será <code>%1$s</code> palabras"
 
-#: engine/archive-options.php:175
+#: engine/archive-options.php:170
 msgid "Thumbnail Alignment"
 msgstr "Alineado de la imagen en miniatura"
 
-#: engine/archive-options.php:191
+#: engine/archive-options.php:186
 msgid "Thumbnail Dimensions"
 msgstr "Dimensiones de la imagen en miniatura"
 
-#: engine/archive-options.php:192
+#: engine/archive-options.php:187
 msgid ""
 "Set thumbnail <strong>width</strong> and <strong>height</strong> in pixels. "
 "If empty, will be used the default thumbnail sizes (<code>%2$s</code> x "
@@ -134,22 +134,22 @@ msgstr ""
 "(<code>%2$s</code> x <code>%3$s</code>) especificadas en las opciones de <a "
 "href=\"%1$s\" target=\"_blank\">Ajustes multimedia</a>."
 
-#: engine/archive-options.php:206
+#: engine/archive-options.php:201
 msgid "Columns"
 msgstr "Columnas"
 
-#: engine/archive-options.php:207
+#: engine/archive-options.php:202
 msgid "Break Loop in columns (It may affect the thumbnail size)"
 msgstr ""
 "Dividir el archivo en columnas (puede afectar las dimensiones de las "
 "imágenes en miniaturas)"
 
-#: engine/archive-options.php:229
+#: engine/archive-options.php:230
 msgid "Display <code>Newer</code> and <code>Older</code> posts links"
 msgstr ""
 "Mostrar enlaces a entradas <code>Recientes</code> y <code>Antiguas</code>"
 
-#: engine/archive-options.php:233
+#: engine/archive-options.php:234
 msgid ""
 "Display a paginated list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 "
 "&hellip; 9 Older &raquo;</code>"
@@ -157,450 +157,450 @@ msgstr ""
 "Mostrar lista de paginada <code>&laquo; Recientes 1 &hellip; 3 4 5 6 7 "
 "&hellip; 9 Antiguas &raquo;</code>"
 
-#: engine/archive-options.php:262
+#: engine/archive-options.php:258
 msgid "Archive Pagination"
 msgstr "Paginado del archivo"
 
-#: engine/archive-options.php:302 engine/front-page-options.php:273
-#: engine/header-options.php:356
+#: engine/archive-options.php:300 engine/front-page-options.php:278
+#: engine/header-options.php:369
 msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
 "<strong>Oops!</strong> No hay configuraciones disponibles para esta opción..."
 
-#: engine/constants.php:75
-msgid "Polymita picta"
-msgstr "Polymita picta"
+#: engine/constants.php:43
+msgid "Solenodon Cubanus"
+msgstr "Solenodon Cubanus"
 
-#: engine/debug-options.php:22
+#: engine/debug-options.php:21
 msgid "Debug Information"
 msgstr "Información de Desarrollo"
 
-#: engine/debug-options.php:37 engine/debug-options.php:77
+#: engine/debug-options.php:36 engine/debug-options.php:76
 msgid "Theme Data"
 msgstr "Datos del Tema"
 
-#: engine/debug-options.php:42
+#: engine/debug-options.php:41
 msgid "Theme Setting"
 msgstr "Configuración del Tema"
 
-#: engine/debug-options.php:47
+#: engine/debug-options.php:46
 msgid "Default Setting"
 msgstr "Configuración por Defecto"
 
-#: engine/debug-options.php:52
+#: engine/debug-options.php:51
 msgid "System Information"
 msgstr "Información del Sistema"
 
-#: engine/debug-options.php:79
+#: engine/debug-options.php:78
 msgid "Framework:"
 msgstr "Framework:"
 
-#: engine/debug-options.php:81
+#: engine/debug-options.php:80
 msgid "Status:"
 msgstr "Estado:"
 
-#: engine/debug-options.php:83
+#: engine/debug-options.php:82
 msgid "Data Base Version:"
 msgstr "Versión de la Base de Datos:"
 
-#: engine/debug-options.php:85
+#: engine/debug-options.php:84
 msgid "Current Theme:"
 msgstr "Tema Actual:"
 
-#: engine/debug-options.php:87
+#: engine/debug-options.php:86
 msgid "Theme URI:"
 msgstr "URI del Tema:"
 
-#: engine/debug-options.php:89
+#: engine/debug-options.php:88
 msgid "Theme Author:"
 msgstr "Autor del Tema:"
 
-#: engine/debug-options.php:91
+#: engine/debug-options.php:90
 msgid "Theme Tags:"
 msgstr "Etiquetas del Tema:"
 
-#: engine/debug-options.php:93
+#: engine/debug-options.php:92
 msgid "Theme Text Domain:"
 msgstr "Text Domain del Tema:"
 
-#: engine/debug-options.php:98
+#: engine/debug-options.php:97
 msgid "CONSTANTS Values"
 msgstr "Valores CONSTANTES:"
 
-#: engine/debug-options.php:100
+#: engine/debug-options.php:99
 msgid "T_EM_WORDPRESS_VERSION"
 msgstr "T_EM_WORDPRESS_VERSION"
 
-#: engine/debug-options.php:102
+#: engine/debug-options.php:101
 msgid "T_EM_BOOTSTRAP_VERSION"
 msgstr "T_EM_BOOTSTRAP_VERSION"
 
-#: engine/debug-options.php:104
+#: engine/debug-options.php:103
 msgid "T_EM_THEME_DIR_PATH"
 msgstr "T_EM_THEME_DIR_PATH"
 
-#: engine/debug-options.php:106
+#: engine/debug-options.php:105
 msgid "T_EM_CHILD_THEME_DIR_PATH"
 msgstr "T_EM_CHILD_THEME_DIR_PATH"
 
-#: engine/debug-options.php:108
+#: engine/debug-options.php:107
 msgid "T_EM_ENGINE_DIR_PATH"
 msgstr "T_EM_ENGINE_DIR_PATH"
 
-#: engine/debug-options.php:110
+#: engine/debug-options.php:109
 msgid "T_EM_ENGINE_DIR_CSS_PATH"
 msgstr "T_EM_ENGINE_DIR_CSS_PATH"
 
-#: engine/debug-options.php:112
+#: engine/debug-options.php:111
 msgid "T_EM_ENGINE_DIR_IMG_PATH"
 msgstr "T_EM_ENGINE_DIR_IMG_PATH"
 
-#: engine/debug-options.php:114
+#: engine/debug-options.php:113
 msgid "T_EM_ENGINE_DIR_JS_PATH"
 msgstr "T_EM_ENGINE_DIR_JS_PATH"
 
-#: engine/debug-options.php:116
+#: engine/debug-options.php:115
 msgid "T_EM_ENGINE_DIR_URL"
 msgstr "T_EM_ENGINE_DIR_URL"
 
-#: engine/debug-options.php:118
+#: engine/debug-options.php:117
 msgid "T_EM_ENGINE_DIR_CSS_URL"
 msgstr "T_EM_ENGINE_DIR_CSS_URL"
 
-#: engine/debug-options.php:120
+#: engine/debug-options.php:119
 msgid "T_EM_ENGINE_DIR_IMG_URL"
 msgstr "T_EM_ENGINE_DIR_IMG_URL"
 
-#: engine/debug-options.php:122
+#: engine/debug-options.php:121
 msgid "T_EM_ENGINE_DIR_JS_URL"
 msgstr "T_EM_ENGINE_DIR_JS_URL"
 
-#: engine/debug-options.php:124
+#: engine/debug-options.php:123
 msgid "T_EM_THEME_DIR_INC_PATH"
 msgstr "T_EM_THEME_DIR_INC_PATH"
 
-#: engine/debug-options.php:126
+#: engine/debug-options.php:125
 msgid "T_EM_THEME_DIR_LANG_PATH"
 msgstr "T_EM_THEME_DIR_LANG_PATH"
 
-#: engine/debug-options.php:128
+#: engine/debug-options.php:127
 msgid "T_EM_THEME_DIR_CSS_PATH"
 msgstr "T_EM_THEME_DIR_CSS_PATH"
 
-#: engine/debug-options.php:130
+#: engine/debug-options.php:129
 msgid "T_EM_THEME_DIR_IMG_PATH"
 msgstr "T_EM_THEME_DIR_IMG_PATH"
 
-#: engine/debug-options.php:132
+#: engine/debug-options.php:131
 msgid "T_EM_THEME_DIR_JS_PATH"
 msgstr "T_EM_THEME_DIR_JS_PATH"
 
-#: engine/debug-options.php:134
+#: engine/debug-options.php:133
 msgid "T_EM_THEME_DIR_FONTS_PATH"
 msgstr "T_EM_THEME_DIR_FONTS_PATH"
 
-#: engine/debug-options.php:136
+#: engine/debug-options.php:135
 msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"
 msgstr "T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"
 
-#: engine/debug-options.php:138
+#: engine/debug-options.php:137
 msgid "T_EM_THEME_DIR_TEMPLATES_PATH"
 msgstr "T_EM_THEME_DIR_TEMPLATES_PATH"
 
-#: engine/debug-options.php:140
+#: engine/debug-options.php:139
 msgid "T_EM_THEME_DIR_BOOTSTRAP_PATH"
 msgstr "T_EM_THEME_DIR_BOOTSTRAP_PATH"
 
-#: engine/debug-options.php:142
+#: engine/debug-options.php:141
 msgid "T_EM_THEME_DIR_URL"
 msgstr "T_EM_THEME_DIR_URL"
 
-#: engine/debug-options.php:144
+#: engine/debug-options.php:143
 msgid "T_EM_CHILD_THEME_DIR_URL"
 msgstr "T_EM_CHILD_THEME_DIR_URL"
 
-#: engine/debug-options.php:146
+#: engine/debug-options.php:145
 msgid "T_EM_THEME_DIR_CSS_URL"
 msgstr "T_EM_THEME_DIR_CSS_URL"
 
-#: engine/debug-options.php:148
+#: engine/debug-options.php:147
 msgid "T_EM_THEME_DIR_IMG_URL"
 msgstr "T_EM_THEME_DIR_IMG_URL"
 
-#: engine/debug-options.php:150
+#: engine/debug-options.php:149
 msgid "T_EM_THEME_DIR_JS_URL"
 msgstr "T_EM_THEME_DIR_JS_URL"
 
-#: engine/debug-options.php:152
+#: engine/debug-options.php:151
 msgid "T_EM_THEME_DIR_FONTS_URL"
 msgstr "T_EM_THEME_DIR_FONTS_URL"
 
-#: engine/debug-options.php:154
+#: engine/debug-options.php:153
 msgid "T_EM_THEME_DIR_INC_URL"
 msgstr "T_EM_THEME_DIR_INC_URL"
 
-#: engine/debug-options.php:156
+#: engine/debug-options.php:155
 msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_URL"
 msgstr "T_EM_THEME_DIR_PAGE_TEMPLATES_URL"
 
-#: engine/debug-options.php:158
+#: engine/debug-options.php:157
 msgid "T_EM_THEME_DIR_TEMPLATES_URL"
 msgstr "T_EM_THEME_DIR_TEMPLATES_URL"
 
-#: engine/debug-options.php:160
+#: engine/debug-options.php:159
 msgid "T_EM_THEME_DIR_BOOTSTRAP_URL"
 msgstr "T_EM_THEME_DIR_BOOTSTRAP_URL"
 
-#: engine/debug-options.php:162
+#: engine/debug-options.php:161
 msgid "T_EM_SLIDER_DEFAULT_HEIGHT"
 msgstr "T_EM_SLIDER_DEFAULT_HEIGHT"
 
-#: engine/debug-options.php:164
+#: engine/debug-options.php:163
 msgid "T_EM_SLIDER_MAX_HEIGHT"
 msgstr "T_EM_SLIDER_MAX_HEIGHT"
 
-#: engine/debug-options.php:166
+#: engine/debug-options.php:165
 msgid "T_EM_SLIDER_MIN_HEIGHT"
 msgstr "T_EM_SLIDER_MIN_HEIGHT"
 
-#: engine/debug-options.php:168
+#: engine/debug-options.php:167
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE"
 
-#: engine/debug-options.php:170
+#: engine/debug-options.php:169
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE"
 
-#: engine/debug-options.php:172
+#: engine/debug-options.php:171
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE"
 
-#: engine/debug-options.php:174
+#: engine/debug-options.php:173
 msgid "T_EM_HEADER_IMAGE_WIDTH"
 msgstr "T_EM_HEADER_IMAGE_WIDTH"
 
-#: engine/debug-options.php:176
+#: engine/debug-options.php:175
 msgid "T_EM_HEADER_IMAGE_HEIGHT"
 msgstr "T_EM_HEADER_IMAGE_HEIGHT"
 
-#: engine/debug-options.php:195 engine/debug-options.php:440
+#: engine/debug-options.php:193
 msgid "Current Option: <code>%s</code>"
 msgstr "Mostrando la opción: <code>%s</code>"
 
-#: engine/debug-options.php:196 engine/debug-options.php:441
+#: engine/debug-options.php:194
 msgid ""
 "You can access these values through the <code>$t_em</code> global variable"
 msgstr ""
 "Puedes acceder a estos valores mediante la variable global <code>$t_em</code>"
 
-#: engine/debug-options.php:216
+#: engine/debug-options.php:214
 msgid "Current Function: <code>%s</code>"
 msgstr "Funcción Actual: <code>%s</code>"
 
-#: engine/debug-options.php:217
+#: engine/debug-options.php:215
 msgid "This function return the defaults values of your theme"
 msgstr "Esta función retorna los valores por defecto en tu tema"
 
-#: engine/debug-options.php:238
+#: engine/debug-options.php:237
 msgid "Site Info"
 msgstr "Información del Sitio"
 
-#: engine/debug-options.php:240
+#: engine/debug-options.php:239
 msgid "Site URL:"
 msgstr "URL del Sitio:"
 
-#: engine/debug-options.php:242
+#: engine/debug-options.php:241
 msgid "Home URL:"
 msgstr "URL de Página Inicial:"
 
-#: engine/debug-options.php:244
+#: engine/debug-options.php:243
 msgid "Multisite:"
 msgstr "Multisitio:"
 
-#: engine/debug-options.php:245
+#: engine/debug-options.php:244
 msgid "Yes"
 msgstr "Si"
 
-#: engine/debug-options.php:245
+#: engine/debug-options.php:244
 msgid "No"
 msgstr "No"
 
-#: engine/debug-options.php:249
+#: engine/debug-options.php:248
 msgid "Hosting Provider"
 msgstr "Proveedor de Hosting:"
 
-#: engine/debug-options.php:251
+#: engine/debug-options.php:250
 msgid "Domain:"
 msgstr "Dominio:"
 
-#: engine/debug-options.php:253
+#: engine/debug-options.php:252
 msgid "IP:"
 msgstr "IP:"
 
-#: engine/debug-options.php:258
+#: engine/debug-options.php:257
 msgid "Browser"
 msgstr "Navegador"
 
-#: engine/debug-options.php:260
+#: engine/debug-options.php:259
 msgid "User Agent:"
 msgstr "Agente de Usuario:"
 
-#: engine/debug-options.php:271 engine/debug-options.php:292
-#: engine/debug-options.php:294 engine/debug-options.php:301
-#: engine/debug-options.php:387
+#: engine/debug-options.php:270 engine/debug-options.php:291
+#: engine/debug-options.php:293 engine/debug-options.php:300
+#: engine/debug-options.php:386
 msgid "N/A"
 msgstr "N/A"
 
-#: engine/debug-options.php:274
+#: engine/debug-options.php:273
 msgid "WordPress Configuration"
 msgstr "Configuración de WordPress"
 
-#: engine/debug-options.php:276
+#: engine/debug-options.php:275
 msgid "Version:"
 msgstr "Versión:"
 
-#: engine/debug-options.php:278
+#: engine/debug-options.php:277
 msgid "Language:"
 msgstr "Lenguage:"
 
-#: engine/debug-options.php:279
+#: engine/debug-options.php:278
 msgid "en_US"
 msgstr "en_US"
 
-#: engine/debug-options.php:280
+#: engine/debug-options.php:279
 msgid "Permalink Structure:"
 msgstr "Estructura de Enlaces Permanentes:"
 
-#: engine/debug-options.php:281
+#: engine/debug-options.php:280
 msgid "Default"
 msgstr "Por Defecto"
 
-#: engine/debug-options.php:282
+#: engine/debug-options.php:281
 msgid "Active Theme:"
 msgstr "Tema Activo:"
 
-#: engine/debug-options.php:284
+#: engine/debug-options.php:283
 msgid "Parent Theme:"
 msgstr "Tema Padre:"
 
-#: engine/debug-options.php:286
+#: engine/debug-options.php:285
 msgid "Show On Front:"
 msgstr "Mostrar en Página Frontal:"
 
-#: engine/debug-options.php:291
+#: engine/debug-options.php:290
 msgid "Page On Front:"
 msgstr "Página de Inicio:"
 
-#: engine/debug-options.php:292 engine/debug-options.php:294
+#: engine/debug-options.php:291 engine/debug-options.php:293
 msgid "Title: %s - ID: %s"
 msgstr "Título: %s - ID: %s"
 
-#: engine/debug-options.php:293
+#: engine/debug-options.php:292
 msgid "Page For Posts:"
 msgstr "Página de Entradas"
 
-#: engine/debug-options.php:296
+#: engine/debug-options.php:295
 msgid "ABSPATH:"
 msgstr "ABSPATH:"
 
-#: engine/debug-options.php:298
+#: engine/debug-options.php:297
 msgid "Table Prefix:"
 msgstr "Prefijo de las Tablas"
 
-#: engine/debug-options.php:299
+#: engine/debug-options.php:298
 msgid "\"%s\". Length: %s. Status: %s"
 msgstr "\"%s\". Longitud: %s. Estado: %s"
 
-#: engine/debug-options.php:299
+#: engine/debug-options.php:298
 msgid "ERROR: Too long"
 msgstr "ERROR: Muy largo"
 
-#: engine/debug-options.php:299
+#: engine/debug-options.php:298
 msgid "Acceptable"
 msgstr "Aceptable"
 
-#: engine/debug-options.php:300
+#: engine/debug-options.php:299
 msgid "WP_DEBUG:"
 msgstr "WP_DEBUG:"
 
-#: engine/debug-options.php:301
+#: engine/debug-options.php:300
 msgid "Enabled"
 msgstr "Disponible"
 
-#: engine/debug-options.php:301
+#: engine/debug-options.php:300
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: engine/debug-options.php:302 engine/debug-options.php:371
+#: engine/debug-options.php:301 engine/debug-options.php:370
 msgid "Memory Limit:"
 msgstr "Límite de Memoria:"
 
-#: engine/debug-options.php:304
+#: engine/debug-options.php:303
 msgid "Registered Post Stati:"
 msgstr "Estados de Post Registrados:"
 
-#: engine/debug-options.php:306
+#: engine/debug-options.php:305
 msgid "Registered Post Types:"
 msgstr "Tipos de Post Registrados"
 
-#: engine/debug-options.php:315
+#: engine/debug-options.php:314
 msgid "Active Plugins"
 msgstr "Plugins Activos"
 
-#: engine/debug-options.php:320 engine/debug-options.php:332
-#: engine/debug-options.php:349
+#: engine/debug-options.php:319 engine/debug-options.php:331
+#: engine/debug-options.php:348
 msgid "Update Available - %s"
 msgstr "Actualización Disponible - %s"
 
-#: engine/debug-options.php:327
+#: engine/debug-options.php:326
 msgid "Inactive Plugins"
 msgstr "Plugins Inactivos"
 
-#: engine/debug-options.php:343
+#: engine/debug-options.php:342
 msgid "Network Active Plugins"
 msgstr "Plugins Activos para la Red"
 
-#: engine/debug-options.php:358
+#: engine/debug-options.php:357
 msgid "Webserver Configuration"
 msgstr "Configuración del Servidor"
 
-#: engine/debug-options.php:360
+#: engine/debug-options.php:359
 msgid "PHP Version:"
 msgstr "Versión de PHP:"
 
-#: engine/debug-options.php:362
+#: engine/debug-options.php:361
 msgid "MySQL Version:"
 msgstr "Versión de MySQL:"
 
-#: engine/debug-options.php:364
+#: engine/debug-options.php:363
 msgid "Webserver:"
 msgstr "Servidor Web:"
 
-#: engine/debug-options.php:369
+#: engine/debug-options.php:368
 msgid "PHP Configuration"
 msgstr "Configuración de PHP"
 
-#: engine/debug-options.php:374
+#: engine/debug-options.php:373
 msgid "Upload Max Size:"
 msgstr "Capacidad Máxima de Subida:"
 
-#: engine/debug-options.php:377
+#: engine/debug-options.php:376
 msgid "Post Max Filesize:"
 msgstr "Capacidad Máxima de Envío:"
 
-#: engine/debug-options.php:380
+#: engine/debug-options.php:379
 msgid "Time Limit:"
 msgstr "Tiempo Límite:"
 
-#: engine/debug-options.php:383
+#: engine/debug-options.php:382
 msgid "Max Input Vars:"
 msgstr "Capacidad Máxima de Entrada"
 
-#: engine/debug-options.php:386
+#: engine/debug-options.php:385
 msgid "Display Errors:"
 msgstr "Mostrar Errores:"
 
-#: engine/debug-options.php:387
+#: engine/debug-options.php:386
 msgid "On: %s"
 msgstr "On: %s"
 
@@ -632,86 +632,94 @@ msgstr ""
 "Para configurar esta opción debes ir a los <a href=\"%1$s\" target=\"_blank"
 "\">Ajustes de lectura</a>"
 
-#: engine/front-page-options.php:99
+#: engine/front-page-options.php:105
 msgid "First home page text area"
 msgstr "Primera área de texto"
 
-#: engine/front-page-options.php:103
+#: engine/front-page-options.php:109
 msgid "Second home page text area"
 msgstr "Segunda área de texto"
 
-#: engine/front-page-options.php:107
+#: engine/front-page-options.php:113
 msgid "Third home page text area"
 msgstr "Tercera área de texto"
 
-#: engine/front-page-options.php:111
+#: engine/front-page-options.php:117
 msgid "Fourth home page text area"
 msgstr "Cuarta área de texto"
 
-#: engine/front-page-options.php:135
+#: engine/front-page-options.php:141
 msgid "Jumbotron"
 msgstr "Jumbotron"
 
-#: engine/front-page-options.php:140
+#: engine/front-page-options.php:146
 msgid "Features"
 msgstr "Features"
 
-#: engine/front-page-options.php:175 engine/header-options.php:298
-#: engine/maintenance-mode-options.php:86
+#: engine/front-page-options.php:179 engine/header-options.php:309
+#: engine/maintenance-mode-options.php:83
 msgid "Headline"
 msgstr "Encabezado"
 
-#: engine/front-page-options.php:178 engine/maintenance-mode-options.php:91
+#: engine/front-page-options.php:182 engine/maintenance-mode-options.php:88
 msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Encabezado <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:181 engine/header-options.php:305
-#: engine/maintenance-mode-options.php:96
+#: engine/front-page-options.php:185 engine/header-options.php:316
+#: engine/maintenance-mode-options.php:93
 msgid "Content"
 msgstr "Contenido"
 
-#: engine/front-page-options.php:184 engine/maintenance-mode-options.php:101
+#: engine/front-page-options.php:188 engine/maintenance-mode-options.php:98
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
-#: engine/front-page-options.php:186 engine/header-options.php:303
-#: engine/maintenance-mode-options.php:103
+#: engine/front-page-options.php:190 engine/header-options.php:314
+#: engine/maintenance-mode-options.php:100
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: engine/front-page-options.php:188 engine/header-options.php:308
-#: engine/maintenance-mode-options.php:106
+#: engine/front-page-options.php:192 engine/header-options.php:319
+#: engine/maintenance-mode-options.php:103
 msgid "Primary button text"
 msgstr "Texto del botón primario"
 
-#: engine/front-page-options.php:191 engine/maintenance-mode-options.php:110
+#: engine/front-page-options.php:195 engine/maintenance-mode-options.php:107
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:194 engine/header-options.php:314
-#: engine/maintenance-mode-options.php:114
+#: engine/front-page-options.php:198 engine/header-options.php:325
+#: engine/maintenance-mode-options.php:111
 msgid "Primary button link"
 msgstr "Enlace del botón primario"
 
-#: engine/front-page-options.php:197 engine/header-options.php:317
-#: engine/maintenance-mode-options.php:118
+#: engine/front-page-options.php:201 engine/header-options.php:328
+#: engine/maintenance-mode-options.php:115
 msgid "Secondary button text"
 msgstr "Texto del botón secundario"
 
-#: engine/front-page-options.php:200 engine/maintenance-mode-options.php:122
+#: engine/front-page-options.php:204 engine/maintenance-mode-options.php:119
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:203 engine/header-options.php:323
-#: engine/maintenance-mode-options.php:126
+#: engine/front-page-options.php:207 engine/header-options.php:334
+#: engine/maintenance-mode-options.php:123
 msgid "Secondary button link"
 msgstr "Enlace del botón secundario"
 
-#: engine/front-page-options.php:225
+#: engine/front-page-options.php:234
 msgid "Front Page Template"
 msgstr "Plantillas para la Página de Inicio"
 
-#: engine/generals-options.php:31
+#: engine/functions.php:218
+msgid "Site in Maintenance"
+msgstr "Sitio en Mantenimiento"
+
+#: engine/functions.php:503
+msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
+msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
+
+#: engine/generals-options.php:32
 msgid ""
 "Show <strong><a href=\"%1$s\" target=\"_blank\">%2$s</a></strong> and "
 "<strong><a href=\"http://wordpress.org/\" target=\"_blank\">WordPress.org</"
@@ -721,7 +729,7 @@ msgstr ""
 "strong> y <strong><a href=\"http://wordpress.org/\" target=\"_blank"
 "\">WordPress.org</a></strong> en la parte inferior del blog"
 
-#: engine/generals-options.php:36
+#: engine/generals-options.php:38
 msgid ""
 "Show featured image on top of the entry when a single post or page is "
 "displayed"
@@ -729,19 +737,19 @@ msgstr ""
 "Mostrar la imagen destacada en la parte superior de cada entrada o página "
 "cuando esta es mostrada"
 
-#: engine/generals-options.php:41
+#: engine/generals-options.php:44
 msgid "When a single post is displayed, show related posts"
 msgstr "Mostrar una lista de entradas relacionadas con la entrada actual"
 
-#: engine/generals-options.php:46
+#: engine/generals-options.php:50
 msgid "Display a breadcrumb path"
 msgstr "Mostrar el Breadcrumb o Migas de Pan"
 
-#: engine/generals-options.php:51
+#: engine/generals-options.php:56
 msgid "Separate comments from pingbacks and trackbacks"
 msgstr "Separar comentarios de pingbacks y trackbacks"
 
-#: engine/generals-options.php:52
+#: engine/generals-options.php:57
 msgid ""
 "For a best performances of this option, please deactivate your <a href=\"%1$s"
 "\">comments pagination</a>."
@@ -749,11 +757,11 @@ msgstr ""
 "Para el mejor funcionamiento de esta opción, por favor desactiva el <a href="
 "\"%1$s\">paginado en los comentarios</a>."
 
-#: engine/generals-options.php:56
+#: engine/generals-options.php:62
 msgid "Enable comments in single pages"
 msgstr "Permitir comentarios en páginas individuales"
 
-#: engine/generals-options.php:57
+#: engine/generals-options.php:63
 msgid ""
 "If true, be sure to <a href=\"%1$s\">allow people to post comments on new "
 "articles</a>."
@@ -761,11 +769,11 @@ msgstr ""
 "Si es verdadero, asegúrate de <a href=\"%1$s\">permitir a los usuarios "
 "comentar en los nuevas entradas</a>."
 
-#: engine/generals-options.php:61
+#: engine/generals-options.php:68
 msgid "Enable shortcodes buttons"
 msgstr "Activar botones de shortcodes"
 
-#: engine/generals-options.php:62
+#: engine/generals-options.php:69
 msgid ""
 "Shortcodes are always enables, but you can hide or show the buttons in the "
 "posts or pages editor"
@@ -773,11 +781,11 @@ msgstr ""
 "Los shortcodes siempre están disponibles, pero puedes mostrar u ocultar los "
 "botones en el editor de entradas"
 
-#: engine/generals-options.php:66
+#: engine/generals-options.php:74
 msgid "Show Debug Panel"
 msgstr "Mostrar Panel de Información de Desarrollo"
 
-#: engine/generals-options.php:67
+#: engine/generals-options.php:75
 msgid ""
 "Great tool for developers. Display a Debug Panel with important information "
 "at the bottom of this administration panel. If <code>WP_DEBUG</code> is "
@@ -807,7 +815,7 @@ msgstr "Carrusel"
 msgid "Static Header"
 msgstr "Cabecera Estática"
 
-#: engine/header-options.php:85
+#: engine/header-options.php:81
 msgid ""
 "You can manage your header image option in the <a href=\"%1$s\">Theme "
 "Customizer</a> screen."
@@ -815,37 +823,37 @@ msgstr ""
 "Puedes manejar las opciones de cabecera desde el <a href=\"%1$s\" target="
 "\"_blank\">Theme Customizer</a>."
 
-#: engine/header-options.php:89 engine/header-options.php:148
-#: engine/header-options.php:271 engine/maintenance-mode-options.php:36
+#: engine/header-options.php:85 engine/header-options.php:146
+#: engine/header-options.php:282 engine/maintenance-mode-options.php:33
 msgid "Options"
 msgstr "Opciones"
 
-#: engine/header-options.php:95
+#: engine/header-options.php:91
 msgid "Show header image only at home page "
 msgstr "Mostrar la imagen de cabecera solo en la página inicial"
 
-#: engine/header-options.php:97
+#: engine/header-options.php:93
 msgid "This unable the option below"
 msgstr "Esto inhabilita la opción siguiente"
 
-#: engine/header-options.php:105
+#: engine/header-options.php:101
 msgid "Display featured image in single posts and pages "
 msgstr ""
 "Mostrar la imagen destacada en entradas y páginas como imagen de cabecera"
 
-#: engine/header-options.php:111
+#: engine/header-options.php:107
 msgid "Oops! No image chosen yet"
 msgstr "Oops! No se ha escogido ninguna imagen aun"
 
-#: engine/header-options.php:152
+#: engine/header-options.php:150
 msgid "Show Slider only at home page"
 msgstr "Mostrar el Carrusel solo en la página inicial"
 
-#: engine/header-options.php:159
+#: engine/header-options.php:157
 msgid "Attributes"
 msgstr "Atributos"
 
-#: engine/header-options.php:161
+#: engine/header-options.php:159
 msgid ""
 "The amount of time, in milliseconds, to delay between automatically cycling "
 "an item. Options: default: <code>%1$s</code>; max: <code>%2$s</code>; min: "
@@ -855,11 +863,11 @@ msgstr ""
 "elemento. Opciones: predeterminado: <code>%1$s</code>; máximo: <code>%2$s</"
 "code>; mínimo: <code>%3$s</code>"
 
-#: engine/header-options.php:164
+#: engine/header-options.php:162
 msgid "Interval value"
 msgstr "Valor del intervalo"
 
-#: engine/header-options.php:175
+#: engine/header-options.php:173
 msgid ""
 "Pauses the cycling of the carousel on mouseenter and resumes the cycling of "
 "the carousel on mouseleave."
@@ -867,17 +875,20 @@ msgstr ""
 "Pausar el ciclo del carrusel al pasarle con el puntero por encima y "
 "resumirlo una vez que el puntero salga."
 
-#: engine/header-options.php:184
-msgid "Whether the carousel should cycle continuously or have hard stops."
-msgstr ""
-"Si el carrusel debe circular infinitamente o detenerse al llegar a la última "
-"diapositiva. "
+#: engine/header-options.php:182
+msgid "Stop the carousel at last slide."
+msgstr "Detener el  carrusel  en la última diapositiva."
 
-#: engine/header-options.php:192 engine/header-options.php:195
+#: engine/header-options.php:191
+msgid "Animate slides with a fade transition instead of a slide."
+msgstr ""
+"Animar las transiciones con efecto de desvanecimiento en lugar de deslizar."
+
+#: engine/header-options.php:199 engine/header-options.php:202
 msgid "Slider Height"
 msgstr "Altura del carrusel"
 
-#: engine/header-options.php:193
+#: engine/header-options.php:200
 msgid ""
 "By default slider width is the same than layout width. Here you may enter "
 "the value you wish to be your slider height. Options: default: <code>%1$s</"
@@ -888,19 +899,19 @@ msgstr ""
 "altura del carrusel. Opciones: predeterminado: <code>%1$s</code>; máximo: "
 "<code>%2$s</code>; mínimo: <code>%3$s</code>"
 
-#: engine/header-options.php:202
+#: engine/header-options.php:209
 msgid "Category"
 msgstr "Categoría"
 
-#: engine/header-options.php:205
+#: engine/header-options.php:212
 msgid "Select the category you want to be displayed in the slider section"
 msgstr "Selecciona la categoría que se mostrará en la sección del carrusel"
 
-#: engine/header-options.php:218
+#: engine/header-options.php:225
 msgid "Slides"
 msgstr "Diapositivas"
 
-#: engine/header-options.php:221
+#: engine/header-options.php:228
 msgid ""
 "Introduce the number of slides you want to show. Default value will be "
 "<strong>%1$s</strong>, set at your <a href=\"%2$s\" target=\"_blank"
@@ -911,35 +922,35 @@ msgstr ""
 "entradas a mostrar en <a href=\"%2$s\" target=\"_blank\">Ajustes de lectura</"
 "a>"
 
-#: engine/header-options.php:239
+#: engine/header-options.php:252
 msgid "Static header text on right"
 msgstr "Texto a la derecha"
 
-#: engine/header-options.php:244
+#: engine/header-options.php:257
 msgid "Static header text on left"
 msgstr "Texto a la izquierda"
 
-#: engine/header-options.php:275
+#: engine/header-options.php:286
 msgid "Show Static Header only at home page?"
 msgstr "Mostrar la Cabecera Estática solo en la página inicial"
 
-#: engine/header-options.php:281
+#: engine/header-options.php:292
 msgid "Image and Text Alignment"
 msgstr "Alineado de la imagen y el texto"
 
-#: engine/header-options.php:296 engine/maintenance-mode-options.php:84
+#: engine/header-options.php:307 engine/maintenance-mode-options.php:81
 msgid "Headline, Content and More..."
 msgstr "Encabezado, Contenido y más..."
 
-#: engine/header-options.php:301
+#: engine/header-options.php:312
 msgid "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
-#: engine/header-options.php:311
+#: engine/header-options.php:322
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 
-#: engine/header-options.php:320
+#: engine/header-options.php:331
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 
@@ -1516,23 +1527,23 @@ msgstr "Un áreas de widgets"
 msgid "No footer widgets"
 msgstr "Sin áreas de widgets"
 
-#: engine/layout-options.php:131
+#: engine/layout-options.php:129
 msgid "Layout Fluid"
 msgstr "Estructura Fluida"
 
-#: engine/layout-options.php:136
+#: engine/layout-options.php:134
 msgid "Use full width container, spanning the entire width of your viewport."
 msgstr "Expandir el contenedor por todo el ancho de la pantalla."
 
-#: engine/layout-options.php:160
+#: engine/layout-options.php:161
 msgid "Main Layout Setting"
 msgstr "Ajustes de la estructura principal"
 
-#: engine/layout-options.php:179
+#: engine/layout-options.php:180
 msgid "Footer Widgets Area Setting"
 msgstr "Ajustes de áreas de widgets inferior"
 
-#: engine/maintenance-mode-options.php:35
+#: engine/maintenance-mode-options.php:32
 msgid ""
 "Activating the \"<strong>Maintenance Mode</strong>\" only users width role "
 "\"Administrator\" will can interact with your site. Otherwise you can active "
@@ -1543,15 +1554,15 @@ msgstr ""
 "podrás activar otros grupos de usuarios en la sección <strong>Usuarios y "
 "Roles</strong>"
 
-#: engine/maintenance-mode-options.php:41
+#: engine/maintenance-mode-options.php:38
 msgid "Active the Maintenance Mode"
 msgstr "Activar el Modo de Mantenimiento"
 
-#: engine/maintenance-mode-options.php:46
+#: engine/maintenance-mode-options.php:43
 msgid "Timer"
 msgstr "Temporizador"
 
-#: engine/maintenance-mode-options.php:53
+#: engine/maintenance-mode-options.php:50
 msgid ""
 "Enter the date your site will be available again. Format: <code>YYYY-MM-DD</"
 "code>. Example: <code>%s</code>"
@@ -1559,23 +1570,23 @@ msgstr ""
 "Introducir la fecha en que este sitio estará activo nuevamente. Formato: "
 "<code>YYYY-MM-DD</code>. Ejemplo: <code>%s</code>"
 
-#: engine/maintenance-mode-options.php:60
+#: engine/maintenance-mode-options.php:57
 msgid "Reactive automatically after the timer end date"
 msgstr "Activar automáticamente después de la fecha final"
 
-#: engine/maintenance-mode-options.php:65
+#: engine/maintenance-mode-options.php:62
 msgid "Users and Roles"
 msgstr "Usuarios y Roles"
 
-#: engine/maintenance-mode-options.php:66
+#: engine/maintenance-mode-options.php:63
 msgid "Select which role of users will interact with your site"
 msgstr "Seleccionar los roles de usuarios que podrán interactuar con el sitio"
 
-#: engine/maintenance-mode-options.php:131
+#: engine/maintenance-mode-options.php:128
 msgid "Title tag"
 msgstr "Etiqueta de Título:"
 
-#: engine/maintenance-mode-options.php:137
+#: engine/maintenance-mode-options.php:134
 msgid ""
 "Enter the text for the <code>&lt;title&gt;... &lt;/title&gt;</code> tag. "
 "Default: <strong>%s</strong>"
@@ -1775,7 +1786,7 @@ msgstr "RSS Feed URL"
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
-#: engine/social-network-options.php:227
+#: engine/social-network-options.php:258
 msgid "Social Links"
 msgstr "Enlaces a Redes Sociales"
 
@@ -1855,28 +1866,24 @@ msgstr "Archivo a cargar: (Tamaño Máximo <code>%s</code>)"
 msgid "Upload file and import"
 msgstr "Cargar archivo e importar"
 
-#: engine/theme-options.php:74
+#: engine/theme-options.php:70
 msgid "Select Image"
 msgstr "Seleccionar Imagen"
 
-#: engine/theme-options.php:75
+#: engine/theme-options.php:71
 msgid "Use selected image"
 msgstr "Usar imagen seleccionada"
 
-#: engine/theme-options.php:101
+#: engine/theme-options.php:92 engine/theme-options.php:136
 msgid "Backup"
 msgstr "Respaldo"
 
-#: engine/theme-options.php:274
-msgid "Site in Maintenance"
-msgstr "Sitio en Mantenimiento"
-
-#: engine/theme-options.php:305
+#: engine/theme-options.php:162
 msgid "You are using the <a href=\"%s\"><strong>Maintenance Mode</strong></a>."
 msgstr ""
 "Estás usando el <a href=\"%s\"><strong>Modo de Mantenimiento</strong></a>."
 
-#: engine/theme-options.php:319
+#: engine/theme-options.php:176
 msgid ""
 "Thank you for updating <strong>%1$s</strong>. Currently running "
 "<strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</"
@@ -1889,36 +1896,32 @@ msgstr ""
 "base de datos. Para más seguridad, por favor, <a href=\"%4$s\">guarda tu "
 "configuración</a>."
 
-#: engine/theme-options.php:325
+#: engine/theme-options.php:182
 msgid "Update completed. Back to <a href=\"%1$s\">Theme Options</a> screen"
 msgstr ""
 "Actualización completada. Vuelve a las <a href=\"%1$s\">Opciones del Tema</"
 "a> "
 
-#: engine/theme-options.php:331
+#: engine/theme-options.php:188
 msgid "Update %s"
 msgstr "Actualizar %s"
 
-#: engine/theme-options.php:654
-msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
-msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
-
-#: engine/theme-options.php:676
+#: engine/theme-options.php:219
 msgid "Oops! An error has occurred. Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Ha ocurrido un error. ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:683
+#: engine/theme-options.php:226
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Tu tema ha explotado... ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:702
+#: engine/theme-options.php:236
 msgid ""
 "Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
 "%s</a>."
 msgstr ""
 "Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
 
-#: engine/theme-options.php:703 templates/footer.php:45
+#: engine/theme-options.php:237 templates/footer.php:45
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
@@ -1948,11 +1951,11 @@ msgstr ""
 "Código de seguimiento (justo antes de cerrar la etiqueta <code>&lt;/body&gt;"
 "</code>)"
 
-#: engine/webmaster-tools-options.php:93
+#: engine/webmaster-tools-options.php:92
 msgid "Trackers ID numbers"
 msgstr "Identificadores de seguimiento"
 
-#: engine/webmaster-tools-options.php:94
+#: engine/webmaster-tools-options.php:93
 msgid ""
 "<strong>NOTE</strong>: Just the ID number, the <code>%1$s</code> tag is not "
 "needed"
@@ -1960,11 +1963,11 @@ msgstr ""
 "<strong>NOTA</strong>: Solo el código identificador, la etiqueta <code>%1$s</"
 "code> no es necesaria"
 
-#: engine/webmaster-tools-options.php:110
+#: engine/webmaster-tools-options.php:109
 msgid "Trackers Statistics Codes"
 msgstr "Códigos de seguimiento estadístico"
 
-#: engine/webmaster-tools-options.php:111
+#: engine/webmaster-tools-options.php:110
 msgid ""
 "<strong>NOTE</strong>: Just the code, the <code>%1$s</code> and <code>%2$s</"
 "code> tags are not needed"
@@ -1990,7 +1993,7 @@ msgstr "Enlace a imagen a tamaño completo"
 msgid "Full resolution"
 msgstr "A toda resolución"
 
-#: inc/shortcodes.php:102
+#: inc/shortcodes.php:101
 msgid "Button group"
 msgstr "Button group"
 
@@ -2234,9 +2237,9 @@ msgstr "Las últimas %1$s entradas"
 
 #: page-templates/template-archive.php:56
 #: page-templates/template-blog-content.php:42
-#: page-templates/template-sitemap.php:64 template-parts/content-columns.php:27
-#: template-parts/content-excerpt.php:27 template-parts/content-full.php:24
-#: template-parts/content-search.php:26 templates/header.php:149
+#: page-templates/template-sitemap.php:64 template-parts/content-columns.php:26
+#: template-parts/content-excerpt.php:26 template-parts/content-full.php:24
+#: template-parts/content-search.php:25 templates/header.php:150
 #: templates/meta.php:155
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
@@ -2263,7 +2266,7 @@ msgid "Tag Cloud"
 msgstr "Nube de Etiquetas"
 
 #: page-templates/template-blog-content.php:49
-#: template-parts/content-full.php:30 templates/content.php:284
+#: template-parts/content-full.php:30 templates/content.php:273
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
 
@@ -2391,29 +2394,29 @@ msgstr "Archivo del blog"
 msgid "Search Results for: %s"
 msgstr "Resultados de búsqueda para: %s"
 
-#: templates/content.php:363
+#: templates/content.php:349
 msgctxt "similar custom post type label"
 msgid "Similar %s"
 msgstr "%s similares"
 
-#: templates/content.php:378
+#: templates/content.php:364
 msgctxt "no similar custom post type label"
 msgid "No Similar %s"
 msgstr "No hay %s similares"
 
-#: templates/content.php:405
+#: templates/content.php:386
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/content.php:473
+#: templates/content.php:454
 msgid "Search: %s"
 msgstr "Búsqueda: %s"
 
-#: templates/content.php:476
+#: templates/content.php:457
 msgid "Error 404"
 msgstr "Error 404"
 
-#: templates/content.php:531
+#: templates/content.php:512
 msgid "Page %s"
 msgstr "Página %s"
 
@@ -2470,11 +2473,11 @@ msgstr ""
 msgid "<!-- / %1$s WordPress theme/framework -->"
 msgstr "<!-- / %1$s WordPress theme/framework -->"
 
-#: templates/header.php:166
+#: templates/header.php:167
 msgid "Previous"
 msgstr "Anterior"
 
-#: templates/header.php:170
+#: templates/header.php:171
 msgid "Next"
 msgstr "Siguiente"
 
@@ -2530,68 +2533,68 @@ msgctxt "header image description"
 msgid "Purple"
 msgstr "Púrpura"
 
-#: templates/init.php:369
+#: templates/init.php:364
 msgid "Main Sidebar Widget Area"
 msgstr "Área de widgets principal"
 
-#: templates/init.php:371
+#: templates/init.php:366
 msgid "Add widgets here to appear in your main sidebar"
 msgstr ""
 "Añade aquí los widgets que quieres que aparezcan en la barra lateral "
 "principal"
 
-#: templates/init.php:384
+#: templates/init.php:379
 msgid "Alternative Sidebar Widget Area"
 msgstr "Área de widgets alternativa"
 
-#: templates/init.php:386
+#: templates/init.php:381
 msgid "Add widgets here to appear in your alternative sidebar"
 msgstr ""
 "Añade aquí los widgets que quieres que aparezcan en la barra lateral "
 "alternativa"
 
-#: templates/init.php:398
+#: templates/init.php:393
 msgid "First Footer Widget Area"
 msgstr "Primera área de widget inferior"
 
-#: templates/init.php:400 templates/init.php:414 templates/init.php:429
-#: templates/init.php:444
+#: templates/init.php:395 templates/init.php:409 templates/init.php:424
+#: templates/init.php:439
 msgid "Add widgets here to appear in your footer sidebar"
 msgstr "Añade aquí los widgets que quieres que aparezcan en el pie"
 
-#: templates/init.php:412
+#: templates/init.php:407
 msgid "Second Footer Widget Area"
 msgstr "Segunda área de widget inferior"
 
-#: templates/init.php:427
+#: templates/init.php:422
 msgid "Third Footer Widget Area"
 msgstr "Tercera área de widget inferior"
 
-#: templates/init.php:442
+#: templates/init.php:437
 msgid "Fourth Footer Widget Area"
 msgstr "Cuarta área de widget inferior"
 
-#: templates/maintenance-mode.php:96
+#: templates/maintenance-mode.php:88
 msgid "weeks"
 msgstr "semanas"
 
-#: templates/maintenance-mode.php:97
+#: templates/maintenance-mode.php:89
 msgid "days"
 msgstr "días"
 
-#: templates/maintenance-mode.php:98
+#: templates/maintenance-mode.php:90
 msgid "hr"
 msgstr "hr"
 
-#: templates/maintenance-mode.php:99
+#: templates/maintenance-mode.php:91
 msgid "min"
 msgstr "min"
 
-#: templates/maintenance-mode.php:100
+#: templates/maintenance-mode.php:92
 msgid "sec"
 msgstr "seg"
 
-#: templates/maintenance-mode.php:123
+#: templates/maintenance-mode.php:114
 msgid ""
 "You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
 msgstr ""
@@ -2635,51 +2638,51 @@ msgid "View all posts by %s <span class=\"icomoon-arrow-right2\"></span>"
 msgstr ""
 "Ver todas las entradas de %s <span class=\"icomoon-arrow-right2\"></span>"
 
-#: templates/navigation.php:170
+#: templates/navigation.php:174
 msgid "Previous post:"
 msgstr "Entrada anterior:"
 
-#: templates/navigation.php:171
+#: templates/navigation.php:175
 msgid "Next post:"
 msgstr "Entrada siguiente:"
 
-#: templates/navigation.php:174 templates/navigation.php:211
+#: templates/navigation.php:178 templates/navigation.php:214
 msgid "Posts navigation"
 msgstr "Navegación de entradas"
 
-#: templates/navigation.php:212
+#: templates/navigation.php:215
 msgid "<span class=\"icomoon-arrow-left2\"></span> Older posts"
 msgstr "<span class=\"icomoon-arrow-left2\"></span> Entradas anteriores"
 
-#: templates/navigation.php:213
+#: templates/navigation.php:216
 msgid "Newer posts <span class=\"icomoon-arrow-right2\"></span>"
 msgstr "Entradas recientes <span class=\"icomoon-arrow-right2\"></span>"
 
-#: templates/navigation.php:224
+#: templates/navigation.php:227
 msgid "Page navigation"
 msgstr "Navegación de entradas"
 
-#: templates/navigation.php:247
+#: templates/navigation.php:250
 msgid "Newer posts"
 msgstr "Entradas recientes"
 
-#: templates/navigation.php:248
+#: templates/navigation.php:251
 msgid "Older posts"
 msgstr "Entradas anteriores"
 
-#: templates/navigation.php:270
+#: templates/navigation.php:273
 msgid "Page %1$s of %2$s"
 msgstr "Página %1$s de %2$s"
 
-#: templates/navigation.php:291
+#: templates/navigation.php:294
 msgid "<span class=\"icomoon-arrow-left2\"></span> Older Comments"
 msgstr "<span class=\"icomoon-arrow-left2\"></span> Comentarios antiguos"
 
-#: templates/navigation.php:292
+#: templates/navigation.php:295
 msgid "Newer Comments <span class=\"icomoon-arrow-right2\"></span>"
 msgstr "Comentarios recientes <span class=\"icomoon-arrow-right2\"></span>"
 
-#: templates/navigation.php:310
+#: templates/navigation.php:313
 msgid "Pages:"
 msgstr "Páginas:"
 
@@ -2722,6 +2725,14 @@ msgstr "Blog Excerpt (resumen)"
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
+
+#~ msgid "Polymita picta"
+#~ msgstr "Polymita picta"
+
+#~ msgid "Whether the carousel should cycle continuously or have hard stops."
+#~ msgstr ""
+#~ "Si el carrusel debe circular infinitamente o detenerse al llegar a la "
+#~ "última diapositiva. "
 
 #~ msgid "Plymita picta"
 #~ msgstr "Plymita picta"

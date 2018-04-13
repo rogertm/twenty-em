@@ -112,10 +112,11 @@ function t_em_slider_bootstrap_carousel( $args ){
 		if ( ! $args ) $args = t_em_slider_query_args();
 
 			$slider_posts = get_posts( $args );
-			$slider_wrap = ( t_em( 'bootstrap_carousel_wrap' ) == '1' ) ? 'false' : 'true';
-			$slider_pause = ( t_em( 'bootstrap_carousel_pause' ) == '1' ) ? 'hover' : 'false';
+			$slider_fade = ( t_em( 'bootstrap_carousel_fade' ) ) ? 'carousel-fade' : null;
+			$slider_wrap = ( t_em( 'bootstrap_carousel_wrap' ) ) ? 'false' : 'true';
+			$slider_pause = ( t_em( 'bootstrap_carousel_pause' ) ) ? 'hover' : 'false';
 	?>
-			<section id="slider-carousel" class="carousel slide container-fluid" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo t_em( 'bootstrap_carousel_interval' ) ?>">
+			<section id="slider-carousel" class="carousel slide container-fluid <?php echo $slider_fade ?>" data-ride="carousel" data-wrap="<?php echo $slider_wrap; ?>" data-pause="<?php echo $slider_pause; ?>" data-interval="<?php echo t_em( 'bootstrap_carousel_interval' ) ?>">
 			<?php
 			/**
 			 * Fires before the slider carousel section. Full width;

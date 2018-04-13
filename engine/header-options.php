@@ -179,7 +179,16 @@ function t_em_slider_callback(){
 	$extend_slider .=		'<p>';
 	$extend_slider .=			'<label class="description">';
 	$extend_slider .=				'<input type="checkbox" name="t_em_theme_options[bootstrap_carousel_wrap]" value="1" '. $checked_option .'>';
-	$extend_slider .=				__( 'Whether the carousel should cycle continuously or have hard stops.', 't_em' );
+	$extend_slider .=				__( 'Stop the carousel at last slide.', 't_em' );
+	$extend_slider .=			'</label>';
+	$extend_slider .=		'</p>';
+	$extend_slider .=	'</div>';
+	$checked_option = checked( t_em( 'bootstrap_carousel_fade' ), '1', false );
+	$extend_slider .=	'<div class="sub-extend option-single">';
+	$extend_slider .=		'<p>';
+	$extend_slider .=			'<label class="description">';
+	$extend_slider .=				'<input type="checkbox" name="t_em_theme_options[bootstrap_carousel_fade]" value="1" '. $checked_option .'>';
+	$extend_slider .=				__( 'Animate slides with a fade transition instead of a slide.', 't_em' );
 	$extend_slider .=			'</label>';
 	$extend_slider .=		'</p>';
 	$extend_slider .=	'</div>';

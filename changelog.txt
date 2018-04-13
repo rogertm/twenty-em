@@ -2,6 +2,9 @@
 
 = 1.3 =
 Release Date: April 12, 2018
+* Update: Bootstrap v4.1.0
+* Update: Added fade transition effect option to Carousel
+
 * Bug Fix: Call #top-menu into #header.
 
 Release Date: April 11, 2018
