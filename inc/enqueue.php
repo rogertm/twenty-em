@@ -41,16 +41,17 @@ function t_em_enqueue_styles_and_scripts(){
 		wp_enqueue_script( 'comment-reply' );
 	endif;
 
-	// Register Carousel Bootstrap Plugins when needed
-	if ( 'slider' == t_em( 'header_set' ) ) :
-		t_em_register_bootstrap_plugin( 'carousel' );
-	endif;
-
-	// Register Collapse Bootstrap Plugins when needed
-	if ( has_nav_menu( 'top-menu' ) || has_nav_menu( 'navigation-menu' ) ) :
-		t_em_register_bootstrap_plugin( 'collapse' );
-		t_em_register_bootstrap_plugin( 'popper' );
-		t_em_register_bootstrap_plugin( 'dropdown' );
+	// Register Bootstrap JS
+	/**
+	 * Filter if call the entire compiled JavaScripts plugins from Bootstrap or not. If not, you must
+	 * call each plugin when needed using the t_em_register_bootstrap_plugin() function.
+	 * @param bool 		Default true.
+	 *
+	 * @since Twenty'em 1.3.0
+	 */
+	if ( apply_filters( 't_em_filter_bootstrap_js', true ) ) :
+		wp_register_script( 'bootstrap', t_em_get_js( 'bootstrap.bundle', T_EM_THEME_DIR_BOOTSTRAP_PATH .'/dist/js/', T_EM_THEME_DIR_BOOTSTRAP_URL .'/dist/js/' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
+		wp_enqueue_script( 'bootstrap' );
 	endif;
 
 	// Countdown jQuery plugin for Maintenance Mode

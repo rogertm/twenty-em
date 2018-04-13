@@ -125,9 +125,6 @@ function t_em_shortcode_alert( $atts, $content = null ){
 	$close_button = ( esc_attr( $close ) == 'true' ) ? '<button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times;</button>' : null;
 	$style = ( esc_attr( $style ) != '' ) ? esc_attr( $style ) : 'primary';
 	$heading = ( esc_attr( $heading ) != '' ) ? '<h4 class="alert-heading">'. esc_attr( $heading ).'</h4>' : null;
-	if ( $close ) :
-		t_em_register_bootstrap_plugin( 'alert' );
-	endif;
 	return '<div class="alert alert-'. esc_attr( $style ) .'">' . $close_button . $heading . '<p class="mb-0">' . do_shortcode( $content ) .'</p></div>';
 }
 add_shortcode( 'alert', 't_em_shortcode_alert' );
@@ -352,8 +349,6 @@ function t_em_shortcode_collapse( $atts, $content = null ){
 	else :
 		$GLOBALS['collapse_count'] = 0;
 	endif;
-
-	t_em_register_bootstrap_plugin( 'collapse' );
 	return '<div id="collapse-'. $GLOBALS['collapse_count'] .'" class="collapsible" data-children=".collapsible-item">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'collapse', 't_em_shortcode_collapse' );
@@ -444,8 +439,6 @@ function t_em_shortcode_tabs( $atts, $content = null ){
 			$i++;
 		endforeach;
 	endif;
-
-	t_em_register_bootstrap_plugin( 'tab' );
 
 	$output = '<div class="tabbable my-3">';
 	$output .= 	'<ul class="nav '. $type .' '. $class .' mb-2" role="tablist">'. implode( '', $tabs ) .'</ul>';
