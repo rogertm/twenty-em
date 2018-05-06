@@ -28,20 +28,21 @@ function t_em_quicktags_buttons(){
 	if ( wp_script_is( 'quicktags' ) && t_em( 'shortcode_buttoms' ) ) :
 ?>
 	<script type="text/javascript">
-		QTags.addButton( 'sc_button', 'button', '[button link="" style="primary" size="" new_window="false"]', '[/button]', '', '', 122 );
-		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size="" vertical="false"]', '[/btn-group]', '', '', 123 );
-		QTags.addButton( 'sc_alert', 'alert', '[alert style="primary" heading="" close="false"]', '[/alert]', '', '', 124 );
-		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" cite=""]', '[/quote]', '', '', 125 );
-		QTags.addButton( 'sc_icon', 'icon', '[icon class=""]', '', '', '', 126 );
-		QTags.addButton( 'sc_columns', 'columns', '[columns cols="2"]', '[/columns]', '', '', 127 );
-		QTags.addButton( 'sc_card', 'card', '[card header="" title="" footer="" style="" img="" img_overlay="false"]', '[/card]', '', '', 128 );
-		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]', '', '', 129 );
-		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]', '', '', 130 );
-		QTags.addButton( 'sc_badge', 'badge', '[badge style="secondary"]', '[/badge]', '', '', 131 );
-		QTags.addButton( 'sc_collapse-item', 'collapse-item', '[collapse-item title="" active="false"]', '[/collapse-item]', '', '', 132 );
-		QTags.addButton( 'sc_collapse', 'collapse', '[collapse]', '[/collapse]', '', '', 133 );
-		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]', '', '', 134 );
-		QTags.addButton( 'sc_tab', 'tabs', '[tabs type="tabs" class=""]', '[/tabs]', '', '', 135 );
+		QTags.addButton( 'sc_button', 'button', '[button link="" style="primary" size="" new_window="false"]', '[/button]' );
+		QTags.addButton( 'sc_btn-group', 'btn-group', '[btn-group size="" vertical="false"]', '[/btn-group]' );
+		QTags.addButton( 'sc_alert', 'alert', '[alert style="primary" heading="" close="false"]', '[/alert]' );
+		QTags.addButton( 'sc_quote', 'quote', '[quote text_align="" cite=""]', '[/quote]' );
+		QTags.addButton( 'sc_icon', 'icon', '[icon class=""]', '' );
+		QTags.addButton( 'sc_columns', 'columns', '[columns cols="2"]', '[/columns]' );
+		QTags.addButton( 'sc_card', 'card', '[card header="" title="" footer="" style="" img="" img_overlay="false"]', '[/card]' );
+		QTags.addButton( 'sc_card-group', 'card-group', '[card-group style="group"]', '[/card-group]' );
+		QTags.addButton( 'sc_lead', 'lead', '[lead]', '[/lead]' );
+		QTags.addButton( 'sc_badge', 'badge', '[badge style="secondary"]', '[/badge]' );
+		QTags.addButton( 'sc_collapse', 'collapse', '[collapse]', '[/collapse]' );
+		QTags.addButton( 'sc_collapse-item', 'collapse-item', '[collapse-item title="" active="false"]', '[/collapse-item]' );
+		QTags.addButton( 'sc_tab', 'tabs', '[tabs type="tabs" class=""]', '[/tabs]' );
+		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]' );
+		QTags.addButton( 'sc_display', 'display', '[display size="1"]', '[/display]' );
 	</script>
 <?php
 	endif;
@@ -447,6 +448,27 @@ function t_em_shortcode_tabs( $atts, $content = null ){
 	return $output;
 }
 add_shortcode( 'tabs', 't_em_shortcode_tabs' );
+
+/**
+ * Shortcode [display]
+ * Enclosing. Permits others shortcodes.
+ * Behavior: [display size="1"]Display Text[/display]
+ * Options:
+ * 0. size:		Required. Default value "1". Possible values "1", "2", "3", "4"
+ *
+ * @see https://getbootstrap.com/docs/4.1/content/typography/#display-headings
+ *
+ * @since Twenty'em 1.3.0
+ */
+function t_em_shortcode_display( $atts, $content = null ){
+	extract( shortcode_atts( array(
+				'size'	=> '1',
+			), $atts ) );
+	$sizes = array( 1, 2, 3, 4 );
+	$size = ( $size && in_array( $size, $sizes ) ) ? 'display-'. esc_attr( $size ) : 'display-1';
+	return '<span class="'. $size .'">'. do_shortcode( $content ) .'</span>';
+}
+add_shortcode( 'display', 't_em_shortcode_display' );
 
 /**
  * Helper function. Create attributes map
