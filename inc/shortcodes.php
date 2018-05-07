@@ -43,6 +43,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_tab', 'tabs', '[tabs type="tabs" class=""]', '[/tabs]' );
 		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]' );
 		QTags.addButton( 'sc_display', 'display', '[display size="1"]', '[/display]' );
+		QTags.addButton( 'sc_jumbotron', 'jumbotron', '[jumbotron]', '[/jumbotron]' );
 	</script>
 <?php
 	endif;
@@ -469,6 +470,20 @@ function t_em_shortcode_display( $atts, $content = null ){
 	return '<span class="'. $size .'">'. do_shortcode( $content ) .'</span>';
 }
 add_shortcode( 'display', 't_em_shortcode_display' );
+
+/**
+ * Shortcode [jumbotron]
+ * Enclosing. Permits others shortcodes
+ * Behavior: [jumbotron][/jumbotron]
+ *
+ * @see https://getbootstrap.com/docs/4.1/components/jumbotron/
+ *
+ * @since Twenty'em 1.3.0
+ */
+function t_em_shortcode_jumbotron( $atts, $content = null ){
+	return '<div class="jumbotron">'. do_shortcode( $content ) .'</div>';
+}
+add_shortcode( 'jumbotron', 't_em_shortcode_jumbotron' );
 
 /**
  * Helper function. Create attributes map
