@@ -44,6 +44,8 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_tab-item', 'tab-item', '[tab-item title="" active="false"]', '[/tab-item]' );
 		QTags.addButton( 'sc_display', 'display', '[display size="1"]', '[/display]' );
 		QTags.addButton( 'sc_jumbotron', 'jumbotron', '[jumbotron]', '[/jumbotron]' );
+		QTags.addButton( 'sc_progress', 'progress', '[progress height=""]', '[/progress]' );
+		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
 	</script>
 <?php
 	endif;
@@ -459,7 +461,7 @@ add_shortcode( 'tabs', 't_em_shortcode_tabs' );
  *
  * @see https://getbootstrap.com/docs/4.1/content/typography/#display-headings
  *
- * @since Twenty'em 1.3.0
+ * @since Twenty'em 1.3.1
  */
 function t_em_shortcode_display( $atts, $content = null ){
 	extract( shortcode_atts( array(
@@ -478,12 +480,64 @@ add_shortcode( 'display', 't_em_shortcode_display' );
  *
  * @see https://getbootstrap.com/docs/4.1/components/jumbotron/
  *
- * @since Twenty'em 1.3.0
+ * @since Twenty'em 1.3.1
  */
 function t_em_shortcode_jumbotron( $atts, $content = null ){
 	return '<div class="jumbotron">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'jumbotron', 't_em_shortcode_jumbotron' );
+
+/**
+ * Shortcode [progress]
+ * Enclosing. Permits others shortcodes
+ * Behavior: [progress][/progress]
+ * Options:
+ * 0. height:	Optional. Height, in pixels, of the bar.
+ *
+ * @see https://getbootstrap.com/docs/4.1/components/progress/
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_shortcode_progress( $atts, $content = null ){
+	extract( shortcode_atts( array(
+				'height'	=> '',
+			), $atts ) );
+	$height	= ( $height && is_numeric( $height ) ) ? 'style="height: '. esc_attr( $height ) .'px"' : null;
+	return '<div class="progress" '. $height .'>'. do_shortcode( $content ) .'</div>';
+}
+add_shortcode( 'progress', 't_em_shortcode_progress' );
+
+/**
+ * Shortcode [progress-bar]
+ * Enclosing. Permits others shortcodes
+ * Behavior: [progress-bar][/progress-bar]
+ * Options:
+ * 0. width:	Optional. Width of the progress bar. Default 0.
+ * 1. type: 	Optional. Background style. Possible values "success", "info", "warning", "danger" or custom background.
+ * 2. striped: 	Optional. Possible values "false", "true". Default "false".
+ * 3. animated:	Optional. Possible values "false", "true". Default "false".
+ *
+ * @see https://getbootstrap.com/docs/4.1/components/progress/
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_shortcode_progress_bar( $atts, $content = null ){
+	extract( shortcode_atts( array(
+				'width'		=> '',
+				'type'		=> '',
+				'striped'	=> false,
+				'animated'	=> false,
+			), $atts ) );
+	$width		= ( $width && is_numeric( $width ) ) ? esc_attr( $width ) : null;
+	$style 		= ( $width ) ? 'style="width: '. $width .'%"' : null;
+	$now		= ( $width ) ? 'aria-valuenow="'. $width .'"' : 'aria-valuenow="0"';
+	$type		= ( $type ) ? 'bg-'. esc_attr( $type ) : null;
+	$striped	= ( $striped == 'true' ) ? 'progress-bar-striped' : null;
+	$animated	= ( $animated == 'true' ) ? 'progress-bar-animated' : null;
+
+	return '<div class="progress-bar '. $type .' '. $striped .' '. $animated .'" role="progressbar" '. $style .' '. $now .' aria-valuemin="0" aria-valuemax="100">'. do_shortcode( $content ) .'</div>';
+}
+add_shortcode( 'progress-bar', 't_em_shortcode_progress_bar' );
 
 /**
  * Helper function. Create attributes map
