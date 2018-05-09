@@ -46,6 +46,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_jumbotron', 'jumbotron', '[jumbotron]', '[/jumbotron]' );
 		QTags.addButton( 'sc_progress', 'progress', '[progress height=""]', '[/progress]' );
 		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
+		QTags.addButton( 'sc_iframe', 'iframe', '[iframe src="" ratio="16by9"]', '[/iframe]' );
 	</script>
 <?php
 	endif;
@@ -538,6 +539,30 @@ function t_em_shortcode_progress_bar( $atts, $content = null ){
 	return '<div class="progress-bar '. $type .' '. $striped .' '. $animated .'" role="progressbar" '. $style .' '. $now .' aria-valuemin="0" aria-valuemax="100">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'progress-bar', 't_em_shortcode_progress_bar' );
+
+/**
+ * Shortcode [iframe]
+ * Self-closing
+ * Behavior: [iframe src="" ratio="16by9"]
+ * Options:
+ * 0. src:		Required. URL of the embed object. Ej: https://www.youtube.com/embed/gFW9SdusBiE
+ * 1. ratio:	Optional. Aspect ratio. Default 16by9.
+ *
+ * @see https://getbootstrap.com/docs/4.1/utilities/embed/
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_shortcode_iframe( $atts, $content = null ){
+	extract( shortcode_atts( array(
+				'src'	=> '',
+				'ratio'	=> '16by9',
+			), $atts ) );
+	$ratios	= array( '21by9', '16by9', '4by3', '1by1' );
+	$src	= ( $src ) ? esc_url( $src ) : null;
+	$ratio 	= ( $ratio && in_array( $ratio, $ratios ) ) ? 'embed-responsive-'. $ratio : 'embed-responsive-16by9';
+	return '<div class="embed-responsive '. $ratio .'"><iframe class="embed-responsive-item" src="'. $src .'" allowfullscreen></iframe></div>';
+}
+add_shortcode( 'iframe', 't_em_shortcode_iframe' );
 
 /**
  * Helper function. Create attributes map
