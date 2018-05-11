@@ -6,6 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rogertm/twenty-em/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/build.png?b=master)](https://scrutinizer-ci.com/g/rogertm/twenty-em/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/rogertm/twenty-em/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![CodeFactor](https://www.codefactor.io/repository/github/rogertm/twenty-em/badge)](https://www.codefactor.io/repository/github/rogertm/twenty-em)
 
 # Twenty'em WordPress Framework
 
