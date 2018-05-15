@@ -187,6 +187,20 @@ figure{
 				}
 			}
 		}
+		&.static-header-hero{
+			#static-header{
+				&-inner{
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-color: $gray-500;
+				}
+				&-text{
+					@extend .my-0;
+					@extend .py-5;
+					@extend .text-light;
+				}
+			}
+		}
 	}
 }
 

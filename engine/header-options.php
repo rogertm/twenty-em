@@ -257,6 +257,11 @@ function t_em_static_header_layout_options( $static_header_layout = '' ){
 			'label' => __( 'Static header text on left', 't_em' ),
 			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/slider-text-left.png',
 		),
+		'static-header-hero' => array(
+			'value' => 'static-header-hero',
+			'label' => __( 'Background image, text over', 't_em' ),
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/static-header-hero.png',
+		),
 	);
 
 	/**
@@ -292,10 +297,10 @@ function t_em_static_header_callback(){
 	$extend_static_header .= 	'<header>'. __( 'Image and Text Alignment', 't_em' ) .'</header>';
 	$extend_static_header .= 	'<div class="image-radio-option-group">';
 	foreach ( t_em_static_header_layout_options() as $static_header ) :
-		$active_option = ( t_em( 'static_header_text' ) == $static_header['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
+		$active_option = ( t_em( 'static_header_template' ) == $static_header['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
 		$extend_static_header .=	'<div class="layout image-radio-option static-header-layout '. $active_option .'">';
 		$extend_static_header .=		'<label class="description">';
-		$extend_static_header .=			'<input class="input-image-radio-option sub-radio-option" type="radio" name="t_em_theme_options[static_header_text]" value="'.esc_attr($static_header['value']).'" '. checked( t_em( 'static_header_text' ), $static_header['value'], false ) .' />';
+		$extend_static_header .=			'<input class="input-image-radio-option sub-radio-option" type="radio" name="t_em_theme_options[static_header_template]" value="'.esc_attr($static_header['value']).'" '. checked( t_em( 'static_header_template' ), $static_header['value'], false ) .' />';
 		$extend_static_header .=			'<span><img src="'.$static_header['thumbnail'].'" class="" /><p>'.$static_header['label'].'</p></span>';
 		$extend_static_header .=		'</label>';
 		$extend_static_header .=	'</div>';

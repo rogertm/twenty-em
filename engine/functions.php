@@ -130,7 +130,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'bootstrap_carousel_wrap'						=> '1',
 		'bootstrap_carousel_fade'						=> '1',
 		'static_header_home_only'						=> '0',
-		'static_header_text'							=> 'static-header-text-right',
+		'static_header_template'							=> 'static-header-text-right',
 		'static_header_headline'						=> '',
 		'static_header_img_src'							=> '',
 		'static_header_content'							=> '',
@@ -261,7 +261,7 @@ function t_em_theme_options_validate( $input ){
 				'callback'	=> t_em_header_options(),
 			),
 			'static-header-options'	=> array(
-				'set'		=> 'static_header_text',
+				'set'		=> 'static_header_template',
 				'callback'	=> t_em_static_header_layout_options(),
 			),
 			'front-page-options'	=> array(

@@ -225,85 +225,32 @@ function t_em_static_header(){
 	if ( ( 'static-header' == t_em( 'header_set' ) )
 		&& ( ( '1' == t_em( 'static_header_home_only' ) && is_home() )
 		|| ( '0' == t_em( 'static_header_home_only' ) ) ) ) :
-?>
-		<section id="static-header" class="jumbotron <?php echo t_em( 'static_header_text' ) ?>" role="info">
-			<div class="<?php t_em_container(); ?>">
-			<?php
-			/**
-			 * Fires before the static header section. Full width;
-			 *
-			 * @since Twenty'em 1.1
-			 */
-			do_action( 't_em_action_static_header_before' );
-			?>
-				<div id="static-header-inner" class="row">
-			<?php
-			/**
-			 * Fires in and before the static header section. Full width;
-			 *
-			 * @since Twenty'em 1.1
-			 */
-			do_action( 't_em_action_static_header_inner_before' );
-			?>
-	<?php 	if ( ! empty ( t_em( 'static_header_img_src' ) ) ) : ?>
-				<div id="static-header-image" <?php t_em_breakpoint( 'static-header' ); ?>>
-					<img src="<?php echo t_em( 'static_header_img_src' ); ?>"
-						alt="<?php echo sanitize_text_field( t_em( 'static_header_headline' ) ); ?>">
-				</div><!-- #static-header-image -->
-	<?php 	endif; ?>
 
-	<?php 	if ( t_em( 'static_header_headline' )
-				|| t_em( 'static_header_content' )
-				|| ( t_em( 'static_header_primary_button_text' ) && t_em( 'static_header_primary_button_link' ) )
-				|| ( t_em( 'static_header_secondary_button_text' ) && t_em( 'static_header_secondary_button_link' ) )
-			) : ?>
-				<div id="static-header-text" <?php t_em_breakpoint( 'static-header' ); ?>>
-	<?php 	if ( t_em( 'static_header_headline' ) ) : ?>
-					<header><h2><?php echo t_em( 'static_header_headline' ); ?></h2></header>
-	<?php 	endif; ?>
-	<?php 	if ( t_em( 'static_header_content' ) ) : ?>
-					<div class="static-header-content"><?php echo t_em_wrap_paragraph( t_em( 'static_header_content' ) ); ?></div>
-	<?php 	endif; ?>
-					<footer class="actions">
-	<?php 	if ( ( t_em( 'static_header_primary_button_text' ) && t_em( 'static_header_primary_button_link' ) ) ) : ?>
-						<a href="<?php echo t_em( 'static_header_primary_button_link' ); ?>"
-							class="btn btn-primary">
-								<span class="<?php echo t_em( 'static_header_primary_button_icon_class' ) ?>"></span>
-								<span class="button-text"><?php echo t_em( 'static_header_primary_button_text' ); ?></span>
-							</a>
-	<?php 	endif; ?>
-	<?php 	if ( ( t_em( 'static_header_secondary_button_text' ) && t_em( 'static_header_secondary_button_link' ) ) ) : ?>
-						<a href="<?php echo t_em( 'static_header_secondary_button_link' ); ?>"
-							class="btn btn-secondary">
-								<span class="<?php echo t_em( 'static_header_secondary_button_icon_class' ) ?>"></span>
-								<span class="button-text"><?php echo t_em( 'static_header_secondary_button_text' ); ?></span>
-							</a>
-	<?php 	endif; ?>
-					</footer><!-- .actions -->
-				</div><!-- #static-header-text -->
-	<?php 	endif; ?>
-			<?php
-			/**
-			 * Fires in and after the static header section. Full width;
-			 *
-			 * @since Twenty'em 1.1
-			 */
-			do_action( 't_em_action_static_header_inner_after' );
-			?>
-				</div>
-			<?php
-			/**
-			 * Fires after the static header section. Full width;
-			 *
-			 * @since Twenty'em 1.1
-			 */
-			do_action( 't_em_action_static_header_after' );
-			?>
-			</div>
-		</section><!-- #static-header .container -->
-<?php
+		$header = ( t_em( 'static_header_template' ) != 'static-header-hero' ) ? 'jumbotron' : 'hero';
+		get_template_part( '/template-parts/static-header', $header );
+
 	endif;
 }
 endif; // function t_em_static_header()
 add_action( 't_em_action_header', 't_em_static_header', 5 );
+
+/**
+ * Get and set the background image for the Hero Header
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_static_header_bg(){
+	if ( t_em( 'static_header_template' ) != 'static-header-hero' )
+		return;
+	if ( ! t_em( 'static_header_img_src' ) )
+		return;
+?>
+	<style type="text/css">
+		#static-header-inner{
+			background-image: url( <?php echo t_em( 'static_header_img_src' ); ?> );
+		}
+	</style>
+<?php
+}
+add_action( 'wp_head', 't_em_static_header_bg' );
 ?>
