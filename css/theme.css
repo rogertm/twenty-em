@@ -8740,6 +8740,12 @@ a .featured-post-thumbnail:hover, a .featured-post-thumbnail:focus {
     order: 12; }
   #featured-widget-area.template-features .front-page-widget:nth-child(2n) .front-page-widget-caption {
     order: 1; } }
+@media (max-width: 991.98px) {
+  #featured-widget-area.template-cards .card-group {
+    flex-direction: column; }
+    #featured-widget-area.template-cards .card-group .card {
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem; } }
 
 #site-pagination.prev-next a:hover {
   background-color: #e9ecef; }

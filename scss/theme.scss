@@ -265,6 +265,17 @@ body{
 			}
 		}
 	}
+	&.template-cards{
+		@include media-breakpoint-down(md){
+			.card-group{
+				flex-direction: column;
+				.card{
+					border: 1px solid $card-border-color;
+					border-radius: $card-border-radius;
+				}
+			}
+		}
+	}
 }
 
 //

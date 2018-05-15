@@ -24,9 +24,11 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  * @since Twenty'em 1.0
  */
 function t_em_front_page_widgets(){
-	if ( 'widgets-front-page' == t_em( 'front_page_set' ) ) : ?>
+	if ( 'widgets-front-page' == t_em( 'front_page_set' ) ) :
+		$wrap = ( t_em( 'text_widget_template' ) == 'template-cards' ) ? 'card-group' : 'row';
+	?>
 		<section id="featured-widget-area" class="<?php echo t_em( 'text_widget_template' ) ?>">
-			<div class="row">
+			<div class="<?php echo $wrap ?>">
 				<?php do_action( 't_em_action_custom_front_page_inside_before' ); ?>
 				<?php get_template_part( '/template-parts/front', t_em( 'text_widget_template' ) ) ?>
 				<?php do_action( 't_em_action_custom_front_page_inside_after' ); ?>

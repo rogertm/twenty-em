@@ -146,6 +146,11 @@ function t_em_front_page_witgets_templates(){
 			'label'		=> __( 'Features', 't_em' ),
 			'thumbnail'	=> T_EM_ENGINE_DIR_IMG_URL . '/template-features.png',
 		),
+		'template-cards'	=> array(
+			'value'		=> 'template-cards',
+			'label'		=> __( 'Cards', 't_em' ),
+			'thumbnail'	=> T_EM_ENGINE_DIR_IMG_URL . '/template-cards.png',
+		),
 	);
 
 	/**
