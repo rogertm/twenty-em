@@ -47,6 +47,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_progress', 'progress', '[progress height=""]', '[/progress]' );
 		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
 		QTags.addButton( 'sc_iframe', 'iframe', '[iframe src="" ratio="16by9"]', '[/iframe]' );
+		QTags.addButton( 'sc_tooltip', 'tooltip', '[tooltip placement="top" title=""]', '[/tooltip]' );
 	</script>
 <?php
 	endif;
@@ -563,6 +564,30 @@ function t_em_shortcode_iframe( $atts, $content = null ){
 	return '<div class="embed-responsive '. $ratio .'"><iframe class="embed-responsive-item" src="'. $src .'" allowfullscreen></iframe></div>';
 }
 add_shortcode( 'iframe', 't_em_shortcode_iframe' );
+
+/**
+ * Shortcode [tooltip]
+ * Enclosing. Permits others shortcodes
+ * Behavior: [tooltip placement="top" title=""][/tooltip]
+ * Options:
+ * 0. placement:	Optional. Placement of the tooltip. Default 'top'.
+ * 1. title:		Required. Title to display
+ *
+ * @see https://getbootstrap.com/docs/4.1/components/tooltips/
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_shortcode_tooltip( $atts, $content = null ){
+	extract( shortcode_atts( array(
+				'placement'	=> 'top',
+				'title'		=> '',
+			), $atts ) );
+	$places		= array( 'top', 'right', 'bottom', 'left' );
+	$placement	= ( $placement && in_array( $placement, $places ) ) ? $placement : 'top';
+	$title 		= ( $title ) ? esc_attr( $title ) : null;
+	return '<span data-toggle="tooltip" data-placement="'. $placement .'" title="'. $title .'" data-html="true">'. do_shortcode( $content ) .'</span>';
+}
+add_shortcode( 'tooltip', 't_em_shortcode_tooltip' );
 
 /**
  * Helper function. Create attributes map

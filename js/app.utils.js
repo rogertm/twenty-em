@@ -27,4 +27,7 @@ jQuery(document).ready(function($){
 		$('.carousel-inner .carousel-item').first().addClass('active');
 		$('.carousel').carousel();
 	}
+
+	// Bootstrap Tooltips
+	$('[data-toggle="tooltip"]').tooltip();
 });
