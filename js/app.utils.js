@@ -30,4 +30,7 @@ jQuery(document).ready(function($){
 
 	// Bootstrap Tooltips
 	$('[data-toggle="tooltip"]').tooltip();
+
+	// Bootstrap Popover
+	$('[data-toggle="popover"]').popover()
 });

@@ -48,6 +48,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
 		QTags.addButton( 'sc_iframe', 'iframe', '[iframe src="" ratio="16by9"]', '[/iframe]' );
 		QTags.addButton( 'sc_tooltip', 'tooltip', '[tooltip placement="top" title=""]', '[/tooltip]' );
+		QTags.addButton( 'sc_popover', 'popover', '[popover title="" content="" placement="top"]', '[/popover]' );
 	</script>
 <?php
 	endif;
@@ -588,6 +589,35 @@ function t_em_shortcode_tooltip( $atts, $content = null ){
 	return '<span data-toggle="tooltip" data-placement="'. $placement .'" title="'. $title .'" data-html="true">'. do_shortcode( $content ) .'</span>';
 }
 add_shortcode( 'tooltip', 't_em_shortcode_tooltip' );
+
+/**
+ * Shortcode [popover]
+ * Enclosing. Permits others shortcodes
+ * Behavior: [popover title="" content="" placement="top"][/popover]
+ * Options:
+ * 0. title:		Optional but recommended. Popover's title.
+ * 1. content:		Optional but recommended. Popover's content.
+ * 2. placement:	Optional. Popover's placement. Default 'top'.
+ *
+ * Note: One of the parameters 'title' or 'content' must exist to popover works properly.
+ *
+ * @see https://getbootstrap.com/docs/4.1/components/popovers/
+ *
+ * @since Twenty'em 1.3.1
+ */
+function t_em_shortcode_popover( $atts, $cnt = null ){
+	extract( shortcode_atts( array(
+				'placement'	=> 'top',
+				'title'		=> '',
+				'content'	=> '',
+			), $atts ) );
+	$places		= array( 'top', 'right', 'bottom', 'left' );
+	$placement	= ( $placement && in_array( $placement, $places ) ) ? $placement : 'top';
+	$title 		= ( $title ) ? esc_attr( $title ) : null;
+	$content 	= ( $content ) ? esc_attr( $content ) : null;
+	return '<span data-toggle="popover" data-placement="'. $placement .'" title="'. $title .'" data-content="'. $content .'"  data-container="body">'. do_shortcode( $cnt ) .'</span>';
+}
+add_shortcode( 'popover', 't_em_shortcode_popover' );
 
 /**
  * Helper function. Create attributes map
