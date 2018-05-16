@@ -1,6 +1,18 @@
 == Changelog ==
 
-= 1.3 =
+= 1.3.1 =
+Release Date: May 16, 2018
+* Update: Data Base version 20180515
+* Update: WordPress version 4.9.5
+* Update: Bootstrap version 4.1.0
+* Update: Added fade option in Header Carousel
+* Update: Move key 'static_header_text' to 'static_header_template'.
+* Enhancement: New shortcodes [popovers], [progress], [tooltips], [iframe], [display] and [jumbotron].
+* Enhancement: Add support for Cards templates in Front Page Widgets Options
+* Enhancement: Call bootstrap.min.js instead of every plugin separately.
+* Fix Bug: Call #top-menu into #header
+
+= 1.3.0 =
 Release Date: April 13, 2018
 * Update: New filter 't_em_filter_bootstrap_js'. Call 'bootstrap.bundle.js' instead of every plugin separately.
 
