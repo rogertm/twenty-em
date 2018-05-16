@@ -47,7 +47,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_progress', 'progress', '[progress height=""]', '[/progress]' );
 		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
 		QTags.addButton( 'sc_iframe', 'iframe', '[iframe src="" ratio="16by9"]', '[/iframe]' );
-		QTags.addButton( 'sc_tooltip', 'tooltip', '[tooltip placement="top" title=""]', '[/tooltip]' );
+		QTags.addButton( 'sc_tooltip', 'tooltip', '[tooltip title="" placement="top"]', '[/tooltip]' );
 		QTags.addButton( 'sc_popover', 'popover', '[popover title="" content="" placement="top"]', '[/popover]' );
 	</script>
 <?php
@@ -569,10 +569,10 @@ add_shortcode( 'iframe', 't_em_shortcode_iframe' );
 /**
  * Shortcode [tooltip]
  * Enclosing. Permits others shortcodes
- * Behavior: [tooltip placement="top" title=""][/tooltip]
+ * Behavior: [tooltip title="" placement="top"][/tooltip]
  * Options:
- * 0. placement:	Optional. Placement of the tooltip. Default 'top'.
- * 1. title:		Required. Title to display
+ * 0. title:		Required. Title to display
+ * 1. placement:	Optional. Placement of the tooltip. Default 'top'.
  *
  * @see https://getbootstrap.com/docs/4.1/components/tooltips/
  *
@@ -580,8 +580,8 @@ add_shortcode( 'iframe', 't_em_shortcode_iframe' );
  */
 function t_em_shortcode_tooltip( $atts, $content = null ){
 	extract( shortcode_atts( array(
-				'placement'	=> 'top',
 				'title'		=> '',
+				'placement'	=> 'top',
 			), $atts ) );
 	$places		= array( 'top', 'right', 'bottom', 'left' );
 	$placement	= ( $placement && in_array( $placement, $places ) ) ? $placement : 'top';
