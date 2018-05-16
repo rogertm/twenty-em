@@ -39,30 +39,30 @@ function t_em_top_menu(){
 				$brand = ( has_custom_logo() ) ? get_custom_logo() : '<'. $heading_tag .' id="site-title"><a href="'. home_url( '/' ) .'" class="navbar-brand" rel="home">'. get_bloginfo( 'name' ) .'</a></'. $heading_tag .'>';
 				echo apply_filters( 't_em_filter_top_menu_brand', $brand );
 				?>
+				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
 				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#site-top-menu">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<?php if ( has_nav_menu( 'top-menu' ) ) : ?>
-					<div id="site-top-menu" class="collapse navbar-collapse">
-					<?php
-					do_action( 't_em_action_top_menu_navbar_before' );
-					wp_nav_menu( array(
-							/**
-							 * Filter the menu depth
-							 *
-							 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
-							 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
-							 * @since Twenty'em 1.0
-							 */
-							'theme_location'	=> 'top-menu',
-							'container'			=> false,
-							'menu_class'		=> 'navbar-nav',
-							'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 2 ),
-							'walker'			=> new Twenty_Em_Navwalker(),
-						)
-					);
-					do_action( 't_em_action_top_menu_navbar_after' ); ?>
-					</div>
+				<div id="site-top-menu" class="collapse navbar-collapse">
+				<?php
+				do_action( 't_em_action_top_menu_navbar_before' );
+				wp_nav_menu( array(
+						/**
+						 * Filter the menu depth
+						 *
+						 * @param int How many levels of the hierarchy are to be included where 0 means all. -1 displays links at any depth and arranges them in a single, flat list.
+						 * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
+						 * @since Twenty'em 1.0
+						 */
+						'theme_location'	=> 'top-menu',
+						'container'			=> false,
+						'menu_class'		=> 'navbar-nav',
+						'depth'				=> apply_filters( 't_em_filter_top_menu_depth', 2 ),
+						'walker'			=> new Twenty_Em_Navwalker(),
+					)
+				);
+				do_action( 't_em_action_top_menu_navbar_after' ); ?>
+				</div>
 				<?php endif; ?>
 			</div>
 		</nav>
