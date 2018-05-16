@@ -14,16 +14,6 @@
  */
 
 /**
- * Twenty'em CONSTANTS and $GLOBALS.
- */
-
-/**
- * Define Twenty'em $GLOBALS
- */
-
-
-
-/**
  * Define Twenty'em CONSTANTS
  */
 
@@ -35,14 +25,14 @@ define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/ico
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.9.4' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.9.5' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.3.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Solenodon Cubanus', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20180410' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20180515' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'4.1.0' );

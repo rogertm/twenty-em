@@ -66,17 +66,17 @@ function t_em_excerpt_options( $excerpt_options = '' ){
 		'thumbnail-left' => array(
 			'value' => 'thumbnail-left',
 			'label' => __( 'Thumbnail on left', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-left.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/template-thumbnail-left.png',
 		),
 		'thumbnail-right' => array(
 			'value' => 'thumbnail-right',
 			'label' => __( 'Thumbnail on right', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-right.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/template-thumbnail-right.png',
 		),
 		'thumbnail-center' => array(
 			'value' => 'thumbnail-center',
 			'label' => __( 'Thumbnail on center', 't_em' ),
-			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/thumbnail-center.png',
+			'thumbnail' => T_EM_ENGINE_DIR_IMG_URL . '/template-thumbnail-center.png',
 		),
 	);
 
@@ -171,10 +171,10 @@ function t_em_excerpt_callback(){
 	$extend_excerpt .= 		'<div class="image-radio-option-group">';
 	foreach ( t_em_excerpt_options() as $excerpt ) :
 		$active_option = ( t_em( 'excerpt_set' ) == $excerpt['value'] ) ? 'radio-image radio-image-active' : 'radio-image';
-		$extend_excerpt .=	'<div class="layout image-radio-option theme-excerpt '. $active_option .'">';
+		$extend_excerpt .=	'<div class="layout theme-excerpt '. $active_option .'">';
 		$extend_excerpt .=		'<label class="description">';
 		$extend_excerpt .=			'<input class="input-image-radio-option" type="radio" name="t_em_theme_options[excerpt_set]" value="'.esc_attr( $excerpt['value'] ).'" '. checked( t_em( 'excerpt_set' ), $excerpt['value'], false ) .' />';
-		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" alt="" /><p>'.$excerpt['label'].'</p></span>';
+		$extend_excerpt .=			'<span><img src="'.esc_url( $excerpt['thumbnail'] ).'" width="200" /><p>'.$excerpt['label'].'</p></span>';
 		$extend_excerpt .=		'</label>';
 		$extend_excerpt .=	'</div>';
 	endforeach;

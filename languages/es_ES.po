@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-04-12 23:15-0400\n"
-"PO-Revision-Date: 2018-04-12 23:18-0400\n"
+"POT-Creation-Date: 2018-05-16 11:17-0400\n"
+"PO-Revision-Date: 2018-05-16 11:20-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -161,13 +161,13 @@ msgstr ""
 msgid "Archive Pagination"
 msgstr "Paginado del archivo"
 
-#: engine/archive-options.php:300 engine/front-page-options.php:278
-#: engine/header-options.php:369
+#: engine/archive-options.php:300 engine/front-page-options.php:283
+#: engine/header-options.php:374
 msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
 "<strong>Oops!</strong> No hay configuraciones disponibles para esta opción..."
 
-#: engine/constants.php:43
+#: engine/constants.php:33
 msgid "Solenodon Cubanus"
 msgstr "Solenodon Cubanus"
 
@@ -389,9 +389,11 @@ msgstr "Mostrando la opción: <code>%s</code>"
 
 #: engine/debug-options.php:194
 msgid ""
-"You can access these values through the <code>$t_em</code> global variable"
+"You can access these values through the <code>t_em()</code> function, "
+"passing as parameter any of these keys"
 msgstr ""
-"Puedes acceder a estos valores mediante la variable global <code>$t_em</code>"
+"Puedes acceder a estos valores a través de la función <code>t_em()</code>, "
+"pasando como parámetro cualquiera de estas llaves"
 
 #: engine/debug-options.php:214
 msgid "Current Function: <code>%s</code>"
@@ -656,58 +658,62 @@ msgstr "Jumbotron"
 msgid "Features"
 msgstr "Features"
 
-#: engine/front-page-options.php:179 engine/header-options.php:309
+#: engine/front-page-options.php:151
+msgid "Cards"
+msgstr "Cards"
+
+#: engine/front-page-options.php:184 engine/header-options.php:314
 #: engine/maintenance-mode-options.php:83
 msgid "Headline"
 msgstr "Encabezado"
 
-#: engine/front-page-options.php:182 engine/maintenance-mode-options.php:88
+#: engine/front-page-options.php:187 engine/maintenance-mode-options.php:88
 msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Encabezado <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:185 engine/header-options.php:316
+#: engine/front-page-options.php:190 engine/header-options.php:321
 #: engine/maintenance-mode-options.php:93
 msgid "Content"
 msgstr "Contenido"
 
-#: engine/front-page-options.php:188 engine/maintenance-mode-options.php:98
+#: engine/front-page-options.php:193 engine/maintenance-mode-options.php:98
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
-#: engine/front-page-options.php:190 engine/header-options.php:314
+#: engine/front-page-options.php:195 engine/header-options.php:319
 #: engine/maintenance-mode-options.php:100
 msgid "Upload Image"
 msgstr "Cargar Imagen"
 
-#: engine/front-page-options.php:192 engine/header-options.php:319
+#: engine/front-page-options.php:197 engine/header-options.php:324
 #: engine/maintenance-mode-options.php:103
 msgid "Primary button text"
 msgstr "Texto del botón primario"
 
-#: engine/front-page-options.php:195 engine/maintenance-mode-options.php:107
+#: engine/front-page-options.php:200 engine/maintenance-mode-options.php:107
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:198 engine/header-options.php:325
+#: engine/front-page-options.php:203 engine/header-options.php:330
 #: engine/maintenance-mode-options.php:111
 msgid "Primary button link"
 msgstr "Enlace del botón primario"
 
-#: engine/front-page-options.php:201 engine/header-options.php:328
+#: engine/front-page-options.php:206 engine/header-options.php:333
 #: engine/maintenance-mode-options.php:115
 msgid "Secondary button text"
 msgstr "Texto del botón secundario"
 
-#: engine/front-page-options.php:204 engine/maintenance-mode-options.php:119
+#: engine/front-page-options.php:209 engine/maintenance-mode-options.php:119
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
 
-#: engine/front-page-options.php:207 engine/header-options.php:334
+#: engine/front-page-options.php:212 engine/header-options.php:339
 #: engine/maintenance-mode-options.php:123
 msgid "Secondary button link"
 msgstr "Enlace del botón secundario"
 
-#: engine/front-page-options.php:234
+#: engine/front-page-options.php:239
 msgid "Front Page Template"
 msgstr "Plantillas para la Página de Inicio"
 
@@ -824,7 +830,7 @@ msgstr ""
 "\"_blank\">Theme Customizer</a>."
 
 #: engine/header-options.php:85 engine/header-options.php:146
-#: engine/header-options.php:282 engine/maintenance-mode-options.php:33
+#: engine/header-options.php:287 engine/maintenance-mode-options.php:33
 msgid "Options"
 msgstr "Opciones"
 
@@ -930,27 +936,31 @@ msgstr "Texto a la derecha"
 msgid "Static header text on left"
 msgstr "Texto a la izquierda"
 
-#: engine/header-options.php:286
+#: engine/header-options.php:262
+msgid "Background image, text over"
+msgstr "Imagen de fondo, texto por encima"
+
+#: engine/header-options.php:291
 msgid "Show Static Header only at home page?"
 msgstr "Mostrar la Cabecera Estática solo en la página inicial"
 
-#: engine/header-options.php:292
+#: engine/header-options.php:297
 msgid "Image and Text Alignment"
 msgstr "Alineado de la imagen y el texto"
 
-#: engine/header-options.php:307 engine/maintenance-mode-options.php:81
+#: engine/header-options.php:312 engine/maintenance-mode-options.php:81
 msgid "Headline, Content and More..."
 msgstr "Encabezado, Contenido y más..."
 
-#: engine/header-options.php:312
+#: engine/header-options.php:317
 msgid "<a href=\"%1$s\" target=\"_blank\">Image URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 
-#: engine/header-options.php:322
+#: engine/header-options.php:327
 msgid "Primary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 
-#: engine/header-options.php:331
+#: engine/header-options.php:336
 msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">icon class</a>"
 
@@ -1993,7 +2003,7 @@ msgstr "Enlace a imagen a tamaño completo"
 msgid "Full resolution"
 msgstr "A toda resolución"
 
-#: inc/shortcodes.php:101
+#: inc/shortcodes.php:106
 msgid "Button group"
 msgstr "Button group"
 
@@ -2725,6 +2735,12 @@ msgstr "Blog Excerpt (resumen)"
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
+
+#~ msgid ""
+#~ "You can access these values through the <code>$t_em</code> global variable"
+#~ msgstr ""
+#~ "Puedes acceder a estos valores mediante la variable global <code>$t_em</"
+#~ "code>"
 
 #~ msgid "Polymita picta"
 #~ msgstr "Polymita picta"
