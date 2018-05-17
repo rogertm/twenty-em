@@ -438,9 +438,9 @@ function t_em_theme_options_validate( $input ){
 		$year = date( 'Y' );
 		$month = date( 'm' );
 		$day = date( 'd' );
-		$default_date = $year + 1 .'-'. $month .'-'. $day;
+		$default_date = $year + 1 .'/'. $month .'/'. $day;
 		$date = date_create( $input['maintenance_mode_timer'] );
-		$input['maintenance_mode_timer'] = ( empty( $input['maintenance_mode_timer'] ) || date_format( $date, 'Y-m-d' ) == $input['maintenance_mode_timer'] ) ? $input['maintenance_mode_timer'] : $default_date;
+		$input['maintenance_mode_timer'] = ( empty( $input['maintenance_mode_timer'] ) || date_format( $date, 'Y/m/d' ) == $input['maintenance_mode_timer'] ) ? $input['maintenance_mode_timer'] : $default_date;
 
 		// Validate all text field icon-class options
 		foreach ( array(

@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twenty'em 1.3\n"
+"Project-Id-Version: Twenty'em 1.3.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-05-16 15:16:28+00:00\n"
+"POT-Creation-Date: 2018-05-17 22:25:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1322,7 +1322,7 @@ msgstr ""
 msgid "Three columns. Content in the middle"
 msgstr ""
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.3)  #-#-#-#-#
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.3.1)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: engine/layout-options.php:60
 msgid "One column, no sidebar"
@@ -1381,7 +1381,7 @@ msgstr ""
 
 #: engine/maintenance-mode-options.php:50
 msgid ""
-"Enter the date your site will be available again. Format: <code>YYYY-MM-DD</"
+"Enter the date your site will be available again. Format: <code>YYYY/MM/DD</"
 "code>. Example: <code>%s</code>"
 msgstr ""
 
@@ -1773,7 +1773,7 @@ msgstr ""
 msgid "Full resolution"
 msgstr ""
 
-#: inc/shortcodes.php:106
+#: inc/shortcodes.php:108
 msgid "Button group"
 msgstr ""
 
@@ -1964,7 +1964,7 @@ msgstr ""
 msgid "%1$s Contributors"
 msgstr ""
 
-#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.3)  #-#-#-#-#
+#. #-#-#-#-#  twenty-em.pot (Twenty'em 1.3.1)  #-#-#-#-#
 #. Template Name of the plugin/theme
 #: inc/widgets.php:815
 msgid "Contributors"
@@ -2330,27 +2330,7 @@ msgstr ""
 msgid "Fourth Footer Widget Area"
 msgstr ""
 
-#: templates/maintenance-mode.php:88
-msgid "weeks"
-msgstr ""
-
-#: templates/maintenance-mode.php:89
-msgid "days"
-msgstr ""
-
-#: templates/maintenance-mode.php:90
-msgid "hr"
-msgstr ""
-
-#: templates/maintenance-mode.php:91
-msgid "min"
-msgstr ""
-
-#: templates/maintenance-mode.php:92
-msgid "sec"
-msgstr ""
-
-#: templates/maintenance-mode.php:114
+#: templates/maintenance-mode.php:100
 msgid ""
 "You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
 msgstr ""

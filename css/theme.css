@@ -322,7 +322,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1rem; }
 
-.lead, article .entry-excerpt, .featured-header-template .entry-content {
+.lead, article .entry-excerpt, .featured-header-template .entry-content, #maintenance-mode #countdowntimer .timerDisplay {
   font-size: 1.25rem;
   font-weight: 300; }
 
@@ -353,7 +353,8 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
 small,
-.small {
+.small,
+#maintenance-mode #countdowntimer .periodDisplay {
   font-size: 80%;
   font-weight: 400; }
 
@@ -3885,13 +3886,13 @@ input[type="button"].btn-block {
     text-decoration: none;
     background-color: #1d2124; }
 
-.jumbotron {
+.jumbotron, #maintenance-mode {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
   border-radius: 0.3rem; }
   @media (min-width: 576px) {
-    .jumbotron {
+    .jumbotron, #maintenance-mode {
       padding: 4rem 2rem; } }
 
 .jumbotron-fluid {
@@ -4766,12 +4767,14 @@ button.bg-light:hover,
 button.bg-light:focus {
   background-color: #dae0e5 !important; }
 
-.bg-dark {
+.bg-dark, #maintenance-mode-alert {
   background-color: #343a40 !important; }
 
-a.bg-dark:hover, a.bg-dark:focus,
+a.bg-dark:hover, a#maintenance-mode-alert:hover, a.bg-dark:focus, a#maintenance-mode-alert:focus,
 button.bg-dark:hover,
-button.bg-dark:focus {
+button#maintenance-mode-alert:hover,
+button.bg-dark:focus,
+button#maintenance-mode-alert:focus {
   background-color: #1d2124 !important; }
 
 .bg-white {
@@ -5640,7 +5643,7 @@ button.bg-dark:focus {
   left: 0;
   z-index: 1030; }
 
-.fixed-bottom {
+.fixed-bottom, #maintenance-mode-alert {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -5760,7 +5763,7 @@ button.bg-dark:focus {
 .my-1 {
   margin-bottom: 0.25rem !important; }
 
-.ml-1,
+.ml-1, #maintenance-mode #countdowntimer .periodDisplay,
 .mx-1 {
   margin-left: 0.25rem !important; }
 
@@ -5808,11 +5811,11 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 #related-posts {
   margin-top: 1rem !important; }
 
-.mr-3, figure.alignleft, #top-menu .custom-logo-link #site-title,
+.mr-3, figure.alignleft, #top-menu .custom-logo-link #site-title, #maintenance-mode #countdowntimer .displaySection,
 .mx-3 {
   margin-right: 1rem !important; }
 
-.mb-3, .gallery .gallery-item, #featured-widget-area .front-page-widget, #featured-widget-area.template-jumbotron .front-page-widget .widget-thumbnail, #featured-widget-area.template-features .widget-thumbnail, article .featured-post-thumbnail, article .entry-excerpt, article .author-info, article .card,
+.mb-3, .gallery .gallery-item, #featured-widget-area .front-page-widget, #featured-widget-area.template-jumbotron .front-page-widget .widget-thumbnail, #featured-widget-area.template-features .widget-thumbnail, article .featured-post-thumbnail, article .entry-excerpt, article .author-info, article .card, #maintenance-mode #countdowntimer,
 .my-3,
 #header #static-header #static-header-image,
 #header #static-header #static-header-text,
@@ -5861,7 +5864,8 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
   margin: 3rem !important; }
 
 .mt-5, article .author-info,
-.my-5 {
+.my-5,
+#maintenance-mode {
   margin-top: 3rem !important; }
 
 .mr-5,
@@ -5869,7 +5873,8 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
   margin-right: 3rem !important; }
 
 .mb-5, #featured-widget-area.template-jumbotron #front-page-widget-one, #featured-widget-area.template-jumbotron #front-page-widget-one .widget-thumbnail, article, .author-info, .widget-container,
-.my-5 {
+.my-5,
+#maintenance-mode {
   margin-bottom: 3rem !important; }
 
 .ml-5,
@@ -5895,7 +5900,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 .px-0 {
   padding-left: 0 !important; }
 
-.p-1, .page-links .page-number {
+.p-1, .page-links .page-number, #maintenance-mode-alert {
   padding: 0.25rem !important; }
 
 .pt-1,
@@ -7088,7 +7093,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 .font-italic {
   font-style: italic !important; }
 
-.text-white {
+.text-white, #maintenance-mode-alert {
   color: #fff !important; }
 
 .text-primary {
@@ -7127,10 +7132,10 @@ a.text-warning:hover, a.text-warning:focus {
 a.text-danger:hover, #commentform a.required:hover, a.text-danger:focus, #commentform a.required:focus {
   color: #bd2130 !important; }
 
-.text-light, #header #static-header.static-header-hero #static-header-text {
+.text-light, #header #static-header.static-header-hero #static-header-text, #maintenance-mode-alert a {
   color: #f8f9fa !important; }
 
-a.text-light:hover, #header #static-header.static-header-hero a#static-header-text:hover, a.text-light:focus, #header #static-header.static-header-hero a#static-header-text:focus {
+a.text-light:hover, #header #static-header.static-header-hero a#static-header-text:hover, #maintenance-mode-alert a:hover, a.text-light:focus, #header #static-header.static-header-hero a#static-header-text:focus, #maintenance-mode-alert a:focus {
   color: #dae0e5 !important; }
 
 .text-dark {

@@ -25,7 +25,7 @@ if ( ! function_exists( 't_em_maintenance_mode_area' ) ) :
  */
 function t_em_maintenance_mode_area(){
 ?>
-	<section id="maintenance-mode" class="jumbotron my-5">
+	<section id="maintenance-mode">
 	<?php do_action( 't_em_action_maintenance_mode_inside_before' ); ?>
 	<?php if ( t_em( 'maintenance_mode_thumbnail_src' ) ) : ?>
 		<img src="<?php echo t_em( 'maintenance_mode_thumbnail_src' ) ?>" class="maintenance-mode-thumbnail mb-5" alt="<?php echo sanitize_text_field( t_em( 'maintenance_mode_headline' ) ) ?>">
@@ -78,25 +78,11 @@ if ( ! function_exists( 't_em_maintenance_mode_countdown_timer' ) ) :
  * @since Twenty'em 1.0.1
  */
 function t_em_maintenance_mode_countdown_timer(){
-	if ( t_em( 'maintenance_mode_timer' ) ) :
+	if ( ! t_em( 'maintenance_mode_timer' ) )
+		return;
 ?>
-		<script type="text/javascript">
-		/* <![CDATA[ */
-		jQuery(document).ready(function($){
-			$('#countdown-clock').countdown('<?php echo t_em( 'maintenance_mode_timer' ) ?>', function(event) {
-				var $this = $(this).html(event.strftime(''
-				+ '<span class="countdown-item">%w <small><?php _e( 'weeks', 't_em' ) ?></small> </span>'
-				+ '<span class="countdown-item">%d <small><?php _e( 'days', 't_em' ) ?></small> </span>'
-				+ '<span class="countdown-item">%H <small><?php _e( 'hr', 't_em' ) ?></small> </span>'
-				+ '<span class="countdown-item">%M <small><?php _e( 'min', 't_em' ) ?></small> </span>'
-				+ '<span class="countdown-item">%S <small><?php _e( 'sec', 't_em' ) ?></small></span>'));
-			});
-		});
-		/* ]]> */
-		</script>
-		<div id="countdown-clock" class="lead my-3"></div>
+	<div id="countdowntimer"></div>
 <?php
-	endif;
 }
 endif;
 
@@ -110,7 +96,7 @@ function t_em_maintenance_mode_alert(){
 		$nonce = ( isset( $_GET['maintenance-mode'] ) ) ? $_GET['maintenance-mode'] : null;
 		$link = ( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) ) ? home_url( '/' ) : wp_nonce_url( home_url( '/' ), 'maintenance_mode', 'maintenance-mode' ) ;
 ?>
-	<div id="maintenance-mode-alert" class="fixed-bottom bg-dark text-white p-1">
+	<div id="maintenance-mode-alert">
 		<div class="text-center" role="alert"><?php printf( __( 'You are using %s in <strong><a href="%s">Maintenance Mode</a></strong>', 't_em' ), T_EM_FRAMEWORK_NAME, $link ) ?></div>
 	</div>
 <?php

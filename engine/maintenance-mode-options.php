@@ -45,10 +45,10 @@ function t_em_settings_field_maintenance_mode_set(){
 				$year = date( 'Y' );
 				$month = date( 'm' );
 				$day = date( 'd' );
-				$date = $year + 1 .'-'. $month .'-'. $day;
+				$date = $year + 1 .'/'. $month .'/'. $day;
 			?>
-			<p><label><span><?php printf( __( 'Enter the date your site will be available again. Format: <code>YYYY-MM-DD</code>. Example: <code>%s</code>', 't_em' ), $date ) ?></span>
-				<input id="datepicker" type="date" class="regular-text" name="t_em_theme_options[maintenance_mode_timer]" value="<?php echo t_em( 'maintenance_mode_timer' ) ?>" autocomplete="off" />
+			<p><label><span><?php printf( __( 'Enter the date your site will be available again. Format: <code>YYYY/MM/DD</code>. Example: <code>%s</code>', 't_em' ), $date ) ?></span>
+				<input id="datepicker" type="text" class="regular-text" name="t_em_theme_options[maintenance_mode_timer]" value="<?php echo t_em( 'maintenance_mode_timer' ) ?>" />
 			</label></p>
 			<p>
 				<label class="description single-option">

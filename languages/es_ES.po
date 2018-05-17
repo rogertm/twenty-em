@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-05-16 11:17-0400\n"
-"PO-Revision-Date: 2018-05-16 11:20-0400\n"
+"POT-Creation-Date: 2018-05-17 18:26-0400\n"
+"PO-Revision-Date: 2018-05-17 18:28-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -1574,11 +1574,11 @@ msgstr "Temporizador"
 
 #: engine/maintenance-mode-options.php:50
 msgid ""
-"Enter the date your site will be available again. Format: <code>YYYY-MM-DD</"
+"Enter the date your site will be available again. Format: <code>YYYY/MM/DD</"
 "code>. Example: <code>%s</code>"
 msgstr ""
 "Introducir la fecha en que este sitio estará activo nuevamente. Formato: "
-"<code>YYYY-MM-DD</code>. Ejemplo: <code>%s</code>"
+"<code>YYYY/MM/DD</code>. Ejemplo: <code>%s</code>"
 
 #: engine/maintenance-mode-options.php:57
 msgid "Reactive automatically after the timer end date"
@@ -2003,7 +2003,7 @@ msgstr "Enlace a imagen a tamaño completo"
 msgid "Full resolution"
 msgstr "A toda resolución"
 
-#: inc/shortcodes.php:106
+#: inc/shortcodes.php:108
 msgid "Button group"
 msgstr "Button group"
 
@@ -2584,27 +2584,7 @@ msgstr "Tercera área de widget inferior"
 msgid "Fourth Footer Widget Area"
 msgstr "Cuarta área de widget inferior"
 
-#: templates/maintenance-mode.php:88
-msgid "weeks"
-msgstr "semanas"
-
-#: templates/maintenance-mode.php:89
-msgid "days"
-msgstr "días"
-
-#: templates/maintenance-mode.php:90
-msgid "hr"
-msgstr "hr"
-
-#: templates/maintenance-mode.php:91
-msgid "min"
-msgstr "min"
-
-#: templates/maintenance-mode.php:92
-msgid "sec"
-msgstr "seg"
-
-#: templates/maintenance-mode.php:114
+#: templates/maintenance-mode.php:100
 msgid ""
 "You are using %s in <strong><a href=\"%s\">Maintenance Mode</a></strong>"
 msgstr ""
@@ -2735,6 +2715,28 @@ msgstr "Blog Excerpt (resumen)"
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
+
+#~ msgid ""
+#~ "Enter the date your site will be available again. Format: <code>YYYY-MM-"
+#~ "DD</code>. Example: <code>%s</code>"
+#~ msgstr ""
+#~ "Introducir la fecha en que este sitio estará activo nuevamente. Formato: "
+#~ "<code>YYYY-MM-DD</code>. Ejemplo: <code>%s</code>"
+
+#~ msgid "weeks"
+#~ msgstr "semanas"
+
+#~ msgid "days"
+#~ msgstr "días"
+
+#~ msgid "hr"
+#~ msgstr "hr"
+
+#~ msgid "min"
+#~ msgstr "min"
+
+#~ msgid "sec"
+#~ msgstr "seg"
 
 #~ msgid ""
 #~ "You can access these values through the <code>$t_em</code> global variable"

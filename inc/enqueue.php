@@ -64,11 +64,23 @@ function t_em_enqueue_styles_and_scripts(){
 				empty( $user_can ) ||
 				( isset( $_GET['maintenance-mode'] ) && wp_verify_nonce( $nonce, 'maintenance_mode' ) )
 			) ) :
-		wp_register_script( 'countdown', t_em_get_js( 'jquery.countdown' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
-		wp_enqueue_script( 'countdown' );
+		if ( t_em( 'maintenance_mode_timer' ) ) :
+			wp_register_script( 'countdown', t_em_get_js( 'jQuery.countdownTimer' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
+			wp_enqueue_script( 'countdown' );
+			if ( get_option( 'WPLANG' ) == 'es_ES' ) :
+				wp_register_script( 'countdown-es', t_em_get_js( 'jQuery.countdownTimer-es' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
+				wp_enqueue_script( 'countdown-es' );
+			endif;
+		endif;
 	endif;
 
 	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
+	// l10n for app.utils.js
+	$translation = array(
+		'maintenanceMode'	=> t_em( 'maintenance_mode' ) ? true : null,
+		'countdownTimer'	=> t_em( 'maintenance_mode_timer' ),
+	);
+	wp_localize_script( 'app-utils', 't_em_l10n', $translation );
 	wp_enqueue_script( 'app-utils' );
 }
 add_action( 'wp_enqueue_scripts', 't_em_enqueue_styles_and_scripts' );

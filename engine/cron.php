@@ -30,7 +30,7 @@ add_action( 'wp', 't_em_admin_action_schedule_maintenance_mode_event' );
 function t_em_maintenance_mode_do_auto_reactive(){
 	if ( t_em( 'maintenance_mode' ) == 1 && t_em( 'maintenance_mode_reactive' ) == 1 && t_em( 'maintenance_mode_timer' ) != '' ) :
 		$end_date = new DateTime( t_em( 'maintenance_mode_timer' ) );
-		$today = new DateTime( date( 'Y-m-d' ) );
+		$today = new DateTime( date( 'Y/m/d' ) );
 		if ( $end_date <= $today ) :
 			$maintenance_mode_off = array(
 										'maintenance_mode'			=> 0,
