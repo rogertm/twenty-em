@@ -45,7 +45,7 @@ function t_em_quicktags_buttons(){
 		QTags.addButton( 'sc_display', 'display', '[display size="1"]', '[/display]' );
 		QTags.addButton( 'sc_jumbotron', 'jumbotron', '[jumbotron]', '[/jumbotron]' );
 		QTags.addButton( 'sc_progress', 'progress', '[progress height=""]', '[/progress]' );
-		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar width="" type="" striped="false" animated="false"]', '[/progress-bar]' );
+		QTags.addButton( 'sc_progress-bar', 'progress-bar', '[progress-bar percent="" style="" striped="false" animated="false"]', '[/progress-bar]' );
 		QTags.addButton( 'sc_iframe', 'iframe', '[iframe src="" ratio="16by9"]', '[/iframe]' );
 		QTags.addButton( 'sc_tooltip', 'tooltip', '[tooltip title="" placement="top"]', '[/tooltip]' );
 		QTags.addButton( 'sc_popover', 'popover', '[popover title="" content="" placement="top"]', '[/popover]' );
@@ -515,8 +515,8 @@ add_shortcode( 'progress', 't_em_shortcode_progress' );
  * Enclosing. Permits others shortcodes
  * Behavior: [progress-bar][/progress-bar]
  * Options:
- * 0. width:	Optional. Width of the progress bar. Default 0.
- * 1. type: 	Optional. Background style. Possible values "success", "info", "warning", "danger" or custom background.
+ * 0. percent:	Optional. Percent of the progress bar. Default 0.
+ * 1. style: 	Optional. Background style. Possible values "success", "info", "warning", "danger" or custom background.
  * 2. striped: 	Optional. Possible values "false", "true". Default "false".
  * 3. animated:	Optional. Possible values "false", "true". Default "false".
  *
@@ -526,19 +526,19 @@ add_shortcode( 'progress', 't_em_shortcode_progress' );
  */
 function t_em_shortcode_progress_bar( $atts, $content = null ){
 	extract( shortcode_atts( array(
-				'width'		=> '',
-				'type'		=> '',
+				'percent'	=> '',
+				'style'		=> '',
 				'striped'	=> false,
 				'animated'	=> false,
 			), $atts ) );
-	$width		= ( $width && is_numeric( $width ) ) ? esc_attr( $width ) : null;
-	$style 		= ( $width ) ? 'style="width: '. $width .'%"' : null;
-	$now		= ( $width ) ? 'aria-valuenow="'. $width .'"' : 'aria-valuenow="0"';
-	$type		= ( $type ) ? 'bg-'. esc_attr( $type ) : null;
+	$percent	= ( $percent && is_numeric( $percent ) ) ? esc_attr( $percent ) : null;
+	$css 		= ( $percent ) ? 'style="width: '. $percent .'%"' : null;
+	$now		= ( $percent ) ? 'aria-valuenow="'. $percent .'"' : 'aria-valuenow="0"';
+	$style		= ( $style ) ? 'bg-'. esc_attr( $style ) : null;
 	$striped	= ( $striped == 'true' ) ? 'progress-bar-striped' : null;
 	$animated	= ( $animated == 'true' ) ? 'progress-bar-animated' : null;
 
-	return '<div class="progress-bar '. $type .' '. $striped .' '. $animated .'" role="progressbar" '. $style .' '. $now .' aria-valuemin="0" aria-valuemax="100">'. do_shortcode( $content ) .'</div>';
+	return '<div class="progress-bar '. $style .' '. $striped .' '. $animated .'" role="progressbar" '. $css .' '. $now .' aria-valuemin="0" aria-valuemax="100">'. do_shortcode( $content ) .'</div>';
 }
 add_shortcode( 'progress-bar', 't_em_shortcode_progress_bar' );
 
