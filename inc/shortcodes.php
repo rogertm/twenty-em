@@ -493,7 +493,7 @@ add_shortcode( 'jumbotron', 't_em_shortcode_jumbotron' );
 /**
  * Shortcode [progress]
  * Enclosing. Permits others shortcodes
- * Behavior: [progress][/progress]
+ * Behavior: [progress height=""][/progress]
  * Options:
  * 0. height:	Optional. Height, in pixels, of the bar.
  *
@@ -513,7 +513,7 @@ add_shortcode( 'progress', 't_em_shortcode_progress' );
 /**
  * Shortcode [progress-bar]
  * Enclosing. Permits others shortcodes
- * Behavior: [progress-bar][/progress-bar]
+ * Behavior: [progress-bar percent="" style="" striped="false" animated="false"][/progress-bar]
  * Options:
  * 0. percent:	Optional. Percent of the progress bar. Default 0.
  * 1. style: 	Optional. Background style. Possible values "success", "info", "warning", "danger" or custom background.
