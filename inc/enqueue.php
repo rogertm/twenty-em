@@ -77,7 +77,7 @@ function t_em_enqueue_styles_and_scripts(){
 	wp_register_script( 'app-utils', t_em_get_js( 'app.utils' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
 	// l10n for app.utils.js
 	$translation = array(
-		'maintenanceMode'	=> t_em( 'maintenance_mode' ) ? true : null,
+		'maintenanceMode'	=> t_em( 'maintenance_mode' ) && $nonce ? true : null,
 		'countdownTimer'	=> t_em( 'maintenance_mode_timer' ),
 	);
 	wp_localize_script( 'app-utils', 't_em_l10n', $translation );
