@@ -102,7 +102,8 @@ add_action( 'wp', 't_em_restore_from_scratch' );
  * @since Twenty'em 1.3
  */
 function t_em_load_defaults(){
-	update_option( 't_em_theme_options', t_em_default_theme_options() );
+	if ( ! t_em() )
+		update_option( 't_em_theme_options', t_em_default_theme_options() );
 }
 add_action( 'after_switch_theme', 't_em_load_defaults' );
 
