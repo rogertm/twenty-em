@@ -3,14 +3,14 @@
 @font-face {
   font-family: 'icomoon';
   src:
-    url('#{$icomoon-font-path}/icomoon.ttf?b7bmat') format('truetype'),
-    url('#{$icomoon-font-path}/icomoon.woff?b7bmat') format('woff'),
-    url('#{$icomoon-font-path}/icomoon.svg?b7bmat#icomoon') format('svg');
+    url('#{$icomoon-font-path}/icomoon.ttf?586iop') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?586iop') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?586iop#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icomoon-"], [class*=" icomoon-"] {
+.icomoon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -25,2378 +25,2383 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
 .icomoon-twenty-em {
   &:before {
-    content: $icomoon-twenty-em;
+    content: unicode($icomoon-twenty-em);
   }
 }
 .icomoon-cloud-upload {
   &:before {
-    content: $icomoon-cloud-upload;
+    content: unicode($icomoon-cloud-upload);
   }
 }
 .icomoon-cloud-download {
   &:before {
-    content: $icomoon-cloud-download;
+    content: unicode($icomoon-cloud-download);
   }
 }
 .icomoon-500px {
   &:before {
-    content: $icomoon-500px;
+    content: unicode($icomoon-500px);
   }
 }
 .icomoon-address {
   &:before {
-    content: $icomoon-address;
+    content: unicode($icomoon-address);
   }
 }
 .icomoon-add-to-list {
   &:before {
-    content: $icomoon-add-to-list;
+    content: unicode($icomoon-add-to-list);
   }
 }
 .icomoon-add-user {
   &:before {
-    content: $icomoon-add-user;
+    content: unicode($icomoon-add-user);
   }
 }
 .icomoon-adjust {
   &:before {
-    content: $icomoon-adjust;
+    content: unicode($icomoon-adjust);
   }
 }
 .icomoon-air {
   &:before {
-    content: $icomoon-air;
+    content: unicode($icomoon-air);
   }
 }
 .icomoon-aircraft {
   &:before {
-    content: $icomoon-aircraft;
+    content: unicode($icomoon-aircraft);
   }
 }
 .icomoon-aircraft-landing {
   &:before {
-    content: $icomoon-aircraft-landing;
+    content: unicode($icomoon-aircraft-landing);
   }
 }
 .icomoon-aircraft-take-off {
   &:before {
-    content: $icomoon-aircraft-take-off;
+    content: unicode($icomoon-aircraft-take-off);
   }
 }
 .icomoon-alarm {
   &:before {
-    content: $icomoon-alarm;
+    content: unicode($icomoon-alarm);
   }
 }
 .icomoon-align-bottom {
   &:before {
-    content: $icomoon-align-bottom;
+    content: unicode($icomoon-align-bottom);
   }
 }
 .icomoon-align-horizontal-middle {
   &:before {
-    content: $icomoon-align-horizontal-middle;
+    content: unicode($icomoon-align-horizontal-middle);
   }
 }
 .icomoon-align-left {
   &:before {
-    content: $icomoon-align-left;
+    content: unicode($icomoon-align-left);
   }
 }
 .icomoon-align-right {
   &:before {
-    content: $icomoon-align-right;
+    content: unicode($icomoon-align-right);
   }
 }
 .icomoon-align-top {
   &:before {
-    content: $icomoon-align-top;
+    content: unicode($icomoon-align-top);
   }
 }
 .icomoon-align-vertical-middle {
   &:before {
-    content: $icomoon-align-vertical-middle;
+    content: unicode($icomoon-align-vertical-middle);
   }
 }
 .icomoon-ampersand {
   &:before {
-    content: $icomoon-ampersand;
+    content: unicode($icomoon-ampersand);
   }
 }
 .icomoon-app-store {
   &:before {
-    content: $icomoon-app-store;
+    content: unicode($icomoon-app-store);
   }
 }
 .icomoon-archive {
   &:before {
-    content: $icomoon-archive;
+    content: unicode($icomoon-archive);
   }
 }
 .icomoon-area-graph {
   &:before {
-    content: $icomoon-area-graph;
+    content: unicode($icomoon-area-graph);
   }
 }
 .icomoon-arrow-bold-down {
   &:before {
-    content: $icomoon-arrow-bold-down;
+    content: unicode($icomoon-arrow-bold-down);
   }
 }
 .icomoon-arrow-bold-left {
   &:before {
-    content: $icomoon-arrow-bold-left;
+    content: unicode($icomoon-arrow-bold-left);
   }
 }
 .icomoon-arrow-bold-right {
   &:before {
-    content: $icomoon-arrow-bold-right;
+    content: unicode($icomoon-arrow-bold-right);
   }
 }
 .icomoon-arrow-bold-up {
   &:before {
-    content: $icomoon-arrow-bold-up;
+    content: unicode($icomoon-arrow-bold-up);
   }
 }
 .icomoon-arrow-down {
   &:before {
-    content: $icomoon-arrow-down;
+    content: unicode($icomoon-arrow-down);
   }
 }
 .icomoon-arrow-down2 {
   &:before {
-    content: $icomoon-arrow-down2;
+    content: unicode($icomoon-arrow-down2);
   }
 }
 .icomoon-arrow-down-left2 {
   &:before {
-    content: $icomoon-arrow-down-left2;
+    content: unicode($icomoon-arrow-down-left2);
   }
 }
 .icomoon-arrow-down-right2 {
   &:before {
-    content: $icomoon-arrow-down-right2;
+    content: unicode($icomoon-arrow-down-right2);
   }
 }
 .icomoon-arrow-left {
   &:before {
-    content: $icomoon-arrow-left;
+    content: unicode($icomoon-arrow-left);
   }
 }
 .icomoon-arrow-left2 {
   &:before {
-    content: $icomoon-arrow-left2;
+    content: unicode($icomoon-arrow-left2);
   }
 }
 .icomoon-arrow-long-down {
   &:before {
-    content: $icomoon-arrow-long-down;
+    content: unicode($icomoon-arrow-long-down);
   }
 }
 .icomoon-arrow-long-left {
   &:before {
-    content: $icomoon-arrow-long-left;
+    content: unicode($icomoon-arrow-long-left);
   }
 }
 .icomoon-arrow-long-right {
   &:before {
-    content: $icomoon-arrow-long-right;
+    content: unicode($icomoon-arrow-long-right);
   }
 }
 .icomoon-arrow-long-up {
   &:before {
-    content: $icomoon-arrow-long-up;
+    content: unicode($icomoon-arrow-long-up);
   }
 }
 .icomoon-arrow-right {
   &:before {
-    content: $icomoon-arrow-right;
+    content: unicode($icomoon-arrow-right);
   }
 }
 .icomoon-arrow-right2 {
   &:before {
-    content: $icomoon-arrow-right2;
+    content: unicode($icomoon-arrow-right2);
   }
 }
 .icomoon-arrow-up {
   &:before {
-    content: $icomoon-arrow-up;
+    content: unicode($icomoon-arrow-up);
   }
 }
 .icomoon-arrow-up2 {
   &:before {
-    content: $icomoon-arrow-up2;
+    content: unicode($icomoon-arrow-up2);
   }
 }
 .icomoon-arrow-up-left2 {
   &:before {
-    content: $icomoon-arrow-up-left2;
+    content: unicode($icomoon-arrow-up-left2);
   }
 }
 .icomoon-arrow-up-right2 {
   &:before {
-    content: $icomoon-arrow-up-right2;
+    content: unicode($icomoon-arrow-up-right2);
   }
 }
 .icomoon-arrow-with-circle-down {
   &:before {
-    content: $icomoon-arrow-with-circle-down;
+    content: unicode($icomoon-arrow-with-circle-down);
   }
 }
 .icomoon-arrow-with-circle-left {
   &:before {
-    content: $icomoon-arrow-with-circle-left;
+    content: unicode($icomoon-arrow-with-circle-left);
   }
 }
 .icomoon-arrow-with-circle-right {
   &:before {
-    content: $icomoon-arrow-with-circle-right;
+    content: unicode($icomoon-arrow-with-circle-right);
   }
 }
 .icomoon-arrow-with-circle-up {
   &:before {
-    content: $icomoon-arrow-with-circle-up;
+    content: unicode($icomoon-arrow-with-circle-up);
   }
 }
 .icomoon-attachment {
   &:before {
-    content: $icomoon-attachment;
+    content: unicode($icomoon-attachment);
   }
 }
 .icomoon-awareness-ribbon {
   &:before {
-    content: $icomoon-awareness-ribbon;
+    content: unicode($icomoon-awareness-ribbon);
   }
 }
 .icomoon-back {
   &:before {
-    content: $icomoon-back;
+    content: unicode($icomoon-back);
   }
 }
 .icomoon-back-in-time {
   &:before {
-    content: $icomoon-back-in-time;
+    content: unicode($icomoon-back-in-time);
   }
 }
 .icomoon-baidu {
   &:before {
-    content: $icomoon-baidu;
+    content: unicode($icomoon-baidu);
   }
 }
 .icomoon-bar-graph {
   &:before {
-    content: $icomoon-bar-graph;
+    content: unicode($icomoon-bar-graph);
   }
 }
 .icomoon-basecamp {
   &:before {
-    content: $icomoon-basecamp;
+    content: unicode($icomoon-basecamp);
   }
 }
 .icomoon-battery {
   &:before {
-    content: $icomoon-battery;
+    content: unicode($icomoon-battery);
   }
 }
 .icomoon-beamed-note {
   &:before {
-    content: $icomoon-beamed-note;
+    content: unicode($icomoon-beamed-note);
   }
 }
 .icomoon-behance {
   &:before {
-    content: $icomoon-behance;
+    content: unicode($icomoon-behance);
   }
 }
 .icomoon-bell {
   &:before {
-    content: $icomoon-bell;
+    content: unicode($icomoon-bell);
   }
 }
 .icomoon-binoculars {
   &:before {
-    content: $icomoon-binoculars;
+    content: unicode($icomoon-binoculars);
   }
 }
 .icomoon-blackboard {
   &:before {
-    content: $icomoon-blackboard;
+    content: unicode($icomoon-blackboard);
   }
 }
 .icomoon-block {
   &:before {
-    content: $icomoon-block;
+    content: unicode($icomoon-block);
   }
 }
 .icomoon-book {
   &:before {
-    content: $icomoon-book;
+    content: unicode($icomoon-book);
   }
 }
 .icomoon-bookmark {
   &:before {
-    content: $icomoon-bookmark;
+    content: unicode($icomoon-bookmark);
   }
 }
 .icomoon-bookmarks {
   &:before {
-    content: $icomoon-bookmarks;
+    content: unicode($icomoon-bookmarks);
   }
 }
 .icomoon-bowl {
   &:before {
-    content: $icomoon-bowl;
+    content: unicode($icomoon-bowl);
   }
 }
 .icomoon-box {
   &:before {
-    content: $icomoon-box;
+    content: unicode($icomoon-box);
   }
 }
 .icomoon-briefcase {
   &:before {
-    content: $icomoon-briefcase;
+    content: unicode($icomoon-briefcase);
   }
 }
 .icomoon-browser {
   &:before {
-    content: $icomoon-browser;
+    content: unicode($icomoon-browser);
   }
 }
 .icomoon-brush {
   &:before {
-    content: $icomoon-brush;
+    content: unicode($icomoon-brush);
   }
 }
 .icomoon-bubble {
   &:before {
-    content: $icomoon-bubble;
+    content: unicode($icomoon-bubble);
   }
 }
 .icomoon-bubble2 {
   &:before {
-    content: $icomoon-bubble2;
+    content: unicode($icomoon-bubble2);
   }
 }
 .icomoon-bubbles {
   &:before {
-    content: $icomoon-bubbles;
+    content: unicode($icomoon-bubbles);
   }
 }
 .icomoon-bubbles2 {
   &:before {
-    content: $icomoon-bubbles2;
+    content: unicode($icomoon-bubbles2);
   }
 }
 .icomoon-bubbles3 {
   &:before {
-    content: $icomoon-bubbles3;
+    content: unicode($icomoon-bubbles3);
   }
 }
 .icomoon-bubbles4 {
   &:before {
-    content: $icomoon-bubbles4;
+    content: unicode($icomoon-bubbles4);
   }
 }
 .icomoon-bucket {
   &:before {
-    content: $icomoon-bucket;
+    content: unicode($icomoon-bucket);
   }
 }
 .icomoon-bug {
   &:before {
-    content: $icomoon-bug;
+    content: unicode($icomoon-bug);
   }
 }
 .icomoon-cake {
   &:before {
-    content: $icomoon-cake;
+    content: unicode($icomoon-cake);
   }
 }
 .icomoon-calculator {
   &:before {
-    content: $icomoon-calculator;
+    content: unicode($icomoon-calculator);
   }
 }
 .icomoon-calendar {
   &:before {
-    content: $icomoon-calendar;
+    content: unicode($icomoon-calendar);
   }
 }
 .icomoon-camera {
   &:before {
-    content: $icomoon-camera;
+    content: unicode($icomoon-camera);
   }
 }
 .icomoon-ccw {
   &:before {
-    content: $icomoon-ccw;
+    content: unicode($icomoon-ccw);
   }
 }
 .icomoon-chat {
   &:before {
-    content: $icomoon-chat;
+    content: unicode($icomoon-chat);
   }
 }
 .icomoon-check {
   &:before {
-    content: $icomoon-check;
+    content: unicode($icomoon-check);
   }
 }
 .icomoon-chevron-down {
   &:before {
-    content: $icomoon-chevron-down;
+    content: unicode($icomoon-chevron-down);
   }
 }
 .icomoon-chevron-left {
   &:before {
-    content: $icomoon-chevron-left;
+    content: unicode($icomoon-chevron-left);
   }
 }
 .icomoon-chevron-right {
   &:before {
-    content: $icomoon-chevron-right;
+    content: unicode($icomoon-chevron-right);
   }
 }
 .icomoon-chevron-small-down {
   &:before {
-    content: $icomoon-chevron-small-down;
+    content: unicode($icomoon-chevron-small-down);
   }
 }
 .icomoon-chevron-small-left {
   &:before {
-    content: $icomoon-chevron-small-left;
+    content: unicode($icomoon-chevron-small-left);
   }
 }
 .icomoon-chevron-small-right {
   &:before {
-    content: $icomoon-chevron-small-right;
+    content: unicode($icomoon-chevron-small-right);
   }
 }
 .icomoon-chevron-small-up {
   &:before {
-    content: $icomoon-chevron-small-up;
+    content: unicode($icomoon-chevron-small-up);
   }
 }
 .icomoon-chevron-thin-down {
   &:before {
-    content: $icomoon-chevron-thin-down;
+    content: unicode($icomoon-chevron-thin-down);
   }
 }
 .icomoon-chevron-thin-left {
   &:before {
-    content: $icomoon-chevron-thin-left;
+    content: unicode($icomoon-chevron-thin-left);
   }
 }
 .icomoon-chevron-thin-right {
   &:before {
-    content: $icomoon-chevron-thin-right;
+    content: unicode($icomoon-chevron-thin-right);
   }
 }
 .icomoon-chevron-thin-up {
   &:before {
-    content: $icomoon-chevron-thin-up;
+    content: unicode($icomoon-chevron-thin-up);
   }
 }
 .icomoon-chevron-up {
   &:before {
-    content: $icomoon-chevron-up;
+    content: unicode($icomoon-chevron-up);
   }
 }
 .icomoon-chevron-with-circle-down {
   &:before {
-    content: $icomoon-chevron-with-circle-down;
+    content: unicode($icomoon-chevron-with-circle-down);
   }
 }
 .icomoon-chevron-with-circle-left {
   &:before {
-    content: $icomoon-chevron-with-circle-left;
+    content: unicode($icomoon-chevron-with-circle-left);
   }
 }
 .icomoon-chevron-with-circle-right {
   &:before {
-    content: $icomoon-chevron-with-circle-right;
+    content: unicode($icomoon-chevron-with-circle-right);
   }
 }
 .icomoon-chevron-with-circle-up {
   &:before {
-    content: $icomoon-chevron-with-circle-up;
+    content: unicode($icomoon-chevron-with-circle-up);
   }
 }
 .icomoon-chrome {
   &:before {
-    content: $icomoon-chrome;
+    content: unicode($icomoon-chrome);
   }
 }
 .icomoon-circle {
   &:before {
-    content: $icomoon-circle;
+    content: unicode($icomoon-circle);
   }
 }
 .icomoon-circle-with-cross {
   &:before {
-    content: $icomoon-circle-with-cross;
+    content: unicode($icomoon-circle-with-cross);
   }
 }
 .icomoon-circle-with-minus {
   &:before {
-    content: $icomoon-circle-with-minus;
+    content: unicode($icomoon-circle-with-minus);
   }
 }
 .icomoon-circle-with-plus {
   &:before {
-    content: $icomoon-circle-with-plus;
+    content: unicode($icomoon-circle-with-plus);
   }
 }
 .icomoon-circular-graph {
   &:before {
-    content: $icomoon-circular-graph;
+    content: unicode($icomoon-circular-graph);
   }
 }
 .icomoon-clapperboard {
   &:before {
-    content: $icomoon-clapperboard;
+    content: unicode($icomoon-clapperboard);
   }
 }
 .icomoon-classic-computer {
   &:before {
-    content: $icomoon-classic-computer;
+    content: unicode($icomoon-classic-computer);
   }
 }
 .icomoon-clipboard {
   &:before {
-    content: $icomoon-clipboard;
+    content: unicode($icomoon-clipboard);
   }
 }
 .icomoon-clock {
   &:before {
-    content: $icomoon-clock;
+    content: unicode($icomoon-clock);
   }
 }
 .icomoon-cloud {
   &:before {
-    content: $icomoon-cloud;
+    content: unicode($icomoon-cloud);
   }
 }
 .icomoon-code {
   &:before {
-    content: $icomoon-code;
+    content: unicode($icomoon-code);
   }
 }
 .icomoon-codepen {
   &:before {
-    content: $icomoon-codepen;
+    content: unicode($icomoon-codepen);
   }
 }
 .icomoon-coffee-cup {
   &:before {
-    content: $icomoon-coffee-cup;
+    content: unicode($icomoon-coffee-cup);
   }
 }
 .icomoon-cog {
   &:before {
-    content: $icomoon-cog;
+    content: unicode($icomoon-cog);
   }
 }
 .icomoon-colours {
   &:before {
-    content: $icomoon-colours;
+    content: unicode($icomoon-colours);
   }
 }
 .icomoon-compass {
   &:before {
-    content: $icomoon-compass;
+    content: unicode($icomoon-compass);
   }
 }
 .icomoon-controller-fast-backward {
   &:before {
-    content: $icomoon-controller-fast-backward;
+    content: unicode($icomoon-controller-fast-backward);
   }
 }
 .icomoon-controller-fast-forward {
   &:before {
-    content: $icomoon-controller-fast-forward;
+    content: unicode($icomoon-controller-fast-forward);
   }
 }
 .icomoon-controller-jump-to-start {
   &:before {
-    content: $icomoon-controller-jump-to-start;
+    content: unicode($icomoon-controller-jump-to-start);
   }
 }
 .icomoon-controller-next {
   &:before {
-    content: $icomoon-controller-next;
+    content: unicode($icomoon-controller-next);
   }
 }
 .icomoon-controller-paus {
   &:before {
-    content: $icomoon-controller-paus;
+    content: unicode($icomoon-controller-paus);
   }
 }
 .icomoon-controller-play {
   &:before {
-    content: $icomoon-controller-play;
+    content: unicode($icomoon-controller-play);
   }
 }
 .icomoon-controller-record {
   &:before {
-    content: $icomoon-controller-record;
+    content: unicode($icomoon-controller-record);
   }
 }
 .icomoon-controller-stop {
   &:before {
-    content: $icomoon-controller-stop;
+    content: unicode($icomoon-controller-stop);
   }
 }
 .icomoon-controller-volume {
   &:before {
-    content: $icomoon-controller-volume;
+    content: unicode($icomoon-controller-volume);
   }
 }
 .icomoon-copy {
   &:before {
-    content: $icomoon-copy;
+    content: unicode($icomoon-copy);
   }
 }
 .icomoon-creative-cloud {
   &:before {
-    content: $icomoon-creative-cloud;
+    content: unicode($icomoon-creative-cloud);
   }
 }
 .icomoon-creative-commons {
   &:before {
-    content: $icomoon-creative-commons;
+    content: unicode($icomoon-creative-commons);
   }
 }
 .icomoon-creative-commons-attribution {
   &:before {
-    content: $icomoon-creative-commons-attribution;
+    content: unicode($icomoon-creative-commons-attribution);
   }
 }
 .icomoon-creative-commons-noderivs {
   &:before {
-    content: $icomoon-creative-commons-noderivs;
+    content: unicode($icomoon-creative-commons-noderivs);
   }
 }
 .icomoon-creative-commons-noncommercial-eu {
   &:before {
-    content: $icomoon-creative-commons-noncommercial-eu;
+    content: unicode($icomoon-creative-commons-noncommercial-eu);
   }
 }
 .icomoon-creative-commons-noncommercial-us {
   &:before {
-    content: $icomoon-creative-commons-noncommercial-us;
+    content: unicode($icomoon-creative-commons-noncommercial-us);
   }
 }
 .icomoon-creative-commons-public-domain {
   &:before {
-    content: $icomoon-creative-commons-public-domain;
+    content: unicode($icomoon-creative-commons-public-domain);
   }
 }
 .icomoon-creative-commons-remix {
   &:before {
-    content: $icomoon-creative-commons-remix;
+    content: unicode($icomoon-creative-commons-remix);
   }
 }
 .icomoon-creative-commons-share {
   &:before {
-    content: $icomoon-creative-commons-share;
+    content: unicode($icomoon-creative-commons-share);
   }
 }
 .icomoon-creative-commons-sharealike {
   &:before {
-    content: $icomoon-creative-commons-sharealike;
+    content: unicode($icomoon-creative-commons-sharealike);
   }
 }
 .icomoon-credit {
   &:before {
-    content: $icomoon-credit;
+    content: unicode($icomoon-credit);
   }
 }
 .icomoon-credit-card {
   &:before {
-    content: $icomoon-credit-card;
+    content: unicode($icomoon-credit-card);
   }
 }
 .icomoon-crop {
   &:before {
-    content: $icomoon-crop;
+    content: unicode($icomoon-crop);
   }
 }
 .icomoon-cross {
   &:before {
-    content: $icomoon-cross;
+    content: unicode($icomoon-cross);
   }
 }
 .icomoon-css3 {
   &:before {
-    content: $icomoon-css3;
+    content: unicode($icomoon-css3);
   }
 }
 .icomoon-cup {
   &:before {
-    content: $icomoon-cup;
+    content: unicode($icomoon-cup);
   }
 }
 .icomoon-cw {
   &:before {
-    content: $icomoon-cw;
+    content: unicode($icomoon-cw);
   }
 }
 .icomoon-cycle {
   &:before {
-    content: $icomoon-cycle;
+    content: unicode($icomoon-cycle);
   }
 }
 .icomoon-database {
   &:before {
-    content: $icomoon-database;
+    content: unicode($icomoon-database);
   }
 }
 .icomoon-delicious {
   &:before {
-    content: $icomoon-delicious;
+    content: unicode($icomoon-delicious);
   }
 }
 .icomoon-deviantart {
   &:before {
-    content: $icomoon-deviantart;
+    content: unicode($icomoon-deviantart);
   }
 }
 .icomoon-dial-pad {
   &:before {
-    content: $icomoon-dial-pad;
+    content: unicode($icomoon-dial-pad);
   }
 }
 .icomoon-direction {
   &:before {
-    content: $icomoon-direction;
+    content: unicode($icomoon-direction);
   }
 }
 .icomoon-document {
   &:before {
-    content: $icomoon-document;
+    content: unicode($icomoon-document);
   }
 }
 .icomoon-document-landscape {
   &:before {
-    content: $icomoon-document-landscape;
+    content: unicode($icomoon-document-landscape);
   }
 }
 .icomoon-documents {
   &:before {
-    content: $icomoon-documents;
+    content: unicode($icomoon-documents);
   }
 }
 .icomoon-dot-single {
   &:before {
-    content: $icomoon-dot-single;
+    content: unicode($icomoon-dot-single);
   }
 }
 .icomoon-dots-three-horizontal {
   &:before {
-    content: $icomoon-dots-three-horizontal;
+    content: unicode($icomoon-dots-three-horizontal);
   }
 }
 .icomoon-dots-three-vertical {
   &:before {
-    content: $icomoon-dots-three-vertical;
+    content: unicode($icomoon-dots-three-vertical);
   }
 }
 .icomoon-dots-two-horizontal {
   &:before {
-    content: $icomoon-dots-two-horizontal;
+    content: unicode($icomoon-dots-two-horizontal);
   }
 }
 .icomoon-dots-two-vertical {
   &:before {
-    content: $icomoon-dots-two-vertical;
+    content: unicode($icomoon-dots-two-vertical);
   }
 }
 .icomoon-download {
   &:before {
-    content: $icomoon-download;
+    content: unicode($icomoon-download);
   }
 }
 .icomoon-dribbble {
   &:before {
-    content: $icomoon-dribbble;
+    content: unicode($icomoon-dribbble);
   }
 }
 .icomoon-dribbble-with-circle {
   &:before {
-    content: $icomoon-dribbble-with-circle;
+    content: unicode($icomoon-dribbble-with-circle);
   }
 }
 .icomoon-drink {
   &:before {
-    content: $icomoon-drink;
+    content: unicode($icomoon-drink);
   }
 }
 .icomoon-drive {
   &:before {
-    content: $icomoon-drive;
+    content: unicode($icomoon-drive);
   }
 }
 .icomoon-drop {
   &:before {
-    content: $icomoon-drop;
+    content: unicode($icomoon-drop);
   }
 }
 .icomoon-dropbox {
   &:before {
-    content: $icomoon-dropbox;
+    content: unicode($icomoon-dropbox);
   }
 }
 .icomoon-edge {
   &:before {
-    content: $icomoon-edge;
+    content: unicode($icomoon-edge);
   }
 }
 .icomoon-edit {
   &:before {
-    content: $icomoon-edit;
+    content: unicode($icomoon-edit);
   }
 }
 .icomoon-email {
   &:before {
-    content: $icomoon-email;
+    content: unicode($icomoon-email);
   }
 }
 .icomoon-emoji-flirt {
   &:before {
-    content: $icomoon-emoji-flirt;
+    content: unicode($icomoon-emoji-flirt);
   }
 }
 .icomoon-emoji-happy {
   &:before {
-    content: $icomoon-emoji-happy;
+    content: unicode($icomoon-emoji-happy);
   }
 }
 .icomoon-emoji-neutral {
   &:before {
-    content: $icomoon-emoji-neutral;
+    content: unicode($icomoon-emoji-neutral);
   }
 }
 .icomoon-emoji-sad {
   &:before {
-    content: $icomoon-emoji-sad;
+    content: unicode($icomoon-emoji-sad);
   }
 }
 .icomoon-erase {
   &:before {
-    content: $icomoon-erase;
+    content: unicode($icomoon-erase);
   }
 }
 .icomoon-eraser {
   &:before {
-    content: $icomoon-eraser;
+    content: unicode($icomoon-eraser);
   }
 }
 .icomoon-evernote {
   &:before {
-    content: $icomoon-evernote;
+    content: unicode($icomoon-evernote);
   }
 }
 .icomoon-export {
   &:before {
-    content: $icomoon-export;
+    content: unicode($icomoon-export);
   }
 }
 .icomoon-eye {
   &:before {
-    content: $icomoon-eye;
+    content: unicode($icomoon-eye);
   }
 }
 .icomoon-eye-with-line {
   &:before {
-    content: $icomoon-eye-with-line;
+    content: unicode($icomoon-eye-with-line);
   }
 }
 .icomoon-facebook {
   &:before {
-    content: $icomoon-facebook;
+    content: unicode($icomoon-facebook);
   }
 }
 .icomoon-facebook-with-circle {
   &:before {
-    content: $icomoon-facebook-with-circle;
+    content: unicode($icomoon-facebook-with-circle);
   }
 }
 .icomoon-feather {
   &:before {
-    content: $icomoon-feather;
+    content: unicode($icomoon-feather);
   }
 }
 .icomoon-finder {
   &:before {
-    content: $icomoon-finder;
+    content: unicode($icomoon-finder);
   }
 }
 .icomoon-fingerprint {
   &:before {
-    content: $icomoon-fingerprint;
+    content: unicode($icomoon-fingerprint);
   }
 }
 .icomoon-firefox {
   &:before {
-    content: $icomoon-firefox;
+    content: unicode($icomoon-firefox);
   }
 }
 .icomoon-flag {
   &:before {
-    content: $icomoon-flag;
+    content: unicode($icomoon-flag);
   }
 }
 .icomoon-flash {
   &:before {
-    content: $icomoon-flash;
+    content: unicode($icomoon-flash);
   }
 }
 .icomoon-flashlight {
   &:before {
-    content: $icomoon-flashlight;
+    content: unicode($icomoon-flashlight);
   }
 }
 .icomoon-flat-brush {
   &:before {
-    content: $icomoon-flat-brush;
+    content: unicode($icomoon-flat-brush);
   }
 }
 .icomoon-flattr {
   &:before {
-    content: $icomoon-flattr;
+    content: unicode($icomoon-flattr);
   }
 }
 .icomoon-flickr {
   &:before {
-    content: $icomoon-flickr;
+    content: unicode($icomoon-flickr);
   }
 }
 .icomoon-flickr-with-circle {
   &:before {
-    content: $icomoon-flickr-with-circle;
+    content: unicode($icomoon-flickr-with-circle);
   }
 }
 .icomoon-flow-branch {
   &:before {
-    content: $icomoon-flow-branch;
+    content: unicode($icomoon-flow-branch);
   }
 }
 .icomoon-flow-cascade {
   &:before {
-    content: $icomoon-flow-cascade;
+    content: unicode($icomoon-flow-cascade);
   }
 }
 .icomoon-flower {
   &:before {
-    content: $icomoon-flower;
+    content: unicode($icomoon-flower);
   }
 }
 .icomoon-flow-line {
   &:before {
-    content: $icomoon-flow-line;
+    content: unicode($icomoon-flow-line);
   }
 }
 .icomoon-flow-parallel {
   &:before {
-    content: $icomoon-flow-parallel;
+    content: unicode($icomoon-flow-parallel);
   }
 }
 .icomoon-flow-tree {
   &:before {
-    content: $icomoon-flow-tree;
+    content: unicode($icomoon-flow-tree);
   }
 }
 .icomoon-folder {
   &:before {
-    content: $icomoon-folder;
+    content: unicode($icomoon-folder);
   }
 }
 .icomoon-folder-download {
   &:before {
-    content: $icomoon-folder-download;
+    content: unicode($icomoon-folder-download);
   }
 }
 .icomoon-folder-images {
   &:before {
-    content: $icomoon-folder-images;
+    content: unicode($icomoon-folder-images);
   }
 }
 .icomoon-folder-minus {
   &:before {
-    content: $icomoon-folder-minus;
+    content: unicode($icomoon-folder-minus);
   }
 }
 .icomoon-folder-music {
   &:before {
-    content: $icomoon-folder-music;
+    content: unicode($icomoon-folder-music);
   }
 }
 .icomoon-folder-open {
   &:before {
-    content: $icomoon-folder-open;
+    content: unicode($icomoon-folder-open);
   }
 }
 .icomoon-folder-plus {
   &:before {
-    content: $icomoon-folder-plus;
+    content: unicode($icomoon-folder-plus);
   }
 }
 .icomoon-folder-upload {
   &:before {
-    content: $icomoon-folder-upload;
+    content: unicode($icomoon-folder-upload);
   }
 }
 .icomoon-folder-video {
   &:before {
-    content: $icomoon-folder-video;
+    content: unicode($icomoon-folder-video);
   }
 }
 .icomoon-forward {
   &:before {
-    content: $icomoon-forward;
+    content: unicode($icomoon-forward);
   }
 }
 .icomoon-foursquare {
   &:before {
-    content: $icomoon-foursquare;
+    content: unicode($icomoon-foursquare);
   }
 }
 .icomoon-funnel {
   &:before {
-    content: $icomoon-funnel;
+    content: unicode($icomoon-funnel);
   }
 }
 .icomoon-game-controller {
   &:before {
-    content: $icomoon-game-controller;
+    content: unicode($icomoon-game-controller);
   }
 }
 .icomoon-gauge {
   &:before {
-    content: $icomoon-gauge;
+    content: unicode($icomoon-gauge);
   }
 }
 .icomoon-github {
   &:before {
-    content: $icomoon-github;
+    content: unicode($icomoon-github);
   }
 }
 .icomoon-github-with-circle {
   &:before {
-    content: $icomoon-github-with-circle;
+    content: unicode($icomoon-github-with-circle);
   }
 }
 .icomoon-globe {
   &:before {
-    content: $icomoon-globe;
+    content: unicode($icomoon-globe);
   }
 }
 .icomoon-google-drive {
   &:before {
-    content: $icomoon-google-drive;
+    content: unicode($icomoon-google-drive);
   }
 }
 .icomoon-google-hangouts {
   &:before {
-    content: $icomoon-google-hangouts;
+    content: unicode($icomoon-google-hangouts);
   }
 }
 .icomoon-google-play {
   &:before {
-    content: $icomoon-google-play;
+    content: unicode($icomoon-google-play);
   }
 }
 .icomoon-google-plus {
   &:before {
-    content: $icomoon-google-plus;
+    content: unicode($icomoon-google-plus);
   }
 }
 .icomoon-google-plus-with-circle {
   &:before {
-    content: $icomoon-google-plus-with-circle;
+    content: unicode($icomoon-google-plus-with-circle);
   }
 }
 .icomoon-graduation-cap {
   &:before {
-    content: $icomoon-graduation-cap;
+    content: unicode($icomoon-graduation-cap);
   }
 }
 .icomoon-grid {
   &:before {
-    content: $icomoon-grid;
+    content: unicode($icomoon-grid);
   }
 }
 .icomoon-grid2 {
   &:before {
-    content: $icomoon-grid2;
+    content: unicode($icomoon-grid2);
   }
 }
 .icomoon-grooveshark {
   &:before {
-    content: $icomoon-grooveshark;
+    content: unicode($icomoon-grooveshark);
   }
 }
 .icomoon-hair-cross {
   &:before {
-    content: $icomoon-hair-cross;
+    content: unicode($icomoon-hair-cross);
   }
 }
 .icomoon-hand {
   &:before {
-    content: $icomoon-hand;
+    content: unicode($icomoon-hand);
   }
 }
 .icomoon-heart {
   &:before {
-    content: $icomoon-heart;
+    content: unicode($icomoon-heart);
   }
 }
 .icomoon-heart-outlined {
   &:before {
-    content: $icomoon-heart-outlined;
+    content: unicode($icomoon-heart-outlined);
   }
 }
 .icomoon-help {
   &:before {
-    content: $icomoon-help;
+    content: unicode($icomoon-help);
   }
 }
 .icomoon-help-with-circle {
   &:before {
-    content: $icomoon-help-with-circle;
+    content: unicode($icomoon-help-with-circle);
   }
 }
 .icomoon-home {
   &:before {
-    content: $icomoon-home;
+    content: unicode($icomoon-home);
   }
 }
 .icomoon-hour-glass {
   &:before {
-    content: $icomoon-hour-glass;
+    content: unicode($icomoon-hour-glass);
   }
 }
 .icomoon-houzz {
   &:before {
-    content: $icomoon-houzz;
+    content: unicode($icomoon-houzz);
   }
 }
 .icomoon-html-five {
   &:before {
-    content: $icomoon-html-five;
+    content: unicode($icomoon-html-five);
   }
 }
 .icomoon-html-five2 {
   &:before {
-    content: $icomoon-html-five2;
+    content: unicode($icomoon-html-five2);
   }
 }
 .icomoon-icloud {
   &:before {
-    content: $icomoon-icloud;
+    content: unicode($icomoon-icloud);
   }
 }
 .icomoon-IE {
   &:before {
-    content: $icomoon-IE;
+    content: unicode($icomoon-IE);
   }
 }
 .icomoon-image {
   &:before {
-    content: $icomoon-image;
+    content: unicode($icomoon-image);
   }
 }
 .icomoon-image-inverted {
   &:before {
-    content: $icomoon-image-inverted;
+    content: unicode($icomoon-image-inverted);
   }
 }
 .icomoon-images {
   &:before {
-    content: $icomoon-images;
+    content: unicode($icomoon-images);
   }
 }
 .icomoon-inbox {
   &:before {
-    content: $icomoon-inbox;
+    content: unicode($icomoon-inbox);
   }
 }
 .icomoon-infinite {
   &:before {
-    content: $icomoon-infinite;
+    content: unicode($icomoon-infinite);
   }
 }
 .icomoon-infinite-with-circle {
   &:before {
-    content: $icomoon-infinite-with-circle;
+    content: unicode($icomoon-infinite-with-circle);
   }
 }
 .icomoon-info {
   &:before {
-    content: $icomoon-info;
+    content: unicode($icomoon-info);
   }
 }
 .icomoon-info-with-circle {
   &:before {
-    content: $icomoon-info-with-circle;
+    content: unicode($icomoon-info-with-circle);
   }
 }
 .icomoon-instagram {
   &:before {
-    content: $icomoon-instagram;
+    content: unicode($icomoon-instagram);
   }
 }
 .icomoon-instagram-with-circle {
   &:before {
-    content: $icomoon-instagram-with-circle;
+    content: unicode($icomoon-instagram-with-circle);
   }
 }
 .icomoon-install {
   &:before {
-    content: $icomoon-install;
+    content: unicode($icomoon-install);
   }
 }
 .icomoon-key {
   &:before {
-    content: $icomoon-key;
+    content: unicode($icomoon-key);
   }
 }
 .icomoon-keyboard {
   &:before {
-    content: $icomoon-keyboard;
+    content: unicode($icomoon-keyboard);
   }
 }
 .icomoon-lab-flask {
   &:before {
-    content: $icomoon-lab-flask;
+    content: unicode($icomoon-lab-flask);
   }
 }
 .icomoon-landline {
   &:before {
-    content: $icomoon-landline;
+    content: unicode($icomoon-landline);
   }
 }
 .icomoon-language {
   &:before {
-    content: $icomoon-language;
+    content: unicode($icomoon-language);
   }
 }
 .icomoon-laptop {
   &:before {
-    content: $icomoon-laptop;
+    content: unicode($icomoon-laptop);
   }
 }
 .icomoon-lastfm {
   &:before {
-    content: $icomoon-lastfm;
+    content: unicode($icomoon-lastfm);
   }
 }
 .icomoon-lastfm-with-circle {
   &:before {
-    content: $icomoon-lastfm-with-circle;
+    content: unicode($icomoon-lastfm-with-circle);
   }
 }
 .icomoon-layers {
   &:before {
-    content: $icomoon-layers;
+    content: unicode($icomoon-layers);
   }
 }
 .icomoon-leaf {
   &:before {
-    content: $icomoon-leaf;
+    content: unicode($icomoon-leaf);
   }
 }
 .icomoon-level-down {
   &:before {
-    content: $icomoon-level-down;
+    content: unicode($icomoon-level-down);
   }
 }
 .icomoon-level-up {
   &:before {
-    content: $icomoon-level-up;
+    content: unicode($icomoon-level-up);
   }
 }
 .icomoon-lifebuoy {
   &:before {
-    content: $icomoon-lifebuoy;
+    content: unicode($icomoon-lifebuoy);
   }
 }
 .icomoon-light-bulb {
   &:before {
-    content: $icomoon-light-bulb;
+    content: unicode($icomoon-light-bulb);
   }
 }
 .icomoon-light-down {
   &:before {
-    content: $icomoon-light-down;
+    content: unicode($icomoon-light-down);
   }
 }
 .icomoon-light-up {
   &:before {
-    content: $icomoon-light-up;
+    content: unicode($icomoon-light-up);
   }
 }
 .icomoon-line-graph {
   &:before {
-    content: $icomoon-line-graph;
+    content: unicode($icomoon-line-graph);
   }
 }
 .icomoon-link {
   &:before {
-    content: $icomoon-link;
+    content: unicode($icomoon-link);
   }
 }
 .icomoon-linkedin {
   &:before {
-    content: $icomoon-linkedin;
+    content: unicode($icomoon-linkedin);
   }
 }
 .icomoon-linkedin-with-circle {
   &:before {
-    content: $icomoon-linkedin-with-circle;
+    content: unicode($icomoon-linkedin-with-circle);
   }
 }
 .icomoon-list {
   &:before {
-    content: $icomoon-list;
+    content: unicode($icomoon-list);
   }
 }
 .icomoon-list-ordered {
   &:before {
-    content: $icomoon-list-ordered;
+    content: unicode($icomoon-list-ordered);
   }
 }
 .icomoon-list-unordered {
   &:before {
-    content: $icomoon-list-unordered;
+    content: unicode($icomoon-list-unordered);
   }
 }
 .icomoon-location {
   &:before {
-    content: $icomoon-location;
+    content: unicode($icomoon-location);
   }
 }
 .icomoon-location-pin {
   &:before {
-    content: $icomoon-location-pin;
+    content: unicode($icomoon-location-pin);
   }
 }
 .icomoon-lock {
   &:before {
-    content: $icomoon-lock;
+    content: unicode($icomoon-lock);
   }
 }
 .icomoon-lock-open {
   &:before {
-    content: $icomoon-lock-open;
+    content: unicode($icomoon-lock-open);
   }
 }
 .icomoon-login {
   &:before {
-    content: $icomoon-login;
+    content: unicode($icomoon-login);
   }
 }
 .icomoon-log-out {
   &:before {
-    content: $icomoon-log-out;
+    content: unicode($icomoon-log-out);
   }
 }
 .icomoon-loop {
   &:before {
-    content: $icomoon-loop;
+    content: unicode($icomoon-loop);
   }
 }
 .icomoon-magnet {
   &:before {
-    content: $icomoon-magnet;
+    content: unicode($icomoon-magnet);
   }
 }
 .icomoon-magnifying-glass {
   &:before {
-    content: $icomoon-magnifying-glass;
+    content: unicode($icomoon-magnifying-glass);
   }
 }
 .icomoon-mail {
   &:before {
-    content: $icomoon-mail;
+    content: unicode($icomoon-mail);
   }
 }
 .icomoon-mail-with-circle {
   &:before {
-    content: $icomoon-mail-with-circle;
+    content: unicode($icomoon-mail-with-circle);
   }
 }
 .icomoon-man {
   &:before {
-    content: $icomoon-man;
+    content: unicode($icomoon-man);
   }
 }
 .icomoon-map {
   &:before {
-    content: $icomoon-map;
+    content: unicode($icomoon-map);
   }
 }
 .icomoon-mask {
   &:before {
-    content: $icomoon-mask;
+    content: unicode($icomoon-mask);
   }
 }
 .icomoon-medal {
   &:before {
-    content: $icomoon-medal;
+    content: unicode($icomoon-medal);
   }
 }
 .icomoon-medium {
   &:before {
-    content: $icomoon-medium;
+    content: unicode($icomoon-medium);
   }
 }
 .icomoon-medium-with-circle {
   &:before {
-    content: $icomoon-medium-with-circle;
+    content: unicode($icomoon-medium-with-circle);
   }
 }
 .icomoon-megaphone {
   &:before {
-    content: $icomoon-megaphone;
+    content: unicode($icomoon-megaphone);
   }
 }
 .icomoon-menu {
   &:before {
-    content: $icomoon-menu;
+    content: unicode($icomoon-menu);
   }
 }
 .icomoon-merge {
   &:before {
-    content: $icomoon-merge;
+    content: unicode($icomoon-merge);
   }
 }
 .icomoon-message {
   &:before {
-    content: $icomoon-message;
+    content: unicode($icomoon-message);
   }
 }
 .icomoon-mic {
   &:before {
-    content: $icomoon-mic;
+    content: unicode($icomoon-mic);
   }
 }
 .icomoon-minus {
   &:before {
-    content: $icomoon-minus;
+    content: unicode($icomoon-minus);
   }
 }
 .icomoon-mixi {
   &:before {
-    content: $icomoon-mixi;
+    content: unicode($icomoon-mixi);
   }
 }
 .icomoon-mobile {
   &:before {
-    content: $icomoon-mobile;
+    content: unicode($icomoon-mobile);
   }
 }
 .icomoon-modern-mic {
   &:before {
-    content: $icomoon-modern-mic;
+    content: unicode($icomoon-modern-mic);
   }
 }
 .icomoon-moon {
   &:before {
-    content: $icomoon-moon;
+    content: unicode($icomoon-moon);
   }
 }
 .icomoon-mouse {
   &:before {
-    content: $icomoon-mouse;
+    content: unicode($icomoon-mouse);
   }
 }
 .icomoon-mouse-pointer {
   &:before {
-    content: $icomoon-mouse-pointer;
+    content: unicode($icomoon-mouse-pointer);
   }
 }
 .icomoon-music {
   &:before {
-    content: $icomoon-music;
+    content: unicode($icomoon-music);
   }
 }
 .icomoon-network {
   &:before {
-    content: $icomoon-network;
+    content: unicode($icomoon-network);
   }
 }
-.icomoon-new {
+.icomoon-danger {
   &:before {
-    content: $icomoon-new;
+    content: unicode($icomoon-danger);
   }
 }
 .icomoon-new-message {
   &:before {
-    content: $icomoon-new-message;
+    content: unicode($icomoon-new-message);
   }
 }
 .icomoon-news {
   &:before {
-    content: $icomoon-news;
+    content: unicode($icomoon-news);
   }
 }
 .icomoon-newsletter {
   &:before {
-    content: $icomoon-newsletter;
+    content: unicode($icomoon-newsletter);
   }
 }
 .icomoon-new-tab {
   &:before {
-    content: $icomoon-new-tab;
+    content: unicode($icomoon-new-tab);
   }
 }
 .icomoon-note {
   &:before {
-    content: $icomoon-note;
+    content: unicode($icomoon-note);
   }
 }
 .icomoon-notification {
   &:before {
-    content: $icomoon-notification;
+    content: unicode($icomoon-notification);
   }
 }
 .icomoon-notifications-off {
   &:before {
-    content: $icomoon-notifications-off;
+    content: unicode($icomoon-notifications-off);
   }
 }
 .icomoon-old-mobile {
   &:before {
-    content: $icomoon-old-mobile;
+    content: unicode($icomoon-old-mobile);
   }
 }
 .icomoon-old-phone {
   &:before {
-    content: $icomoon-old-phone;
+    content: unicode($icomoon-old-phone);
   }
 }
 .icomoon-onedrive {
   &:before {
-    content: $icomoon-onedrive;
+    content: unicode($icomoon-onedrive);
   }
 }
 .icomoon-open-book {
   &:before {
-    content: $icomoon-open-book;
+    content: unicode($icomoon-open-book);
   }
 }
 .icomoon-opera {
   &:before {
-    content: $icomoon-opera;
+    content: unicode($icomoon-opera);
   }
 }
 .icomoon-palette {
   &:before {
-    content: $icomoon-palette;
+    content: unicode($icomoon-palette);
   }
 }
 .icomoon-paper-plane {
   &:before {
-    content: $icomoon-paper-plane;
+    content: unicode($icomoon-paper-plane);
   }
 }
 .icomoon-paypal {
   &:before {
-    content: $icomoon-paypal;
+    content: unicode($icomoon-paypal);
   }
 }
 .icomoon-pencil {
   &:before {
-    content: $icomoon-pencil;
+    content: unicode($icomoon-pencil);
   }
 }
 .icomoon-phone {
   &:before {
-    content: $icomoon-phone;
+    content: unicode($icomoon-phone);
   }
 }
 .icomoon-picasa {
   &:before {
-    content: $icomoon-picasa;
+    content: unicode($icomoon-picasa);
   }
 }
 .icomoon-pie-chart {
   &:before {
-    content: $icomoon-pie-chart;
+    content: unicode($icomoon-pie-chart);
   }
 }
 .icomoon-pin {
   &:before {
-    content: $icomoon-pin;
+    content: unicode($icomoon-pin);
   }
 }
 .icomoon-pinterest {
   &:before {
-    content: $icomoon-pinterest;
+    content: unicode($icomoon-pinterest);
   }
 }
 .icomoon-pinterest-with-circle {
   &:before {
-    content: $icomoon-pinterest-with-circle;
+    content: unicode($icomoon-pinterest-with-circle);
   }
 }
 .icomoon-plus {
   &:before {
-    content: $icomoon-plus;
+    content: unicode($icomoon-plus);
   }
 }
 .icomoon-popup {
   &:before {
-    content: $icomoon-popup;
+    content: unicode($icomoon-popup);
   }
 }
 .icomoon-power-plug {
   &:before {
-    content: $icomoon-power-plug;
+    content: unicode($icomoon-power-plug);
   }
 }
 .icomoon-price-ribbon {
   &:before {
-    content: $icomoon-price-ribbon;
+    content: unicode($icomoon-price-ribbon);
   }
 }
 .icomoon-price-tag {
   &:before {
-    content: $icomoon-price-tag;
+    content: unicode($icomoon-price-tag);
   }
 }
 .icomoon-price-tag2 {
   &:before {
-    content: $icomoon-price-tag2;
+    content: unicode($icomoon-price-tag2);
   }
 }
 .icomoon-price-tags {
   &:before {
-    content: $icomoon-price-tags;
+    content: unicode($icomoon-price-tags);
   }
 }
 .icomoon-print {
   &:before {
-    content: $icomoon-print;
+    content: unicode($icomoon-print);
   }
 }
 .icomoon-progress-empty {
   &:before {
-    content: $icomoon-progress-empty;
+    content: unicode($icomoon-progress-empty);
   }
 }
 .icomoon-progress-full {
   &:before {
-    content: $icomoon-progress-full;
+    content: unicode($icomoon-progress-full);
   }
 }
 .icomoon-progress-one {
   &:before {
-    content: $icomoon-progress-one;
+    content: unicode($icomoon-progress-one);
   }
 }
 .icomoon-progress-two {
   &:before {
-    content: $icomoon-progress-two;
+    content: unicode($icomoon-progress-two);
   }
 }
 .icomoon-publish {
   &:before {
-    content: $icomoon-publish;
+    content: unicode($icomoon-publish);
   }
 }
 .icomoon-qq {
   &:before {
-    content: $icomoon-qq;
+    content: unicode($icomoon-qq);
   }
 }
 .icomoon-qq-with-circle {
   &:before {
-    content: $icomoon-qq-with-circle;
+    content: unicode($icomoon-qq-with-circle);
   }
 }
 .icomoon-quote {
   &:before {
-    content: $icomoon-quote;
+    content: unicode($icomoon-quote);
   }
 }
 .icomoon-radio {
   &:before {
-    content: $icomoon-radio;
+    content: unicode($icomoon-radio);
   }
 }
 .icomoon-raft {
   &:before {
-    content: $icomoon-raft;
+    content: unicode($icomoon-raft);
   }
 }
 .icomoon-raft-with-circle {
   &:before {
-    content: $icomoon-raft-with-circle;
+    content: unicode($icomoon-raft-with-circle);
   }
 }
 .icomoon-rainbow {
   &:before {
-    content: $icomoon-rainbow;
+    content: unicode($icomoon-rainbow);
   }
 }
 .icomoon-rdio {
   &:before {
-    content: $icomoon-rdio;
+    content: unicode($icomoon-rdio);
   }
 }
 .icomoon-rdio-with-circle {
   &:before {
-    content: $icomoon-rdio-with-circle;
+    content: unicode($icomoon-rdio-with-circle);
   }
 }
 .icomoon-reddit {
   &:before {
-    content: $icomoon-reddit;
+    content: unicode($icomoon-reddit);
   }
 }
 .icomoon-remove-user {
   &:before {
-    content: $icomoon-remove-user;
+    content: unicode($icomoon-remove-user);
   }
 }
 .icomoon-renren {
   &:before {
-    content: $icomoon-renren;
+    content: unicode($icomoon-renren);
   }
 }
 .icomoon-reply {
   &:before {
-    content: $icomoon-reply;
+    content: unicode($icomoon-reply);
   }
 }
 .icomoon-reply-all {
   &:before {
-    content: $icomoon-reply-all;
+    content: unicode($icomoon-reply-all);
   }
 }
 .icomoon-resize-100-percent {
   &:before {
-    content: $icomoon-resize-100-percent;
+    content: unicode($icomoon-resize-100-percent);
   }
 }
 .icomoon-resize-full-screen {
   &:before {
-    content: $icomoon-resize-full-screen;
+    content: unicode($icomoon-resize-full-screen);
   }
 }
 .icomoon-retweet {
   &:before {
-    content: $icomoon-retweet;
+    content: unicode($icomoon-retweet);
   }
 }
 .icomoon-rocket {
   &:before {
-    content: $icomoon-rocket;
+    content: unicode($icomoon-rocket);
   }
 }
 .icomoon-round-brush {
   &:before {
-    content: $icomoon-round-brush;
+    content: unicode($icomoon-round-brush);
   }
 }
 .icomoon-rss {
   &:before {
-    content: $icomoon-rss;
+    content: unicode($icomoon-rss);
   }
 }
 .icomoon-ruler {
   &:before {
-    content: $icomoon-ruler;
+    content: unicode($icomoon-ruler);
   }
 }
 .icomoon-safari {
   &:before {
-    content: $icomoon-safari;
+    content: unicode($icomoon-safari);
   }
 }
 .icomoon-save {
   &:before {
-    content: $icomoon-save;
+    content: unicode($icomoon-save);
   }
 }
 .icomoon-scissors {
   &:before {
-    content: $icomoon-scissors;
+    content: unicode($icomoon-scissors);
   }
 }
 .icomoon-scribd {
   &:before {
-    content: $icomoon-scribd;
+    content: unicode($icomoon-scribd);
   }
 }
 .icomoon-search {
   &:before {
-    content: $icomoon-search;
+    content: unicode($icomoon-search);
   }
 }
 .icomoon-select-arrows {
   &:before {
-    content: $icomoon-select-arrows;
+    content: unicode($icomoon-select-arrows);
   }
 }
 .icomoon-share {
   &:before {
-    content: $icomoon-share;
+    content: unicode($icomoon-share);
   }
 }
 .icomoon-shareable {
   &:before {
-    content: $icomoon-shareable;
+    content: unicode($icomoon-shareable);
   }
 }
 .icomoon-share-alternative {
   &:before {
-    content: $icomoon-share-alternative;
+    content: unicode($icomoon-share-alternative);
   }
 }
 .icomoon-shield {
   &:before {
-    content: $icomoon-shield;
+    content: unicode($icomoon-shield);
   }
 }
 .icomoon-shop {
   &:before {
-    content: $icomoon-shop;
+    content: unicode($icomoon-shop);
   }
 }
 .icomoon-shopping-bag {
   &:before {
-    content: $icomoon-shopping-bag;
+    content: unicode($icomoon-shopping-bag);
   }
 }
 .icomoon-shopping-basket {
   &:before {
-    content: $icomoon-shopping-basket;
+    content: unicode($icomoon-shopping-basket);
   }
 }
 .icomoon-shopping-cart {
   &:before {
-    content: $icomoon-shopping-cart;
+    content: unicode($icomoon-shopping-cart);
   }
 }
 .icomoon-shuffle {
   &:before {
-    content: $icomoon-shuffle;
+    content: unicode($icomoon-shuffle);
   }
 }
 .icomoon-signal {
   &:before {
-    content: $icomoon-signal;
+    content: unicode($icomoon-signal);
   }
 }
 .icomoon-sina-weibo {
   &:before {
-    content: $icomoon-sina-weibo;
+    content: unicode($icomoon-sina-weibo);
   }
 }
 .icomoon-skype {
   &:before {
-    content: $icomoon-skype;
+    content: unicode($icomoon-skype);
   }
 }
 .icomoon-skype-with-circle {
   &:before {
-    content: $icomoon-skype-with-circle;
+    content: unicode($icomoon-skype-with-circle);
   }
 }
 .icomoon-slideshare {
   &:before {
-    content: $icomoon-slideshare;
+    content: unicode($icomoon-slideshare);
   }
 }
 .icomoon-smashing {
   &:before {
-    content: $icomoon-smashing;
+    content: unicode($icomoon-smashing);
   }
 }
 .icomoon-sound {
   &:before {
-    content: $icomoon-sound;
+    content: unicode($icomoon-sound);
   }
 }
 .icomoon-soundcloud {
   &:before {
-    content: $icomoon-soundcloud;
+    content: unicode($icomoon-soundcloud);
   }
 }
 .icomoon-sound-mix {
   &:before {
-    content: $icomoon-sound-mix;
+    content: unicode($icomoon-sound-mix);
   }
 }
 .icomoon-sound-mute {
   &:before {
-    content: $icomoon-sound-mute;
+    content: unicode($icomoon-sound-mute);
   }
 }
 .icomoon-spinner {
   &:before {
-    content: $icomoon-spinner;
+    content: unicode($icomoon-spinner);
   }
 }
 .icomoon-spinner2 {
   &:before {
-    content: $icomoon-spinner2;
+    content: unicode($icomoon-spinner2);
   }
 }
 .icomoon-sports-club {
   &:before {
-    content: $icomoon-sports-club;
+    content: unicode($icomoon-sports-club);
   }
 }
 .icomoon-spotify {
   &:before {
-    content: $icomoon-spotify;
+    content: unicode($icomoon-spotify);
   }
 }
 .icomoon-spotify-with-circle {
   &:before {
-    content: $icomoon-spotify-with-circle;
+    content: unicode($icomoon-spotify-with-circle);
   }
 }
 .icomoon-spreadsheet {
   &:before {
-    content: $icomoon-spreadsheet;
+    content: unicode($icomoon-spreadsheet);
   }
 }
 .icomoon-squared-cross {
   &:before {
-    content: $icomoon-squared-cross;
+    content: unicode($icomoon-squared-cross);
   }
 }
 .icomoon-squared-minus {
   &:before {
-    content: $icomoon-squared-minus;
+    content: unicode($icomoon-squared-minus);
   }
 }
 .icomoon-squared-plus {
   &:before {
-    content: $icomoon-squared-plus;
+    content: unicode($icomoon-squared-plus);
   }
 }
 .icomoon-stack {
   &:before {
-    content: $icomoon-stack;
+    content: unicode($icomoon-stack);
   }
 }
 .icomoon-stackoverflow {
   &:before {
-    content: $icomoon-stackoverflow;
+    content: unicode($icomoon-stackoverflow);
   }
 }
 .icomoon-star {
   &:before {
-    content: $icomoon-star;
+    content: unicode($icomoon-star);
   }
 }
 .icomoon-star-outlined {
   &:before {
-    content: $icomoon-star-outlined;
+    content: unicode($icomoon-star-outlined);
   }
 }
 .icomoon-steam {
   &:before {
-    content: $icomoon-steam;
+    content: unicode($icomoon-steam);
   }
 }
 .icomoon-steam2 {
   &:before {
-    content: $icomoon-steam2;
+    content: unicode($icomoon-steam2);
   }
 }
 .icomoon-stopwatch {
   &:before {
-    content: $icomoon-stopwatch;
+    content: unicode($icomoon-stopwatch);
   }
 }
 .icomoon-stumbleupon {
   &:before {
-    content: $icomoon-stumbleupon;
+    content: unicode($icomoon-stumbleupon);
   }
 }
 .icomoon-stumbleupon-with-circle {
   &:before {
-    content: $icomoon-stumbleupon-with-circle;
+    content: unicode($icomoon-stumbleupon-with-circle);
   }
 }
 .icomoon-suitcase {
   &:before {
-    content: $icomoon-suitcase;
+    content: unicode($icomoon-suitcase);
   }
 }
 .icomoon-swap {
   &:before {
-    content: $icomoon-swap;
+    content: unicode($icomoon-swap);
   }
 }
 .icomoon-swarm {
   &:before {
-    content: $icomoon-swarm;
+    content: unicode($icomoon-swarm);
   }
 }
 .icomoon-sweden {
   &:before {
-    content: $icomoon-sweden;
+    content: unicode($icomoon-sweden);
   }
 }
 .icomoon-switch {
   &:before {
-    content: $icomoon-switch;
+    content: unicode($icomoon-switch);
   }
 }
 .icomoon-tablet {
   &:before {
-    content: $icomoon-tablet;
+    content: unicode($icomoon-tablet);
   }
 }
 .icomoon-tablet-mobile-combo {
   &:before {
-    content: $icomoon-tablet-mobile-combo;
+    content: unicode($icomoon-tablet-mobile-combo);
   }
 }
 .icomoon-tag {
   &:before {
-    content: $icomoon-tag;
+    content: unicode($icomoon-tag);
   }
 }
 .icomoon-text {
   &:before {
-    content: $icomoon-text;
+    content: unicode($icomoon-text);
   }
 }
 .icomoon-text-document {
   &:before {
-    content: $icomoon-text-document;
+    content: unicode($icomoon-text-document);
   }
 }
 .icomoon-text-document-inverted {
   &:before {
-    content: $icomoon-text-document-inverted;
+    content: unicode($icomoon-text-document-inverted);
   }
 }
 .icomoon-thermometer {
   &:before {
-    content: $icomoon-thermometer;
+    content: unicode($icomoon-thermometer);
   }
 }
 .icomoon-thumbs-down {
   &:before {
-    content: $icomoon-thumbs-down;
+    content: unicode($icomoon-thumbs-down);
   }
 }
 .icomoon-thumbs-up {
   &:before {
-    content: $icomoon-thumbs-up;
+    content: unicode($icomoon-thumbs-up);
   }
 }
 .icomoon-thunder-cloud {
   &:before {
-    content: $icomoon-thunder-cloud;
+    content: unicode($icomoon-thunder-cloud);
   }
 }
 .icomoon-ticket {
   &:before {
-    content: $icomoon-ticket;
+    content: unicode($icomoon-ticket);
   }
 }
 .icomoon-time-slot {
   &:before {
-    content: $icomoon-time-slot;
+    content: unicode($icomoon-time-slot);
   }
 }
 .icomoon-tools {
   &:before {
-    content: $icomoon-tools;
+    content: unicode($icomoon-tools);
   }
 }
 .icomoon-traffic-cone {
   &:before {
-    content: $icomoon-traffic-cone;
+    content: unicode($icomoon-traffic-cone);
   }
 }
 .icomoon-trash {
   &:before {
-    content: $icomoon-trash;
+    content: unicode($icomoon-trash);
   }
 }
 .icomoon-trashcan {
   &:before {
-    content: $icomoon-trashcan;
+    content: unicode($icomoon-trashcan);
   }
 }
 .icomoon-tree {
   &:before {
-    content: $icomoon-tree;
+    content: unicode($icomoon-tree);
   }
 }
 .icomoon-triangle-down {
   &:before {
-    content: $icomoon-triangle-down;
+    content: unicode($icomoon-triangle-down);
   }
 }
 .icomoon-triangle-left {
   &:before {
-    content: $icomoon-triangle-left;
+    content: unicode($icomoon-triangle-left);
   }
 }
 .icomoon-triangle-right {
   &:before {
-    content: $icomoon-triangle-right;
+    content: unicode($icomoon-triangle-right);
   }
 }
 .icomoon-triangle-up {
   &:before {
-    content: $icomoon-triangle-up;
+    content: unicode($icomoon-triangle-up);
   }
 }
 .icomoon-tripadvisor {
   &:before {
-    content: $icomoon-tripadvisor;
+    content: unicode($icomoon-tripadvisor);
   }
 }
 .icomoon-trophy {
   &:before {
-    content: $icomoon-trophy;
+    content: unicode($icomoon-trophy);
   }
 }
 .icomoon-truck {
   &:before {
-    content: $icomoon-truck;
+    content: unicode($icomoon-truck);
   }
 }
 .icomoon-tumblr {
   &:before {
-    content: $icomoon-tumblr;
+    content: unicode($icomoon-tumblr);
   }
 }
 .icomoon-tumblr-with-circle {
   &:before {
-    content: $icomoon-tumblr-with-circle;
+    content: unicode($icomoon-tumblr-with-circle);
   }
 }
 .icomoon-tv {
   &:before {
-    content: $icomoon-tv;
+    content: unicode($icomoon-tv);
   }
 }
 .icomoon-twitter {
   &:before {
-    content: $icomoon-twitter;
+    content: unicode($icomoon-twitter);
   }
 }
 .icomoon-twitter-with-circle {
   &:before {
-    content: $icomoon-twitter-with-circle;
+    content: unicode($icomoon-twitter-with-circle);
   }
 }
 .icomoon-typing {
   &:before {
-    content: $icomoon-typing;
+    content: unicode($icomoon-typing);
   }
 }
 .icomoon-uninstall {
   &:before {
-    content: $icomoon-uninstall;
+    content: unicode($icomoon-uninstall);
   }
 }
 .icomoon-unread {
   &:before {
-    content: $icomoon-unread;
+    content: unicode($icomoon-unread);
   }
 }
 .icomoon-untag {
   &:before {
-    content: $icomoon-untag;
+    content: unicode($icomoon-untag);
   }
 }
 .icomoon-upload {
   &:before {
-    content: $icomoon-upload;
+    content: unicode($icomoon-upload);
   }
 }
 .icomoon-user {
   &:before {
-    content: $icomoon-user;
+    content: unicode($icomoon-user);
   }
 }
 .icomoon-users {
   &:before {
-    content: $icomoon-users;
+    content: unicode($icomoon-users);
   }
 }
 .icomoon-v-card {
   &:before {
-    content: $icomoon-v-card;
+    content: unicode($icomoon-v-card);
   }
 }
 .icomoon-video {
   &:before {
-    content: $icomoon-video;
+    content: unicode($icomoon-video);
   }
 }
 .icomoon-video-camera {
   &:before {
-    content: $icomoon-video-camera;
+    content: unicode($icomoon-video-camera);
   }
 }
 .icomoon-vimeo {
   &:before {
-    content: $icomoon-vimeo;
+    content: unicode($icomoon-vimeo);
   }
 }
 .icomoon-vimeo-with-circle {
   &:before {
-    content: $icomoon-vimeo-with-circle;
+    content: unicode($icomoon-vimeo-with-circle);
   }
 }
 .icomoon-vine {
   &:before {
-    content: $icomoon-vine;
+    content: unicode($icomoon-vine);
   }
 }
 .icomoon-vine-with-circle {
   &:before {
-    content: $icomoon-vine-with-circle;
+    content: unicode($icomoon-vine-with-circle);
   }
 }
 .icomoon-vinyl {
   &:before {
-    content: $icomoon-vinyl;
+    content: unicode($icomoon-vinyl);
   }
 }
 .icomoon-vk {
   &:before {
-    content: $icomoon-vk;
+    content: unicode($icomoon-vk);
   }
 }
 .icomoon-vk-alternitive {
   &:before {
-    content: $icomoon-vk-alternitive;
+    content: unicode($icomoon-vk-alternitive);
   }
 }
 .icomoon-vk-with-circle {
   &:before {
-    content: $icomoon-vk-with-circle;
+    content: unicode($icomoon-vk-with-circle);
   }
 }
 .icomoon-voicemail {
   &:before {
-    content: $icomoon-voicemail;
+    content: unicode($icomoon-voicemail);
   }
 }
 .icomoon-volume-decrease {
   &:before {
-    content: $icomoon-volume-decrease;
+    content: unicode($icomoon-volume-decrease);
   }
 }
 .icomoon-volume-high {
   &:before {
-    content: $icomoon-volume-high;
+    content: unicode($icomoon-volume-high);
   }
 }
 .icomoon-volume-increase {
   &:before {
-    content: $icomoon-volume-increase;
+    content: unicode($icomoon-volume-increase);
   }
 }
 .icomoon-volume-low {
   &:before {
-    content: $icomoon-volume-low;
+    content: unicode($icomoon-volume-low);
   }
 }
 .icomoon-volume-medium {
   &:before {
-    content: $icomoon-volume-medium;
+    content: unicode($icomoon-volume-medium);
   }
 }
 .icomoon-volume-mute {
   &:before {
-    content: $icomoon-volume-mute;
+    content: unicode($icomoon-volume-mute);
   }
 }
 .icomoon-volume-mute2 {
   &:before {
-    content: $icomoon-volume-mute2;
+    content: unicode($icomoon-volume-mute2);
   }
 }
 .icomoon-wallet {
   &:before {
-    content: $icomoon-wallet;
+    content: unicode($icomoon-wallet);
   }
 }
 .icomoon-warning {
   &:before {
-    content: $icomoon-warning;
+    content: unicode($icomoon-warning);
   }
 }
 .icomoon-water {
   &:before {
-    content: $icomoon-water;
+    content: unicode($icomoon-water);
   }
 }
 .icomoon-windows-store {
   &:before {
-    content: $icomoon-windows-store;
+    content: unicode($icomoon-windows-store);
   }
 }
 .icomoon-wordpress {
   &:before {
-    content: $icomoon-wordpress;
+    content: unicode($icomoon-wordpress);
   }
 }
 .icomoon-xing {
   &:before {
-    content: $icomoon-xing;
+    content: unicode($icomoon-xing);
   }
 }
 .icomoon-xing-with-circle {
   &:before {
-    content: $icomoon-xing-with-circle;
+    content: unicode($icomoon-xing-with-circle);
   }
 }
 .icomoon-yahoo {
   &:before {
-    content: $icomoon-yahoo;
+    content: unicode($icomoon-yahoo);
   }
 }
 .icomoon-yahoo2 {
   &:before {
-    content: $icomoon-yahoo2;
+    content: unicode($icomoon-yahoo2);
   }
 }
 .icomoon-yelp {
   &:before {
-    content: $icomoon-yelp;
+    content: unicode($icomoon-yelp);
   }
 }
 .icomoon-youko {
   &:before {
-    content: $icomoon-youko;
+    content: unicode($icomoon-youko);
   }
 }
 .icomoon-youko-with-circle {
   &:before {
-    content: $icomoon-youko-with-circle;
+    content: unicode($icomoon-youko-with-circle);
   }
 }
 .icomoon-youtube {
   &:before {
-    content: $icomoon-youtube;
+    content: unicode($icomoon-youtube);
   }
 }
 .icomoon-youtube-with-circle {
   &:before {
-    content: $icomoon-youtube-with-circle;
+    content: unicode($icomoon-youtube-with-circle);
   }
 }
+
