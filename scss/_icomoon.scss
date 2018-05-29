@@ -10,7 +10,7 @@
   font-style: normal;
 }
 
-.icomoon {
+[class^="icomoon-"], [class*=" icomoon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
