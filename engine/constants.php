@@ -21,15 +21,15 @@
 define ( 'T_EM_SITE',													'https://themingisprose.com/twenty-em' );
 define ( 'T_EM_BLOG',													'https://themingisprose.com/twenty-em/blog' );
 define ( 'T_EM_WIKI', 													'https://themingisprose.com/twenty-em/documentacion' );
-define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/icon-pack' );
+define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/icon-pack' );
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.9.5' );
+define ( 'T_EM_WORDPRESS_VERSION',										'4.9.6' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
-define ( 'T_EM_FRAMEWORK_VERSION',										'1.3.1' );
+define ( 'T_EM_FRAMEWORK_VERSION',										'1.3.2' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Solenodon Cubanus', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20180515' ); // In date format Ymd
