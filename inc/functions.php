@@ -269,15 +269,27 @@ function t_em_container( $echo = true ){
  *
  * @since Twenty'em 1.0
  * @since Twenty'em 1.2		Deleted "figure" and "figcaption" wrapped element
+ * @since Twenty'em 1.3.2	Show only the featured post thumbnail if exists
  */
 function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = null, $post_id = 0 ){
 	$post_id = absint( $post_id );
 	if ( ! $post_id )
 		$post_id = get_the_ID();
 
+	$attachment_id = get_post_thumbnail_id( $post_id );
+
 	$open_link = ( $link ) ? '<a href="'. get_permalink( $post_id ) .'" rel="bookmark">' : null;
 	$close_link = ( $link ) ? '</a>' : null;
-	$thumbnail = t_em_image_resize( $width, $height, $post_id );
+
+	/**
+	 * Filter default image to show if the current post has no image associated to it
+	 * @param null $default_post_thumbnail. URL of the default post thumbnail
+	 *
+	 * @since Twenty'em 1.0
+	 */
+	$default_thumbnail = apply_filters( 't_em_filter_default_post_thumbnail', null );
+
+	$thumbnail = ( t_em_image_resize( $width, $height, $attachment_id ) ) ? t_em_image_resize( $width, $height, $attachment_id ) : $default_thumbnail;
 
 	if ( $thumbnail ) :
 		echo $open_link; ?>
@@ -289,72 +301,50 @@ function t_em_featured_post_thumbnail( $width, $height, $link = true, $class = n
 /**
  * Resize images on the fly
  *
- * @param int $width Required. New image width
- * @param int $height Required. New image height
- * @param int $post_id Optional. Current Post ID. Default is ID of the global $post.
- * @param bool $crop Optional. Crop image. Default true
+ * @param int $width 			Required. New image width
+ * @param int $height 			Required. New image height
+ * @param int $attachment_id 	Required. Attachment ID
+ * @param bool $crop Optional. 	Crop image. Default true
  *
- * @return string|null URL of the new image if the current post ($post_id) has a post thumbnail or
- * 					   any image associate to it, Or null if there are no images associated to the
- * 					   current post.
+ * @return string|null 			URL of the new image.
+ *
+ * @since Twenty'em 1.0
+ * @since Twenty'em 1.3.2		Change parameter $post_id to $attachment_id
  */
-function t_em_image_resize( $width, $height, $post_id = 0, $crop = true ){
-	$post_id = absint( $post_id );
-	if ( ! $post_id )
-		$post_id = get_the_ID();
+function t_em_image_resize( $width, $height, $attachment_id, $crop = true ){
+	$image_path = get_attached_file( $attachment_id );
 
-	if ( has_post_thumbnail( $post_id ) ) :
-		$image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
-		$image_path = get_attached_file( get_post_thumbnail_id( $post_id ) );
+	if ( ! $image_path )
+		return;
+
+	// Image data
+	$image_url = wp_get_attachment_image_src( $attachment_id, 'full' );
+	$image_src = $image_url[0]; // Original image
+	$image_edit = wp_get_image_editor( $image_url[0] );
+	$image_info = pathinfo( $image_path );
+
+	// Image dimensions
+	$image_size = getimagesize( $image_path );
+
+	// If Width and Height are bigger than original size we use the original image
+	if ( $width >= $image_size[0] && $height >= $image_size[1] ) :
+		$image_thumbnail = $image_src;
 	else :
-		$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image', 'numberposts' => 9999 ) );
-		$total_images = count( $images );
-		$image = array_shift( $images );
-		$image_url = ( ! empty($image) ) ? wp_get_attachment_image_src( $image->ID, 'full' ) : null;
-		if ( $total_images >= 1 ) :
-			$image_path = get_attached_file( $image->ID );
-		else :
-			$image_path = null;
-		endif;
-	endif;
-	if ( $image_path ) :
-		// Image data
-		$image_src = $image_url[0]; // Original image
-		$image_edit = wp_get_image_editor( $image_url[0] );
-		$image_info = pathinfo( $image_path );
+		// Set dimensions
+		$max_width = ( $width >= $image_size[0] ) ? $image_size[0] : $width;
+		$max_height = ( $height >= $image_size[1] ) ? $image_size[1] : $height;
 
-		// Image dimensions
-		$image_size = getimagesize( $image_path );
+		// Image to be saved
+		$image_to_save = $image_info['dirname'] .'/'. $image_info['filename'] .'-'. $max_width .'x'. $max_height .'.'. $image_info['extension'];
 
-		// If Width and Height are bigger than original size we use the original image
-		if ( $width >= $image_size[0] && $height >= $image_size[1] ) :
-			$image_thumbnail = $image_src;
-		else :
-			// Set dimensions
-			$max_width = ( $width >= $image_size[0] ) ? $image_size[0] : $width;
-			$max_height = ( $height >= $image_size[1] ) ? $image_size[1] : $height;
-
-			// Image to be saved
-			$image_to_save = $image_info['dirname'] .'/'. $image_info['filename'] .'-'. $max_width .'x'. $max_height .'.'. $image_info['extension'];
-
-
-			// Create the new image
-			if ( ! file_exists( $image_to_save ) ) :
-				if ( ! is_wp_error( $image_edit ) ) :
-					$image_edit->resize( $max_width, $max_height, $crop );
-					$image_edit->save( $image_to_save );
-				endif;
+		// Create the new image
+		if ( ! file_exists( $image_to_save ) ) :
+			if ( ! is_wp_error( $image_edit ) ) :
+				$image_edit->resize( $max_width, $max_height, $crop );
+				$image_edit->save( $image_to_save );
 			endif;
-			$image_thumbnail = str_replace( $image_info['filename'], $image_info['filename'] .'-'. $max_width .'x'. $max_height, $image_src );
 		endif;
-	else :
-		/**
-		 * Filter default image to show if the current post has no image associated to it
-		 *
-		 * @param null $default_post_thumbnail. URL of the default post thumbnail
-		 * @since Twenty'em 1.0
-		 */
-		$image_thumbnail = apply_filters( 't_em_filter_default_post_thumbnail', null );
+		$image_thumbnail = str_replace( $image_info['filename'], $image_info['filename'] .'-'. $max_width .'x'. $max_height, $image_src );
 	endif;
 	return $image_thumbnail;
 }
