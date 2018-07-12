@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 1.3.2 =
+Release Date: July 12, 2018
+* Update: Data Base version 20180712
+* Update: WordPress version 4.9.6
+* Enhancement: New options 'excerpt_thumbnail_columns'
+* Fix Bug: Eliminate Media Object markup in archives (thumbnail left and right)
+* Fix Bug: Eliminate first uploaded image from t_em_featured_post_thumbnail() in favor of featured post thumbnail
+
 = 1.3.1 =
 Release Date: May 16, 2018
 * Update: Data Base version 20180515

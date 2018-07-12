@@ -16,12 +16,10 @@
 /**
  * The default template for displaying content
  */
-
-/**
- * @todo Manage this values through an option from the admin panel
- */
-$col_thumbnail	= ( has_post_thumbnail() ) ? t_em_grid( '5' ) : null;
-$col_content	= ( $col_thumbnail ) ? t_em_grid( '7' ) : t_em_grid( '12' );
+$thumbnail_cols	= t_em( 'excerpt_thumbnail_columns' );
+$content_cols	= 12 - $thumbnail_cols;
+$thumbnail_grid	= ( has_post_thumbnail() ) ? t_em_grid( $thumbnail_cols ) : null;
+$content_grid	= ( $thumbnail_grid ) ? t_em_grid( $content_cols ) : t_em_grid( '12' );
 ?>
 		<?php do_action( 't_em_action_post_before' ); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -29,11 +27,11 @@ $col_content	= ( $col_thumbnail ) ? t_em_grid( '7' ) : t_em_grid( '12' );
 				<?php do_action( 't_em_action_post_inside_before' ); ?>
 				<?php if ( has_post_thumbnail() ) : ?>
 					<?php $align = 'align-'. t_em( 'excerpt_set' ); ?>
-					<div class="<?php echo $col_thumbnail .' '. $align; ?>">
+					<div class="<?php echo $thumbnail_grid .' '. $align; ?>">
 						<?php t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true ); ?>
 					</div>
 				<?php endif; ?>
-				<div class="<?php echo $col_content; ?>">
+				<div class="<?php echo $content_grid; ?>">
 					<header>
 						<h2 class="entry-title mt-0"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 						<div class="entry-meta entry-meta-header mb-3">

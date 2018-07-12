@@ -190,6 +190,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'excerpt_set'									=> 'thumbnail-left',
 		'excerpt_thumbnail_width'						=> get_option( 'thumbnail_size_w' ),
 		'excerpt_thumbnail_height'						=> get_option( 'thumbnail_size_h' ),
+		'excerpt_thumbnail_columns'						=> '3',
 		'archive_in_columns'							=> '1',
 		'archive_pagination_set'						=> 'prev-next',
 		// Layout Options
@@ -352,6 +353,16 @@ function t_em_theme_options_validate( $input ){
 			$input['excerpt_thumbnail_height'] = $input['excerpt_thumbnail_height'];
 		endif;
 
+		// Excerpt Thumbnail Columns: Default: 3, max: 6, min: 2.
+		if ( empty( $input['excerpt_thumbnail_columns'] )
+				|| ! is_numeric( $input['excerpt_thumbnail_columns'] )
+				|| $input['excerpt_thumbnail_columns'] < 2
+				|| $input['excerpt_thumbnail_columns'] > 6 ) :
+			$input['excerpt_thumbnail_columns'] = '3';
+		else :
+			$input['excerpt_thumbnail_columns'] = $input['excerpt_thumbnail_columns'];
+		endif;
+
 		// Bootstrap Carousel Interval: default: 5000, max: 10000, min: 1000.
 		if ( ( $input['bootstrap_carousel_interval'] < T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE || $input['bootstrap_carousel_interval'] > T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE ) || empty( $input['bootstrap_carousel_interval'] ) || ! is_numeric( $input['bootstrap_carousel_interval'] ) ) :
 			$input['bootstrap_carousel_interval'] = T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE;
@@ -365,6 +376,7 @@ function t_em_theme_options_validate( $input ){
 			'bootstrap_carousel_interval',
 			'excerpt_thumbnail_width',
 			'excerpt_thumbnail_height',
+			'excerpt_thumbnail_columns',
 		) as $int ) :
 			$input[$int] = wp_filter_nohtml_kses( $input[$int] );
 		endforeach;
