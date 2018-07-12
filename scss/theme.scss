@@ -398,6 +398,11 @@ article{
 			height: auto;
 		}
 	}
+	@include media-breakpoint-up(lg){
+		.align-thumbnail-right{
+			order: 12;
+		}
+	}
 	.entry{
 		&-excerpt{
 			@extend .lead;
