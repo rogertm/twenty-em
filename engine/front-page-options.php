@@ -171,15 +171,15 @@ function t_em_front_page_witgets_templates(){
  */
 function t_em_front_page_witgets_callback(){
 	$extend_front_page = '';
-	$extend_front_page .= '<div class="row">';
+	$extend_front_page .= '<div class="row d-flex">';
 	$i = 0;
 	foreach ( t_em_front_page_widgets_options() as $widget ) :
 		if ( 0 == $i % 2 ) :
 			$extend_front_page .= '</div>';
-			$extend_front_page .= '<div class="row">';
+			$extend_front_page .= '<div class="row d-flex">';
 		endif;
-		$extend_front_page .= '<div id="' . $widget['name'] . '" class="sub-extend option-group">';
-		$extend_front_page .= 	'<div class="layout text-option front-page">';
+		$extend_front_page .= '<div id="' . $widget['name'] . '" class="sub-extend option-group flex-equal">';
+		$extend_front_page .= 	'<div class="layout text-option">';
 		$extend_front_page .= 		'<header>' . $widget['label'] . '</header>';
 		$extend_front_page .= 		'<p><label><span>' . __( 'Headline', 't_em' ) .'</span>';
 		$extend_front_page .= 			'<input type="text" class="regular-text headline" name="t_em_theme_options[headline_' . $widget['name'] . ']" value="' . esc_textarea( t_em( 'headline_'.$widget['name'] ) ) . '" />';

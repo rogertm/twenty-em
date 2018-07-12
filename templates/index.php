@@ -27,5 +27,6 @@ require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/comments.php' );
 require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/meta.php' );
 require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/footer.php' );
 require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/forms.php' );
+require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/call-actions.php' );
 require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/maintenance-mode.php' );
 ?>

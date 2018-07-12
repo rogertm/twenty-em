@@ -23,6 +23,7 @@ require_once( T_EM_ENGINE_DIR_PATH . '/theme-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/generals-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/header-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/front-page-options.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/call-actions-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/archive-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/layout-options.php' );
 require_once( T_EM_ENGINE_DIR_PATH . '/social-network-options.php' );

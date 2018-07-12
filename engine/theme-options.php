@@ -43,6 +43,7 @@ function t_em_register_setting_options_init(){
 	add_settings_field( 't_em_archive_set',			__( 'Archive Options', 't_em' ),			't_em_settings_field_archive_set',				'twenty-em-options',	'twenty-em-section' );
 	add_settings_field( 't_em_layout_set',			__( 'Layout Options', 't_em' ),				't_em_settings_field_layout_set',				'twenty-em-options',	'twenty-em-section' );
 	add_settings_field( 't_em_social_set',			__( 'Social Network Options', 't_em' ),		't_em_settings_field_socialnetwork_set',		'twenty-em-options',	'twenty-em-section' );
+	add_settings_field( 't_em_call_actions_set',	__( 'Call to Actions Options', 't_em' ),	't_em_settings_field_call_actions_set',			'twenty-em-options',	'twenty-em-section' );
 	add_settings_field( 't_em_webmaster_tools_set', __( 'Webmaster Tools Options', 't_em' ),	't_em_settings_field_webmaster_tools_set', 		'twenty-em-options', 	'twenty-em-section' );
 	add_settings_field( 't_em_maintenance_mode', 	__( 'Maintenance Mode Options', 't_em' ),	't_em_settings_field_maintenance_mode_set', 	'twenty-em-options', 	'twenty-em-section' );
 

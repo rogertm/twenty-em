@@ -94,13 +94,6 @@
 	margin-left: 0;
 	margin-right: 0;
 }
-#t-em-setting #text_widget_one,
-#t-em-setting #text_widget_two,
-#t-em-setting #text_widget_three,
-#t-em-setting #text_widget_four{
-	display: inline-block;
-	width: 50%;
-}
 #t-em-setting .row .layout.text-option.front-page{
 	padding-right: 15px;
 }
@@ -132,18 +125,6 @@
 }
 #t-em-setting .option-group header{
 	font-weight: bold;
-}
-#t-em-setting .option-group:not(:last-child){
-	border-bottom: 1px solid #dfdfdf;
-	padding-bottom: 10px;
-	margin-bottom: 15px;
-}
-#t-em-setting #widgets-front-page .option-group:last-child,
-#t-em-setting #the-excerpt .option-group:last-child{
-	border-bottom: 1px solid #dfdfdf;
-	padding-bottom: 10px;
-	margin-bottom: 15px;
-	overflow: hidden;
 }
 #t-em-setting .head-radio-option,
 #t-em-setting .input-image-radio-option{
@@ -194,6 +175,20 @@
 }
 #t-em-setting #debug-options .tab-heading:before{
 	display: none;
+}
+
+/**
+ * 1.4
+ */
+.d-flex{
+	display: flex;
+}
+.flex-equal{
+	flex: 1;
+	width: 50%;
+	border-bottom: solid 1px #dfdfdf;
+	margin-top: 15px;
+	padding-bottom: 15px;
 }
 
 /** jQuery UI *************************************************************************************/
