@@ -21,7 +21,7 @@
 define ( 'T_EM_SITE',													'https://themingisprose.com/twenty-em' );
 define ( 'T_EM_BLOG',													'https://themingisprose.com/twenty-em/blog' );
 define ( 'T_EM_WIKI', 													'https://themingisprose.com/twenty-em/documentacion' );
-define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/twenty-em/icon-pack' );
+define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/icon-pack' );
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested

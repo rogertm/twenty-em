@@ -8787,6 +8787,9 @@ a .featured-post-thumbnail:hover, a .featured-post-thumbnail:focus {
 
 article .featured-post-thumbnail.card-img-top {
   height: auto; }
+@media (min-width: 992px) {
+  article .align-thumbnail-right {
+    order: 12; } }
 article .entry-excerpt {
   border-bottom: solid 1px #e9ecef; }
 article.sticky {

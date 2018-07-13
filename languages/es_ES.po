@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-05-17 18:26-0400\n"
-"PO-Revision-Date: 2018-05-17 18:28-0400\n"
+"POT-Creation-Date: 2018-07-12 16:25-0400\n"
+"PO-Revision-Date: 2018-07-12 16:26-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -134,22 +134,34 @@ msgstr ""
 "(<code>%2$s</code> x <code>%3$s</code>) especificadas en las opciones de <a "
 "href=\"%1$s\" target=\"_blank\">Ajustes multimedia</a>."
 
+#: engine/archive-options.php:200
+msgid "Thumbnail column width"
+msgstr "Columnas para la imagen en miniatura"
+
 #: engine/archive-options.php:201
+msgid ""
+"Should be a number between <code>2</code> and <code>6</code>. Default to "
+"<code>3</code>."
+msgstr ""
+"Debe ser un número entre <code>2</code> y <code>6</code>. Por defecto "
+"<code>3</code>."
+
+#: engine/archive-options.php:206
 msgid "Columns"
 msgstr "Columnas"
 
-#: engine/archive-options.php:202
+#: engine/archive-options.php:207
 msgid "Break Loop in columns (It may affect the thumbnail size)"
 msgstr ""
 "Dividir el archivo en columnas (puede afectar las dimensiones de las "
 "imágenes en miniaturas)"
 
-#: engine/archive-options.php:230
+#: engine/archive-options.php:235
 msgid "Display <code>Newer</code> and <code>Older</code> posts links"
 msgstr ""
 "Mostrar enlaces a entradas <code>Recientes</code> y <code>Antiguas</code>"
 
-#: engine/archive-options.php:234
+#: engine/archive-options.php:239
 msgid ""
 "Display a paginated list of links <code>&laquo; Newer 1 &hellip; 3 4 5 6 7 "
 "&hellip; 9 Older &raquo;</code>"
@@ -157,11 +169,11 @@ msgstr ""
 "Mostrar lista de paginada <code>&laquo; Recientes 1 &hellip; 3 4 5 6 7 "
 "&hellip; 9 Antiguas &raquo;</code>"
 
-#: engine/archive-options.php:258
+#: engine/archive-options.php:263
 msgid "Archive Pagination"
 msgstr "Paginado del archivo"
 
-#: engine/archive-options.php:300 engine/front-page-options.php:283
+#: engine/archive-options.php:305 engine/front-page-options.php:283
 #: engine/header-options.php:374
 msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
@@ -717,11 +729,11 @@ msgstr "Enlace del botón secundario"
 msgid "Front Page Template"
 msgstr "Plantillas para la Página de Inicio"
 
-#: engine/functions.php:218
+#: engine/functions.php:220
 msgid "Site in Maintenance"
 msgstr "Sitio en Mantenimiento"
 
-#: engine/functions.php:503
+#: engine/functions.php:516
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
 
@@ -2248,7 +2260,7 @@ msgstr "Las últimas %1$s entradas"
 #: page-templates/template-archive.php:56
 #: page-templates/template-blog-content.php:42
 #: page-templates/template-sitemap.php:64 template-parts/content-columns.php:26
-#: template-parts/content-excerpt.php:26 template-parts/content-full.php:24
+#: template-parts/content-excerpt.php:36 template-parts/content-full.php:24
 #: template-parts/content-search.php:25 templates/header.php:150
 #: templates/meta.php:155
 msgid "Permalink to %s"

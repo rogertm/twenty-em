@@ -196,6 +196,11 @@ function t_em_excerpt_callback(){
 		$extend_excerpt .=		'</div>';
 	endforeach;
 	$extend_excerpt .= '</div><!-- .sub-extend -->';
+	$extend_excerpt .= '<div class="sub-extend option-group">';
+	$extend_excerpt .= 		'<header>'. __( 'Thumbnail column width', 't_em' ) .'</header>';
+	$extend_excerpt .= 		'<p>'. __( 'Should be a number between <code>2</code> and <code>6</code>. Default to <code>3</code>.', 't_em' ) .'</p>';
+	$extend_excerpt .= 		'<input type="number" name="t_em_theme_options[excerpt_thumbnail_columns]" value="'. t_em( 'excerpt_thumbnail_columns' ) .'" min="2" max="6">';
+	$extend_excerpt .= '</div><!-- .sub-extend -->';
 
 	$extend_excerpt .= '<div class="sub-extend layout text-radio-option-group option-group">';
 	$extend_excerpt .= 		'<header>'. __( 'Columns', 't_em' ) .'</header>';

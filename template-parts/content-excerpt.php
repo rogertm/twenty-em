@@ -16,24 +16,34 @@
 /**
  * The default template for displaying content
  */
+$thumbnail_cols	= t_em( 'excerpt_thumbnail_columns' );
+$content_cols	= 12 - $thumbnail_cols;
+$thumbnail_grid	= ( has_post_thumbnail() ) ? t_em_grid( $thumbnail_cols ) : null;
+$content_grid	= ( $thumbnail_grid ) ? t_em_grid( $content_cols ) : t_em_grid( '12' );
 ?>
 		<?php do_action( 't_em_action_post_before' ); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'media' ); ?>>
-			<?php do_action( 't_em_action_post_inside_before' ); ?>
-			<?php if ( t_em( 'excerpt_set' ) == 'thumbnail-left' ) t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true, 'd-flex mr-3' ); ?>
-			<div class="media-body">
-				<header>
-					<h2 class="entry-title mt-0"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-					<div class="entry-meta entry-meta-header mb-3">
-						<?php do_action( 't_em_action_entry_meta_header' ) ?>
-					</div><!-- .entry-meta -->
-				</header>
-				<?php the_excerpt(); ?>
-				<footer class="entry-meta entry-meta-footer mb-3">
-					<?php do_action( 't_em_action_entry_meta_footer' ); ?>
-				</footer><!-- .entry-meta .entry-meta-footer -->
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<div class="row">
+				<?php do_action( 't_em_action_post_inside_before' ); ?>
+				<?php if ( has_post_thumbnail() ) : ?>
+					<?php $align = 'align-'. t_em( 'excerpt_set' ); ?>
+					<div class="<?php echo $thumbnail_grid .' '. $align; ?>">
+						<?php t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true ); ?>
+					</div>
+				<?php endif; ?>
+				<div class="<?php echo $content_grid; ?>">
+					<header>
+						<h2 class="entry-title mt-0"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+						<div class="entry-meta entry-meta-header mb-3">
+							<?php do_action( 't_em_action_entry_meta_header' ) ?>
+						</div><!-- .entry-meta -->
+					</header>
+					<?php the_excerpt(); ?>
+					<footer class="entry-meta entry-meta-footer mb-3">
+						<?php do_action( 't_em_action_entry_meta_footer' ); ?>
+					</footer><!-- .entry-meta .entry-meta-footer -->
+				</div>
 				<?php do_action( 't_em_action_post_inside_after' ); ?>
 			</div>
-			<?php if ( t_em( 'excerpt_set' ) == 'thumbnail-right' ) t_em_featured_post_thumbnail( t_em( 'excerpt_thumbnail_width' ), t_em( 'excerpt_thumbnail_height' ), true, 'd-flex ml-3' ); ?>
 		</article><!-- #post-## -->
 		<?php do_action( 't_em_action_post_after' ); ?>
