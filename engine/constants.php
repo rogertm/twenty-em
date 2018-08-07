@@ -32,7 +32,7 @@ define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
 define ( 'T_EM_FRAMEWORK_VERSION',										'1.4.0' );
 define ( 'T_EM_FRAMEWORK_VERSION_NAME',									__( 'Campephilus principalis', 't_em' ) );
 define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
-define ( 'T_EM_DB_VERSION',												'20180709' ); // In date format Ymd
+define ( 'T_EM_DB_VERSION',												'20180807' ); // In date format Ymd
 
 // Third Party Softwares
 define ( 'T_EM_BOOTSTRAP_VERSION',										'4.1.0' );

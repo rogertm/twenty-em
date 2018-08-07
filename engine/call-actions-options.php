@@ -99,8 +99,8 @@ function t_em_call_actions_tags_validate( $input ){
 
 	foreach ( t_em_call_actions_options() as $action ) :
 		foreach ( t_em_call_actions_tags() as $tag => $label ) :
-			if ( array_key_exists( $input['hook_to_'.$action['name']], t_em_call_actions_tags() ) )
-				$input['hook_to_'.$action['name']] = $input['hook_to_'.$action['name']];
+			if ( array_key_exists( $input[$action['name'].'_hook_to'], t_em_call_actions_tags() ) )
+				$input[$action['name'].'_hook_to'] = $input[$action['name'].'_hook_to'];
 		endforeach;
 	endforeach;
 	return $input;
@@ -130,41 +130,41 @@ function t_em_settings_field_call_actions_set(){
 				<div class="layout text-option call-action">
 					<header><?php echo $action['label'] ?></header>
 					<p><label><span><?php _e( 'Headline', 't_em' ); ?></span>
-						<input type="text" class="regular-text headline" name="t_em_theme_options[headline_<?php echo $action['name']; ?>]" value="<?php echo esc_textarea( t_em( 'headline_'.$action['name'] ) ) ?>">
+						<input type="text" class="regular-text headline" name="t_em_theme_options[<?php echo $action['name']; ?>_headline]" value="<?php echo esc_textarea( t_em( $action['name'].'_headline' ) ) ?>">
 					</label></p>
 					<p><label><span><?php printf( __( 'Headline <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ) ?></span>
-						<input type="text" class="regular-text" name="t_em_theme_options[headline_icon_class_<?php echo $action['name']; ?>]" value="<?php echo t_em( 'headline_icon_class_'.$action['name'] ) ?>" />
+						<input type="text" class="regular-text" name="t_em_theme_options[<?php echo $action['name']; ?>_headline_icon_class]" value="<?php echo t_em( $action['name'].'_headline_icon_class' ) ?>" />
 					</label></p>
 					<p><label><span><?php _e( 'Content', 't_em' ); ?></span>
-						<textarea name="t_em_theme_options[content_<?php echo $action['name']; ?>]" class="large-text" cols="50" rows="10"><?php echo esc_textarea( t_em( 'content_'.$action['name'] ) ) ?></textarea>
+						<textarea name="t_em_theme_options[<?php echo $action['name']; ?>_content]" class="large-text" cols="50" rows="10"><?php echo esc_textarea( t_em( $action['name'].'_content' ) ) ?></textarea>
 					</label></p>
 					<p><label><span><?php printf( __( '<a href="%1$s" target="_blank">Background Image</a>', 't_em' ), admin_url( 'upload.php' ) ) ?></span>
-						<input type="url" id="t-em-call-action-image-url-<?php echo $action['name'] ?>" class="regular-text media-url" name="t_em_theme_options[thumbnail_src_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'thumbnail_src_'.$action['name'] ) ?>" />
+						<input type="url" id="t-em-call-action-image-url-<?php echo $action['name'] ?>" class="regular-text media-url" name="t_em_theme_options[<?php echo $action['name'] ?>_thumbnail_src]" value="<?php echo t_em( $action['name'].'_thumbnail_src' ) ?>" />
 						<a href="#" id="t-em-button-call-action-image-<?php echo $action['name'] ?>" class="button media-selector"><?php _e( 'Upload Image', 't_em' ) ?></a>
 					</label></p>
 					<p><label><span><?php _e( 'Primary button text', 't_em' ); ?></span>
-						<input type="text" class="regular-text" name="t_em_theme_options[primary_button_text_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'primary_button_text_'.$action['name'] ) ?>" />
+						<input type="text" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_primary_button_text]" value="<?php echo t_em( $action['name'].'_primary_button_text' ) ?>" />
 					</label></p>
 					<p><label><span><?php printf( __( 'Primary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ); ?></span>
-						<input type="text" class="regular-text" name="t_em_theme_options[primary_button_icon_class_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'primary_button_icon_class_'.$action['name'] ) ?>" />
+						<input type="text" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_primary_button_icon_class]" value="<?php echo t_em( $action['name'].'_primary_button_icon_class' ) ?>" />
 					</label></p>
 					<p><label><span><?php _e( 'Primary button link', 't_em' ); ?></span>
-						<input type="url" class="regular-text" name="t_em_theme_options[primary_button_link_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'primary_button_link_'.$action['name'] ) ?>" />
+						<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_primary_button_link]" value="<?php echo t_em( $action['name'].'_primary_button_link' ) ?>" />
 					</label></p>
 					<p><label><span><?php _e( 'Secondary button text', 't_em' ); ?></span>
-						<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_text_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'secondary_button_text_'.$action['name'] ) ?>" />
+						<input type="text" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_secondary_button_text]" value="<?php echo t_em( $action['name'].'_secondary_button_text' ) ?>" />
 					</label></p>
 					<p><label><span><?php printf( __( 'Secondary button <a href="%1$s" target="_blank">Icon Class</a>', 't_em' ), T_EM_ICON_PACK ); ?></span>
-						<input type="text" class="regular-text" name="t_em_theme_options[secondary_button_icon_class_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'secondary_button_icon_class_'.$action['name'] ) ?>" />
+						<input type="text" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_secondary_button_icon_class]" value="<?php echo t_em( $action['name'].'_secondary_button_icon_class' ) ?>" />
 					</label></p>
 					<p><label><span><?php _e( 'Secondary button link', 't_em' ); ?></span>
-						<input type="url" class="regular-text" name="t_em_theme_options[secondary_button_link_<?php echo $action['name'] ?>]" value="<?php echo t_em( 'secondary_button_link_'.$action['name'] ) ?>" />
+						<input type="url" class="regular-text" name="t_em_theme_options[<?php echo $action['name'] ?>_secondary_button_link]" value="<?php echo t_em( $action['name'].'_secondary_button_link' ) ?>" />
 					</label></p>
 					<p><label><span><?php _e( 'Hooked to', 't_em' ); ?></span>
-						<select name="t_em_theme_options[hook_to_<?php echo $action['name'] ?>]">
+						<select name="t_em_theme_options[<?php echo $action['name'] ?>_hook_to]">
 							<option value=""><?php _e( '&mdash; Select &mdash;', 't_em' ) ?></option>
 						<?php foreach ( t_em_call_actions_tags() as $tag => $label ) :
-								$selected = selected( $tag, t_em( 'hook_to_'.$action['name'] ), false );
+								$selected = selected( $tag, t_em( $action['name'].'_hook_to' ), false );
 						?>
 							<option value="<?php echo $tag ?>" <?php echo $selected ?>><?php echo $label ?></option>
 						<?php endforeach; ?>

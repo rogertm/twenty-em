@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-07-12 16:25-0400\n"
-"PO-Revision-Date: 2018-07-12 16:26-0400\n"
+"POT-Creation-Date: 2018-08-07 13:25-0400\n"
+"PO-Revision-Date: 2018-08-07 13:42-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -179,9 +179,155 @@ msgid "<strong>Oops!</strong> No options available for this setting..."
 msgstr ""
 "<strong>Oops!</strong> No hay configuraciones disponibles para esta opción..."
 
+#: engine/call-actions-options.php:30
+msgid "First Call to Action"
+msgstr "Primer Llamado de Acción"
+
+#: engine/call-actions-options.php:34
+msgid "Second Call to Action"
+msgstr "Segundo Llamado de Acción"
+
+#: engine/call-actions-options.php:38
+msgid "Third Call to Action"
+msgstr "Tercer Llamado de Acción"
+
+#: engine/call-actions-options.php:42
+msgid "Fourth Call to Action"
+msgstr "Cuarto Llamado de Acción"
+
+#: engine/call-actions-options.php:63
+msgid "On top of all"
+msgstr "Por encima de todo"
+
+#: engine/call-actions-options.php:64
+msgid "Down of all"
+msgstr "Bajo de todo"
+
+#: engine/call-actions-options.php:65
+msgid "Up to Header"
+msgstr "Sobre la Cabecera"
+
+#: engine/call-actions-options.php:66
+msgid "Down to Header"
+msgstr "Bajo la Cabecera"
+
+#: engine/call-actions-options.php:67
+msgid "Before main content"
+msgstr "Antes del contenido principal"
+
+#: engine/call-actions-options.php:68
+msgid "After main content"
+msgstr "Después del contenido principal"
+
+#: engine/call-actions-options.php:69
+msgid "Up to main content"
+msgstr "Sobre el contenido principal"
+
+#: engine/call-actions-options.php:70
+msgid "Down to main content"
+msgstr "Bajo el contenido principal"
+
+#: engine/call-actions-options.php:71
+msgid "Up to main content (If Custom Front Page is active)"
+msgstr ""
+"Sobre el contenido principal (Si la Página de Inicio Personalizada está "
+"activa)"
+
+#: engine/call-actions-options.php:72
+msgid "Down to main content (If Custom Front Page is active)"
+msgstr ""
+"Bajo el contenido principal (Si la Página de Inicio Personalizada está "
+"activa)"
+
+#: engine/call-actions-options.php:73
+msgid "Before footer"
+msgstr "Antes del Pie de Página"
+
+#: engine/call-actions-options.php:74
+msgid "After footer"
+msgstr "Después del Pié de Página"
+
+#: engine/call-actions-options.php:75
+msgid "Before main sidebar"
+msgstr "Antes de la barra lateral principal"
+
+#: engine/call-actions-options.php:76
+msgid "After main sidebar"
+msgstr "Después de la barra lateral principal"
+
+#: engine/call-actions-options.php:77
+msgid "Before alternative sidebar"
+msgstr "Antes de la barra lateral aternativa"
+
+#: engine/call-actions-options.php:78
+msgid "After alternative sidebar"
+msgstr "Después de la barra lateral alternativa"
+
+#: engine/call-actions-options.php:132 engine/front-page-options.php:184
+#: engine/header-options.php:314 engine/maintenance-mode-options.php:83
+msgid "Headline"
+msgstr "Encabezado"
+
+#: engine/call-actions-options.php:135 engine/front-page-options.php:187
+#: engine/maintenance-mode-options.php:88
+msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+msgstr "Encabezado <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+
+#: engine/call-actions-options.php:138 engine/front-page-options.php:190
+#: engine/header-options.php:321 engine/maintenance-mode-options.php:93
+msgid "Content"
+msgstr "Contenido"
+
+#: engine/call-actions-options.php:141
+msgid "<a href=\"%1$s\" target=\"_blank\">Background Image</a>"
+msgstr "<a href=\"%1$s\" target=\"_blank\">Imagen de Fondo</a>"
+
+#: engine/call-actions-options.php:143 engine/front-page-options.php:195
+#: engine/header-options.php:319 engine/maintenance-mode-options.php:100
+msgid "Upload Image"
+msgstr "Cargar Imagen"
+
+#: engine/call-actions-options.php:145 engine/front-page-options.php:197
+#: engine/header-options.php:324 engine/maintenance-mode-options.php:103
+msgid "Primary button text"
+msgstr "Texto del botón primario"
+
+#: engine/call-actions-options.php:148 engine/front-page-options.php:200
+#: engine/maintenance-mode-options.php:107
+msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+
+#: engine/call-actions-options.php:151 engine/front-page-options.php:203
+#: engine/header-options.php:330 engine/maintenance-mode-options.php:111
+msgid "Primary button link"
+msgstr "Enlace del botón primario"
+
+#: engine/call-actions-options.php:154 engine/front-page-options.php:206
+#: engine/header-options.php:333 engine/maintenance-mode-options.php:115
+msgid "Secondary button text"
+msgstr "Texto del botón secundario"
+
+#: engine/call-actions-options.php:157 engine/front-page-options.php:209
+#: engine/maintenance-mode-options.php:119
+msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
+
+#: engine/call-actions-options.php:160 engine/front-page-options.php:212
+#: engine/header-options.php:339 engine/maintenance-mode-options.php:123
+msgid "Secondary button link"
+msgstr "Enlace del botón secundario"
+
+#: engine/call-actions-options.php:163
+msgid "Hooked to"
+msgstr "Enganchado a"
+
+#: engine/call-actions-options.php:165
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Seleccionar &mdash;"
+
 #: engine/constants.php:33
-msgid "Solenodon Cubanus"
-msgstr "Solenodon Cubanus"
+msgid "Campephilus principalis"
+msgstr "Campephilus principalis"
 
 #: engine/debug-options.php:21
 msgid "Debug Information"
@@ -674,66 +820,19 @@ msgstr "Features"
 msgid "Cards"
 msgstr "Cards"
 
-#: engine/front-page-options.php:184 engine/header-options.php:314
-#: engine/maintenance-mode-options.php:83
-msgid "Headline"
-msgstr "Encabezado"
-
-#: engine/front-page-options.php:187 engine/maintenance-mode-options.php:88
-msgid "Headline <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-msgstr "Encabezado <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-
-#: engine/front-page-options.php:190 engine/header-options.php:321
-#: engine/maintenance-mode-options.php:93
-msgid "Content"
-msgstr "Contenido"
-
 #: engine/front-page-options.php:193 engine/maintenance-mode-options.php:98
 msgid "<a href=\"%1$s\" target=\"_blank\">Thumbnail URL</a>"
 msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
-
-#: engine/front-page-options.php:195 engine/header-options.php:319
-#: engine/maintenance-mode-options.php:100
-msgid "Upload Image"
-msgstr "Cargar Imagen"
-
-#: engine/front-page-options.php:197 engine/header-options.php:324
-#: engine/maintenance-mode-options.php:103
-msgid "Primary button text"
-msgstr "Texto del botón primario"
-
-#: engine/front-page-options.php:200 engine/maintenance-mode-options.php:107
-msgid "Primary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-msgstr "Botón primario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-
-#: engine/front-page-options.php:203 engine/header-options.php:330
-#: engine/maintenance-mode-options.php:111
-msgid "Primary button link"
-msgstr "Enlace del botón primario"
-
-#: engine/front-page-options.php:206 engine/header-options.php:333
-#: engine/maintenance-mode-options.php:115
-msgid "Secondary button text"
-msgstr "Texto del botón secundario"
-
-#: engine/front-page-options.php:209 engine/maintenance-mode-options.php:119
-msgid "Secondary button <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-msgstr "Botón secundario <a href=\"%1$s\" target=\"_blank\">Icon Class</a>"
-
-#: engine/front-page-options.php:212 engine/header-options.php:339
-#: engine/maintenance-mode-options.php:123
-msgid "Secondary button link"
-msgstr "Enlace del botón secundario"
 
 #: engine/front-page-options.php:239
 msgid "Front Page Template"
 msgstr "Plantillas para la Página de Inicio"
 
-#: engine/functions.php:220
+#: engine/functions.php:265
 msgid "Site in Maintenance"
 msgstr "Sitio en Mantenimiento"
 
-#: engine/functions.php:516
+#: engine/functions.php:601
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
 
@@ -1333,7 +1432,7 @@ msgstr ""
 "Webmaster Center</a> y <a href=\"%3$s\">Pinterest Site Verification</a>, y "
 "códigos de Rastreo Estadístico de tu sistema favorito."
 
-#: engine/help.php:148 engine/theme-options.php:46
+#: engine/help.php:148 engine/theme-options.php:47
 msgid "Webmaster Tools Options"
 msgstr "Opciones de Herramientas para Webmaster"
 
@@ -1366,7 +1465,7 @@ msgstr ""
 "de enlaces a tu disposición en la sección <strong>Encabezado, Contenido y "
 "más...</strong>."
 
-#: engine/help.php:158 engine/theme-options.php:47
+#: engine/help.php:158 engine/theme-options.php:48
 msgid "Maintenance Mode Options"
 msgstr "Opciones de Modo de Mantenimiento"
 
@@ -1888,24 +1987,28 @@ msgstr "Archivo a cargar: (Tamaño Máximo <code>%s</code>)"
 msgid "Upload file and import"
 msgstr "Cargar archivo e importar"
 
-#: engine/theme-options.php:70
+#: engine/theme-options.php:46
+msgid "Call to Actions Options"
+msgstr "Opciones de Llamados de Acción"
+
+#: engine/theme-options.php:71
 msgid "Select Image"
 msgstr "Seleccionar Imagen"
 
-#: engine/theme-options.php:71
+#: engine/theme-options.php:72
 msgid "Use selected image"
 msgstr "Usar imagen seleccionada"
 
-#: engine/theme-options.php:92 engine/theme-options.php:136
+#: engine/theme-options.php:93 engine/theme-options.php:137
 msgid "Backup"
 msgstr "Respaldo"
 
-#: engine/theme-options.php:162
+#: engine/theme-options.php:163
 msgid "You are using the <a href=\"%s\"><strong>Maintenance Mode</strong></a>."
 msgstr ""
 "Estás usando el <a href=\"%s\"><strong>Modo de Mantenimiento</strong></a>."
 
-#: engine/theme-options.php:176
+#: engine/theme-options.php:177
 msgid ""
 "Thank you for updating <strong>%1$s</strong>. Currently running "
 "<strong>Framework Version %2$s</strong> and <strong>Database Version %3$s</"
@@ -1918,32 +2021,32 @@ msgstr ""
 "base de datos. Para más seguridad, por favor, <a href=\"%4$s\">guarda tu "
 "configuración</a>."
 
-#: engine/theme-options.php:182
+#: engine/theme-options.php:183
 msgid "Update completed. Back to <a href=\"%1$s\">Theme Options</a> screen"
 msgstr ""
 "Actualización completada. Vuelve a las <a href=\"%1$s\">Opciones del Tema</"
 "a> "
 
-#: engine/theme-options.php:188
+#: engine/theme-options.php:189
 msgid "Update %s"
 msgstr "Actualizar %s"
 
-#: engine/theme-options.php:219
+#: engine/theme-options.php:220
 msgid "Oops! An error has occurred. Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Ha ocurrido un error. ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:226
+#: engine/theme-options.php:227
 msgid "Oops! Your theme explode... Error ID: <strong>%1$s</strong>"
 msgstr "Oops! Tu tema ha explotado... ID del error: <strong>%1$s</strong>"
 
-#: engine/theme-options.php:236
+#: engine/theme-options.php:237
 msgid ""
 "Thank you for creating with <a href=\"%s\">WordPress</a> and <a href=\"%s\">"
 "%s</a>."
 msgstr ""
 "Gracias por crear con <a href=\"%s\">WordPress</a> y <a href=\"%s\">%s</a>."
 
-#: engine/theme-options.php:237 templates/footer.php:45
+#: engine/theme-options.php:238 templates/footer.php:45
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
@@ -2727,6 +2830,9 @@ msgstr "Blog Excerpt (resumen)"
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
+
+#~ msgid "Solenodon Cubanus"
+#~ msgstr "Solenodon Cubanus"
 
 #~ msgid ""
 #~ "Enter the date your site will be available again. Format: <code>YYYY-MM-"

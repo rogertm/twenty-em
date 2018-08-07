@@ -22,25 +22,12 @@
 function t_em_get_call_action(){
 	$tags = array();
 	foreach ( t_em_call_actions_options() as $action ) :
-		if ( t_em( 'hook_to_'. $action['name'] ) != '' ) :
-			$hooks = array( t_em( 'hook_to_'. $action['name'] ) => $action['name'] );
+		if ( t_em( $action['name'] .'_hook_to' ) != '' ) :
+			$hooks = array( $action['name'] => t_em( $action['name']  .'_hook_to') );
 			$tags = array_merge( $tags, $hooks );
 		endif;
 	endforeach;
 	return $tags;
-}
-
-/**
- * The Call to Action
- *
- * @since Twenty'em 1.4.0
- */
-function t_em_call_action( $action ){
-	if ( ! $action )
-		return;
-
-	echo '<h4>'. t_em( 'headline_'. $action ) .'</h4>';
-	echo '<p>'. t_em( 'content_'. $action ) .'</p>';
 }
 
 /**
@@ -50,25 +37,84 @@ function t_em_call_action( $action ){
  * @since Twenty'em 1.4.0
  */
 function t_em_print_call_action(){
-	$tags = t_em_get_call_action();
-	foreach ( $tags as $tag => $action ) :
-		$hook = t_em( 'hook_to_'. $action );
-		if ( $tag != $hook )
-			return;
+	$actions = t_em_get_call_action();
+	foreach ( $actions as $action => $tag ) :
 		t_em_call_action( $action );
 	endforeach;
 }
 
 /**
  * Initializer the Call to Actions
- * @todo Make it work
  *
  * @since Twenty'em 1.4.0
  */
 function t_em_init_call_action(){
-	foreach ( t_em_get_call_action() as $tag => $action ) :
+	foreach ( t_em_get_call_action() as $action => $tag ) :
 		add_action( $tag , 't_em_print_call_action', 10, 1 );
 	endforeach;
 }
 add_action( 'wp', 't_em_init_call_action' );
+
+if ( ! function_exists( 't_em_call_action_bg' ) ) :
+/**
+ * The Call to Action background image
+ *
+ * @since Twenty'em 1.4.0
+ */
+function t_em_call_action_bg(){
+	$actions = t_em_get_call_action();
+?><style type="text/css"><?php
+	foreach ( $actions as $action => $tag ) : ?>
+		#<?php echo $action ?>{
+			background-image: url( <?php echo t_em( $action .'_thumbnail_src' ); ?> );
+		}
+<?php endforeach;
+?></style><?php
+}
+endif; // function t_em_call_action_bg()
+add_action( 'wp_head', 't_em_call_action_bg' );
+
+if ( ! function_exists( 't_em_call_action' ) ) :
+/**
+ * The Call to Action
+ * @param $action string 	Call to Action to render
+ *
+ * @since Twenty'em 1.4.0
+ */
+function t_em_call_action( $action ){
+	if ( ! $action )
+		return;
+
+	$hook = t_em( $action .'_hook_to' );
+	if ( current_action() != $hook )
+		return;
+
+	$headline_icon		= ( t_em( $action .'_headline_icon_class' ) ) ? '<span class="'. t_em( $action .'_headline_icon_class' ) .'"></span> ' : null;
+	$headline 			= ( t_em( $action .'_headline' ) ) ? '<h4 class="call-action-headline">'. $headline_icon . t_em( $action .'_headline' ) .'</h4>' : null;
+
+	$content 			= ( t_em( $action .'_content' ) ) ? '<div class="call-action-body">'. t_em_wrap_paragraph( t_em( $action .'_content' ) ) .'</div>' : null;
+
+	$primary_btn_icon	= ( t_em( $action .'_primary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_primary_button_icon_class' ) .'"></span> ' : null;
+	$primary_btn		= ( t_em( $action .'_primary_button_text' ) && t_em( $action .'_primary_button_link' ) )
+						? '<a href="'. t_em( $action .'_primary_button_link' ) .'" class="btn btn-primary">'. $primary_btn_icon . t_em( $action .'_primary_button_text' ) .'</a>' : null;
+
+	$secondary_btn_icon	= ( t_em( $action .'_secondary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_secondary_button_icon_class' ) .'"></span> ' : null;
+	$secondary_btn		= ( t_em( $action .'_secondary_button_text' ) && t_em( $action .'_secondary_button_link' ) )
+						? '<a href="'. t_em( $action .'_secondary_button_link' ) .'" class="btn btn-secondary">'. $secondary_btn_icon . t_em( $action .'_secondary_button_text' ) .'</a>' : null;
+
+	$footer				= ( $primary_btn || $secondary_btn ) ? '<footer class="call-action-footer">'. $primary_btn .' '. $secondary_btn .'</footer>' : null;
+
+?>
+	<section id="<?php echo $action ?>" class="call-action">
+		<div class="call-action-wrapper call-action-hook-<?php echo $hook ?>">
+<?php
+		echo $headline;
+		echo $content;
+		echo $footer;
+?>
+		</div>
+	</section>
+<?php
+}
+endif; // function t_em_call_action()
 ?>

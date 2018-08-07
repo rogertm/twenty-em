@@ -514,6 +514,18 @@ article{
 }
 
 //
+// Call to Actions
+//
+.call-action{
+	@extend .p-3;
+	@extend .mb-3;
+	@extend .text-light;
+	background-color: $gray-500;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+//
 // Footer
 //
 #site-info{
