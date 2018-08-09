@@ -1,6 +1,9 @@
 == Changelog ==
 
 = 1.4.0 =
+Release Date: August 09, 2018
+* Enhancement: New General Option "Google Fonts"
+
 Release Date: August 07, 2018
 * Enhancement: Call to Actions Options
 

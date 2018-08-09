@@ -118,6 +118,8 @@ add_action( 'after_switch_theme', 't_em_load_defaults' );
  */
 function t_em_default_theme_options( $default_theme_options = '' ){
 	$default_theme_options = array(
+		// General Options
+		'google_fonts'									=> '',
 		// Header Options
 		'header_set'									=> 'no-header',
 		'header_featured_image_home_only'				=> '0',
@@ -572,6 +574,19 @@ function t_em_theme_options_validate( $input ){
 			'call_action_four_content',
 		) as $textarea ) :
 			$input[$textarea] = ( isset( $input[$textarea] ) ) ? trim( $input[$textarea] ) : '';
+		endforeach;
+
+		// Validate the Google Fonts value
+		foreach ( array(
+			'google_fonts',
+		) as $content_key ) :
+			$pattern = '/href=["\']?([^"\' ]*)["\' ]/is';
+			preg_match( $pattern, $input[$content_key], $match );
+			if ( $match ) :
+				$input[$content_key] = trim( urldecode( $match[1] ) );
+			else :
+				$input[$content_key] = trim( $input[$content_key] );
+			endif;
 		endforeach;
 
 		// Validate all Verification Services

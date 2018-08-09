@@ -152,4 +152,22 @@ function t_em_settings_field_general_options_set(){
 	</div><!-- #general-options -->
 <?php
 }
+
+/**
+ * Add Google Font option in General panel
+ *
+ * @since Twenty'em 1.4.0
+ */
+function t_em_general_options_google_fonts(){
+?>
+	<div class="sub-layout text-option general">
+		<label class="description single-option">
+			<p><?php _e( 'Google Fonts', 't_em' ); ?></p>
+			<p class="description"><?php printf( __( 'URL of your Google Fonts. Example: <code>%s</code>', 't_em' ), 'https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed' ) ?></p>
+			<input type="url" class="regular-text" name="t_em_theme_options[google_fonts]" value="<?php echo t_em( 'google_fonts' ) ?>" />
+		</label>
+	</div>
+<?php
+}
+add_action( 't_em_admin_action_general_options_after', 't_em_general_options_google_fonts' );
 ?>

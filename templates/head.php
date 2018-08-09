@@ -60,6 +60,8 @@ add_action( 'wp_head', 't_em_theme_metadata' );
 
 /**
  * Webmasters Tools and Tracking Codes
+ *
+ * @since Twenty'em 1.0
  */
 function t_em_stats_header_tracker(){
 	// Google Engine ID
@@ -77,10 +79,27 @@ function t_em_stats_header_tracker(){
 }
 add_action( 'wp_head', 't_em_stats_header_tracker' );
 
+/**
+ * Webmasters Tools and Tracking Codes
+ *
+ * @since Twenty'em 1.0
+ */
 function t_em_stats_body_tracker(){
 	// Body Stats Tracker
 	if ( t_em( 'stats_tracker_body_tag' ) )
 		echo '<script type="text/javascript">' . t_em( 'stats_tracker_body_tag' ) . '</script>' . "\n";
 }
 add_action( 'wp_footer', 't_em_stats_body_tracker' );
+
+/**
+ * Google Fonts API
+ *
+ * @since Twenty'em 1.4.0
+ */
+function t_em_google_fonts(){
+	if ( ! t_em( 'google_fonts' ) )
+		return;
+	echo '<link href="'. t_em( 'google_fonts' ) .'" rel="stylesheet">';
+}
+add_action( 'wp_head', 't_em_google_fonts' );
 ?>

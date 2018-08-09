@@ -63,12 +63,19 @@ if ( ! function_exists( 't_em_call_action_bg' ) ) :
  */
 function t_em_call_action_bg(){
 	$actions = t_em_get_call_action();
+	if ( ! $actions )
+		return;
+
 ?><style type="text/css"><?php
-	foreach ( $actions as $action => $tag ) : ?>
+	foreach ( $actions as $action => $tag ) :
+		if ( t_em( $action .'_thumbnail_src' ) ) :
+		?>
 		#<?php echo $action ?>{
 			background-image: url( <?php echo t_em( $action .'_thumbnail_src' ); ?> );
 		}
-<?php endforeach;
+<?php
+		endif;
+	endforeach;
 ?></style><?php
 }
 endif; // function t_em_call_action_bg()

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-08-07 17:24:43+00:00\n"
+"POT-Creation-Date: 2018-08-09 19:11:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -798,11 +798,11 @@ msgstr ""
 msgid "Front Page Template"
 msgstr ""
 
-#: engine/functions.php:265
+#: engine/functions.php:267
 msgid "Site in Maintenance"
 msgstr ""
 
-#: engine/functions.php:601
+#: engine/functions.php:616
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr ""
 
@@ -866,6 +866,14 @@ msgid ""
 "Great tool for developers. Display a Debug Panel with important information "
 "at the bottom of this administration panel. If <code>WP_DEBUG</code> is "
 "enable, this panel will be shown any way."
+msgstr ""
+
+#: engine/generals-options.php:165
+msgid "Google Fonts"
+msgstr ""
+
+#: engine/generals-options.php:166
+msgid "URL of your Google Fonts. Example: <code>%s</code>"
 msgstr ""
 
 #: engine/header-options.php:43
