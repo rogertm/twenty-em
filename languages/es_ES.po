@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-08-09 15:12-0400\n"
-"PO-Revision-Date: 2018-08-09 15:12-0400\n"
+"POT-Creation-Date: 2018-08-10 11:23-0400\n"
+"PO-Revision-Date: 2018-08-10 11:24-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
@@ -324,6 +324,10 @@ msgstr "Enganchado a"
 #: engine/call-actions-options.php:165
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; Seleccionar &mdash;"
+
+#: engine/call-actions-options.php:176
+msgid "Show this Call to Action only in front page"
+msgstr "Mostrar este Llamado a la Acción solo en la página inicial"
 
 #: engine/constants.php:33
 msgid "Campephilus principalis"
@@ -828,11 +832,11 @@ msgstr "<a href=\"%1$s\" target=\"_blank\">URL de la imagen</a>"
 msgid "Front Page Template"
 msgstr "Plantillas para la Página de Inicio"
 
-#: engine/functions.php:267
+#: engine/functions.php:271
 msgid "Site in Maintenance"
 msgstr "Sitio en Mantenimiento"
 
-#: engine/functions.php:616
+#: engine/functions.php:624
 msgid "Settings saved. <a href=\"%1$s\">Visit your site</a>."
 msgstr "Configuración salvada. <a href=\"%1$s\">Visita tu blog</a>."
 

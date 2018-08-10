@@ -96,32 +96,36 @@ function t_em_call_action( $action ){
 	if ( current_action() != $hook )
 		return;
 
-	$headline_icon		= ( t_em( $action .'_headline_icon_class' ) ) ? '<span class="'. t_em( $action .'_headline_icon_class' ) .'"></span> ' : null;
-	$headline 			= ( t_em( $action .'_headline' ) ) ? '<h4 class="call-action-headline">'. $headline_icon . t_em( $action .'_headline' ) .'</h4>' : null;
+	$home = t_em( $action .'_home_only' );
+	if ( ( is_home() && $home ) || ! $home ) :
 
-	$content 			= ( t_em( $action .'_content' ) ) ? '<div class="call-action-body">'. t_em_wrap_paragraph( t_em( $action .'_content' ) ) .'</div>' : null;
 
-	$primary_btn_icon	= ( t_em( $action .'_primary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_primary_button_icon_class' ) .'"></span> ' : null;
-	$primary_btn		= ( t_em( $action .'_primary_button_text' ) && t_em( $action .'_primary_button_link' ) )
-						? '<a href="'. t_em( $action .'_primary_button_link' ) .'" class="btn btn-primary">'. $primary_btn_icon . t_em( $action .'_primary_button_text' ) .'</a>' : null;
+		$headline_icon		= ( t_em( $action .'_headline_icon_class' ) ) ? '<span class="'. t_em( $action .'_headline_icon_class' ) .'"></span> ' : null;
+		$headline 			= ( t_em( $action .'_headline' ) ) ? '<h4 class="call-action-headline">'. $headline_icon . t_em( $action .'_headline' ) .'</h4>' : null;
 
-	$secondary_btn_icon	= ( t_em( $action .'_secondary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_secondary_button_icon_class' ) .'"></span> ' : null;
-	$secondary_btn		= ( t_em( $action .'_secondary_button_text' ) && t_em( $action .'_secondary_button_link' ) )
-						? '<a href="'. t_em( $action .'_secondary_button_link' ) .'" class="btn btn-secondary">'. $secondary_btn_icon . t_em( $action .'_secondary_button_text' ) .'</a>' : null;
+		$content 			= ( t_em( $action .'_content' ) ) ? '<div class="call-action-body">'. t_em_wrap_paragraph( t_em( $action .'_content' ) ) .'</div>' : null;
 
-	$footer				= ( $primary_btn || $secondary_btn ) ? '<footer class="call-action-footer">'. $primary_btn .' '. $secondary_btn .'</footer>' : null;
+		$primary_btn_icon	= ( t_em( $action .'_primary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_primary_button_icon_class' ) .'"></span> ' : null;
+		$primary_btn		= ( t_em( $action .'_primary_button_text' ) && t_em( $action .'_primary_button_link' ) )
+							? '<a href="'. t_em( $action .'_primary_button_link' ) .'" class="btn btn-primary">'. $primary_btn_icon . t_em( $action .'_primary_button_text' ) .'</a>' : null;
 
+		$secondary_btn_icon	= ( t_em( $action .'_secondary_button_icon_class' ) ) ? '<span class="'. t_em( $action .'_secondary_button_icon_class' ) .'"></span> ' : null;
+		$secondary_btn		= ( t_em( $action .'_secondary_button_text' ) && t_em( $action .'_secondary_button_link' ) )
+							? '<a href="'. t_em( $action .'_secondary_button_link' ) .'" class="btn btn-secondary">'. $secondary_btn_icon . t_em( $action .'_secondary_button_text' ) .'</a>' : null;
+
+		$footer				= ( $primary_btn || $secondary_btn ) ? '<footer class="call-action-footer">'. $primary_btn .' '. $secondary_btn .'</footer>' : null;
 ?>
-	<section id="<?php echo $action ?>" class="call-action">
-		<div class="call-action-wrapper call-action-hook-<?php echo $hook ?>">
+		<section id="<?php echo $action ?>" class="call-action">
+			<div class="call-action-wrapper call-action-hook-<?php echo $hook ?>">
 <?php
-		echo $headline;
-		echo $content;
-		echo $footer;
+			echo $headline;
+			echo $content;
+			echo $footer;
 ?>
-		</div>
-	</section>
+			</div>
+		</section>
 <?php
+	endif;
 }
 endif; // function t_em_call_action()
 ?>

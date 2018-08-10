@@ -211,6 +211,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'call_action_one_secondary_button_link'			=> '',
 		'call_action_one_secondary_button_icon_class'	=> '',
 		'call_action_one_hook_to'						=> '',
+		'call_action_one_home_only'						=> '',
 		'call_action_two_headline'						=> '',
 		'call_action_two_content'						=> '',
 		'call_action_two_headline_icon_class'			=> '',
@@ -222,6 +223,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'call_action_two_secondary_button_link'			=> '',
 		'call_action_two_secondary_button_icon_class'	=> '',
 		'call_action_two_hook_to'						=> '',
+		'call_action_two_home_only'						=> '',
 		'call_action_three_headline'					=> '',
 		'call_action_three_content'						=> '',
 		'call_action_three_headline_icon_class'			=> '',
@@ -233,6 +235,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'call_action_three_secondary_button_link'		=> '',
 		'call_action_three_secondary_button_icon_class'	=> '',
 		'call_action_three_hook_to'						=> '',
+		'call_action_three_home_only'					=> '',
 		'call_action_four_headline'						=> '',
 		'call_action_four_content'						=> '',
 		'call_action_four_headline_icon_class'			=> '',
@@ -244,6 +247,7 @@ function t_em_default_theme_options( $default_theme_options = '' ){
 		'call_action_four_secondary_button_link'		=> '',
 		'call_action_four_secondary_button_icon_class'	=> '',
 		'call_action_four_hook_to'						=> '',
+		'call_action_four_home_only'					=> '',
 		// Search Engines ID and Tracker Options
 		'google_id'										=> '',
 		'bing_id'										=> '',
@@ -297,6 +301,10 @@ function t_em_theme_options_validate( $input ){
 			'layout_fluid_width',
 			'maintenance_mode',
 			'maintenance_mode_reactive',
+			'call_action_one_home_only',
+			'call_action_two_home_only',
+			'call_action_three_home_only',
+			'call_action_four_home_only',
 		) as $checkbox ) :
 			if ( !isset( $input[$checkbox] ) )
 				$input[$checkbox] = null;

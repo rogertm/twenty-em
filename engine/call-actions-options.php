@@ -170,6 +170,11 @@ function t_em_settings_field_call_actions_set(){
 						<?php endforeach; ?>
 						</select>
 					</label></p>
+					<label class="description">
+						<?php $checked_option = checked( t_em( $action['name'] .'_home_only' ), 1, false ) ?>
+						<p><input type="checkbox" name="t_em_theme_options[<?php echo $action['name'] .'_home_only' ?>]" value="1" <?php echo $checked_option ?>>
+						<?php _e( 'Show this Call to Action only in front page', 't_em' ) ?></p>
+					</label>
 				</div>
 			</div>
 <?php $i++; endforeach; ?>
