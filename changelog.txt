@@ -1,6 +1,9 @@
 == Changelog ==
 
 = 1.4.0 =
+Release Date: August 29, 2018
+* Enhancement: New action hooks: t_em_action_{$action}_before, t_em_action_{$action}_after, t_em_action_{$action}_inside_before, t_em_action_{$action}_inside_after.
+
 Release Date: August 09, 2018
 * Enhancement: New General Option "Google Fonts"
 

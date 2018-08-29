@@ -116,13 +116,17 @@ function t_em_call_action( $action ){
 		$footer				= ( $primary_btn || $secondary_btn ) ? '<footer class="call-action-footer">'. $primary_btn .' '. $secondary_btn .'</footer>' : null;
 ?>
 		<section id="<?php echo $action ?>" class="call-action">
+			<?php do_action( 't_em_action_'. $action .'_before' ); ?>
 			<div class="call-action-wrapper call-action-hook-<?php echo $hook ?>">
+				<?php do_action( 't_em_action_'. $action .'_inside_before' ); ?>
 <?php
-			echo $headline;
-			echo $content;
-			echo $footer;
+				echo $headline;
+				echo $content;
+				echo $footer;
 ?>
+				<?php do_action( 't_em_action_'. $action .'_inside_after' ); ?>
 			</div>
+			<?php do_action( 't_em_action_'. $action .'_after' ); ?>
 		</section>
 <?php
 	endif;
