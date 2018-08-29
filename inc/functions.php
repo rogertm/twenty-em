@@ -20,7 +20,7 @@
 /**
  * Helper. Register and Enqueue Bootstrap jQuery Plugins
  *
- * @param $plugin Required. String. Plugin name and extension (IE: transition.js)
+ * @param $plugin Required. String. Plugin name and extension (IE: transition)
  * @param $script Optional. String. Additional script if needed by the plugin
  * @param $script_src Optional. String. Required if $script, the $script source address
  * @param $deps Optional. Array. Array of the handles of all the registered scripts that this script depends on.
@@ -33,19 +33,19 @@ function t_em_register_bootstrap_plugin( $plugin, $script = '', $script_src = ''
 	$deps = array_merge( $deps, array( 'jquery' ) );
 
 	if ( WP_DEBUG ) :
-		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. $plugin .'.js' ) ) ? $plugin .'.js' : $plugin .'.min.js';
-		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. 'util.js' ) ) ? 'util.js' : 'util.min.js';
+		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/dist/'. $plugin .'.js' ) ) ? $plugin .'.js' : $plugin .'.min.js';
+		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/dist/'. 'util.js' ) ) ? 'util.js' : 'util.min.js';
 	else :
-		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. $plugin .'.min.js' ) ) ? $plugin .'.min.js' : $plugin .'.js';
-		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/'. 'util.min.js' ) ) ? 'util.min.js' : 'util.js';
+		$handle = ( file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/dist/'. $plugin .'.min.js' ) ) ? $plugin .'.min.js' : $plugin .'.js';
+		$util = ( $util && file_exists( T_EM_THEME_DIR_BOOTSTRAP_PATH .'/js/dist/'. 'util.min.js' ) ) ? 'util.min.js' : 'util.js';
 	endif;
 
 	if ( $util ) :
 		array_push( $deps, $util );
-		wp_register_script( $util, T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/'. $util, array( 'jquery' ), t_em_theme( 'Version' ), $in_footer );
+		wp_register_script( $util, T_EM_THEME_DIR_BOOTSTRAP_URL.'/js/dist/'. $util, array( 'jquery' ), t_em_theme( 'Version' ), $in_footer );
 	endif;
 
-	wp_register_script( $handle, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/'. $handle, $deps, t_em_theme( 'Version' ), $in_footer );
+	wp_register_script( $handle, T_EM_THEME_DIR_BOOTSTRAP_URL .'/js/dist/'. $handle, $deps, t_em_theme( 'Version' ), $in_footer );
 	wp_enqueue_script( $handle );
 	if ( $script ) :
 		wp_register_script( $script, $script_src, array( 'jquery' ), t_em_theme( 'Version' ), $in_footer );
