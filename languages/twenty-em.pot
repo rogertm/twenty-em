@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-08-10 15:22:36+00:00\n"
+"POT-Creation-Date: 2018-08-30 17:59:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1064,54 +1064,58 @@ msgid "<strong>Social Network Options</strong>: Default Values: Empty."
 msgstr ""
 
 #: engine/help.php:41
-msgid "<strong>Webmaster Tools Options</strong>: Default Values: Empty."
+msgid "<strong>Call to Actions Options</strong>: Default Values: Empty."
 msgstr ""
 
 #: engine/help.php:42
+msgid "<strong>Webmaster Tools Options</strong>: Default Values: Empty."
+msgstr ""
+
+#: engine/help.php:43
 msgid "<strong>Maintenance Mode Options</strong>: Default Values: Empty."
 msgstr ""
 
-#: engine/help.php:44
+#: engine/help.php:45
 msgid ""
 "Remember to click \"Save Changes\" to save any changes you have made to the "
 "theme options."
 msgstr ""
 
-#: engine/help.php:47 engine/help.php:197
+#: engine/help.php:48 engine/help.php:208
 msgid "Overview"
 msgstr ""
 
-#: engine/help.php:53
+#: engine/help.php:54
 msgid ""
 "<strong>General Options</strong>: By checking the check boxes below, you may "
 "enable or not this options.<br />Note: All of then are check by default."
 msgstr ""
 
-#: engine/help.php:55
+#: engine/help.php:56
 msgid ""
 "<strong>%1$s and WordPress credit</strong>: If this option is set to true, a "
 "link to WordPress and %1$s sites will be displayed in your site footer area."
 msgstr ""
 
-#: engine/help.php:56
+#: engine/help.php:57
 msgid ""
 "<strong>Featured image in single post</strong>: Useful to show featured post "
 "image on top of a post (above the title) when it is displayed."
 msgstr ""
 
-#: engine/help.php:57
+#: engine/help.php:58
 msgid ""
 "<strong>Related posts in single post</strong>: Display a list of related "
 "posts, sorts by post tags, at the end of each post."
 msgstr ""
 
-#: engine/help.php:58
+#: engine/help.php:59
 msgid ""
 "<strong>Breadcrumb path</strong>: Just another <em>You are here</em> "
 "script :)"
 msgstr ""
 
-#: engine/help.php:59
+#: engine/help.php:60
 msgid ""
 "<strong>Separate comments from pingbacks and trackbacks</strong>: Display "
 "pingbacks and trackbacks in a different list at the end of all comments. For "
@@ -1119,7 +1123,7 @@ msgid ""
 "pagination</a>."
 msgstr ""
 
-#: engine/help.php:61
+#: engine/help.php:62
 msgid ""
 "<strong>Enable comments in single pages</strong>: This option lets you allow "
 "comments in single pages. If true, the option <a href=\"%1$s\">Allow people "
@@ -1127,37 +1131,43 @@ msgid ""
 "strong> must be true too."
 msgstr ""
 
-#: engine/help.php:63
+#: engine/help.php:64
 msgid ""
 "<strong>Enable shortcodes buttons</strong>: Lets you show or hide the "
 "shortocde buttons in the post or page editor. Note that shortcodes always "
 "will be enable"
 msgstr ""
 
-#: engine/help.php:64
+#: engine/help.php:65
 msgid ""
 "<strong>Enable Debug Panel</strong>: Show or not a Debug Panel at the bottom "
 "of this page. If <code>WP_DEBUG</code> is enable, this panel will be shown "
 "any way."
 msgstr ""
 
-#: engine/help.php:68 engine/theme-options.php:40
+#: engine/help.php:66
+msgid ""
+"<strong>Google Fonts</strong>: You may add your Google Fonts url. Of course, "
+"you have to do the CSS work."
+msgstr ""
+
+#: engine/help.php:70 engine/theme-options.php:40
 msgid "General Options"
 msgstr ""
 
-#: engine/help.php:74
+#: engine/help.php:76
 msgid ""
 "<strong>Header Options</strong>: With this options you are able to configure "
 "your header site section."
 msgstr ""
 
-#: engine/help.php:76
+#: engine/help.php:78
 msgid ""
 "<strong>No header</strong>: This options will be check by default at the "
 "first time the theme is loaded."
 msgstr ""
 
-#: engine/help.php:77
+#: engine/help.php:79
 msgid ""
 "<strong>Header image</strong>: This option let you select an image to be "
 "shown at the top of your site by uploading from your computer or choosing "
@@ -1167,7 +1177,7 @@ msgid ""
 "will show in single post or page the Featured Image attached to it."
 msgstr ""
 
-#: engine/help.php:79
+#: engine/help.php:81
 msgid ""
 "<strong>Slider</strong>: With this options active, a carousel with posts "
 "under your favorite category will be displayed in header area. The first "
@@ -1176,7 +1186,7 @@ msgid ""
 "your default category."
 msgstr ""
 
-#: engine/help.php:82
+#: engine/help.php:84
 msgid ""
 "<strong>Static Header</strong>: Useful option to let people know what about "
 "your site is. You can insert an image previously uploaded to your <a href="
@@ -1186,56 +1196,57 @@ msgid ""
 "buttons."
 msgstr ""
 
-#: engine/help.php:88 engine/theme-options.php:41
+#: engine/help.php:90 engine/theme-options.php:41
 msgid "Header Options"
 msgstr ""
 
-#: engine/help.php:94
+#: engine/help.php:96
 msgid ""
 "<strong>Front Page Options</strong>: With this options you are able to "
 "configure your front page."
 msgstr ""
 
-#: engine/help.php:96
+#: engine/help.php:98
 msgid ""
 "<strong>Just another WordPress front page</strong>: This is a child of your "
 "<a href=\"%1$s\">Reading Settings</a> options."
 msgstr ""
 
-#: engine/help.php:98
+#: engine/help.php:100
 msgid ""
-"<strong>Text Widgets</strong>: Four featured text widgets areas (one "
-"primary, three secondaries). Same options for all of them: headline, content "
-"(HTML enable, will be escaped before to be insert into the data base), <a "
-"href=\"%1$s\">icon class</a>, image (previously uploaded to your <a href="
-"\"%2$s\">Media Library</a>) and a two buttons linked to the URL you like."
+"<strong>Text Widgets</strong>: Four featured text widgets areas. Same "
+"options for all of them: headline, content (HTML enable, will be escaped "
+"before to be insert into the data base), <a href=\"%1$s\">icon class</a>, "
+"image (previously uploaded to your <a href=\"%2$s\">Media Library</a>) and a "
+"two buttons linked to the URL you like. You may also choose one of the given "
+"templates."
 msgstr ""
 
-#: engine/help.php:104 engine/theme-options.php:42
+#: engine/help.php:106 engine/theme-options.php:42
 msgid "Front Page Options"
 msgstr ""
 
-#: engine/help.php:110
+#: engine/help.php:112
 msgid ""
 "<strong>Archive Options</strong>: Two simple ways to show your posts "
 "archive: The Content or The Excerpt. Besides two pagination options"
 msgstr ""
 
-#: engine/help.php:112
+#: engine/help.php:114
 msgid ""
 "<strong>The Content</strong>: If you are running <em>Just another WordPress "
 "Blog</em>, this could be a great option, showing the whole content of your "
 "posts when an archive is displayed."
 msgstr ""
 
-#: engine/help.php:113
+#: engine/help.php:115
 msgid ""
 "<strong>The Excerpt</strong>: The excerpt, of course, shows a resume of your "
 "posts, also let you manage some other options, like excerpt length, "
 "thumbnail alignment and thumbnail Width and Height."
 msgstr ""
 
-#: engine/help.php:114
+#: engine/help.php:116
 msgid ""
 "<strong>Archive Pagination</strong>: Two ways to display your pagination. "
 "Simple: <code>Older</code> and <code>Newer</code> posts links. Or Paginated: "
@@ -1243,33 +1254,43 @@ msgid ""
 "&raquo;</code>"
 msgstr ""
 
-#: engine/help.php:118 engine/theme-options.php:43
+#: engine/help.php:120 engine/theme-options.php:43
 msgid "Archive Options"
 msgstr ""
 
-#: engine/help.php:124
+#: engine/help.php:126
 msgid ""
 "<strong>Layout Options</strong>: This options do not need to be explained, "
 "really. You may decide where you want your(s) side(s) bar(s), in case you "
 "need one."
 msgstr ""
 
-#: engine/help.php:127 engine/theme-options.php:44
+#: engine/help.php:129 engine/theme-options.php:44
 msgid "Layout Options"
 msgstr ""
 
-#: engine/help.php:133
+#: engine/help.php:135
 msgid ""
 "<strong>Social Network Options</strong>: We provide a long list of the must "
 "used social network sites on the Internet. This option let you introduce "
 "your users URL, and they will be show in your site footer area as a menu."
 msgstr ""
 
-#: engine/help.php:136 engine/theme-options.php:45
+#: engine/help.php:138 engine/theme-options.php:45
 msgid "Social Network Options"
 msgstr ""
 
-#: engine/help.php:142
+#: engine/help.php:144
+msgid ""
+"<strong>Call to Actions Options</strong>: This option let add some featured "
+"content in some places around your site."
+msgstr ""
+
+#: engine/help.php:147 engine/theme-options.php:46
+msgid "Call to Actions Options"
+msgstr ""
+
+#: engine/help.php:153
 msgid ""
 "<strong>Webmaster Tools Options</strong>: In this section you should enter "
 "your meta key \"content\" value provided by <a href=\"%1$s\">Google "
@@ -1278,11 +1299,11 @@ msgid ""
 "the system you like."
 msgstr ""
 
-#: engine/help.php:148 engine/theme-options.php:47
+#: engine/help.php:159 engine/theme-options.php:47
 msgid "Webmaster Tools Options"
 msgstr ""
 
-#: engine/help.php:154
+#: engine/help.php:165
 msgid ""
 "<strong>Maintenance Mode Options</strong>: Now you can put your site in "
 "Maintenance Mode. Activating this option you are able to \"shut down\" your "
@@ -1292,7 +1313,7 @@ msgid ""
 "the meantime visitors will see nothing."
 msgstr ""
 
-#: engine/help.php:155
+#: engine/help.php:166
 msgid ""
 "You can also use the <strong>Timer</strong> section to show a countdown and "
 "tell the visitors when your site will be available again. In addition you "
@@ -1300,47 +1321,47 @@ msgid ""
 "<strong>Heading, Content and more...</strong> section."
 msgstr ""
 
-#: engine/help.php:158 engine/theme-options.php:48
+#: engine/help.php:169 engine/theme-options.php:48
 msgid "Maintenance Mode Options"
 msgstr ""
 
-#: engine/help.php:164
+#: engine/help.php:175
 msgid "<strong>Little Debug Information</strong>:"
 msgstr ""
 
-#: engine/help.php:166
+#: engine/help.php:177
 msgid "<strong>Framework Name</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:167
+#: engine/help.php:178
 msgid "<strong>Framework Version</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:168
+#: engine/help.php:179
 msgid "<strong>Status</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:169
+#: engine/help.php:180
 msgid "<strong>Data Base Version</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:170
+#: engine/help.php:181
 msgid "<strong>Current Theme</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:171
+#: engine/help.php:182
 msgid "<strong>Theme Version</strong>: <code>%s</code>"
 msgstr ""
 
-#: engine/help.php:175
+#: engine/help.php:186
 msgid "Little Debug Info"
 msgstr ""
 
-#: engine/help.php:190
+#: engine/help.php:201
 msgid "<strong>%1$s Backup Manager</strong>"
 msgstr ""
 
-#: engine/help.php:191
+#: engine/help.php:202
 msgid ""
 "The backup manager allows you to backup or restore your <a href=\"%1$s"
 "\">Theme Options</a> settings to or from a text file. Only valid backup "
@@ -1348,74 +1369,74 @@ msgid ""
 "imported. "
 msgstr ""
 
-#: engine/help.php:193
+#: engine/help.php:204
 msgid ""
 "Please note that this manager only backs up your settings, not your content, "
 "to backup your content use the <a href=\"%1$s\">WordPress Export Tool</a>."
 msgstr ""
 
-#: engine/help.php:203
+#: engine/help.php:214
 msgid "<strong>Export Settings</strong>"
 msgstr ""
 
-#: engine/help.php:204
+#: engine/help.php:215
 msgid ""
 "You can export your <strong>%1$s</strong> settings to back them up, or copy "
 "them to another site. If Child Themes or Plugins merge their options to "
 "<code>t_em_theme_options</code> option, that setting will be exported too."
 msgstr ""
 
-#: engine/help.php:205
+#: engine/help.php:216
 msgid ""
 "The settings are exported in a text file named <code>t-em-backup-</code> "
 "fallowed by the date and time it was exported."
 msgstr ""
 
-#: engine/help.php:208
+#: engine/help.php:219
 msgid "Export"
 msgstr ""
 
-#: engine/help.php:214
+#: engine/help.php:225
 msgid "<strong>Import Settings</strong>"
 msgstr ""
 
-#: engine/help.php:215
+#: engine/help.php:226
 msgid ""
 "You can import a file you've previously exported. Remember that only files "
 "exported by the <strong>%1$s Backup Manager</strong> can be imported back."
 msgstr ""
 
-#: engine/help.php:216
+#: engine/help.php:227
 msgid ""
 "Once you upload your file, it will update the <code>t_em_theme_options</"
 "code> option in the data base. <strong>This action cannot be undone</strong>."
 msgstr ""
 
-#: engine/help.php:219
+#: engine/help.php:230
 msgid "Import"
 msgstr ""
 
-#: engine/help.php:232
+#: engine/help.php:243
 msgid "For more information:"
 msgstr ""
 
-#: engine/help.php:233
+#: engine/help.php:244
 msgid "<a href=\"%1$s\">Visit %2$s home page</a>"
 msgstr ""
 
-#: engine/help.php:234
+#: engine/help.php:245
 msgid "<a href=\"%1$s\">License</a>"
 msgstr ""
 
-#: engine/help.php:235
+#: engine/help.php:246
 msgid "<a href=\"%1$s\">Documentation</a>"
 msgstr ""
 
-#: engine/help.php:236
+#: engine/help.php:247
 msgid "<a href=\"%1$s\">Blog</a>"
 msgstr ""
 
-#: engine/help.php:237
+#: engine/help.php:248
 msgid "<a href=\"%1$s\">Donate</a>"
 msgstr ""
 
@@ -1781,10 +1802,6 @@ msgstr ""
 
 #: engine/theme-backup.php:179
 msgid "Upload file and import"
-msgstr ""
-
-#: engine/theme-options.php:46
-msgid "Call to Actions Options"
 msgstr ""
 
 #: engine/theme-options.php:71

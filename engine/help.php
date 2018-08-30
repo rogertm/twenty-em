@@ -38,6 +38,7 @@ function t_em_theme_options_help(){
 				'<li>' . __( '<strong>Archive Options</strong>: Default Values: The content.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Layout Options</strong>: Default Values: Two Columns, content on left. Four footer widgets areas.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Social Network Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
+				'<li>' . __( '<strong>Call to Actions Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Webmaster Tools Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 				'<li>' . __( '<strong>Maintenance Mode Options</strong>: Default Values: Empty.', 't_em' ) . '</li>' .
 			'</ul>' .
@@ -62,6 +63,7 @@ function t_em_theme_options_help(){
 								 admin_url( 'options-discussion.php#default_comment_status' ) ) . '</li>' .
 						'<li>' . __( '<strong>Enable shortcodes buttons</strong>: Lets you show or hide the shortocde buttons in the post or page editor. Note that shortcodes always will be enable', 't_em' ) . '</li>' .
 						'<li>' . __( '<strong>Enable Debug Panel</strong>: Show or not a Debug Panel at the bottom of this page. If <code>WP_DEBUG</code> is enable, this panel will be shown any way.', 't_em' ) . '</li>' .
+						'<li>' . __( '<strong>Google Fonts</strong>: You may add your Google Fonts url. Of course, you have to do the CSS work.', 't_em' ) . '</li>' .
 					'</ul>';
 
 	$screen->add_help_tab( array(
@@ -95,7 +97,7 @@ function t_em_theme_options_help(){
 						'<ul>' .
 							'<li>' . sprintf( __( '<strong>Just another WordPress front page</strong>: This is a child of your <a href="%1$s">Reading Settings</a> options.', 't_em' ),
 									 admin_url( 'options-reading.php' ) ) . '</li>' .
-							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas (one primary, three secondaries). Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s">icon class</a>, image (previously uploaded to your <a href="%2$s">Media Library</a>) and a two buttons linked to the URL you like.', 't_em' ),
+							'<li>' . sprintf( __( '<strong>Text Widgets</strong>: Four featured text widgets areas. Same options for all of them: headline, content (HTML enable, will be escaped before to be insert into the data base), <a href="%1$s">icon class</a>, image (previously uploaded to your <a href="%2$s">Media Library</a>) and a two buttons linked to the URL you like. You may also choose one of the given templates.', 't_em' ),
 									 T_EM_ICON_PACK,
 									 admin_url( 'upload.php' ) ) . '</li>' .
 						'</ul>';
@@ -136,6 +138,15 @@ function t_em_theme_options_help(){
 		'title'		=> __( 'Social Network Options', 't_em' ),
 		'id'		=> 'socialnetwork-options-help',
 		'content'	=> $socialnetwork_help,
+		)
+	);
+
+	$call_action_help = '<p>'. __( '<strong>Call to Actions Options</strong>: This option let add some featured content in some places around your site.', 't_em' ) .'</p>';
+
+	$screen->add_help_tab( array(
+		'title'		=> __( 'Call to Actions Options', 't_em' ),
+		'id'		=> 'call-action-options-help',
+		'content'	=> $call_action_help,
 		)
 	);
 
