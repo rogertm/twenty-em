@@ -75,6 +75,7 @@ if ( ! function_exists( 't_em_posted_in' ) ) :
  * permalink).
  *
  * @since Twenty'em 1.0
+ * @since Twenty'em 1.4.0	Added support for custom taxonomies
  */
 function t_em_posted_in(){
 	// Translators: used between list items, there is a space after the comma.
@@ -87,6 +88,17 @@ function t_em_posted_in(){
 	$tags_list = get_the_tag_list( '', __( ', ', 't_em' ) );
 	if ( $tags_list ) :
 		echo '<div class="entry-tags small d-inline mr-3"><span class="icomoon-price-tags text-muted"></span> <span class="tags-links">'. $tags_list .'</span></div>';
+	endif;
+
+	$taxonomies = get_taxonomies( array( '_builtin' => false ) );
+	if ( $taxonomies && get_post_type( $post->ID ) != 'post' ) :
+		foreach ( $taxonomies as $tax ) :
+			if ( wp_get_post_terms( $post->ID, $tax ) ) :
+				echo '<div class="entry-categories small d-inline mr-3"><span class="icomoon-folder-open text-muted"></span> <span class="categories-links">';
+				the_terms( $post->ID, $tax, '', ', ', '' );
+				echo '</span></div>';
+			endif;
+		endforeach;
 	endif;
 }
 endif; // function t_em_posted_in()
