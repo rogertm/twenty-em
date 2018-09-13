@@ -78,6 +78,7 @@ if ( ! function_exists( 't_em_posted_in' ) ) :
  * @since Twenty'em 1.4.0	Added support for custom taxonomies
  */
 function t_em_posted_in(){
+	global $post;
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 't_em' ) );
 	if ( $categories_list ) :
