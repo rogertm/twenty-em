@@ -223,11 +223,15 @@ function t_em_breakpoint( $section ){
 /**
  * Grid breakpoint
  * @param string $cols 			Columns
- * @param string $breakpoint 	breakpoint. Default 'lg'
+ * @param string $breakpoint 	Breakpoint. Default 'lg'
+ * @param boolean $offset 		Offset. If 'true' columns will be offset. Default 'false'
+ * @return string 				CSS class. 'col-$breakpoint-$cols' or 'offset-$breakpoint-$cols' if
+ * 								$offset is set to true
  *
  * @since Twenty'em 1.2
+ * @since Twenty'em 1.4.0		Added parameter $offset
  */
-function t_em_grid( $cols, $breakpoint = '' ){
+function t_em_grid( $cols, $breakpoint = '', $offset = false ){
 	/**
 	 * Filter the default breakpoint
 	 * @param string $breakpoint	Default breakpoint
@@ -236,7 +240,7 @@ function t_em_grid( $cols, $breakpoint = '' ){
 	 */
 	$bp = ( ! $breakpoint ) ? apply_filters( 't_em_filter_default_breakpoint', 'lg' ) : $breakpoint;
 	$sep = ( $bp ) ? '-' : null;
-	$class = 'col-'. $bp . $sep . $cols;
+	$class = ( ( $offset ) ? 'offset-' : 'col-' ) . $bp . $sep . $cols;
 	return $class;
 }
 

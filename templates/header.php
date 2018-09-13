@@ -234,8 +234,9 @@ function t_em_static_header(){
 endif; // function t_em_static_header()
 add_action( 't_em_action_header', 't_em_static_header', 5 );
 
+if ( ! function_exists( 't_em_static_header_bg' ) ) :
 /**
- * Get and set the background image for the Hero Header
+ * Pluggable Function: Get and set the background image for the Hero Header
  *
  * @since Twenty'em 1.3.1
  */
@@ -252,5 +253,6 @@ function t_em_static_header_bg(){
 	</style>
 <?php
 }
+endif;
 add_action( 'wp_head', 't_em_static_header_bg' );
 ?>
