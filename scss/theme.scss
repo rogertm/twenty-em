@@ -11,11 +11,32 @@
 // @since 			Twenty'em 1.2
 
 //
+// Variables
+//
+$icomoon-font-path:	"../node_modules/@themingisprose/icon-pack/fonts";
+
+//
 // Import Bootstrap and IcoMoon
 //
-@import "../bootstrap/scss/bootstrap";
-@import "icomoon-variables";
-@import "icomoon";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/@themingisprose/icon-pack/variables";
+@import "../node_modules/@themingisprose/icon-pack/style";
+
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+	// use !important to prevent issues with browser extensions that change fonts
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	// Better Font Rendering
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 //
 // Mixins

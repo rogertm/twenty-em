@@ -1,6 +1,11 @@
 == Changelog ==
 
 = 1.4.0 =
+Release Date: September 21, 2018
+* Enhancement: Use jQuery, Bootstrap and Icon Pack as dependencies from npmjs.com
+* Added: T_EM_THEME_DIR_NODE_PATH, T_EM_THEME_DIR_JQUERY_PATH, T_EM_THEME_DIR_ICON_PACK_PATH, T_EM_THEME_DIR_NODE_URL, T_EM_THEME_DIR_JQUERY_URL and T_EM_THEME_DIR_ICON_PACK_URL
+* Deleted: T_EM_THEME_DIR_FONTS_PATH and T_EM_THEME_DIR_FONTS_URL
+
 Release Date: August 29, 2018
 * Enhancement: New action hooks: t_em_action_{$action}_before, t_em_action_{$action}_after, t_em_action_{$action}_inside_before, t_em_action_{$action}_inside_after.
 * Update: Bootstrap 4.1.3

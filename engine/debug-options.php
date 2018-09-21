@@ -130,14 +130,18 @@ function t_em_debug_theme_data_callback(){
 	$output .=		'<dd>'. T_EM_THEME_DIR_IMG_PATH .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_JS_PATH"><code>'. __( 'T_EM_THEME_DIR_JS_PATH', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_JS_PATH .'</dd>';
-	$output .=		'<dt title="T_EM_THEME_DIR_FONTS_PATH"><code>'. __( 'T_EM_THEME_DIR_FONTS_PATH', 't_em' ) .'</code></dt>';
-	$output .=		'<dd>'. T_EM_THEME_DIR_FONTS_PATH .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"><code>'. __( 'T_EM_THEME_DIR_PAGE_TEMPLATES_PATH', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_PAGE_TEMPLATES_PATH .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_TEMPLATES_PATH"><code>'. __( 'T_EM_THEME_DIR_TEMPLATES_PATH', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_TEMPLATES_PATH .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_NODE_PATH"><code>'. __( 'T_EM_THEME_DIR_NODE_PATH', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_NODE_PATH .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_BOOTSTRAP_PATH"><code>'. __( 'T_EM_THEME_DIR_BOOTSTRAP_PATH', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_BOOTSTRAP_PATH .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_JQUERY_PATH"><code>'. __( 'T_EM_THEME_DIR_JQUERY_PATH', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_JQUERY_PATH .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_ICON_PACK_PATH"><code>'. __( 'T_EM_THEME_DIR_ICON_PACK_PATH', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_ICON_PACK_PATH .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_URL"><code>'. __( 'T_EM_THEME_DIR_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_URL .'</dd>';
 	$output .=		'<dt title="T_EM_CHILD_THEME_DIR_URL"><code>'. __( 'T_EM_CHILD_THEME_DIR_URL', 't_em' ) .'</code></dt>';
@@ -148,16 +152,20 @@ function t_em_debug_theme_data_callback(){
 	$output .=		'<dd>'. T_EM_THEME_DIR_IMG_URL .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_JS_URL"><code>'. __( 'T_EM_THEME_DIR_JS_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_JS_URL .'</dd>';
-	$output .=		'<dt title="T_EM_THEME_DIR_FONTS_URL"><code>'. __( 'T_EM_THEME_DIR_FONTS_URL', 't_em' ) .'</code></dt>';
-	$output .=		'<dd>'. T_EM_THEME_DIR_FONTS_URL .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_INC_URL"><code>'. __( 'T_EM_THEME_DIR_INC_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_INC_URL .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_PAGE_TEMPLATES_URL"><code>'. __( 'T_EM_THEME_DIR_PAGE_TEMPLATES_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_PAGE_TEMPLATES_URL .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_TEMPLATES_URL"><code>'. __( 'T_EM_THEME_DIR_TEMPLATES_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_TEMPLATES_URL .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_NODE_URL"><code>'. __( 'T_EM_THEME_DIR_NODE_URL', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_NODE_URL .'</dd>';
 	$output .=		'<dt title="T_EM_THEME_DIR_BOOTSTRAP_URL"><code>'. __( 'T_EM_THEME_DIR_BOOTSTRAP_URL', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_THEME_DIR_BOOTSTRAP_URL .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_JQUERY_URL"><code>'. __( 'T_EM_THEME_DIR_JQUERY_URL', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_JQUERY_URL .'</dd>';
+	$output .=		'<dt title="T_EM_THEME_DIR_ICON_PACK_URL"><code>'. __( 'T_EM_THEME_DIR_ICON_PACK_URL', 't_em' ) .'</code></dt>';
+	$output .=		'<dd>'. T_EM_THEME_DIR_ICON_PACK_URL .'</dd>';
 	$output .=		'<dt title="T_EM_SLIDER_DEFAULT_HEIGHT"><code>'. __( 'T_EM_SLIDER_DEFAULT_HEIGHT', 't_em' ) .'</code></dt>';
 	$output .=		'<dd>'. T_EM_SLIDER_DEFAULT_HEIGHT .'</dd>';
 	$output .=		'<dt title="T_EM_SLIDER_MAX_HEIGHT"><code>'. __( 'T_EM_SLIDER_MAX_HEIGHT', 't_em' ) .'</code></dt>';
@@ -193,7 +201,7 @@ function t_em_debug_theme_setting_callback(){
 		$output .= '<header>'. sprintf( __( 'Current Option: <code>%s</code>', 't_em' ), 't_em_theme_options' ) .'</header>';
 		$output .= '<p class="alert alert-info">'. __( 'You can access these values through the <code>t_em()</code> function, passing as parameter any of these keys', 't_em' ) .'</p>';
 		$output .= '<dl class="dl-horizontal">';
-		foreach ( t_em() as $key => $value ) :
+		foreach ( $t_em as $key => $value ) :
 			$output .=		'<dt title="'. $key .'"><code>'. '['. $key .']' .'</code></dt>';
 			$output .=		'<dd>'. '=> '. $value .'</dd>';
 		endforeach;

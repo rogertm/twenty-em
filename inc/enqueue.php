@@ -25,8 +25,8 @@
 function t_em_enqueue_styles_and_scripts(){
 	// Dequeue old jQuery
 	wp_deregister_script('jquery');
-	// Enqueue jQuery 3.0.0 to support Bootstrap jQuery plugins
-	wp_register_script( 'jquery', t_em_get_js( 'jquery' ), array(), t_em_theme( 'Version' ), true );
+	// Enqueue jQuery 3.+ to support Bootstrap jQuery plugins
+	wp_register_script( 'jquery', t_em_get_js( 'jquery', T_EM_THEME_DIR_JQUERY_PATH .'/dist', T_EM_THEME_DIR_JQUERY_URL .'/dist' ), array(), t_em_theme( 'Version' ), true );
 	wp_enqueue_script( 'jquery' );
 
 	// Load default style sheet style.css

@@ -59,10 +59,12 @@ define ( 'T_EM_THEME_DIR_LANG_PATH',									T_EM_THEME_DIR_PATH . '/languages' 
 define ( 'T_EM_THEME_DIR_CSS_PATH',										T_EM_THEME_DIR_PATH . '/css' );
 define ( 'T_EM_THEME_DIR_IMG_PATH',										T_EM_THEME_DIR_PATH . '/images' );
 define ( 'T_EM_THEME_DIR_JS_PATH',										T_EM_THEME_DIR_PATH . '/js' );
-define ( 'T_EM_THEME_DIR_FONTS_PATH',									T_EM_THEME_DIR_PATH . '/fonts' );
 define ( 'T_EM_THEME_DIR_PAGE_TEMPLATES_PATH',							T_EM_THEME_DIR_PATH . '/page-templates' );
 define ( 'T_EM_THEME_DIR_TEMPLATES_PATH',								T_EM_THEME_DIR_PATH . '/templates' );
-define ( 'T_EM_THEME_DIR_BOOTSTRAP_PATH',								T_EM_THEME_DIR_PATH . '/bootstrap' );
+define ( 'T_EM_THEME_DIR_NODE_PATH',									T_EM_THEME_DIR_PATH . '/node_modules' );
+define ( 'T_EM_THEME_DIR_BOOTSTRAP_PATH',								T_EM_THEME_DIR_NODE_PATH . '/bootstrap' );
+define ( 'T_EM_THEME_DIR_JQUERY_PATH',									T_EM_THEME_DIR_NODE_PATH . '/jquery' );
+define ( 'T_EM_THEME_DIR_ICON_PACK_PATH',								T_EM_THEME_DIR_NODE_PATH . '/@themingisprose/icon-pack' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
@@ -70,11 +72,13 @@ define ( 'T_EM_CHILD_THEME_DIR_URL',									get_stylesheet_directory_uri() );
 define ( 'T_EM_THEME_DIR_CSS_URL',										T_EM_THEME_DIR_URL . '/css' );
 define ( 'T_EM_THEME_DIR_IMG_URL',										T_EM_THEME_DIR_URL . '/images' );
 define ( 'T_EM_THEME_DIR_JS_URL',										T_EM_THEME_DIR_URL . '/js' );
-define ( 'T_EM_THEME_DIR_FONTS_URL',									T_EM_THEME_DIR_URL . '/fonts' );
 define ( 'T_EM_THEME_DIR_INC_URL',										T_EM_THEME_DIR_URL . '/inc' );
 define ( 'T_EM_THEME_DIR_PAGE_TEMPLATES_URL',							T_EM_THEME_DIR_URL . '/page-templates' );
 define ( 'T_EM_THEME_DIR_TEMPLATES_URL',								T_EM_THEME_DIR_URL . '/templates' );
-define ( 'T_EM_THEME_DIR_BOOTSTRAP_URL',								T_EM_THEME_DIR_URL . '/bootstrap' );
+define ( 'T_EM_THEME_DIR_NODE_URL',										T_EM_THEME_DIR_URL . '/node_modules' );
+define ( 'T_EM_THEME_DIR_BOOTSTRAP_URL',								T_EM_THEME_DIR_NODE_URL . '/bootstrap' );
+define ( 'T_EM_THEME_DIR_JQUERY_URL',									T_EM_THEME_DIR_NODE_URL . '/jquery' );
+define ( 'T_EM_THEME_DIR_ICON_PACK_URL',								T_EM_THEME_DIR_NODE_URL . '/@themingisprose/icon-pack' );
 
 /**
  * Register default values through constants
