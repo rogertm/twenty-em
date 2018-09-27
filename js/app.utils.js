@@ -37,6 +37,7 @@ jQuery(document).ready(function($){
 	// Countdown timer in Maintenance Mode
 	$(function(){
 		if ( ! t_em_l10n.maintenanceMode ) return;
+		// @TODO: This send a warning!
 		$("#countdowntimer").countdowntimer({
 			dateAndTime : t_em_l10n.countdownTimer + " 00:00:00",
 			displayFormat : "DHMS",
