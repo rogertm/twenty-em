@@ -53,7 +53,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 ?>
 	<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget card">
 		<?php echo $widget_thumbnail_url; ?>
-		<div class="front-page-widget-caption card-body <?php // echo t_em_grid( '7' ) ?>">
+		<div class="front-page-widget-caption card-body">
 		<?php	echo $widget_headline;
 				echo $widget_content;
 				echo $widget_footer; ?>

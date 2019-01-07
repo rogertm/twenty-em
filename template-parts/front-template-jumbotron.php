@@ -22,15 +22,15 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 		'<span class="'. t_em( 'headline_icon_class_'.$widget['name'] ) .'"></span> ' : '';
 
 	$widget_thumbnail_url	= ( t_em( 'thumbnail_src_'.$widget['name'] ) ) ?
-		'<div class="widget-thumbnail"><img src="'. t_em( 'thumbnail_src_'.$widget['name'] ) .'" alt="'. sanitize_text_field( t_em( 'headline_'.$widget['name'] ) ).'" /></div>' : null;
+		'<div class="jumbo-widget-thumbnail mb-3"><img src="'. t_em( 'thumbnail_src_'.$widget['name'] ) .'" alt="'. sanitize_text_field( t_em( 'headline_'.$widget['name'] ) ).'" /></div>' : null;
 
-	$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h1' : 'h3';
+	$h_tag = ( $widget['name'] == 'text_widget_one' ) ? 'h2' : 'h3';
 
 	$widget_headline	= ( t_em( 'headline_'.$widget['name'] ) ) ?
-		'<header><'. $h_tag .'>'. $widget_icon_class . t_em( 'headline_'.$widget['name'] ) .'</'. $h_tag .'></header>' : '';
+		'<'. $h_tag .' class="jumbo-widget-heading">'. $widget_icon_class . t_em( 'headline_'.$widget['name'] ) .'</'. $h_tag .'>' : '';
 
 	$widget_content		= ( t_em( 'content_'.$widget['name'] ) ) ?
-		'<div>'. t_em_wrap_paragraph( do_shortcode( t_em( 'content_'.$widget['name'] ) ) ) .'</div>' : '';
+		'<div class="jumbo-widget-content">'. t_em_wrap_paragraph( do_shortcode( t_em( 'content_'.$widget['name'] ) ) ) .'</div>' : '';
 
 	$primary_link_text			= ( t_em( 'primary_button_text_'.$widget['name'] ) ) ? t_em( 'primary_button_text_'.$widget['name'] ) : null;
 	$primary_link_icon_class	= ( t_em( 'primary_button_icon_class_'.$widget['name'] ) ) ? t_em( 'primary_button_icon_class_'.$widget['name'] ) : null;
@@ -48,7 +48,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 				'<a href="'. $secondary_button_link .'" class="btn btn-secondary">
 				<span class="'.$secondary_link_icon_class.'"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
-		$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
+		$widget_footer = '<footer class="jumbo-widget-footer">'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
 	else :
 		$widget_footer = null;
 	endif;
@@ -57,7 +57,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 	$jumbo = ( $widget['name'] == 'text_widget_one' ) ? 'jumbotron' : null;
 ?>
 	<div <?php t_em_breakpoint( $section ); ?>>
-		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget <?php echo $jumbo ?>">
+		<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="jumbo-widget mb-5 <?php echo $jumbo ?>">
 			<?php echo $widget_thumbnail_url; ?>
 			<div class="widget-caption">
 			<?php	echo $widget_headline;

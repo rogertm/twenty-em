@@ -25,7 +25,13 @@ if ( ! function_exists( 't_em_front_page_widgets' ) ) :
  */
 function t_em_front_page_widgets(){
 	if ( 'widgets-front-page' == t_em( 'front_page_set' ) ) :
-		$wrap = ( t_em( 'text_widget_template' ) == 'template-cards' ) ? 'card-group' : 'row';
+		if ( t_em( 'text_widget_template' ) == 'template-jumbotron' ) :
+			$wrap = 'row';
+		elseif ( t_em( 'text_widget_template' ) == 'template-features' ) :
+			$wrap = 'featurette-group';
+		elseif ( t_em( 'text_widget_template' ) == 'template-cards' ) :
+			$wrap = 'card-group';
+		endif;
 	?>
 		<section id="featured-widget-area" class="<?php echo t_em( 'text_widget_template' ) ?>">
 			<div class="<?php echo $wrap ?>">
