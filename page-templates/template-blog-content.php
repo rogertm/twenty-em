@@ -26,10 +26,17 @@ get_header(); ?>
 				<?php do_action( 't_em_action_content_before' ); ?>
 				<?php
 				// Query for Custom Loop
-				$args = array( 'post_type' => 'post',
-								'posts_per_page' => get_option( 'posts_per_page' ),
-								'paged' => get_query_var( 'paged' )
-						);
+				/**
+				 * Filter this custom query
+				 *
+				 * @param array Arguments for WP_Query
+				 * @since Twenty'em 1.4.0
+				 */
+				$args = apply_filters( 't_em_filter_template_blog_content_query_args', array(
+					'post_type'			=> 'post',
+					'posts_per_page'	=> get_option( 'posts_per_page' ),
+					'paged'				=> get_query_var( 'paged' )
+				) );
 				$the_query = new WP_Query ( $args );
 
 				if ( $the_query->have_posts() ) :

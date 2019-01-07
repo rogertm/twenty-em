@@ -1,6 +1,9 @@
 == Changelog ==
 
 = 1.4.0 =
+Release Date: January 07, 2019
+* Added: Filters t_em_filter_template_archive_query_args, t_em_filter_template_blog_content_query_args, t_em_filter_template_blog_excerpt_query_args, t_em_filter_template_contributors_args
+
 Release Date: September 21, 2018
 * Enhancement: Use jQuery, Bootstrap, CountdownTimer and Icon Pack as dependencies from npmjs.com
 * Added: T_EM_THEME_DIR_NODE_PATH, T_EM_THEME_DIR_JQUERY_PATH, T_EM_THEME_DIR_ICON_PACK_PATH, T_EM_THEME_DIR_NODE_URL, T_EM_THEME_DIR_JQUERY_URL, T_EM_THEME_DIR_ICON_PACK_URL, T_EM_THEME_DIR_COUNTDOWN_TIMER_PATH, T_EM_THEME_DIR_COUNTDOWN_TIMER_URL
@@ -169,7 +172,6 @@ Release Date: June 21, 2017
 * Function Removed: "t_em_heading_site_title()",
 
 = 1.1 =
-
 Release Date: February 02, 2017
 * Bug Fixed: Fixed Notice in t_em_custom_template_content()
 * Enhancement: Upgrade to Bootstrap 3.3.7

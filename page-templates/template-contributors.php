@@ -27,12 +27,18 @@ get_header(); ?>
 
 				<div id="contributors-<?php echo get_the_ID(); ?>" class="custom-template custom-template-contributors">
 				<?php
-				$args = array(
-						'fields'	=> 'ID',
-						'orderby'	=> 'post_count',
-						'order'		=> 'DESC',
-						'who'		=> 'authors',
-					);
+				/**
+				 * Filter this custom query
+				 *
+				 * @param array Arguments for get_users()
+				 * @since Twenty'em 1.4.0
+				 */
+				$args = apply_filters( 't_em_filter_template_contributors_args', array(
+					'fields'	=> 'ID',
+					'orderby'	=> 'post_count',
+					'order'		=> 'DESC',
+					'who'		=> 'authors',
+				) );
 				$contributors = get_users( $args );
 
 				foreach( $contributors as $contributor ) :
@@ -48,7 +54,7 @@ get_header(); ?>
 					</div>
 					<div class="media-body">
 						<h5 class="mt-0"><?php echo get_the_author_meta( 'display_name', $contributor ); ?></h5>
-						<?php echo get_the_author_meta( 'description', $contributor ) ?>
+						<?php echo t_em_wrap_paragraph( get_the_author_meta( 'description', $contributor ) ) ?>
 						<a class="contributor-posts-link btn btn-outline-secondary btn-sm" href="<?php echo esc_url( get_author_posts_url( $contributor ) ); ?>">
 							<span class="icomoon-pencil"></span>
 							<?php printf( _n( '%d Article', '%d Articles', $post_count, 't_em' ), $post_count ); ?>

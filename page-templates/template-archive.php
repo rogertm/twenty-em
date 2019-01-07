@@ -26,40 +26,47 @@ get_header(); ?>
 			<?php do_action( 't_em_action_content_before' ); ?>
 
 				<div id="archive-<?php echo get_the_ID(); ?>" class="custom-template custom-template-archive">
-<?php
-/**
- * Start the archive page. Displays the latest $limit posts, list of categories, monthly
- * archive and a tag cloud.
- */
+			<?php
+			/**
+			 * Start the archive page. Displays the latest $limit posts, list of categories, monthly
+			 * archive and a tag cloud.
+			 */
 
-/**
- * Filter the amount of posts to display
- *
- * @param int Number of posts to display
- * @since Twenty'em 1.0
- */
-$limit = apply_filters( 't_em_filter_template_archive_posts_limit', 30 );
-$args = array( 'post_type' => 'post',
+			/**
+			 * Filter the amount of posts to display
+			 *
+			 * @param int Number of posts to display
+			 * @since Twenty'em 1.0
+			 */
+			$limit = apply_filters( 't_em_filter_template_archive_posts_limit', 30 );
+
+			/**
+			 * Filter this custom query
+			 *
+			 * @param array Arguments for WP_Query
+			 * @since Twenty'em 1.4.0
+			 */
+			$args = apply_filters( 't_em_filter_template_archive_query_args', array(
+				'post_type' => 'post',
 				'showposts' => $limit,
-		);
-$the_query = new WP_Query ( $args );
-$post_count = $the_query->post_count;
-?>
+			) );
+			$the_query = new WP_Query ( $args );
+			$post_count = $the_query->post_count;
+			?>
 					<h2 id="archive-latest-posts"><?php echo sprintf( __( 'The latest %1$s posts', 't_em' ), $post_count ); ?></h2>
-<?php
-
-if ( $the_query->have_posts() ) :
-?>
+			<?php
+			if ( $the_query->have_posts() ) :
+			?>
 					<ul class="list-unstyled">
-<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 						<li id="post-<?php the_ID() ?>">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 't_em' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 							<small> - <?php echo get_the_date(); ?>
 								    - <?php comments_number( __( '0 Comments', 't_em' ), __( '1 Comment', 't_em' ), __( '% Comments', 't_em' ) ); ?></small>
 						</li>
-<?php endwhile; ?>
+			<?php endwhile; ?>
 					</ul>
-<?php endif; wp_reset_query(); ?>
+			<?php endif; wp_reset_query(); ?>
 
 					<?php
 					/** Displaying a list of categories
