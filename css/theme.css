@@ -7043,7 +7043,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
   text-align: right !important; }
 
 .text-center, #site-pagination.prev-next a, #posts-navigation.nav a,
-#comments-navigation.nav a, #site-info {
+#comments-navigation.nav a, .site-info {
   text-align: center !important; }
 
 @media (min-width: 576px) {
@@ -8843,9 +8843,9 @@ article.sticky {
   background-size: cover; }
 
 @media (min-width: 992px) {
-  #site-info #site-info-right {
+  .site-info-right {
     text-align: right; }
-  #site-info #site-info-left {
+  .site-info-left {
     text-align: left; } }
 
 /*# sourceMappingURL=theme.css.map */

@@ -33,26 +33,34 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-		<div id="site-info" class="py-3">
+		<div class="site-info py-3">
 			<?php do_action( 't_em_action_site_info_before' ); ?>
-			<div id="inner-site-info" class="<?php t_em_container(); ?>">
+			<div class="<?php t_em_container(); ?>">
 				<div class="row">
-					<div id="site-info-before" class="<?php echo t_em_grid( '12' ) ?>">
+					<?php if ( has_action( 't_em_action_site_info_top' ) ) : ?>
+					<div class="<?php echo t_em_grid( '12' ) ?> site-info-before">
 						<?php do_action( 't_em_action_site_info_top' ); ?>
 					</div>
-					<div id="site-info-left" class="<?php echo t_em_grid( '6' ) ?>">
+					<?php endif; ?>
+					<?php if ( has_action( 't_em_action_site_info_left' ) ) : ?>
+					<div class="<?php echo t_em_grid( '6' ) ?> site-info-left">
 						<?php do_action( 't_em_action_site_info_left' ); ?>
 					</div>
-					<div id="site-info-right" class="<?php echo t_em_grid( '6' ) ?>">
+					<?php endif; ?>
+					<?php if ( has_action( 't_em_action_site_info_right' ) ) : ?>
+					<div class="<?php echo t_em_grid( '6' ) ?> site-info-right">
 						<?php do_action( 't_em_action_site_info_right' ); ?>
 					</div>
-					<div id="site-info-after" class="<?php echo t_em_grid( '12' ) ?>">
+					<?php endif; ?>
+					<?php if ( has_action( 't_em_action_site_info_bottom' ) ) : ?>
+					<div class="<?php echo t_em_grid( '12' ) ?> site-info-after">
 						<?php do_action( 't_em_action_site_info_bottom' ); ?>
 					</div>
+					<?php endif; ?>
 				</div><!-- .row -->
-			</div><!-- .wrapper .container -->
+			</div>
 			<?php do_action( 't_em_action_site_info_after' ); ?>
-		</div><!-- #site-info -->
+		</div><!-- .site-info -->
 		<?php do_action( 't_em_action_footer_after' ); ?>
 	</footer><!-- #footer -->
 

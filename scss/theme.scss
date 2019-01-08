@@ -530,13 +530,13 @@ article{
 //
 // Footer
 //
-#site-info{
+.site-info{
 	@extend .text-center;
 	@include media-breakpoint-up(lg){
-		#site-info-right{
+		&-right{
 			text-align: right;
 		}
-		#site-info-left{
+		&-left{
 			text-align: left;
 		}
 	}

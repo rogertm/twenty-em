@@ -6,6 +6,7 @@ Release Date: January 07, 2019
 * Enhancement: HTML > Front Page Widgets > Template Jumbotron: Make a better semantic markup
 * Enhancement: HTML > Front Page Widgets > Template Features: Make a better semantic markup
 * Enhancement: HTML > Colophon > Manage all widgets markup by classes, not by ids
+* Enhancement: HTML > Site Info > Manage all markup by classes, not by ids
 
 Release Date: September 21, 2018
 * Enhancement: Use jQuery, Bootstrap, CountdownTimer and Icon Pack as dependencies from npmjs.com
