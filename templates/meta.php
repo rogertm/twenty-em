@@ -205,7 +205,7 @@ function t_em_author_meta(){
 		<div class="d-flex mr-3"><?php echo get_avatar( get_the_author_meta( 'ID' ), '', '', get_the_author() ); ?></div>
 		<div id="author-description" class="media-body">
 			<h4 class="media-heading"><?php printf( esc_attr__( 'About %s', 't_em' ), get_the_author() ); ?></h4>
-			<?php the_author_meta( 'description' ); ?>
+			<?php echo t_em_wrap_paragraph( get_the_author_meta( 'description' ) ); ?>
 			<?php if ( is_single() ) : ?>
 			<div id="author-link">
 				<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
