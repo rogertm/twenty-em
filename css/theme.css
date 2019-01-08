@@ -363,7 +363,7 @@ mark,
   padding: 0.2em;
   background-color: #fcf8e3; }
 
-.list-unstyled, #related-posts .related-posts-list, #comments .children, .widget-container ul, .widget-container ol {
+.list-unstyled, #related-posts .related-posts-list, #comments .children, .widget ul, .widget ol {
   padding-left: 0;
   list-style: none; }
 
@@ -1189,22 +1189,22 @@ pre {
 
   .offset-xl-11 {
     margin-left: 91.6666666667%; } }
-.table, .widget-container table {
+.table, .widget table {
   width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
-  .table th, .widget-container table th,
+  .table th, .widget table th,
   .table td,
-  .widget-container table td {
+  .widget table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6; }
-  .table thead th, .widget-container table thead th {
+  .table thead th, .widget table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6; }
-  .table tbody + tbody, .widget-container table tbody + tbody {
+  .table tbody + tbody, .widget table tbody + tbody {
     border-top: 2px solid #dee2e6; }
-  .table .table, .widget-container table .table, .table .widget-container table, .widget-container .table table, .widget-container table table {
+  .table .table, .widget table .table, .table .widget table, .widget .table table, .widget table table {
     background-color: #fff; }
 
 .table-sm th,
@@ -1331,11 +1331,11 @@ pre {
   .table-hover .table-active:hover > th {
     background-color: rgba(0, 0, 0, 0.075); }
 
-.table .thead-dark th, .widget-container table .thead-dark th {
+.table .thead-dark th, .widget table .thead-dark th {
   color: #fff;
   background-color: #212529;
   border-color: #32383e; }
-.table .thead-light th, .widget-container table .thead-light th {
+.table .thead-light th, .widget table .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6; }
@@ -5788,7 +5788,7 @@ button#maintenance-mode-alert:focus {
 .mx-2 {
   margin-right: 0.5rem !important; }
 
-.mb-2, .widget-container ul li, .widget-container ol li,
+.mb-2, .widget ul li, .widget ol li,
 .my-2 {
   margin-bottom: 0.5rem !important; }
 
@@ -5882,7 +5882,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 .mx-5 {
   margin-right: 3rem !important; }
 
-.mb-5, article, .author-info, .widget-container,
+.mb-5, article, .author-info, .widget,
 .my-5,
 #maintenance-mode {
   margin-bottom: 3rem !important; }
@@ -7039,7 +7039,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 .text-left, .gallery .gallery-item {
   text-align: left !important; }
 
-.text-right, .widget-container .calendar_wrap #next {
+.text-right, .widget .calendar_wrap #next {
   text-align: right !important; }
 
 .text-center, #site-pagination.prev-next a, #posts-navigation.nav a,
@@ -7231,11 +7231,11 @@ a.text-dark:hover, a.text-dark:focus {
   .badge {
     border: 1px solid #000; }
 
-  .table, .widget-container table {
+  .table, .widget table {
     border-collapse: collapse !important; }
-    .table td, .widget-container table td,
+    .table td, .widget table td,
     .table th,
-    .widget-container table th {
+    .widget table th {
       background-color: #fff !important; }
 
   .table-bordered th,
@@ -7250,7 +7250,7 @@ a.text-dark:hover, a.text-dark:focus {
     .table-dark tbody + tbody {
       border-color: #dee2e6; }
 
-  .table .thead-dark th, .widget-container table .thead-dark th {
+  .table .thead-dark th, .widget table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
 @font-face {
