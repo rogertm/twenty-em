@@ -5737,12 +5737,12 @@ button#maintenance-mode-alert:focus {
 .mh-100 {
   max-height: 100% !important; }
 
-.m-0, #header #static-header {
+.m-0, #static-header {
   margin: 0 !important; }
 
 .mt-0,
 .my-0,
-#header #static-header.static-header-hero #static-header-text {
+#static-header.hero-header .hero-body {
   margin-top: 0 !important; }
 
 .mr-0,
@@ -5751,7 +5751,7 @@ button#maintenance-mode-alert:focus {
 
 .mb-0,
 .my-0,
-#header #static-header.static-header-hero #static-header-text {
+#static-header.hero-header .hero-body {
   margin-bottom: 0 !important; }
 
 .ml-0,
@@ -5801,8 +5801,8 @@ button#maintenance-mode-alert:focus {
 
 .mt-3, article,
 .my-3,
-#header #static-header #static-header-image,
-#header #static-header #static-header-text,
+#static-header.jumbotron .hero-thumbnail,
+#static-header.jumbotron .hero-body,
 .page-links,
 article .card-body .btn,
 article .card-body #commentform .submit,
@@ -5827,8 +5827,8 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 
 .mb-3, .gallery .gallery-item, article .featured-post-thumbnail, article .entry-excerpt, article .author-info, article .card, .call-action, #maintenance-mode #countdowntimer,
 .my-3,
-#header #static-header #static-header-image,
-#header #static-header #static-header-text,
+#static-header.jumbotron .hero-thumbnail,
+#static-header.jumbotron .hero-body,
 .page-links,
 article .card-body .btn,
 article .card-body #commentform .submit,
@@ -5993,7 +5993,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 
 .pt-5,
 .py-5,
-#header #static-header.static-header-hero #static-header-text {
+#static-header.hero-header .hero-body {
   padding-top: 3rem !important; }
 
 .pr-5,
@@ -6002,7 +6002,7 @@ article .card-img-overlay #comments #cancel-comment-reply-link,
 
 .pb-5,
 .py-5,
-#header #static-header.static-header-hero #static-header-text {
+#static-header.hero-header .hero-body {
   padding-bottom: 3rem !important; }
 
 .pl-5, #comments .children,
@@ -7142,10 +7142,10 @@ a.text-warning:hover, a.text-warning:focus {
 a.text-danger:hover, #commentform a.required:hover, a.text-danger:focus, #commentform a.required:focus {
   color: #bd2130 !important; }
 
-.text-light, #header #static-header.static-header-hero #static-header-text, .call-action, #maintenance-mode-alert a {
+.text-light, #static-header.hero-header .hero-body, .call-action, #maintenance-mode-alert a {
   color: #f8f9fa !important; }
 
-a.text-light:hover, #header #static-header.static-header-hero a#static-header-text:hover, a.call-action:hover, #maintenance-mode-alert a:hover, a.text-light:focus, #header #static-header.static-header-hero a#static-header-text:focus, a.call-action:focus, #maintenance-mode-alert a:focus {
+a.text-light:hover, #static-header.hero-header a.hero-body:hover, a.call-action:hover, #maintenance-mode-alert a:hover, a.text-light:focus, #static-header.hero-header a.hero-body:focus, a.call-action:focus, #maintenance-mode-alert a:focus {
   color: #dae0e5 !important; }
 
 .text-dark {
@@ -8756,12 +8756,13 @@ a .featured-post-thumbnail:hover, a .featured-post-thumbnail:focus {
 #header #header-image .container img {
   width: 100%;
   height: auto; }
+
 @media (min-width: 992px) {
-  #header #static-header.static-header-text-left #static-header-image {
+  #static-header.static-header-text-left .container .row > div:first-child {
     order: 12; }
-  #header #static-header.static-header-text-left #static-header-text {
+  #static-header.static-header-text-left .container .row > div:last-child {
     order: 1; } }
-#header #static-header.static-header-hero #static-header-inner {
+#static-header.hero-header {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #adb5bd; }

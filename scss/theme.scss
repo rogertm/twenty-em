@@ -192,35 +192,35 @@ figure{
 			@extend .p-0;
 		}
 	}
-	#static-header{
-		@extend .m-0;
-		#static-header-image,
-		#static-header-text{
+}
+#static-header{
+	@extend .m-0;
+	&.jumbotron{
+		.hero-thumbnail,
+		.hero-body{
 			@extend .my-3;
 		}
-		@include media-breakpoint-up(lg){
+	}
+	@include media-breakpoint-up(lg){
 		&.static-header-text-left{
-				#static-header-image{
-					order: 12;
-				}
-				#static-header-text{
-					order: 1;
-				}
+			.container .row > div:first-child{
+				order: 12;
+			}
+			.container .row > div:last-child{
+				order: 1;
 			}
 		}
-		&.static-header-hero{
-			#static-header{
-				&-inner{
-					background-repeat: no-repeat;
-					background-size: cover;
-					background-color: $gray-500;
-				}
-				&-text{
-					@extend .my-0;
-					@extend .py-5;
-					@extend .text-light;
-				}
-			}
+	}
+	&.hero-header{
+		background:{
+			repeat: no-repeat;
+			size: cover;
+			color: $gray-500;
+		}
+		.hero-body{
+			@extend .my-0;
+			@extend .py-5;
+			@extend .text-light;
 		}
 	}
 }

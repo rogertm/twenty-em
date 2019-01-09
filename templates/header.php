@@ -245,10 +245,21 @@ function t_em_static_header_bg(){
 		return;
 	if ( ! t_em( 'static_header_img_src' ) )
 		return;
+
+	$style = array(
+		'background-image: url( '. t_em( 'static_header_img_src' ) .' );',
+	);
+	/**
+	 * Filter the .hero-header style
+	 *
+	 * @param array $style 		CSS style in an array form
+	 * @since Twenty'em 1.4.0
+	 */
+	$style = apply_filters( 't_em_filter_hero_header_style', join( $style ) );
 ?>
 	<style type="text/css">
-		#static-header-inner{
-			background-image: url( <?php echo t_em( 'static_header_img_src' ); ?> );
+		#static-header.hero-header{
+			<?php echo $style; ?>
 		}
 	</style>
 <?php

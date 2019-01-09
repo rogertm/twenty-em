@@ -1,12 +1,13 @@
 == Changelog ==
 
 = 1.4.0 =
-Release Date: January 07, 2019
-* Added: Filters t_em_filter_template_archive_query_args, t_em_filter_template_blog_content_query_args, t_em_filter_template_blog_excerpt_query_args, t_em_filter_template_contributors_args
+Release Date: January 09, 2019
+* Added: Filters t_em_filter_template_archive_query_args, t_em_filter_template_blog_content_query_args, t_em_filter_template_blog_excerpt_query_args, t_em_filter_template_contributors_args, t_em_filter_hero_header_style
 * Enhancement: HTML > Front Page Widgets > Template Jumbotron: Make a better semantic markup
 * Enhancement: HTML > Front Page Widgets > Template Features: Make a better semantic markup
 * Enhancement: HTML > Colophon > Manage all widgets markup by classes, not by ids
 * Enhancement: HTML > Site Info > Manage all markup by classes, not by ids
+* Enhancement: HTML > Header > Manage all markup by classes, not by ids
 
 Release Date: September 21, 2018
 * Enhancement: Use jQuery, Bootstrap, CountdownTimer and Icon Pack as dependencies from npmjs.com

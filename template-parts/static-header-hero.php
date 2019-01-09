@@ -17,7 +17,7 @@
  * Display Hero template for static header
  */
 ?>
-<section id="static-header" class="<?php echo t_em( 'static_header_template' ) ?>" role="info">
+<section id="static-header" class="hero-header hero <?php echo t_em( 'static_header_template' ) ?>" role="info">
 	<?php
 	/**
 	 * Fires before the static header section. Full width;
@@ -26,7 +26,12 @@
 	 */
 	do_action( 't_em_action_static_header_before' );
 	?>
-		<div id="static-header-inner">
+	<?php 	if ( t_em( 'static_header_headline' )
+			|| t_em( 'static_header_content' )
+			|| ( t_em( 'static_header_primary_button_text' ) && t_em( 'static_header_primary_button_link' ) )
+			|| ( t_em( 'static_header_secondary_button_text' ) && t_em( 'static_header_secondary_button_link' ) )
+		) : ?>
+			<div class="<?php t_em_container() ?>">
 	<?php
 	/**
 	 * Fires in and before the static header section. Full width;
@@ -35,19 +40,14 @@
 	 */
 	do_action( 't_em_action_static_header_inner_before' );
 	?>
-	<?php 	if ( t_em( 'static_header_headline' )
-			|| t_em( 'static_header_content' )
-			|| ( t_em( 'static_header_primary_button_text' ) && t_em( 'static_header_primary_button_link' ) )
-			|| ( t_em( 'static_header_secondary_button_text' ) && t_em( 'static_header_secondary_button_link' ) )
-		) : ?>
-			<div id="static-header-text" class="<?php t_em_container() ?>">
+				<div class="hero-body">
 	<?php 	if ( t_em( 'static_header_headline' ) ) : ?>
-				<header><h2><?php echo t_em( 'static_header_headline' ); ?></h2></header>
+					<h2 class="hero-heading"><?php echo t_em( 'static_header_headline' ); ?></h2>
 	<?php 	endif; ?>
 	<?php 	if ( t_em( 'static_header_content' ) ) : ?>
-				<div class="static-header-content"><?php echo t_em_wrap_paragraph( t_em( 'static_header_content' ) ); ?></div>
+				<?php echo t_em_wrap_paragraph( t_em( 'static_header_content' ) ); ?>
 	<?php 	endif; ?>
-				<footer class="actions">
+					<footer class="hero-footer">
 	<?php 	if ( ( t_em( 'static_header_primary_button_text' ) && t_em( 'static_header_primary_button_link' ) ) ) : ?>
 					<a href="<?php echo t_em( 'static_header_primary_button_link' ); ?>"
 						class="btn btn-primary">
@@ -62,9 +62,8 @@
 							<span class="button-text"><?php echo t_em( 'static_header_secondary_button_text' ); ?></span>
 						</a>
 	<?php 	endif; ?>
-				</footer><!-- .actions -->
-			</div><!-- #static-header-text -->
-	<?php 	endif; ?>
+					</footer>
+				</div>
 	<?php
 	/**
 	 * Fires in and after the static header section. Full width;
@@ -73,7 +72,8 @@
 	 */
 	do_action( 't_em_action_static_header_inner_after' );
 	?>
-		</div>
+			</div>
+	<?php 	endif; ?>
 	<?php
 	/**
 	 * Fires after the static header section. Full width;
