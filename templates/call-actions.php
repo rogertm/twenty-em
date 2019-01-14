@@ -69,9 +69,20 @@ function t_em_call_action_bg(){
 ?><style type="text/css"><?php
 	foreach ( $actions as $action => $tag ) :
 		if ( t_em( $action .'_thumbnail_src' ) ) :
+			$style = array(
+				'background-image: url( '. t_em( $action .'_thumbnail_src' ) .' );',
+			);
+			/**
+			 * Filter the current .call-action style. The dynamic portion of the hook name "$action"
+			 * make reference to the current Action Call
+			 *
+			 * @param array $style 		CSS style in an array form
+			 * @since Twenty'em 1.4.0
+			 */
+			$style = apply_filters( 't_em_filter_'. $action .'_style' , $style );
 		?>
 		#<?php echo $action ?>{
-			background-image: url( <?php echo t_em( $action .'_thumbnail_src' ); ?> );
+			<?php echo join( $style ) ?>
 		}
 <?php
 		endif;
