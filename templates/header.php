@@ -255,11 +255,11 @@ function t_em_static_header_bg(){
 	 * @param array $style 		CSS style in an array form
 	 * @since Twenty'em 1.4.0
 	 */
-	$style = apply_filters( 't_em_filter_hero_header_style', join( $style ) );
+	$style = apply_filters( 't_em_filter_hero_header_style', $style );
 ?>
 	<style type="text/css">
 		#static-header.hero-header{
-			<?php echo $style; ?>
+			<?php echo join( $style ); ?>
 		}
 	</style>
 <?php
