@@ -25,7 +25,7 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 		'<div class="widget-thumbnail"><img src="'. t_em( 'thumbnail_src_'.$widget['name'] ) .'" class="card-img-top" alt="'. sanitize_text_field( t_em( 'headline_'.$widget['name'] ) ) .'"/></div>' : null;
 
 	$widget_headline	= ( t_em( 'headline_'.$widget['name'] ) ) ?
-		'<header><h2 class="card-title h4">'. $widget_icon_class . t_em( 'headline_'.$widget['name'] ) .'</h2></header>' : null;
+		'<h2 class="card-title h4">'. $widget_icon_class . t_em( 'headline_'.$widget['name'] ) .'</h2>' : null;
 
 	$widget_content		= ( t_em( 'content_'.$widget['name'] ) ) ?
 		'<div class="front-page-widget-content card-text">'. t_em_wrap_paragraph( do_shortcode( t_em( 'content_'.$widget['name'] ) ) ) .'</div>' : null;
@@ -46,14 +46,14 @@ foreach ( t_em_front_page_widgets_options() as $widget ) :
 				'<a href="'. $secondary_button_link .'" class="btn btn-secondary secondary-button">
 				<span class="'.$secondary_link_icon_class.'"></span> <span class="button-text">'. $secondary_link_text .'</span></a>' : null;
 
-		$widget_footer = '<footer>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</footer>';
+		$widget_footer = '<div>'. $primary_button_link_url . ' ' . $secondary_button_link_url .'</div>';
 	else :
 		$widget_footer = null;
 	endif;
 ?>
 	<div id="front-page-widget-<?php echo str_replace( 'text_widget_', '', $widget['name'] ) ?>" class="front-page-widget card">
 		<?php echo $widget_thumbnail_url; ?>
-		<div class="front-page-widget-caption card-body">
+		<div class="card-body">
 		<?php	echo $widget_headline;
 				echo $widget_content;
 				echo $widget_footer; ?>
