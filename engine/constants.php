@@ -25,7 +25,7 @@ define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/icon-pack' );
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'4.9.8' );
+define ( 'T_EM_WORDPRESS_VERSION',										'5.0.2' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
@@ -35,7 +35,7 @@ define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20180810' ); // In date format Ymd
 
 // Third Party Softwares
-define ( 'T_EM_BOOTSTRAP_VERSION',										'4.1.3' );
+define ( 'T_EM_BOOTSTRAP_VERSION',										'4.3.1' );
 
 // Theme Directory Path
 define( 'T_EM_THEME_DIR_PATH', 											get_template_directory() );
@@ -65,7 +65,7 @@ define ( 'T_EM_THEME_DIR_NODE_PATH',									T_EM_THEME_DIR_PATH . '/node_module
 define ( 'T_EM_THEME_DIR_BOOTSTRAP_PATH',								T_EM_THEME_DIR_NODE_PATH . '/bootstrap' );
 define ( 'T_EM_THEME_DIR_JQUERY_PATH',									T_EM_THEME_DIR_NODE_PATH . '/jquery' );
 define ( 'T_EM_THEME_DIR_ICON_PACK_PATH',								T_EM_THEME_DIR_NODE_PATH . '/@themingisprose/icon-pack' );
-define ( 'T_EM_THEME_DIR_COUNTDOWN_TIMER_PATH',								T_EM_THEME_DIR_NODE_PATH . '/countdowntimer' );
+define ( 'T_EM_THEME_DIR_COUNTDOWN_TIMER_PATH',							T_EM_THEME_DIR_NODE_PATH . '/countdowntimer' );
 
 // Theme Directory URL
 define ( 'T_EM_THEME_DIR_URL',											get_template_directory_uri() );
@@ -80,7 +80,7 @@ define ( 'T_EM_THEME_DIR_NODE_URL',										T_EM_THEME_DIR_URL . '/node_modules
 define ( 'T_EM_THEME_DIR_BOOTSTRAP_URL',								T_EM_THEME_DIR_NODE_URL . '/bootstrap' );
 define ( 'T_EM_THEME_DIR_JQUERY_URL',									T_EM_THEME_DIR_NODE_URL . '/jquery' );
 define ( 'T_EM_THEME_DIR_ICON_PACK_URL',								T_EM_THEME_DIR_NODE_URL . '/@themingisprose/icon-pack' );
-define ( 'T_EM_THEME_DIR_COUNTDOWN_TIMER_URL',								T_EM_THEME_DIR_NODE_URL . '/countdowntimer' );
+define ( 'T_EM_THEME_DIR_COUNTDOWN_TIMER_URL',							T_EM_THEME_DIR_NODE_URL . '/countdowntimer' );
 
 /**
  * Register default values through constants

@@ -3,6 +3,6 @@
 .sass-cache/*.*
 cache
 cache/*.*
-t-em.sublime-project
-t-em.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 TODO
