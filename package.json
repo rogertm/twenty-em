@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@themingisprose/icon-pack": "^1.1.5",
+    "bootstrap": "^4.3.1",
+    "countdowntimer": "^2.0.1",
+    "jquery": "^3.4.1"
+  }
+}
