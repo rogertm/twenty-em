@@ -7,4 +7,5 @@ cache/*.*
 *.sublime-workspace
 node_modules
 node_modules/*.*
+assets/dist/*.*
 TODO
