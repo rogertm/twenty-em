@@ -51,7 +51,8 @@
 /**
  * Load the theme engine
  */
-require_once( get_template_directory() . '/engine/index.php' );
-require_once( get_template_directory() . '/inc/index.php' );
-require_once( get_template_directory() . '/templates/index.php' );
+require_once( get_template_directory() . '/engine/constants.php' );
+require_once( T_EM_ENGINE_DIR_PATH . '/index.php' );
+require_once( T_EM_THEME_DIR_INC_PATH . '/index.php' );
+require_once( T_EM_THEME_DIR_TEMPLATES_PATH . '/index.php' );
 ?>

@@ -1,5 +1,4 @@
-[
-![Latest Stable Version](https://poser.pugx.org/rogertm/twenty-em/version)](https://packagist.org/packages/rogertm/twenty-em)
+[![Latest Stable Version](https://poser.pugx.org/rogertm/twenty-em/version)](https://packagist.org/packages/rogertm/twenty-em)
 [![Latest Unstable Version](https://poser.pugx.org/rogertm/twenty-em/v/unstable)](//packagist.org/packages/rogertm/twenty-em)
 [![Total Downloads](https://poser.pugx.org/rogertm/twenty-em/downloads)](https://packagist.org/packages/rogertm/twenty-em)
 [![Build Status](https://travis-ci.org/rogertm/twenty-em.svg?branch=master)](https://travis-ci.org/rogertm/twenty-em)
@@ -25,18 +24,22 @@ $ git clone https://github.com/rogertm/twenty-em.git
 ```
 ### Instalar vía Composer
 ```bash
+$ cd /path/to/your/wordpress-site/
 $ composer require rogertm/twenty-em:^1.0
 ```
 O puedes instalar directamente [Twenty'em Child Theme](https://github.com/rogertm/twenty-em-child) que automáticamente instalará Twenty'em.
 ```bash
+$ cd /path/to/your/wordpress-site/
 $ composer require rogertm/twenty-em-child:^1.0
 ```
 
 ## Dependencias
-Twenty'em requiere de algunas dependencias, para ello debes instalarlas con `npm`. Debes tener [Node.js](https://nodejs.org/es/) instalado previamente en tu ordenador.
+Twenty'em requiere de algunas dependencias, para ello debes instalarlas vía `npm`. Debes tener [Node.js](https://nodejs.org/es/) instalado previamente en tu ordenador.
+Ejecuta los siguientes comandos desde tu CLI:
 ```bash
-$ cd /path/to/twenty-em/
+$ cd /path/to/your/wordpress-site/wp-content/themes/twenty-em/
 $ npm install
+$ gulp deploy
 ```
 
 ## Panel de Administración

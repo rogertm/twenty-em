@@ -14,6 +14,31 @@
  */
 
 /**
+ * Check if it dependencies are installed and send an error on fail
+ *
+ * @since Twenty'em 1.4
+ */
+function t_em_check_dependencies(){
+	$node	= T_EM_THEME_DIR_NODE_PATH;
+	$dist 	= T_EM_THEME_DIR_ASSETS_DIST_PATH;
+
+	if ( ! file_exists( $node ) || ! file_exists( $dist ) ) :
+		$msg = __( '<h1>Oops!</h1>', 't_em' );
+		$msg .= t_em_wrap_paragraph( __( 'It seems it\'s first time you run %s. To complete the installation you should run this from your CLI:', 't_em' ) );
+		$msg .= t_em_wrap_paragraph( '<pre>$ cd %s <br>$ npm install <br>$ gulp deploy</pre>' );
+		$msg .= t_em_wrap_paragraph( __( 'Search in the <a href="%s">documentation</a> for more details.' ) );
+
+		$error = sprintf( $msg,
+							T_EM_FRAMEWORK_NAME,
+							T_EM_THEME_DIR_PATH,
+							T_EM_WIKI
+						);
+		wp_die( $error, __( 'Oops!', 't_em' ) );
+	endif;
+}
+add_filter( 'init', 't_em_check_dependencies' );
+
+/**
  * Twenty'em Helpers Functions.
  */
 

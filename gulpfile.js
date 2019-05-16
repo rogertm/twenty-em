@@ -30,7 +30,7 @@ var	jsSrc				= 'assets/src/js/',
 	vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ];
 	vendorsDist			= 'assets/dist/vendor/';
 
-function copyVendors(){
+function vendors(){
 	return src(vendorsSrc)
 		.pipe(gulpCopy(vendorsDist, { prefix: 1 }));
 }
@@ -56,5 +56,5 @@ function watchSass(){
 	})
 }
 
-exports.deploy = series( copyVendors, js, css );
+exports.deploy = series( vendors, js, css );
 exports.watch = series( watchSass );
