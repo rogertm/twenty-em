@@ -19,6 +19,9 @@
  * @since Twenty'em 1.4
  */
 function t_em_check_dependencies(){
+	if ( is_admin() )
+		return;
+
 	$node	= T_EM_THEME_DIR_NODE_PATH;
 	$dist 	= T_EM_THEME_DIR_ASSETS_DIST_PATH;
 
