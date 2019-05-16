@@ -18,6 +18,7 @@ const rename			= require('gulp-rename');
 const sass				= require('gulp-sass');
 const cssClean			= require('gulp-clean-css');
 const gulpCopy 			= require('gulp-copy');
+const del				= require('del');
 
 var	jsSrc				= 'assets/src/js/',
 	scssSrc				= 'assets/src/scss/',
@@ -35,6 +36,10 @@ function vendors(){
 		.pipe(gulpCopy(vendorsDist, { prefix: 1 }));
 }
 
+function clean(){
+	return del([cssDist, jsDist]);
+}
+
 function js(){
 	return src(jsSrc + '*.js')
 		.pipe(uglify())
@@ -42,7 +47,7 @@ function js(){
 		.pipe(dest(jsDist));
 }
 
-function css(){
+function scss(){
 	return src(scssSrc + '*.scss')
 		.pipe(sass())
 		.pipe(cssClean())
@@ -50,11 +55,4 @@ function css(){
 		.pipe(dest(cssDist));
 }
 
-function watchSass(){
-	watch([scssSrc + '*.scss'], function(css){
-		css();
-	})
-}
-
-exports.deploy = series( vendors, js, css );
-exports.watch = series( watchSass );
+exports.default = series( vendors, clean, js, scss );
