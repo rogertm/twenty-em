@@ -39,7 +39,7 @@ Ejecuta los siguientes comandos desde tu CLI:
 ```bash
 $ cd /path/to/your/wordpress-site/wp-content/themes/twenty-em/
 $ npm install
-$ gulp deploy
+$ gulp
 ```
 
 ## Panel de Administración
