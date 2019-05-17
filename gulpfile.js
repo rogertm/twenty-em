@@ -19,8 +19,11 @@ const sass				= require('gulp-sass');
 const cssClean			= require('gulp-clean-css');
 const gulpCopy 			= require('gulp-copy');
 const del				= require('del');
+const gulpif 			= require('gulp-if');
+require('custom-env').env();
 
-var	jsSrc				= 'assets/src/js/',
+var	devMode				= process.env.DEV_MODE,
+	jsSrc				= 'assets/src/js/',
 	scssSrc				= 'assets/src/scss/',
 	jsDist				= 'assets/dist/js/',
 	cssDist				= 'assets/dist/css/',
@@ -28,31 +31,104 @@ var	jsSrc				= 'assets/src/js/',
 	iconPackSrc			= 'node_modules/@themingisprose/icon-pack/**/*',
 	countDownTimerSrc	= 'node_modules/countdowntimer/**/*',
 	jquerySrc			= 'node_modules/jquery/**/*',
-	vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ];
+	vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ],
 	vendorsDist			= 'assets/dist/vendor/';
 
+/**
+ * Copy required dependencies from node_modules/ to assets/dist/vendors/
+ *
+ * @since Twenty'em 1.4
+ */
 function vendors(){
 	return src(vendorsSrc)
 		.pipe(gulpCopy(vendorsDist, { prefix: 1 }));
 }
 
+/**
+ * Delete assets/dist/css/ and assets/dist/js/ directories
+ *
+ * @since Twenty'em 1.4
+ */
 function clean(){
 	return del([cssDist, jsDist]);
 }
 
+/**
+ * Compile javascript files from assets/src/js/ to assets/dist/js/
+ *
+ * @since Twenty'em 1.4
+ */
 function js(){
 	return src(jsSrc + '*.js')
-		.pipe(uglify())
-		.pipe(rename({ extname: '.min.js' }))
+		.pipe(gulpif(devMode != 'true', uglify()))
+		.pipe(gulpif(devMode != 'true', rename({ extname: '.min.js' })))
 		.pipe(dest(jsDist));
 }
 
+/**
+ * Compile scss files from assets/src/scss/ to assets/dist/css/
+ *
+ * @since Twenty'em 1.4
+ */
 function scss(){
 	return src(scssSrc + '*.scss')
 		.pipe(sass())
-		.pipe(cssClean())
-		.pipe(rename({ extname: '.min.css' }))
+		.pipe(gulpif(devMode != 'true', cssClean()))
+		.pipe(gulpif(devMode != 'true', rename({ extname: '.min.css' })))
 		.pipe(dest(cssDist));
 }
 
 exports.default = series( vendors, clean, js, scss );
+
+/**
+ * Child Theme process
+ * You must define this environment variables in your .env file
+ * CHILD_THEME_EXISTS = true
+ * CHILD_THEME = ../child-theme-dir (without trailing slash)
+ * See env-sample file for details.
+ */
+
+var childExists 		= process.env.CHILD_THEME_EXISTS,
+	childPath			= process.env.CHILD_THEME +'/',
+	childSrc			= childPath +'assets/src/',
+	childScssSrc		= childSrc +'scss/',
+	childJsSrc			= childSrc +'js/',
+	childDist			= childPath +'assets/dist/',
+	childCssDist		= childDist +'css/',
+	childJsDist			= childDist +'js/';
+
+/**
+ * Delete Child Theme ../child-theme-dir/assets/dist/css/ and ../child-theme-dir/assets/dist/js/ directories
+ *
+ * @since Twenty'em 1.4
+ */
+function childClean(){
+	return gulpif(childExists == 'true', del([childCssDist, childJsDist], {force: true}));
+}
+
+/**
+ * Compile javascript files in Child Theme from ../child-theme-dir/assets/src/js/ to ../child-theme-dir/assets/dist/js/
+ *
+ * @since Twenty'em 1.4
+ */
+function childJs(){
+	return src(childJsSrc + '*.js')
+		.pipe(gulpif(devMode != 'true', uglify()))
+		.pipe(gulpif(devMode != 'true', rename({ extname: '.min.js' })))
+		.pipe(dest(childJsDist));
+}
+
+/**
+ * Compile scss files in Child Theme from ../child-theme-dir/assets/src/scss/ to ../child-theme-dir/assets/dist/css/
+ *
+ * @since Twenty'em 1.4
+ */
+function childScss(){
+	return src(childScssSrc +'*.scss')
+		.pipe(sass())
+		.pipe(gulpif(devMode != 'true', cssClean()))
+		.pipe(gulpif(devMode != 'true', rename({ extname: '.min.css' })))
+		.pipe(dest(childCssDist));
+}
+
+exports.child = series( childClean, childJs, childScss );

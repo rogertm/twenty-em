@@ -9,4 +9,5 @@ node_modules
 node_modules/*.*
 assets/dist
 assets/dist/*.*
+.env
 TODO
