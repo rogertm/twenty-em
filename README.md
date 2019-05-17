@@ -41,6 +41,20 @@ $ cd /path/to/your/wordpress-site/wp-content/themes/twenty-em/
 $ npm install
 $ gulp
 ```
+En caso de usar un [Child Theme](https://github.com/rogertm/twenty-em-child) debes tambien desplegar las tareas necesarias para compilar los archivos `scss` del Child Theme. Desde el mismo direcotrio de `twenty-em` corres el siguiente comando:
+```
+$ gulp child
+```
+_Este comando depende en gran medida de las variables de entorno. Ver más abajo._
+
+## Variables de entorno (.env)
+Para el mejor funcionamiento de las tareas que se ejecuntan con el comando `gulp`, se deben definir las variables de entorno necesarias en un archivo llamado `.env`.
+
+Variable Name | Possibles Values | Description
+--------------|------------------|------------
+`DEV_MODE`|`true`, `false` |Si se define como `false`, todos los archivos compilados serán minificados
+`CHILD_THEME_EXISTS`|`true`, `false` |Evaluar a `true` si hay un CHild Theme instalado
+`CHILD_THEME`|`../child-theme-dir` |Nombre del directorio del Child Theme (si el slash final)
 
 ## Panel de Administración
 
