@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty'em 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/twenty-em\n"
-"POT-Creation-Date: 2018-08-30 14:00-0400\n"
-"PO-Revision-Date: 2018-08-30 14:12-0400\n"
+"POT-Creation-Date: 2019-05-19 17:00:32+00:00\n"
+"PO-Revision-Date: 2019-05-19 13:06-0400\n"
 "Last-Translator: RogerTM <hi@themingisprose.com>\n"
 "Language-Team: Theming is Prose <hi@themingisprose.com>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -35,8 +35,8 @@ msgid_plural "%1$s responses to: %2$s"
 msgstr[0] "Una respuesta para: %2$s"
 msgstr[1] "%1$s respuestas para: %2$s"
 
-#: comments.php:38 page-templates/template-archive.php:58
-#: templates/meta.php:126
+#: comments.php:38 page-templates/template-archive.php:65
+#: templates/meta.php:139
 msgid "1 Comment"
 msgid_plural "%1$s Comments"
 msgstr[0] "1 Comentario"
@@ -458,98 +458,126 @@ msgid "T_EM_THEME_DIR_JS_PATH"
 msgstr "T_EM_THEME_DIR_JS_PATH"
 
 #: engine/debug-options.php:133
-msgid "T_EM_THEME_DIR_FONTS_PATH"
-msgstr "T_EM_THEME_DIR_FONTS_PATH"
-
-#: engine/debug-options.php:135
 msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"
 msgstr "T_EM_THEME_DIR_PAGE_TEMPLATES_PATH"
 
-#: engine/debug-options.php:137
+#: engine/debug-options.php:135
 msgid "T_EM_THEME_DIR_TEMPLATES_PATH"
 msgstr "T_EM_THEME_DIR_TEMPLATES_PATH"
+
+#: engine/debug-options.php:137
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_INC_PATH"
+msgid "T_EM_THEME_DIR_NODE_PATH"
+msgstr "T_EM_THEME_DIR_INC_PATH"
 
 #: engine/debug-options.php:139
 msgid "T_EM_THEME_DIR_BOOTSTRAP_PATH"
 msgstr "T_EM_THEME_DIR_BOOTSTRAP_PATH"
 
 #: engine/debug-options.php:141
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_JS_PATH"
+msgid "T_EM_THEME_DIR_JQUERY_PATH"
+msgstr "T_EM_THEME_DIR_JS_PATH"
+
+#: engine/debug-options.php:143
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_INC_PATH"
+msgid "T_EM_THEME_DIR_ICON_PACK_PATH"
+msgstr "T_EM_THEME_DIR_INC_PATH"
+
+#: engine/debug-options.php:145
 msgid "T_EM_THEME_DIR_URL"
 msgstr "T_EM_THEME_DIR_URL"
 
-#: engine/debug-options.php:143
+#: engine/debug-options.php:147
 msgid "T_EM_CHILD_THEME_DIR_URL"
 msgstr "T_EM_CHILD_THEME_DIR_URL"
 
-#: engine/debug-options.php:145
+#: engine/debug-options.php:149
 msgid "T_EM_THEME_DIR_CSS_URL"
 msgstr "T_EM_THEME_DIR_CSS_URL"
 
-#: engine/debug-options.php:147
+#: engine/debug-options.php:151
 msgid "T_EM_THEME_DIR_IMG_URL"
 msgstr "T_EM_THEME_DIR_IMG_URL"
 
-#: engine/debug-options.php:149
+#: engine/debug-options.php:153
 msgid "T_EM_THEME_DIR_JS_URL"
 msgstr "T_EM_THEME_DIR_JS_URL"
 
-#: engine/debug-options.php:151
-msgid "T_EM_THEME_DIR_FONTS_URL"
-msgstr "T_EM_THEME_DIR_FONTS_URL"
-
-#: engine/debug-options.php:153
+#: engine/debug-options.php:155
 msgid "T_EM_THEME_DIR_INC_URL"
 msgstr "T_EM_THEME_DIR_INC_URL"
 
-#: engine/debug-options.php:155
+#: engine/debug-options.php:157
 msgid "T_EM_THEME_DIR_PAGE_TEMPLATES_URL"
 msgstr "T_EM_THEME_DIR_PAGE_TEMPLATES_URL"
 
-#: engine/debug-options.php:157
+#: engine/debug-options.php:159
 msgid "T_EM_THEME_DIR_TEMPLATES_URL"
 msgstr "T_EM_THEME_DIR_TEMPLATES_URL"
 
-#: engine/debug-options.php:159
+#: engine/debug-options.php:161
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_INC_URL"
+msgid "T_EM_THEME_DIR_NODE_URL"
+msgstr "T_EM_THEME_DIR_INC_URL"
+
+#: engine/debug-options.php:163
 msgid "T_EM_THEME_DIR_BOOTSTRAP_URL"
 msgstr "T_EM_THEME_DIR_BOOTSTRAP_URL"
 
-#: engine/debug-options.php:161
+#: engine/debug-options.php:165
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_JS_URL"
+msgid "T_EM_THEME_DIR_JQUERY_URL"
+msgstr "T_EM_THEME_DIR_JS_URL"
+
+#: engine/debug-options.php:167
+#, fuzzy
+#| msgid "T_EM_THEME_DIR_INC_URL"
+msgid "T_EM_THEME_DIR_ICON_PACK_URL"
+msgstr "T_EM_THEME_DIR_INC_URL"
+
+#: engine/debug-options.php:169
 msgid "T_EM_SLIDER_DEFAULT_HEIGHT"
 msgstr "T_EM_SLIDER_DEFAULT_HEIGHT"
 
-#: engine/debug-options.php:163
+#: engine/debug-options.php:171
 msgid "T_EM_SLIDER_MAX_HEIGHT"
 msgstr "T_EM_SLIDER_MAX_HEIGHT"
 
-#: engine/debug-options.php:165
+#: engine/debug-options.php:173
 msgid "T_EM_SLIDER_MIN_HEIGHT"
 msgstr "T_EM_SLIDER_MIN_HEIGHT"
 
-#: engine/debug-options.php:167
+#: engine/debug-options.php:175
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_DEFAULT_VALUE"
 
-#: engine/debug-options.php:169
+#: engine/debug-options.php:177
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MAX_VALUE"
 
-#: engine/debug-options.php:171
+#: engine/debug-options.php:179
 msgid "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE"
 msgstr "T_EM_BOOTSTRAP_CAROUSEL_INTERVAL_MIN_VALUE"
 
-#: engine/debug-options.php:173
+#: engine/debug-options.php:181
 msgid "T_EM_HEADER_IMAGE_WIDTH"
 msgstr "T_EM_HEADER_IMAGE_WIDTH"
 
-#: engine/debug-options.php:175
+#: engine/debug-options.php:183
 msgid "T_EM_HEADER_IMAGE_HEIGHT"
 msgstr "T_EM_HEADER_IMAGE_HEIGHT"
 
-#: engine/debug-options.php:193
+#: engine/debug-options.php:201
 msgid "Current Option: <code>%s</code>"
 msgstr "Mostrando la opción: <code>%s</code>"
 
-#: engine/debug-options.php:194
+#: engine/debug-options.php:202
 msgid ""
 "You can access these values through the <code>t_em()</code> function, "
 "passing as parameter any of these keys"
@@ -557,214 +585,214 @@ msgstr ""
 "Puedes acceder a estos valores a través de la función <code>t_em()</code>, "
 "pasando como parámetro cualquiera de estas llaves"
 
-#: engine/debug-options.php:214
+#: engine/debug-options.php:222
 msgid "Current Function: <code>%s</code>"
 msgstr "Funcción Actual: <code>%s</code>"
 
-#: engine/debug-options.php:215
+#: engine/debug-options.php:223
 msgid "This function return the defaults values of your theme"
 msgstr "Esta función retorna los valores por defecto en tu tema"
 
-#: engine/debug-options.php:237
+#: engine/debug-options.php:245
 msgid "Site Info"
 msgstr "Información del Sitio"
 
-#: engine/debug-options.php:239
+#: engine/debug-options.php:247
 msgid "Site URL:"
 msgstr "URL del Sitio:"
 
-#: engine/debug-options.php:241
+#: engine/debug-options.php:249
 msgid "Home URL:"
 msgstr "URL de Página Inicial:"
 
-#: engine/debug-options.php:243
+#: engine/debug-options.php:251
 msgid "Multisite:"
 msgstr "Multisitio:"
 
-#: engine/debug-options.php:244
+#: engine/debug-options.php:252
 msgid "Yes"
 msgstr "Si"
 
-#: engine/debug-options.php:244
+#: engine/debug-options.php:252
 msgid "No"
 msgstr "No"
 
-#: engine/debug-options.php:248
+#: engine/debug-options.php:256
 msgid "Hosting Provider"
 msgstr "Proveedor de Hosting:"
 
-#: engine/debug-options.php:250
+#: engine/debug-options.php:258
 msgid "Domain:"
 msgstr "Dominio:"
 
-#: engine/debug-options.php:252
+#: engine/debug-options.php:260
 msgid "IP:"
 msgstr "IP:"
 
-#: engine/debug-options.php:257
+#: engine/debug-options.php:265
 msgid "Browser"
 msgstr "Navegador"
 
-#: engine/debug-options.php:259
+#: engine/debug-options.php:267
 msgid "User Agent:"
 msgstr "Agente de Usuario:"
 
-#: engine/debug-options.php:270 engine/debug-options.php:291
-#: engine/debug-options.php:293 engine/debug-options.php:300
-#: engine/debug-options.php:386
+#: engine/debug-options.php:278 engine/debug-options.php:299
+#: engine/debug-options.php:301 engine/debug-options.php:308
+#: engine/debug-options.php:394
 msgid "N/A"
 msgstr "N/A"
 
-#: engine/debug-options.php:273
+#: engine/debug-options.php:281
 msgid "WordPress Configuration"
 msgstr "Configuración de WordPress"
 
-#: engine/debug-options.php:275
+#: engine/debug-options.php:283
 msgid "Version:"
 msgstr "Versión:"
 
-#: engine/debug-options.php:277
+#: engine/debug-options.php:285
 msgid "Language:"
 msgstr "Lenguage:"
 
-#: engine/debug-options.php:278
+#: engine/debug-options.php:286
 msgid "en_US"
 msgstr "en_US"
 
-#: engine/debug-options.php:279
+#: engine/debug-options.php:287
 msgid "Permalink Structure:"
 msgstr "Estructura de Enlaces Permanentes:"
 
-#: engine/debug-options.php:280
+#: engine/debug-options.php:288
 msgid "Default"
 msgstr "Por Defecto"
 
-#: engine/debug-options.php:281
+#: engine/debug-options.php:289
 msgid "Active Theme:"
 msgstr "Tema Activo:"
 
-#: engine/debug-options.php:283
+#: engine/debug-options.php:291
 msgid "Parent Theme:"
 msgstr "Tema Padre:"
 
-#: engine/debug-options.php:285
+#: engine/debug-options.php:293
 msgid "Show On Front:"
 msgstr "Mostrar en Página Frontal:"
 
-#: engine/debug-options.php:290
+#: engine/debug-options.php:298
 msgid "Page On Front:"
 msgstr "Página de Inicio:"
 
-#: engine/debug-options.php:291 engine/debug-options.php:293
+#: engine/debug-options.php:299 engine/debug-options.php:301
 msgid "Title: %s - ID: %s"
 msgstr "Título: %s - ID: %s"
 
-#: engine/debug-options.php:292
+#: engine/debug-options.php:300
 msgid "Page For Posts:"
 msgstr "Página de Entradas"
 
-#: engine/debug-options.php:295
+#: engine/debug-options.php:303
 msgid "ABSPATH:"
 msgstr "ABSPATH:"
 
-#: engine/debug-options.php:297
+#: engine/debug-options.php:305
 msgid "Table Prefix:"
 msgstr "Prefijo de las Tablas"
 
-#: engine/debug-options.php:298
+#: engine/debug-options.php:306
 msgid "\"%s\". Length: %s. Status: %s"
 msgstr "\"%s\". Longitud: %s. Estado: %s"
 
-#: engine/debug-options.php:298
+#: engine/debug-options.php:306
 msgid "ERROR: Too long"
 msgstr "ERROR: Muy largo"
 
-#: engine/debug-options.php:298
+#: engine/debug-options.php:306
 msgid "Acceptable"
 msgstr "Aceptable"
 
-#: engine/debug-options.php:299
+#: engine/debug-options.php:307
 msgid "WP_DEBUG:"
 msgstr "WP_DEBUG:"
 
-#: engine/debug-options.php:300
+#: engine/debug-options.php:308
 msgid "Enabled"
 msgstr "Disponible"
 
-#: engine/debug-options.php:300
+#: engine/debug-options.php:308
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: engine/debug-options.php:301 engine/debug-options.php:370
+#: engine/debug-options.php:309 engine/debug-options.php:378
 msgid "Memory Limit:"
 msgstr "Límite de Memoria:"
 
-#: engine/debug-options.php:303
+#: engine/debug-options.php:311
 msgid "Registered Post Stati:"
 msgstr "Estados de Post Registrados:"
 
-#: engine/debug-options.php:305
+#: engine/debug-options.php:313
 msgid "Registered Post Types:"
 msgstr "Tipos de Post Registrados"
 
-#: engine/debug-options.php:314
+#: engine/debug-options.php:322
 msgid "Active Plugins"
 msgstr "Plugins Activos"
 
-#: engine/debug-options.php:319 engine/debug-options.php:331
-#: engine/debug-options.php:348
+#: engine/debug-options.php:327 engine/debug-options.php:339
+#: engine/debug-options.php:356
 msgid "Update Available - %s"
 msgstr "Actualización Disponible - %s"
 
-#: engine/debug-options.php:326
+#: engine/debug-options.php:334
 msgid "Inactive Plugins"
 msgstr "Plugins Inactivos"
 
-#: engine/debug-options.php:342
+#: engine/debug-options.php:350
 msgid "Network Active Plugins"
 msgstr "Plugins Activos para la Red"
 
-#: engine/debug-options.php:357
+#: engine/debug-options.php:365
 msgid "Webserver Configuration"
 msgstr "Configuración del Servidor"
 
-#: engine/debug-options.php:359
+#: engine/debug-options.php:367
 msgid "PHP Version:"
 msgstr "Versión de PHP:"
 
-#: engine/debug-options.php:361
+#: engine/debug-options.php:369
 msgid "MySQL Version:"
 msgstr "Versión de MySQL:"
 
-#: engine/debug-options.php:363
+#: engine/debug-options.php:371
 msgid "Webserver:"
 msgstr "Servidor Web:"
 
-#: engine/debug-options.php:368
+#: engine/debug-options.php:376
 msgid "PHP Configuration"
 msgstr "Configuración de PHP"
 
-#: engine/debug-options.php:373
+#: engine/debug-options.php:381
 msgid "Upload Max Size:"
 msgstr "Capacidad Máxima de Subida:"
 
-#: engine/debug-options.php:376
+#: engine/debug-options.php:384
 msgid "Post Max Filesize:"
 msgstr "Capacidad Máxima de Envío:"
 
-#: engine/debug-options.php:379
+#: engine/debug-options.php:387
 msgid "Time Limit:"
 msgstr "Tiempo Límite:"
 
-#: engine/debug-options.php:382
+#: engine/debug-options.php:390
 msgid "Max Input Vars:"
 msgstr "Capacidad Máxima de Entrada"
 
-#: engine/debug-options.php:385
+#: engine/debug-options.php:393
 msgid "Display Errors:"
 msgstr "Mostrar Errores:"
 
-#: engine/debug-options.php:386
+#: engine/debug-options.php:394
 msgid "On: %s"
 msgstr "On: %s"
 
@@ -2153,6 +2181,30 @@ msgstr "Enlace a imagen a tamaño completo"
 msgid "Full resolution"
 msgstr "A toda resolución"
 
+#: inc/functions.php:29
+msgid "<h1>Oops!</h1>"
+msgstr "<h1>Oops!</h1>"
+
+#: inc/functions.php:30
+msgid ""
+"It seems it's first time you run %s. To complete the installation you should "
+"run this from your CLI:"
+msgstr ""
+"Al parecer es la primera vez que usas %s. Para completar la instalación "
+"debes correr los siguientes comandos desde tu CLI:"
+
+#: inc/functions.php:32
+msgid "If you are using a Child Theme also run:"
+msgstr "Si estás usando un CHild Theme también ejecuta:"
+
+#: inc/functions.php:34
+msgid "Search in the <a href=\"%s\">documentation</a> for more details."
+msgstr "Busca en la <a href=\"%1$s\">Documentación</a> para más detalles."
+
+#: inc/functions.php:41
+msgid "Oops!"
+msgstr "Oops!"
+
 #: inc/shortcodes.php:108
 msgid "Button group"
 msgstr "Button group"
@@ -2391,52 +2443,52 @@ msgstr "Excluir:"
 msgid "Users IDs, separated by commas."
 msgstr "ID de usuarios, separados por comas."
 
-#: page-templates/template-archive.php:48
+#: page-templates/template-archive.php:56
 msgid "The latest %1$s posts"
 msgstr "Las últimas %1$s entradas"
 
-#: page-templates/template-archive.php:56
-#: page-templates/template-blog-content.php:42
+#: page-templates/template-archive.php:63
+#: page-templates/template-blog-content.php:49
 #: page-templates/template-sitemap.php:64 template-parts/content-columns.php:26
 #: template-parts/content-excerpt.php:36 template-parts/content-full.php:24
 #: template-parts/content-search.php:25 templates/header.php:150
-#: templates/meta.php:155
+#: templates/meta.php:168
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
 
-#: page-templates/template-archive.php:58
+#: page-templates/template-archive.php:65
 msgid "0 Comments"
 msgstr "0 Comentarios"
 
-#: page-templates/template-archive.php:58 templates/meta.php:126
+#: page-templates/template-archive.php:65 templates/meta.php:139
 msgid "% Comments"
 msgstr "% Comentarios"
 
-#: page-templates/template-archive.php:69
+#: page-templates/template-archive.php:76
 #: page-templates/template-sitemap.php:44
 msgid "Categories"
 msgstr "Categorías"
 
-#: page-templates/template-archive.php:77
+#: page-templates/template-archive.php:84
 msgid "Monthly Archives"
 msgstr "Archivo Mensual"
 
-#: page-templates/template-archive.php:85
+#: page-templates/template-archive.php:92
 msgid "Tag Cloud"
 msgstr "Nube de Etiquetas"
 
-#: page-templates/template-blog-content.php:49
+#: page-templates/template-blog-content.php:56
 #: template-parts/content-full.php:30 templates/content.php:273
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr "Seguir leyendo <span class=\"meta-nav\">&raquo;</span>"
 
-#: page-templates/template-contributors.php:54
+#: page-templates/template-contributors.php:60
 msgid "%d Article"
 msgid_plural "%d Articles"
 msgstr[0] "%d Entrada"
 msgstr[1] "%d Entradas"
 
-#: page-templates/template-contributors.php:61
+#: page-templates/template-contributors.php:67
 msgid "Visit web site"
 msgstr "Visitar página web"
 
@@ -2498,7 +2550,7 @@ msgstr "%1$s a %2$s"
 
 #: templates/comments.php:48 templates/comments.php:84
 #: templates/comments.php:91 templates/comments.php:116
-#: templates/comments.php:123 templates/meta.php:140
+#: templates/comments.php:123 templates/meta.php:153
 msgid "Edit"
 msgstr "Editar"
 
@@ -2749,31 +2801,31 @@ msgstr ""
 "\">&raquo;</span>"
 
 #. Translators: used between list items, there is a space after the comma.
-#: templates/meta.php:81 templates/meta.php:87
+#: templates/meta.php:83 templates/meta.php:89
 msgid ", "
 msgstr ", "
 
-#: templates/meta.php:104
+#: templates/meta.php:117
 msgid "Short link to: %1$s"
 msgstr "Enlace corto a: %1$s"
 
-#: templates/meta.php:105
+#: templates/meta.php:118
 msgid "Short link"
 msgstr "Enlace corto"
 
-#: templates/meta.php:126
+#: templates/meta.php:139
 msgid "Leave a comment"
 msgstr "Dejar un comentario"
 
-#: templates/meta.php:175
+#: templates/meta.php:188
 msgid "View all post by %s"
 msgstr "Ver todas las entradas de %s"
 
-#: templates/meta.php:194
+#: templates/meta.php:207
 msgid "About %s"
 msgstr "Acerca de %s"
 
-#: templates/meta.php:199
+#: templates/meta.php:212
 msgid "View all posts by %s <span class=\"icomoon-arrow-right2\"></span>"
 msgstr ""
 "Ver todas las entradas de %s <span class=\"icomoon-arrow-right2\"></span>"
@@ -2865,6 +2917,12 @@ msgstr "Blog Excerpt (resumen)"
 #. Template Name of the plugin/theme
 msgid "Site Map"
 msgstr "Mapa del Sitio"
+
+#~ msgid "T_EM_THEME_DIR_FONTS_PATH"
+#~ msgstr "T_EM_THEME_DIR_FONTS_PATH"
+
+#~ msgid "T_EM_THEME_DIR_FONTS_URL"
+#~ msgstr "T_EM_THEME_DIR_FONTS_URL"
 
 #~ msgid ""
 #~ "<strong>Text Widgets</strong>: Four featured text widgets areas (one "

@@ -29,9 +29,9 @@ function t_em_check_dependencies(){
 		$msg = __( '<h1>Oops!</h1>', 't_em' );
 		$msg .= t_em_wrap_paragraph( __( 'It seems it\'s first time you run %s. To complete the installation you should run this from your CLI:', 't_em' ) );
 		$msg .= t_em_wrap_paragraph( '<pre>$ cd %s <br>$ npm install <br>$ gulp </pre>' );
-		$msg .= t_em_wrap_paragraph( __( 'If you are using a Child Theme also run:' ) );
+		$msg .= t_em_wrap_paragraph( __( 'If you are using a Child Theme also run:', 't_em' ) );
 		$msg .= t_em_wrap_paragraph( '<pre>$ gulp child</pre>' );
-		$msg .= t_em_wrap_paragraph( __( 'Search in the <a href="%s">documentation</a> for more details.' ) );
+		$msg .= t_em_wrap_paragraph( __( 'Search in the <a href="%s">documentation</a> for more details.', 't_em' ) );
 
 		$error = sprintf( $msg,
 							T_EM_FRAMEWORK_NAME,
