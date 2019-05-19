@@ -29,8 +29,8 @@ var	devMode				= process.env.DEV_MODE,
 	cssDist				= 'assets/dist/css/',
 	bootstrapSrc		= 'node_modules/bootstrap/**/*',
 	iconPackSrc			= 'node_modules/@themingisprose/icon-pack/**/*',
-	countDownTimerSrc	= 'node_modules/countdowntimer/**/*',
-	jquerySrc			= 'node_modules/jquery/**/*',
+	countDownTimerSrc	= 'node_modules/countdowntimer/dist/**/*',
+	jquerySrc			= 'node_modules/jquery/dist/**/*',
 	vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ],
 	vendorsDist			= 'assets/dist/vendor/';
 
