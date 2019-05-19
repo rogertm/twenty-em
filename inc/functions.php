@@ -25,7 +25,7 @@ function t_em_check_dependencies(){
 	$node	= T_EM_THEME_DIR_NODE_PATH;
 	$dist 	= T_EM_THEME_DIR_ASSETS_DIST_PATH;
 
-	if ( ! file_exists( $node ) || ! file_exists( $dist ) ) :
+	if ( ! file_exists( $dist ) ) :
 		$msg = __( '<h1>Oops!</h1>', 't_em' );
 		$msg .= t_em_wrap_paragraph( __( 'It seems it\'s first time you run %s. To complete the installation you should run this from your CLI:', 't_em' ) );
 		$msg .= t_em_wrap_paragraph( '<pre>$ cd %s <br>$ npm install <br>$ gulp </pre>' );
