@@ -45,6 +45,7 @@ En caso de usar un [Child Theme](https://github.com/rogertm/twenty-em-child) deb
 ```
 $ gulp child
 ```
+También puedes ejecutar `gulp watch` y `gulp watch:child` para complilar los archivos `scss` y `js` miesntras trabajas.
 _Este comando depende en gran medida de las variables de entorno. Ver más abajo._
 
 ## Variables de entorno (.env)
