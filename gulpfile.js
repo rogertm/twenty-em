@@ -132,3 +132,25 @@ function childScss(){
 }
 
 exports.child = series( childClean, childJs, childScss );
+
+/**
+ * Watch files for changes
+ * Run 'gulp watch' to deploy file changes
+ *
+ * @since Twenty'em 1.4
+ */
+task('watch', () => {
+	watch(jsSrc + '*.js', series( js ));
+	watch(scssSrc +'*.scss', series( scss ));
+})
+
+/**
+ * Watch files for changes
+ * Run 'gulp watch:child' to deploy file changes in a Child Theme
+ *
+ * @since Twenty'em 1.4
+ */
+task('watch:child', () => {
+	watch(childJsSrc + '*.js', series( childJs ));
+	watch(childScssSrc +'*.scss', series( childScss ));
+})
