@@ -1,6 +1,9 @@
 == Changelog ==
 
 = 1.4.0 =
+Release Date: May 24, 2019
+* Enhancement: Woocommerce support
+
 Release Date: May 15, 2019
 * Enhancement: Introducing Gulp! 🥤
 
