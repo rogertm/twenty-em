@@ -208,7 +208,7 @@ function t_em_breakpoint( $section ){
 
 	/** Front Page Widgets Area */
 	if ( 'primary-featured-widget-area' == $section ) :
-		$breakpoint[] = t_em_grid( '12', 'md' );
+		$breakpoint[] = t_em_grid( '12' );
 	endif;
 	// Classes are needed for secondaries widgets only (two, three and four).
 	if ( 'secondary-featured-widget-area' == $section ) :
@@ -217,7 +217,7 @@ function t_em_breakpoint( $section ){
 		$widget_four	= ( ! empty ( t_em( 'headline_text_widget_four' ) ) || ! empty ( t_em( 'content_text_widget_four' ) ) ) ? '1' : '0' ;
 		$total_widgets = array_sum( array( $widget_two, $widget_three, $widget_four ) );
 		$cols = 12 / $total_widgets;
-		$breakpoint[] = t_em_grid( $cols, 'md' );
+		$breakpoint[] = t_em_grid( $cols );
 	endif;
 
 	/** Footer Widgets Area */
