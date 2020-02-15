@@ -25,7 +25,7 @@ define ( 'T_EM_ICON_PACK', 												'https://themingisprose.com/icon-pack' );
 define ( 'T_EM_PAYPAL', 												'https://paypal.me/themingisprose' );
 
 // WordPress version in which Twenty'em has been tested
-define ( 'T_EM_WORDPRESS_VERSION',										'5.0.2' );
+define ( 'T_EM_WORDPRESS_VERSION',										'5.3.2' );
 
 // Twenty'em Version
 define ( 'T_EM_FRAMEWORK_NAME',											'Twenty\'em' );
@@ -35,7 +35,7 @@ define ( 'T_EM_FRAMEWORK_VERSION_STATUS',								'Beta' );
 define ( 'T_EM_DB_VERSION',												'20180810' ); // In date format Ymd
 
 // Third Party Softwares
-define ( 'T_EM_BOOTSTRAP_VERSION',										'4.3.1' );
+define ( 'T_EM_BOOTSTRAP_VERSION',										'4.4.1' );
 
 // Theme Directory Path
 define( 'T_EM_THEME_DIR_PATH', 											get_template_directory() );
