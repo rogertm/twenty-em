@@ -12,6 +12,9 @@
  * @since 			Twenty'em 1.4
  */
 
+/**
+ * Load Plugins
+ */
 const { gulp, dest, src, series, watch, task } = require('gulp');
 const uglify			= require('gulp-uglify');
 const rename			= require('gulp-rename');
@@ -22,17 +25,36 @@ const del				= require('del');
 const gulpif 			= require('gulp-if');
 require('custom-env').env();
 
-var	devMode				= process.env.DEV_MODE,
-	jsSrc				= 'assets/src/js/',
-	scssSrc				= 'assets/src/scss/',
-	jsDist				= 'assets/dist/js/',
-	cssDist				= 'assets/dist/css/',
-	bootstrapSrc		= 'node_modules/bootstrap/**/*',
-	iconPackSrc			= 'node_modules/@themingisprose/icon-pack/**/*',
-	countDownTimerSrc	= 'node_modules/countdowntimer/dist/**/*',
-	jquerySrc			= 'node_modules/jquery/dist/**/*',
-	vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ],
-	vendorsDist			= 'assets/dist/vendor/';
+let	devMode				= process.env.DEV_MODE;
+
+/**
+ * Assets
+ */
+let assetsSrc			= 'assets/src/';
+let assetsDist			= 'assets/dist/';
+let nodeSrc				= 'node_modules/';
+
+/**
+ * Assets Sources
+ */
+let jsSrc				= assetsSrc +'js/';
+let scssSrc				= assetsSrc +'scss/';
+
+/**
+ * Assets Dist
+ */
+let cssDist				= assetsDist +'css/';
+let jsDist				= assetsDist +'js/';
+let vendorsDist			= assetsDist +'vendor/';
+
+/**
+ * Node Modules
+ */
+let	bootstrapSrc		= nodeSrc +'bootstrap/**/*';
+let	iconPackSrc			= nodeSrc +'@themingisprose/icon-pack/**/*';
+let	countDownTimerSrc	= nodeSrc +'countdowntimer/dist/**/*';
+let	jquerySrc			= nodeSrc +'jquery/dist/**/*';
+let vendorsSrc			= [ bootstrapSrc, iconPackSrc, countDownTimerSrc, jquerySrc ]
 
 /**
  * Copy required dependencies from node_modules/ to assets/dist/vendors/
@@ -50,7 +72,7 @@ function vendors(){
  * @since Twenty'em 1.4
  */
 function clean(){
-	return del([cssDist, jsDist]);
+	return del([cssDist, jsDist, vendorsDist]);
 }
 
 /**
@@ -78,7 +100,7 @@ function scss(){
 		.pipe(dest(cssDist));
 }
 
-exports.default = series( vendors, clean, js, scss );
+exports.default = series( clean, vendors, js, scss );
 
 /**
  * Child Theme process
@@ -88,14 +110,14 @@ exports.default = series( vendors, clean, js, scss );
  * See env-sample file for details.
  */
 
-var childExists 		= process.env.CHILD_THEME_EXISTS,
-	childPath			= process.env.CHILD_THEME +'/',
-	childSrc			= childPath +'assets/src/',
-	childScssSrc		= childSrc +'scss/',
-	childJsSrc			= childSrc +'js/',
-	childDist			= childPath +'assets/dist/',
-	childCssDist		= childDist +'css/',
-	childJsDist			= childDist +'js/';
+let	childExists 		= process.env.CHILD_THEME_EXISTS;
+let	childPath			= process.env.CHILD_THEME +'/';
+let	childSrc			= childPath +'assets/src/';
+let	childScssSrc		= childSrc +'scss/';
+let	childJsSrc			= childSrc +'js/';
+let	childDist			= childPath +'assets/dist/';
+let	childCssDist		= childDist +'css/';
+let	childJsDist			= childDist +'js/';
 
 /**
  * Delete Child Theme ../child-theme-dir/assets/dist/css/ and ../child-theme-dir/assets/dist/js/ directories
