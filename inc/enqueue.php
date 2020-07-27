@@ -50,7 +50,7 @@ function t_em_enqueue_styles_and_scripts(){
 	 * @since Twenty'em 1.3.0
 	 */
 	if ( apply_filters( 't_em_filter_bootstrap_js', true ) ) :
-		wp_register_script( 'bootstrap', t_em_get_js( 'bootstrap.bundle', T_EM_THEME_DIR_BOOTSTRAP_PATH .'/dist/js/', T_EM_THEME_DIR_BOOTSTRAP_URL .'/dist/js/' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
+		wp_register_script( 'bootstrap', t_em_get_js( 'bootstrap.bundle', T_EM_THEME_DIR_BOOTSTRAP_PATH .'/dist/js', T_EM_THEME_DIR_BOOTSTRAP_URL .'/dist/js' ), array( 'jquery' ), t_em_theme( 'Version' ), true );
 		wp_enqueue_script( 'bootstrap' );
 	endif;
 
